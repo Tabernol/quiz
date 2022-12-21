@@ -1,20 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="startCommand:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7d27716-29f1-4889-bf49-40a55c5a6d82" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/startCommand_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/startCommand_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/startcommand/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/AllTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/AllUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/Home.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/Logout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/Profile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AbstractFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/RequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/Dao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/connection/MyDataSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/impl/AnswerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/impl/QuestionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/impl/SubjectDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/impl/TestDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/impl/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Answer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Subject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_menu.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/student_menu.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2J30dAIfyW89v3rxSnFmVtLGTer" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -26,9 +94,51 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Max/IdeaProjects/PrepereProject/startCommand"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.69" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.69" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="startCommand:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/startCommand_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="608e1a81-fcb2-4456-a92c-bbc6d0378cd3" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="startCommand:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -37,9 +147,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671291545864</updated>
-      <workItem from="1671291548107" duration="4000" />
+      <workItem from="1671291548107" duration="5968000" />
+      <workItem from="1671362753814" duration="5036000" />
+      <workItem from="1671488752456" duration="2081000" />
+      <workItem from="1671538300957" duration="3445000" />
+      <workItem from="1671616917846" duration="10268000" />
+      <workItem from="1671647824854" duration="8440000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

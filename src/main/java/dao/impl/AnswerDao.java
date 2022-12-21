@@ -1,5 +1,6 @@
-package dao;
+package dao.impl;
 
+import dao.Dao;
 import models.Answer;
 
 import java.util.List;

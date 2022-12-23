@@ -2,12 +2,20 @@ package models;
 
 public class Test {
     private long id;
-    private  long subjectId;
+    private long subjectId;
     private String name;
     private int difficult;
     private int duration; //DateTime
     private int amountQuestions;
+    private String subjectName;
 
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
 
     public Test() {
     }

@@ -1,5 +1,8 @@
 package controllers.servlet.impl;
 
+import command.post.CreateTest;
+import command.EditUser;
+import command.post.DeleteUser;
 import controllers.servlet.RequestHandler;
 import servises.UserService;
 
@@ -14,11 +17,17 @@ public class DataHandleCommand {
             UserService userService = new UserService();
             String name = req.getParameter("name");
             String login = req.getParameter("login");
+
+            System.out.println(req.getParameter("name"));
+            System.out.println(req.getParameter("login"));
             String password = req.getParameter("password");
             userService.createUser(name,login,password);
             req.setAttribute("message", "You have registred");
 
 
         }));
+        COMMANDS.put("/create_test", new CreateTest());
+//        COMMANDS.put("/delete_user", new DeleteUser());
+
     }
 }

@@ -17,23 +17,19 @@
         <input type="text" required placeholder="login" name="login"><br>
         <input type="password" required placeholder="password" name="password"><br>
         <input class="button" type="submit" value="login">
-        <select name="lang">
-            <option value="en"><c:out  value="english"/></option>
-            <option value="ua"><c:out value="ukraine"/></option>
-        </select>
     </form>
 
 </div>
 
-<div class="form">
-    <form method="post" action="login_form">
-        <select name="lang">
-            <option value="en"><c:out  value="english"/></option>
-            <option value="ua"><c:out value="ukraine"/></option>
-        </select><br>
-        <input class="button" type="submit" value="choose">
-    </form>
-</div>
+<%--<div class="form">--%>
+<%--    <form method="post" action="login_form">--%>
+<%--        <select name="lang">--%>
+<%--            <option value="en"><c:out  value="english"/></option>--%>
+<%--            <option value="ua"><c:out value="ukraine"/></option>--%>
+<%--        </select><br>--%>
+<%--        <input class="button" type="submit" value="choose">--%>
+<%--    </form>--%>
+<%--</div>--%>
 
 <br>
 <a href="<c:url value='/home'/>">back</a>

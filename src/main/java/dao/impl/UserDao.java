@@ -26,6 +26,7 @@ public class UserDao implements Dao<User> {
                 user.setPassword(resultSet.getString("password"));
                 user.setName(resultSet.getString("name"));
                 user.setRole(resultSet.getString("role"));
+                user.setBlocked(resultSet.getBoolean("is_blocked"));
             }
             return user;
         } catch (SQLException e) {
@@ -66,6 +67,7 @@ public class UserDao implements Dao<User> {
                 user.setPassword(resultSet.getString("password"));
                 user.setName(resultSet.getString("name"));
                 user.setRole(resultSet.getString("role"));
+                user.setBlocked(resultSet.getBoolean("is_blocked"));
                 users.add(user);
             }
             return users;

@@ -26,16 +26,11 @@ public class AuthorizationFilter extends AbstractFilter{
         final String login = req.getParameter("login");
         final String password = req.getParameter("password");// or this first??
         String lang = req.getParameter("lang");
-
-
-        System.out.println("lang    "+lang);
-
-
         UserService userService = new UserService();
-
-
         String role = "unknown";
 
+
+        System.out.println();
         long id = userService.getId(login);
 
         if (id > 0 && userService.isCorrectPassword(id, password)) {

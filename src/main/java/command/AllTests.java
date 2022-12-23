@@ -16,9 +16,11 @@ public class AllTests implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         TestService testService = new TestService();
-            List<Test> all = testService.getAll();
-            req.getSession().setAttribute("tests", all);
-            req.getRequestDispatcher("/").forward(req, resp);
+        List<Test> all = testService.getAll();
+//            req.getSession().setAttribute("tests", all);
+        req.setAttribute("tests", all);
+
+//        req.getRequestDispatcher("/WEB-INF/view/student/student_menu.jsp").forward(req, resp);
 
     }
 }

@@ -1,5 +1,6 @@
 package servises;
 
+import dao.connection.MyDataSource;
 import dao.impl.UserDao;
 import models.User;
 
@@ -33,5 +34,9 @@ public class UserService {
 
     public List<User> getAll(){
         return userDao.getAll();
+    }
+
+    public void deleteUser(Long id){
+        userDao.delete(id);
     }
 }

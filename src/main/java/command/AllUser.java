@@ -18,6 +18,6 @@ public class AllUser implements RequestHandler {
             throws ServletException, IOException {
         List<User> all = userService.getAll();
         req.setAttribute("users",all );
-        req.getRequestDispatcher("/WEB-INF/view/admin/admin_menu.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req,resp);
     }
 }

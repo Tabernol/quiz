@@ -17,6 +17,7 @@ public class MyDataSource {
         config.setUsername("root");
         config.setPassword("root");
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        //set config for Hikari
 
         //   config = new HikariConfig(CONFIG_FILE);
         ds = new HikariDataSource(config);

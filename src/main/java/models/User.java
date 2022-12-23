@@ -1,13 +1,29 @@
 package models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     private long id;
     private String login;
     private String password;
     private String name;
     private String role;
+    private boolean isBlocked;
+    private Map<String, Integer> result;
+
+
+
+    public boolean isBlocked() {
+        return isBlocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        isBlocked = blocked;
+    }
 
     public User() {
+        result = new HashMap<>();
     }
 
     public long getId() {
@@ -48,5 +64,17 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                ", isBlocked=" + isBlocked +
+                '}';
     }
 }

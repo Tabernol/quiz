@@ -14,11 +14,7 @@
 <body>
 <form method="post" action="create_test">
   <input type="text" required placeholder="name" name="name"><br>
-  <select name="subject_id">
-    <c:forEach var="sub" items="${sessionScope.subjects}">
-      <option value="${sub.id}"><c:out value="${sub.name}"/></option>
-    </c:forEach>
-  </select><br>
+  <input type="text" required placeholder="subject" name="subject"><br>
   <input type="number" required placeholder="difficult" name="difficult"><br>
   <input type="number" required placeholder="duration" name="duration"><br>
   <input class="button" type="submit" value="Create test">

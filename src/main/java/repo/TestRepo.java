@@ -12,29 +12,47 @@ import java.util.List;
 
 public class TestRepo {
 
-    public List<Test> getAllByAZ(){
-        String sql = "select * from test inner join subject on test.subject_id = subject.id order by test.name";
-        List<Test> tests;
+    public List<String> getDistinctSubject() {
+        String sql = "select distinct subject from test";
+        List<String> subjects;
         try (Connection con = MyDataSource.getConnection()) {
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet resultSet = pst.executeQuery();
-            tests = new ArrayList<>();
-            Test test;
+            subjects = new ArrayList<>();
             while (resultSet.next()) {
-                test = new Test();
+                String sub = resultSet.getString("subject");
+                subjects.add(sub);
+            }
+            return subjects;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Test> getFilterTest(String subject, String order) {
+        String sql = "select * from test where subject like ? order by ?";
+        List<Test> tests = new ArrayList<>();
+        try (Connection con = MyDataSource.getConnection()) {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, subject);
+            pst.setString(2, order);
+            System.out.println("order in repo = "+order);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                Test test = new Test();
                 test.setId(resultSet.getLong("id"));
-                test.setSubjectId(resultSet.getLong("subject_id"));
                 test.setName(resultSet.getString("name"));
+                test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
                 test.setAmountQuestions(resultSet.getInt("count_question"));
-                test.setSubjectName(resultSet.getString("subject.name"));
                 tests.add(test);
             }
             return tests;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+
 }

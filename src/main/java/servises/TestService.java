@@ -14,11 +14,24 @@ public class TestService {
         return testDao.getAll();
     }
 
-    public List<Test> getAllByAZ() {
-        return testRepo.getAllByAZ();
+
+    public void createTest(String name, String subject, int difficult, int duration) {
+        testDao.createTest(name, subject, difficult, duration);
     }
 
-    public void createTest(String name, Long subjectId, int difficult, int duration) {
-        testDao.createTest(name, subjectId, difficult, duration);
+    public List<String> getDistinctSubjects() {
+        return testRepo.getDistinctSubject();
+    }
+
+    public List<Test> getFilterTests(String subject, String order){
+        return testRepo.getFilterTest(subject, order);
+    }
+
+    public void delete(Long id){
+        testDao.delete(id);
+    }
+
+    public Test get(Long id){
+        return testDao.get(id);
     }
 }

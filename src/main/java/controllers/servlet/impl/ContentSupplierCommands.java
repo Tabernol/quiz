@@ -1,6 +1,7 @@
 package controllers.servlet.impl;
 
 import command.*;
+import command.post.DeleteTest;
 import command.post.DeleteUser;
 import controllers.servlet.RequestHandler;
 import models.Test;
@@ -26,7 +27,6 @@ public class ContentSupplierCommands {
 //
 //        }));
         COMMANDS.put("/tests", new AllTests());
-        COMMANDS.put("/testsAZ", new AllTestAZ());
         COMMANDS.put("/registration", ((req, resp) -> {
             req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
         }));
@@ -38,9 +38,10 @@ public class ContentSupplierCommands {
         COMMANDS.put("/home", new Home());
         COMMANDS.put("/logout", new Logout());
         COMMANDS.put("/profile", new Profile());
-        COMMANDS.put("/to_create_test", new ToCreateTest());
         COMMANDS.put("/edit_user", new EditUser());
         COMMANDS.put("/delete_user", new DeleteUser());
+        COMMANDS.put("/filter_tests", new FilterTests());
+        COMMANDS.put("/edit_test", new EditTest());
     }
 
 

@@ -2,7 +2,9 @@ package controllers.servlet.impl;
 
 import command.post.CreateTest;
 import command.EditUser;
+import command.post.DeleteTest;
 import command.post.DeleteUser;
+import command.post.EditTestPost;
 import controllers.servlet.RequestHandler;
 import servises.UserService;
 
@@ -27,7 +29,8 @@ public class DataHandleCommand {
 
         }));
         COMMANDS.put("/create_test", new CreateTest());
-//        COMMANDS.put("/delete_user", new DeleteUser());
+        COMMANDS.put("/delete_test", new DeleteTest());
+        COMMANDS.put("/edit_test", new EditTestPost());
 
     }
 }

@@ -1,7 +1,7 @@
-package dao.impl;
+package repo;
 
-import dao.Dao;
 import dao.connection.MyDataSource;
+import dao.impl.QuestionDao;
 import models.Question;
 
 import java.sql.Connection;
@@ -11,28 +11,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionDao implements Dao<Question> {
-    @Override
-    public Question get(Long id) {
-        return null;
-    }
+public class QuestionRepo {
+    QuestionDao questionDao = new QuestionDao();
 
-    @Override
-    public void update(Long id) {
-
-    }
-
-    @Override
-    public void delete(Long id) {
-
-    }
-
-    @Override
-    public List<Question> getAll() {
-        String sql = "select * from question";
+    public List<Question> getAllById(Long id) {
+        System.out.println("id = " + id);
+        String sql = "select * from question where test_id = ?";
         List<Question> questions = new ArrayList<>();
         try (Connection con = MyDataSource.getConnection()) {
             PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, id.toString());
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Question question = new Question();

@@ -17,7 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = {"/tests", "/users", "/registration", "/login_form", "/home",
-        "/logout", "/profile", "/testsAZ", "/create_test", "/to_create_test", "/edit_user", "/delete_user"})
+        "/logout", "/profile", "/testsAZ", "/create_test", "/edit_user",
+        "/delete_user", "/filter_tests", "/delete_test",
+        "/edit_test"
+})
 public class AppControllerServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(AppControllerServlet.class.getName());

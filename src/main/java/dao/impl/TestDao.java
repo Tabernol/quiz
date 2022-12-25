@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestDao implements Dao<Test> {
-    public void createTest(String name, long subjectId, int difficult, int duration) {
-        String sql = "insert into test (id, subject_id, name, difficult, duration) values(default, ?, ?, ?, ?)";
+    public void createTest(String name, String subject, int difficult, int duration) {
+        String sql = "insert into test (id, name, subject, difficult, duration) values(default, ?, ?, ?, ?)";
         try (Connection con = MyDataSource.getConnection()) {
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setLong(1, subjectId);
-            pst.setString(2, name);
+            pst.setString(1, name);
+            pst.setString(2, subject);
             pst.setInt(3, difficult);
             pst.setInt(4, duration);
             pst.executeUpdate();
@@ -38,8 +38,8 @@ public class TestDao implements Dao<Test> {
             while (resultSet.next()) {
                 test = new Test();
                 test.setId(resultSet.getLong("id"));
-                test.setSubjectId(resultSet.getLong("subject_id"));
                 test.setName(resultSet.getString("name"));
+                test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
                 test.setAmountQuestions(resultSet.getInt("count_question"));
@@ -62,8 +62,8 @@ public class TestDao implements Dao<Test> {
             if (resultSet.next()) {
                 test = new Test();
                 test.setId(resultSet.getLong("id"));
-                test.setSubjectId(resultSet.getLong("subject_id"));
                 test.setName(resultSet.getString("name"));
+                test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
                 test.setAmountQuestions(resultSet.getInt("count_question"));

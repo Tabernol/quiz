@@ -6,15 +6,7 @@ public class Question {
     private long id;
     private long testId;
     private String text;
-    private int difficult;
     private List<Answer> answerOptions;
-    public List<Answer> getAnswerOptions() {
-        return answerOptions;
-    }
-
-    public void setAnswerOptions(List<Answer> answerOptions) {
-        this.answerOptions = answerOptions;
-    }
 
     public Question() {
     }
@@ -43,12 +35,12 @@ public class Question {
         this.text = text;
     }
 
-    public int getDifficult() {
-        return difficult;
+    public List<Answer> getAnswerOptions() {
+        return answerOptions;
     }
 
-    public void setDifficult(int difficult) {
-        this.difficult = difficult;
+    public void setAnswerOptions(List<Answer> answerOptions) {
+        this.answerOptions = answerOptions;
     }
 
     @Override
@@ -57,7 +49,7 @@ public class Question {
                 "id=" + id +
                 ", testId=" + testId +
                 ", text='" + text + '\'' +
-                ", difficult=" + difficult +
+                ", answerOptions=" + answerOptions +
                 '}';
     }
 }

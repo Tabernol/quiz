@@ -2,20 +2,11 @@ package models;
 
 public class Test {
     private long id;
-    private long subjectId;
     private String name;
+    private String subject;
     private int difficult;
     private int duration; //DateTime
     private int amountQuestions;
-    private String subjectName;
-
-    public String getSubjectName() {
-        return subjectName;
-    }
-
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
-    }
 
     public Test() {
     }
@@ -28,20 +19,20 @@ public class Test {
         this.id = id;
     }
 
-    public long getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(long subjectId) {
-        this.subjectId = subjectId;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String text) {
-        this.name = text;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public int getDifficult() {
@@ -72,8 +63,8 @@ public class Test {
     public String toString() {
         return "Test{" +
                 "id=" + id +
-                ", subjectId=" + subjectId +
-                ", text='" + name + '\'' +
+                ", name='" + name + '\'' +
+                ", subject='" + subject + '\'' +
                 ", difficult=" + difficult +
                 ", duration=" + duration +
                 ", amountQuestions=" + amountQuestions +

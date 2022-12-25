@@ -15,9 +15,7 @@
 Hello admin
 <hr>
 <a href="<c:url value='/users' />">Users</a>
-<a href="<c:url value='/users' />">Subjects</a>
-<a href="<c:url value='/users' >
-    </c:url>">Tests</a>
+<a href="<c:url value='/tests' />">Tests</a>
 
 
 

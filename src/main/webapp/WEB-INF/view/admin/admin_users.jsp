@@ -18,6 +18,7 @@
         <th>User name</th>
         <th>Login</th>
         <th>Password</th>
+        <th>Status</th>
         <th></th>
     </tr>
     </thead>
@@ -28,14 +29,20 @@
             <td><c:out value="${user.name}"/></td>
             <td><c:out value="${user.login}"/></td>
             <td><c:out value="${user.password}"/></td>
+            <td><c:out value="${user.blocked}"/></td>
 
             <td>
-                <a href="<c:url value='/edit_user'>
-                <c:param name="user_id" value="${user.id}"/></c:url>"/>edit
+
+                <form action="edit_user">
+                    <input type="hidden" name="user_id" value="${user.id}">
+                    <input class="button" type="submit" value="edit user">
+                </form>
             </td>
             <td>
-                <a href="<c:url value='/delete_user'>
-                <c:param name="user_id" value="${user.id}"/></c:url>"/>delete
+                <form action="delete_user">
+                    <input type="hidden" name="user_id" value="${user.id}">
+                    <input class="button" type="submit" value="delete user">
+                </form>
             </td>
         </tr>
     </c:forEach>

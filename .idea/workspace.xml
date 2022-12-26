@@ -9,40 +9,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7d27716-29f1-4889-bf49-40a55c5a6d82" name="Changes" comment="2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/EditTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/FilterTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/constans/Sort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27f05861f8fa439a8bf3c16db5b291eeed986e3e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c49ee17b81f8399a5443c0fdfe76b1329384c1c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/ba56a0119d3e7cb9dfb8bd370f14670e21dd899f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5ac1bf73c3a03d947dabd389f6088e94ae62abb" beforeDir="false" />
+    <list default="true" id="b7d27716-29f1-4889-bf49-40a55c5a6d82" name="Changes" comment="3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/EditQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33259d928db1cc2b57bfaba09c42c426a72978f7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/680c6b33054e8d1150d9b5325256fec597c5b361" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/AllTestAZ.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/AllTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/AllTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/ToCreateTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/EditTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/EditUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/EditUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/QuestionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/QuestionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/SubjectDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/TestDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/TestDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Subject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/SubjectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_subject.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/create_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/create_test.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/test_admin.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ssss.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +227,8 @@
       <workItem from="1671758710479" duration="701000" />
       <workItem from="1671783224028" duration="9446000" />
       <workItem from="1671825965143" duration="8904000" />
-      <workItem from="1671913966521" duration="17035000" />
+      <workItem from="1671913966521" duration="17201000" />
+      <workItem from="1671963607048" duration="21522000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -239,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671835492999</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="3">
+      <created>1671934012504</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671934012504</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +271,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
     <MESSAGE value="2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2" />
+    <MESSAGE value="3" />
+    <option name="LAST_COMMIT_MESSAGE" value="3" />
   </component>
 </project>

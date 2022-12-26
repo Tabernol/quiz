@@ -34,4 +34,8 @@ public class TestService {
     public Test get(Long id){
         return testDao.get(id);
     }
+
+    public void update(Long id, String name, String subject, int difficult, int duration){
+        testRepo.updateInfoTest(id, name, subject, difficult, duration);
+    }
 }

@@ -39,4 +39,8 @@ public class UserService {
     public void deleteUser(Long id){
         userDao.delete(id);
     }
+
+    public void updateUser(Long id, String name, String login, String password, String role, boolean status){
+        userDao.updateUser(id, name, login, password, role, status);
+    }
 }

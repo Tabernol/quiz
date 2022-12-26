@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import servises.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +14,12 @@ public class EditUser implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String user_id = req.getParameter("user_id");
-        System.out.println("user id = " + user_id);
+        Long userId = Long.valueOf(req.getParameter("user_id"));
+        UserService userService = new UserService();
+       // req.setAttribute("user_id", userId);
+        req.setAttribute("user", userService.get(userId));
+
+        req.getRequestDispatcher("/WEB-INF/view/admin/edit_user.jsp").forward(req, resp);
 
 
     }

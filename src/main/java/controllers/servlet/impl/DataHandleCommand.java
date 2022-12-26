@@ -1,10 +1,6 @@
 package controllers.servlet.impl;
 
-import command.post.CreateTest;
-import command.EditUser;
-import command.post.DeleteTest;
-import command.post.DeleteUser;
-import command.post.EditTestPost;
+import command.post.*;
 import controllers.servlet.RequestHandler;
 import servises.UserService;
 
@@ -15,22 +11,17 @@ public class DataHandleCommand {
 
     public static final Map<String, RequestHandler> COMMANDS = new HashMap<>();
     static {
-        COMMANDS.put("/registration", ((req, resp) -> {
-            UserService userService = new UserService();
-            String name = req.getParameter("name");
-            String login = req.getParameter("login");
-
-            System.out.println(req.getParameter("name"));
-            System.out.println(req.getParameter("login"));
-            String password = req.getParameter("password");
-            userService.createUser(name,login,password);
-            req.setAttribute("message", "You have registred");
-
-
-        }));
+        COMMANDS.put("/registration",new Registration());
         COMMANDS.put("/create_test", new CreateTest());
         COMMANDS.put("/delete_test", new DeleteTest());
         COMMANDS.put("/edit_test", new EditTestPost());
+        COMMANDS.put("/add_question", new AddQuestion());
+        COMMANDS.put("/delete_question", new DeleteQuestion());
+        COMMANDS.put("/add_answer", new AddAnswer());
+        COMMANDS.put("/edit_question", new EditQuestionPost());
+        COMMANDS.put("/delete_answer", new DeleteAnswer());
+        COMMANDS.put("/edit_user", new EditUserPost());
+
 
     }
 }

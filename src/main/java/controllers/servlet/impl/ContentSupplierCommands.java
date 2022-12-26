@@ -42,6 +42,8 @@ public class ContentSupplierCommands {
         COMMANDS.put("/delete_user", new DeleteUser());
         COMMANDS.put("/filter_tests", new FilterTests());
         COMMANDS.put("/edit_test", new EditTest());
+        COMMANDS.put("/edit_question", new EditQuestion());
+
     }
 
 

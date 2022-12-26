@@ -18,8 +18,9 @@ public class DeleteTest implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         TestService testService = new TestService();
-        Long id = Long.valueOf(req.getParameter("id"));
+        Long id = Long.valueOf(req.getParameter("test_id"));
         testService.delete(id);
+
         List<Test> all = testService.getAll();
         req.getSession().setAttribute("tests", all);
 

@@ -25,8 +25,6 @@ public class AllTests implements RequestHandler {
         req.getSession().setAttribute("subjects", subjects);
         req.getSession().setAttribute("orders", sorts);
 
-
-
         List<Test> all = testService.getAll();
         req.setAttribute("tests", all);
         req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);

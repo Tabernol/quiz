@@ -106,4 +106,25 @@ public class UserDao implements Dao<User> {
         }
         return -1;
     }
+
+
+    public void updateUser(Long id, String name, String login, String password, String role, boolean status){
+        String sql = "update user set login = ?, password = ?, role = ?, name = ?, is_blocked = ? where id = ? ";
+        try (Connection con = MyDataSource.getConnection()) {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, login);
+            pst.setString(2, password);
+            pst.setString(3, role);
+            pst.setString(4,name);
+            pst.setBoolean(5, status);
+            pst.setLong(6, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
+    }
 }

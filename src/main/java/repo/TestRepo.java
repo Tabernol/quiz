@@ -36,7 +36,7 @@ public class TestRepo {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, subject);
             pst.setString(2, order);
-            System.out.println("order in repo = "+order);
+            System.out.println("order in repo = " + order);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Test test = new Test();
@@ -49,6 +49,21 @@ public class TestRepo {
                 tests.add(test);
             }
             return tests;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateInfoTest(Long id, String name, String subject, int difficult, int duration) {
+        String sql = "update test set name = ?, subject = ?, difficult = ?, duration = ? where id = ? ";
+        try (Connection con = MyDataSource.getConnection()) {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, name);
+            pst.setString(2, subject);
+            pst.setString(3, String.valueOf(difficult));
+            pst.setString(4, String.valueOf(duration));
+            pst.setString(5, String.valueOf(id));
+            pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

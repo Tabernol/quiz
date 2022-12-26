@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Edit</title>
@@ -14,6 +15,7 @@
 <body>
 <br>
 <form method="post" action="edit_test">
+    <input type="hidden" name="test_id" value="${requestScope.test_id}">
     name <input type="text" name="name" value="${requestScope.name}"><br>
     subject <input type="text" name="subject" value="${requestScope.subject}"><br>
     difficult <input type="number" name="difficult" value="${requestScope.difficult}"><br>
@@ -28,7 +30,6 @@
     <thead>
     <tr>
         <th>Text</th>
-        <th>Difficult</th>
     </tr>
     </thead>
     <tbody>
@@ -37,15 +38,17 @@
         <tr>
             <td><c:out value="${question.text}"/></td>
             <td>
-                <form action="edi">
-                    <input type="hidden" name="id" value="${question.id}">
+                <form action="edit_question">
+                    <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                    <input type="hidden" name="question_id" value="${question.id}">
                     <input class="button" type="submit" value="edit question">
                 </form>
 
             </td>
             <td>
-                <form method="post" action="dele">
-                    <input type="hidden" name="id" value="${question.id}">
+                <form method="post" action="delete_question">
+                    <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                    <input type="hidden" name="question_id" value="${question.id}">
                     <input class="button" type="submit" value="delete question">
                 </form>
             </td>
@@ -56,7 +59,8 @@
 
 
 <form method="post" action="add_question">
-    <input type="text" required placeholder="text" name="q_text"><br>
+    <input type="hidden" name="test_id" value="${requestScope.test_id}">
+    <input type="text" required placeholder="text of question" name="text"><br>
     <input class="button" type="submit" value="Add question">
 </form>
 

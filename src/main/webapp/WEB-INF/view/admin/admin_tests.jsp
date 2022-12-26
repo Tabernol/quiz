@@ -49,20 +49,16 @@
 
                 <td>
                     <form action="edit_test">
-                        <input type="hidden" name="id" value="${test.id}">
+                        <input type="hidden" name="test_id" value="${test.id}">
                         <input class="button" type="submit" value="edit test">
                     </form>
 
                 </td>
                 <td>
                     <form method="post" action="delete_test">
-                        <input type="hidden" name="id" value="${test.id}">
+                        <input type="hidden" name="test_id" value="${test.id}">
                         <input class="button" type="submit" value="delete test">
                     </form>
-
-
-                        <%--                    <a href="<c:url value='/delete_test'>--%>
-                        <%--                <c:param name="id" value="${test.id}"/></c:url>"/>delete--%>
                 </td>
             </tr>
         </c:forEach>

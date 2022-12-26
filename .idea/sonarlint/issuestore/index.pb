@@ -3,18 +3,12 @@ h
 8src/main/java/com/example/startcommand/HelloServlet.java,0\e\0e4261004244ffce120e9c65abed395cbfed2e4f
 e
 5src/main/java/controllers/filters/AbstractFilter.java,5\0\50ed2fb7d884fe911694d0969e4179862753dc27
-U
-%src/main/java/dao/impl/AnswerDao.java,3\3\33259d928db1cc2b57bfaba09c42c426a72978f7
 J
 src/main/java/dao/Dao.java,3\1\3131dc201ddbe6c0c3ea9ad83866507be958fab3
 e
 5src/main/java/controllers/servlet/RequestHandler.java,9\3\9345d3860452874a607ed5fad2e56b36c6840b9b
 O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
-R
-"src/main/java/command/Profile.java,6\8\680c6b33054e8d1150d9b5325256fec597c5b361
-Q
-!src/main/java/models/Subject.java,2\6\26e3270d30d1f658640bc737d14abb06b99f4632
 w
 G.idea/sonarlint/issuestore/2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392,1\8\188792529ee886cbdc6616248007f7a96c73e03d
 ]
@@ -23,16 +17,8 @@ w
 G.idea/sonarlint/issuestore/9/3/9345d3860452874a607ed5fad2e56b36c6840b9b,6\5\65f91c4ab56a62382bf6b6d6e7284e0e5af9c555
 w
 G.idea/sonarlint/issuestore/3/1/3131dc201ddbe6c0c3ea9ad83866507be958fab3,4\6\469cea3807fc9ae75c5b4893c95765d5cc70eb27
-w
-G.idea/sonarlint/issuestore/2/7/27f05861f8fa439a8bf3c16db5b291eeed986e3e,1\9\19e0b9e97aa1da74a14f38bbd1b79236cbe54191
-T
-$src/main/java/command/AllTestAZ.java,0\f\0f192f52d595e2e2523bd6afc4803ec1a438f959
-R
-"src/main/java/command/AllUser.java,f\d\fd6d8dd06bb439c1629b3ad2f97f59ff64727701
 j
 :src/main/java/controllers/filters/AuthorizationFilter.java,0\d\0daad85693b2fda67b332a80c0b3456c02b1dd2c
-S
-#src/main/java/command/EditUser.java,e\c\ecfacf2be6f154383f16d8f6765ea01acf869c3c
 I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 e
@@ -49,7 +35,7 @@ J
 src/main/webapp/js/ssss.js,a\d\ad396b7fa9945e4157fea7392bb3585b1df0c5a9
 e
 5src/main/webapp/WEB-INF/view/student/student_menu.jsp,d\d\dd166583a2b07a1e76083de0de4f908c9adcc54e
-S
-#src/main/java/dao/impl/UserDao.java,2\d\2d6407335efc40921e3c65e918768a53a3a80a6f
-W
-'src/main/java/servises/UserService.java,a\0\a0a6cf1e9f970f565b9cc3c366a63a634e3476cd
+V
+&src/main/java/command/FilterTests.java,5\8\5882f5aa3001dda2d432bf90e25776180e6c5d1d
+P
+ src/main/java/constans/Sort.java,2\7\2746e8b51e414fa5c87cc8387898e0decdd2d165

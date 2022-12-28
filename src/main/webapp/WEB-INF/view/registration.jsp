@@ -21,6 +21,7 @@
         <input class="button" type="submit" value="register">
     </form>
 </div>
+<c:out value="${requestScope.message}"/>
 
 <br>
 <a href="<c:url value='/home' />">back</a>

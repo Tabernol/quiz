@@ -27,7 +27,7 @@
     <br>
 
     <%--    <input type="text" name="status" value="${requestScope.user.blocked}"><br>--%>
-    <input class="button" type="submit" value="Edit test">
+    <input class="button" type="submit" value="Edit user">
 </form>
 
 </body>

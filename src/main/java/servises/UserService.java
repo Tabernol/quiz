@@ -43,4 +43,8 @@ public class UserService {
     public void updateUser(Long id, String name, String login, String password, String role, boolean status){
         userDao.updateUser(id, name, login, password, role, status);
     }
+
+    public boolean isBlocked(Long id){
+        return userDao.get(id).isBlocked();
+    }
 }

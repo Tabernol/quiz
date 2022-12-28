@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
 @WebFilter(filterName = "AuthorizationFilter", value = "/login")
-public class AuthorizationFilter extends AbstractFilter{
+public class AuthorizationFilter extends AbstractFilter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         MyDataSource.init();
     }
+
     @Override
     public void doCustomFilter(HttpServletRequest req,
                                HttpServletResponse resp,
@@ -29,17 +31,24 @@ public class AuthorizationFilter extends AbstractFilter{
         UserService userService = new UserService();
         String role = "unknown";
 
-
-        System.out.println();
         long id = userService.getId(login);
-
-        if (id > 0 && userService.isCorrectPassword(id, password)) {
+        if (id == -1) {
+            req.setAttribute("message", "You do not registred");
+            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
+        } else if (userService.isBlocked(id)) {
+            req.setAttribute("message", "You are blocked");
+            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
+        }else if (userService.isCorrectPassword(id, password)) {
             role = userService.getRoleById(id);
-            session.setAttribute("id", id);// get id
+            session.setAttribute("user_id", id);// get id
             session.setAttribute("name", userService.get(id).getName());
             session.setAttribute("role", userService.get(id).getRole());
+            moveToMenu(req, resp, role);
+        } else {
+            req.setAttribute("message", "Something wrong(");
+            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
         }
-        moveToMenu(req, resp, role);
+
     }
 
     private void moveToMenu(final HttpServletRequest req,

@@ -7,6 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="language"/>
 <html>
 <head>
     <title>Tests</title>
@@ -22,8 +26,14 @@
         </select>
         <select name="order">
             <c:forEach var="order" items="${sessionScope.orders}">
-                <option value="${order.order}"><c:out value="${order.order}"/></option>
+                <option value="${order}"><c:out value="${order}"/></option>
             </c:forEach>
+        </select>
+        <select name="rows">
+            <option value="2"><c:out value="2"/></option>
+            <option value="5"><c:out value="5"/></option>
+            <option value="10"><c:out value="10"/></option>
+            <option value="20"><c:out value="20"/></option>
         </select><br>
         <input class="button" type="submit" value="filter">
     </form>
@@ -40,7 +50,7 @@
         </thead>
         <tbody>
 
-        <c:forEach var="test" items="${requestScope.tests}">
+        <c:forEach var="test" items="${sessionScope.tests}">
             <tr>
                 <td><c:out value="${test.name}"/></td>
                 <td><c:out value="${test.subject}"/></td>
@@ -64,17 +74,29 @@
         </c:forEach>
         </tbody>
     </table>
+
+    <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+        <a href="<c:url value='/next_page'>
+    <c:param name="order" value="${requestScope.order}"/>
+    <c:param name="sub" value="${requestScope.sub}"/>
+    <c:param name="rows" value="${requestScope.rows}"/>
+    <c:param name="page" value="${i}"/>
+</c:url>"> <c:out value="${i}"/></a>
+
+    </c:forEach>
+    <hr>
+
 </div>
 <hr>
+<jsp:include page="/WEB-INF/view/admin/create_test.jsp"/>
 
-
-<form method="post" action="create_test">
-    <input type="text" required placeholder="name" name="name"><br>
-    <input type="text" required placeholder="subject" name="subject"><br>
-    <input type="number" required placeholder="difficult" name="difficult"><br>
-    <input type="number" required placeholder="duration" name="duration"><br>
-    <input class="button" type="submit" value="Create test">
-</form>
+<%--<form method="post" action="create_test">--%>
+<%--    <input type="text" required placeholder="name" name="name"><br>--%>
+<%--    <input type="text" required placeholder="subject" name="subject"><br>--%>
+<%--    <input type="number" required placeholder="difficult" name="difficult"><br>--%>
+<%--    <input type="number" required placeholder="duration" name="duration"><br>--%>
+<%--    <input class="button" type="submit" value="Create test">--%>
+<%--</form>--%>
 
 </body>
 </html>

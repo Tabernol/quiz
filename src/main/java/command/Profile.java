@@ -1,6 +1,8 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import models.User;
+import servises.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,18 +15,14 @@ public class Profile implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String role = (String) session.getAttribute("role");
-        System.out.println("role =  " + role);
-        if (role != null) {
-            if (role.equals("admin")) {
-                req.getRequestDispatcher("/WEB-INF/view/admin/admin_menu.jsp").forward(req, resp);
-            } else if (role.equals("student")) {
-                req.getRequestDispatcher("/WEB-INF/view/student/student_menu.jsp").forward(req, resp);
-            }
-        } else {
-            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-        }
+        Long userId = (Long) req.getSession().getAttribute("user_id");
+        System.out.println("user id = " + userId);
+        UserService userService = new UserService();
+        User user = userService.get(userId);
+        req.setAttribute("name", user.getName());
+        req.setAttribute("login", user.getLogin());
+        req.setAttribute("password", user.getPassword());
+        req.getRequestDispatcher("/WEB-INF/view/student/profile.jsp").forward(req, resp);
 
     }
 }

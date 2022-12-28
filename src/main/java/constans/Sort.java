@@ -1,18 +1,8 @@
 package constans;
 
-public enum Sort {
-    nameAsc("name asc"),
-    nameDesc("name desc"),
-    difficultAsc("difficult asc"),
-    difficultDesc("difficult desc");
+public interface Sort {
 
-    Sort(String order) {
-        this.order = order;
-    }
-
-    private String order;
-
-    public String getOrder() {
-        return order;
-    }
+    public static final String NAME_ASC = "name asc";
+    public static final String DIFFICULT_ASC = "difficult asc";
+    public static final String DIFFICULT_DESC = "difficult desc";
 }

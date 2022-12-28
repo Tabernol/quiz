@@ -13,7 +13,6 @@
     <title>Hello Quiz</title>
 </head>
 <body>
-name = <c:out value="${sessionScope.name}"/>
 <div class="form">
     <form method="post" action="language">
         <select name="lang">
@@ -24,9 +23,9 @@ name = <c:out value="${sessionScope.name}"/>
     </form>
 </div>
 <br/>
-<h1> Do you want to take test?</h1>
+<h1> <fmt:message key="label.start_message"/></h1>
 <a href="<c:url value='/login_form'/>"><fmt:message key="label.login"/></a>|
-<a href="<c:url value='/registration'/>">Registration</a>|
+<a href="<c:url value='/registration'/>"><fmt:message key="label.registration"/></a>|
 <%--<a href="<c:url value='/profile'/>">Profile</a>|--%>
 <%--<a href="<c:url value='/logout'/>">Loggout</a>--%>
 <br>

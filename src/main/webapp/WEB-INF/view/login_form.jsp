@@ -18,6 +18,7 @@
         <input type="password" required placeholder="password" name="password"><br>
         <input class="button" type="submit" value="login">
     </form>
+    <c:out value="${requestScope.message}"/>
 
 </div>
 

@@ -13,12 +13,13 @@
 </head>
 <body>
 <form method="post" action="create_test">
-  <input type="text" required placeholder="name" name="name"><br>
-  <input type="text" required placeholder="subject" name="subject"><br>
-  <input type="number" required placeholder="difficult" name="difficult"><br>
-  <input type="number" required placeholder="duration" name="duration"><br>
-  <input class="button" type="submit" value="Create test">
+    <input type="text" required placeholder="name" name="name" value="${requestScope.name}"><br>
+    <input type="text" required placeholder="subject" name="subject" value="${requestScope.subject}"><br>
+    <input type="number" required placeholder="difficult" name="difficult" value="${requestScope.difficult}"><br>
+    <input type="number" required placeholder="duration" name="duration" value="${requestScope.duration}"><br>
+    <input class="button" type="submit" value="Create test">
 </form>
+<c:out value="${requestScope.message}"/>
 
 </body>
 </html>

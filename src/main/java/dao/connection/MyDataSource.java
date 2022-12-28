@@ -17,6 +17,12 @@ public class MyDataSource {
         config.setUsername("root");
         config.setPassword("root");
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
+//        config.setConnectionTimeout(30000);
+//        config.setIdleTimeout(600000);
+//        config.setMaxLifetime(1800000);
+//        config.setAutoCommit(true);
+//        config.setLeakDetectionThreshold(10000);
         //set config for Hikari
 
         //   config = new HikariConfig(CONFIG_FILE);

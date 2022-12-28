@@ -19,20 +19,12 @@ public class ContentSupplierCommands {
 
     static {
         COMMANDS.put("/users", new AllUser());
-//        COMMANDS.put("/tests", ((req, resp) -> {
-//            TestService testService = new TestService();
-//            List<Test> all = testService.getAll();
-//            req.getSession().setAttribute("tests", all);
-//            req.getRequestDispatcher("/").forward(req, resp);
-//
-//        }));
         COMMANDS.put("/tests", new AllTests());
         COMMANDS.put("/registration", ((req, resp) -> {
             req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
         }));
         COMMANDS.put("/login_form", ((req, resp) -> {
             String lang = req.getParameter("lang");
-            System.out.println("lang   =  " + lang);
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
         }));
         COMMANDS.put("/home", new Home());
@@ -43,6 +35,8 @@ public class ContentSupplierCommands {
         COMMANDS.put("/filter_tests", new FilterTests());
         COMMANDS.put("/edit_test", new EditTest());
         COMMANDS.put("/edit_question", new EditQuestion());
+        COMMANDS.put("/profile", new Profile());
+        COMMANDS.put("/next_page", new NextPage());
 
     }
 

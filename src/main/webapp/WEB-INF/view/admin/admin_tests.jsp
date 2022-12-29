@@ -38,6 +38,10 @@
         <input class="button" type="submit" value="filter">
     </form>
 
+    <hr>
+    <form action="home">
+        <input class="button" type="submit" value="Home">
+    </form>
     <table class="sortable">
         <thead>
         <tr>
@@ -60,12 +64,14 @@
                 <td>
                     <form action="edit_test">
                         <input type="hidden" name="test_id" value="${test.id}">
+                        <input type="hidden" name="page" value="${requestScope.page}">
                         <input class="button" type="submit" value="edit test">
                     </form>
 
                 </td>
                 <td>
                     <form method="post" action="delete_test">
+                        <input type="hidden" name="page" value="${requestScope.page}">
                         <input type="hidden" name="test_id" value="${test.id}">
                         <input class="button" type="submit" value="delete test">
                     </form>
@@ -81,22 +87,14 @@
     <c:param name="sub" value="${requestScope.sub}"/>
     <c:param name="rows" value="${requestScope.rows}"/>
     <c:param name="page" value="${i}"/>
-</c:url>"> <c:out value="${i}"/></a>
+</c:url>">
+            <c:out value="${i}"/></a>
 
     </c:forEach>
     <hr>
 
 </div>
-<hr>
 <jsp:include page="/WEB-INF/view/admin/create_test.jsp"/>
-
-<%--<form method="post" action="create_test">--%>
-<%--    <input type="text" required placeholder="name" name="name"><br>--%>
-<%--    <input type="text" required placeholder="subject" name="subject"><br>--%>
-<%--    <input type="number" required placeholder="difficult" name="difficult"><br>--%>
-<%--    <input type="number" required placeholder="duration" name="duration"><br>--%>
-<%--    <input class="button" type="submit" value="Create test">--%>
-<%--</form>--%>
 
 </body>
 </html>

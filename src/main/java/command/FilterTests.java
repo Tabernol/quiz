@@ -8,6 +8,7 @@ import servises.TestService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -19,27 +20,31 @@ public class FilterTests implements RequestHandler {
             throws ServletException, IOException {
         String sub = req.getParameter("sub");
         String order = req.getParameter("order");
-        Integer rows = Integer.valueOf(req.getParameter("rows"));
+        String rows = req.getParameter("rows");
+
+
+        HttpSession session = req.getSession();
+
+        session.setAttribute("sub", sub);
+        session.setAttribute("order", order);
+        session.setAttribute("rows", rows);
 
         TestService testService = new TestService();
-        int countPages = testService.countPages(sub, rows);
 
 
-        List<Test> filterTests = testService.getFilterTests(sub, order, rows);
+        int countPages = testService.countPages(sub, Integer.valueOf(rows));
+
+        List<Test> filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
         List<String> subjects = testService.getDistinctSubjects();
         List<String> sorts = Arrays.asList("difficult desc", "difficult asc", "name desc");
 
         req.getSession().setAttribute("subjects", subjects);
         req.getSession().setAttribute("orders", sorts);
         req.getSession().setAttribute("tests", filterTests);
+
+
         req.setAttribute("count_pages", countPages);
-
-        req.setAttribute("sub", sub);
-        req.setAttribute("order", order);
-        req.setAttribute("rows", rows);
-
-
-
+        req.setAttribute("page", req.getParameter("page"));
         req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
 
 

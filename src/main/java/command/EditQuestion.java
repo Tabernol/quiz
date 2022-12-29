@@ -31,6 +31,7 @@ public class EditQuestion implements RequestHandler {
 
         List<Answer> answers = answerService.getAnswers(Long.valueOf(questionId));
         req.setAttribute("answers", answers);
+        req.setAttribute("page", req.getParameter("page"));
 
         req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
 

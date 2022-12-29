@@ -1,6 +1,7 @@
 package command.post;
 
-import command.AllTests;
+import command.FilterTests;
+import command.NextPage;
 import controllers.servlet.RequestHandler;
 import models.Test;
 import servises.TestService;
@@ -19,12 +20,15 @@ public class DeleteTest implements RequestHandler {
             throws ServletException, IOException {
         TestService testService = new TestService();
         Long id = Long.valueOf(req.getParameter("test_id"));
+        req.setAttribute("page", req.getParameter("page"));
+
         testService.delete(id);
+        req.getSession().setAttribute("tests", testService.getAll());
 
-        List<Test> all = testService.getAll();
-        req.getSession().setAttribute("tests", all);
 
-        AllTests allTests = new AllTests();
-        allTests.execute(req, resp);
+//        FilterTests filterTests = new FilterTests();
+//        filterTests.execute(req, resp);
+        NextPage nextPage = new NextPage();
+        nextPage.execute(req, resp);
     }
 }

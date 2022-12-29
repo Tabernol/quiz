@@ -32,6 +32,7 @@ public class AddAnswer implements RequestHandler {
         req.setAttribute("test_id", testId);
         req.setAttribute("question_id", questionId);
         req.setAttribute("question", questionService.get(questionId));
+        req.setAttribute("page", req.getParameter("page"));
 
         req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
     }

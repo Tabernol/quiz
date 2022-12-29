@@ -23,9 +23,6 @@ Hello student ${sessionScope.name}
 
 
 
-<br>
-<a href="<c:url value='/tests' />">All tests</a>
-
 
 
 

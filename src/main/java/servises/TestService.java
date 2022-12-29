@@ -10,9 +10,6 @@ public class TestService {
     TestDao testDao = new TestDao();
     TestRepo testRepo = new TestRepo();
 
-    public List<Test> getAll(String order, int rows) {
-        return testRepo.getAll(order, rows);
-    }
 
     public List<Test> getAll() {
         return testDao.getAll();
@@ -29,7 +26,7 @@ public class TestService {
 
     public List<Test> getFilterTests(String subject, String order, int rows) {
         if (subject.equals("all")) {
-            return getAll(order, rows);
+            return testRepo.getAll(order, rows);
         } else {
             return testRepo.getFilterTest(subject, order, rows);
         }
@@ -47,13 +44,10 @@ public class TestService {
         testRepo.updateInfoTest(id, name, subject, difficult, duration);
     }
 
-    public List<Test> getSortOrder(String order) {
-        return testRepo.getSortOrder(order);
-    }
 
     public int countPages(String subject, Integer rowsOnPage) {
         Integer count = 0;
-        if(subject.equals("all")){
+        if (subject.equals("all")) {
             count = testRepo.getCount();
         } else {
             count = testRepo.getCount(subject);
@@ -62,13 +56,16 @@ public class TestService {
         if (count % rowsOnPage != 0) {
             return count / rowsOnPage + 1;
         }
-        return count/ rowsOnPage;
+        return count / rowsOnPage;
     }
 
-    public List<Test> nextPage(String subject, String order, Integer rows, Integer numberOfPage){
-      return   testRepo.nextPage(subject, order, rows, numberOfPage);
+    public List<Test> nextPage(String subject, String order, Integer rows, Integer numberOfPage) {
+        return testRepo.nextPage(subject, order, rows, numberOfPage);
     }
 
+    public List<Test> nextPage(String order, Integer rows, Integer numberOfPage) {
+        return testRepo.nextPage(order, rows, numberOfPage);
+    }
 
 
 }

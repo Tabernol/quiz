@@ -20,6 +20,10 @@ public class EditTest implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         Long id = Long.valueOf(req.getParameter("test_id"));
+        req.setAttribute("page", req.getParameter("page"));
+
+
+
         TestService testService = new TestService();
         QuestionService questionService = new QuestionService();
 //        AnswerService answerService = new AnswerService();
@@ -33,15 +37,7 @@ public class EditTest implements RequestHandler {
         List<Question> all = questionService.getAllById(id);
         req.setAttribute("questions", all);
 
-
-
-
-
-
-
-
 //        answerService.getAnswers()
-
 
         req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);
     }

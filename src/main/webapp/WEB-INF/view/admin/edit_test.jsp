@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Edit</title>
@@ -15,16 +15,27 @@
 <body>
 <br>
 <form method="post" action="edit_test">
+    <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     name <input type="text" name="name" value="${requestScope.name}"><br>
     subject <input type="text" name="subject" value="${requestScope.subject}"><br>
     difficult <input type="number" name="difficult" value="${requestScope.difficult}"><br>
     duration <input type="number" name="duration" value="${requestScope.duration}"><br>
     <input class="button" type="submit" value="Edit test">
+    <c:out value="${requestScope.message}"/>
 </form>
 
 
+
 <hr>
+<form action="next_page">
+    <input type="hidden" name="page" value="${requestScope.page}">
+    <input class="button" type="submit" value="Back">
+</form>
+
+
+
+
 <br>
 <table class="sortable">
     <thead>
@@ -39,6 +50,7 @@
             <td><c:out value="${question.text}"/></td>
             <td>
                 <form action="edit_question">
+                    <input type="hidden" name="page" value="${requestScope.page}">
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${question.id}">
                     <input class="button" type="submit" value="edit question">
@@ -47,6 +59,7 @@
             </td>
             <td>
                 <form method="post" action="delete_question">
+                    <input type="hidden" name="page" value="${requestScope.page}">
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${question.id}">
                     <input class="button" type="submit" value="delete question">
@@ -59,6 +72,10 @@
 
 
 <form method="post" action="add_question">
+    <input type="hidden" name="page" value="${requestScope.page}">
+    <input type="hidden" name="sub" value="${requestScope.sub}">
+    <input type="hidden" name="order" value="${requestScope.order}">
+    <input type="hidden" name="rows" value="${requestScope.rows}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="text" required placeholder="text of question" name="text"><br>
     <input class="button" type="submit" value="Add question">

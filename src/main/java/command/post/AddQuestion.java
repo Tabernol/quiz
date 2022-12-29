@@ -1,6 +1,5 @@
 package command.post;
 
-import command.AllTests;
 import command.EditTest;
 import controllers.servlet.RequestHandler;
 import models.Question;
@@ -19,6 +18,8 @@ public class AddQuestion implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
+        req.setAttribute("page", req.getParameter("page"));
+
         String text = req.getParameter("text");
 
         System.out.println(text);
@@ -27,21 +28,8 @@ public class AddQuestion implements RequestHandler {
         QuestionService questionService = new QuestionService();
         questionService.addQuestion(testId, text);
 
-//        TestService testService = new TestService();
-//        Test test = testService.get(test_id);
-//        req.setAttribute("test_id", test.getId());
-//        req.setAttribute("name", test.getName());
-//        req.setAttribute("subject", test.getSubject());
-//        req.setAttribute("difficult", test.getDifficult());
-//        req.setAttribute("duration", test.getDuration());
-//
-//        List<Question> all = questionService.getAllById(test_id);
-//        req.setAttribute("questions", all);
-//
-//        req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);
-
         req.setAttribute("test_id", testId);
-//
+
         EditTest editTest = new EditTest();
         editTest.execute(req, resp);
 

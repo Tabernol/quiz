@@ -13,6 +13,7 @@
 </head>
 <body>
 <form method="post" action="create_test">
+    <input type="hidden" name="page" value="${requestScope.page}">
     <input type="text" required placeholder="name" name="name" value="${requestScope.name}"><br>
     <input type="text" required placeholder="subject" name="subject" value="${requestScope.subject}"><br>
     <input type="number" required placeholder="difficult" name="difficult" value="${requestScope.difficult}"><br>

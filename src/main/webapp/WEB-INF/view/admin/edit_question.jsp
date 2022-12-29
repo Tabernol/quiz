@@ -14,11 +14,23 @@
 <body>
 
 <form method="post" action="edit_question">
+    <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="hidden" name="question_id" value="${question.id}">
     text <input type="text" name="text" value="${requestScope.question.text}"><br>
     <input class="button" type="submit" value="Edit question">
 </form>
+
+<hr>
+<form action="edit_test">
+    <input type="hidden" name="page" value="${requestScope.page}">
+    <input type="hidden" name="test_id" value="${requestScope.test_id}">
+    <input class="button" type="submit" value="Back to test">
+</form>
+<hr>
+
+
+
 
 <table class="sortable">
     <thead>
@@ -34,6 +46,7 @@
             <td><c:out value="${answer.result}"/></td>
             <td>
                 <form method="post" action="delete_answer">
+                    <input type="hidden" name="page" value="${requestScope.page}">
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${requestScope.question.id}">
                     <input type="hidden" name="answer_id" value="${answer.id}">
@@ -46,6 +59,7 @@
 </table>
 
 <form method="post" action="add_answer">
+    <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="hidden" name="question_id" value="${requestScope.question.id}">
     <input type="text" required placeholder="text of answer" name="text"><br>

@@ -21,29 +21,15 @@ Hello admin
 <hr>
 <a href="<c:url value='/users' />">Users</a>
 <a href="<c:url value='/filter_tests'>
-  <c:param name="order" value="name asc"/>
+  <c:param name="order" value="name asc" />
     <c:param name="sub" value="all"/>
     <c:param name="rows" value="5"/>
+    <c:param name="page" value="1"/>
 </c:url>">Tests</a>
 
-
-<%--<a href="<c:url value='/users' />">All Users</a>--%>
 <br>
-<%--<a href="<c:url value='/to_create_test' />">Create test</a>--%>
 
 
-<%--<c:forEach var="user" items="${requestScope.users}">--%>
-<%--    <ul>--%>
-<%--        <li>name: <c:out value="${user.name}"/></li>--%>
-<%--        <li>login: <c:out value="${user.login}"/></li>--%>
-<%--        <li>password: <c:out value="${user.password}"/></li>--%>
-<%--        <a href="<c:url value='/'/>">Edit</a>--%>
-<%--        <a href="<c:url value='/'/>">Edit</a>--%>
-<%--        <a href="<c:url value='/'/>">Edit</a>--%>
-<%--    </ul>--%>
-<%--    <button> block/unblock</button>--%>
-<%--    <hr/>--%>
-<%--</c:forEach>--%>
 <br>
 <%--<a href="<c:url value='/home'/>">Home</a>--%>
 <br>

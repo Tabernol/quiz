@@ -1,6 +1,6 @@
 package command.post;
 
-import command.AllTests;
+import command.NextPage;
 import controllers.servlet.RequestHandler;
 import models.Test;
 import servises.TestService;
@@ -21,9 +21,9 @@ public class CreateTest implements RequestHandler {
         int difficult = Integer.parseInt(req.getParameter("difficult"));
         int duration = Integer.parseInt(req.getParameter("duration"));
 
-        TestService testService = new TestService();
+        req.setAttribute("page", req.getParameter("page"));
 
-        req.setAttribute("tests", testService.getAll());
+        TestService testService = new TestService();
 
         if (!DataValidator.validateDifficult(difficult)) {
             req.setAttribute("message", "difficult must be from 1 to 100");
@@ -32,7 +32,6 @@ public class CreateTest implements RequestHandler {
             req.setAttribute("message", "duration must be from 1 to 30 minutes");
             setPlaceHolder(req, resp, name, subject, difficult, duration);
         }
-
 //        else if (!DataValidator.validateForNotLongString(name)) {
 //            req.setAttribute("message", "Name is too long");
 //            setPlaceHolder(req, resp, name, subject, difficult, duration);
@@ -40,13 +39,10 @@ public class CreateTest implements RequestHandler {
 //            req.setAttribute("message", "Subject is too long");
 //            setPlaceHolder(req, resp, name, subject, difficult, duration);
 //        }
-
         else {
             testService.createTest(name, subject, difficult, duration);
-            req.getSession().setAttribute("tests", testService.getAll());
-            req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
-//            AllTests allTests = new AllTests();
-//            allTests.execute(req, resp);
+            NextPage nextPage = new NextPage();
+            nextPage.execute(req, resp);
         }
     }
 

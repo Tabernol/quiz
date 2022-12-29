@@ -16,18 +16,21 @@ public class EditQuestionPost implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws
             ServletException, IOException {
+
         QuestionService questionService = new QuestionService();
         AnswerService answerService = new AnswerService();
+
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
+
         String text = req.getParameter("text");
         questionService.update(text, questionId);
 
         req.setAttribute("answers", answerService.getAnswers(questionId));
-
         req.setAttribute("test_id", testId);
         req.setAttribute("question_id", questionId);
         req.setAttribute("question", questionService.get(questionId));
+        req.setAttribute("page", req.getParameter("page"));
 
         req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
     }

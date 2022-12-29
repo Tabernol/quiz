@@ -14,13 +14,13 @@ public class DeleteQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+        req.setAttribute("page", req.getParameter("page"));
+
         QuestionService questionService = new QuestionService();
         String id = req.getParameter("question_id");
-        System.out.println(id);
         questionService.deleteQuestion(Long.valueOf(id));
 
-        String test_id = req.getParameter("test_id");
-        req.setAttribute("test_id", test_id);
+        req.setAttribute("test_id", req.getParameter("test_id"));
 
         EditTest editTest = new EditTest();
         editTest.execute(req,resp);

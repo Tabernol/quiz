@@ -12,53 +12,74 @@
     <title>tests</title>
 </head>
 <body>
-<form action="filter_tests">
-    <select name="sub">
-        <option value="all"><c:out value="all"/></option>
-        <c:forEach var="sub" items="${sessionScope.subjects}">
-            <option value="${sub}"><c:out value="${sub}"/></option>
-        </c:forEach>
-    </select>
-    <select name="order">
-        <c:forEach var="order" items="${sessionScope.orders}">
-            <option value="${order.order}"><c:out value="${order.order}"/></option>
-        </c:forEach>
-    </select><br>
-    <input class="button" type="submit" value="filter">
-</form>
+<div>
+    <form action="filter_tests">
+        <select name="sub">
+            <option value="all"><c:out value="all"/></option>
+            <c:forEach var="sub" items="${sessionScope.subjects}">
+                <option value="${sub}"><c:out value="${sub}"/></option>
+            </c:forEach>
+        </select>
+        <select name="order">
+            <c:forEach var="order" items="${sessionScope.orders}">
+                <option value="${order}"><c:out value="${order}"/></option>
+            </c:forEach>
+        </select>
+        <select name="rows">
+            <option value="2"><c:out value="2"/></option>
+            <option value="5"><c:out value="5"/></option>
+            <option value="10"><c:out value="10"/></option>
+            <option value="20"><c:out value="20"/></option>
+        </select><br>
+        <input class="button" type="submit" value="filter">
+    </form>
 
-<table class="sortable">
-    <thead>
-    <tr>
-        <th>Test name</th>
-        <th>Subject</th>
-        <th>Difficult</th>
-        <th>Duration</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <c:forEach var="test" items="${requestScope.tests}">
+    <hr>
+    <form action="home">
+        <input class="button" type="submit" value="Home">
+    </form>
+    <table class="sortable">
+        <thead>
         <tr>
-            <td><c:out value="${test.name}"/></td>
-            <td><c:out value="${test.subject}"/></td>
-            <td><c:out value="${test.difficult}"/></td>
-            <td><c:out value="${test.duration}"/></td>
-
-            <td>
-                <form action="take_test">
-                    <input type="hidden" name="test_id" value="${test.id}">
-                    <input class="button" type="submit" value="take test">
-                </form>
-
-            </td>
+            <th>Test name</th>
+            <th>Subject</th>
+            <th>Difficult</th>
+            <th>Duration</th>
+            <th></th>
         </tr>
+        </thead>
+        <tbody>
+
+        <c:forEach var="test" items="${sessionScope.tests}">
+            <tr>
+                <td><c:out value="${test.name}"/></td>
+                <td><c:out value="${test.subject}"/></td>
+                <td><c:out value="${test.difficult}"/></td>
+                <td><c:out value="${test.duration}"/></td>
+
+                <td>
+                    <form action="info_test">
+                        <input type="hidden" name="test_id" value="${test.id}">
+                        <input type="hidden" name="page" value="${requestScope.page}">
+                        <input class="button" type="submit" value="take test">
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
+    <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+    <a href="<c:url value='/next_page'>
+    <c:param name="order" value="${requestScope.order}"/>
+    <c:param name="sub" value="${requestScope.sub}"/>
+    <c:param name="rows" value="${requestScope.rows}"/>
+    <c:param name="page" value="${i}"/>
+</c:url>">
+        <c:out value="${i}"/></a>
+
     </c:forEach>
-    </tbody>
-</table>
-</div>
-<hr>
+    <hr>
 
 </body>
 </html>

@@ -20,7 +20,9 @@ import java.util.logging.Logger;
         "/logout", "/profile", "/testsAZ", "/create_test", "/edit_user",
         "/delete_user", "/filter_tests", "/delete_test",
         "/edit_test", "/add_question", "/delete_question", "/edit_question",
-        "/add_answer", "/delete_answer", "/next_page"
+        "/add_answer", "/delete_answer", "/next_page", "/info_test", "/start_test", "/next_question",
+        "/result_answer"
+
 })
 public class AppControllerServlet extends HttpServlet {
 

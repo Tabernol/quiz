@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 public class Test {
     private long id;
     private String name;
@@ -7,6 +9,7 @@ public class Test {
     private int difficult;
     private int duration; //DateTime
     private int amountQuestions;
+    private List<Question> quiz;
 
     public Test() {
     }
@@ -57,6 +60,14 @@ public class Test {
 
     public void setAmountQuestions(int amountQuestions) {
         this.amountQuestions = amountQuestions;
+    }
+
+    public List<Question> getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(List<Question> quiz) {
+        this.quiz = quiz;
     }
 
     @Override

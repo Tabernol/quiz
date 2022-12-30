@@ -12,6 +12,9 @@
     <title>users</title>
 </head>
 <body>
+<form action="home">
+    <input class="button" type="submit" value="Home">
+</form>
 <table class="sortable">
     <thead>
     <tr>
@@ -48,6 +51,7 @@
     </c:forEach>
     </tbody>
 </table>
+
 
 
 </body>

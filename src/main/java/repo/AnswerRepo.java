@@ -58,4 +58,21 @@ public class AnswerRepo {
             throw new RuntimeException(e);
         }
     }
+
+
+    public List<String> getOptionsAnswerForQuestion(Long idQuestion){
+        String sql = "select a_text from answer where question_id = ?";
+        List<String> answers = new ArrayList<>();
+        try (Connection con = MyDataSource.getConnection()) {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, idQuestion.toString());
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                answers.add(resultSet.getString("a_text"));
+            }
+            return answers;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

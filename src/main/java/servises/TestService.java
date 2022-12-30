@@ -67,5 +67,9 @@ public class TestService {
         return testRepo.nextPage(order, rows, numberOfPage);
     }
 
+    public Test getFullTest(Long id){
+        return testRepo.getTest(id);
+    }
+
 
 }

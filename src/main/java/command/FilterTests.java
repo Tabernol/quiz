@@ -45,7 +45,9 @@ public class FilterTests implements RequestHandler {
 
         req.setAttribute("count_pages", countPages);
         req.setAttribute("page", req.getParameter("page"));
-        req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
+
+        String role = (String) req.getSession().getAttribute("role");
+        req.getRequestDispatcher("/WEB-INF/view/" + role + "/" + role + "_tests.jsp").forward(req, resp);
 
 
     }

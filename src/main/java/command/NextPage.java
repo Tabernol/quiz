@@ -49,7 +49,8 @@ public class NextPage implements RequestHandler {
 
         req.setAttribute("page", page);
 
-        req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
+        String role = (String) req.getSession().getAttribute("role");
+        req.getRequestDispatcher("/WEB-INF/view/" + role + "/" + role + "_tests.jsp").forward(req, resp);
 
     }
 }

@@ -19,6 +19,12 @@ Hello student ${sessionScope.name}
 <br>
 <a href="<c:url value='/profile' />">profile</a>
 <br>
+<a href="<c:url value='/filter_tests'>
+  <c:param name="order" value="name asc" />
+    <c:param name="sub" value="all"/>
+    <c:param name="rows" value="5"/>
+    <c:param name="page" value="1"/>
+</c:url>">Tests</a>
 
 
 

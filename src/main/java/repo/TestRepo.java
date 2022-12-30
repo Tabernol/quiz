@@ -1,6 +1,9 @@
 package repo;
 
 import dao.connection.MyDataSource;
+import dao.impl.TestDao;
+import models.Answer;
+import models.Question;
 import models.Test;
 
 import java.sql.Connection;
@@ -38,9 +41,6 @@ public class TestRepo {
             pst.setString(1, subject);
             //  pst.setString(2, order);
             pst.setInt(2, rows);
-            System.out.println("order in repo = " + order);
-            System.out.println("sub in repo = " + subject);
-            System.out.println(order.getClass());
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Test test = new Test();
@@ -73,35 +73,6 @@ public class TestRepo {
         }
     }
 
-
-//    public List<Test> getSortOrder(String order) {
-//        String sql = "select * from test order by ?";
-////        String sql2 = "select * from test where subject like 'math' order by difficult asc";
-////        select * from test where subject like math order by difficult asc;
-//        String sql3 = "select * from test order by ?";
-//        System.out.println("order in repo = " + order);
-//        List<Test> tests = new ArrayList<>();
-//        try (Connection con = MyDataSource.getConnection()) {
-//            PreparedStatement pst = con.prepareStatement(sql3);
-//            pst.setString(1, order);
-//            ResultSet resultSet = pst.executeQuery();
-//            while (resultSet.next()) {
-//                Test test = new Test();
-//                test.setId(resultSet.getLong("id"));
-//                test.setName(resultSet.getString("name"));
-//                test.setSubject(resultSet.getString("subject"));
-//                test.setDifficult(resultSet.getInt("difficult"));
-//                test.setDuration(resultSet.getInt("duration"));
-//                test.setAmountQuestions(resultSet.getInt("count_question"));
-//                tests.add(test);
-//            }
-//
-//            System.out.println(tests);
-//            return tests;
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     public Integer getCount(String subject) {
         String sql = "select count(subject) from test where subject like ?";
@@ -204,6 +175,30 @@ public class TestRepo {
             throw new RuntimeException(e);
         }
     }
+
+
+    public Test getTest(Long id){
+        TestDao testDao = new TestDao();
+        QuestionRepo questionRepo = new QuestionRepo();
+        AnswerRepo answerRepo = new AnswerRepo();
+        Test test = testDao.get(id);
+        List<Question> quiz = questionRepo.getAllById(id);
+        for(Question question : quiz){
+            List<Answer> answers = answerRepo.getAnswersByQuestionId(question.getId());
+            question.setAnswerOptions(answers);
+        }
+        test.setQuiz(quiz);
+        return test;
+    }
+
+
+//    public static void main(String[] args) {
+//        MyDataSource.init();
+//        TestRepo testRepo = new TestRepo();
+//        testRepo.getTest(1L);
+//    }
+
+
 
 
 }

@@ -19,10 +19,10 @@
 <div class="form">
   <form method="post" action="language">
     <select name="lang">
-      <option value="en"><c:out value="english"/></option>
-      <option value="ua"><c:out value="ukraine"/></option>
+      <option value="en"><fmt:message key="language.en"/></option>
+      <option value="ua"><fmt:message key="language.ukr"/></option>
     </select><br>
-    <input class="button" type="submit" value="choose">
+    <input class="button" type="submit" value="<fmt:message key="button.choose"/>">
   </form>
 </div>
 </body>

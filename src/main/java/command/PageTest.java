@@ -31,8 +31,6 @@ public class PageTest implements RequestHandler {
         req.setAttribute("duration", test.getDuration());
 
 
-
-
         req.getRequestDispatcher("/WEB-INF/view/student/page_test.jsp").forward(req, resp);
 
 

@@ -19,14 +19,14 @@ public class NextQuestion implements RequestHandler {
             throws ServletException, IOException {
         AnswerService answerService = new AnswerService();
 
-        //Object testId = (String)req.getSession().getAttribute("test_id");
-
         List<Question> questions = (List<Question>) req.getSession().getAttribute("questions");
 
         Integer numberQuestion = 0;
         if (req.getParameter("number_question") != null) {
-            numberQuestion = Integer.valueOf(req.getParameter("number_question")) - 1;
+            numberQuestion = Integer.valueOf(req.getParameter("number_question"));
         }
+
+        System.out.println("number question = " + numberQuestion);
 
         long idQuestion = questions.get(numberQuestion).getId();
         List<Answer> answers = answerService.getAnswers(idQuestion);
@@ -35,7 +35,7 @@ public class NextQuestion implements RequestHandler {
         String text = questions.get(numberQuestion).getText();
         req.setAttribute("text", text);
         req.setAttribute("id_question", idQuestion);
-
+        req.setAttribute("number_question", ++numberQuestion);
 
         req.getRequestDispatcher("/WEB-INF/view/student/page_question.jsp").forward(req, resp);
 

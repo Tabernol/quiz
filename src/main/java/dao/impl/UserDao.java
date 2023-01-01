@@ -16,8 +16,8 @@ public class UserDao implements Dao<User> {
     public User get(Long id) {
         String sql = "select * from user where id = ?";
         User user = new User();
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, String.valueOf(id));
             ResultSet resultSet = pst.executeQuery();
             if (resultSet.next()) {
@@ -28,6 +28,7 @@ public class UserDao implements Dao<User> {
                 user.setRole(resultSet.getString("role"));
                 user.setBlocked(resultSet.getBoolean("is_blocked"));
             }
+            resultSet.close();
             return user;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -42,8 +43,8 @@ public class UserDao implements Dao<User> {
     @Override
     public void delete(Long id) {
         String sql = "delete from user where id = ?";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -55,9 +56,9 @@ public class UserDao implements Dao<User> {
     public List<User> getAll() {
         String sql = "select * from user";
         List<User> users;
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet resultSet = pst.executeQuery();
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet resultSet = pst.executeQuery()) {
             users = new ArrayList<>();
             User user;
             while (resultSet.next()) {
@@ -79,8 +80,8 @@ public class UserDao implements Dao<User> {
     public void createUser(String login, String password, String name) {
         String sql = "insert into user (id, login, password, role, name) " +
                 "values (default, ?, ?, ?, ?)";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, login);
             pst.setString(2, password);
             pst.setString(3, "student");
@@ -93,38 +94,36 @@ public class UserDao implements Dao<User> {
 
     public long getId(String login) {
         String sql = "select * from user where login like ?";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, login);
             ResultSet resultSet = pst.executeQuery();
             if (resultSet.next()) {
                 return resultSet.getLong("id");
             }
+            resultSet.close();
         } catch (SQLException e) {
             //log not found login
             throw new RuntimeException(e);
         }
+
         return -1;
     }
 
 
-    public void updateUser(Long id, String name, String login, String password, String role, boolean status){
+    public void updateUser(Long id, String name, String login, String password, String role, boolean status) {
         String sql = "update user set login = ?, password = ?, role = ?, name = ?, is_blocked = ? where id = ? ";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, login);
             pst.setString(2, password);
             pst.setString(3, role);
-            pst.setString(4,name);
+            pst.setString(4, name);
             pst.setBoolean(5, status);
             pst.setLong(6, id);
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
-
-
     }
 }

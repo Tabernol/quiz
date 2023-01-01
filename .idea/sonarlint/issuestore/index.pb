@@ -3,10 +3,6 @@ h
 8src/main/java/com/example/startcommand/HelloServlet.java,0\e\0e4261004244ffce120e9c65abed395cbfed2e4f
 e
 5src/main/java/controllers/filters/AbstractFilter.java,5\0\50ed2fb7d884fe911694d0969e4179862753dc27
-e
-5src/main/java/controllers/servlet/RequestHandler.java,9\3\9345d3860452874a607ed5fad2e56b36c6840b9b
-O
-src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 w
 G.idea/sonarlint/issuestore/2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392,1\8\188792529ee886cbdc6616248007f7a96c73e03d
 ]
@@ -17,8 +13,6 @@ w
 G.idea/sonarlint/issuestore/3/1/3131dc201ddbe6c0c3ea9ad83866507be958fab3,4\6\469cea3807fc9ae75c5b4893c95765d5cc70eb27
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-P
- src/main/java/models/Result.java,f\9\f987e2a3d4b9aca2e4f6e23d677a7985a8489989
 Q
 !src/main/java/command/Logout.java,2\7\27f05861f8fa439a8bf3c16db5b291eeed986e3e
 [
@@ -33,28 +27,14 @@ N
 src/main/java/models/User.java,f\7\f7010c4f46d3b9dd8d59899249df5ba3ee23f96b
 J
 src/main/java/dao/Dao.java,3\1\3131dc201ddbe6c0c3ea9ad83866507be958fab3
-I
-src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
-Y
-)src/main/webapp/WEB-INF/view/language.jsp,a\6\a62aaee01c9edd87d0c4b273f45ae04fdeaef052
-e
-5src/main/java/controllers/filters/LanguageFilter.java,2\4\24594c4f212c001ade6e65efc7cb08133cde074c
-[
-+src/main/webapp/WEB-INF/view/login_form.jsp,3\2\32bca110e1c8801388c76f6e30f17d953f9147db
 ]
 -src/main/java/servises/PaginationService.java,2\a\2aef5daaae21d9a1688c8d1e02dbf02f875ba01c
 \
 ,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
-]
--src/main/webapp/WEB-INF/view/registration.jsp,5\1\51f3e03ccaf2cf667b2008bf04b14dd68d5c200f
 P
  src/main/java/constans/Sort.java,2\7\2746e8b51e414fa5c87cc8387898e0decdd2d165
 W
 'src/main/java/servises/UserService.java,a\0\a0a6cf1e9f970f565b9cc3c366a63a634e3476cd
-Z
-*src/main/java/validator/DataValidator.java,b\e\be42e3ca8e36494fd2b7f6f5495251a1a42a56b2
-j
-:src/main/java/controllers/filters/AuthorizationFilter.java,0\d\0daad85693b2fda67b332a80c0b3456c02b1dd2c
 Z
 *src/main/java/command/post/DeleteUser.java,2\7\27a9944a26292b0f56aa45295c10b5c9ee8ccd8d
 Y
@@ -75,5 +55,27 @@ W
 0src/main/java/command/post/EditQuestionPost.java,9\1\918c440de6b63426624ace8b4eebdfdf5a893772
 \
 ,src/main/java/command/post/EditTestPost.java,d\8\d8b389717101cd2813dfb9db20214988484f0889
+R
+"src/main/java/models/Question.java,f\5\f5ac1bf73c3a03d947dabd389f6088e94ae62abb
+S
+#src/main/java/command/EditTest.java,5\e\5e230a0fd82e10d0b0e7950a8d5f84b4270215fd
+^
+.src/main/java/dao/connection/MyDataSource.java,6\f\6fa1cc81f1896cf32aca7ad6ed8f248508722f45
+S
+#src/main/java/command/NextPage.java,5\8\5896b6b5d60c22b56d2c0f7f0ba8042707dc9036
+N
+src/main/java/models/Test.java,e\a\ea1601f0a86352308c73f29c695dd575e9501948
 O
-src/main/java/command/Home.java,3\6\36052e70203be040c6e23325f07c7e994b1de490
+src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+s
+Csrc/main/java/controllers/servlet/impl/ContentSupplierCommands.java,5\a\5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944
+e
+5src/main/java/controllers/servlet/RequestHandler.java,9\3\9345d3860452874a607ed5fad2e56b36c6840b9b
+W
+'src/main/java/servises/TestService.java,e\8\e88f94216afcfe51bfc304287a1b810b212cfe93
+U
+%src/main/java/dao/impl/AnswerDao.java,3\3\33259d928db1cc2b57bfaba09c42c426a72978f7
+Y
+)src/main/java/servises/AnswerService.java,c\7\c7b2aa69abb5cd82c9f77796385c4f83da68ab45
+Z
+*src/main/java/validator/DataValidator.java,b\e\be42e3ca8e36494fd2b7f6f5495251a1a42a56b2

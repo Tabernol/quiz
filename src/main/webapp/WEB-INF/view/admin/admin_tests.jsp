@@ -16,6 +16,7 @@
     <title>Tests</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/language.jsp"/>
 <div>
     <form action="filter_tests">
         <select name="sub">

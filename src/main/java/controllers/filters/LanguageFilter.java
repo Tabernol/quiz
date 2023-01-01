@@ -1,5 +1,7 @@
 package controllers.filters;
 
+import command.Home;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
@@ -17,9 +19,14 @@ public class LanguageFilter extends AbstractFilter{
         String lang = req.getParameter("lang");
         req.getSession().setAttribute("lang", lang);
 
+        if(req.getSession().getAttribute("role") == null){
+            req.getRequestDispatcher("/").forward(req, resp);
+        }
+        else {
+            Home home = new Home();
+            home.execute(req, resp);
+        }
 
 
-
-        req.getRequestDispatcher("/").forward(req,resp);
     }
 }

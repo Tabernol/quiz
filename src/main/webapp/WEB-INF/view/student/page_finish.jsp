@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Max
-  Date: 21.12.2022
-  Time: 13:18
+  Date: 01.01.2023
+  Time: 01:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -14,28 +14,17 @@
 <fmt:setBundle basename="language"/>
 <html>
 <head>
-    <title>Student</title>
+    <title>Finish</title>
 </head>
 <body>
-Hello student ${sessionScope.name}
 
-<br>
-<a href="<c:url value='/logout' />">Logout</a>
-<br>
-<a href="<c:url value='/profile' />">profile</a>
-<br>
-<a href="<c:url value='/filter_tests'>
-  <c:param name="order" value="name asc" />
-    <c:param name="sub" value="all"/>
-    <c:param name="rows" value="5"/>
-    <c:param name="page" value="1"/>
-</c:url>">Tests</a>
+<h2> You result <c:out value="${requestScope.percent_result}"/> %</h2>
 
 
-
-
-
-
+<hr>
+<form action="home">
+    <input class="button" type="submit" value="Home">
+</form>
 
 </body>
 </html>

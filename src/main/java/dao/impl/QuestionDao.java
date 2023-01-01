@@ -40,10 +40,11 @@ public class QuestionDao implements Dao<Question> {
     @Override
     public void delete(Long id) {
         String sql = "delete from question where id = ?";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
             pst.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -55,9 +56,9 @@ public class QuestionDao implements Dao<Question> {
     public List<Question> getAll() {
         String sql = "select * from question";
         List<Question> questions = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet resultSet = pst.executeQuery();
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet resultSet = pst.executeQuery()) {
             while (resultSet.next()) {
                 Question question = new Question();
                 question.setId(resultSet.getLong("id"));
@@ -65,6 +66,7 @@ public class QuestionDao implements Dao<Question> {
                 question.setText(resultSet.getString("q_text"));
                 questions.add(question);
             }
+            resultSet.close();
             return questions;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -73,8 +75,8 @@ public class QuestionDao implements Dao<Question> {
 
     public void createQuestion(Long testId, String text) {
         String sql = "insert into question (id, test_id, q_text) values(default, ?, ?)";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, String.valueOf(testId));
             pst.setString(2, text);
             pst.executeUpdate();

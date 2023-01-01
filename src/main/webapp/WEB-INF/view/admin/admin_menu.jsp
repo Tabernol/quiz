@@ -17,15 +17,16 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
-Hello admin
+<fmt:message key="label.message"/> <c:out value="${sessionScope.name}"/><br>
+<a href="<c:url value='/' />">Profile</a>
 <hr>
-<a href="<c:url value='/users' />">Users</a>
+<a href="<c:url value='/users' />"><fmt:message key="label.users"/> </a>
 <a href="<c:url value='/filter_tests'>
   <c:param name="order" value="name asc" />
     <c:param name="sub" value="all"/>
     <c:param name="rows" value="5"/>
     <c:param name="page" value="1"/>
-</c:url>">Tests</a>
+</c:url>"><fmt:message key="label.tests"/> </a>
 
 <br>
 
@@ -33,6 +34,6 @@ Hello admin
 <br>
 <%--<a href="<c:url value='/home'/>">Home</a>--%>
 <br>
-<a href="<c:url value='/logout' />">Logout</a>
+<a href="<c:url value='/logout' />"><fmt:message key="label.logout" /></a>
 </body>
 </html>

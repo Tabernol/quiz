@@ -18,10 +18,12 @@ public class FilterTests implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+       String role = (String) req.getSession().getAttribute("role");
+
+
         String sub = req.getParameter("sub");
         String order = req.getParameter("order");
         String rows = req.getParameter("rows");
-
 
         HttpSession session = req.getSession();
 
@@ -46,7 +48,6 @@ public class FilterTests implements RequestHandler {
         req.setAttribute("count_pages", countPages);
         req.setAttribute("page", req.getParameter("page"));
 
-        String role = (String) req.getSession().getAttribute("role");
         req.getRequestDispatcher("/WEB-INF/view/" + role + "/" + role + "_tests.jsp").forward(req, resp);
 
 

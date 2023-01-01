@@ -5,8 +5,13 @@
   Time: 04:03
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="language"/>
 <html>
 <head>
     <title>Title</title>
@@ -15,35 +20,19 @@
 
 <c:out value="${requestScope.text}"/>
 
-
-
 <hr>
-
-
 <form method="post" action="result_answer">
     <input type="hidden" name="id_question" value="${requestScope.id_question}">
-
+    <input type="hidden" name="number_question" value="${requestScope.number_question}">
     <c:forEach var="ans" items="${requestScope.answers}">
-        <input  type="checkbox" name="res" value="${ans.result}">
-<%--        <input type="checkbox" value="" ng-model="t.IsPullPoint" onclick="return false;"--%>
-<%--               onkeydown="return false;"><span class="cr"></span></label>--%>
+        <input  type="hidden" name="res" value="${ans.id}">
+        <input type="checkbox" name="res">
         <c:out value="${ans.text}"/>
         <br>
     </c:forEach>
     <input class="button" type="submit" value="Yes">
 </form>
-
-<c:forEach var="i" begin="1" end="${sessionScope.size}">
-    <a href="<c:url value='/next_question'>
-
-<%--    <c:param name="test_id" value="${requestScope.test_id}"/>--%>
-    <c:param name="number_question" value="${i}"/>
-</c:url>">
-        <c:out value="${i}"/></a>
-
-</c:forEach>
 <hr>
-
 
 
 

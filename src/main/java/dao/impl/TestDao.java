@@ -14,8 +14,8 @@ import java.util.List;
 public class TestDao implements Dao<Test> {
     public void createTest(String name, String subject, int difficult, int duration) {
         String sql = "insert into test (id, name, subject, difficult, duration) values(default, ?, ?, ?, ?)";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, name);
             pst.setString(2, subject);
             pst.setInt(3, difficult);
@@ -30,9 +30,9 @@ public class TestDao implements Dao<Test> {
     public List<Test> getAll() {
         String sql = "select * from test";
         List<Test> tests;
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet resultSet = pst.executeQuery();
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet resultSet = pst.executeQuery()) {
             tests = new ArrayList<>();
             Test test;
             while (resultSet.next()) {
@@ -55,8 +55,8 @@ public class TestDao implements Dao<Test> {
     public Test get(Long id) {
         String sql = "select * from test where id = ?";
         Test test = null;
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
             ResultSet resultSet = pst.executeQuery();
             if (resultSet.next()) {
@@ -68,6 +68,7 @@ public class TestDao implements Dao<Test> {
                 test.setDuration(resultSet.getInt("duration"));
                 test.setAmountQuestions(resultSet.getInt("count_question"));
             }
+            resultSet.close();
             return test;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -82,8 +83,8 @@ public class TestDao implements Dao<Test> {
     @Override
     public void delete(Long id) {
         String sql = "delete from test where id = ?";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
             pst.executeUpdate();
         } catch (SQLException e) {

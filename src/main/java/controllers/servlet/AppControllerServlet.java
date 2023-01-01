@@ -1,10 +1,9 @@
 package controllers.servlet;
 
+import constans.PathConst;
 import controllers.servlet.impl.ContentSupplierCommands;
 import controllers.servlet.impl.DataHandleCommand;
 import dao.connection.MyDataSource;
-import models.User;
-import servises.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,31 +11,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 //rename edit_user, edit_test because use one url post and get methods
-@WebServlet(urlPatterns = {"/tests", "/users", "/registration", "/login_form", "/home",
-        "/logout", "/profile", "/testsAZ", "/create_test", "/edit_user",
-        "/delete_user", "/filter_tests", "/delete_test",
-        "/edit_test", "/add_question", "/delete_question", "/edit_question",
-        "/add_answer", "/delete_answer", "/next_page", "/info_test", "/start_test", "/next_question",
+@WebServlet(urlPatterns = {
+        PathConst.REGISTRATION, PathConst.LOGIN_FORM, PathConst.LOGOUT,
+        PathConst.HOME, PathConst.PROFILE,
+        PathConst.USERS,
+        PathConst.FILTER_TESTS, PathConst.NEXT_PAGE,
+        PathConst.CREATE_TEST,
+        PathConst.EDIT_USER, PathConst.EDIT_TEST, PathConst.EDIT_QUESTION,
+        PathConst.DELETE_USER, PathConst.DELETE_TEST, PathConst.DELETE_QUESTION, PathConst.DELETE_ANSWER,
+        PathConst.ADD_QUESTION, PathConst.ADD_ANSWER,
+        PathConst.INFO_TEST, PathConst.START_TEST,
+        "/next_question",
         "/result_answer"
 
 })
 public class AppControllerServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(AppControllerServlet.class.getName());
+
     @Override
     protected void doGet(HttpServletRequest req,
                          HttpServletResponse resp)
             throws ServletException, IOException {
         MyDataSource.init();
         String lang = req.getParameter("login");
-       log.log(Level.WARNING," ddfsgsdfgsdfgsdfg1212121212");
+        log.log(Level.WARNING, " ddfsgsdfgsdfgsdfg1212121212");
 
         String servletPath = req.getServletPath();
-      //  System.out.println(servletPath);
+        //  System.out.println(servletPath);
         ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
     }
 

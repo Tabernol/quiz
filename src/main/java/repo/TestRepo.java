@@ -18,9 +18,9 @@ public class TestRepo {
     public List<String> getDistinctSubject() {
         String sql = "select distinct subject from test";
         List<String> subjects;
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet resultSet = pst.executeQuery();
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet resultSet = pst.executeQuery()) {
             subjects = new ArrayList<>();
             while (resultSet.next()) {
                 String sub = resultSet.getString("subject");
@@ -36,12 +36,12 @@ public class TestRepo {
     public List<Test> getFilterTest(String subject, String order, int rows) {
         String sql = "select * from test where subject like ? order by " + order + " limit ?";
         List<Test> tests = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, subject);
-            //  pst.setString(2, order);
             pst.setInt(2, rows);
             ResultSet resultSet = pst.executeQuery();
+            //  pst.setString(2, order);
             while (resultSet.next()) {
                 Test test = new Test();
                 test.setId(resultSet.getLong("id"));
@@ -52,6 +52,7 @@ public class TestRepo {
                 test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
+            resultSet.close();
             return tests;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -60,8 +61,8 @@ public class TestRepo {
 
     public void updateInfoTest(Long id, String name, String subject, int difficult, int duration) {
         String sql = "update test set name = ?, subject = ?, difficult = ?, duration = ? where id = ? ";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, name);
             pst.setString(2, subject);
             pst.setString(3, String.valueOf(difficult));
@@ -76,12 +77,14 @@ public class TestRepo {
 
     public Integer getCount(String subject) {
         String sql = "select count(subject) from test where subject like ?";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, subject);
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
-            return resultSet.getInt(1);
+            Integer count = resultSet.getInt(1);
+            resultSet.close();
+            return count;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -89,9 +92,9 @@ public class TestRepo {
 
     public Integer getCount() {
         String sql = "select count(subject) from test";
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
-            ResultSet resultSet = pst.executeQuery();
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet resultSet = pst.executeQuery()) {
             resultSet.next();
             return resultSet.getInt(1);
         } catch (SQLException e) {
@@ -102,8 +105,8 @@ public class TestRepo {
     public List<Test> getAll(String order, int rows) {
         String sql = "select * from test order by " + order + " limit ?";
         List<Test> tests = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setInt(1, rows);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
@@ -116,6 +119,7 @@ public class TestRepo {
                 test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
+            resultSet.close();
             return tests;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -127,12 +131,11 @@ public class TestRepo {
         String sql = "select * from test where subject like ? order by " + order + " limit ?,?";
         Integer offSet = (numberOfPage - 1) * rows;
         List<Test> tests = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, subject);
             pst.setInt(2, offSet);
             pst.setInt(3, rows);
-
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Test test = new Test();
@@ -144,6 +147,7 @@ public class TestRepo {
                 test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
+            resultSet.close();
             return tests;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -154,11 +158,10 @@ public class TestRepo {
         String sql = "select * from test order by " + order + " limit ?,?";
         Integer offSet = (numberOfPage - 1) * rows;
         List<Test> tests = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection()) {
-            PreparedStatement pst = con.prepareStatement(sql);
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setInt(1, offSet);
             pst.setInt(2, rows);
-
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Test test = new Test();
@@ -170,6 +173,7 @@ public class TestRepo {
                 test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
+            resultSet.close();
             return tests;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -177,13 +181,13 @@ public class TestRepo {
     }
 
 
-    public Test getTest(Long id){
+    public Test getTest(Long id) {
         TestDao testDao = new TestDao();
         QuestionRepo questionRepo = new QuestionRepo();
         AnswerRepo answerRepo = new AnswerRepo();
         Test test = testDao.get(id);
         List<Question> quiz = questionRepo.getAllById(id);
-        for(Question question : quiz){
+        for (Question question : quiz) {
             List<Answer> answers = answerRepo.getAnswersByQuestionId(question.getId());
             question.setAnswerOptions(answers);
         }
@@ -197,8 +201,6 @@ public class TestRepo {
 //        TestRepo testRepo = new TestRepo();
 //        testRepo.getTest(1L);
 //    }
-
-
 
 
 }

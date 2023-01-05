@@ -42,7 +42,6 @@ public class TestDao implements Dao<Test> {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
-                test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
             return tests;
@@ -66,7 +65,6 @@ public class TestDao implements Dao<Test> {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
-                test.setAmountQuestions(resultSet.getInt("count_question"));
             }
             resultSet.close();
             return test;

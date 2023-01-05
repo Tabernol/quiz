@@ -25,6 +25,7 @@
     <input type="hidden" name="question_id" value="${question.id}">
     text <input type="text" name="text" value="${requestScope.question.text}"><br>
     <input class="button" type="submit" value="Edit question">
+    <c:out value="${requestScope.message}"/>
 </form>
 
 <hr>
@@ -68,10 +69,11 @@
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="hidden" name="question_id" value="${requestScope.question.id}">
-    <input type="text" required placeholder="text of answer" name="text"><br>
+    <input type="text" required placeholder="text of answer" name="text" value="${requestScope.too_long_answer}"><br>
     <input type="radio" name="result" value="true">True<br>
     <input type="radio" name="result" value="false">False<br>
     <input class="button" type="submit" value="Add Answer">
+    <c:out value="${requestScope.message_answer}"/>
 </form>
 
 </body>

@@ -8,7 +8,6 @@ public class Test {
     private String subject;
     private int difficult;
     private int duration; //DateTime
-    private int amountQuestions;
     private List<Question> quiz;
 
     public Test() {
@@ -54,14 +53,6 @@ public class Test {
         this.duration = duration;
     }
 
-    public int getAmountQuestions() {
-        return amountQuestions;
-    }
-
-    public void setAmountQuestions(int amountQuestions) {
-        this.amountQuestions = amountQuestions;
-    }
-
     public List<Question> getQuiz() {
         return quiz;
     }
@@ -78,7 +69,6 @@ public class Test {
                 ", subject='" + subject + '\'' +
                 ", difficult=" + difficult +
                 ", duration=" + duration +
-                ", amountQuestions=" + amountQuestions +
                 '}';
     }
 }

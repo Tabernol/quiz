@@ -17,6 +17,7 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/language.jsp"/>
 
 <c:out value="${requestScope.text}"/>
 
@@ -33,8 +34,7 @@
     <input class="button" type="submit" value="Yes">
 </form>
 <hr>
-
-
+<jsp:include page="/WEB-INF/view/student/timer.jsp"/>
 
 </body>
 </html>

@@ -79,12 +79,13 @@
 
 <form method="post" action="add_question">
     <input type="hidden" name="page" value="${requestScope.page}">
-    <input type="hidden" name="sub" value="${requestScope.sub}">
-    <input type="hidden" name="order" value="${requestScope.order}">
-    <input type="hidden" name="rows" value="${requestScope.rows}">
+<%--    <input type="hidden" name="sub" value="${requestScope.sub}">--%>
+<%--    <input type="hidden" name="order" value="${requestScope.order}">--%>
+<%--    <input type="hidden" name="rows" value="${requestScope.rows}">--%>
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
-    <input type="text" required placeholder="text of question" name="text"><br>
+    <input type="text" required placeholder="text of question" name="text" value="${requestScope.too_Long_Text}"><br>
     <input class="button" type="submit" value="Add question">
+    <c:out value="${requestScope.message_question}"/>
 </form>
 
 </body>

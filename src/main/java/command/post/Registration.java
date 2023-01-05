@@ -11,31 +11,39 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class Registration implements RequestHandler {
+
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        UserService userService = new UserService();
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        DataValidator dataValidator = new DataValidator();
-       if(dataValidator.validatePassword(password)) {
-           userService.createUser(name,login,password);
-           HttpSession session = req.getSession();
-           Long userId = userService.getId(login);
-           session.setAttribute("user_id", userId);// get id
-           session.setAttribute("name", userService.get(userId).getName());
-           session.setAttribute("role", userService.get(userId).getRole());
-           req.getRequestDispatcher("/WEB-INF/view/student/student_menu.jsp").forward(req, resp);
-       }
-       else {
-           req.setAttribute("message", "password does not valid");
-           req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
-       }
+        UserService userService = new UserService();
 
+        if (userService.getId(login) == -1) {
+            req.setAttribute("message", "this login already exists");
+            req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
+        } else if (!DataValidator.validateLogin(login)) {
+            req.setAttribute("message", "login is invalid");
+            req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
+        } else if (!DataValidator.validatePassword(password)) {
+            req.setAttribute("message", "password is invalid");
+            req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
+        } else if (!DataValidator.validateForName(name)) {
+            req.setAttribute("message", "name is invalid");
+            req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
+        } else {
 
+            userService.createUser(name, login, password);
+            Long userId = userService.getId(login);
+            HttpSession session = req.getSession();
+            session.setAttribute("user_id", userId);// get id
+            session.setAttribute("name", userService.get(userId).getName());
+            session.setAttribute("role", userService.get(userId).getRole());
+            req.getRequestDispatcher("/WEB-INF/view/student/student_menu.jsp").forward(req, resp);
+        }
 
 
     }

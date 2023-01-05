@@ -1,3 +1,4 @@
+<%@ page import="java.util.Arrays" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -18,6 +19,7 @@
     <title>Info test</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/language.jsp"/>
 
 <div>
     <h5>Name  <c:out value="${requestScope.name}"/></h5>
@@ -31,7 +33,7 @@
 <div>
     <form action="next_page">
         <input type="hidden" name="page" value="${requestScope.page}">
-        <input class="button" type="submit" value="back">
+        <input class="button" type="submit" value="<fmt:message key="button.back"/>">
     </form>
 </div>
 
@@ -39,7 +41,7 @@
 <form action="start_test">
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
-    <input class="button" type="submit" value="Start test">
+    <input class="button" type="submit" value="<fmt:message key="button.start.test"/>">
 </form>
 
 </body>

@@ -17,6 +17,7 @@
     <title>Finish</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/language.jsp"/>
 
 <h2> You result <c:out value="${requestScope.percent_result}"/> %</h2>
 

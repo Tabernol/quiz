@@ -18,6 +18,7 @@
     <title>Profile</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/language.jsp"/>
 name    <c:out value="${requestScope.name}"/><br>
 login    <c:out value="${requestScope.login}"/><br>
 password     <c:out value="${requestScope.password}"/><br>

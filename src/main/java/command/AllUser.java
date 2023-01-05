@@ -19,5 +19,15 @@ public class AllUser implements RequestHandler {
         List<User> all = userService.getAll();
         req.setAttribute("users",all );
         req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req,resp);
+
+        String pathInfo = req.getPathInfo();
+        String contextPath = req.getContextPath();
+        String requestURI = req.getRequestURI();
+        System.out.println("context =  "+contextPath);
+        System.out.println("path info "+ pathInfo);
+        System.out.println("uri  = "+requestURI);
+
+
+
     }
 }

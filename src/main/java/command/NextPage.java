@@ -40,10 +40,10 @@ public class NextPage implements RequestHandler {
             tests = testService.nextPage(sub, order, rows, page);
         }
         List<String> subjects = testService.getDistinctSubjects();
-        List<String> sorts = Arrays.asList("difficult desc", "difficult asc", "name desc");
+      //  List<String> sorts = Arrays.asList("difficult desc", "difficult asc", "name desc");
 
         req.getSession().setAttribute("subjects", subjects);
-        req.getSession().setAttribute("orders", sorts);
+//        req.getSession().setAttribute("order", order);
         req.getSession().setAttribute("tests", tests);
         req.setAttribute("count_pages", countPages);
 

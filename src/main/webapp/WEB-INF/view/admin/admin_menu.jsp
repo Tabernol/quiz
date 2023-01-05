@@ -14,13 +14,17 @@
 <html>
 <head>
     <title>admin</title>
+<%--    <link rel="stylesheet" href="style.css"/>--%>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
 <fmt:message key="label.message"/> <c:out value="${sessionScope.name}"/><br>
 <a href="<c:url value='/' />">Profile</a>
 <hr>
-<a href="<c:url value='/users' />"><fmt:message key="label.users"/> </a>
+<a class="lin" href="<c:url value='/users' />"><fmt:message key="label.users"/> </a>
 <a href="<c:url value='/filter_tests'>
   <c:param name="order" value="name asc" />
     <c:param name="sub" value="all"/>

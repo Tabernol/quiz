@@ -37,5 +37,9 @@
     <input class="button" type="submit" value="Edit user">
 </form>
 
+<form action="home">
+    <input class="button" type="submit" value="<fmt:message key="button.back"/>">
+</form>
+
 </body>
 </html>

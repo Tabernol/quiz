@@ -2,6 +2,7 @@ package repo;
 
 import dao.connection.MyDataSource;
 import dao.impl.TestDao;
+import exeptions.DataBaseException;
 import models.Answer;
 import models.Question;
 import models.Test;
@@ -12,8 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestRepo {
+    private static final Logger logger = Logger.getLogger(TestRepo.class.getName());
 
     public List<String> getDistinctSubject() {
         String sql = "select distinct subject from test";
@@ -28,7 +32,8 @@ public class TestRepo {
             }
             return subjects;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, e.getMessage());
+            throw new DataBaseException(e.getMessage(), e);
         }
     }
 
@@ -49,7 +54,6 @@ public class TestRepo {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
-                test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
             resultSet.close();
@@ -116,7 +120,6 @@ public class TestRepo {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
-                test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
             resultSet.close();
@@ -144,7 +147,6 @@ public class TestRepo {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
-                test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
             resultSet.close();
@@ -170,7 +172,6 @@ public class TestRepo {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
-                test.setAmountQuestions(resultSet.getInt("count_question"));
                 tests.add(test);
             }
             resultSet.close();
@@ -195,12 +196,31 @@ public class TestRepo {
         return test;
     }
 
+    public void addPopularity(Long idTest) {
+        String sql = "update test set popularity = popularity + 1 where id = ?";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setLong(1, idTest);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-//    public static void main(String[] args) {
-//        MyDataSource.init();
-//        TestRepo testRepo = new TestRepo();
-//        testRepo.getTest(1L);
-//    }
+
+    public boolean isNameExist(String name) {
+        String sql = "select * from test where name like ?";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, name);
+            ResultSet resultSet = pst.executeQuery();
+            boolean isExist = resultSet.next();
+            resultSet.close();
+            return isExist;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }

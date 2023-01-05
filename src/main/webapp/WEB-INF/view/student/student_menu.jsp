@@ -17,19 +17,20 @@
     <title>Student</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/language.jsp"/>
 Hello student ${sessionScope.name}
 
 <br>
-<a href="<c:url value='/logout' />">Logout</a>
+<a href="<c:url value='/logout' />"><fmt:message key="label.logout"/> </a>
 <br>
-<a href="<c:url value='/profile' />">profile</a>
+<a href="<c:url value='/profile' />"><fmt:message key="label.profile"/> </a>
 <br>
 <a href="<c:url value='/filter_tests'>
   <c:param name="order" value="name asc" />
     <c:param name="sub" value="all"/>
     <c:param name="rows" value="5"/>
     <c:param name="page" value="1"/>
-</c:url>">Tests</a>
+</c:url>"><fmt:message key="label.tests"/></a>
 
 
 

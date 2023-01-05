@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.Dao;
 import dao.connection.MyDataSource;
+import exeptions.DataBaseException;
 import models.Question;
 import models.Test;
 
@@ -15,26 +16,11 @@ import java.util.List;
 public class QuestionDao implements Dao<Question> {
     @Override
     public Question get(Long id) {
-//        String sql = "select * from question where id = ?";
-//        Question question = new Question();
-//        try (Connection con = MyDataSource.getConnection()) {
-//            PreparedStatement pst = con.prepareStatement(sql);
-//            pst.setLong(1, id);
-//            ResultSet resultSet = pst.executeQuery();
-//            if (resultSet.next()) {
-//                question.setId(resultSet.getLong("id"));
-//                question.setText(resultSet.getString("q_text"));
-//            }
-//            return question;
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
         return null;
     }
 
     @Override
     public void update(Long id) {
-
     }
 
     @Override
@@ -48,8 +34,6 @@ public class QuestionDao implements Dao<Question> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     @Override
@@ -81,7 +65,8 @@ public class QuestionDao implements Dao<Question> {
             pst.setString(2, text);
             pst.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw  new DataBaseException("Can not insert question :"+ e.getMessage(), e);
+
         }
     }
 }

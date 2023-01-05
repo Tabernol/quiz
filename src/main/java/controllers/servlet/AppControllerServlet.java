@@ -1,9 +1,11 @@
 package controllers.servlet;
 
+
 import constans.PathConst;
 import controllers.servlet.impl.ContentSupplierCommands;
 import controllers.servlet.impl.DataHandleCommand;
 import dao.connection.MyDataSource;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,16 +35,18 @@ public class AppControllerServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(AppControllerServlet.class.getName());
 
+    static {
+        log.log(Level.WARNING, "START");
+        MyDataSource.init();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req,
                          HttpServletResponse resp)
             throws ServletException, IOException {
-        MyDataSource.init();
         String lang = req.getParameter("login");
-        log.log(Level.WARNING, " ddfsgsdfgsdfgsdfg1212121212");
-
+        log.log(Level.WARNING, " GET");
         String servletPath = req.getServletPath();
-        //  System.out.println(servletPath);
         ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
     }
 
@@ -50,6 +54,7 @@ public class AppControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req,
                           HttpServletResponse resp)
             throws ServletException, IOException {
+        log.log(Level.WARNING, " POST");
         String servletPath = req.getServletPath();
         DataHandleCommand.COMMANDS.get(servletPath).execute(req, resp);
     }

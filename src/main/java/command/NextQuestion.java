@@ -37,6 +37,8 @@ public class NextQuestion implements RequestHandler {
         req.setAttribute("id_question", idQuestion);
         req.setAttribute("number_question", ++numberQuestion);
 
+        req.setAttribute("duration", req.getParameter("duration"));
+
         req.getRequestDispatcher("/WEB-INF/view/student/page_question.jsp").forward(req, resp);
 
     }

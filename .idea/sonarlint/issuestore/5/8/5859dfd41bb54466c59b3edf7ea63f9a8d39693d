@@ -1,0 +1,12 @@
+
+h
+java:S2441"MMake "List" and its parameters serializable or don't store it in the session.(Ì²Œâÿÿÿÿÿ
+]	java:S125"<This block of commented-out lines of code should be removed.(ºëîÓÿÿÿÿÿ8èüøØÕ0
+R
+java:S1128"0Remove this unused import 'command.FilterTests'.(ºÂËøÿÿÿÿ8èüøØÕ0
+E
+java:S1128"(Remove this unused import 'models.Test'.(ÚÌš¼8ÓŠºØÕ0
+N
+java:S1128"1Remove this unused import 'servises.UserService'.(…‹¸»8ÓŠºØÕ0
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÓŠºØÕ0

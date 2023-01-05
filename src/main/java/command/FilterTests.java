@@ -20,6 +20,9 @@ public class FilterTests implements RequestHandler {
             throws ServletException, IOException {
        String role = (String) req.getSession().getAttribute("role");
 
+        String contextPath = req.getContextPath();
+        System.out.println("con  "+contextPath);
+
 
         String sub = req.getParameter("sub");
         String order = req.getParameter("order");
@@ -38,10 +41,10 @@ public class FilterTests implements RequestHandler {
 
         List<Test> filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
         List<String> subjects = testService.getDistinctSubjects();
-        List<String> sorts = Arrays.asList("difficult desc", "difficult asc", "name desc");
+//        List<String> sorts = Arrays.asList("difficult desc", "difficult asc", "name desc");
 
         req.getSession().setAttribute("subjects", subjects);
-        req.getSession().setAttribute("orders", sorts);
+//        req.getSession().setAttribute("orders", sorts);
         req.getSession().setAttribute("tests", filterTests);
 
 

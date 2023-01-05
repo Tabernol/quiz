@@ -106,7 +106,6 @@ public class UserDao implements Dao<User> {
             //log not found login
             throw new RuntimeException(e);
         }
-
         return -1;
     }
 

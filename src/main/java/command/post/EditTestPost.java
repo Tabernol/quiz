@@ -16,17 +16,6 @@ public class EditTestPost implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("page", req.getParameter("page"));
-//        String sub = req.getParameter("sub");
-//        String order = req.getParameter("order");
-//        Integer rows = Integer.valueOf(req.getParameter("rows"));
-////        String page = req.getParameter("page");
-//        req.setAttribute("sub", sub);
-//        req.setAttribute("order", order);
-//        req.setAttribute("rows", rows);
-//        req.setAttribute("page", page);
-
-
         Long testId = Long.valueOf(req.getParameter("test_id"));
         String name = req.getParameter("name");
         String subject = req.getParameter("subject");
@@ -35,34 +24,32 @@ public class EditTestPost implements RequestHandler {
 
         TestService testService = new TestService();
         req.setAttribute("test_id", testId);
+        req.setAttribute("page", req.getParameter("page"));
 
-        if (!DataValidator.validateDifficult(difficult)) {
+
+        if (!DataValidator.validateForNamePlusNumber(name)) {
+            req.setAttribute("message", "name must contains only liters and numbers and space from 2-20 items");
+            setPlaceHolder(req, resp);
+        } else if (!DataValidator.validateForName(subject)) {
+            req.setAttribute("message", "subject must contains only liters and space from 2-20 items");
+            setPlaceHolder(req, resp);
+        } else if (!DataValidator.validateDifficult(difficult)) {
             req.setAttribute("message", "difficult must be from 1 to 100");
-            setPlaceHolder(req, resp, name, subject, difficult, duration);
+            setPlaceHolder(req, resp);
         } else if (!DataValidator.validateDuration(duration)) {
             req.setAttribute("message", "duration must be from 1 to 30 minutes");
-            setPlaceHolder(req, resp, name, subject, difficult, duration);
-        }
-        else {
+            setPlaceHolder(req, resp);
+        } else {
             testService.update(testId, name, subject, difficult, duration);
             req.setAttribute("message", "All Right)");
+            setPlaceHolder(req, resp);
         }
-
-        EditTest editTest = new EditTest();
-        editTest.execute(req, resp);
     }
 
 
-
     private void setPlaceHolder(HttpServletRequest req,
-                                HttpServletResponse resp,
-                                String name, String subject,
-                                int difficult, int duration) throws ServletException, IOException {
+                                HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("page", req.getParameter("page"));
-        req.setAttribute("name", name);
-        req.setAttribute("subject", subject);
-        req.setAttribute("difficult", difficult);
-        req.setAttribute("duration", duration);
         EditTest editTest = new EditTest();
         editTest.execute(req, resp);
     }

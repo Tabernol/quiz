@@ -38,12 +38,13 @@ public class AuthorizationFilter extends AbstractFilter {
         } else if (userService.isBlocked(id)) {
             req.setAttribute("message", "You are blocked");
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-        }else if (userService.isCorrectPassword(id, password)) {
+        } else if (userService.isCorrectPassword(id, password)) {
             role = userService.getRoleById(id);
             session.setAttribute("user_id", id);// get id
             session.setAttribute("name", userService.get(id).getName());
             session.setAttribute("role", userService.get(id).getRole());
-            moveToMenu(req, resp, role);
+            filterChain.doFilter(req, resp);
+            // moveToMenu(req, resp, role);
         } else {
             req.setAttribute("message", "Something wrong(");
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
@@ -51,17 +52,17 @@ public class AuthorizationFilter extends AbstractFilter {
 
     }
 
-    private void moveToMenu(final HttpServletRequest req,
-                            final HttpServletResponse res,
-                            final String role)
-            throws ServletException, IOException {
-
-        if (role.equals("admin")) {
-            req.getRequestDispatcher("/WEB-INF/view/admin/admin_menu.jsp").forward(req, res);
-        } else if (role.equals("student")) {
-            req.getRequestDispatcher("/WEB-INF/view/student/student_menu.jsp").forward(req, res);
-        } else {
-            req.getRequestDispatcher("/").forward(req, res);
-        }
-    }
+//    private void moveToMenu(final HttpServletRequest req,
+//                            final HttpServletResponse res,
+//                            final String role)
+//            throws ServletException, IOException {
+//
+//        if (role.equals("admin")) {
+//            req.getRequestDispatcher("/WEB-INF/view/admin/admin_menu.jsp").forward(req, res);
+//        } else if (role.equals("student")) {
+//            req.getRequestDispatcher("/WEB-INF/view/student/student_menu.jsp").forward(req, res);
+//        } else {
+//            req.getRequestDispatcher("/").forward(req, res);
+//        }
+//    }
 }

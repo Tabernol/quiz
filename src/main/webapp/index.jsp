@@ -10,7 +10,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Quiz</title>
+
+<%--    <link rel="stylesheet" href="/static/css/style.css">--%>
+<style>
+    <%@include file="/static/css/style.css"%>
+</style>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
@@ -20,9 +28,16 @@
 <a href="<c:url value='/registration'/>"><fmt:message key="label.registration"/></a>|
 <%--<a href="<c:url value='/profile'/>">Profile</a>|--%>
 <%--<a href="<c:url value='/logout'/>">Loggout</a>--%>
+
 <br>
 <br>
+<input type="button" value="click" onclick="time()"/>
+<%--<script>--%>
+<%--    function time(){--%>
+<%--        alert("time");--%>
+<%--    }--%>
+<%--</script>--%>
 
-
+<%--<script src="${pageContext.request.contextPath}/static/js/timer.js"></script>--%>
 </body>
 </html>

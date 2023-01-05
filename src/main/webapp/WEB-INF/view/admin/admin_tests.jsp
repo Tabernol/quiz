@@ -14,6 +14,9 @@
 <html>
 <head>
     <title>Tests</title>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
@@ -26,9 +29,15 @@
             </c:forEach>
         </select>
         <select name="order">
-            <c:forEach var="order" items="${sessionScope.orders}">
-                <option value="${order}"><c:out value="${order}"/></option>
-            </c:forEach>
+            <%--                        <c:forEach var="order" items="${sessionScope.orders}">--%>
+            <%--                            <option value="${order}"><c:out value="${order}"/></option>--%>
+            <option value="name asc"><fmt:message key="sort.name.asc"/></option>
+            <option value="name desc"><fmt:message key="sort.name.desc"/></option>
+            <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
+            <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
+            <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>
+            <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>
+            <%--                        </c:forEach>--%>
         </select>
         <select name="rows">
             <option value="2"><c:out value="2"/></option>
@@ -36,20 +45,23 @@
             <option value="10"><c:out value="10"/></option>
             <option value="20"><c:out value="20"/></option>
         </select><br>
-        <input class="button" type="submit" value="filter">
+        <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
     </form>
+</div>
+<hr>
+<form action="home">
+    <input class="button" type="submit" value="<fmt:message key="button.back"/>">
+</form>
 
-    <hr>
-    <form action="home">
-        <input class="button" type="submit" value="Home">
-    </form>
+<div>
     <table class="sortable">
         <thead>
         <tr>
-            <th>Test name</th>
-            <th>Subject</th>
-            <th>Difficult</th>
-            <th>Duration</th>
+            <th><fmt:message key="table.head.test.name"/></th>
+            <th><fmt:message key="table.head.subject"/></th>
+            <th><fmt:message key="table.head.difficult"/></th>
+            <th><fmt:message key="table.head.duration"/></th>
+            <th></th>
             <th></th>
         </tr>
         </thead>
@@ -66,7 +78,7 @@
                     <form action="edit_test">
                         <input type="hidden" name="test_id" value="${test.id}">
                         <input type="hidden" name="page" value="${requestScope.page}">
-                        <input class="button" type="submit" value="edit test">
+                        <input class="button" type="submit" value="<fmt:message key="button.edit.test"/>">
                     </form>
 
                 </td>
@@ -74,27 +86,27 @@
                     <form method="post" action="delete_test">
                         <input type="hidden" name="page" value="${requestScope.page}">
                         <input type="hidden" name="test_id" value="${test.id}">
-                        <input class="button" type="submit" value="delete test">
+                        <input class="button" type="submit" value="<fmt:message key="button.delete.test"/>">
                     </form>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-
-    <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
-        <a href="<c:url value='/next_page'>
-    <c:param name="order" value="${requestScope.order}"/>
-    <c:param name="sub" value="${requestScope.sub}"/>
-    <c:param name="rows" value="${requestScope.rows}"/>
-    <c:param name="page" value="${i}"/>
-</c:url>">
-            <c:out value="${i}"/></a>
-
-    </c:forEach>
-    <hr>
-
 </div>
+
+<c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+
+    <a href="<c:url value='/next_page'>
+                        <c:param name="order" value="${requestScope.order}"/>
+                        <c:param name="sub" value="${requestScope.sub}"/>
+                        <c:param name="rows" value="${requestScope.rows}"/>
+                        <c:param name="page" value="${i}"/>
+                    </c:url>"> <c:out value="${i}"/> </a>
+</c:forEach>
+<hr>
+
+
 <jsp:include page="/WEB-INF/view/admin/create_test.jsp"/>
 
 </body>

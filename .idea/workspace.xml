@@ -2,57 +2,122 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="startCommand:war exploded" />
+      <artifact name="startCommand:war" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7d27716-29f1-4889-bf49-40a55c5a6d82" name="Changes" comment="7">
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dto/ResultDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_finish.jsp" afterDir="false" />
+    <list default="true" id="b7d27716-29f1-4889-bf49-40a55c5a6d82" name="Changes" comment="8">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/188792529ee886cbdc6616248007f7a96c73e03d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/19f881be8905365df370608d643e90404e13b622" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a1af3893e9c72f9aaf198320ebb5a5c5a039121" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fee971e88ac8294b70a3550f659409ffaa1218b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27a9944a26292b0f56aa45295c10b5c9ee8ccd8d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27f05861f8fa439a8bf3c16db5b291eeed986e3e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29b2dd87a4df7a124f550480e186219f4025729e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/302fdb0bb648afbac75518e69f3fa5b726bc9179" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32762792d1a9e3edc6c386356f667fa58707cac1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32bca110e1c8801388c76f6e30f17d953f9147db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/36052e70203be040c6e23325f07c7e994b1de490" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42da38324f7544d0f944105b6e44f825e278108e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/469cea3807fc9ae75c5b4893c95765d5cc70eb27" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51f3e03ccaf2cf667b2008bf04b14dd68d5c200f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/2/5276c9ef68f9382a32e744448cf55a5bfdd0b37e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55c61327bbfc0f6ab1f84ae5ad83ded7adaf9874" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/565246777143831e946e870196a87ff58da550d1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/571baa59133ecf781d7a2548907b77679b5f9085" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/5859dfd41bb54466c59b3edf7ea63f9a8d39693d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a7d7ef52c6d42763002164d813cd49e539e9ee9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/6041fbdb1c702c921a5003c1b3ba97c9176658ee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65f91c4ab56a62382bf6b6d6e7284e0e5af9c555" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/680c6b33054e8d1150d9b5325256fec597c5b361" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6be68614c336741e70bb7d6cd3aaf81435af474e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/7018362ecf383780af7fdecd7a53f7a164b71fee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/70c5ca2dc14ca47cae874448b8e9a5173ebbdd3e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/725354217f3aef9e2376216560a50fb385699a86" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90a5a93b2266495b99ce23b34cc9b8a7282755e7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/1/918c440de6b63426624ace8b4eebdfdf5a893772" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/7/97150b5abe5326d484f62681683b34eefb0af09a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c7b43463cc1d6ed7dfc1652a97b0d8ee97639a1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9e50ae6c4fa77987d8ade700be4b94b6163a44d2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0a6cf1e9f970f565b9cc3c366a63a634e3476cd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/ba56a0119d3e7cb9dfb8bd370f14670e21dd899f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bc35ab11cc136114539c7f9e778ce1410ce540c4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/be42e3ca8e36494fd2b7f6f5495251a1a42a56b2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/0/c049a1e563720c4aabd4f480f5dc422ca3495dfa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7b2aa69abb5cd82c9f77796385c4f83da68ab45" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db6dcd372de7088abee8256c24a2d4f1ad90dbb1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/dd166583a2b07a1e76083de0de4f908c9adcc54e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/dfc4a704c0a168a780d5aa28ad5d3266e310ea01" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/5/e5786a8653037090eb307c33c235aecedc5ea20a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/ea1601f0a86352308c73f29c695dd575e9501948" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb184e330b63946036780068f874a8abb849ed42" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ecfacf2be6f154383f16d8f6765ea01acf869c3c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/3/f3d09fffc78c644c90d1d41ca198b6d802ead7db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5a7c6267f095cfb9e9a2cec8af7c07603599d97" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5ac1bf73c3a03d947dabd389f6088e94ae62abb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f7010c4f46d3b9dd8d59899249df5ba3ee23f96b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f987e2a3d4b9aca2e4f6e23d677a7985a8489989" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd6d8dd06bb439c1629b3ad2f97f59ff64727701" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fdf5005e0e040f95fb61fcd229b761f3453877f0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app_listener/QuizAppListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exeptions/DataBaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/LoaderProperty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/hikari.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/timer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/js/timer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/startCommand_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/startCommand_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e4261004244ffce120e9c65abed395cbfed2e4f" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/startcommand/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/AllUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/AllUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/FilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/NextPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/NextPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/NextQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/NextQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/PageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/PageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/Profile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/StartTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/ResultAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/ResultAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/LanguageFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/LanguageFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/connection/MyDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/connection/MyDataSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/QuestionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/QuestionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/ResulDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/ResultDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/TestDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/TestDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/impl/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/impl/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/language_ua.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_ua.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_menu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/create_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/create_test.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_user.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/language.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/language.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_finish.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_finish.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_question.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_test.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/profile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/student_menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/student_menu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/student_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/student_tests.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +138,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -89,25 +158,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Max/IdeaProjects/PrepereProject/examRepairAgency&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.40229884&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Max/IdeaProjects/PrepereProject/startCommand/src/main/webapp/WEB-INF",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.40229884",
+    "settings.editor.selected.configurable": "JavaScript.Libraries"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF\view" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp" />
-      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\resources" />
+      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\static" />
+      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\js" />
+      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF\js" />
+      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
@@ -164,10 +239,11 @@
       </method>
     </configuration>
     <configuration name="Tomcat 9.0.69" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.69" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="startCommand:war exploded">
+        <artifact name="startCommand:war">
           <settings>
-            <option name="CONTEXT_PATH" value="/startCommand_war_exploded" />
+            <option name="CONTEXT_PATH" value="/startCommand_war" />
           </settings>
         </artifact>
       </deployment>
@@ -245,15 +321,22 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="startCommand:war exploded" />
+          <artifact name="startCommand:war" />
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.DataValidator" />
+      <item itemvalue="Application.PaginationService" />
+      <item itemvalue="Application.servises.UserService" />
+      <item itemvalue="Application.TestRepo" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DataValidator" />
         <item itemvalue="Application.TestRepo" />
         <item itemvalue="Application.PaginationService" />
-        <item itemvalue="Application.DataValidator" />
         <item itemvalue="Application.servises.UserService" />
       </list>
     </recent_temporary>
@@ -286,7 +369,13 @@
       <workItem from="1672223486486" duration="23140000" />
       <workItem from="1672326287803" duration="22210000" />
       <workItem from="1672392685450" duration="20921000" />
-      <workItem from="1672492638753" duration="15987000" />
+      <workItem from="1672492638753" duration="16038000" />
+      <workItem from="1672576466954" duration="15257000" />
+      <workItem from="1672685165561" duration="20167000" />
+      <workItem from="1672764183626" duration="8983000" />
+      <workItem from="1672834030304" duration="13883000" />
+      <workItem from="1672872132480" duration="8996000" />
+      <workItem from="1672918926902" duration="8007000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -337,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672370378079</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="8">
+      <created>1672539440993</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672539440993</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +458,11 @@
     <MESSAGE value="5" />
     <MESSAGE value="6" />
     <MESSAGE value="7" />
-    <option name="LAST_COMMIT_MESSAGE" value="7" />
+    <MESSAGE value="8" />
+    <option name="LAST_COMMIT_MESSAGE" value="8" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

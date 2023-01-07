@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -20,13 +21,18 @@ public class EditUserPost implements RequestHandler {
         String role = req.getParameter("role");
         Boolean status = Boolean.valueOf(req.getParameter("status"));
 
-        System.out.println("role  =  "+role);
-
         UserService userService = new UserService();
-        userService.updateUser(userId, name, login, password, role, status);
 
-        req.setAttribute("users", userService.getAll());
-        req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req,resp);
+        try {
+            int i = userService.updateUser(userId, name, login, role, status);
+            //   req.setAttribute("users", userService.getAll());
+            req.setAttribute("user_id", userId);
+            req.getRequestDispatcher("/WEB-INF/view/admin/edit_user.jsp").forward(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
+
 
     }
 }

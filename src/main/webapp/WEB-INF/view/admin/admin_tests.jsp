@@ -20,6 +20,10 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
+<form action="home">
+    <input class="button" type="submit" value="<fmt:message key="button.back"/>">
+</form>
 <div>
     <form action="filter_tests">
         <select name="sub">
@@ -48,10 +52,7 @@
         <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
     </form>
 </div>
-<hr>
-<form action="home">
-    <input class="button" type="submit" value="<fmt:message key="button.back"/>">
-</form>
+
 
 <div>
     <table class="sortable">
@@ -107,7 +108,7 @@
 <hr>
 
 
-<jsp:include page="/WEB-INF/view/admin/create_test.jsp"/>
+<%--<jsp:include page="/WEB-INF/view/admin/create_test.jsp"/>--%>
 
 </body>
 </html>

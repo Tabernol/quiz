@@ -2,6 +2,7 @@ package command.post;
 
 import command.NextQuestion;
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Answer;
 import servises.AnswerService;
 
@@ -23,9 +24,6 @@ public class ResultAnswer implements RequestHandler {
         String idQuestion = req.getParameter("id_question");
         String[] res = req.getParameterValues("res");
 
-        System.out.println("id quest = " + idQuestion);
-        System.out.println(Arrays.toString(res));
-
         Answer answer = null;
         List<Answer> userAnswers = new ArrayList<>();
         int count = -1;
@@ -41,7 +39,15 @@ public class ResultAnswer implements RequestHandler {
             }
         }
 
-        List<Answer> trueAnswers = answerService.getAnswers(Long.valueOf(idQuestion));
+        List<Answer> trueAnswers = null;
+
+        try {
+            trueAnswers = answerService.getAnswers(Long.valueOf(idQuestion));
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
+
 
         boolean result = true;
         for (int i = 0; i < userAnswers.size(); i++) {

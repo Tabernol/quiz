@@ -7,7 +7,7 @@ public interface PathConst {
     String PROFILE = "/profile";
     String LOGIN_FORM = "/login_form";
 
-    String LANGUAGE = "/Language";
+    String LANGUAGE = "/language";
 
 
     // for both

@@ -4,7 +4,7 @@ package controllers.servlet;
 import constans.PathConst;
 import controllers.servlet.impl.ContentSupplierCommands;
 import controllers.servlet.impl.DataHandleCommand;
-import dao.connection.MyDataSource;
+import connection.MyDataSource;
 
 
 import javax.servlet.ServletException;
@@ -27,8 +27,10 @@ import java.util.logging.Logger;
         PathConst.DELETE_USER, PathConst.DELETE_TEST, PathConst.DELETE_QUESTION, PathConst.DELETE_ANSWER,
         PathConst.ADD_QUESTION, PathConst.ADD_ANSWER,
         PathConst.INFO_TEST, PathConst.START_TEST,
-        "/next_question",
-        "/result_answer"
+        PathConst.NEXT_QUESTION, PathConst.RESULT_ANSWER,
+        PathConst.LANGUAGE,
+        "/prg_edit_question_servlet",
+        "/prg_edit_test_servlet","/prg_create_test", "/to_create_test", "/edit_profile", "/edit_user_profile"
 
 })
 public class AppControllerServlet extends HttpServlet {

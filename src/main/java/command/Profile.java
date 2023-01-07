@@ -2,6 +2,7 @@ package command;
 
 import controllers.servlet.RequestHandler;
 import dto.ResultDto;
+import exeptions.DataBaseException;
 import models.User;
 import servises.ResultService;
 import servises.UserService;
@@ -22,17 +23,23 @@ public class Profile implements RequestHandler {
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
         UserService userService = new UserService();
-        User user = userService.get(userId);
-        req.setAttribute("name", user.getName());
-        req.setAttribute("login", user.getLogin());
-        req.setAttribute("password", user.getPassword());
-
         ResultService resultService = new ResultService();
-        List<ResultDto> resultByUser = resultService.getResultByUser(user.getId());
-        req.setAttribute("user_result", resultByUser);
 
+        User user = null;
+        List<ResultDto> resultByUser = null;
+        try {
+            user = userService.get(userId);
+            resultByUser = resultService.getResultByUser(user.getId());
+            req.setAttribute("name", user.getName());
+            req.setAttribute("login", user.getLogin());
+            req.setAttribute("user_result", resultByUser);
 
-        req.getRequestDispatcher("/WEB-INF/view/student/profile.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
+
 
     }
 }

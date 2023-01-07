@@ -1,6 +1,6 @@
 package app_listener;
 
-import dao.connection.MyDataSource;
+import connection.MyDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.sql.SQLException;
+
 @WebListener
 public class QuizAppListener implements ServletContextListener {
     private final Logger LOGGER = LogManager.getLogger(QuizAppListener.class);

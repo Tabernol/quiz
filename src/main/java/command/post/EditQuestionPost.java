@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Answer;
 import servises.AnswerService;
 import servises.QuestionService;
@@ -16,7 +17,6 @@ public class EditQuestionPost implements RequestHandler {
     QuestionService questionService = new QuestionService();
     AnswerService answerService = new AnswerService();
 
-
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws
@@ -24,28 +24,48 @@ public class EditQuestionPost implements RequestHandler {
 
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
+        String page = req.getParameter("page");
 
+        Integer success = 0;
         String text = req.getParameter("text");
-        if(!DataValidator.validateForNotLongString(text)){
+        if (!DataValidator.validateForNotLongString(text)) {
+            req.setAttribute("test_id", testId);
+            req.setAttribute("question_id", questionId);
+            req.setAttribute("page", page);
             req.setAttribute("message", "text of question is too long");
             req.setAttribute("tooLongAnswer", text);
-            goTo(req,resp,testId,questionId);
+            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+            //  goTo(req, resp, testId, questionId);
         } else {
-            req.setAttribute("message", "All Right))");
-            questionService.update(text, questionId);
-            goTo(req,resp,testId,questionId);
+            try {
+                int update = questionService.update(text, questionId);
+                if (update > 0) {
+                    success = update;
+                }
+                resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" + "?" + "suc=" + success + "&test_id=" +
+                        testId + "&question_id=" + questionId + "&page=" + page+"&message=All Right");
+              //  goTo(req, resp, testId, questionId);
+            } catch (DataBaseException e) {
+                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+                throw new RuntimeException(e);
+            }
         }
 
 
     }
 
-    private void goTo(HttpServletRequest req, HttpServletResponse resp, Long testId, Long questionId)
-            throws ServletException, IOException {
-        req.setAttribute("answers", answerService.getAnswers(questionId));
-        req.setAttribute("test_id", testId);
-        req.setAttribute("question_id", questionId);
-        req.setAttribute("question", questionService.get(questionId));
-        req.setAttribute("page", req.getParameter("page"));
-        req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
-    }
+//    private void goTo(HttpServletRequest req, HttpServletResponse resp, Long testId, Long questionId)
+//            throws ServletException, IOException {
+//        try {
+//            req.setAttribute("answers", answerService.getAnswers(questionId));
+//            req.setAttribute("test_id", testId);
+//            req.setAttribute("question_id", questionId);
+//            req.setAttribute("question", questionService.get(questionId));
+//            req.setAttribute("page", req.getParameter("page"));
+//            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+//        } catch (DataBaseException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//    }
 }

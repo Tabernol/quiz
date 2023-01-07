@@ -1,10 +1,7 @@
 package repo;
 
-import dao.connection.MyDataSource;
-import dao.impl.TestDao;
+import connection.MyDataSource;
 import exeptions.DataBaseException;
-import models.Answer;
-import models.Question;
 import models.Test;
 
 import java.sql.Connection;
@@ -19,7 +16,7 @@ import java.util.logging.Logger;
 public class TestRepo {
     private static final Logger logger = Logger.getLogger(TestRepo.class.getName());
 
-    public List<String> getDistinctSubject() {
+    public List<String> getDistinctSubject() throws DataBaseException {
         String sql = "select distinct subject from test";
         List<String> subjects;
         try (Connection con = MyDataSource.getConnection();
@@ -32,13 +29,13 @@ public class TestRepo {
             }
             return subjects;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, e.getMessage());
-            throw new DataBaseException(e.getMessage(), e);
+            logger.log(Level.WARNING, "Can not get order distinct subject from test");
+            throw new DataBaseException("Can not get order distinct subject from test" + e.getMessage(), e);
         }
     }
 
 
-    public List<Test> getFilterTest(String subject, String order, int rows) {
+    public List<Test> getFilterTest(String subject, String order, int rows) throws DataBaseException {
         String sql = "select * from test where subject like ? order by " + order + " limit ?";
         List<Test> tests = new ArrayList<>();
         try (Connection con = MyDataSource.getConnection();
@@ -59,11 +56,12 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not get order filter test");
+            throw new DataBaseException("Can not get order filter test" + e.getMessage(), e);
         }
     }
 
-    public void updateInfoTest(Long id, String name, String subject, int difficult, int duration) {
+    public int updateInfoTest(Long id, String name, String subject, int difficult, int duration) throws DataBaseException {
         String sql = "update test set name = ?, subject = ?, difficult = ?, duration = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -72,14 +70,15 @@ public class TestRepo {
             pst.setString(3, String.valueOf(difficult));
             pst.setString(4, String.valueOf(duration));
             pst.setString(5, String.valueOf(id));
-            pst.executeUpdate();
+            return pst.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not update test");
+            throw new DataBaseException("Can not update test" + e.getMessage(), e);
         }
     }
 
 
-    public Integer getCount(String subject) {
+    public Integer getCount(String subject) throws DataBaseException {
         String sql = "select count(subject) from test where subject like ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -90,11 +89,12 @@ public class TestRepo {
             resultSet.close();
             return count;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not get count tests of subject");
+            throw new DataBaseException("Can not get count tests of subject" + e.getMessage(), e);
         }
     }
 
-    public Integer getCount() {
+    public Integer getCount() throws DataBaseException {
         String sql = "select count(subject) from test";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql);
@@ -102,11 +102,12 @@ public class TestRepo {
             resultSet.next();
             return resultSet.getInt(1);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not get count tests");
+            throw new DataBaseException("Can not get count tests" + e.getMessage(), e);
         }
     }
 
-    public List<Test> getAll(String order, int rows) {
+    public List<Test> getAll(String order, int rows) throws DataBaseException {
         String sql = "select * from test order by " + order + " limit ?";
         List<Test> tests = new ArrayList<>();
         try (Connection con = MyDataSource.getConnection();
@@ -125,12 +126,37 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not get order tests");
+            throw new DataBaseException("Can not get order tests" + e.getMessage(), e);
+        }
+    }
+
+    public List<Test> getAll() throws DataBaseException {
+        String sql = "select * from test";
+        List<Test> tests;
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet resultSet = pst.executeQuery()) {
+            tests = new ArrayList<>();
+            Test test;
+            while (resultSet.next()) {
+                test = new Test();
+                test.setId(resultSet.getLong("id"));
+                test.setName(resultSet.getString("name"));
+                test.setSubject(resultSet.getString("subject"));
+                test.setDifficult(resultSet.getInt("difficult"));
+                test.setDuration(resultSet.getInt("duration"));
+                tests.add(test);
+            }
+            return tests;
+        } catch (SQLException e) {
+            logger.log(Level.WARNING, "Can not get order tests");
+            throw new DataBaseException("Can not get order tests" + e.getMessage(), e);
         }
     }
 
 
-    public List<Test> nextPage(String subject, String order, Integer rows, Integer numberOfPage) {
+    public List<Test> nextPage(String subject, String order, Integer rows, Integer numberOfPage) throws DataBaseException {
         String sql = "select * from test where subject like ? order by " + order + " limit ?,?";
         Integer offSet = (numberOfPage - 1) * rows;
         List<Test> tests = new ArrayList<>();
@@ -152,11 +178,12 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not get order tests in next page");
+            throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
         }
     }
 
-    public List<Test> nextPage(String order, Integer rows, Integer numberOfPage) {
+    public List<Test> nextPage(String order, Integer rows, Integer numberOfPage) throws DataBaseException {
         String sql = "select * from test order by " + order + " limit ?,?";
         Integer offSet = (numberOfPage - 1) * rows;
         List<Test> tests = new ArrayList<>();
@@ -177,38 +204,49 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not get order tests in next page");
+            throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
         }
     }
 
-
-    public Test getTest(Long id) {
-        TestDao testDao = new TestDao();
-        QuestionRepo questionRepo = new QuestionRepo();
-        AnswerRepo answerRepo = new AnswerRepo();
-        Test test = testDao.get(id);
-        List<Question> quiz = questionRepo.getAllById(id);
-        for (Question question : quiz) {
-            List<Answer> answers = answerRepo.getAnswersByQuestionId(question.getId());
-            question.setAnswerOptions(answers);
+    public Test get(Long id) throws DataBaseException {
+        String sql = "select * from test where id = ?";
+        Test test = null;
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setLong(1, id);
+            ResultSet resultSet = pst.executeQuery();
+            if (resultSet.next()) {
+                test = new Test();
+                test.setId(resultSet.getLong("id"));
+                test.setName(resultSet.getString("name"));
+                test.setSubject(resultSet.getString("subject"));
+                test.setDifficult(resultSet.getInt("difficult"));
+                test.setDuration(resultSet.getInt("duration"));
+            }
+            resultSet.close();
+            return test;
+        } catch (SQLException e) {
+            logger.log(Level.WARNING, "Can not get test");
+            throw new DataBaseException("Can not get test" + e.getMessage(), e);
         }
-        test.setQuiz(quiz);
-        return test;
     }
 
-    public void addPopularity(Long idTest) {
+    public void addPopularity(Long idTest) throws DataBaseException {
         String sql = "update test set popularity = popularity + 1 where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, idTest);
             pst.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not update test");
+            throw new DataBaseException("Can not update test" + e.getMessage(), e);
+
         }
     }
 
 
-    public boolean isNameExist(String name) {
+    public boolean isNameExist(String name) throws DataBaseException {
         String sql = "select * from test where name like ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -218,7 +256,35 @@ public class TestRepo {
             resultSet.close();
             return isExist;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, "Can not get order");
+            throw new DataBaseException("Can not get order" + e.getMessage(), e);
+        }
+    }
+
+    public void delete(Long id) throws DataBaseException {
+        String sql = "delete from test where id = ?";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setLong(1, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            logger.log(Level.WARNING, "Can not delete test");
+            throw new DataBaseException("Can not delete test" + e.getMessage(), e);
+        }
+    }
+
+    public int createTest(String name, String subject, int difficult, int duration) throws DataBaseException {
+        String sql = "insert into test (id, name, subject, difficult, duration) values(default, ?, ?, ?, ?)";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, name);
+            pst.setString(2, subject);
+            pst.setInt(3, difficult);
+            pst.setInt(4, duration);
+            return pst.executeUpdate();
+        } catch (SQLException e) {
+            logger.log(Level.WARNING, "Can not create test");
+            throw new DataBaseException("Can not crete test" + e.getMessage(), e);
         }
     }
 

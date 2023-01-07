@@ -16,9 +16,13 @@
 <html>
 <head>
     <title>Edit</title>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
 <br>
 <form method="post" action="edit_test">
     <input type="hidden" name="page" value="${requestScope.page}">
@@ -27,26 +31,25 @@
     subject <input type="text" name="subject" value="${requestScope.subject}"><br>
     difficult <input type="number" name="difficult" value="${requestScope.difficult}"><br>
     duration <input type="number" name="duration" value="${requestScope.duration}"><br>
-    <input class="button" type="submit" value="Edit test">
+    <input class="button" type="submit" value="<fmt:message key="button.edit.test"/>">
     <c:out value="${requestScope.message}"/>
 </form>
-
 
 
 <hr>
 <form action="next_page">
     <input type="hidden" name="page" value="${requestScope.page}">
-    <input class="button" type="submit" value="Back">
+    <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
-
-
 
 
 <br>
 <table class="sortable">
     <thead>
     <tr>
-        <th>Text</th>
+        <th><fmt:message key="table.head.text.of.question"/></th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -59,7 +62,7 @@
                     <input type="hidden" name="page" value="${requestScope.page}">
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${question.id}">
-                    <input class="button" type="submit" value="edit question">
+                    <input class="button" type="submit" value="<fmt:message key="button.edit.question"/>">
                 </form>
 
             </td>
@@ -68,7 +71,7 @@
                     <input type="hidden" name="page" value="${requestScope.page}">
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${question.id}">
-                    <input class="button" type="submit" value="delete question">
+                    <input class="button" type="submit" value="<fmt:message key="button.delete.question"/>">
                 </form>
             </td>
         </tr>
@@ -79,12 +82,10 @@
 
 <form method="post" action="add_question">
     <input type="hidden" name="page" value="${requestScope.page}">
-<%--    <input type="hidden" name="sub" value="${requestScope.sub}">--%>
-<%--    <input type="hidden" name="order" value="${requestScope.order}">--%>
-<%--    <input type="hidden" name="rows" value="${requestScope.rows}">--%>
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
-    <input type="text" required placeholder="text of question" name="text" value="${requestScope.too_Long_Text}"><br>
-    <input class="button" type="submit" value="Add question">
+    <input type="text" required placeholder="<fmt:message key="table.head.text.of.question"/>" name="text"
+           value="${requestScope.too_Long_Text}"><br>
+    <input class="button" type="submit" value="<fmt:message key="button.add.question"/>">
     <c:out value="${requestScope.message_question}"/>
 </form>
 

@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Answer;
 import models.Question;
 import servises.AnswerService;
@@ -29,17 +30,23 @@ public class NextQuestion implements RequestHandler {
         System.out.println("number question = " + numberQuestion);
 
         long idQuestion = questions.get(numberQuestion).getId();
-        List<Answer> answers = answerService.getAnswers(idQuestion);
-        req.setAttribute("answers", answers);
+        List<Answer> answers = null;
+        try {
+            answers = answerService.getAnswers(idQuestion);
+            req.setAttribute("answers", answers);
 
-        String text = questions.get(numberQuestion).getText();
-        req.setAttribute("text", text);
-        req.setAttribute("id_question", idQuestion);
-        req.setAttribute("number_question", ++numberQuestion);
+            String text = questions.get(numberQuestion).getText();
+            req.setAttribute("text", text);
+            req.setAttribute("id_question", idQuestion);
+            req.setAttribute("number_question", ++numberQuestion);
+            req.setAttribute("duration", req.getParameter("duration"));
 
-        req.setAttribute("duration", req.getParameter("duration"));
+            req.getRequestDispatcher("/WEB-INF/view/student/page_question.jsp").forward(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
 
-        req.getRequestDispatcher("/WEB-INF/view/student/page_question.jsp").forward(req, resp);
 
     }
 }

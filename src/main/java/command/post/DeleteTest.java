@@ -3,6 +3,7 @@ package command.post;
 import command.FilterTests;
 import command.NextPage;
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Test;
 import servises.TestService;
 import servises.UserService;
@@ -22,13 +23,18 @@ public class DeleteTest implements RequestHandler {
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
-        testService.delete(id);
-        req.getSession().setAttribute("tests", testService.getAll());
+        try {
+            testService.delete(id);
+            req.getSession().setAttribute("tests", testService.getAll());
+            NextPage nextPage = new NextPage();
+            nextPage.execute(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
 
 
-//        FilterTests filterTests = new FilterTests();
-//        filterTests.execute(req, resp);
-        NextPage nextPage = new NextPage();
-        nextPage.execute(req, resp);
+
+
     }
 }

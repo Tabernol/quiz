@@ -1,7 +1,9 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Test;
+import servises.PaginationService;
 import servises.TestService;
 
 import javax.servlet.ServletException;
@@ -21,32 +23,32 @@ public class NextPage implements RequestHandler {
         String order = (String) req.getSession().getAttribute("order");
         String stringRows = (String) req.getSession().getAttribute("rows");
         Integer rows = Integer.valueOf(stringRows);
-        System.out.println("next page= " + page);
-        System.out.println("next sub= " + sub);
-        System.out.println("next rows= " + rows);
-        System.out.println("next order= " + order);
 
         TestService testService = new TestService();
-        int countPages = testService.countPages(sub, rows);
-        System.out.println("page = " + page);
-        page = page > countPages ? countPages : page;
-        System.out.println("delete page= " +page);
-
-
+        PaginationService paginationService = new PaginationService();
         List<Test> tests;
-        if(sub.equals("all")){
-            tests = testService.nextPage(order,rows,page);
-        } else {
-            tests = testService.nextPage(sub, order, rows, page);
+        List<String> subjects;
+        int countPages;
+
+        try {
+            countPages = testService.countPages(sub, rows);
+            page = page > countPages ? countPages : page;
+
+            if (sub.equals("all")) {
+                tests = paginationService.nextPage(order, rows, page);
+            } else {
+                tests = paginationService.nextPage(sub, order, rows, page);
+            }
+            subjects = testService.getDistinctSubjects();
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
         }
-        List<String> subjects = testService.getDistinctSubjects();
-      //  List<String> sorts = Arrays.asList("difficult desc", "difficult asc", "name desc");
 
         req.getSession().setAttribute("subjects", subjects);
 //        req.getSession().setAttribute("order", order);
         req.getSession().setAttribute("tests", tests);
         req.setAttribute("count_pages", countPages);
-
         req.setAttribute("page", page);
 
         String role = (String) req.getSession().getAttribute("role");

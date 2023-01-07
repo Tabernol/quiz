@@ -15,6 +15,11 @@
 <html>
 <head>
     <title>Registration</title>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
+
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
@@ -24,12 +29,17 @@
         <input type="text" required placeholder="<fmt:message key="label.name"/>" name="name"><br>
         <input type="text" required placeholder="<fmt:message key="label.login"/>" name="login"><br>
         <input type="password" required placeholder="<fmt:message key="label.password"/>" name="password"><br>
-        <input class="button" type="submit" value="<fmt:message key="label.registration"/>">
+        <input class="button" type="submit" value="<fmt:message key="label.Registration"/>">
     </form>
 </div>
 <c:out value="${requestScope.message}"/>
 
 <br>
 <a href="<c:url value='/index.jsp' />"><fmt:message key="button.back"/></a>
+
+
+
+
+
 </body>
 </html>

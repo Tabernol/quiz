@@ -18,26 +18,28 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
+<br>
 <form method="post" action="edit_user">
     <input type="hidden" name="user_id" value="${requestScope.user.id}">
     Name <input type="text" name="name" value="${requestScope.user.name}"><br>
     Login <input type="text" name="login" value="${requestScope.user.login}"><br>
-    Password <input type="text" name="password" value="${requestScope.user.password}"><br>
     Role <select name="role">
+    <option selected value="${requestScope.user.role}"></option>
     <option value="student"> student</option>
     <option value="admin"> admin</option>
 </select><br>
     Status <select name="status">
-    <option value="false"> false</option>
-    <option value="true"> true</option>
+    <option value="false"><fmt:message key="select.option.no"/></option>
+    <option value="true"><fmt:message key="select.option.yes"/></option>
 </select>
     <br>
 
     <%--    <input type="text" name="status" value="${requestScope.user.blocked}"><br>--%>
-    <input class="button" type="submit" value="Edit user">
+    <input class="button" type="submit" value="<fmt:message key="button.edit.user"/>">
 </form>
 
-<form action="home">
+<form action="users">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
 

@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Question;
 import models.Test;
 import repo.QuestionRepo;
@@ -23,17 +24,18 @@ public class PageTest implements RequestHandler {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
 
-        Test test = testService.get(testId);
-        req.setAttribute("test_id", test.getId());
-        req.setAttribute("name", test.getName());
-        req.setAttribute("subject", test.getSubject());
-        req.setAttribute("difficult", test.getDifficult());
-        req.setAttribute("duration", test.getDuration());
-
-
+        Test test;
+        try {
+            test = testService.get(testId);
+            req.setAttribute("test_id", test.getId());
+            req.setAttribute("name", test.getName());
+            req.setAttribute("subject", test.getSubject());
+            req.setAttribute("difficult", test.getDifficult());
+            req.setAttribute("duration", test.getDuration());
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
         req.getRequestDispatcher("/WEB-INF/view/student/page_test.jsp").forward(req, resp);
-
-
-
     }
 }

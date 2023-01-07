@@ -15,9 +15,13 @@
 <html>
 <head>
     <title>users</title>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
@@ -26,8 +30,8 @@
     <tr>
         <th><fmt:message key="table.head.name"/></th>
         <th><fmt:message key="table.head.login"/></th>
-        <th><fmt:message key="table.head.password"/></th>
         <th><fmt:message key="table.head.status"/></th>
+        <th></th>
         <th></th>
     </tr>
     </thead>
@@ -37,11 +41,9 @@
         <tr>
             <td><c:out value="${user.name}"/></td>
             <td><c:out value="${user.login}"/></td>
-            <td><c:out value="${user.password}"/></td>
             <td><c:out value="${user.blocked}"/></td>
 
             <td>
-
                 <form action="edit_user">
                     <input type="hidden" name="user_id" value="${user.id}">
                     <input class="button" type="submit" value=" <fmt:message key="button.edit.user"/>">

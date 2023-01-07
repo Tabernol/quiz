@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -16,10 +17,15 @@ public class EditUser implements RequestHandler {
             throws ServletException, IOException {
         Long userId = Long.valueOf(req.getParameter("user_id"));
         UserService userService = new UserService();
-       // req.setAttribute("user_id", userId);
-        req.setAttribute("user", userService.get(userId));
+        try {
+            req.setAttribute("user", userService.get(userId));
+            req.getRequestDispatcher("/WEB-INF/view/admin/edit_user.jsp").forward(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
 
-        req.getRequestDispatcher("/WEB-INF/view/admin/edit_user.jsp").forward(req, resp);
+
 
 
     }

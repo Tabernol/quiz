@@ -1,6 +1,7 @@
 package controllers.filters;
 
-import dao.connection.MyDataSource;
+import connection.MyDataSource;
+import exeptions.DataBaseException;
 import servises.UserService;
 
 import javax.servlet.FilterChain;
@@ -29,40 +30,34 @@ public class AuthorizationFilter extends AbstractFilter {
         final String password = req.getParameter("password");// or this first??
         String lang = req.getParameter("lang");
         UserService userService = new UserService();
-        String role = "unknown";
+        String role;
+        long id;
 
-        long id = userService.getId(login);
-        if (id == -1) {
-            req.setAttribute("message", "You do not registred");
-            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-        } else if (userService.isBlocked(id)) {
-            req.setAttribute("message", "You are blocked");
-            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-        } else if (userService.isCorrectPassword(id, password)) {
-            role = userService.getRoleById(id);
-            session.setAttribute("user_id", id);// get id
-            session.setAttribute("name", userService.get(id).getName());
-            session.setAttribute("role", userService.get(id).getRole());
-            filterChain.doFilter(req, resp);
-            // moveToMenu(req, resp, role);
-        } else {
-            req.setAttribute("message", "Something wrong(");
-            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
+        try {
+            id = userService.getId(login);
+            if (id == -1) {
+                req.setAttribute("message", "You do not registered");
+                req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
+            } else if (userService.isBlocked(id)) {
+                req.setAttribute("message", "You are blocked");
+                req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
+            } else if (userService.isCorrectPassword(id, password)) {
+                session.setAttribute("user_id", id);// get id
+                session.setAttribute("name", userService.get(id).getName());
+                session.setAttribute("role", userService.get(id).getRole());
+                filterChain.doFilter(req, resp);
+
+                // moveToMenu(req, resp, role);
+            } else {
+                req.setAttribute("message", "Something wrong(");
+                req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
+            }
+
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
         }
 
-    }
 
-//    private void moveToMenu(final HttpServletRequest req,
-//                            final HttpServletResponse res,
-//                            final String role)
-//            throws ServletException, IOException {
-//
-//        if (role.equals("admin")) {
-//            req.getRequestDispatcher("/WEB-INF/view/admin/admin_menu.jsp").forward(req, res);
-//        } else if (role.equals("student")) {
-//            req.getRequestDispatcher("/WEB-INF/view/student/student_menu.jsp").forward(req, res);
-//        } else {
-//            req.getRequestDispatcher("/").forward(req, res);
-//        }
-//    }
+    }
 }

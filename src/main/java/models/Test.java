@@ -8,7 +8,7 @@ public class Test {
     private String subject;
     private int difficult;
     private int duration; //DateTime
-    private List<Question> quiz;
+   // private List<Question> quiz;
 
     public Test() {
     }
@@ -53,13 +53,13 @@ public class Test {
         this.duration = duration;
     }
 
-    public List<Question> getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(List<Question> quiz) {
-        this.quiz = quiz;
-    }
+//    public List<Question> getQuiz() {
+//        return quiz;
+//    }
+//
+//    public void setQuiz(List<Question> quiz) {
+//        this.quiz = quiz;
+//    }
 
     @Override
     public String toString() {

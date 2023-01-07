@@ -20,6 +20,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
 
 <div>
     <h5>Name  <c:out value="${requestScope.name}"/></h5>

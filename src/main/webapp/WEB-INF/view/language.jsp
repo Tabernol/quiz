@@ -33,6 +33,7 @@
 <%--</select>--%>
 <div class="form">
   <form method="post" action="language">
+    <input type="hidden" name=path" value="${pageContext}}">
     <select name="lang">
       <option value="en"><fmt:message key="language.en"/></option>
       <option value="ua"><fmt:message key="language.ukr"/></option>

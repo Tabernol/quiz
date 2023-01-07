@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import servises.ResultService;
 
 import javax.servlet.ServletException;
@@ -24,11 +25,14 @@ public class FinishTest implements RequestHandler {
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
         Integer percentResult = Math.toIntExact(count * 100 / size);
-        System.out.println(percentResult);
-
-        resultService.addResult(userId,testId,percentResult);
-
         req.setAttribute("percent_result", percentResult);
+
+        try {
+            resultService.addResult(userId,testId,percentResult);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
 
         req.getRequestDispatcher("/WEB-INF/view/student/page_finish.jsp").forward(req, resp);
 

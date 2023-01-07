@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -15,8 +16,14 @@ public class DeleteUser implements RequestHandler {
             throws ServletException, IOException {
         UserService userService = new UserService();
         Long userId = Long.valueOf(req.getParameter("user_id"));
-        userService.deleteUser(Long.valueOf(userId));
-        req.setAttribute("users", userService.getAll());
-        req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req,resp);
+        try {
+            userService.deleteUser(Long.valueOf(userId));
+            req.setAttribute("users", userService.getAll());
+            req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req,resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
+
     }
 }

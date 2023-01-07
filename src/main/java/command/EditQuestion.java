@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Answer;
 import models.Question;
 import servises.AnswerService;
@@ -21,19 +22,23 @@ public class EditQuestion implements RequestHandler {
         AnswerService answerService = new AnswerService();
         String testId = req.getParameter("test_id");
         String questionId = req.getParameter("question_id");
-
-        Question question = questionService.get(Long.valueOf(questionId));
-
-        req.setAttribute("question", question);
-
         req.setAttribute("test_id", req.getParameter("test_id"));
 
+        Question question = null;
+        List<Answer> answers = null;
+        try {
+            question = questionService.get(Long.valueOf(questionId));
+            answers = answerService.getAnswers(Long.valueOf(questionId));
+            req.setAttribute("answers", answers);
+            req.setAttribute("page", req.getParameter("page"));
+            req.setAttribute("question", question);
 
-        List<Answer> answers = answerService.getAnswers(Long.valueOf(questionId));
-        req.setAttribute("answers", answers);
-        req.setAttribute("page", req.getParameter("page"));
+            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
 
-        req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
 
     }
 }

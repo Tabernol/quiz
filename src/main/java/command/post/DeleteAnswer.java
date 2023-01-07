@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import servises.AnswerService;
 import servises.QuestionService;
 
@@ -20,15 +21,22 @@ public class DeleteAnswer implements RequestHandler {
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         Long answerId = Long.valueOf(req.getParameter("answer_id"));
 
-        answerService.deleteAnswer(answerId);
+        try {
+            answerService.deleteAnswer(answerId);
+            req.setAttribute("answers", answerService.getAnswers(questionId));
+            req.setAttribute("test_id", testId);
+            req.setAttribute("question_id", questionId);
+            req.setAttribute("question", questionService.get(questionId));
+            req.setAttribute("page", req.getParameter("page"));
+            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
 
-        req.setAttribute("answers", answerService.getAnswers(questionId));
-        req.setAttribute("test_id", testId);
-        req.setAttribute("question_id", questionId);
-        req.setAttribute("question", questionService.get(questionId));
-        req.setAttribute("page", req.getParameter("page"));
 
-        req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
+
+
 
 
 

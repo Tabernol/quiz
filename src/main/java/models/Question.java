@@ -6,7 +6,7 @@ public class Question {
     private long id;
     private long testId;
     private String text;
-    private List<Answer> answerOptions;
+    //private List<Answer> answerOptions;
 
     public Question() {
     }
@@ -35,13 +35,13 @@ public class Question {
         this.text = text;
     }
 
-    public List<Answer> getAnswerOptions() {
-        return answerOptions;
-    }
-
-    public void setAnswerOptions(List<Answer> answerOptions) {
-        this.answerOptions = answerOptions;
-    }
+//    public List<Answer> getAnswerOptions() {
+//        return answerOptions;
+//    }
+//
+//    public void setAnswerOptions(List<Answer> answerOptions) {
+//        this.answerOptions = answerOptions;
+//    }
 
     @Override
     public String toString() {
@@ -49,7 +49,7 @@ public class Question {
                 "id=" + id +
                 ", testId=" + testId +
                 ", text='" + text + '\'' +
-                ", answerOptions=" + answerOptions +
+              //  ", answerOptions=" + answerOptions +
                 '}';
     }
 }

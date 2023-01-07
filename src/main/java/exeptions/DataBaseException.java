@@ -1,7 +1,8 @@
 package exeptions;
 
-public class DataBaseException extends RuntimeException {
-    public DataBaseException(String message, Throwable throwable) {
-        super(message, throwable);
+public class DataBaseException extends QuizException {
+
+    public DataBaseException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

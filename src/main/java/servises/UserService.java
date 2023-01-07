@@ -1,50 +1,54 @@
 package servises;
 
-import dao.connection.MyDataSource;
-import dao.impl.UserDao;
+import exeptions.DataBaseException;
 import models.User;
+import repo.UserRepo;
 
 import java.util.List;
 
 public class UserService {
-    UserDao userDao = new UserDao();
+    UserRepo userRepo = new UserRepo();
 
-    public long getId(String login) {
-        return userDao.getId(login);
+    public long getId(String login) throws DataBaseException {
+        return userRepo.getId(login);
     }
 
-    public boolean isCorrectPassword(long id, String password) {
-        User user = userDao.get(id);
+    public boolean isCorrectPassword(long id, String password) throws DataBaseException {
+        User user = userRepo.get(id);
         //where need create log???
         return password.equals(user.getPassword());
     }
 
-    public String getRoleById(long id){
-        User user = userDao.get(id);
+    public String getRoleById(long id) throws DataBaseException {
+        User user = userRepo.get(id);
         return user.getRole();
     }
 
-    public User get(long id){
-        return userDao.get(id);
+    public User get(long id) throws DataBaseException {
+        return userRepo.get(id);
     }
 
-    public void createUser(String name, String login, String password){
-        userDao.createUser(login,password,name);
+    public void createUser(String name, String login, String password) throws DataBaseException {
+        userRepo.createUser(login, password, name);
     }
 
-    public List<User> getAll(){
-        return userDao.getAll();
+    public List<User> getAll() throws DataBaseException {
+        return userRepo.getAll();
     }
 
-    public void deleteUser(Long id){
-        userDao.delete(id);
+    public void deleteUser(Long id) throws DataBaseException {
+        userRepo.delete(id);
     }
 
-    public void updateUser(Long id, String name, String login, String password, String role, boolean status){
-        userDao.updateUser(id, name, login, password, role, status);
+    public int updateUser(Long id, String name, String login, String role, boolean status) throws DataBaseException {
+        return userRepo.updateUser(id, name, login, role, status);
     }
 
-    public boolean isBlocked(Long id){
-        return userDao.get(id).isBlocked();
+    public int updateUser(Long id, String name, String login) throws DataBaseException {
+        return userRepo.updateUser(id, name, login);
+    }
+
+    public boolean isBlocked(Long id) throws DataBaseException {
+        return userRepo.get(id).isBlocked();
     }
 }

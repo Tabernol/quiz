@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.User;
 import servises.UserService;
 
@@ -16,16 +17,19 @@ public class AllUser implements RequestHandler {
     public void execute(HttpServletRequest req, 
                         HttpServletResponse resp) 
             throws ServletException, IOException {
-        List<User> all = userService.getAll();
-        req.setAttribute("users",all );
-        req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req,resp);
+        List<User> all;
+        try {
+            all = userService.getAll();
+            req.setAttribute("users",all );
+            req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req,resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
 
-        String pathInfo = req.getPathInfo();
-        String contextPath = req.getContextPath();
-        String requestURI = req.getRequestURI();
-        System.out.println("context =  "+contextPath);
-        System.out.println("path info "+ pathInfo);
-        System.out.println("uri  = "+requestURI);
+
+
+
 
 
 

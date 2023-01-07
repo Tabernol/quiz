@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Question;
 import servises.QuestionService;
 import servises.TestService;
@@ -17,16 +18,23 @@ public class StartTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+        Long testId = Long.valueOf(req.getParameter("test_id"));
+
         QuestionService questionService = new QuestionService();
         TestService testService = new TestService();
+        List<Question> questions;
+        Integer duration;
 
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        testService.addPointPopularity(testId);
-        Integer duration = testService.get(testId).getDuration();
 
-        List<Question> questions = questionService.getAllById(Long.valueOf(testId));
+        try {
+            testService.addPointPopularity(testId);
+            duration = testService.get(testId).getDuration();
+            questions = questionService.getAllById(Long.valueOf(testId));
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
         Integer size = questions.size();
-
         //must start timer
 
         if (size > 0) {

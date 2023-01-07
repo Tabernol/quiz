@@ -15,9 +15,13 @@
 <html>
 <head>
     <title>tests</title>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/language.jsp"/>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
 <div>
     <form action="filter_tests">
         <select name="sub">

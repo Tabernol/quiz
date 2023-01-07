@@ -1,6 +1,7 @@
 package command;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Question;
 import models.Test;
 import servises.AnswerService;
@@ -22,23 +23,24 @@ public class EditTest implements RequestHandler {
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
-
-
         TestService testService = new TestService();
         QuestionService questionService = new QuestionService();
-//        AnswerService answerService = new AnswerService();
-        Test test = testService.get(id);
-        req.setAttribute("test_id", test.getId());
-        req.setAttribute("name", test.getName());
-        req.setAttribute("subject", test.getSubject());
-        req.setAttribute("difficult", test.getDifficult());
-        req.setAttribute("duration", test.getDuration());
+        List<Question> all;
 
-        List<Question> all = questionService.getAllById(id);
-        req.setAttribute("questions", all);
+        try {
+            Test test = testService.get(id);
+            all = questionService.getAllById(id);
 
-//        answerService.getAnswers()
-
+            req.setAttribute("test_id", test.getId());
+            req.setAttribute("name", test.getName());
+            req.setAttribute("subject", test.getSubject());
+            req.setAttribute("difficult", test.getDifficult());
+            req.setAttribute("duration", test.getDuration());
+            req.setAttribute("questions", all);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
         req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);
     }
 }

@@ -32,6 +32,11 @@ public class ContentSupplierCommands {
         COMMANDS.put("/info_test", new PageTest());
         COMMANDS.put("/start_test", new StartTest());
         COMMANDS.put("/next_question", new NextQuestion());
+        COMMANDS.put("/prg_edit_question_servlet", new PrgEditQuestionServlet());
+        COMMANDS.put("/prg_edit_test_servlet", new PrgEditTestServlet());
+        COMMANDS.put("/prg_create_test", new PrgCreateTest());
+        COMMANDS.put("/to_create_test", new ToCreateTest());
+        COMMANDS.put("/edit_profile", new EditProfile());
 
     }
 

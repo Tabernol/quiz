@@ -2,6 +2,7 @@ package command.post;
 
 import command.EditTest;
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import models.Test;
 import servises.TestService;
 import validator.DataValidator;
@@ -21,12 +22,13 @@ public class EditTestPost implements RequestHandler {
         String subject = req.getParameter("subject");
         int difficult = Integer.parseInt(req.getParameter("difficult"));
         int duration = Integer.parseInt(req.getParameter("duration"));
+        String page = req.getParameter("page");
 
         TestService testService = new TestService();
         req.setAttribute("test_id", testId);
-        req.setAttribute("page", req.getParameter("page"));
+        req.setAttribute("page", page);
 
-
+        Integer success = 0;
         if (!DataValidator.validateForNamePlusNumber(name)) {
             req.setAttribute("message", "name must contains only liters and numbers and space from 2-20 items");
             setPlaceHolder(req, resp);
@@ -40,16 +42,25 @@ public class EditTestPost implements RequestHandler {
             req.setAttribute("message", "duration must be from 1 to 30 minutes");
             setPlaceHolder(req, resp);
         } else {
-            testService.update(testId, name, subject, difficult, duration);
-            req.setAttribute("message", "All Right)");
-            setPlaceHolder(req, resp);
+            try {
+                int update = testService.update(testId, name, subject, difficult, duration);
+                if (update > 0) {
+                    success = update;
+                }
+                resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" + "?" + "suc=" + success + "&test_id=" +
+                        testId + "&page=" + page + "&message=All Right)");
+                //  req.setAttribute("message", "All Right)");
+            } catch (DataBaseException e) {
+                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+                throw new RuntimeException(e);
+            }
         }
     }
 
 
     private void setPlaceHolder(HttpServletRequest req,
                                 HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("page", req.getParameter("page"));
+        //req.setAttribute("page", req.getParameter("page"));
         EditTest editTest = new EditTest();
         editTest.execute(req, resp);
     }

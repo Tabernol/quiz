@@ -3,6 +3,7 @@ package command;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
+import repo.TestRepo;
 import servises.PaginationService;
 import servises.TestService;
 
@@ -24,7 +25,7 @@ public class NextPage implements RequestHandler {
         String stringRows = (String) req.getSession().getAttribute("rows");
         Integer rows = Integer.valueOf(stringRows);
 
-        TestService testService = new TestService();
+        TestService testService = new TestService(new TestRepo());
         PaginationService paginationService = new PaginationService();
         List<Test> tests;
         List<String> subjects;

@@ -16,10 +16,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/registration", ((req, resp) -> {
             req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
         }));
-        COMMANDS.put("/login_form", ((req, resp) -> {
-            String lang = req.getParameter("lang");
-            req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-        }));
+        COMMANDS.put("/login_form", new LoginForm());
         COMMANDS.put("/home", new Home());
         COMMANDS.put("/logout", new Logout());
         COMMANDS.put("/edit_user", new EditUser());

@@ -2,6 +2,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.UserRepo;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ public class DeleteUser implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepo());
         Long userId = Long.valueOf(req.getParameter("user_id"));
         try {
             userService.deleteUser(Long.valueOf(userId));

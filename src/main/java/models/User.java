@@ -10,9 +10,6 @@ public class User {
     private String name;
     private String role;
     private boolean isBlocked;
-    private Map<String, Integer> result;
-
-
 
     public boolean isBlocked() {
         return isBlocked;
@@ -23,7 +20,6 @@ public class User {
     }
 
     public User() {
-        result = new HashMap<>();
     }
 
     public long getId() {

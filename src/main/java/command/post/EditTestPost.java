@@ -4,6 +4,7 @@ import command.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
+import repo.TestRepo;
 import servises.TestService;
 import validator.DataValidator;
 
@@ -24,7 +25,7 @@ public class EditTestPost implements RequestHandler {
         int duration = Integer.parseInt(req.getParameter("duration"));
         String page = req.getParameter("page");
 
-        TestService testService = new TestService();
+        TestService testService = new TestService(new TestRepo());
         req.setAttribute("test_id", testId);
         req.setAttribute("page", page);
 

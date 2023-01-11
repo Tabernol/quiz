@@ -5,6 +5,7 @@ import command.NextPage;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
+import repo.TestRepo;
 import servises.TestService;
 import servises.UserService;
 
@@ -19,7 +20,7 @@ public class DeleteTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        TestService testService = new TestService();
+        TestService testService = new TestService(new TestRepo());
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 

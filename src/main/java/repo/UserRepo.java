@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -34,17 +35,17 @@ public class UserRepo {
             resultSet.close();
             return user;
         } catch (SQLException e) {
-            logger.warn( "Can not get order user");
+            logger.warn("Can not get order user");
             throw new DataBaseException("Can not get order user" + e.getMessage(), e);
         }
     }
 
-    public void delete(Long id) throws DataBaseException {
+    public int delete(Long id) throws DataBaseException {
         String sql = "delete from user where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
-            pst.executeUpdate();
+            return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can not delete user");
             throw new DataBaseException("Can not delete user" + e.getMessage(), e);
@@ -76,7 +77,7 @@ public class UserRepo {
         }
     }
 
-    public void createUser(String login, String password, String name) throws DataBaseException {
+    public int createUser(String login, String password, String name) throws DataBaseException {
         String sql = "insert into user (id, login, password, role, name) " +
                 "values (default, ?, ?, ?, ?)";
         try (Connection con = MyDataSource.getConnection();
@@ -85,7 +86,7 @@ public class UserRepo {
             pst.setString(2, password);
             pst.setString(3, "student");
             pst.setString(4, name);
-            pst.executeUpdate();
+            return pst.executeUpdate();
             //   return row;
         } catch (SQLException e) {
             logger.warn("Can not create user");

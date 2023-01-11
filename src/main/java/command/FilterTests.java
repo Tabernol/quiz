@@ -4,6 +4,7 @@ import constans.Sort;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
+import repo.TestRepo;
 import servises.TestService;
 
 import javax.servlet.ServletException;
@@ -30,7 +31,7 @@ public class FilterTests implements RequestHandler {
         session.setAttribute("order", order);
         session.setAttribute("rows", rows);
 
-        TestService testService = new TestService();
+        TestService testService = new TestService(new TestRepo());
         List<String> subjects;
         List<Test> filterTests;
         int countPages;

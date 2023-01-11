@@ -3,6 +3,7 @@ package command;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.User;
+import repo.UserRepo;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class AllUser implements RequestHandler {
-    UserService userService = new UserService();
+    UserService userService = new UserService(new UserRepo());
     @Override
     public void execute(HttpServletRequest req, 
                         HttpServletResponse resp) 

@@ -7,6 +7,7 @@ import command.ToCreateTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
+import repo.TestRepo;
 import servises.TestService;
 import validator.DataValidator;
 
@@ -31,7 +32,7 @@ public class CreateTest implements RequestHandler {
         int difficult = Integer.parseInt(req.getParameter("difficult"));
         int duration = Integer.parseInt(req.getParameter("duration"));
 
-        TestService testService = new TestService();
+        TestService testService = new TestService(new TestRepo());
         boolean isNameExist;
 
         try {

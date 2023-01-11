@@ -3,6 +3,7 @@ package command.post;
 import command.EditProfile;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.UserRepo;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ public class EditUserProfile implements RequestHandler {
         String login = req.getParameter("login");
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepo());
 
         try {
             userService.updateUser(userId, name, login);

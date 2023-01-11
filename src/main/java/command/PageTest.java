@@ -5,6 +5,7 @@ import exeptions.DataBaseException;
 import models.Question;
 import models.Test;
 import repo.QuestionRepo;
+import repo.TestRepo;
 import servises.QuestionService;
 import servises.TestService;
 
@@ -19,7 +20,7 @@ public class PageTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        TestService testService = new TestService();
+        TestService testService = new TestService(new TestRepo());
         req.setAttribute("page", req.getParameter("page"));
         Long testId = Long.valueOf(req.getParameter("test_id"));
 

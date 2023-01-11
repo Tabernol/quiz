@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -232,12 +233,12 @@ public class TestRepo {
         }
     }
 
-    public void addPopularity(Long idTest) throws DataBaseException {
+    public int addPopularity(Long idTest) throws DataBaseException {
         String sql = "update test set popularity = popularity + 1 where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, idTest);
-            pst.executeUpdate();
+            return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can not update test");
             throw new DataBaseException("Can not update test" + e.getMessage(), e);
@@ -261,12 +262,12 @@ public class TestRepo {
         }
     }
 
-    public void delete(Long id) throws DataBaseException {
+    public int delete(Long id) throws DataBaseException {
         String sql = "delete from test where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
-            pst.executeUpdate();
+            return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can not delete test");
             throw new DataBaseException("Can not delete test" + e.getMessage(), e);

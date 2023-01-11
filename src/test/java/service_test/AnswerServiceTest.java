@@ -38,8 +38,6 @@ public class AnswerServiceTest {
         answer.setResult(true);
         List<Answer> answers = new ArrayList<>();
         answers.add(answer);
-
-
         Mockito.when(mockAnswerRepo.getAnswersByQuestionId(Mockito.anyLong())).thenReturn(answers);
         assertEquals(answers, answerService.getAnswers(1L));
     }

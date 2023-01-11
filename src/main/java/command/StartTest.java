@@ -4,6 +4,7 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Question;
 import repo.QuestionRepo;
+import repo.TestRepo;
 import servises.QuestionService;
 import servises.TestService;
 
@@ -22,7 +23,7 @@ public class StartTest implements RequestHandler {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
         QuestionService questionService = new QuestionService(new QuestionRepo());
-        TestService testService = new TestService();
+        TestService testService = new TestService(new TestRepo());
         List<Question> questions;
         Integer duration;
 
@@ -32,7 +33,7 @@ public class StartTest implements RequestHandler {
             duration = testService.get(testId).getDuration();
             questions = questionService.getAllById(Long.valueOf(testId));
         } catch (DataBaseException e) {
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
         Integer size = questions.size();

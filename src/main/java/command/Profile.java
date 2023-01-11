@@ -4,6 +4,7 @@ import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import models.User;
+import repo.UserRepo;
 import servises.ResultService;
 import servises.UserService;
 
@@ -22,7 +23,7 @@ public class Profile implements RequestHandler {
 
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepo());
         ResultService resultService = new ResultService();
 
         User user = null;
@@ -36,7 +37,7 @@ public class Profile implements RequestHandler {
 
             req.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(req, resp);
         } catch (DataBaseException e) {
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
 

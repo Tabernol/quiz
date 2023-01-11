@@ -2,6 +2,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.UserRepo;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ public class EditUserPost implements RequestHandler {
         String role = req.getParameter("role");
         Boolean status = Boolean.valueOf(req.getParameter("status"));
 
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepo());
 
         try {
             int i = userService.updateUser(userId, name, login, role, status);

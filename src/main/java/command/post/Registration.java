@@ -2,6 +2,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.UserRepo;
 import servises.PasswordHashingService;
 import servises.UserService;
 import validator.DataValidator;
@@ -26,7 +27,7 @@ public class Registration implements RequestHandler {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepo());
         try {
             if (userService.getId(login) != -1) {
                 req.setAttribute("message", "this login already exists");

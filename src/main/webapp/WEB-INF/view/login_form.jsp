@@ -18,6 +18,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
+
+<br>
+<br>
 <div class="form">
     <form method="post" action="login">
         <input type="text" required placeholder="<fmt:message key="label.login"/>" name="login"><br>

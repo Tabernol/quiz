@@ -21,8 +21,8 @@ public class QuestionService {
         return questionRepo.createQuestion(testId, text);
     }
 
-    public void deleteQuestion(Long id) throws DataBaseException {
-        questionRepo.delete(id);
+    public int deleteQuestion(Long id) throws DataBaseException {
+        return questionRepo.delete(id);
     }
 
     public Question get(Long id) throws DataBaseException {

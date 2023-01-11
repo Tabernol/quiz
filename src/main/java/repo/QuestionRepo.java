@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -73,13 +74,12 @@ public class QuestionRepo {
         }
     }
 
-    public void delete(Long id) throws DataBaseException {
+    public int delete(Long id) throws DataBaseException {
         String sql = "delete from question where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
-            pst.executeUpdate();
-
+            return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can' delete question by id");
             throw new DataBaseException("Can' delete question by id" + e.getMessage(), e);

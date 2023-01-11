@@ -1,15 +1,11 @@
 package service_test;
 
 import exeptions.DataBaseException;
-import exeptions.QuizException;
-import models.Answer;
 import models.Question;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import repo.AnswerRepo;
 import repo.QuestionRepo;
-import servises.AnswerService;
 import servises.QuestionService;
 
 import java.util.ArrayList;
@@ -19,16 +15,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuestionServiceTest {
     @Mock
-    private QuestionRepo questionRepo = Mockito.mock(QuestionRepo.class);
+    private QuestionRepo mockQuestionRepo = Mockito.mock(QuestionRepo.class);
 
-    QuestionService questionService = new QuestionService(questionRepo);
-
+    QuestionService questionService = new QuestionService(mockQuestionRepo);
 
     @Test
     public void getQuestionTest() throws DataBaseException {
         Question question = new Question();
         question.setId(12);
-        Mockito.when(questionRepo.get(Mockito.anyLong())).thenReturn(question);
+        Mockito.when(mockQuestionRepo.get(Mockito.anyLong())).thenReturn(question);
         Assertions.assertEquals(question, questionService.get(1L));
     }
 
@@ -37,7 +32,29 @@ public class QuestionServiceTest {
         Question question = new Question();
         question.setId(43L);
         List<Question> questions = new ArrayList<>();
-        Mockito.when(questionRepo.getAllById(Mockito.anyLong())).thenReturn(questions);
+        Mockito.when(mockQuestionRepo.getAllById(Mockito.anyLong())).thenReturn(questions);
         assertEquals(questions, questionService.getAllById(2L));
+    }
+
+    @Test
+    public void addQuestionAddTest() throws DataBaseException {
+        Mockito.when(mockQuestionRepo.createQuestion(Mockito.anyLong(), Mockito.anyString())).thenReturn(1);
+        int i = questionService.addQuestion(Mockito.anyLong(), Mockito.anyString());
+        assertEquals(1, i);
+
+    }
+
+    @Test
+    public void deleteQuestionDeleteTest() throws DataBaseException {
+        Mockito.when(mockQuestionRepo.delete(Mockito.anyLong())).thenReturn(1);
+        int i = questionService.deleteQuestion(Mockito.anyLong());
+        assertEquals(1, i);
+    }
+
+    @Test
+    public void updateQuestionTest() throws DataBaseException {
+        Mockito.when(mockQuestionRepo.updateQuestion(Mockito.anyString(), Mockito.anyLong())).thenReturn(1);
+        int update = questionService.update(Mockito.anyString(), Mockito.anyLong());
+        assertEquals(1, update);
     }
 }

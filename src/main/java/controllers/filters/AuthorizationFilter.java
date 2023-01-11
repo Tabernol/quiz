@@ -2,6 +2,7 @@ package controllers.filters;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import repo.UserRepo;
 import servises.PasswordHashingService;
 import servises.UserService;
 
@@ -32,7 +33,7 @@ public class AuthorizationFilter extends AbstractFilter {
         final String login = req.getParameter("login");
         final String password = req.getParameter("password");// or this first??
         String lang = req.getParameter("lang");
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepo());
         String role;
         long id;
 
@@ -63,7 +64,7 @@ public class AuthorizationFilter extends AbstractFilter {
 
 
     private boolean isCorrectPassword(Long userId, String password) {
-        UserService userService = new UserService();
+        UserService userService = new UserService(new UserRepo());
         try {
             String passwordInDataBase = userService.get(userId).getPassword();
             return PasswordHashingService.validatePassword(password, passwordInDataBase);

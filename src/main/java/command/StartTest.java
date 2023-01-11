@@ -3,6 +3,7 @@ package command;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Question;
+import repo.QuestionRepo;
 import servises.QuestionService;
 import servises.TestService;
 
@@ -20,7 +21,7 @@ public class StartTest implements RequestHandler {
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
-        QuestionService questionService = new QuestionService();
+        QuestionService questionService = new QuestionService(new QuestionRepo());
         TestService testService = new TestService();
         List<Question> questions;
         Integer duration;

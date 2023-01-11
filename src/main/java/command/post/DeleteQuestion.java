@@ -3,6 +3,7 @@ package command.post;
 import command.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.QuestionRepo;
 import servises.QuestionService;
 
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ public class DeleteQuestion implements RequestHandler {
         req.setAttribute("page", req.getParameter("page"));
         req.setAttribute("test_id", req.getParameter("test_id"));
 
-        QuestionService questionService = new QuestionService();
+        QuestionService questionService = new QuestionService(new QuestionRepo());
         String id = req.getParameter("question_id");
         try {
             questionService.deleteQuestion(Long.valueOf(id));

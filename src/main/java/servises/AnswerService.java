@@ -8,7 +8,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AnswerService {
-    AnswerRepo answerRepo = new AnswerRepo();
+    AnswerRepo answerRepo;
+
+    public AnswerService(AnswerRepo answerRepo) {
+        this.answerRepo = answerRepo;
+    }
 
     public List<Answer> getAnswers(Long questionId) throws DataBaseException{
         return answerRepo.getAnswersByQuestionId(questionId);
@@ -18,12 +22,8 @@ public class AnswerService {
         return answerRepo.createAnswer(questionId, text, result);
     }
 
-    public void deleteAnswer(Long id) throws DataBaseException {
-        answerRepo.delete(id);
-    }
-
-    public List<String> getOnlyOptionAnswers(Long idQuestion) throws DataBaseException {
-        return answerRepo.getOptionsAnswerForQuestion(idQuestion);
+    public int deleteAnswer(Long id) throws DataBaseException {
+       return answerRepo.delete(id);
     }
 
 }

@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/language.jsp"/>
+
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
 <form method="post" action="edit_question">
@@ -73,7 +73,8 @@
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="hidden" name="question_id" value="${requestScope.question.id}">
-    <input type="text" required placeholder="<fmt:message key="table.head.text.of.answer"/>" name="text" value="${requestScope.too_long_answer}"><br>
+    <input type="text" required placeholder="<fmt:message key="table.head.text.of.answer"/>"
+           name="text" value="${requestScope.too_long_answer}"><br>
     <input type="radio" name="result" value="true"><fmt:message key="select.option.true"/> <br>
     <input type="radio" name="result" value="false"><fmt:message key="select.option.false"/> <br>
     <input class="button" type="submit" value="<fmt:message key="button.add.answer"/>">

@@ -20,7 +20,6 @@
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/language.jsp"/>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <div>
     <form action="filter_tests">

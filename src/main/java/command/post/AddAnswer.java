@@ -1,7 +1,10 @@
 package command.post;
 
+import command.EditQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.AnswerRepo;
+import repo.QuestionRepo;
 import servises.AnswerService;
 import servises.QuestionService;
 import validator.DataValidator;
@@ -12,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AddAnswer implements RequestHandler {
-    AnswerService answerService = new AnswerService();
-    QuestionService questionService = new QuestionService();
+    AnswerService answerService = new AnswerService(new AnswerRepo());
+    QuestionService questionService = new QuestionService(new QuestionRepo());
 
     @Override
     public void execute(HttpServletRequest req,
@@ -24,17 +27,17 @@ public class AddAnswer implements RequestHandler {
         String page = req.getParameter("page");
         String text = req.getParameter("text");
 
+        req.setAttribute("test_id", testId);
+        req.setAttribute("question_id", questionId);
+        req.setAttribute("page", req.getParameter("page"));
 
-        System.out.println("add = question id = " + questionId);
 
         Integer success = 0;
         if (!DataValidator.validateForNotLongString(text)) {
-            req.setAttribute("test_id", testId);
-            req.setAttribute("question_id", questionId);
-            req.setAttribute("page", req.getParameter("page"));
             req.setAttribute("message_answer", "answer is too long");
             req.setAttribute("too_long_answer", text);
-            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+            EditQuestion editQuestion = new EditQuestion();
+            editQuestion.execute(req, resp);
         } else {
             try {
                 Boolean result = Boolean.valueOf(req.getParameter("result"));
@@ -43,7 +46,7 @@ public class AddAnswer implements RequestHandler {
                     success = i;
                 }
                 resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" + "?" + "suc=" + success + "&test_id=" +
-                        testId + "&question_id=" + questionId + "&page=" + page+"&message_answer=All Right");
+                        testId + "&question_id=" + questionId + "&page=" + page + "&message_answer=All Right");
             } catch (DataBaseException e) {
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
                 throw new RuntimeException(e);
@@ -52,19 +55,4 @@ public class AddAnswer implements RequestHandler {
         }
 
     }
-
-//    private void goTo(HttpServletRequest req, HttpServletResponse resp, Long testId, Long questionId, int success)
-//            throws ServletException, IOException {
-//        req.setAttribute("test_id", testId);
-//        req.setAttribute("question_id", questionId);
-//        req.setAttribute("page", req.getParameter("page"));
-//
-//        resp.sendRedirect(req.getContextPath() + "/prg_servlet"+"?" + "suc=" + success);
-
-//        PrgServlet prgServlet = new PrgServlet();
-//        prgServlet.execute(req, resp);
-
-//        EditQuestion editQuestion = new EditQuestion();
-//        editQuestion.execute(req, resp);
-//    }
 }

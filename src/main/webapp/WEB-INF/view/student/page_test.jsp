@@ -19,7 +19,6 @@
     <title>Info test</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/language.jsp"/>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
 <div>

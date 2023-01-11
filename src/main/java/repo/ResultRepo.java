@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class ResultRepo {
-    Logger logger = Logger.getLogger(ResultRepo.class.getName());
+    Logger logger = LogManager.getLogger(ResultRepo.class);
 
     public List<ResultDto> resultDtoList(Long userId) throws DataBaseException {
         String sql = "select name, subject, difficult, duration, grade from test" +
@@ -36,7 +36,7 @@ public class ResultRepo {
             resultSet.close();
             return resultDtoList;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order result");
+            logger.warn("Can not get order result");
             throw new DataBaseException("Can not get order result" + e.getMessage(), e);
 
         }
@@ -51,7 +51,7 @@ public class ResultRepo {
             pst.setInt(3, grade);
             pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not insert into result");
+            logger.warn("Can not insert into result");
             throw new DataBaseException("Can not insert into result" + e.getMessage(), e);
         }
     }

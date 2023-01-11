@@ -9,11 +9,13 @@ public class DataValidator {
     private static final String REGEX_NAME = "^[a-zA-ZА-Яа-я *]{2,20}$";
     private static final String REGEX_NAME_NUMBER = "^[0-9a-zA-ZА-Яа-я *]{2,20}$";
 
-    private static final String REGEX_NOT_LONG_STRING = "^[\\s\\S]{2,20}$";
+    private static final String REGEX_NOT_LONG_STRING = "^[\\s\\S]{1,20}$";
     private static final Integer MIN_DIFFICULT = 1;
     private static final Integer MAX_DIFFICULT = 100;
     private static final Integer MIN_DURATION = 1;
     private static final Integer MAX_DURATION = 30;
+
+
 
     public static boolean validateLogin(String login){
         return Pattern.matches(REGEX_LOGIN, login);
@@ -46,11 +48,6 @@ public class DataValidator {
 
     public static boolean validateForNamePlusNumber(String string){
         return Pattern.matches(REGEX_NAME_NUMBER, string);
-    }
-//
-    public static void main(String[] args) {
-
-
     }
 
 

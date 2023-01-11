@@ -5,6 +5,7 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Question;
 import models.Test;
+import repo.QuestionRepo;
 import servises.QuestionService;
 import servises.TestService;
 import validator.DataValidator;
@@ -33,7 +34,7 @@ public class AddQuestion implements RequestHandler {
             editTest.execute(req, resp);
         } else {
             try {
-                QuestionService questionService = new QuestionService();
+                QuestionService questionService = new QuestionService(new QuestionRepo());
                 int i = questionService.addQuestion(testId, text);
                 if (i > 0) {
                     success = i;

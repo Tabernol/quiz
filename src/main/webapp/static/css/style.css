@@ -21,4 +21,19 @@ th {
     background-color: #333;
     color: white;
 }
-/*=============================================================*/
+
+#header{
+    background-color: dimgrey;
+    font-size: large;
+}
+.bottom-nav{
+
+}
+
+#lang{
+    float: right;
+    position: fixed;
+}
+
+
+

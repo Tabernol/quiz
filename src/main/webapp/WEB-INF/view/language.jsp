@@ -14,32 +14,23 @@
 <html>
 <head>
     <title>Language</title>
-
-<%--  <script type="text/javascript">--%>
-
-<%--    function changeFunc(i) {--%>
-<%--        <c:set var="lang" value="${i}"/>--%>
-<%--        --%>
-<%--&lt;%&ndash;        <c:param name="lang" value="en"/>&ndash;%&gt;--%>
-<%--   //   alert(i);--%>
-<%--    }--%>
-
-<%--  </script>--%>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <%--<select id="selectBox" onchange="changeFunc(value);">--%>
 <%--  <option value="en">en</option>--%>
 <%--  <option value="ua">ua</option>--%>
 <%--</select>--%>
-<div class="form">
-  <form method="post" action="language">
-    <input type="hidden" name=path" value="${pageContext}}">
-    <select name="lang">
-      <option value="en"><fmt:message key="language.en"/></option>
-      <option value="ua"><fmt:message key="language.ukr"/></option>
-    </select><br>
-    <input class="btn btn-success pull-right" type="submit" value="<fmt:message key="button.choose"/>">
-  </form>
+<div id="lang">
+    <form method="post" action="language">
+        <select name="lang">
+            <option value="en"><fmt:message key="language.en"/></option>
+            <option value="ua"><fmt:message key="language.ukr"/></option>
+        </select><br>
+        <input class="btn btn-success pull-right" type="submit" value="<fmt:message key="button.choose"/>">
+    </form>
 </div>
 </body>
 </html>

@@ -7,7 +7,11 @@ import repo.QuestionRepo;
 import java.util.List;
 
 public class QuestionService {
-    QuestionRepo questionRepo = new QuestionRepo();
+    QuestionRepo questionRepo;
+
+    public QuestionService(QuestionRepo questionRepo) {
+        this.questionRepo = questionRepo;
+    }
 
     public List<Question> getAllById(Long id) throws DataBaseException {
         return questionRepo.getAllById(id);

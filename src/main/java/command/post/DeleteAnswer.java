@@ -2,6 +2,8 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.AnswerRepo;
+import repo.QuestionRepo;
 import servises.AnswerService;
 import servises.QuestionService;
 
@@ -15,8 +17,8 @@ public class DeleteAnswer implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        QuestionService questionService = new QuestionService();
-        AnswerService answerService = new AnswerService();
+        QuestionService questionService = new QuestionService(new QuestionRepo());
+        AnswerService answerService = new AnswerService(new AnswerRepo());
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         Long answerId = Long.valueOf(req.getParameter("answer_id"));

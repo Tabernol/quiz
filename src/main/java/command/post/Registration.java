@@ -2,6 +2,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import servises.PasswordHashingService;
 import servises.UserService;
 import validator.DataValidator;
 
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class Registration implements RequestHandler {
 
@@ -17,13 +20,15 @@ public class Registration implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+
+
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
         UserService userService = new UserService();
         try {
-            if (userService.getId(login) == -1) {
+            if (userService.getId(login) != -1) {
                 req.setAttribute("message", "this login already exists");
                 req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
             } else if (!DataValidator.validateLogin(login)) {
@@ -36,7 +41,15 @@ public class Registration implements RequestHandler {
                 req.setAttribute("message", "name is invalid");
                 req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
             } else {
-                userService.createUser(name, login, password);
+                String passwordHash;
+                try {
+                    passwordHash = PasswordHashingService.generateStrongPasswordHash(password);
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                } catch (InvalidKeySpecException e) {
+                    throw new RuntimeException(e);
+                }
+                userService.createUser(name, login, passwordHash);
                 Long userId = userService.getId(login);
                 HttpSession session = req.getSession();
                 session.setAttribute("user_id", userId);// get id
@@ -48,7 +61,5 @@ public class Registration implements RequestHandler {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-
-
     }
 }

@@ -17,7 +17,6 @@
     <title>edit user</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/language.jsp"/>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <br>
 <form method="post" action="edit_user">

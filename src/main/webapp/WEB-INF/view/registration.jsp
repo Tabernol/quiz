@@ -22,8 +22,7 @@
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/language.jsp"/>
-
+<jsp:include page="/WEB-INF/view/header.jsp"/>
 <div class="form">
     <form method="post" action="registration">
         <input type="text" required placeholder="<fmt:message key="label.name"/>" name="name"><br>

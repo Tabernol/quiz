@@ -4,6 +4,7 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Question;
 import models.Test;
+import repo.QuestionRepo;
 import servises.AnswerService;
 import servises.QuestionService;
 import servises.TestService;
@@ -24,7 +25,7 @@ public class EditTest implements RequestHandler {
         req.setAttribute("page", req.getParameter("page"));
 
         TestService testService = new TestService();
-        QuestionService questionService = new QuestionService();
+        QuestionService questionService = new QuestionService(new QuestionRepo());
         List<Question> all;
 
         try {

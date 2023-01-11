@@ -20,7 +20,6 @@
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/language.jsp"/>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">

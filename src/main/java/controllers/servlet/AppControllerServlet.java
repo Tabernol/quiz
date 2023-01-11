@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 //rename edit_user, edit_test because use one url post and get methods
 @WebServlet(urlPatterns = {
@@ -35,10 +35,10 @@ import java.util.logging.Logger;
 })
 public class AppControllerServlet extends HttpServlet {
 
-    private static final Logger log = Logger.getLogger(AppControllerServlet.class.getName());
+    static final Logger log = LogManager.getLogger(AppControllerServlet.class);
 
     static {
-        log.log(Level.WARNING, "START");
+        log.info("start APP");
         MyDataSource.init();
     }
 
@@ -47,7 +47,8 @@ public class AppControllerServlet extends HttpServlet {
                          HttpServletResponse resp)
             throws ServletException, IOException {
         String lang = req.getParameter("login");
-        log.log(Level.WARNING, " GET");
+        log.info("get");
+       // log.log(Level.WARNING, " GET");
         String servletPath = req.getServletPath();
         ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
     }
@@ -56,7 +57,8 @@ public class AppControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req,
                           HttpServletResponse resp)
             throws ServletException, IOException {
-        log.log(Level.WARNING, " POST");
+        log.info("post");
+        //log.log(Level.WARNING, " POST");
         String servletPath = req.getServletPath();
         DataHandleCommand.COMMANDS.get(servletPath).execute(req, resp);
     }

@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class TestRepo {
-    private static final Logger logger = Logger.getLogger(TestRepo.class.getName());
+    private static final Logger logger = LogManager.getLogger(TestRepo.class);
 
     public List<String> getDistinctSubject() throws DataBaseException {
         String sql = "select distinct subject from test";
@@ -29,7 +29,7 @@ public class TestRepo {
             }
             return subjects;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order distinct subject from test");
+            logger.warn("Can not get order distinct subject from test");
             throw new DataBaseException("Can not get order distinct subject from test" + e.getMessage(), e);
         }
     }
@@ -56,7 +56,7 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order filter test");
+            logger.warn("Can not get order filter test");
             throw new DataBaseException("Can not get order filter test" + e.getMessage(), e);
         }
     }
@@ -72,7 +72,7 @@ public class TestRepo {
             pst.setString(5, String.valueOf(id));
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not update test");
+            logger.warn("Can not update test");
             throw new DataBaseException("Can not update test" + e.getMessage(), e);
         }
     }
@@ -89,7 +89,7 @@ public class TestRepo {
             resultSet.close();
             return count;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get count tests of subject");
+            logger.warn("Can not get count tests of subject");
             throw new DataBaseException("Can not get count tests of subject" + e.getMessage(), e);
         }
     }
@@ -102,7 +102,7 @@ public class TestRepo {
             resultSet.next();
             return resultSet.getInt(1);
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get count tests");
+            logger.warn("Can not get count tests");
             throw new DataBaseException("Can not get count tests" + e.getMessage(), e);
         }
     }
@@ -126,7 +126,7 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order tests");
+            logger.warn("Can not get order tests");
             throw new DataBaseException("Can not get order tests" + e.getMessage(), e);
         }
     }
@@ -150,7 +150,7 @@ public class TestRepo {
             }
             return tests;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order tests");
+            logger.warn("Can not get order tests");
             throw new DataBaseException("Can not get order tests" + e.getMessage(), e);
         }
     }
@@ -178,7 +178,7 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order tests in next page");
+            logger.warn("Can not get order tests in next page");
             throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
         }
     }
@@ -204,7 +204,7 @@ public class TestRepo {
             resultSet.close();
             return tests;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order tests in next page");
+            logger.warn("Can not get order tests in next page");
             throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
         }
     }
@@ -227,7 +227,7 @@ public class TestRepo {
             resultSet.close();
             return test;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get test");
+            logger.warn("Can not get test");
             throw new DataBaseException("Can not get test" + e.getMessage(), e);
         }
     }
@@ -239,7 +239,7 @@ public class TestRepo {
             pst.setLong(1, idTest);
             pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not update test");
+            logger.warn("Can not update test");
             throw new DataBaseException("Can not update test" + e.getMessage(), e);
 
         }
@@ -256,7 +256,7 @@ public class TestRepo {
             resultSet.close();
             return isExist;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not get order");
+            logger.warn("Can not get order");
             throw new DataBaseException("Can not get order" + e.getMessage(), e);
         }
     }
@@ -268,7 +268,7 @@ public class TestRepo {
             pst.setLong(1, id);
             pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not delete test");
+            logger.warn("Can not delete test");
             throw new DataBaseException("Can not delete test" + e.getMessage(), e);
         }
     }
@@ -283,7 +283,7 @@ public class TestRepo {
             pst.setInt(4, duration);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not create test");
+            logger.warn("Can not create test");
             throw new DataBaseException("Can not crete test" + e.getMessage(), e);
         }
     }

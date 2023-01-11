@@ -2,6 +2,7 @@ package controllers.filters;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import servises.PasswordHashingService;
 import servises.UserService;
 
 import javax.servlet.FilterChain;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 @WebFilter(filterName = "AuthorizationFilter", value = "/login")
 public class AuthorizationFilter extends AbstractFilter {
@@ -41,13 +44,12 @@ public class AuthorizationFilter extends AbstractFilter {
             } else if (userService.isBlocked(id)) {
                 req.setAttribute("message", "You are blocked");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-            } else if (userService.isCorrectPassword(id, password)) {
+            } else if (isCorrectPassword(id, password)) {
                 session.setAttribute("user_id", id);// get id
                 session.setAttribute("name", userService.get(id).getName());
                 session.setAttribute("role", userService.get(id).getRole());
                 filterChain.doFilter(req, resp);
 
-                // moveToMenu(req, resp, role);
             } else {
                 req.setAttribute("message", "Something wrong(");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
@@ -57,7 +59,16 @@ public class AuthorizationFilter extends AbstractFilter {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
+    }
 
 
+    private boolean isCorrectPassword(Long userId, String password) {
+        UserService userService = new UserService();
+        try {
+            String passwordInDataBase = userService.get(userId).getPassword();
+            return PasswordHashingService.validatePassword(password, passwordInDataBase);
+        } catch (DataBaseException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -4,6 +4,7 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Answer;
 import models.Question;
+import repo.AnswerRepo;
 import servises.AnswerService;
 import servises.QuestionService;
 
@@ -18,7 +19,7 @@ public class NextQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        AnswerService answerService = new AnswerService();
+        AnswerService answerService = new AnswerService(new AnswerRepo());
 
         List<Question> questions = (List<Question>) req.getSession().getAttribute("questions");
 
@@ -41,7 +42,7 @@ public class NextQuestion implements RequestHandler {
             req.setAttribute("number_question", ++numberQuestion);
             req.setAttribute("duration", req.getParameter("duration"));
 
-            req.getRequestDispatcher("/WEB-INF/view/student/page_question.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/view/student/page_base_question.jsp").forward(req, resp);
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);

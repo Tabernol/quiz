@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class AnswerRepo {
-    Logger logger = Logger.getLogger(AnswerRepo.class.getName());
+    Logger logger = LogManager.getLogger(AnswerRepo.class);
 
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
         String sql = "select * from answer where question_id = ?";
@@ -34,7 +34,7 @@ public class AnswerRepo {
             resultSet.close();
             return answers;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can't get orders answer by question id problem");
+            logger.warn("Can't get orders answer by question id problem");
             throw new DataBaseException("Can't get orders by question id problem" + e.getMessage(), e);
         }
     }
@@ -49,39 +49,20 @@ public class AnswerRepo {
             pst.setBoolean(3, result);
             return  pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can't insert answer problem");
+            logger.warn("Can't insert answer problem");
             throw new DataBaseException("Can't insert answer problem" + e.getMessage(), e);
         }
     }
 
-    public void delete(Long id) throws DataBaseException {
+    public int delete(Long id) throws DataBaseException {
         String sql = "delete from answer where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
-            pst.executeUpdate();
+           return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can't delete answer problem");
+            logger.warn("Can't delete answer problem");
             throw new DataBaseException("Can't delete answer problem" + e.getMessage(), e);
-        }
-    }
-
-
-    public List<String> getOptionsAnswerForQuestion(Long idQuestion) throws DataBaseException {
-        String sql = "select a_text from answer where question_id = ?";
-        List<String> answers = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, idQuestion.toString());
-            ResultSet resultSet = pst.executeQuery();
-            while (resultSet.next()) {
-                answers.add(resultSet.getString("a_text"));
-            }
-            resultSet.close();
-            return answers;
-        } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can't get orders list of text answers");
-            throw new DataBaseException("Can't get orders list of text answers" + e.getMessage(), e);
         }
     }
 }

@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class QuestionRepo {
-    Logger logger = Logger.getLogger(QuestionRepo.class.getName());
+    Logger logger = LogManager.getLogger(QuestionRepo.class);
 
     public List<Question> getAllById(Long testId) throws DataBaseException {
         String sql = "select * from question where test_id = ?";
@@ -33,7 +33,7 @@ public class QuestionRepo {
             resultSet.close();
             return questions;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can't get order question by test id");
+            logger.warn("Can't get order question by test id");
             throw new DataBaseException("Can't get order question by test id" + e.getMessage(), e);
 
         }
@@ -55,7 +55,7 @@ public class QuestionRepo {
             resultSet.close();
             return question;
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can't get question by id");
+            logger.warn("Can't get question by id");
             throw new DataBaseException("Can't get question by id" + e.getMessage(), e);
         }
     }
@@ -68,7 +68,7 @@ public class QuestionRepo {
             pst.setLong(2, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can' update question by id");
+            logger.warn("Can' update question by id");
             throw new DataBaseException("Can' update question by id" + e.getMessage(), e);
         }
     }
@@ -81,7 +81,7 @@ public class QuestionRepo {
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can' delete question by id");
+            logger.warn("Can' delete question by id");
             throw new DataBaseException("Can' delete question by id" + e.getMessage(), e);
         }
     }
@@ -94,7 +94,7 @@ public class QuestionRepo {
             pst.setString(2, text);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.log(Level.WARNING, "Can not create question by id");
+            logger.warn("Can not create question by id");
             throw new DataBaseException("Can not create question by id" + e.getMessage(), e);
         }
     }

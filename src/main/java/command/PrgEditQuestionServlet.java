@@ -15,11 +15,13 @@ public class PrgEditQuestionServlet implements RequestHandler {
         req.setAttribute("page", req.getParameter("page"));
         req.setAttribute("test_id", req.getParameter("test_id"));
         req.setAttribute("question_id", req.getParameter("question_id"));
+
         String suc = req.getParameter("suc");
 
         if (suc.equals("1")) {
             req.setAttribute("message_answer", req.getParameter("message_answer"));
             req.setAttribute("message", req.getParameter("message"));
+            resp.addHeader("message_answer", req.getParameter("message_answer"));
             EditQuestion editQuestion = new EditQuestion();
             editQuestion.execute(req, resp);
         } else {

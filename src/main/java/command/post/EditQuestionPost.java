@@ -1,8 +1,11 @@
 package command.post;
 
+import command.EditQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Answer;
+import repo.AnswerRepo;
+import repo.QuestionRepo;
 import servises.AnswerService;
 import servises.QuestionService;
 import validator.DataValidator;
@@ -14,8 +17,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class EditQuestionPost implements RequestHandler {
-    QuestionService questionService = new QuestionService();
-    AnswerService answerService = new AnswerService();
+    QuestionService questionService = new QuestionService(new QuestionRepo());
+    AnswerService answerService = new AnswerService(new AnswerRepo());
 
     @Override
     public void execute(HttpServletRequest req,
@@ -24,17 +27,20 @@ public class EditQuestionPost implements RequestHandler {
 
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
+        String text = req.getParameter("text");
         String page = req.getParameter("page");
 
+        req.setAttribute("test_id", req.getParameter("test_id"));
+        req.setAttribute("question_id", req.getParameter("question_id"));
+        req.setAttribute("page", page);
+
+
         Integer success = 0;
-        String text = req.getParameter("text");
         if (!DataValidator.validateForNotLongString(text)) {
-            req.setAttribute("test_id", testId);
-            req.setAttribute("question_id", questionId);
-            req.setAttribute("page", page);
             req.setAttribute("message", "text of question is too long");
             req.setAttribute("tooLongAnswer", text);
-            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+            EditQuestion editQuestion = new EditQuestion();
+            editQuestion.execute(req, resp);
             //  goTo(req, resp, testId, questionId);
         } else {
             try {
@@ -53,19 +59,4 @@ public class EditQuestionPost implements RequestHandler {
 
 
     }
-
-//    private void goTo(HttpServletRequest req, HttpServletResponse resp, Long testId, Long questionId)
-//            throws ServletException, IOException {
-//        try {
-//            req.setAttribute("answers", answerService.getAnswers(questionId));
-//            req.setAttribute("test_id", testId);
-//            req.setAttribute("question_id", questionId);
-//            req.setAttribute("question", questionService.get(questionId));
-//            req.setAttribute("page", req.getParameter("page"));
-//            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
-//        } catch (DataBaseException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//    }
 }

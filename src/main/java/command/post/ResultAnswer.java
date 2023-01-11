@@ -4,6 +4,7 @@ import command.NextQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Answer;
+import repo.AnswerRepo;
 import servises.AnswerService;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ResultAnswer implements RequestHandler {
-    AnswerService answerService = new AnswerService();
+    AnswerService answerService = new AnswerService(new AnswerRepo());
 
     @Override
     public void execute(HttpServletRequest req,
@@ -24,23 +25,7 @@ public class ResultAnswer implements RequestHandler {
         String idQuestion = req.getParameter("id_question");
         String[] res = req.getParameterValues("res");
 
-        Answer answer = null;
-        List<Answer> userAnswers = new ArrayList<>();
-        int count = -1;
-        for (int i = 0; i < res.length; i++) {
-            if (!res[i].equals("on")) {
-                answer = new Answer();
-                answer.setId(Long.parseLong(res[i]));
-                answer.setResult(false);
-                userAnswers.add(answer);
-                count++;
-            } else {
-                userAnswers.get(count).setResult(true);
-            }
-        }
-
         List<Answer> trueAnswers = null;
-
         try {
             trueAnswers = answerService.getAnswers(Long.valueOf(idQuestion));
         } catch (DataBaseException e) {
@@ -48,15 +33,9 @@ public class ResultAnswer implements RequestHandler {
             throw new RuntimeException(e);
         }
 
+        boolean result = getResult(trueAnswers, res);
 
-        boolean result = true;
-        for (int i = 0; i < userAnswers.size(); i++) {
-            boolean contain = trueAnswers.contains(userAnswers.get(i));
-            if (contain == false) {
-                result = false;
-                break;
-            }
-        }
+
         List resultTest = (List<Boolean>) req.getSession().getAttribute("result_test");
         resultTest.add(result);
         req.getSession().setAttribute("result_test", resultTest);
@@ -75,4 +54,40 @@ public class ResultAnswer implements RequestHandler {
         }
 
     }
+
+    private List<Answer> getUserAnswer(String[] res){
+        Answer answer = null;
+        List<Answer> userAnswers = new ArrayList<>();
+        int count = -1;
+        for (int i = 0; i < res.length; i++) {
+            if (!res[i].equals("on")) {
+                answer = new Answer();
+                answer.setId(Long.parseLong(res[i]));
+                answer.setResult(false);
+                userAnswers.add(answer);
+                count++;
+            } else {
+                userAnswers.get(count).setResult(true);
+            }
+        }
+        return userAnswers;
+    }
+
+
+    private boolean getResult(List<Answer> trueAnswers, String[] res ){
+        if(res == null || trueAnswers == null){
+            return true;
+        }
+        List<Answer> userAnswers = getUserAnswer(res);
+        boolean result = true;
+        for (int i = 0; i < userAnswers.size(); i++) {
+            boolean contain = trueAnswers.contains(userAnswers.get(i));
+            if (contain == false) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
 }

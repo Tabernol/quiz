@@ -33,10 +33,11 @@ public class PageTest implements RequestHandler {
             req.setAttribute("subject", test.getSubject());
             req.setAttribute("difficult", test.getDifficult());
             req.setAttribute("duration", test.getDuration());
+            req.getRequestDispatcher("/WEB-INF/view/student/page_test.jsp").forward(req, resp);
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-        req.getRequestDispatcher("/WEB-INF/view/student/page_test.jsp").forward(req, resp);
+
     }
 }

@@ -10,18 +10,17 @@
 //import java.io.IOException;
 //import java.util.*;
 //
-//@WebFilter(filterName = "LanguageFilter", value = "/language")
+////@WebFilter(filterName = "LanguageFilter", value = "/")
 //public class LanguageFilter extends AbstractFilter {
 //    @Override
 //    public void doCustomFilter(HttpServletRequest req,
 //                               HttpServletResponse resp,
 //                               FilterChain filterChain) throws IOException, ServletException {
-//        String lang = req.getParameter("lang");
+//        String lang = (String) req.getSession().getAttribute("lang");
 //        req.getSession().setAttribute("lang", lang);
-//
-//        String referer = req.getHeader("referer");
-//        resp.sendRedirect(referer);
-//
+//        filterChain.doFilter(req, resp);
+//    }
+//}
 
 
 //
@@ -39,7 +38,6 @@
 //            String value = req.getParameter(name);
 //        }
 
-;
 
 //        String uri = req.getParameter("uri");
 //        String result = uri.replaceFirst(req.getContextPath(), "");

@@ -1,6 +1,7 @@
 import org.apache.logging.log4j.core.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import validator.DataValidator;
 
 public class ValidatorTest {
@@ -107,5 +108,13 @@ public class ValidatorTest {
         Assertions.assertEquals(false, DataValidator.validatePassword("укк"));
         Assertions.assertEquals(false, DataValidator.validatePassword("qwertyuiopa"));
         Assertions.assertEquals(false, DataValidator.validatePassword("qwertyu 2pa"));
+    }
+
+    @Test
+    public void validateAvailabilityRoleTest(){
+
+        Assertions.assertEquals(true, DataValidator.validateAvailabilityRole("admin"));
+        Assertions.assertEquals(true, DataValidator.validateAvailabilityRole("student"));
+
     }
 }

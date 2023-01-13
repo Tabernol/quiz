@@ -1,4 +1,6 @@
+import com.zaxxer.hikari.HikariDataSource;
 import connection.MyDataSource;
+import models.Answer;
 import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -8,47 +10,44 @@ import repo.AnswerRepo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 class AnswerRepoTest {
-//    @InjectMocks
-//    MyDataSource mockMyDataSource;
-//    @Mock
-//    Connection mockConnection;
-//    @Mock
-//    PreparedStatement mockPreparedStatement;
-}
+    @Mock
+    Connection mockConnection;
+    @Mock
+    PreparedStatement mockPreparedStatement;
+
+    AnswerRepo answerRepo = new AnswerRepo();
 
 
-//    @BeforeAll
-//    public void setUp() {
-//        MockitoAnnotations.initMocks(this);
-//    }
+    @BeforeEach
+    public void setUp() {
+        mockConnection = Mockito.mock(Connection.class);
+        mockPreparedStatement = Mockito.mock(PreparedStatement.class);
 
-
+        // MyDataSource.init();
+    }
 
 //    @Test
 //    public void testMockDBConnection() throws Exception {
-////        mockConnection = Mockito.mock(Connection.class);
-////        mockPreparedStatement = Mockito.mock(PreparedStatement.class);
-////
-//        Mockito.when(MyDataSource.getConnection()).thenReturn(mockConnection);
+//        List<Answer> answerList = new ArrayList<>();
 //        Mockito.when(mockConnection.prepareStatement(Mockito.any())).thenReturn(mockPreparedStatement);
-//        Mockito.when(mockConnection.prepareStatement(Mockito.any()).executeUpdate(Mockito.any())).thenReturn(1);
+//        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
+//
 //
 //        int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
+//       // List<Answer> answersByQuestionId = answerRepo.getAnswersByQuestionId(Mockito.anyLong());
 //
-//        System.out.println(answer);
+////        Assertions.assertEquals(1, answer);
 //
-//        // int first = answerRepo.createAnswer(1L, "first", true);
-//        Assertions.assertEquals(1, answer);
-        // Mockito.verify(mockConnection.createStatement(), Mockito.times(1));
 //    }
-
-
+}
 //    @BeforeEach
 //    void setUp() {
 //        mockAnswerRepo = Mockito.mock(AnswerRepo.class);

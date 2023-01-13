@@ -26,7 +26,7 @@ public class NextPage implements RequestHandler {
         Integer rows = Integer.valueOf(stringRows);
 
         TestService testService = new TestService(new TestRepo());
-        PaginationService paginationService = new PaginationService();
+        PaginationService paginationService = new PaginationService(new TestRepo());
         List<Test> tests;
         List<String> subjects;
         int countPages;

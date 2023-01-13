@@ -5,6 +5,7 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import repo.UserRepo;
 import servises.UserService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,17 +18,29 @@ public class EditUserProfile implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         String name = req.getParameter("name");
-        String login = req.getParameter("login");
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
         UserService userService = new UserService(new UserRepo());
-
-        try {
-            userService.updateUser(userId, name, login);
-        } catch (DataBaseException e) {
-            throw new RuntimeException(e);
-        }
         EditProfile editProfile = new EditProfile();
-        editProfile.execute(req, resp);
+
+        if (!DataValidator.validateForName(name)) {
+            req.setAttribute("message", "name is invalid");
+            req.setAttribute("user_id", userId);
+            editProfile.execute(req, resp);
+        } else {
+            try {
+                userService.updateUser(userId, name);
+                req.setAttribute("message", "changes made successfully");
+                req.getSession().setAttribute("name", name);
+                editProfile.execute(req, resp);
+            } catch (DataBaseException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+
+
+
     }
 }

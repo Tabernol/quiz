@@ -16,8 +16,7 @@ public class DataValidator {
     private static final Integer MAX_DURATION = 30;
 
 
-
-    public static boolean validateLogin(String login){
+    public static boolean validateLogin(String login) {
         return Pattern.matches(REGEX_LOGIN, login);
     }
 
@@ -42,12 +41,16 @@ public class DataValidator {
         return Pattern.matches(REGEX_NOT_LONG_STRING, string);
     }
 
-    public static boolean validateForName(String string){
+    public static boolean validateForName(String string) {
         return Pattern.matches(REGEX_NAME, string);
     }
 
-    public static boolean validateForNamePlusNumber(String string){
+    public static boolean validateForNamePlusNumber(String string) {
         return Pattern.matches(REGEX_NAME_NUMBER, string);
+    }
+
+    public static boolean validateAvailabilityRole(String role) {
+        return role.equals("admin") || role.equals("student");
     }
 
 

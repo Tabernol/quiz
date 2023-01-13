@@ -3,6 +3,8 @@ table {
     font-size: 14px;
     border-collapse: collapse;
     width: 600px;
+    border: #333333;
+    border-style: solid;
 }
 
 td, th {
@@ -11,7 +13,7 @@ td, th {
     margin: 0;
 }
 
-tbody tr:nth-child(2n){
+tbody tr:nth-child(2n) {
     background-color: #eee;
 }
 
@@ -22,18 +24,25 @@ th {
     color: white;
 }
 
-#header{
-    background-color: dimgrey;
-    font-size: large;
+#header {
+    background-color: #333;
+    font-family: Verdana;
+    font-size: 34px;
 }
-.bottom-nav{
+
+
+
+/*#bottom_nav {*/
+/*    color: chocolate;*/
+/*}*/
+
+.button_my{
+    color: chocolate;
 
 }
 
-#lang{
-    float: right;
-    position: fixed;
+.gen{
+    background-color: slategray;
 }
-
 
 

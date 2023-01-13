@@ -10,15 +10,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 public class AnswerRepo {
     Logger logger = LogManager.getLogger(AnswerRepo.class);
 
+    Connection connection;
+
+
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
         String sql = "select * from answer where question_id = ?";
         List<Answer> answers = new ArrayList<>();
+
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, questionId.toString());
@@ -42,15 +47,16 @@ public class AnswerRepo {
 
     public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException {
         String sql = "insert into answer (id, question_id, a_text, result) values(default, ?,?,?)";
+
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, questionId);
             pst.setString(2, text);
             pst.setBoolean(3, result);
-            return  pst.executeUpdate();
+            return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can't insert answer problem");
-            throw new DataBaseException("Can't insert answer problem" + e.getMessage(), e);
+            logger.warn("Can't insert answer problem ");
+            throw new DataBaseException("Can't insert answer problem " + e.getMessage(), e);
         }
     }
 
@@ -59,7 +65,7 @@ public class AnswerRepo {
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
-           return pst.executeUpdate();
+            return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can't delete answer problem");
             throw new DataBaseException("Can't delete answer problem" + e.getMessage(), e);

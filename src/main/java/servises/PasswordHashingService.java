@@ -8,23 +8,6 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 public class PasswordHashingService {
-    public static void main(String[] args) {
-        String root = null;
-        boolean root1;
-        try {
-            root = generateStrongPasswordHash("root");
-            root1 = validatePassword("root", root);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidKeySpecException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(root);
-
-        System.out.println(root1);
-
-
-    }
 
     public static String generateStrongPasswordHash(String password)
             throws NoSuchAlgorithmException, InvalidKeySpecException

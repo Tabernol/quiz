@@ -14,28 +14,26 @@ public class MyDataSource {
     private static HikariDataSource ds;
 
     public static void init() {
+        if (ds == null) {
+            config = new HikariConfig();
 
-        config = new HikariConfig();
+            try (InputStream input = MyDataSource.class.getClassLoader().getResourceAsStream("hikari.properties")) {
+                if (input == null) {
+                    System.out.println("Sorry, unable to find config.properties");
+                    return;
+                }
+                Properties properties = new Properties();
+                properties.load(input);
 
-        try(InputStream input = MyDataSource.class.getClassLoader().getResourceAsStream("hikari.properties")) {
-            if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
-                return;
+                config.setJdbcUrl(properties.getProperty("jdbcUrl"));
+                config.setUsername(properties.getProperty("username"));
+                config.setPassword(properties.getProperty("password"));
+                config.setDriverClassName(properties.getProperty("driver.class.name"));
+
+                ds = new HikariDataSource(config);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            Properties properties = new Properties();
-            properties.load(input);
-
-            config.setJdbcUrl(properties.getProperty("jdbcUrl"));
-            config.setUsername(properties.getProperty("username"));
-            config.setPassword(properties.getProperty("password"));
-            config.setDriverClassName(properties.getProperty("driver.class.name"));
-
-//            config.addDataSourceProperty("cachePrepStmts", "true");
-//            config.addDataSourceProperty("prepStmtCacheSize", "250");
-//            config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-            ds = new HikariDataSource(config);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -46,7 +44,7 @@ public class MyDataSource {
         return ds.getConnection();
     }
 
-    public static void closePool(){
+    public static void closePool() {
         ds.close();
     }
 }

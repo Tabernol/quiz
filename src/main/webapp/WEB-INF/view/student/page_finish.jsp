@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="language"/>
@@ -19,7 +20,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
-<h2> You result <c:out value="${requestScope.percent_result}"/> %</h2>
+<h2><tags:grade grade="${requestScope.percent_result}"></tags:grade></h2>
 
 
 <hr>

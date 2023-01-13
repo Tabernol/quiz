@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <%@ taglib prefix="ctg" uri="customtags" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
 
 <fmt:setLocale value="${sessionScope.lang}"/>
@@ -25,12 +27,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
-<%--<jsp:include page="/WEB-INF/view/language.jsp"/>--%>
 <br>
 <h1 id="start_message"> <fmt:message key="label.start_message"/></h1>
 <br>
-
-<ctg:today/>
 
 </body>
 </html>

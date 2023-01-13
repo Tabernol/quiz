@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -42,14 +43,14 @@ public class ResultRepo {
         }
     }
 
-    public void addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
+    public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
         String sql = "insert into result values(default, ?,?,?)";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, userId);
             pst.setLong(2, testId);
             pst.setInt(3, grade);
-            pst.executeUpdate();
+            return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can not insert into result");
             throw new DataBaseException("Can not insert into result" + e.getMessage(), e);

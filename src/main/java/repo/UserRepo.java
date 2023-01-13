@@ -112,16 +112,15 @@ public class UserRepo {
     }
 
 
-    public int updateUser(Long id, String name, String login, String role, boolean status)
+    public int updateUser(Long id, String name, String role, boolean status)
             throws DataBaseException {
-        String sql = "update user set login = ?, role = ?, name = ?, is_blocked = ? where id = ? ";
+        String sql = "update user set role = ?, name = ?, is_blocked = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, login);
-            pst.setString(2, role);
-            pst.setString(3, name);
-            pst.setBoolean(4, status);
-            pst.setLong(5, id);
+            pst.setString(1, role);
+            pst.setString(2, name);
+            pst.setBoolean(3, status);
+            pst.setLong(4, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can not update user");
@@ -129,14 +128,13 @@ public class UserRepo {
         }
     }
 
-    public int updateUser(Long id, String name, String login)
+    public int updateUser(Long id, String name)
             throws DataBaseException {
-        String sql = "update user set login = ?, name = ? where id = ? ";
+        String sql = "update user set name = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, login);
-            pst.setString(2, name);
-            pst.setLong(3, id);
+            pst.setString(1, name);
+            pst.setLong(2, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can not update user");

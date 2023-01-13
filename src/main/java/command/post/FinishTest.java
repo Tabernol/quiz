@@ -2,6 +2,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import repo.ResultRepo;
 import servises.ResultService;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ public class FinishTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        ResultService resultService = new ResultService();
+        ResultService resultService = new ResultService(new ResultRepo());
         List<Boolean> result = (List<Boolean>) req.getSession().getAttribute("result_test");
         long count = result.stream().filter(bool -> bool.equals(true)).count();
         System.out.println("count = " + count);

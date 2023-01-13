@@ -4,6 +4,7 @@ import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import models.User;
+import repo.ResultRepo;
 import repo.UserRepo;
 import servises.ResultService;
 import servises.UserService;
@@ -24,7 +25,7 @@ public class Profile implements RequestHandler {
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
         UserService userService = new UserService(new UserRepo());
-        ResultService resultService = new ResultService();
+        ResultService resultService = new ResultService(new ResultRepo());
 
         User user = null;
         List<ResultDto> resultByUser = null;
@@ -32,7 +33,7 @@ public class Profile implements RequestHandler {
             user = userService.get(userId);
             resultByUser = resultService.getResultByUser(user.getId());
             req.setAttribute("name", user.getName());
-            req.setAttribute("login", user.getLogin());
+          //  req.setAttribute("login", user.getLogin());
             req.setAttribute("user_result", resultByUser);
 
             req.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(req, resp);

@@ -5,22 +5,27 @@ import javax.servlet.jsp.JspWriter;
 
 import org.apache.taglibs.standard.tag.common.sql.UpdateTagSupport;
 
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalAmount;
 import java.util.Calendar;
+import java.util.Timer;
 
 public class MyCustomTag extends UpdateTagSupport {
 
     private Integer countsOfVisit = 0;
+    LocalDateTime time = LocalDateTime.now();
 
     @Override
     public int doStartTag() throws JspException {
         JspWriter out = pageContext.getOut();//returns the instance of JspWriter
         countsOfVisit++;
+
         try {
-            out.print("How many people visit this page " + countsOfVisit);//printing date and time using JspWriter
+            out.print("Question number " + countsOfVisit +" :");
         } catch (Exception e) {
             System.out.println(e);
         }
-        return SKIP_BODY;//will not evaluate the body content of the tag
+        return SKIP_BODY;
     }
 
     @Override

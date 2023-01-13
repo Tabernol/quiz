@@ -16,7 +16,6 @@ public class LanguageChange implements RequestHandler {
         req.getSession().setAttribute("lang", lang);
 
         String referer = req.getHeader("referer");
-        System.out.println(referer);
         resp.sendRedirect(referer);
     }
 }

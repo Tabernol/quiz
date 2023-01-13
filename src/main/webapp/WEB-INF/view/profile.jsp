@@ -24,9 +24,10 @@
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
+<h4>
+    <fmt:message key="label.name"/>  <c:out value="${requestScope.name}"/><br>
+</h4>
 
-name <c:out value="${requestScope.name}"/><br>
-login <c:out value="${requestScope.login}"/><br>
 
 
 <hr>

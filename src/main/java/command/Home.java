@@ -11,10 +11,10 @@ public class Home implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String role = (String) req.getSession().getAttribute("role");
-        if (!role.equals(null)) {
-            req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
-        } else {
+        if (role == null) {
             req.getRequestDispatcher("/").forward(req, resp);
+        } else if (role.equals("admin") || role.equals("student")) {
+            req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
         }
     }
 }

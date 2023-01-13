@@ -29,7 +29,7 @@
             <option value="en"><fmt:message key="language.en"/></option>
             <option value="ua"><fmt:message key="language.ukr"/></option>
         </select><br>
-        <input class="btn btn-success pull-right" type="submit" value="<fmt:message key="button.choose"/>">
+        <input type="submit" value="<fmt:message key="button.choose"/>">
     </form>
 </div>
 </body>

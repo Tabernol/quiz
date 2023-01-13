@@ -63,17 +63,17 @@ public class UserServiceTest {
     @Test
     public void updateLarge() throws DataBaseException {
         Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.anyBoolean())).thenReturn(1);
+                Mockito.anyString(),  Mockito.anyString(), Mockito.anyBoolean())).thenReturn(1);
         assertEquals(1, userService.updateUser(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.anyBoolean()));
+                Mockito.anyString(), Mockito.anyString(), Mockito.anyBoolean()));
     }
 
     @Test
     public void updateSmall() throws DataBaseException {
         Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
-                Mockito.anyString(),Mockito.anyString())).thenReturn(1);
+                Mockito.anyString())).thenReturn(1);
         assertEquals(1, userService.updateUser(Mockito.anyLong(),
-                Mockito.anyString(),Mockito.anyString()));
+                Mockito.anyString()));
     }
 
     @Test

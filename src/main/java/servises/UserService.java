@@ -33,12 +33,12 @@ public class UserService {
        return userRepo.delete(id);
     }
 
-    public int updateUser(Long id, String name, String login, String role, boolean status) throws DataBaseException {
-        return userRepo.updateUser(id, name, login, role, status);
+    public int updateUser(Long id, String name, String role, boolean status) throws DataBaseException {
+        return userRepo.updateUser(id, name, role, status);
     }
 
-    public int updateUser(Long id, String name, String login) throws DataBaseException {
-        return userRepo.updateUser(id, name, login);
+    public int updateUser(Long id, String name) throws DataBaseException {
+        return userRepo.updateUser(id, name);
     }
 
     public boolean isBlocked(Long id) throws DataBaseException {

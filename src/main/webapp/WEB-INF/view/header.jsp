@@ -20,43 +20,45 @@
     </style>
 
 </head>
-<body>
-
+<body class="gen">
 <nav class="navMenu" id="header">
     <div>
         <c:if test="${sessionScope.role == null}">
-            <a class="bottom-nav" href="<c:url value='/login_form'/>"><fmt:message key="label.Login"/></a>|
-            <a class="bottom-nav" href="<c:url value='/registration'/>"><fmt:message key="label.Registration"/></a>|
+            <a class="button_my" href="<c:url value='/login_form'/>"><fmt:message key="label.Login"/></a>|
+            <a class="button_my" href="<c:url value='/registration'/>"><fmt:message key="label.Registration"/></a>|
         </c:if>
 
 
         <c:if test="${sessionScope.role == 'admin'}">
-            <a class="lin" href="<c:url value='/users' />"><fmt:message key="label.users"/> </a>|
-            <a href="<c:url value='/filter_tests'>
+            <a class="button_my" href="<c:url value='/users' />"><fmt:message key="label.users"/> </a>|
+            <a class="button_my" href="<c:url value='/filter_tests'>
   <c:param name="order" value="name asc" />
     <c:param name="sub" value="all"/>
     <c:param name="rows" value="5"/>
     <c:param name="page" value="1"/>
 </c:url>"><fmt:message key="label.tests"/></a>|
-            <a href="<c:url value='/to_create_test'/>"><fmt:message key="label.create.test"/> </a>|
-            <a href="<c:url value='/profile'/>"><fmt:message key="label.Profile"/> </a>|
-            <a href="<c:url value='/logout'/>"><fmt:message key="label.Logout"/> </a>
+            <a class="button_my" href="<c:url value='/to_create_test'/>"><fmt:message key="label.create.test"/> </a>|
+            <a class="button_my" href="<c:url value='/profile'/>"><fmt:message key="label.Profile"/> </a>|
+            <a class="button_my" href="<c:url value='/logout'/>"><fmt:message key="label.Logout"/> </a>
         </c:if>
 
 
         <c:if test="${sessionScope.role == 'student'}">
-            <a href="<c:url value='/filter_tests'>
+            <a class="button_my" href="<c:url value='/filter_tests'>
   <c:param name="order" value="name asc" />
     <c:param name="sub" value="all"/>
     <c:param name="rows" value="5"/>
     <c:param name="page" value="1"/>
 </c:url>"><fmt:message key="label.tests"/> </a>|
-            <a href="<c:url value='/profile' />"><fmt:message key="label.Profile"/> </a>|
-            <a href="<c:url value='/logout' />"><fmt:message key="label.Logout"/> </a>
+            <a class="button_my" href="<c:url value='/profile' />"><fmt:message key="label.Profile"/> </a>|
+            <a class="button_my" href="<c:url value='/logout' />"><fmt:message key="label.Logout"/> </a>
         </c:if>
-        <jsp:include page="/WEB-INF/view/language.jsp"/>
     </div>
 </nav>
+
+<div>
+    <jsp:include page="/WEB-INF/view/language.jsp"/>
+</div>
 
 </body>
 </html>

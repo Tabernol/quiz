@@ -23,9 +23,5 @@
 <fmt:message key="label.message"/> <c:out value="${sessionScope.name}"/><br>
 
 
-
-
-
-
 </body>
 </html>

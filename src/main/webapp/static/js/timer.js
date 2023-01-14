@@ -1,9 +1,10 @@
 window.onload = function () {
     timer();
+
 }
 
 function timer(min) {
-    var minute = min;
+    var minute = min
     var sec = 60;
     setInterval(function () {
         document.getElementById("timer").innerHTML = minute + ":" + sec;

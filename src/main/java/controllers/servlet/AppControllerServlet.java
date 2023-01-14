@@ -48,7 +48,6 @@ public class AppControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         String lang = req.getParameter("login");
         log.info("get");
-       // log.log(Level.WARNING, " GET");
         String servletPath = req.getServletPath();
         ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
     }
@@ -58,7 +57,6 @@ public class AppControllerServlet extends HttpServlet {
                           HttpServletResponse resp)
             throws ServletException, IOException {
         log.info("post");
-        //log.log(Level.WARNING, " POST");
         String servletPath = req.getServletPath();
         DataHandleCommand.COMMANDS.get(servletPath).execute(req, resp);
     }

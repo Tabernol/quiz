@@ -28,7 +28,7 @@ public class NextQuestion implements RequestHandler {
             numberQuestion = Integer.valueOf(req.getParameter("number_question"));
         }
 
-        System.out.println("number question = " + numberQuestion);
+
 
         long idQuestion = questions.get(numberQuestion).getId();
         List<Answer> answers = null;

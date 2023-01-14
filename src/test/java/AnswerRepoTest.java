@@ -2,10 +2,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import connection.MyDataSource;
 import models.Answer;
 import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import repo.AnswerRepo;
 
 import java.sql.Connection;
@@ -15,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.mockStatic;
 
 
 class AnswerRepoTest {
@@ -22,7 +20,6 @@ class AnswerRepoTest {
     Connection mockConnection;
     @Mock
     PreparedStatement mockPreparedStatement;
-
     AnswerRepo answerRepo = new AnswerRepo();
 
 
@@ -31,22 +28,27 @@ class AnswerRepoTest {
         mockConnection = Mockito.mock(Connection.class);
         mockPreparedStatement = Mockito.mock(PreparedStatement.class);
 
+
         // MyDataSource.init();
     }
 
-//    @Test
-//    public void testMockDBConnection() throws Exception {
-//        List<Answer> answerList = new ArrayList<>();
-//        Mockito.when(mockConnection.prepareStatement(Mockito.any())).thenReturn(mockPreparedStatement);
-//        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
-//
-//
-//        int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
-//       // List<Answer> answersByQuestionId = answerRepo.getAnswersByQuestionId(Mockito.anyLong());
-//
-////        Assertions.assertEquals(1, answer);
-//
-//    }
+    @Test
+    public void testMockDBConnection() throws Exception {
+        //MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class);
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(MyDataSource::getConnection).thenReturn(mockConnection);
+        }
+
+        Mockito.when(mockConnection.prepareStatement(Mockito.any())).thenReturn(mockPreparedStatement);
+        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
+
+        System.out.println("mock CON +++++++++++++++++++++++    " + mockConnection);
+        int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
+        // List<Answer> answersByQuestionId = answerRepo.getAnswersByQuestionId(Mockito.anyLong());
+
+//        Assertions.assertEquals(1, answer);
+
+    }
 }
 //    @BeforeEach
 //    void setUp() {

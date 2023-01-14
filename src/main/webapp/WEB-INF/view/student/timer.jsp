@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Max
@@ -20,11 +20,12 @@
         <%@include  file="/static/js/timer.js"%>
     </script>
 
+
 </head>
 <body>
-<div>Test closes in <span id="time"><c:out value="${requestScope.duration}"/></span> minutes!</div>
-<h3><c:out value="${requestScope.duration}"/></h3>
-Registration closes in <span id="timer">5:00</span>!
+<%--<div>Test closes in <span id="time"><c:out value="${requestScope.duration}"/></span> minutes!</div>--%>
+<%--<h3><c:out value="${requestScope.duration}"/></h3>--%>
+<%--Registration closes in <span id="timer">5:00</span>!--%>
 <%--<script>--%>
 <%--    function startTimer(duration, display) {--%>
 <%--        var timer = duration, minutes, seconds;--%>

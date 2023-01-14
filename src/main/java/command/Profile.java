@@ -33,7 +33,6 @@ public class Profile implements RequestHandler {
             user = userService.get(userId);
             resultByUser = resultService.getResultByUser(user.getId());
             req.setAttribute("name", user.getName());
-          //  req.setAttribute("login", user.getLogin());
             req.setAttribute("user_result", resultByUser);
 
             req.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(req, resp);

@@ -41,7 +41,7 @@
 <form action="start_test">
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
-    <input class="button" type="submit" value="<fmt:message key="button.start.test"/>">
+    <input class="button" onclick="timer(${requestScope.duration})" type="submit" value="<fmt:message key="button.start.test"/>">
 </form>
 
 </body>

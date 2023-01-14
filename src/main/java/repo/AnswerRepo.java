@@ -47,7 +47,6 @@ public class AnswerRepo {
 
     public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException {
         String sql = "insert into answer (id, question_id, a_text, result) values(default, ?,?,?)";
-
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, questionId);

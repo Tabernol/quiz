@@ -21,11 +21,6 @@ import java.security.spec.InvalidKeySpecException;
 public class AuthorizationFilter extends AbstractFilter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        MyDataSource.init();
-    }
-
-    @Override
     public void doCustomFilter(HttpServletRequest req,
                                HttpServletResponse resp,
                                FilterChain filterChain) throws IOException, ServletException {

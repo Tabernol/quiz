@@ -34,7 +34,7 @@
 <br>
 <h1 id="start_message"> <fmt:message key="label.start_message"/></h1>
 <br>
-<div>Registration closes in <span id="time">05:00</span> minutes!</div>
+
 
 </body>
 </html>

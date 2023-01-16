@@ -6,6 +6,7 @@ import models.User;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import repo.UserRepo;
 import servises.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,7 @@ public class AllUserTest {
         final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
         final HttpSession mockSession = Mockito.mock(HttpSession.class);
-        mockUserService = Mockito.mock(UserService.class);
+        final UserService mockUserService = Mockito.mock(UserService.class);
 
         List<User> allUsers = new ArrayList<>();
         Mockito.when(request.getRequestDispatcher(ALL_USER_PATH)).thenReturn(dispatcher);
@@ -41,7 +42,7 @@ public class AllUserTest {
         Mockito.when(mockSession.getAttribute("role")).thenReturn("admin");
 
         assertEquals(allUsers, mockUserService.getAll());
-        //allUser.execute(request, response);
+     //   allUser.execute(request, response);
 //        Mockito.verify(request, Mockito.times(1)).getRequestDispatcher(ALL_USER_PATH);
         //  Mockito.verify(dispatcher).forward(request, response);
         // assertEquals(allUsers, mockUserService.getAll());

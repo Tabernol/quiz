@@ -45,6 +45,7 @@ public class AddAnswer implements RequestHandler {
                 if (i > 0) {
                     success = i;
                 }
+
                 resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" + "?" + "suc=" + success + "&test_id=" +
                         testId + "&question_id=" + questionId + "&page=" + page + "&message_answer=All Right");
             } catch (DataBaseException e) {

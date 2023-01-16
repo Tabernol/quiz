@@ -15,11 +15,11 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:5.0.1" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.26" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.apache.taglibs:taglibs-standard-impl:1.2.5" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.38" />

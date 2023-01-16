@@ -39,7 +39,6 @@ public class AppControllerServlet extends HttpServlet {
 
     static {
         log.info("start APP");
-        MyDataSource.init();
     }
 
     @Override

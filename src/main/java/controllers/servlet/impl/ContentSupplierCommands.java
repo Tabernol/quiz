@@ -13,9 +13,7 @@ public class ContentSupplierCommands {
 
     static {
         COMMANDS.put("/users", new AllUser());
-        COMMANDS.put("/registration", ((req, resp) -> {
-            req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
-        }));
+        COMMANDS.put("/registration", new Registration());
         COMMANDS.put("/login_form", new LoginForm());
         COMMANDS.put("/home", new Home());
         COMMANDS.put("/logout", new Logout());

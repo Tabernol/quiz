@@ -9,6 +9,7 @@ import exeptions.DataBaseException;
 import models.Test;
 import repo.TestRepo;
 import servises.TestService;
+import util.ValidateMessage;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -32,33 +33,13 @@ public class CreateTest implements RequestHandler {
         int difficult = Integer.parseInt(req.getParameter("difficult"));
         int duration = Integer.parseInt(req.getParameter("duration"));
 
-        TestService testService = new TestService(new TestRepo());
-        boolean isNameExist;
+        ValidateMessage validateMessage = new ValidateMessage();
 
-        try {
-            isNameExist = testService.isNameExist(name);
-        } catch (DataBaseException e) {
-            logger.log(Level.INFO, "can not creat test");
-            throw new RuntimeException(e);
-        }
+        TestService testService = new TestService(new TestRepo());
 
         Integer success = 0;
-        if (isNameExist) {
-            req.setAttribute("message", "this test name already exists");
-            setPlaceHolder(req, resp, name, subject, difficult, duration);
-        } else if (!DataValidator.validateForNamePlusNumber(name)) {
-            req.setAttribute("message", "name must contains only liters and numbers and space from 2-20 items");
-            setPlaceHolder(req, resp, name, subject, difficult, duration);
-        } else if (!DataValidator.validateForName(subject)) {
-            req.setAttribute("message", "subject must contains only liters and space from 2-20 items");
-            setPlaceHolder(req, resp, name, subject, difficult, duration);
-        } else if (!DataValidator.validateDifficult(difficult)) {
-            req.setAttribute("message", "difficult must be from 1 to 100");
-            setPlaceHolder(req, resp, name, subject, difficult, duration);
-        } else if (!DataValidator.validateDuration(duration)) {
-            req.setAttribute("message", "duration must be from 1 to 30 minutes");
-            setPlaceHolder(req, resp, name, subject, difficult, duration);
-        } else {
+        String message = validateMessage.checkFields(name, subject, difficult, duration);
+        if(message.equals("All Right")){
             try {
                 int i = testService.createTest(name, subject, difficult, duration);
                 req.setAttribute("message", "All Right))");
@@ -70,7 +51,40 @@ public class CreateTest implements RequestHandler {
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
                 throw new RuntimeException(e);
             }
+        } else {
+            req.setAttribute("message", message);
+            setPlaceHolder(req, resp, name, subject, difficult, duration);
         }
+
+
+//        if (validateMessage.isNameExist(name)) {
+//            req.setAttribute("message", "this test name already exists");
+//            setPlaceHolder(req, resp, name, subject, difficult, duration);
+//        } else if (!DataValidator.validateForNamePlusNumber(name)) {
+//            req.setAttribute("message", "name must contains only liters and numbers and space from 2-20 items");
+//            setPlaceHolder(req, resp, name, subject, difficult, duration);
+//        } else if (!DataValidator.validateForName(subject)) {
+//            req.setAttribute("message", "subject must contains only liters and space from 2-20 items");
+//            setPlaceHolder(req, resp, name, subject, difficult, duration);
+//        } else if (!DataValidator.validateDifficult(difficult)) {
+//            req.setAttribute("message", "difficult must be from 1 to 100");
+//            setPlaceHolder(req, resp, name, subject, difficult, duration);
+//        } else if (!DataValidator.validateDuration(duration)) {
+//            req.setAttribute("message", "duration must be from 1 to 30 minutes");
+//            setPlaceHolder(req, resp, name, subject, difficult, duration);
+//        } else {
+//            try {
+//                int i = testService.createTest(name, subject, difficult, duration);
+//                req.setAttribute("message", "All Right))");
+//                if (i > 0) {
+//                    success = i;
+//                }
+//                resp.sendRedirect(req.getContextPath() + "/prg_create_test" + "?suc=" + success + "&message=Test has created");
+//            } catch (DataBaseException e) {
+//                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+//                throw new RuntimeException(e);
+//            }
+//        }
     }
 
     private void setPlaceHolder(HttpServletRequest req,

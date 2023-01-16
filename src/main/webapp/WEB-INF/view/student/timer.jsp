@@ -23,6 +23,7 @@
 
 </head>
 <body>
+<div>Test closes in <span id="timer">05:00</span> minutes!</div>
 <%--<div>Test closes in <span id="time"><c:out value="${requestScope.duration}"/></span> minutes!</div>--%>
 <%--<h3><c:out value="${requestScope.duration}"/></h3>--%>
 <%--Registration closes in <span id="timer">5:00</span>!--%>

@@ -6,14 +6,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 public class PrgEditTestServlet implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        req.setAttribute("page", req.getParameter("page"));
-        req.setAttribute("test_id", req.getParameter("test_id"));
+        Map<String, String[]> parameterMap = req.getParameterMap();
+        for (Map.Entry<String, String[]> param : parameterMap.entrySet()){
+            req.setAttribute(param.getKey(), param.getValue());
+        }
         String suc = req.getParameter("suc");
 
         if (suc.equals("1")) {

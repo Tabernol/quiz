@@ -15,9 +15,13 @@
 <html>
 <head>
     <title>Title</title>
+
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
-<body>
-<jsp:include page="/WEB-INF/view/header.jsp"/>
+<body class="gen">
+<%--<jsp:include page="/WEB-INF/view/header.jsp"/>--%>
 <br>
 <br>
 <jsp:include page="/WEB-INF/view/student/timer.jsp"/>

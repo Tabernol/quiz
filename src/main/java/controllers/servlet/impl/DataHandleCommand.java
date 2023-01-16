@@ -10,8 +10,9 @@ import java.util.Map;
 public class DataHandleCommand {
 
     public static final Map<String, RequestHandler> COMMANDS = new HashMap<>();
+
     static {
-        COMMANDS.put("/registration",new Registration());
+        COMMANDS.put("/registration", new Registration());
         COMMANDS.put("/create_test", new CreateTest());
         COMMANDS.put("/delete_test", new DeleteTest());
         COMMANDS.put("/edit_test", new EditTestPost());

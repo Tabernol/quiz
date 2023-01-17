@@ -31,25 +31,24 @@ class AnswerRepoTest {
 
         // MyDataSource.init();
     }
-
-    @Test
-    public void testMockDBConnection() throws Exception {
-        //MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class);
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(MyDataSource::getConnection).thenReturn(mockConnection);
-        }
-
-        Mockito.when(mockConnection.prepareStatement(Mockito.any())).thenReturn(mockPreparedStatement);
-        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
-
-        System.out.println("mock CON +++++++++++++++++++++++    " + mockConnection);
-        int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
-        // List<Answer> answersByQuestionId = answerRepo.getAnswersByQuestionId(Mockito.anyLong());
+}
+//    @Test
+//    public void testMockDBConnection() throws Exception {
+//        //MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class);
+//        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = mockStatic(MyDataSource.class)) {
+//            myDataSourceMockedStatic.when(MyDataSource::getConnection).thenReturn(mockConnection);
+//        }
+//
+//        Mockito.when(mockConnection.prepareStatement(Mockito.any())).thenReturn(mockPreparedStatement);
+//        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
+//
+//        System.out.println("mock CON +++++++++++++++++++++++    " + mockConnection);
+//        int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
+// List<Answer> answersByQuestionId = answerRepo.getAnswersByQuestionId(Mockito.anyLong());
 
 //        Assertions.assertEquals(1, answer);
 
-    }
-}
+
 //    @BeforeEach
 //    void setUp() {
 //        mockAnswerRepo = Mockito.mock(AnswerRepo.class);

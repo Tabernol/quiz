@@ -3,13 +3,15 @@ window.onload = function () {
 
 }
 
+let t;
+
+
 function timer(min) {
     var minute = min
     var sec = 60;
     setInterval(function () {
         document.getElementById("timer").innerHTML = minute + ":" + sec;
         sec--;
-
         if (sec == 00) {
             minute--;
             sec = 60;

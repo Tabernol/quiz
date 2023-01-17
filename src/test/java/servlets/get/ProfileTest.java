@@ -29,12 +29,14 @@ public class ProfileTest {
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
         final HttpSession session = Mockito.mock(HttpSession.class);
         final UserService userService = Mockito.mock(UserService.class);
+
         final ResultService resultService = Mockito.mock(ResultService.class);
 
         User user = new User();
         List<ResultDto> resultDto = new ArrayList<>();
         user.setName("first");
         Mockito.when(request.getSession()).thenReturn(session);
+        Mockito.when(request.getRequestDispatcher("/WEB-INF/view/profile.jsp")).thenReturn(dispatcher);
         Mockito.when(session.getAttribute("user_id")).thenReturn(12L);
         Mockito.when(userService.get(Mockito.anyLong())).thenReturn(user);
         Mockito.when(resultService.getResultByUser(Mockito.anyLong())).thenReturn(resultDto);

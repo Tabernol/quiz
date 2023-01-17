@@ -17,6 +17,10 @@
 <html lang="${sessionScope.locale}">
 <head>
     <title>Info test</title>
+
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
@@ -46,7 +50,7 @@
     </form>
 </c:if>
 <c:if test="${requestScope.message != null}">
-    <fmt:message key="label.empty.test.message"/>
+   <h2><fmt:message key="label.empty.test.message"/></h2>
 </c:if>
 
 

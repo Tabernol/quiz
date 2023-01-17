@@ -7,12 +7,12 @@
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
 
 
 <!DOCTYPE html>
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <meta charset="UTF-8">
 <%--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--%>

@@ -18,6 +18,7 @@ public class QuizAppListener implements ServletContextListener {
         LOGGER.info("Webapp 'Quiz Service' was started.");
     }
 
+
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         MyDataSource.closePool();

@@ -9,11 +9,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%@ taglib prefix="ctg" uri="customtags" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <title>Finish</title>
 </head>
@@ -21,6 +22,8 @@
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
 <h2><tags:grade grade="${requestScope.percent_result}"></tags:grade></h2>
+
+<fmt:message key="label.quiz.completed.message"/> <ctg:number></ctg:number>
 
 
 <hr>

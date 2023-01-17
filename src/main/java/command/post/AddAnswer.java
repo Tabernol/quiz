@@ -37,7 +37,9 @@ public class AddAnswer implements RequestHandler {
             req.setAttribute("message_answer", "answer is too long");
             req.setAttribute("too_long_answer", text);
             EditQuestion editQuestion = new EditQuestion();
-            editQuestion.execute(req, resp);
+            editQuestion.execute(req,resp);
+//            resp.sendRedirect(req.getContextPath()+"/edit_question" + "?page=" + page +
+//                    "&question_id=" + questionId + "&test_id=" + testId);
         } else {
             try {
                 Boolean result = Boolean.valueOf(req.getParameter("result"));

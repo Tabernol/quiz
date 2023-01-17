@@ -12,8 +12,8 @@ public class LanguageChange implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String lang = req.getParameter("lang");
-        req.getSession().setAttribute("lang", lang);
+        String lang = req.getParameter("locale");
+        req.getSession().setAttribute("locale", lang);
 
         String referer = req.getHeader("referer");
         resp.sendRedirect(referer);

@@ -27,7 +27,7 @@ public class EditTestPost implements RequestHandler {
 
         TestService testService = new TestService(new TestRepo());
         req.setAttribute("test_id", testId);
-        req.setAttribute("page", page);
+         req.setAttribute("page", page);
 
         Integer success = 0;
         if (!DataValidator.validateForNamePlusNumber(name)) {
@@ -61,8 +61,12 @@ public class EditTestPost implements RequestHandler {
 
     private void setPlaceHolder(HttpServletRequest req,
                                 HttpServletResponse resp) throws ServletException, IOException {
-        //req.setAttribute("page", req.getParameter("page"));
         EditTest editTest = new EditTest();
         editTest.execute(req, resp);
+//        resp.sendRedirect(req.getRequestURL() +
+//                "?test_id=" + req.getParameter("test_id")
+//                + "&page=" + req.getParameter("page"));
+     //   req.getRequestDispatcher(req.getServletPath()).forward(req,resp);
+
     }
 }

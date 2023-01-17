@@ -12,15 +12,15 @@
 <%@ taglib prefix="ctg" uri="customtags" %>
 
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <title>Title</title>
 </head>
 <body>
 
-<ctg:number></ctg:number>
+
 
 <c:out value="${requestScope.text}"/>
 
@@ -34,7 +34,7 @@
         <c:out value="${ans.text}"/>
         <br>
     </c:forEach>
-    <input class="button" type="submit" value="Yes">
+    <input class="button" type="submit" value="<fmt:message key="select.option.yes"/>">
 </form>
 <hr>
 

@@ -9,9 +9,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <title>Language</title>
     <style>
@@ -24,8 +24,8 @@
 <%--  <option value="ua">ua</option>--%>
 <%--</select>--%>
 <div id="lang">
-    <form method="post" action="language">
-        <select name="lang">
+    <form method="post" action="language" >
+        <select name="locale">
             <option value="en"><fmt:message key="language.en"/></option>
             <option value="ua"><fmt:message key="language.ukr"/></option>
         </select><br>

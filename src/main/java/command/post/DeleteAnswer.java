@@ -22,6 +22,7 @@ public class DeleteAnswer implements RequestHandler {
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         Long answerId = Long.valueOf(req.getParameter("answer_id"));
+        String page = req.getParameter("page");
 
         try {
             answerService.deleteAnswer(answerId);
@@ -31,6 +32,9 @@ public class DeleteAnswer implements RequestHandler {
             req.setAttribute("question", questionService.get(questionId));
             req.setAttribute("page", req.getParameter("page"));
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+
+//            resp.sendRedirect(req.getContextPath()+"/edit_question" + "?page=" + page +
+//                    "&question_id=" + questionId + "&test_id=" + testId);
 
 
         } catch (DataBaseException e) {

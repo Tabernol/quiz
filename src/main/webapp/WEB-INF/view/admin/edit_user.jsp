@@ -10,9 +10,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <title>edit user</title>
 </head>

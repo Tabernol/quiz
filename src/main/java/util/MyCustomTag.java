@@ -17,11 +17,11 @@ public class MyCustomTag extends UpdateTagSupport {
 
     @Override
     public int doStartTag() throws JspException {
-        JspWriter out = pageContext.getOut();//returns the instance of JspWriter
+        JspWriter out = pageContext.getOut();
         countsOfVisit++;
 
         try {
-            out.print("Question number " + countsOfVisit +" :");
+            out.print(countsOfVisit);
         } catch (Exception e) {
             System.out.println(e);
         }

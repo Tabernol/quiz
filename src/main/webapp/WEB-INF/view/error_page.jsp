@@ -10,14 +10,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <title>Title</title>
 </head>
 <body>
-<h1>Sorry, but something wrong</h1>
+<h1><fmt:message key="label.error.message"/></h1>
+<form action="home">
+    <input class="button" type="submit" value="<fmt:message key="button.back"/>">
+</form>
 
 </body>
 </html>

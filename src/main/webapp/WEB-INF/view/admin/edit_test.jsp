@@ -10,10 +10,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
 
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <title>Edit</title>
     <style>
@@ -26,10 +26,14 @@
 <form method="post" action="edit_test">
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
-    name <input type="text" name="name" value="${requestScope.name}"><br>
-    subject <input type="text" name="subject" value="${requestScope.subject}"><br>
-    difficult <input type="number" name="difficult" value="${requestScope.difficult}"><br>
-    duration <input type="number" name="duration" value="${requestScope.duration}"><br>
+    <fmt:message key="table.head.test.name"/>
+    <input type="text" name="name" value="${requestScope.name}"><br>
+    <fmt:message key="table.head.subject"/>
+    <input type="text" name="subject" value="${requestScope.subject}"><br>
+    <fmt:message key="table.head.difficult"/>
+    <input type="number" name="difficult" value="${requestScope.difficult}"><br>
+    <fmt:message key="table.head.duration"/>
+    <input type="number" name="duration" value="${requestScope.duration}"><br>
     <input class="button" type="submit" value="<fmt:message key="button.edit.test"/>">
     <c:out value="${requestScope.message}"/>
 </form>

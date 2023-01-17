@@ -12,9 +12,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
-<html>
+<html lang="${sessionScope.locale}">
 <head>
     <title>Info test</title>
 </head>
@@ -22,13 +22,12 @@
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
 <div>
-    <h5>Name  <c:out value="${requestScope.name}"/></h5>
-    <h5>Subject  <c:out value="${requestScope.subject}"/></h5>
-    <h5>Difficult  <c:out value="${requestScope.difficult}"/></h5>
-    <h5>Duration  <c:out value="${requestScope.duration}"/></h5>
+    <h5><fmt:message key="table.head.test.name"/> <c:out value="${requestScope.name}"/></h5>
+    <h5><fmt:message key="table.head.subject"/> <c:out value="${requestScope.subject}"/></h5>
+    <h5><fmt:message key="table.head.difficult"/> <c:out value="${requestScope.difficult}"/></h5>
+    <h5><fmt:message key="table.head.duration"/> <c:out value="${requestScope.duration}"/></h5>
 </div>
 
-<h5> <c:out value="${requestScope.message}"/></h5>
 
 <div>
     <form action="next_page">
@@ -38,12 +37,18 @@
 </div>
 
 <br>
-<form action="start_test">
-    <input type="hidden" name="page" value="${requestScope.page}">
-    <input type="hidden" name="test_id" value="${requestScope.test_id}">
-    <input type="hidden" name="duration" value="${requestScope.duration}">
-    <input class="button" type="submit" value="<fmt:message key="button.start.test"/>">
-</form>
+<c:if test="${requestScope.message == null}">
+    <form action="start_test">
+        <input type="hidden" name="page" value="${requestScope.page}">
+        <input type="hidden" name="test_id" value="${requestScope.test_id}">
+        <input type="hidden" name="duration" value="${requestScope.duration}">
+        <input class="button" type="submit" value="<fmt:message key="button.start.test"/>">
+    </form>
+</c:if>
+<c:if test="${requestScope.message != null}">
+    <fmt:message key="label.empty.test.message"/>
+</c:if>
+
 
 </body>
 </html>

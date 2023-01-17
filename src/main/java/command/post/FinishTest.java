@@ -30,12 +30,13 @@ public class FinishTest implements RequestHandler {
 
         try {
             resultService.addResult(userId,testId,percentResult);
+            req.getRequestDispatcher("/WEB-INF/view/student/page_finish.jsp").forward(req, resp);
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
 
-        req.getRequestDispatcher("/WEB-INF/view/student/page_finish.jsp").forward(req, resp);
+
 
     }
 }

@@ -3,6 +3,8 @@ package command.post;
 import command.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.QuestionRepo;
 import servises.QuestionService;
 
@@ -12,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class DeleteQuestion implements RequestHandler {
+
+    private static Logger logger = LogManager.getLogger(DeleteQuestion.class);
+
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -23,14 +28,14 @@ public class DeleteQuestion implements RequestHandler {
         String id = req.getParameter("question_id");
         try {
             questionService.deleteQuestion(Long.valueOf(id));
+            logger.info("Question with id " + id + "has deleted");
             EditTest editTest = new EditTest();
-            editTest.execute(req,resp);
+            editTest.execute(req, resp);
         } catch (DataBaseException e) {
+            logger.info("Question with id " + id + "has not delete");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-
-
 
 
     }

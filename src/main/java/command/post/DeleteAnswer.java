@@ -2,6 +2,8 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.AnswerRepo;
 import repo.QuestionRepo;
 import servises.AnswerService;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class DeleteAnswer implements RequestHandler {
+    private static Logger logger = LogManager.getLogger(DeleteAnswer.class);
+
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -31,6 +35,7 @@ public class DeleteAnswer implements RequestHandler {
             req.setAttribute("question_id", questionId);
             req.setAttribute("question", questionService.get(questionId));
             req.setAttribute("page", req.getParameter("page"));
+            logger.info("Answer with id " + answerId + " has deleted");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
 
 //            resp.sendRedirect(req.getContextPath()+"/edit_question" + "?page=" + page +
@@ -38,13 +43,10 @@ public class DeleteAnswer implements RequestHandler {
 
 
         } catch (DataBaseException e) {
+            logger.info("Answer with id " + answerId + " has not delete");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-
-
-
-
 
 
     }

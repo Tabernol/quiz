@@ -39,9 +39,5 @@ public class DeleteQuestionTest {
       //  Mockito.when(editTest.execute(request,response)).thenReturn()
 
         deleteQuestion.execute(request,response);
-
-
-
-
     }
 }

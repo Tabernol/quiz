@@ -4,6 +4,8 @@ import command.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
 import validator.DataValidator;
@@ -15,6 +17,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class EditTestPost implements RequestHandler {
+    private static Logger logger = LogManager.getLogger(EditTestPost.class);
+
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +31,7 @@ public class EditTestPost implements RequestHandler {
 
         TestService testService = new TestService(new TestRepo());
         req.setAttribute("test_id", testId);
-         req.setAttribute("page", page);
+        req.setAttribute("page", page);
 
         Integer success = 0;
         if (!DataValidator.validateForNamePlusNumber(name)) {
@@ -48,10 +52,12 @@ public class EditTestPost implements RequestHandler {
                 if (update > 0) {
                     success = update;
                 }
+                logger.info("Test with id " + testId + "has updated");
                 resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" + "?" + "suc=" + success + "&test_id=" +
                         testId + "&page=" + page + "&message=All Right)");
                 //  req.setAttribute("message", "All Right)");
             } catch (DataBaseException e) {
+                logger.info("Test with id " + testId + "has not updated");
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
                 throw new RuntimeException(e);
             }
@@ -66,7 +72,7 @@ public class EditTestPost implements RequestHandler {
 //        resp.sendRedirect(req.getRequestURL() +
 //                "?test_id=" + req.getParameter("test_id")
 //                + "&page=" + req.getParameter("page"));
-     //   req.getRequestDispatcher(req.getServletPath()).forward(req,resp);
+        //   req.getRequestDispatcher(req.getServletPath()).forward(req,resp);
 
     }
 }

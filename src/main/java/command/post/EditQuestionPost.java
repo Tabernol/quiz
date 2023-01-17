@@ -5,6 +5,8 @@ import command.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Answer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.AnswerRepo;
 import repo.QuestionRepo;
 import servises.AnswerService;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class EditQuestionPost implements RequestHandler {
+    private static Logger logger = LogManager.getLogger(EditQuestionPost.class);
     QuestionService questionService = new QuestionService(new QuestionRepo());
     AnswerService answerService = new AnswerService(new AnswerRepo());
 
@@ -40,8 +43,9 @@ public class EditQuestionPost implements RequestHandler {
         if (!DataValidator.validateForNotLongString(text)) {
             req.setAttribute("message", "text of question is too long");
             req.setAttribute("tooLongAnswer", text);
-        EditQuestion editQuestion = new EditQuestion();
-        editQuestion.execute(req, resp);
+            logger.info("Question with id " + questionId + "is invalid");
+            EditQuestion editQuestion = new EditQuestion();
+            editQuestion.execute(req, resp);
 //            resp.sendRedirect(req.getRequestURL() + "?page=" + page +
 //                    "&question_id=" + questionId + "&test_id=" + testId);
         } else {
@@ -50,10 +54,12 @@ public class EditQuestionPost implements RequestHandler {
                 if (update > 0) {
                     success = update;
                 }
+                logger.info("Question with id " + questionId + "has updated");
                 resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" + "?" + "suc=" + success + "&test_id=" +
                         testId + "&question_id=" + questionId + "&page=" + page + "&message=All Right");
                 //  goTo(req, resp, testId, questionId);
             } catch (DataBaseException e) {
+                logger.info("Question with id " + questionId + "has not updated");
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
                 throw new RuntimeException(e);
             }

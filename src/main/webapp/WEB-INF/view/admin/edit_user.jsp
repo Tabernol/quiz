@@ -21,14 +21,11 @@
 <br>
 <form method="post" action="edit_user">
     <input type="hidden" name="user_id" value="${requestScope.user.id}">
-    Name <input type="text" name="name" value="${requestScope.user.name}"><br>
-    Role <input type="text" name="role" value="${requestScope.user.role}"><br>
-    Is Blocked
-    <select name="status">
-        <option value="false"><fmt:message key="select.option.no"/></option>
-        <option value="true"><fmt:message key="select.option.yes"/></option>
-    </select>
-    <br>
+    <fmt:message key="label.name"/> <input type="text" name="name" value="${requestScope.user.name}"><br>
+    <fmt:message key="label.role"/> <input type="text" name="role" value="${requestScope.user.role}"><br>
+    <fmt:message key="label.block"/><br>
+    <fmt:message key="select.option.no"/> <input type="radio" name="status" value="false"><br>
+    <fmt:message key="select.option.yes"/> <input type="radio" name="status" value="true"><br>
 
     <%--    <input type="text" name="status" value="${requestScope.user.blocked}"><br>--%>
     <input class="button" type="submit" value="<fmt:message key="button.edit.user"/>">

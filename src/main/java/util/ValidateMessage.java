@@ -43,5 +43,33 @@ public class ValidateMessage {
         return message;
     }
 
+    public boolean checkFieldsTest(String name, String subject, Integer difficult, Integer duration) {
+        boolean result = true;
+        if (!DataValidator.validateForNamePlusNumber(name)) {
+            result = false;
+        } else if (!DataValidator.validateForName(subject)) {
+            result = false;
+        } else if (!DataValidator.validateDifficult(difficult)) {
+            result = false;
+        } else if (!DataValidator.validateDuration(duration)) {
+            result = false;
+        }
+        return result;
+    }
+
+    public String getMessageIfInvalid(String name, String subject, Integer difficult, Integer duration) {
+        String message = null;
+        if (!DataValidator.validateForNamePlusNumber(name)) {
+            message = "name must contains only liters and numbers and space from 2-20 items";
+        } else if (!DataValidator.validateForName(subject)) {
+            message = "subject must contains only liters and space from 2-20 items";
+        } else if (!DataValidator.validateDifficult(difficult)) {
+            message = "difficult must be from 1 to 100";
+        } else if (!DataValidator.validateDuration(duration)) {
+            message = "duration must be from 1 to 30 minutes";
+        }
+        return message;
+    }
+
 
 }

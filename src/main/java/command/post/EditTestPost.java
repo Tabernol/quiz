@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
+import util.ValidateMessage;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -29,23 +30,20 @@ public class EditTestPost implements RequestHandler {
         int duration = Integer.parseInt(req.getParameter("duration"));
         String page = req.getParameter("page");
 
+        ValidateMessage validateMessage = new ValidateMessage();
         TestService testService = new TestService(new TestRepo());
+
         req.setAttribute("test_id", testId);
         req.setAttribute("page", page);
 
         Integer success = 0;
-        if (!DataValidator.validateForNamePlusNumber(name)) {
-            req.setAttribute("message", "name must contains only liters and numbers and space from 2-20 items");
-            setPlaceHolder(req, resp);
-        } else if (!DataValidator.validateForName(subject)) {
-            req.setAttribute("message", "subject must contains only liters and space from 2-20 items");
-            setPlaceHolder(req, resp);
-        } else if (!DataValidator.validateDifficult(difficult)) {
-            req.setAttribute("message", "difficult must be from 1 to 100");
-            setPlaceHolder(req, resp);
-        } else if (!DataValidator.validateDuration(duration)) {
-            req.setAttribute("message", "duration must be from 1 to 30 minutes");
-            setPlaceHolder(req, resp);
+
+        String message = null;
+        if (!validateMessage.checkFieldsTest(name, subject, difficult, duration)) {
+            message = validateMessage.getMessageIfInvalid(name, subject, difficult, duration);
+            req.setAttribute("message", message);
+            EditTest editTest = new EditTest();
+            editTest.execute(req, resp);
         } else {
             try {
                 int update = testService.update(testId, name, subject, difficult, duration);
@@ -62,17 +60,5 @@ public class EditTestPost implements RequestHandler {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-
-    private void setPlaceHolder(HttpServletRequest req,
-                                HttpServletResponse resp) throws ServletException, IOException {
-        EditTest editTest = new EditTest();
-        editTest.execute(req, resp);
-//        resp.sendRedirect(req.getRequestURL() +
-//                "?test_id=" + req.getParameter("test_id")
-//                + "&page=" + req.getParameter("page"));
-        //   req.getRequestDispatcher(req.getServletPath()).forward(req,resp);
-
     }
 }

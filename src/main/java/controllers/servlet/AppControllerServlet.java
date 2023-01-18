@@ -28,9 +28,11 @@ import org.apache.logging.log4j.LogManager;
         PathConst.ADD_QUESTION, PathConst.ADD_ANSWER,
         PathConst.INFO_TEST, PathConst.START_TEST,
         PathConst.NEXT_QUESTION, PathConst.RESULT_ANSWER,
-        PathConst.LANGUAGE,
+//        PathConst.LANGUAGE,
         "/prg_edit_question_servlet",
-        "/prg_edit_test_servlet","/prg_create_test", "/to_create_test", "/edit_profile", "/edit_user_profile"
+        "/prg_edit_test_servlet","/prg_create_test",
+        "/to_create_test", "/edit_profile", "/edit_user_profile"
+        ,"/block"
 
 })
 public class AppControllerServlet extends HttpServlet {

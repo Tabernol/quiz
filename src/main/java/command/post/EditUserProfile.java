@@ -3,6 +3,8 @@ package command.post;
 import command.EditProfile;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.UserService;
 import validator.DataValidator;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class EditUserProfile implements RequestHandler {
+    private static Logger logger = LogManager.getLogger(EditUserProfile.class);
+
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -26,20 +30,20 @@ public class EditUserProfile implements RequestHandler {
         if (!DataValidator.validateForName(name)) {
             req.setAttribute("message", "name is invalid");
             req.setAttribute("user_id", userId);
+            logger.info("User with id " + userId + "name is invalid");
             editProfile.execute(req, resp);
         } else {
             try {
                 userService.updateUser(userId, name);
                 req.setAttribute("message", "changes made successfully");
                 req.getSession().setAttribute("name", name);
+                logger.info("User with id " + userId + "changes made successfully");
                 editProfile.execute(req, resp);
             } catch (DataBaseException e) {
+                logger.warn("User with id " + userId + "did not update");
                 throw new RuntimeException(e);
             }
         }
-
-
-
 
 
     }

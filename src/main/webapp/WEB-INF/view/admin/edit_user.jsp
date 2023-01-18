@@ -23,13 +23,14 @@
     <input type="hidden" name="user_id" value="${requestScope.user.id}">
     <fmt:message key="label.name"/> <input type="text" name="name" value="${requestScope.user.name}"><br>
     <fmt:message key="label.role"/> <input type="text" name="role" value="${requestScope.user.role}"><br>
-    <fmt:message key="label.block"/><br>
-    <fmt:message key="select.option.no"/> <input type="radio" name="status" value="false"><br>
-    <fmt:message key="select.option.yes"/> <input type="radio" name="status" value="true"><br>
 
-    <%--    <input type="text" name="status" value="${requestScope.user.blocked}"><br>--%>
     <input class="button" type="submit" value="<fmt:message key="button.edit.user"/>">
     <c:out value="${requestScope.message}"/>
+</form>
+
+<form method="post" action="delete_user">
+    <input type="hidden" name="user_id" value="${user.id}">
+    <input class="button" type="submit" value=" <fmt:message key="button.delete.user"/>">
 </form>
 
 <form action="users">

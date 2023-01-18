@@ -23,8 +23,10 @@ public class DataHandleCommand {
         COMMANDS.put("/delete_answer", new DeleteAnswer());
         COMMANDS.put("/edit_user", new EditUserPost());
         COMMANDS.put("/result_answer", new ResultAnswer());
-        COMMANDS.put("/language", new LanguageChange());
+        COMMANDS.put("/delete_user", new DeleteUser());
+//        COMMANDS.put("/language", new LanguageChange());
         COMMANDS.put("/edit_user_profile", new EditUserProfile());
+        COMMANDS.put("/block", new BlockUnblockUser());
 
 
     }

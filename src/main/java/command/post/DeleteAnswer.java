@@ -43,7 +43,7 @@ public class DeleteAnswer implements RequestHandler {
 
 
         } catch (DataBaseException e) {
-            logger.info("Answer with id " + answerId + " has not delete");
+            logger.warn("Answer with id " + answerId + " has not delete");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }

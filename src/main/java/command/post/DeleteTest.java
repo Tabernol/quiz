@@ -38,7 +38,7 @@ public class DeleteTest implements RequestHandler {
             NextPage nextPage = new NextPage();
             nextPage.execute(req, resp);
         } catch (DataBaseException e) {
-            logger.info("Test with id " + id + "has not deleted");
+            logger.warn("Test with id " + id + "has not deleted");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }

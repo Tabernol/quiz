@@ -11,6 +11,7 @@ function timer(min) {
     var sec = 60;
     setInterval(function () {
         document.getElementById("timer").innerHTML = minute + ":" + sec;
+        minute--;
         sec--;
         if (sec == 00) {
             minute--;

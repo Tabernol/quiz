@@ -13,11 +13,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class AllUser implements RequestHandler {
-    UserService userService = new UserService(new UserRepo());
+    UserService userService;
     @Override
     public void execute(HttpServletRequest req, 
                         HttpServletResponse resp) 
             throws ServletException, IOException {
+        userService = new UserService(new UserRepo());
         List<User> all;
         try {
             all = userService.getAll();

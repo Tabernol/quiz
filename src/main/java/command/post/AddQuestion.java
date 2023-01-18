@@ -49,7 +49,7 @@ public class AddQuestion implements RequestHandler {
                 resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" + "?" + "suc=" + success + "&test_id=" +
                         testId + "&page=" + page + "&message_question=All Right)");
             } catch (DataBaseException e) {
-                logger.info("Question for test id " + testId + "has not added");
+                logger.warn("Question for test id " + testId + "has not added");
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
                 throw new RuntimeException(e);
             }

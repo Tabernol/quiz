@@ -20,8 +20,6 @@
 </head>
 <body>
 
-
-
 <c:out value="${requestScope.text}"/>
 
 <hr>

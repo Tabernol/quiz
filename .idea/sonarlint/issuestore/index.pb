@@ -39,10 +39,6 @@ V
 &src/main/java/command/EditProfile.java,6\7\6752baffd00e77e138769cd085bf98a4f198279f
 a
 1src/test/java/service_test/AnswerServiceTest.java,9\0\9085b24ba250e5c210f1ca315b073b6412b510da
-\
-,src/main/java/command/post/EditUserPost.java,1\9\19f881be8905365df370608d643e90404e13b622
-_
-/src/main/java/command/post/EditUserProfile.java,b\2\b27595b01209878f2cfca7121822ed9d92077e1f
 O
 src/main/java/command/Home.java,3\6\36052e70203be040c6e23325f07c7e994b1de490
 X
@@ -61,8 +57,6 @@ a
 1src/test/java/service_test/ResultServiceTest.java,a\9\a952874199ca51d86ff1ffdfa277ede3f55fdcd6
 _
 /src/test/java/service_test/UserServiceTest.java,b\5\b5fb646d9cb78bae1bd9635bf44e66572301a85a
-P
- src/test/java/ValidatorTest.java,5\8\588b78f1e6cd56164975813197d21c04f270e038
 ^
 .src/main/java/exeptions/DataBaseException.java,b\b\bb570840d8203d880f8bc5a44424bdd3feabf478
 P
@@ -79,8 +73,6 @@ Z
 *src/test/java/servlets/get/LogoutTest.java,2\5\25b101f37f9d2a74ffdf1c550f253fc3672fe32b
 P
  src/main/java/repo/UserRepo.java,3\6\368761750be42d9af4fb32376a51d66e59f5c274
-R
-"src/main/java/command/AllUser.java,f\d\fd6d8dd06bb439c1629b3ad2f97f59ff64727701
 W
 'src/main/java/command/EditQuestion.java,b\c\bc35ab11cc136114539c7f9e778ce1410ce540c4
 Y
@@ -89,12 +81,6 @@ W
 'src/main/java/servises/TestService.java,e\8\e88f94216afcfe51bfc304287a1b810b212cfe93
 ]
 -.idea/artifacts/startCommand_war_exploded.xml,2\9\29b2dd87a4df7a124f550480e186219f4025729e
-[
-+src/test/java/servlets/get/AllUserTest.java,1\8\1819169ebad78fd7ab98a2e77dec4f2a5d741237
-s
-Csrc/main/java/controllers/servlet/impl/ContentSupplierCommands.java,5\a\5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944
-R
-"src/test/java/DataHendlerTest.java,c\1\c1cfded60f85726593c501f0402d61f5f8ee7021
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 X
@@ -103,8 +89,6 @@ a
 1src/main/java/command/PrgEditQuestionServlet.java,3\6\36a8be72f9b058bd96011772745cc4bc633e7e3d
 ]
 -src/main/java/command/PrgEditTestServlet.java,b\6\b6c830884404ec67da50a59bae4353866f3a6acb
-e
-5src/main/java/controllers/filters/AbstractFilter.java,5\0\50ed2fb7d884fe911694d0969e4179862753dc27
 \
 ,src/test/java/servlets/get/Redistration.java,b\b\bb36bd1854c6cb32d90853b1375a24f1339527d2
 W

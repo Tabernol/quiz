@@ -3,6 +3,7 @@ package servlets.get;
 import command.AllUser;
 import exeptions.DataBaseException;
 import models.User;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AllUserTest {
     private final String ALL_USER_PATH = "/WEB-INF/view/admin/admin_users.jsp";
+    private final String ERROR = "WEB-INF/view/error_page.jsp";
 
     AllUser allUser = new AllUser();
     @Mock
@@ -38,14 +40,35 @@ public class AllUserTest {
         List<User> allUsers = new ArrayList<>();
         Mockito.when(request.getRequestDispatcher(ALL_USER_PATH)).thenReturn(dispatcher);
         Mockito.when(request.getSession()).thenReturn(mockSession);
+        Mockito.when(request.getRequestDispatcher(ALL_USER_PATH)).thenReturn(dispatcher);
         Mockito.when(mockUserService.getAll()).thenReturn(allUsers);
-        Mockito.when(mockSession.getAttribute("role")).thenReturn("admin");
+
+        allUser.execute(request, response);
 
         assertEquals(allUsers, mockUserService.getAll());
-     //   allUser.execute(request, response);
-//        Mockito.verify(request, Mockito.times(1)).getRequestDispatcher(ALL_USER_PATH);
-        //  Mockito.verify(dispatcher).forward(request, response);
-        // assertEquals(allUsers, mockUserService.getAll());
-        request.setAttribute("users", allUsers);
+        Mockito.verify(request, Mockito.times(1)).getRequestDispatcher(ALL_USER_PATH);
+        Mockito.verify(request, Mockito.never()).getSession();
+        Mockito.verify(dispatcher).forward(request, response);
+
     }
+
+//    @Test
+//    public void allUserThrowEx() throws DataBaseException, ServletException, IOException {
+//        final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
+//        final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
+//        final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
+//        final UserService mockUserService = Mockito.mock(UserService.class);
+
+    //  Mockito.when(new UserService(new UserRepo())).thenReturn(mockUserService);
+//        Mockito.when(mockUserService.getAll()).thenThrow(new DataBaseException("test"));
+//        Mockito.when(request.getRequestDispatcher(ERROR)).thenReturn(dispatcher);
+
+    //    allUser.execute(request,response);
+//        Mockito.verify(request, Mockito.times(1)).getRequestDispatcher(ERROR);
+//        Mockito.verify(request, Mockito.never()).getSession();
+//        Mockito.verify(dispatcher).forward(request, response);
+//        Assertions.assertThrows(DataBaseException.class, () -> {
+//            allUser.execute(request,response);
+//        });
+    // }
 }

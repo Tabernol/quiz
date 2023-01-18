@@ -2,6 +2,8 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.PasswordHashingService;
 import servises.UserService;
@@ -16,6 +18,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 public class Registration implements RequestHandler {
+
+    private static Logger logger = LogManager.getLogger(Registration.class);
 
     @Override
     public void execute(HttpServletRequest req,

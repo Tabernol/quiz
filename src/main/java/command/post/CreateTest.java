@@ -56,7 +56,7 @@ public class CreateTest implements RequestHandler {
                 throw new RuntimeException(e);
             }
         } else {
-            logger.info("Test " + name + "is invalid");
+            logger.warn("Test " + name + "is invalid");
             req.setAttribute("message", message);
             setPlaceHolder(req, resp, name, subject, difficult, duration);
         }

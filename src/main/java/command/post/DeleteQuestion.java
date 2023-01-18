@@ -32,7 +32,7 @@ public class DeleteQuestion implements RequestHandler {
             EditTest editTest = new EditTest();
             editTest.execute(req, resp);
         } catch (DataBaseException e) {
-            logger.info("Question with id " + id + "has not delete");
+            logger.warn("Question with id " + id + "has not delete");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }

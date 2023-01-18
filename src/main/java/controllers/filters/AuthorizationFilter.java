@@ -21,9 +21,9 @@ import java.security.spec.InvalidKeySpecException;
 
 import org.apache.logging.log4j.LogManager;
 
-@WebFilter(filterName = "AuthorizationFilter", value = "/login")
+//@WebFilter(filterName = "AuthorizationFilter", value = "/login")
 public class AuthorizationFilter extends AbstractFilter {
-     private static Logger logger =LogManager.getLogger(AuthorizationFilter.class);
+    private static Logger logger = LogManager.getLogger(AuthorizationFilter.class);
 
     @Override
     public void doCustomFilter(HttpServletRequest req,
@@ -43,18 +43,18 @@ public class AuthorizationFilter extends AbstractFilter {
                 req.setAttribute("message", "You do not registered");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
             } else if (userService.isBlocked(id)) {
-                logger.warn("User with id "+userService.get(id)+ "is block, and try login");
+                logger.warn("User with id " + userService.get(id).getId() + "is block, and try login");
                 req.setAttribute("message", "You are blocked");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
             } else if (isCorrectPassword(id, password)) {
-                logger.warn("User with id "+ userService.get(id) + "has come");
+                logger.warn("User with id " + userService.get(id).getId() + "has come");
                 session.setAttribute("user_id", id);// get id
                 session.setAttribute("name", userService.get(id).getName());
                 session.setAttribute("role", userService.get(id).getRole());
                 filterChain.doFilter(req, resp);
 
             } else {
-                logger.warn("User with id "+ userService.get(id) + "has input wrong password");
+                logger.warn("User with id " + userService.get(id).getId() + "has input wrong password");
                 req.setAttribute("message", "Something wrong(");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
             }

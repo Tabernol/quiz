@@ -5,7 +5,9 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Answer;
 import repo.AnswerRepo;
+import repo.ResultRepo;
 import servises.AnswerService;
+import servises.ResultService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,23 +20,30 @@ import java.util.List;
 public class ResultAnswer implements RequestHandler {
     AnswerService answerService = new AnswerService(new AnswerRepo());
 
+    ResultService resultService = new ResultService(new ResultRepo());
+
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String idQuestion = req.getParameter("id_question");
+        String questionId = req.getParameter("id_question");
         String[] res = req.getParameterValues("res");
 
-        List<Answer> trueAnswers = null;
+//        List<Answer> trueAnswers = null;
+//        try {
+//            trueAnswers = answerService.getAnswers(Long.valueOf(idQuestion));
+//        } catch (DataBaseException e) {
+//            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+//            throw new RuntimeException(e);
+//        }
+
+//        boolean result = getResult(trueAnswers, res);
+        boolean result = false;
         try {
-            trueAnswers = answerService.getAnswers(Long.valueOf(idQuestion));
+            result = resultService.getResultByQuestion(Long.valueOf(questionId), res);
         } catch (DataBaseException e) {
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-
-        boolean result = getResult(trueAnswers, res);
-
 
         List resultTest = (List<Boolean>) req.getSession().getAttribute("result_test");
         resultTest.add(result);
@@ -55,39 +64,39 @@ public class ResultAnswer implements RequestHandler {
 
     }
 
-    private List<Answer> getUserAnswer(String[] res){
-        Answer answer = null;
-        List<Answer> userAnswers = new ArrayList<>();
-        int count = -1;
-        for (int i = 0; i < res.length; i++) {
-            if (!res[i].equals("on")) {
-                answer = new Answer();
-                answer.setId(Long.parseLong(res[i]));
-                answer.setResult(false);
-                userAnswers.add(answer);
-                count++;
-            } else {
-                userAnswers.get(count).setResult(true);
-            }
-        }
-        return userAnswers;
-    }
+//    private List<Answer> getUserAnswer(String[] res){
+//        Answer answer = null;
+//        List<Answer> userAnswers = new ArrayList<>();
+//        int count = -1;
+//        for (int i = 0; i < res.length; i++) {
+//            if (!res[i].equals("on")) {
+//                answer = new Answer();
+//                answer.setId(Long.parseLong(res[i]));
+//                answer.setResult(false);
+//                userAnswers.add(answer);
+//                count++;
+//            } else {
+//                userAnswers.get(count).setResult(true);
+//            }
+//        }
+//        return userAnswers;
+//    }
 
 
-    private boolean getResult(List<Answer> trueAnswers, String[] res ){
-        if(res == null || trueAnswers == null){
-            return true;
-        }
-        List<Answer> userAnswers = getUserAnswer(res);
-        boolean result = true;
-        for (int i = 0; i < userAnswers.size(); i++) {
-            boolean contain = trueAnswers.contains(userAnswers.get(i));
-            if (contain == false) {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
+//    private boolean getResult(List<Answer> trueAnswers, String[] res ){
+//        if(res == null || trueAnswers == null){
+//            return true;
+//        }
+//        List<Answer> userAnswers = getUserAnswer(res);
+//        boolean result = true;
+//        for (int i = 0; i < userAnswers.size(); i++) {
+//            boolean contain = trueAnswers.contains(userAnswers.get(i));
+//            if (contain == false) {
+//                result = false;
+//                break;
+//            }
+//        }
+//        return result;
+//    }
 
 }

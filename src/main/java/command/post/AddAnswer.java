@@ -55,7 +55,7 @@ public class AddAnswer implements RequestHandler {
                 resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" + "?" + "suc=" + success + "&test_id=" +
                         testId + "&question_id=" + questionId + "&page=" + page + "&message_answer=All Right");
             } catch (DataBaseException e) {
-                logger.info("Answer for question id " + questionId + "has not added");
+                logger.warn("Answer for question id " + questionId + "has not added");
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
                 throw new RuntimeException(e);
             }

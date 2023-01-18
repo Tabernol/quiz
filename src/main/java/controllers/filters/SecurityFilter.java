@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "SecurityFilter", value = "/*")
+//@WebFilter(filterName = "SecurityFilter", value = "/*")
 public class SecurityFilter extends AbstractFilter {
     @Override
     public void doCustomFilter(HttpServletRequest req,
@@ -24,7 +24,7 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.LANGUAGE)) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
-                req.getRequestDispatcher("/").forward(req, resp);
+               req.getRequestDispatcher("/").forward(req, resp);
             }
 
         } else if (role.equals("student")) {
@@ -53,7 +53,7 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.EDIT_USER) || servletPath.equals("/prg_edit_question_servlet") ||
                     servletPath.equals("/prg_edit_test_servlet") || servletPath.equals("/to_create_test") ||
                     servletPath.equals("/prg_create_test") || servletPath.equals("/edit_profile") ||
-                    servletPath.equals("/edit_user_profile")) {
+                    servletPath.equals("/edit_user_profile")|| servletPath.equals("/block")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
                 req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);

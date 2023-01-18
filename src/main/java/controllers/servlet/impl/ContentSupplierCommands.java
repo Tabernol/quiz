@@ -18,7 +18,6 @@ public class ContentSupplierCommands {
         COMMANDS.put("/home", new Home());
         COMMANDS.put("/logout", new Logout());
         COMMANDS.put("/edit_user", new EditUser());
-        COMMANDS.put("/delete_user", new DeleteUser());
         COMMANDS.put("/filter_tests", new FilterTests());
         COMMANDS.put("/edit_test", new EditTest());
         COMMANDS.put("/edit_question", new EditQuestion());

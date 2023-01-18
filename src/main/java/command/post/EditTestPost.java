@@ -42,6 +42,8 @@ public class EditTestPost implements RequestHandler {
         if (!validateMessage.checkFieldsTest(name, subject, difficult, duration)) {
             message = validateMessage.getMessageIfInvalid(name, subject, difficult, duration);
             req.setAttribute("message", message);
+            // resp.sendRedirect(req.getRequestURI() + "?message=" + message);
+            logger.info("Test with id " + testId + "is invalid, because " + message);
             EditTest editTest = new EditTest();
             editTest.execute(req, resp);
         } else {
@@ -55,7 +57,7 @@ public class EditTestPost implements RequestHandler {
                         testId + "&page=" + page + "&message=All Right)");
                 //  req.setAttribute("message", "All Right)");
             } catch (DataBaseException e) {
-                logger.info("Test with id " + testId + "has not updated");
+                logger.warn("Test with id " + testId + "has not updated");
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
                 throw new RuntimeException(e);
             }

@@ -42,16 +42,17 @@
             <td><c:out value="${user.login}"/></td>
             <td><c:out value="${user.blocked}"/></td>
 
+
+            <td>
+                <form method="post" action="block">
+                    <input type="hidden" name="user_id" value="${user.id}">
+                    <input class="button" type="submit" value=" <fmt:message key="button.block"/>">
+                </form>
+            </td>
             <td>
                 <form action="edit_user">
                     <input type="hidden" name="user_id" value="${user.id}">
                     <input class="button" type="submit" value=" <fmt:message key="button.edit.user"/>">
-                </form>
-            </td>
-            <td>
-                <form action="delete_user">
-                    <input type="hidden" name="user_id" value="${user.id}">
-                    <input class="button" type="submit" value=" <fmt:message key="button.delete.user"/>">
                 </form>
             </td>
         </tr>

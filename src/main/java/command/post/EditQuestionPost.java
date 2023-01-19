@@ -1,10 +1,8 @@
 package command.post;
 
-import command.EditQuestion;
-import command.EditTest;
+import command.get.EditQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.Answer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.AnswerRepo;
@@ -17,7 +15,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class EditQuestionPost implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditQuestionPost.class);

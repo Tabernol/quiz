@@ -1,6 +1,6 @@
 package command.post;
 
-import command.EditTest;
+import command.get.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import org.apache.logging.log4j.LogManager;

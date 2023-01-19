@@ -40,4 +40,5 @@ public class ResultServiceTest {
         assertEquals(resultDtoList, resultService.getResultByUser(Mockito.anyLong()));
 
     }
+
 }

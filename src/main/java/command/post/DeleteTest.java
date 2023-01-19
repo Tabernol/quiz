@@ -1,22 +1,18 @@
 package command.post;
 
-import command.FilterTests;
-import command.NextPage;
+import command.get.NextPage;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.Test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
-import servises.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class DeleteTest implements RequestHandler {
     private static Logger logger = LogManager.getLogger(DeleteTest.class);

@@ -1,11 +1,10 @@
 package servlets.post;
 
-import command.EditTest;
+import command.get.EditTest;
 import command.post.DeleteQuestion;
 import exeptions.DataBaseException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import servises.AnswerService;
 import servises.QuestionService;
 
 import javax.servlet.RequestDispatcher;

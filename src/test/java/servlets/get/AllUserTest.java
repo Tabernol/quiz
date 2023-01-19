@@ -1,13 +1,11 @@
 package servlets.get;
 
-import command.AllUser;
+import command.get.AllUser;
 import exeptions.DataBaseException;
 import models.User;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import repo.UserRepo;
 import servises.UserService;
 
 import javax.servlet.RequestDispatcher;

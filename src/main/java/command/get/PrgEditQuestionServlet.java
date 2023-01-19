@@ -1,5 +1,6 @@
-package command;
+package command.get;
 
+import command.get.EditQuestion;
 import controllers.servlet.RequestHandler;
 
 import javax.servlet.ServletException;

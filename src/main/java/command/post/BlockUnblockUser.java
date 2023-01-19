@@ -1,6 +1,6 @@
 package command.post;
 
-import command.AllUser;
+import command.get.AllUser;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.User;

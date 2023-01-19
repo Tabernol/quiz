@@ -1,6 +1,6 @@
 package servlets.get;
 
-import command.Logout;
+import command.get.Logout;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

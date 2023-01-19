@@ -11,8 +11,6 @@ w
 G.idea/sonarlint/issuestore/f/9/f987e2a3d4b9aca2e4f6e23d677a7985a8489989,3\b\3ba8090576d1896cfe81e802269358cd063b4ea8
 w
 G.idea/sonarlint/issuestore/f/7/f7010c4f46d3b9dd8d59899249df5ba3ee23f96b,f\8\f82ed6b59cfaf6bfd7a9ef28b032195ba1df4b72
-U
-%src/main/java/constans/PathConst.java,3\2\32762792d1a9e3edc6c386356f667fa58707cac1
 R
 "src/main/java/models/Question.java,f\5\f5ac1bf73c3a03d947dabd389f6088e94ae62abb
 P
@@ -39,10 +37,6 @@ V
 &src/main/java/command/EditProfile.java,6\7\6752baffd00e77e138769cd085bf98a4f198279f
 a
 1src/test/java/service_test/AnswerServiceTest.java,9\0\9085b24ba250e5c210f1ca315b073b6412b510da
-O
-src/main/java/command/Home.java,3\6\36052e70203be040c6e23325f07c7e994b1de490
-X
-(src/test/java/servlets/get/HomeTest.java,3\8\3812908a02dbd13e284720488ce17e0b08a7b80a
 T
 $src/main/java/command/LoginForm.java,c\3\c35cc9d1cbcc9b08ad74b00d8fd47776622c6d62
 W
@@ -53,8 +47,6 @@ c
 3src/test/java/service_test/PasswordHashingTest.java,7\d\7ddcdaa4838036ac8797f1e23316aee626303e49
 Z
 *src/main/java/exeptions/QuizException.java,9\2\922c6e07eb4fcde1cc59b19e19a759d57b677ec5
-a
-1src/test/java/service_test/ResultServiceTest.java,a\9\a952874199ca51d86ff1ffdfa277ede3f55fdcd6
 _
 /src/test/java/service_test/UserServiceTest.java,b\5\b5fb646d9cb78bae1bd9635bf44e66572301a85a
 ^
@@ -67,10 +59,6 @@ P
  src/main/webapp/static/js/ti.jsp,a\7\a739c58451110f11faf4ac16de3d3e2e613b26a7
 T
 $src/main/webapp/static/css/style.css,8\6\86bb576c68621864156f96fb91807dae854a2ec7
-_
-/src/test/java/servlets/get/EditProfileTest.java,b\8\b83e1f3d327936bd291e60b887db2f7c3aff0924
-Z
-*src/test/java/servlets/get/LogoutTest.java,2\5\25b101f37f9d2a74ffdf1c550f253fc3672fe32b
 P
  src/main/java/repo/UserRepo.java,3\6\368761750be42d9af4fb32376a51d66e59f5c274
 W
@@ -89,7 +77,5 @@ a
 1src/main/java/command/PrgEditQuestionServlet.java,3\6\36a8be72f9b058bd96011772745cc4bc633e7e3d
 ]
 -src/main/java/command/PrgEditTestServlet.java,b\6\b6c830884404ec67da50a59bae4353866f3a6acb
-\
-,src/test/java/servlets/get/Redistration.java,b\b\bb36bd1854c6cb32d90853b1375a24f1339527d2
 W
 'src/main/java/command/Registration.java,9\2\921d8a4f5a34ceeef320f45435c8ec5775a27df9

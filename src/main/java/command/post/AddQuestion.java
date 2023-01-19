@@ -1,22 +1,18 @@
 package command.post;
 
-import command.EditTest;
+import command.get.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.Question;
-import models.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.QuestionRepo;
 import servises.QuestionService;
-import servises.TestService;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class AddQuestion implements RequestHandler {
 

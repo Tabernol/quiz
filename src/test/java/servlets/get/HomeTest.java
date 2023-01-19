@@ -1,7 +1,6 @@
 package servlets.get;
 
-import command.Home;
-import org.apache.catalina.Session;
+import command.get.Home;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

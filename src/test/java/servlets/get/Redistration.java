@@ -1,6 +1,6 @@
 package servlets.get;
 
-import command.Registration;
+import command.get.Registration;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

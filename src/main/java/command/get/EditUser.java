@@ -1,4 +1,4 @@
-package command;
+package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;

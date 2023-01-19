@@ -1,5 +1,6 @@
-package command;
+package command.get;
 
+import command.get.NextQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Question;

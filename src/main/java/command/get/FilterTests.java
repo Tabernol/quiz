@@ -1,4 +1,4 @@
-package command;
+package command.get;
 
 import constans.Sort;
 import controllers.servlet.RequestHandler;

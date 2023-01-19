@@ -32,15 +32,12 @@
             </c:forEach>
         </select>
         <select name="order">
-            <%--                        <c:forEach var="order" items="${sessionScope.orders}">--%>
-            <%--                            <option value="${order}"><c:out value="${order}"/></option>--%>
             <option value="name asc"><fmt:message key="sort.name.asc"/></option>
             <option value="name desc"><fmt:message key="sort.name.desc"/></option>
             <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
             <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
             <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>
             <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>
-            <%--                        </c:forEach>--%>
         </select>
         <select name="rows">
             <option value="2"><c:out value="2"/></option>
@@ -106,8 +103,6 @@
 </c:forEach>
 <hr>
 
-
-<%--<jsp:include page="/WEB-INF/view/admin/create_test.jsp"/>--%>
 
 </body>
 </html>

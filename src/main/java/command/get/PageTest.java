@@ -1,4 +1,4 @@
-package command;
+package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
@@ -16,11 +16,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class PageTest implements RequestHandler {
+    TestService testService ;
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        TestService testService = new TestService(new TestRepo());
+        testService = new TestService(new TestRepo());
         req.setAttribute("page", req.getParameter("page"));
         Long testId = Long.valueOf(req.getParameter("test_id"));
 

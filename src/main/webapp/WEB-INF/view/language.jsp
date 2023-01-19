@@ -24,7 +24,7 @@
 <%--  <option value="ua">ua</option>--%>
 <%--</select>--%>
 <div id="lang">
-    <form action="">
+    <form action="language">
         <select name="locale">
             <option value="en"><fmt:message key="language.en"/></option>
             <option value="ua"><fmt:message key="language.ukr"/></option>

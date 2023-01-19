@@ -32,7 +32,7 @@
         <c:out value="${ans.text}"/>
         <br>
     </c:forEach>
-    <input class="button" type="submit" value="<fmt:message key="select.option.yes"/>">
+    <input class="button" type="submit" onload="getCurrentTime()" value="<fmt:message key="select.option.yes"/>">
 </form>
 <hr>
 

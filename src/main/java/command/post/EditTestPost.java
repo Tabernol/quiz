@@ -1,21 +1,18 @@
 package command.post;
 
-import command.EditTest;
+import command.get.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
 import util.ValidateMessage;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class EditTestPost implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditTestPost.class);
@@ -44,8 +41,12 @@ public class EditTestPost implements RequestHandler {
             req.setAttribute("message", message);
             // resp.sendRedirect(req.getRequestURI() + "?message=" + message);
             logger.info("Test with id " + testId + "is invalid, because " + message);
-            EditTest editTest = new EditTest();
-            editTest.execute(req, resp);
+
+            resp.sendRedirect(req.getRequestURI() + "?page=" + page
+                    + "&test_id=" + testId + "&message=" + message);
+
+//            EditTest editTest = new EditTest();
+//            editTest.execute(req, resp);
         } else {
             try {
                 int update = testService.update(testId, name, subject, difficult, duration);

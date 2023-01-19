@@ -1,9 +1,8 @@
 package command.post;
 
-import command.NextQuestion;
+import command.get.NextQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.Answer;
 import repo.AnswerRepo;
 import repo.ResultRepo;
 import servises.AnswerService;
@@ -13,8 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ResultAnswer implements RequestHandler {

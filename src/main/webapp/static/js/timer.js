@@ -1,25 +1,42 @@
+var dur = (${requestScope.duration});
+
 window.onload = function () {
-    timer(${requestScope.duration});
-
+    timer(dur);
 }
-
-let t;
 
 
 function timer(min) {
     var minute = min
-    var sec = 60;
+    // var sec = 01;
     setInterval(function () {
-        document.getElementById("timer").innerHTML = minute + ":" + sec;
+        dur = minute;
+        document.getElementById("timer").innerHTML = minute;
         minute--;
-        sec--;
-        if (sec == 00) {
-            minute--;
-            sec = 60;
-
-            if (minute == 0) {
-                minute = 5;
-            }
+        if (minute == 0) {
+            minute = 5;
         }
     }, 1000);
 }
+
+function getCurrentTime() {
+    timer(dur);
+}
+
+
+
+// function timer(min) {
+//     var minute = min
+//     var sec = 01;
+//     setInterval(function () {
+//         document.getElementById("timer").innerHTML = minute + ":" + sec;
+//         sec--;
+//         if (sec == 00) {
+//             minute--;
+//             sec = 60;
+//
+//             if (minute == 0) {
+//                 minute = 5;
+//             }
+//         }
+//     }, 1000);
+// }

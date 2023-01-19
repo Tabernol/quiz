@@ -1,9 +1,8 @@
 package servlets.get;
 
-import command.Profile;
+import command.get.Profile;
 import dto.ResultDto;
 import exeptions.DataBaseException;
-import models.Result;
 import models.User;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -1,8 +1,7 @@
 package servlets.get;
 
-import command.LoginForm;
+import command.get.LoginForm;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import javax.servlet.RequestDispatcher;

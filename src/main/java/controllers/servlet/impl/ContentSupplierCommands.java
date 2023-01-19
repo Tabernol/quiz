@@ -1,7 +1,6 @@
 package controllers.servlet.impl;
 
-import command.*;
-import command.post.DeleteUser;
+import command.get.*;
 import controllers.servlet.RequestHandler;
 
 import java.util.HashMap;
@@ -31,6 +30,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/prg_create_test", new PrgCreateTest());
         COMMANDS.put("/to_create_test", new ToCreateTest());
         COMMANDS.put("/edit_profile", new EditProfile());
+        COMMANDS.put("/language", new LanguageChange());
 
     }
 

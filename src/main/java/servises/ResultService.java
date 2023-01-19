@@ -80,4 +80,9 @@ public class ResultService {
         }
         return result;
     }
+
+    public Integer getGrade(List<Boolean> userAnswer, Integer countQuestion){
+        long count = userAnswer.stream().filter(bool -> bool.equals(true)).count();
+       return Math.toIntExact(count * 100 / countQuestion);
+    }
 }

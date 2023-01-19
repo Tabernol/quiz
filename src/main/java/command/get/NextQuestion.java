@@ -1,4 +1,4 @@
-package command;
+package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
@@ -27,7 +27,6 @@ public class NextQuestion implements RequestHandler {
         if (req.getParameter("number_question") != null) {
             numberQuestion = Integer.valueOf(req.getParameter("number_question"));
         }
-
 
 
         long idQuestion = questions.get(numberQuestion).getId();

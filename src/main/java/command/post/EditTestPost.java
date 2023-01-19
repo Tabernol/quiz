@@ -42,7 +42,7 @@ public class EditTestPost implements RequestHandler {
             // resp.sendRedirect(req.getRequestURI() + "?message=" + message);
             logger.info("Test with id " + testId + "is invalid, because " + message);
 
-            resp.sendRedirect(req.getRequestURI() + "?page=" + page
+            resp.sendRedirect(req.getContextPath() + "/edit_test" + "?page=" + page
                     + "&test_id=" + testId + "&message=" + message);
 
 //            EditTest editTest = new EditTest();

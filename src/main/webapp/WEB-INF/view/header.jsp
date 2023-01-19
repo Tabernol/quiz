@@ -50,7 +50,12 @@
     <c:param name="rows" value="5"/>
     <c:param name="page" value="1"/>
 </c:url>"><fmt:message key="label.tests"/> </a>|
-            <a class="button_my" href="<c:url value='/profile' />"><fmt:message key="label.Profile"/> </a>|
+            <a class="button_my" href="<c:url value='/profile'>
+ <c:param name="order" value="name asc" />
+    <c:param name="sub" value="all"/>
+    <c:param name="rows" value="5"/>
+</c:url>"
+            ><fmt:message key="label.Profile"/> </a>|
             <a class="button_my" href="<c:url value='/logout' />"><fmt:message key="label.Logout"/> </a>
         </c:if>
     </div>

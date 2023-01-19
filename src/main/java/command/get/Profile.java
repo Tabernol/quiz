@@ -3,10 +3,13 @@ package command.get;
 import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
+import models.Test;
 import models.User;
 import repo.ResultRepo;
+import repo.TestRepo;
 import repo.UserRepo;
 import servises.ResultService;
+import servises.TestService;
 import servises.UserService;
 
 import javax.servlet.ServletException;
@@ -23,12 +26,36 @@ public class Profile implements RequestHandler {
             throws ServletException, IOException {
 
         Long userId = (Long) req.getSession().getAttribute("user_id");
+        String sub = req.getParameter("sub");
+        String order = req.getParameter("order");
+        String rows = req.getParameter("rows");
 
         UserService userService = new UserService(new UserRepo());
         ResultService resultService = new ResultService(new ResultRepo());
 
+        //new
+        TestService testService =new TestService(new TestRepo());
+
+        int countPages;
+        List<String> subjects;
+        List<Test> filterTests;
+        try {
+            countPages = testService.countPages(sub, Integer.valueOf(rows));
+            filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
+            subjects = testService.getDistinctSubjects();
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
+
+
+
+
+
         User user = null;
         List<ResultDto> resultByUser = null;
+        
+
         try {
             user = userService.get(userId);
             resultByUser = resultService.getResultByUser(user.getId());

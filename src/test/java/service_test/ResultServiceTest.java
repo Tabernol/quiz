@@ -2,6 +2,7 @@ package service_test;
 
 import dto.ResultDto;
 import exeptions.DataBaseException;
+import models.Answer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -38,6 +39,14 @@ public class ResultServiceTest {
         List<ResultDto> resultDtoList = new ArrayList<>();
         Mockito.when(mockResultRepo.resultDtoList(Mockito.anyLong())).thenReturn(resultDtoList);
         assertEquals(resultDtoList, resultService.getResultByUser(Mockito.anyLong()));
+
+    }
+
+    @Test
+    public void getGrade(){
+        List<Boolean> result = List.of(true,false);
+        assertEquals(50,resultService.getGrade(result,2));
+
 
     }
 

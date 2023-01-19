@@ -4,7 +4,6 @@ window.onload = function () {
     timer(dur);
 }
 
-
 function timer(min) {
     var minute = min
     // var sec = 01;
@@ -19,9 +18,8 @@ function timer(min) {
 }
 
 function getCurrentTime() {
-    timer(dur);
+    return dur;
 }
-
 
 
 // function timer(min) {

@@ -65,22 +65,6 @@ public class ResultService {
     }
 
 
-    private boolean getResult(List<Answer> trueAnswers, String[] res) {
-        if (res == null || trueAnswers == null) {
-            return true;
-        }
-        List<Answer> userAnswers = getUserAnswer(res);
-        boolean result = true;
-        for (int i = 0; i < userAnswers.size(); i++) {
-            boolean contain = trueAnswers.contains(userAnswers.get(i));
-            if (contain == false) {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
-
     public Integer getGrade(List<Boolean> userAnswer, Integer countQuestion){
         long count = userAnswer.stream().filter(bool -> bool.equals(true)).count();
        return Math.toIntExact(count * 100 / countQuestion);

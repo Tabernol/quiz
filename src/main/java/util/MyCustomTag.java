@@ -10,7 +10,8 @@ import java.time.temporal.TemporalAmount;
 import java.util.Calendar;
 import java.util.Timer;
 
-public class MyCustomTag extends UpdateTagSupport {
+public class
+MyCustomTag extends UpdateTagSupport {
 
     private Integer countsOfVisit = 0;
     LocalDateTime time = LocalDateTime.now();

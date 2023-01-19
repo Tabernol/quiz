@@ -39,10 +39,11 @@ public class EditTest implements RequestHandler {
             req.setAttribute("difficult", test.getDifficult());
             req.setAttribute("duration", test.getDuration());
             req.setAttribute("questions", all);
+            req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-        req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);
+
     }
 }

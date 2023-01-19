@@ -25,6 +25,8 @@ public class ResultAnswer implements RequestHandler {
             throws ServletException, IOException {
         String questionId = req.getParameter("id_question");
         String[] res = req.getParameterValues("res");
+        Integer numberQuestion = Integer.valueOf(req.getParameter("number_question"));
+        Integer size = (Integer) req.getSession().getAttribute("size");
 
 //        List<Answer> trueAnswers = null;
 //        try {
@@ -46,14 +48,10 @@ public class ResultAnswer implements RequestHandler {
         resultTest.add(result);
         req.getSession().setAttribute("result_test", resultTest);
 
-        Integer numberQuestion = Integer.valueOf(req.getParameter("number_question"));
-        Integer size = (Integer) req.getSession().getAttribute("size");
-
-        if(size == numberQuestion){
+        if (size == numberQuestion) {
             FinishTest finishTest = new FinishTest();
             finishTest.execute(req, resp);
-        }
-        else {
+        } else {
             req.setAttribute("number_question", numberQuestion);
             NextQuestion nextQuestion = new NextQuestion();
             nextQuestion.execute(req, resp);

@@ -32,30 +32,22 @@ public class Profile implements RequestHandler {
 
         UserService userService = new UserService(new UserRepo(), new ValidatorService());
         ResultService resultService = new ResultService(new ResultRepo());
-
-        //new
         TestService testService =new TestService(new TestRepo(), new ValidatorService());
 
-        int countPages;
-        List<String> subjects;
-        List<Test> filterTests;
-        try {
-            countPages = testService.countPages(sub, Integer.valueOf(rows));
-            filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
-            subjects = testService.getDistinctSubjects();
-        } catch (DataBaseException e) {
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
-        }
-
-
-
-
+//        int countPages;
+//        List<String> subjects;
+//        List<Test> filterTests;
+//        try {
+//            countPages = testService.countPages(sub, Integer.valueOf(rows));
+//            filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
+//            subjects = testService.getDistinctSubjects();
+//        } catch (DataBaseException e) {
+//            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+//            throw new RuntimeException(e);
+//        }
 
         User user = null;
         List<ResultDto> resultByUser = null;
-        
-
         try {
             user = userService.get(userId);
             resultByUser = resultService.getResultByUser(user.getId());
@@ -67,7 +59,5 @@ public class Profile implements RequestHandler {
             req.getRequestDispatcher("/WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-
-
     }
 }

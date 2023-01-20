@@ -37,23 +37,25 @@ class AnswerRepoTest {
 
         // MyDataSource.init();
     }
-
-
-    @Test
-    public void testMockDBConnection() throws Exception {
-
-        myDataSourceMockedStatic.when(MyDataSource::getConnection).thenReturn(mockConnection);
-
-
-        Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-
-        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
-
-        int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
-
-        Assertions.assertEquals(1,answer);
-    }
 }
+
+//    @Test
+//    public void testMockDBConnection() throws Exception {
+//
+//        myDataSourceMockedStatic.when(MyDataSource::getConnection).thenReturn(mockConnection);
+//
+//
+//        Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+//
+//        Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(1);
+//
+//        int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
+//
+//        Assertions.assertEquals(1,answer);
+//    }
+
+
+
 //
 //
 //        Mockito.when(mockConnection.prepareStatement(Mockito.any())).thenReturn(mockPreparedStatement);

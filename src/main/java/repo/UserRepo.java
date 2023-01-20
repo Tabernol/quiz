@@ -141,14 +141,16 @@ public class UserRepo {
 
     public long getId(String login) throws DataBaseException {
         String sql = "select * from user where login like ?";
+        long result = -1;
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, login);
             ResultSet resultSet = pst.executeQuery();
-            resultSet.next();
-            long id = resultSet.getLong("id");
+            if (resultSet.next()) {
+                result = resultSet.getLong("id");
+            }
             resultSet.close();
-            return id;
+            return result;
         } catch (SQLException e) {
             logger.warn("Can not get id by login");
             throw new DataBaseException("Can not get id by login" + e.getMessage(), e);

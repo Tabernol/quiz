@@ -6,12 +6,12 @@ import models.Test;
 import repo.TestRepo;
 import servises.PaginationService;
 import servises.TestService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class NextPage implements RequestHandler {
@@ -25,7 +25,7 @@ public class NextPage implements RequestHandler {
         String stringRows = (String) req.getSession().getAttribute("rows");
         Integer rows = Integer.valueOf(stringRows);
 
-        TestService testService = new TestService(new TestRepo());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService());
         PaginationService paginationService = new PaginationService(new TestRepo());
         List<Test> tests;
         List<String> subjects;

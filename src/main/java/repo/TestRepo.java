@@ -275,6 +275,7 @@ public class TestRepo {
     }
 
     public int createTest(String name, String subject, int difficult, int duration) throws DataBaseException {
+
         String sql = "insert into test (id, name, subject, difficult, duration) values(default, ?, ?, ?, ?)";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {

@@ -7,7 +7,7 @@ import repo.TestRepo;
 import java.util.List;
 
 public class PaginationService {
-    TestRepo testRepo;
+    private TestRepo testRepo;
 
 
     public PaginationService(TestRepo testRepo) {

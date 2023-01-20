@@ -94,21 +94,19 @@ public class UserRepo {
         }
     }
 
-    public long getId(String login) throws DataBaseException {
+    public boolean isLoginExist(String login) throws DataBaseException {
         String sql = "select * from user where login like ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, login);
             ResultSet resultSet = pst.executeQuery();
-            if (resultSet.next()) {
-                return resultSet.getLong("id");
-            }
+            boolean result = resultSet.next();
             resultSet.close();
+            return result;
         } catch (SQLException e) {
             logger.warn("Can not get id by login");
             throw new DataBaseException("Can not get id by login" + e.getMessage(), e);
         }
-        return -1;
     }
 
 
@@ -139,6 +137,22 @@ public class UserRepo {
         } catch (SQLException e) {
             logger.warn("Can not update user");
             throw new DataBaseException("Can not update user" + e.getMessage(), e);
+        }
+    }
+
+    public long getId(String login) throws DataBaseException {
+        String sql = "select * from user where login like ?";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, login);
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+            long id = resultSet.getLong("id");
+            resultSet.close();
+            return id;
+        } catch (SQLException e) {
+            logger.warn("Can not get id by login");
+            throw new DataBaseException("Can not get id by login" + e.getMessage(), e);
         }
     }
 }

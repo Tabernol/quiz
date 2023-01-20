@@ -1,12 +1,14 @@
 package service_test;
 
 import exeptions.DataBaseException;
+import exeptions.ValidateException;
 import models.Question;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.QuestionRepo;
 import servises.QuestionService;
+import servises.ValidatorService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class QuestionServiceTest {
     @Mock
     private QuestionRepo mockQuestionRepo = Mockito.mock(QuestionRepo.class);
+    @Mock
+    private ValidatorService mockValidatorService = Mockito.mock(ValidatorService.class);
 
-    QuestionService questionService = new QuestionService(mockQuestionRepo);
+    QuestionService questionService = new QuestionService(mockQuestionRepo, mockValidatorService);
 
     @Test
     public void getQuestionTest() throws DataBaseException {
@@ -37,7 +41,7 @@ public class QuestionServiceTest {
     }
 
     @Test
-    public void addQuestionAddTest() throws DataBaseException {
+    public void addQuestionAddTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepo.createQuestion(Mockito.anyLong(), Mockito.anyString())).thenReturn(1);
         int i = questionService.addQuestion(Mockito.anyLong(), Mockito.anyString());
         assertEquals(1, i);
@@ -52,7 +56,7 @@ public class QuestionServiceTest {
     }
 
     @Test
-    public void updateQuestionTest() throws DataBaseException {
+    public void updateQuestionTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepo.updateQuestion(Mockito.anyString(), Mockito.anyLong())).thenReturn(1);
         int update = questionService.update(Mockito.anyString(), Mockito.anyLong());
         assertEquals(1, update);

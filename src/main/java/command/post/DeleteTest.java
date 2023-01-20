@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,7 @@ public class DeleteTest implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
 
-
-        TestService testService = new TestService(new TestRepo());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService());
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
@@ -34,9 +34,9 @@ public class DeleteTest implements RequestHandler {
             NextPage nextPage = new NextPage();
             nextPage.execute(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("Test with id " + id + "has not deleted");
+            logger.warn("Test with id " + id + "has not deleted", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
+
         }
 
 

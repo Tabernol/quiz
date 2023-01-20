@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.UserService;
+import servises.ValidatorService;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class EditUserPost implements RequestHandler {
         Boolean status = Boolean.valueOf(req.getParameter("status"));
 
         EditUser editUser = new EditUser();
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
 
         if (!DataValidator.validateAvailabilityRole(role)) {
             req.setAttribute("user_id", userId);

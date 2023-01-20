@@ -6,16 +6,15 @@ import models.Question;
 import models.Test;
 import repo.QuestionRepo;
 import repo.TestRepo;
-import servises.AnswerService;
 import servises.QuestionService;
 import servises.TestService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class EditTest implements RequestHandler {
     @Override
@@ -25,8 +24,8 @@ public class EditTest implements RequestHandler {
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
-        TestService testService = new TestService(new TestRepo());
-        QuestionService questionService = new QuestionService(new QuestionRepo());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
         List<Question> all;
 
         try {

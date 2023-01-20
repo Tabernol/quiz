@@ -5,6 +5,7 @@ import exeptions.DataBaseException;
 import models.User;
 import repo.UserRepo;
 import servises.UserService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class EditProfile implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         Long userId = (Long) req.getSession().getAttribute("user_id");
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
         User user;
         try {
             user = userService.get(userId);

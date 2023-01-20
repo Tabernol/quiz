@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.UserService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ public class BlockUnblockUser implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
 
         Long userId = Long.valueOf(req.getParameter("user_id"));
         User user;
@@ -38,8 +39,8 @@ public class BlockUnblockUser implements RequestHandler {
             AllUser allUser = new AllUser();
             allUser.execute(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("User with id " + userId + "has not updated");
-            throw new RuntimeException(e);
+            logger.warn("User with id " + userId + "has not updated", e);
+
         }
 
 

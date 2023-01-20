@@ -3,10 +3,12 @@ package command.post;
 import command.get.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import exeptions.ValidateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.QuestionRepo;
 import servises.QuestionService;
+import servises.ValidatorService;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -27,29 +29,25 @@ public class AddQuestion implements RequestHandler {
         req.setAttribute("page", page);
 
         String text = req.getParameter("text");
-        Integer success = 0;
-        if (!DataValidator.validateForNotLongString(text)) {
-            req.setAttribute("message_question", "text of question is too long");
-            req.setAttribute("too_Long_Text", text);
-            logger.info("Question for test id " + testId + "is invalid");
-            EditTest editTest = new EditTest();
-            editTest.execute(req, resp);
-        } else {
-            try {
-                QuestionService questionService = new QuestionService(new QuestionRepo());
-                int i = questionService.addQuestion(testId, text);
-                if (i > 0) {
-                    success = i;
-                }
-                logger.info("Question for test id " + testId + "has added");
-                resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" + "?" + "suc=" + success + "&test_id=" +
-                        testId + "&page=" + page + "&message_question=All Right)");
-            } catch (DataBaseException e) {
-                logger.warn("Question for test id " + testId + "has not added");
-                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-                throw new RuntimeException(e);
-            }
 
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+        try {
+            questionService.addQuestion(testId, text);
+            logger.info("Question for test id " + testId + "has added");
+            resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" +
+                    "?test_id=" + testId +
+                    "&page=" + page +
+                    "&message_question=All Right)");
+
+        } catch (DataBaseException e) {
+            logger.warn("Question for test id " + testId + "has not added", e);
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+        } catch (ValidateException e) {
+            logger.info("Question for test id " + testId + "is invalid", e);
+            resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" +
+                    "?test_id=" + testId +
+                    "&page=" + page +
+                    "&message_question=" + "text of question is too long");
         }
     }
 }

@@ -8,6 +8,7 @@ import repo.AnswerRepo;
 import repo.QuestionRepo;
 import servises.AnswerService;
 import servises.QuestionService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +22,8 @@ public class DeleteAnswer implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        QuestionService questionService = new QuestionService(new QuestionRepo());
-        AnswerService answerService = new AnswerService(new AnswerRepo());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         Long answerId = Long.valueOf(req.getParameter("answer_id"));
@@ -38,14 +39,9 @@ public class DeleteAnswer implements RequestHandler {
             logger.info("Answer with id " + answerId + " has deleted");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
 
-//            resp.sendRedirect(req.getContextPath()+"/edit_question" + "?page=" + page +
-//                    "&question_id=" + questionId + "&test_id=" + testId);
-
-
         } catch (DataBaseException e) {
-            logger.warn("Answer with id " + answerId + " has not delete");
+            logger.warn("Answer with id " + answerId + " has not delete", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
 
 

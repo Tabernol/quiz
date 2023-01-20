@@ -11,11 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultService {
-    ResultRepo resultRepo;
+    private ResultRepo resultRepo;
 
-    AnswerService answerService = new AnswerService(new AnswerRepo());
+    private AnswerService answerService;
 
     public ResultService(ResultRepo resultRepo) {
+        this.answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
         this.resultRepo = resultRepo;
     }
 
@@ -65,8 +66,8 @@ public class ResultService {
     }
 
 
-    public Integer getGrade(List<Boolean> userAnswer, Integer countQuestion){
+    public Integer getGrade(List<Boolean> userAnswer, Integer countQuestion) {
         long count = userAnswer.stream().filter(bool -> bool.equals(true)).count();
-       return Math.toIntExact(count * 100 / countQuestion);
+        return Math.toIntExact(count * 100 / countQuestion);
     }
 }

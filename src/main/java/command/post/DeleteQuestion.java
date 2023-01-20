@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.QuestionRepo;
 import servises.QuestionService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,7 @@ public class DeleteQuestion implements RequestHandler {
         req.setAttribute("page", req.getParameter("page"));
         req.setAttribute("test_id", req.getParameter("test_id"));
 
-        QuestionService questionService = new QuestionService(new QuestionRepo());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
         String id = req.getParameter("question_id");
         try {
             questionService.deleteQuestion(Long.valueOf(id));
@@ -32,9 +33,8 @@ public class DeleteQuestion implements RequestHandler {
             EditTest editTest = new EditTest();
             editTest.execute(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("Question with id " + id + "has not delete");
+            logger.warn("Question with id " + id + "has not delete", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
 
 

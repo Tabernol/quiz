@@ -1,15 +1,10 @@
 package servlets.post;
 
 import command.post.CreateTest;
-import command.post.DeleteAnswer;
 import exeptions.DataBaseException;
-import models.Question;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import servises.AnswerService;
-import servises.QuestionService;
 import servises.TestService;
-import util.ValidateMessage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,7 +26,7 @@ public class CreateTestTest {
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
         final HttpSession session = Mockito.mock(HttpSession.class);
         TestService mockTestService = mock(TestService.class);
-        ValidateMessage mockValidateMessage = mock(ValidateMessage.class);
+
 
 
         when(request.getParameter("name")).thenReturn("first");
@@ -39,13 +34,12 @@ public class CreateTestTest {
         when(request.getParameter("difficult")).thenReturn("30");
         when(request.getParameter("duration")).thenReturn("4");
 
-        Mockito.when(mockValidateMessage
-                .checkFields(Mockito.anyString(),Mockito.anyString(),Mockito.anyInt(),Mockito.anyInt()))
-                        .thenReturn("All Right");
+//        Mockito.when(mockValidateMessage.checkFields(Mockito.anyString(),Mockito.anyString(),Mockito.anyInt(),Mockito.anyInt()))
+//                        .thenReturn("All Right");
 
-        Mockito.when(mockTestService
-                .createTest(Mockito.anyString(),Mockito.anyString(),Mockito.anyInt(),Mockito.anyInt()))
-                        .thenReturn(1);
+//        Mockito.when(mockTestService
+//                .createTest(Mockito.anyString(),Mockito.anyString(),Mockito.anyInt(),Mockito.anyInt()))
+//                        .thenReturn(1);
 
         createTest.execute(request,response);
 

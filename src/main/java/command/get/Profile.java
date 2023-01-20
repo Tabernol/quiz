@@ -11,11 +11,11 @@ import repo.UserRepo;
 import servises.ResultService;
 import servises.TestService;
 import servises.UserService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -30,11 +30,11 @@ public class Profile implements RequestHandler {
         String order = req.getParameter("order");
         String rows = req.getParameter("rows");
 
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
         ResultService resultService = new ResultService(new ResultRepo());
 
         //new
-        TestService testService =new TestService(new TestRepo());
+        TestService testService =new TestService(new TestRepo(), new ValidatorService());
 
         int countPages;
         List<String> subjects;

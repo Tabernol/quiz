@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.UserService;
+import servises.ValidatorService;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class EditUserProfile implements RequestHandler {
         String name = req.getParameter("name");
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
         EditProfile editProfile = new EditProfile();
 
         if (!DataValidator.validateForName(name)) {

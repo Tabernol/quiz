@@ -1,6 +1,5 @@
 package command.get;
 
-import command.get.NextQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Question;
@@ -8,6 +7,7 @@ import repo.QuestionRepo;
 import repo.TestRepo;
 import servises.QuestionService;
 import servises.TestService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +23,8 @@ public class StartTest implements RequestHandler {
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
-        QuestionService questionService = new QuestionService(new QuestionRepo());
-        TestService testService = new TestService(new TestRepo());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService());
         List<Question> questions;
         Integer duration;
 

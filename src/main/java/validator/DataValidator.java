@@ -1,5 +1,8 @@
 package validator;
 
+import exeptions.QuizException;
+import exeptions.ValidateException;
+
 import java.util.regex.Pattern;
 
 public class DataValidator {
@@ -25,10 +28,6 @@ public class DataValidator {
         return Pattern.matches(REGEX_PASSWORD, password);
     }
 
-//    public static boolean validateName(String name){
-//        return Pattern.matches(REGEX_NAME, name);
-//    }
-
     public static boolean validateDifficult(Integer difficult) {
         return difficult >= MIN_DIFFICULT && difficult <= MAX_DIFFICULT;
     }
@@ -53,5 +52,11 @@ public class DataValidator {
         return role.equals("admin") || role.equals("student");
     }
 
+
+    public static void validate(boolean check, String message) throws ValidateException {
+        if (!check) {
+            throw new ValidateException(message);
+        }
+    }
 
 }

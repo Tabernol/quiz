@@ -7,6 +7,7 @@ import repo.AnswerRepo;
 import repo.ResultRepo;
 import servises.AnswerService;
 import servises.ResultService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ResultAnswer implements RequestHandler {
-    AnswerService answerService = new AnswerService(new AnswerRepo());
+    AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
 
     ResultService resultService = new ResultService(new ResultRepo());
 

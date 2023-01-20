@@ -2,12 +2,14 @@ package service_test;
 
 import exeptions.DataBaseException;
 import exeptions.QuizException;
+import exeptions.ValidateException;
 import models.Answer;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.AnswerRepo;
 import servises.AnswerService;
+import servises.ValidatorService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +21,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class AnswerServiceTest {
     @Mock
     AnswerRepo mockAnswerRepo;
-
+    @Mock
+    ValidatorService mockValidatorService;
     AnswerService answerService;
 
-    @BeforeEach
-    public void setUp(){
-        mockAnswerRepo = Mockito.mock(AnswerRepo.class);
-        answerService = new AnswerService(mockAnswerRepo);
-    }
 
+    @BeforeEach
+    public void setUp() {
+        mockAnswerRepo = Mockito.mock(AnswerRepo.class);
+        mockValidatorService = Mockito.mock(ValidatorService.class);
+        answerService = new AnswerService(mockAnswerRepo, mockValidatorService);
+    }
 
 
     @Test
@@ -43,7 +47,7 @@ public class AnswerServiceTest {
     }
 
     @Test
-    public void createAnswerServiceTest() throws DataBaseException {
+    public void createAnswerServiceTest() throws DataBaseException, ValidateException {
         Mockito.when(mockAnswerRepo.createAnswer(Mockito.anyLong(),
                 Mockito.anyString(), Mockito.anyBoolean())).thenReturn(12);
 //        Mockito.verify()
@@ -66,10 +70,6 @@ public class AnswerServiceTest {
             answerService.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
         });
     }
-
-
-
-
 
 
 }

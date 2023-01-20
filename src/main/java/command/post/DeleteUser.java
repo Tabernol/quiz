@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.UserService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class DeleteUser implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
         Long userId = Long.valueOf(req.getParameter("user_id"));
         try {
             userService.deleteUser(Long.valueOf(userId));
@@ -28,9 +29,8 @@ public class DeleteUser implements RequestHandler {
             logger.info("User with id " + userId + "has deleted");
             req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("User with id " + userId + "has not deleted");
+            logger.warn("User with id " + userId + "has not deleted", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
 
     }

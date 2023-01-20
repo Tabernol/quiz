@@ -3,12 +3,14 @@ package command.post;
 import command.get.EditQuestion;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import exeptions.ValidateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.AnswerRepo;
 import repo.QuestionRepo;
 import servises.AnswerService;
 import servises.QuestionService;
+import servises.ValidatorService;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -18,8 +20,8 @@ import java.io.IOException;
 
 public class EditQuestionPost implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditQuestionPost.class);
-    QuestionService questionService = new QuestionService(new QuestionRepo());
-    AnswerService answerService = new AnswerService(new AnswerRepo());
+    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+    AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
 
     @Override
     public void execute(HttpServletRequest req,
@@ -31,37 +33,27 @@ public class EditQuestionPost implements RequestHandler {
         String text = req.getParameter("text");
         String page = req.getParameter("page");
 
-//        req.setAttribute("test_id", req.getParameter("test_id"));
-//        req.setAttribute("question_id", req.getParameter("question_id"));
-//        req.setAttribute("page", page);
+        try {
+            questionService.update(text, questionId);
+            logger.info("Question with id " + questionId + "has updated");
+            resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" +
+                    "?test_id=" + testId +
+                    "&question_id=" + questionId +
+                    "&page=" + page +
+                    "&message=All Right");
 
-
-        Integer success = 0;
-        if (!DataValidator.validateForNotLongString(text)) {
-            req.setAttribute("message", "text of question is too long");
-            req.setAttribute("tooLongAnswer", text);
+        } catch (DataBaseException e) {
+            logger.warn("Question with id " + questionId + "has not updated", e);
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+        } catch (ValidateException e) {
             logger.info("Question with id " + questionId + "is invalid");
-            EditQuestion editQuestion = new EditQuestion();
-            editQuestion.execute(req, resp);
-//            resp.sendRedirect(req.getRequestURL() + "?page=" + page +
-//                    "&question_id=" + questionId + "&test_id=" + testId);
-        } else {
-            try {
-                int update = questionService.update(text, questionId);
-                if (update > 0) {
-                    success = update;
-                }
-                logger.info("Question with id " + questionId + "has updated");
-                resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" + "?" + "suc=" + success + "&test_id=" +
-                        testId + "&question_id=" + questionId + "&page=" + page + "&message=All Right");
-                //  goTo(req, resp, testId, questionId);
-            } catch (DataBaseException e) {
-                logger.warn("Question with id " + questionId + "has not updated");
-                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-                throw new RuntimeException(e);
-            }
+
+            resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" +
+                    "?test_id=" + testId +
+                    "&question_id=" + questionId +
+                    "&page=" + page +
+                    "&message=" + "text of question is too long" +
+                    "&tooLongAnswer=" + text);
         }
-
-
     }
 }

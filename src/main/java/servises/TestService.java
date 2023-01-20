@@ -1,23 +1,29 @@
 package servises;
 
 import exeptions.DataBaseException;
+import exeptions.ValidateException;
 import models.Test;
 import repo.TestRepo;
 
 import java.util.List;
 
 public class TestService {
-    TestRepo testRepo;
+    private TestRepo testRepo;
+    private ValidatorService validatorService;
 
-    public TestService(TestRepo testRepo) {
+    public TestService(TestRepo testRepo, ValidatorService validatorService) {
         this.testRepo = testRepo;
+        this.validatorService = validatorService;
     }
 
     public List<Test> getAll() throws DataBaseException {
         return testRepo.getAll();
     }
 
-    public int createTest(String name, String subject, int difficult, int duration) throws DataBaseException {
+    public int createTest(String name, String subject, int difficult, int duration)
+            throws ValidateException, DataBaseException {
+      validatorService.checkFieldsTest(name,subject,difficult,duration);
+      validatorService.isNameExist(testRepo.isNameExist(name));
         return testRepo.createTest(name, subject, difficult, duration);
     }
 
@@ -41,7 +47,8 @@ public class TestService {
         return testRepo.get(id);
     }
 
-    public int update(Long id, String name, String subject, int difficult, int duration) throws DataBaseException {
+    public int update(Long id, String name, String subject, int difficult, int duration) throws DataBaseException, ValidateException {
+        validatorService.checkFieldsTest(name,subject,difficult,duration);
         return testRepo.updateInfoTest(id, name, subject, difficult, duration);
     }
 
@@ -68,7 +75,7 @@ public class TestService {
         return testRepo.addPopularity(idTest);
     }
 
-    public boolean isNameExist(String name) throws DataBaseException {
-        return testRepo.isNameExist(name);
-    }
+//    public boolean isNameExist(String name) throws DataBaseException {
+//        return testRepo.isNameExist(name);
+//    }
 }

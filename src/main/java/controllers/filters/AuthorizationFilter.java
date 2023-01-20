@@ -20,6 +20,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 import org.apache.logging.log4j.LogManager;
+import servises.ValidatorService;
 
 //@WebFilter(filterName = "AuthorizationFilter", value = "/login")
 public class AuthorizationFilter extends AbstractFilter {
@@ -33,7 +34,7 @@ public class AuthorizationFilter extends AbstractFilter {
         final String login = req.getParameter("login");
         final String password = req.getParameter("password");// or this first??
         String lang = req.getParameter("lang");
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
         String role;
         long id;
 
@@ -67,7 +68,7 @@ public class AuthorizationFilter extends AbstractFilter {
 
 
     private boolean isCorrectPassword(Long userId, String password) {
-        UserService userService = new UserService(new UserRepo());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService());
         try {
             String passwordInDataBase = userService.get(userId).getPassword();
             return PasswordHashingService.validatePassword(password, passwordInDataBase);

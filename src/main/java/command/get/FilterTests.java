@@ -1,18 +1,17 @@
 package command.get;
 
-import constans.Sort;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
 import repo.TestRepo;
 import servises.TestService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class FilterTests implements RequestHandler {
@@ -31,7 +30,7 @@ public class FilterTests implements RequestHandler {
         session.setAttribute("order", order);
         session.setAttribute("rows", rows);
 
-        TestService testService = new TestService(new TestRepo());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService());
         List<String> subjects;
         List<Test> filterTests;
         int countPages;

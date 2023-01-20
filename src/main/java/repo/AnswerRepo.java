@@ -17,8 +17,6 @@ import org.apache.logging.log4j.LogManager;
 public class AnswerRepo {
     Logger logger = LogManager.getLogger(AnswerRepo.class);
 
-    Connection connection;
-
 
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
         String sql = "select * from answer where question_id = ?";

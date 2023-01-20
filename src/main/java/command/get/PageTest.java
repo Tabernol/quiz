@@ -2,18 +2,15 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.Question;
 import models.Test;
-import repo.QuestionRepo;
 import repo.TestRepo;
-import servises.QuestionService;
 import servises.TestService;
+import servises.ValidatorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class PageTest implements RequestHandler {
     TestService testService ;
@@ -21,7 +18,7 @@ public class PageTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = new TestService(new TestRepo());
+        testService = new TestService(new TestRepo(), new ValidatorService());
         req.setAttribute("page", req.getParameter("page"));
         Long testId = Long.valueOf(req.getParameter("test_id"));
 

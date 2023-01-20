@@ -26,21 +26,14 @@ public class BlockUnblockUser implements RequestHandler {
         UserService userService = new UserService(new UserRepo(), new ValidatorService());
 
         Long userId = Long.valueOf(req.getParameter("user_id"));
-        User user;
+
         try {
-            user = userService.get(userId);
-            if (userService.isBlocked(userId)) {
-                userService.updateUser(userId, user.getName(), user.getRole(), false);
-                logger.info("User with id " + userId + "has unblocked");
-            } else {
-                userService.updateUser(userId, user.getName(), user.getRole(), true);
-                logger.info("User with id " + userId + "has blocked");
-            }
-            AllUser allUser = new AllUser();
-            allUser.execute(req, resp);
+            boolean block = userService.blockUnBlockUser(userId);
+            logger.info("User with id " + userId + "is block " + block);
+            resp.sendRedirect(req.getContextPath() + "/users");
         } catch (DataBaseException e) {
             logger.warn("User with id " + userId + "has not updated", e);
-
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
 
 

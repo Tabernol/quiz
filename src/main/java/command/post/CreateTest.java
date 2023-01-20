@@ -30,27 +30,21 @@ public class CreateTest implements RequestHandler {
         try {
             int result = testService.createTest(name, subject, difficult, duration);
             logger.info("Test " + name + "has created");
-            resp.sendRedirect(req.getContextPath() + "/prg_create_test" + "?suc=" + result +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/to_create_test" +
                     "&message=Test has created");
         } catch (ValidateException e) {
             logger.warn("Test " + name + " is invalid", e);
-            setPlaceHolder(req, resp, name, subject, difficult, duration, e.getMessage());
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/to_create_test" +
+                    "&name=" + name +
+                    "&subject=" + subject +
+                    "&difficult=" + difficult +
+                    "&duration=" + duration +
+                    "&message=" + e.getMessage());
         } catch (DataBaseException e) {
             logger.warn("Test " + name + "have not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
-    }
-
-    private void setPlaceHolder(HttpServletRequest req,
-                                HttpServletResponse resp,
-                                String name, String subject,
-                                int difficult, int duration, String message) throws ServletException, IOException {
-
-        resp.sendRedirect(req.getContextPath() + "/prg_create_test" +
-                "?name=" + name +
-                "&subject=" + subject +
-                "&difficult=" + difficult +
-                "&duration=" + duration +
-                "&message=" + message);
     }
 }

@@ -8,7 +8,8 @@ import validator.DataValidator;
 import java.util.logging.Level;
 
 public class ValidatorService {
-   private String message;
+
+
 
     public void checkFieldsTest(String name, String subject, Integer difficult, Integer duration)
             throws ValidateException {
@@ -23,23 +24,35 @@ public class ValidatorService {
     }
 
     public void isNameExist(boolean isExist) throws ValidateException {
-      DataValidator.validate(!isExist, "Test with this name already exist");
+        DataValidator.validate(!isExist, "Test with this name already exist");
     }
 
     public void isLoginExist(boolean isExist) throws ValidateException {
         DataValidator.validate(!isExist, "This login already exist");
     }
 
-    public void validateText(String text) throws ValidateException{
-        DataValidator.validate(DataValidator.validateForNotLongString(text), "Text answer is too long");
+    public boolean validateText(String text) throws ValidateException {
+        return DataValidator.validate(DataValidator.validateForNotLongString(text), "Text answer is too long");
     }
 
-    public void validateFieldsUser(String name,String login,String passwordHash)throws ValidateException{
+    public void validateFieldsUser(String name, String login, String passwordHash) throws ValidateException {
         DataValidator.validate(DataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
         DataValidator.validate(DataValidator.validateLogin(login),
                 "login is invalid");
         DataValidator.validate(DataValidator.validatePassword(passwordHash),
                 "password is invalid must 4-10 symbols");
+    }
+
+    public boolean validateUpdateUserName(String name) throws ValidateException {
+        return DataValidator.validate(DataValidator.validateForName(name),
+                "name must contains only liters and numbers and space from 2-20 symbols");
+    }
+
+    public void validateUpdateUser(String name, String role) throws ValidateException {
+        DataValidator.validate(DataValidator.validateForName(name),
+                "name must contains only liters and numbers and space from 2-20 symbols");
+        DataValidator.validate(DataValidator.validateAvailabilityRole(role),
+                "Role must be 'admin' or 'student'");
     }
 }

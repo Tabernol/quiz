@@ -39,19 +39,20 @@ public class FilterTests implements RequestHandler {
             countPages = testService.countPages(sub, Integer.valueOf(rows));
             filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
             subjects = testService.getDistinctSubjects();
+            req.getSession().setAttribute("subjects", subjects);
+            req.getSession().setAttribute("tests", filterTests);
+            req.setAttribute("count_pages", countPages);
+            req.setAttribute("page", req.getParameter("page"));
+            if (session.getAttribute("role").equals("admin")) {
+                req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
+            } else {
+                req.getRequestDispatcher("/WEB-INF/view/student/student_tests.jsp").forward(req, resp);
+            }
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
 
-        req.getSession().setAttribute("subjects", subjects);
-        req.getSession().setAttribute("tests", filterTests);
-        req.setAttribute("count_pages", countPages);
-        req.setAttribute("page", req.getParameter("page"));
-        if (session.getAttribute("role").equals("admin")) {
-            req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
-        } else {
-            req.getRequestDispatcher("/WEB-INF/view/student/student_tests.jsp").forward(req, resp);
-        }
+
     }
 }

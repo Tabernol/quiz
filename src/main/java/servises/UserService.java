@@ -25,7 +25,7 @@ public class UserService {
 
     public int createUser(String name, String login, String password)
             throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
-        validatorService.validateFieldsUser(name,login,password);
+        validatorService.validateFieldsUser(name, login, password);
         validatorService.isLoginExist(userRepo.isLoginExist(login));
         String passwordHash = PasswordHashingService.generateStrongPasswordHash(password);
         return userRepo.createUser(login, passwordHash, name);
@@ -36,22 +36,29 @@ public class UserService {
     }
 
     public int deleteUser(Long id) throws DataBaseException {
-       return userRepo.delete(id);
+        return userRepo.delete(id);
     }
 
-    public int updateUser(Long id, String name, String role, boolean status) throws DataBaseException {
-        return userRepo.updateUser(id, name, role, status);
+    public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
+        validatorService.validateUpdateUser(name, role);
+        return userRepo.updateUser(id, name, role);
     }
 
-    public int updateUser(Long id, String name) throws DataBaseException {
+    public int updateUser(Long id, String name) throws DataBaseException, ValidateException {
+        validatorService.validateUpdateUserName(name);
         return userRepo.updateUser(id, name);
-    }
-
-    public boolean isBlocked(Long id) throws DataBaseException {
-        return userRepo.get(id).isBlocked();
     }
 
     public long getId(String login) throws DataBaseException {
         return userRepo.getId(login);
+    }
+
+    public boolean blockUnBlockUser(Long userId) throws DataBaseException {
+        if (get(userId).isBlocked()) {
+            userRepo.changeStatus(userId, false);
+        } else {
+            userRepo.changeStatus(userId, true);
+        }
+        return get(userId).isBlocked();
     }
 }

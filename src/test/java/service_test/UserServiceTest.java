@@ -67,27 +67,20 @@ public class UserServiceTest {
     }
 
     @Test
-    public void updateLarge() throws DataBaseException {
+    public void updateLarge() throws DataBaseException, ValidateException {
         Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString(), Mockito.anyBoolean())).thenReturn(1);
+                Mockito.anyString(), Mockito.anyString())).thenReturn(1);
         assertEquals(1, userService.updateUser(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString(), Mockito.anyBoolean()));
+                Mockito.anyString(), Mockito.anyString()));
     }
 
     @Test
-    public void updateSmall() throws DataBaseException {
+    public void updateSmall() throws DataBaseException, ValidateException {
         Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
                 Mockito.anyString())).thenReturn(1);
         assertEquals(1, userService.updateUser(Mockito.anyLong(),
                 Mockito.anyString()));
     }
 
-    @Test
-    public void isBlocked() throws DataBaseException {
-        User userTrue = new User();
-        userTrue.setBlocked(true);
-        Mockito.when(mockUserRepo.get(Mockito.anyLong())).thenReturn(userTrue);
-        assertEquals(true, userService.isBlocked(Mockito.anyLong()));
-    }
 
 }

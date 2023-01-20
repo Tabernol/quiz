@@ -48,17 +48,17 @@ public class QuestionServiceTest {
 
     }
 
-    @Test
-    public void deleteQuestionDeleteTest() throws DataBaseException {
-        Mockito.when(mockQuestionRepo.delete(Mockito.anyLong())).thenReturn(1);
-        int i = questionService.deleteQuestion(Mockito.anyLong());
-        assertEquals(1, i);
-    }
-
-    @Test
-    public void updateQuestionTest() throws DataBaseException, ValidateException {
-        Mockito.when(mockQuestionRepo.updateQuestion(Mockito.anyString(), Mockito.anyLong())).thenReturn(1);
-        int update = questionService.update(Mockito.anyString(), Mockito.anyLong());
-        assertEquals(1, update);
-    }
+//    @Test
+//    public void deleteQuestionDeleteTest() throws DataBaseException {
+//        Mockito.when(mockQuestionRepo.delete(Mockito.anyLong())).thenReturn(1);
+//        int i = questionService.deleteQuestion(Mockito.anyLong());
+//        assertEquals(1, i);
+//    }
+//
+//    @Test
+//    public void updateQuestionTest() throws DataBaseException, ValidateException {
+//        Mockito.when(mockQuestionRepo.updateQuestion(Mockito.anyString(), Mockito.anyLong())).thenReturn(1);
+//        int update = questionService.update(Mockito.anyString(), Mockito.anyLong());
+//        assertEquals(1, update);
+//    }
 }

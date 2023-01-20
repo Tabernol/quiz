@@ -24,7 +24,7 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.LANGUAGE)) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
-               req.getRequestDispatcher("/").forward(req, resp);
+                req.getRequestDispatcher("/").forward(req, resp);
             }
 
         } else if (role.equals("student")) {
@@ -34,7 +34,8 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.FILTER_TESTS) || servletPath.equals(PathConst.NEXT_PAGE) ||
                     servletPath.equals(PathConst.INFO_TEST) || servletPath.equals(PathConst.START_TEST) ||
                     servletPath.equals(PathConst.NEXT_QUESTION) || servletPath.equals(PathConst.RESULT_ANSWER) ||
-                    servletPath.equals("/edit_profile") || servletPath.equals("/edit_user_profile")) {
+                    servletPath.equals("/edit_profile") || servletPath.equals("/edit_user_profile")||
+                    servletPath.equals("/prg")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
 
@@ -53,7 +54,8 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.EDIT_USER) || servletPath.equals("/prg_edit_question_servlet") ||
                     servletPath.equals("/prg_edit_test_servlet") || servletPath.equals("/to_create_test") ||
                     servletPath.equals("/prg_create_test") || servletPath.equals("/edit_profile") ||
-                    servletPath.equals("/edit_user_profile")|| servletPath.equals("/block")) {
+                    servletPath.equals("/edit_user_profile") || servletPath.equals("/block") ||
+                    servletPath.equals("/prg")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
                 req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);

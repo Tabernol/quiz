@@ -9,120 +9,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7d27716-29f1-4889-bf49-40a55c5a6d82" name="Changes" comment="26">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/00cf8fdd3eaa8b63197b0db3c8f8ad11d7667490" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/0693d8845d3720185f303db976a53534be123248" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0d9c190bc306aa29444d7add1818f212b7011d22" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0dda0263738887e4260e916e9cbec0ac89faa47d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/1819169ebad78fd7ab98a2e77dec4f2a5d741237" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f1763f358c257ea3515417352b82b0165647ad1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/217ad5a3eb5e6259f01a695e0a80744397e01016" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/5/25b101f37f9d2a74ffdf1c550f253fc3672fe32b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/2746e8b51e414fa5c87cc8387898e0decdd2d165" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29b2dd87a4df7a124f550480e186219f4025729e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e42391d4122024f95113d3a5bc49e223b330106" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/302fdb0bb648afbac75518e69f3fa5b726bc9179" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32762792d1a9e3edc6c386356f667fa58707cac1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32bca110e1c8801388c76f6e30f17d953f9147db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/3812908a02dbd13e284720488ce17e0b08a7b80a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/b/3ba8090576d1896cfe81e802269358cd063b4ea8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/450e13be0994604f9253aefa759df1db4f3498ab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/0/50ed2fb7d884fe911694d0969e4179862753dc27" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/565bda9476e4ac1859f9cc25deb7b2846e7eb024" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/588b78f1e6cd56164975813197d21c04f270e038" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a7d7ef52c6d42763002164d813cd49e539e9ee9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/60a63bcd0b8d2cb88d58f1a3b9ee97267ea68217" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65c354b03ccaa5cebdef81e6713b6e89d3b66203" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/7457ba6c51699cad780bce36f935a06efea68f76" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7bb20346640425cc000947aeaa0777e05bad3189" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7ddcdaa4838036ac8797f1e23316aee626303e49" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/86bb576c68621864156f96fb91807dae854a2ec7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/a/8ad4bfa2f427369b1095bb66276ed26920743885" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bc4f776b79babff1835a50e3a98a328169572b6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8e6d3b70c9f5b02570779b0441540d45eceb0ded" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/9226c3349e6f04e47bf6304d0e92a9b6c69bf0e8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/3/93119a23f0e7217fb1d1d7482cf462fc19f05a55" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/3/9345d3860452874a607ed5fad2e56b36c6840b9b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/9525a5ff11c78913e78ce4444fd8dfb1b00cfcce" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/7/97150b5abe5326d484f62681683b34eefb0af09a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/a/9adae9a1bb1757324e9a1bd7c3b0646bd819bc7e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c4d189863a6ed40e78c93b9693a38d6e17621d7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c7b43463cc1d6ed7dfc1652a97b0d8ee97639a1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a62aaee01c9edd87d0c4b273f45ae04fdeaef052" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a739c58451110f11faf4ac16de3d3e2e613b26a7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/a/aa449e3311fec74c0b6204ff740d799f4faf9df0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b38debac0bdb8c7ad6372d66ef205ed8791fd307" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b83e1f3d327936bd291e60b887db2f7c3aff0924" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/ba56a0119d3e7cb9dfb8bd370f14670e21dd899f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb36bd1854c6cb32d90853b1375a24f1339527d2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/be16a0f6e59dbcb4c67fe0e8f243212c29d2456d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/1/c1cfded60f85726593c501f0402d61f5f8ee7021" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9756bce43fd04104fbe9c624317ae7033d13360" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9d44f7a58989f5ae1a3b3b3a83cd71e58982c9b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da5102c10c863d5e506ad306f5c136d049288fb4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db6dcd372de7088abee8256c24a2d4f1ad90dbb1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/dfdad7fd5c86f6f0730f24fa2b25599af33c4f51" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/ea1601f0a86352308c73f29c695dd575e9501948" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f44fdafdf3cf714854c872e08f09db745b32808b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5ac1bf73c3a03d947dabd389f6088e94ae62abb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f7010c4f46d3b9dd8d59899249df5ba3ee23f96b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f802c5d78bcefff44ecd7bd41d1e158b21406822" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f82ed6b59cfaf6bfd7a9ef28b032195ba1df4b72" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f987e2a3d4b9aca2e4f6e23d677a7985a8489989" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exeptions/ValidateException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
+    <list default="true" id="b7d27716-29f1-4889-bf49-40a55c5a6d82" name="Changes" comment="27">
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/validator/MyValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/302fdb0bb648afbac75518e69f3fa5b726bc9179" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/588b78f1e6cd56164975813197d21c04f270e038" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65c354b03ccaa5cebdef81e6713b6e89d3b66203" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7bb20346640425cc000947aeaa0777e05bad3189" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/9226c3349e6f04e47bf6304d0e92a9b6c69bf0e8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/9525a5ff11c78913e78ce4444fd8dfb1b00cfcce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/a/aa449e3311fec74c0b6204ff740d799f4faf9df0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db6dcd372de7088abee8256c24a2d4f1ad90dbb1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f44fdafdf3cf714854c872e08f09db745b32808b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f7010c4f46d3b9dd8d59899249df5ba3ee23f96b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f802c5d78bcefff44ecd7bd41d1e158b21406822" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/AllUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/AllUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/NextPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/NextPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/NextQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/NextQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/PageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PrgCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/PrgCreateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PrgEditQuestionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/PrgEditQuestionServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PrgEditTestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/PrgEditTestServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PrgCreateTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PrgEditQuestionServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PrgEditTestServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/ResultAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/ResultAnswer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/PaginationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/PaginationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ValidateMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AnswerRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AnswerRepoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/CreateTestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/CreateTestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/ResultAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/ResultAnswerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteQuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteQuestionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,8 +65,8 @@
       <list>
         <option value="Enum" />
         <option value="Jsp File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -225,23 +156,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ResultAnswerTest.resultAnswerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="servlets.post.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="servlets.post" />
-      <option name="MAIN_CLASS_NAME" value="servlets.post.ResultAnswerTest" />
-      <option name="METHOD_NAME" value="resultAnswerTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ResultServiceTest.getGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnswerServiceTest.createAnswerServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
@@ -250,8 +165,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.ResultServiceTest" />
-      <option name="METHOD_NAME" value="getGrade" />
+      <option name="MAIN_CLASS_NAME" value="service_test.AnswerServiceTest" />
+      <option name="METHOD_NAME" value="createAnswerServiceTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidatorServiceTest.validateTextTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service_test" />
+      <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
+      <option name="METHOD_NAME" value="validateTextTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -345,20 +276,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.AnswerServiceTest.createAnswerServiceTest" />
+      <item itemvalue="JUnit.ValidatorServiceTest.validateTextTest" />
       <item itemvalue="JUnit.AnswerRepoTest" />
       <item itemvalue="JUnit.AnswerRepoTest.testMockDBConnection" />
-      <item itemvalue="JUnit.ResultAnswerTest.resultAnswerTest" />
-      <item itemvalue="JUnit.ResultServiceTest.getGrade" />
       <item itemvalue="JUnit.All in startCommand" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in startCommand" />
+        <item itemvalue="JUnit.ValidatorServiceTest.validateTextTest" />
+        <item itemvalue="JUnit.AnswerServiceTest.createAnswerServiceTest" />
         <item itemvalue="JUnit.AnswerRepoTest.testMockDBConnection" />
         <item itemvalue="JUnit.AnswerRepoTest" />
-        <item itemvalue="JUnit.ResultServiceTest.getGrade" />
-        <item itemvalue="JUnit.ResultAnswerTest.resultAnswerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -409,7 +340,8 @@
       <workItem from="1673872636840" duration="699000" />
       <workItem from="1673956283739" duration="19667000" />
       <workItem from="1674125032448" duration="7912000" />
-      <workItem from="1674153074496" duration="26901000" />
+      <workItem from="1674153074496" duration="27562000" />
+      <workItem from="1674202187329" duration="14706000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -544,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674157155830</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="27">
+      <created>1674181359624</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1674181359624</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +520,8 @@
     <MESSAGE value="24" />
     <MESSAGE value="25" />
     <MESSAGE value="26" />
-    <option name="LAST_COMMIT_MESSAGE" value="26" />
+    <MESSAGE value="27" />
+    <option name="LAST_COMMIT_MESSAGE" value="27" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -625,7 +565,7 @@
     <SUITE FILE_PATH="coverage/startCommand$AllUserTest_allUsers.ic" NAME="AllUserTest.allUsers Coverage Results" MODIFIED="1674077880846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>servlets.get.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1674174611145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1674215791113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest_findAllByQuestionIdTest.ic" NAME="AnswerServiceTest.findAllByQuestionIdTest Coverage Results" MODIFIED="1673392408583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>
     </SUITE>

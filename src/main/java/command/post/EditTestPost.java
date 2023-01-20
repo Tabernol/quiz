@@ -29,14 +29,12 @@ public class EditTestPost implements RequestHandler {
 
         TestService testService = new TestService(new TestRepo(), new ValidatorService());
 
-        req.setAttribute("test_id", testId);
-        req.setAttribute("page", page);
-
         try {
             testService.update(testId, name, subject, difficult, duration);
             logger.info("Test with id " + testId + "has updated");
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" +
-                    "?test_id=" + testId +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_test" +
+                    "&test_id=" + testId +
                     "&page=" + page +
                     "&message=All Right)");
         } catch (DataBaseException e) {
@@ -44,8 +42,9 @@ public class EditTestPost implements RequestHandler {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
             logger.info("Test with id " + testId + "is invalid, because ", e);
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" +
-                    "?page=" + page +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_test" +
+                    "&page=" + page +
                     "&test_id=" + testId +
                     "&message=" + e.getMessage());
         }

@@ -34,8 +34,9 @@ public class AddQuestion implements RequestHandler {
         try {
             questionService.addQuestion(testId, text);
             logger.info("Question for test id " + testId + "has added");
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" +
-                    "?test_id=" + testId +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_test"+
+                    "&test_id=" + testId +
                     "&page=" + page +
                     "&message_question=All Right)");
 
@@ -44,8 +45,9 @@ public class AddQuestion implements RequestHandler {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
             logger.info("Question for test id " + testId + "is invalid", e);
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_test_servlet" +
-                    "?test_id=" + testId +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_test"+
+                    "&test_id=" + testId +
                     "&page=" + page +
                     "&message_question=" + "text of question is too long");
         }

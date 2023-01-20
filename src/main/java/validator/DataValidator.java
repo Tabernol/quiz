@@ -53,10 +53,11 @@ public class DataValidator {
     }
 
 
-    public static void validate(boolean check, String message) throws ValidateException {
+    public static boolean validate(boolean check, String message) throws ValidateException {
         if (!check) {
             throw new ValidateException(message);
         }
+        return true;
     }
 
 }

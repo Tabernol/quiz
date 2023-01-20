@@ -40,16 +40,21 @@ public class AddAnswer implements RequestHandler {
         try {
             answerService.createAnswer(questionId, text, result);
             logger.info("Answer for question id " + questionId + "has added");
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" + "?test_id=" +
-                    testId + "&question_id=" + questionId + "&page=" + page + "&message_answer=All Right");
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_question"+
+                    "&test_id=" + testId +
+                    "&question_id=" + questionId +
+                    "&page=" + page +
+                    "&message_answer=All Right");
 
         } catch (DataBaseException e) {
             logger.warn("Answer for question id " + questionId + "has not added", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
             logger.info("Answer for question id " + questionId + "is invalid", e);
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" +
-                    "?test_id=" + testId +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_question"+
+                    "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
                     "&too_long_answer=" + text +

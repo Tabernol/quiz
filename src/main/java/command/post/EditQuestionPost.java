@@ -36,8 +36,9 @@ public class EditQuestionPost implements RequestHandler {
         try {
             questionService.update(text, questionId);
             logger.info("Question with id " + questionId + "has updated");
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" +
-                    "?test_id=" + testId +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_question" +
+                    "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
                     "&message=All Right");
@@ -47,9 +48,9 @@ public class EditQuestionPost implements RequestHandler {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
             logger.info("Question with id " + questionId + "is invalid");
-
-            resp.sendRedirect(req.getContextPath() + "/prg_edit_question_servlet" +
-                    "?test_id=" + testId +
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/edit_question" +
+                    "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
                     "&message=" + "text of question is too long" +

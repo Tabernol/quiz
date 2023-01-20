@@ -43,7 +43,7 @@ public class AuthorizationFilter extends AbstractFilter {
             if (id == -1) {
                 req.setAttribute("message", "You do not registered");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-            } else if (userService.isBlocked(id)) {
+            } else if (userService.get(id).isBlocked()) {
                 logger.warn("User with id " + userService.get(id).getId() + "is block, and try login");
                 req.setAttribute("message", "You are blocked");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);

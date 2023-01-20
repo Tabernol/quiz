@@ -110,15 +110,14 @@ public class UserRepo {
     }
 
 
-    public int updateUser(Long id, String name, String role, boolean status)
+    public int updateUser(Long id, String name, String role)
             throws DataBaseException {
-        String sql = "update user set role = ?, name = ?, is_blocked = ? where id = ? ";
+        String sql = "update user set name = ?, role = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, role);
-            pst.setString(2, name);
-            pst.setBoolean(3, status);
-            pst.setLong(4, id);
+            pst.setString(1, name);
+            pst.setString(2, role);
+            pst.setLong(3, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
             logger.warn("Can not update user");
@@ -153,6 +152,19 @@ public class UserRepo {
         } catch (SQLException e) {
             logger.warn("Can not get id by login");
             throw new DataBaseException("Can not get id by login" + e.getMessage(), e);
+        }
+    }
+
+    public int changeStatus(Long id, boolean isBlock) throws DataBaseException {
+        String sql = "update user set is_blocked = ? where id = ? ";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setBoolean(1, isBlock);
+            pst.setLong(2, id);
+            return pst.executeUpdate();
+        } catch (SQLException e) {
+            logger.warn("Can not change status user with id " + id);
+            throw new DataBaseException("Can not update user" + e.getMessage(), e);
         }
     }
 }

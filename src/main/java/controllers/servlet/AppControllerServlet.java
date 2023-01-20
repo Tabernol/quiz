@@ -29,8 +29,7 @@ import org.apache.logging.log4j.LogManager;
         PathConst.INFO_TEST, PathConst.START_TEST,
         PathConst.NEXT_QUESTION, PathConst.RESULT_ANSWER,
         PathConst.LANGUAGE,
-        "/prg_edit_question_servlet",
-        "/prg_edit_test_servlet","/prg_create_test",
+        "/prg",
         "/to_create_test", "/edit_profile", "/edit_user_profile"
         ,"/block"
 

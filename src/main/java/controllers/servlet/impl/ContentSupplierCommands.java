@@ -29,6 +29,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/edit_profile", new EditProfile());
         COMMANDS.put("/language", new LanguageChange());
         COMMANDS.put("/prg", new Prg());
+        COMMANDS.put("/get_text_question", new GetInfoQuestion());
 
     }
 

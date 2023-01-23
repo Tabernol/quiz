@@ -5,7 +5,7 @@ import exeptions.ValidateException;
 
 import java.util.regex.Pattern;
 
-public class DataValidator {
+public class DataValidator implements MyValidator {
     private static final String REGEX_LOGIN = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
             + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
     private static final String REGEX_PASSWORD = "^.{4,10}$";
@@ -60,4 +60,11 @@ public class DataValidator {
         return true;
     }
 
+    @Override
+    public boolean isValid(boolean result, String message) throws ValidateException {
+        if(!result){
+            throw  new ValidateException(message);
+        }
+        return true;
+    }
 }

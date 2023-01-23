@@ -4,10 +4,13 @@ import exeptions.DataBaseException;
 import exeptions.QuizException;
 import exeptions.ValidateException;
 import validator.DataValidator;
+import validator.MyValidator;
 
 import java.util.logging.Level;
 
 public class ValidatorService {
+
+    MyValidator myValidator;
 
 
 
@@ -28,6 +31,7 @@ public class ValidatorService {
     }
 
     public void isLoginExist(boolean isExist) throws ValidateException {
+      //  myValidator.isValid(!isExist, "This login already exist");
         DataValidator.validate(!isExist, "This login already exist");
     }
 

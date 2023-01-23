@@ -20,23 +20,38 @@
 </head>
 <body>
 
+<div id="text_question"></div>
+
 <c:out value="${requestScope.text}"/>
 
 <hr>
 <form method="post" action="result_answer">
-    <input type="hidden" name="id_question" value="${requestScope.id_question}">
+    <input id="id_question" type="hidden" name="id_question" value="${requestScope.id_question}">
     <input type="hidden" name="number_question" value="${requestScope.number_question}">
     <c:forEach var="ans" items="${requestScope.answers}">
-        <input  type="hidden" name="res" value="${ans.id}">
+        <input type="hidden" name="res" value="${ans.id}">
         <input type="checkbox" name="res">
         <c:out value="${ans.text}"/>
         <br>
     </c:forEach>
 
     <input class="button" type="submit" value="<fmt:message key="select.option.yes"/>">
+    <button  type="button" onclick="loadDoc(document.getElementById('id_question').value)">Post Ajax</button>
 </form>
 <hr>
 
+<script>
+    function loadDoc(id_question) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("text_question").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "get_text_question?id_question=" + id_question, true);
+        xhttp.send();
+    }
+</script>
 
 </body>
 </html>

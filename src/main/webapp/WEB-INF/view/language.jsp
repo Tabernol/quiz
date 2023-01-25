@@ -23,6 +23,15 @@
 <%--  <option value="en">en</option>--%>
 <%--  <option value="ua">ua</option>--%>
 <%--</select>--%>
+
+<select class="selectpicker" data-width="fit">
+    <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
+    <option  data-content='<span class="flag-icon flag-icon-mx"></span> Ukraine'>Ukraine</option>
+</select>
+
+
+
+
 <div id="lang">
     <form action="language">
         <select name="locale">
@@ -32,5 +41,15 @@
         <input type="submit" value="<fmt:message key="button.choose"/>">
     </form>
 </div>
+
+
+<script>
+    $(function(){
+        $('.selectpicker').selectpicker();
+    });
+</script>
+
+
+
 </body>
 </html>

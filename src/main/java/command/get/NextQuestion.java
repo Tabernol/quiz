@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class NextQuestion implements RequestHandler {
@@ -40,12 +41,10 @@ public class NextQuestion implements RequestHandler {
             req.setAttribute("text", text);
             req.setAttribute("id_question", idQuestion);
             req.setAttribute("number_question", ++numberQuestion);
-            req.setAttribute("duration", req.getParameter("duration"));
 
             req.getRequestDispatcher("/WEB-INF/view/student/page_base_question.jsp").forward(req, resp);
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
 
 

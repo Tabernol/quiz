@@ -42,7 +42,7 @@ public class ResultAnswer implements RequestHandler {
         try {
             result = resultService.getResultByQuestion(Long.valueOf(questionId), res);
         } catch (DataBaseException e) {
-            throw new RuntimeException(e);
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
 
         List resultTest = (List<Boolean>) req.getSession().getAttribute("result_test");
@@ -52,47 +52,13 @@ public class ResultAnswer implements RequestHandler {
         if (size == numberQuestion) {
             FinishTest finishTest = new FinishTest();
             finishTest.execute(req, resp);
-        } else {
-            req.setAttribute("number_question", numberQuestion);
-            NextQuestion nextQuestion = new NextQuestion();
-            nextQuestion.execute(req, resp);
         }
+//        else {
+//            req.setAttribute("number_question", numberQuestion);
+//            NextQuestion nextQuestion = new NextQuestion();
+//            nextQuestion.execute(req, resp);
+//        }
 
     }
-
-//    private List<Answer> getUserAnswer(String[] res){
-//        Answer answer = null;
-//        List<Answer> userAnswers = new ArrayList<>();
-//        int count = -1;
-//        for (int i = 0; i < res.length; i++) {
-//            if (!res[i].equals("on")) {
-//                answer = new Answer();
-//                answer.setId(Long.parseLong(res[i]));
-//                answer.setResult(false);
-//                userAnswers.add(answer);
-//                count++;
-//            } else {
-//                userAnswers.get(count).setResult(true);
-//            }
-//        }
-//        return userAnswers;
-//    }
-
-
-//    private boolean getResult(List<Answer> trueAnswers, String[] res ){
-//        if(res == null || trueAnswers == null){
-//            return true;
-//        }
-//        List<Answer> userAnswers = getUserAnswer(res);
-//        boolean result = true;
-//        for (int i = 0; i < userAnswers.size(); i++) {
-//            boolean contain = trueAnswers.contains(userAnswers.get(i));
-//            if (contain == false) {
-//                result = false;
-//                break;
-//            }
-//        }
-//        return result;
-//    }
 
 }

@@ -25,19 +25,19 @@ public class StartTest implements RequestHandler {
 
         QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
         TestService testService = new TestService(new TestRepo(), new ValidatorService());
-        List<Question> questions;
-        Integer duration;
-
+        List<Question> questions = null;
+        Integer duration = 0;
+        Integer size = 0;
 
         try {
             testService.addPointPopularity(testId);
             duration = testService.get(testId).getDuration();
             questions = questionService.getAllById(Long.valueOf(testId));
+            size = questions.size();
         } catch (DataBaseException e) {
             req.getRequestDispatcher("/WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
+
         }
-        Integer size = questions.size();
         //must start timer
 
         if (size > 0) {
@@ -49,8 +49,11 @@ public class StartTest implements RequestHandler {
             req.setAttribute("duration", duration);
             req.setAttribute("number_question", 0);
 
-            NextQuestion nextQuestion = new NextQuestion();
-            nextQuestion.execute(req, resp);
+            GetInfoQuestion getInfoQuestion = new GetInfoQuestion();
+            getInfoQuestion.execute(req, resp);
+            req.getRequestDispatcher("/WEB-INF/view/student/page_base_question.jsp").forward(req, resp);
+//            NextQuestion nextQuestion = new NextQuestion();
+//            nextQuestion.execute(req, resp);
         } else {
             req.setAttribute("page", req.getParameter("page"));
             req.setAttribute("message", "Sorry, this test now is empty");

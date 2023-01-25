@@ -47,7 +47,6 @@
         <input type="hidden" name="test_id" value="${requestScope.test_id}">
         <input type="hidden" name="duration" value="${requestScope.duration}">
         <input class="button" type="submit"
-               onclick="loadDoc(document.getElementById('id_question').value)"
                value="<fmt:message key="button.start.test"/>">
     </form>
 </c:if>
@@ -56,18 +55,18 @@
 </c:if>
 
 
-<script>
-    function loadDoc(id_question) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("text_question").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "get_text_question?id_question=" + id_question, true);
-        xhttp.send();
-    }
-</script>
+<%--<script>--%>
+<%--    function loadDoc(id_question) {--%>
+<%--        var xhttp = new XMLHttpRequest();--%>
+<%--        xhttp.onreadystatechange = function () {--%>
+<%--            if (this.readyState == 4 && this.status == 200) {--%>
+<%--                document.getElementById("text_question").innerHTML = this.responseText;--%>
+<%--            }--%>
+<%--        };--%>
+<%--        xhttp.open("GET", "get_text_question?id_question=" + id_question, true);--%>
+<%--        xhttp.send();--%>
+<%--    }--%>
+<%--</script>--%>
 
 </body>
 </html>

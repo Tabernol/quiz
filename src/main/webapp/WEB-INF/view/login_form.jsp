@@ -18,20 +18,42 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
-
-<br>
-<br>
-<div class="form">
-    <form method="post" action="login">
-        <input type="text" required placeholder="<fmt:message key="label.login"/>" name="login"><br>
-        <input type="password" required placeholder="<fmt:message key="label.password"/>" name="password"><br>
-        <input class="button" type="submit" value="<fmt:message key="label.Login"/>">
-    </form>
-    <c:out value="${requestScope.message}"/>
-
+<section class="vh-100 bg-image">
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-1">
+            <div class="col-4 col-md-5 col-lg-5 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <h2 class="text-uppercase text-center mb-0">Login</h2>
+                        <form method="post" action="login">
+                            <div class="form-outline mb-0">
+<%--                                change text on email--%>
+                                <input type="text" id="form3Example3cg" class="form-control form-control-lg"
+                                       name="login"/>
+                                <label class="form-label" for="form3Example3cg"><fmt:message key="label.login"/></label>
+                            </div>
+                            <div class="form-outline mb-0">
+                                <input type="password" id="form3Example4cg" class="form-control form-control-lg"
+                                       name="password"/>
+                                <label class="form-label" for="form3Example4cg"><fmt:message
+                                        key="label.password"/></label>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit"
+                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                    <fmt:message key="label.Login"/></button>
+                            </div>
+                            <c:out value="${requestScope.message}"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</section>
 
-<br>
-<a href="<c:url value='/index.jsp'/>"><fmt:message key="button.back"/></a>
+
 </body>
 </html>

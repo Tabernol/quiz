@@ -41,8 +41,12 @@ th {
 
 }
 
+
+
 .gen{
-    background-color: slategray;
+    /*background-color: slategray;*/
+    /*background-image: url('/image/start_page.png');*/
+    background-image: url('https://www.thesun.ie/wp-content/uploads/sites/3/2019/06/NINTCHDBPICT000496668972.jpg?strip=all&quality=100&w=1620&h=1080&crop=1')
 }
 
 

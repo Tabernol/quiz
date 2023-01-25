@@ -21,7 +21,7 @@ public class SecurityFilter extends AbstractFilter {
 
         if (role == null) {
             if (servletPath.equals(PathConst.LOGIN_FORM) || servletPath.equals(PathConst.REGISTRATION) ||
-                    servletPath.equals(PathConst.LANGUAGE)) {
+                    servletPath.equals(PathConst.LANGUAGE)||servletPath.equals("#")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
                 req.getRequestDispatcher("/").forward(req, resp);

@@ -19,7 +19,7 @@
     <title>Title</title>
 </head>
 <body>
-<div ><span id="timer"></span></div>
+<div><span id="timer"></span></div>
 
 <div id="text_question">
     <input id="id_question" type="hidden" name="id_question" value="${requestScope.id_question}">
@@ -61,10 +61,8 @@
             result += "&res=" + params[i].value
             if (params[i].checked) {
                 result += "&res=on"
-                alert("res " + params[i].value + " on")
             } else {
                 result += "&res=off"
-                alert("res " + params[i].value + " off")
             }
         }
         return result;
@@ -103,7 +101,12 @@
                     sec = 60;
 
                     if (minute == 0) {
-                        //finish and result
+                        // if(sec == 0){
+                        //     console.log("FINISHHHHHHHHHHHHHHHHHHHHHHHHH");
+                        //     isTimerRun = false;
+                        //     document.getElementById("timer").innerHTML = null;
+                        //     finishTest();
+                        // }
                     }
                 }
             } else {
@@ -112,6 +115,14 @@
 
         }, 1000);
     }
+
+    function finishTest() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "finish_test", true);
+        xhttp.send();
+    }
+
+
 </script>
 
 </body>

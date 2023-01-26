@@ -21,7 +21,7 @@ public class SecurityFilter extends AbstractFilter {
 
         if (role == null) {
             if (servletPath.equals(PathConst.LOGIN_FORM) || servletPath.equals(PathConst.REGISTRATION) ||
-                    servletPath.equals(PathConst.LANGUAGE)||servletPath.equals("#")) {
+                    servletPath.equals(PathConst.LANGUAGE) || servletPath.equals("#")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
                 req.getRequestDispatcher("/").forward(req, resp);
@@ -35,7 +35,8 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.INFO_TEST) || servletPath.equals(PathConst.START_TEST) ||
                     servletPath.equals(PathConst.NEXT_QUESTION) || servletPath.equals(PathConst.RESULT_ANSWER) ||
                     servletPath.equals("/edit_profile") || servletPath.equals("/edit_user_profile") ||
-                    servletPath.equals("/prg") || servletPath.equals("/get_text_question")) {
+                    servletPath.equals("/prg") || servletPath.equals("/get_text_question") ||
+                    servletPath.equals("/finish_test")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
 

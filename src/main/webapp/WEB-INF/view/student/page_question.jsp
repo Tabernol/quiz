@@ -19,6 +19,7 @@
     <title>Title</title>
 </head>
 <body>
+<div ><span id="timer"></span></div>
 
 <div id="text_question">
     <input id="id_question" type="hidden" name="id_question" value="${requestScope.id_question}">
@@ -94,7 +95,7 @@
         var minute = --min;
         var sec = 59;
         setInterval(function () {
-            document.getElementById("timer").innerHTML = minute + ":" + sec;
+            document.getElementById("timer").innerHTML = "Test will have closed in " + minute + ":" + sec + "minutes!";
             if (isTimerRun) {
                 sec--;
                 if (sec == 00) {
@@ -105,7 +106,10 @@
                         //finish and result
                     }
                 }
+            } else {
+                document.getElementById("timer").innerHTML = null;
             }
+
         }, 1000);
     }
 </script>

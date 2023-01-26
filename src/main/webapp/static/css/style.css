@@ -17,17 +17,22 @@ tbody tr:nth-child(2n) {
     background-color: #eee;
 }
 
-th {
+.th {
     position: sticky;
     top: 0;
-    background-color: #333;
+    background-color: #333333;
     color: white;
 }
 
-#header {
-    background-color: #333;
-    font-family: Verdana;
-    font-size: 34px;
+/*#header {*/
+/*    background-color: #333;*/
+/*    font-family: Verdana;*/
+/*    font-size: 34px;*/
+/*}*/
+
+.table {
+    margin: auto;
+    width: 50% !important;
 }
 
 
@@ -38,7 +43,6 @@ th {
 
 .button_my{
     color: chocolate;
-
 }
 
 

@@ -69,7 +69,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <button type="button"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                            class="btn btn-secondary">Register</button>
                                 </div>
                             </form>
                         </div>

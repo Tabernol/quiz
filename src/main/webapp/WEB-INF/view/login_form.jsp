@@ -41,7 +41,7 @@
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="submit"
-                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                        class="btn btn-secondary">
                                     <fmt:message key="label.Login"/></button>
                             </div>
                             <c:out value="${requestScope.message}"/>

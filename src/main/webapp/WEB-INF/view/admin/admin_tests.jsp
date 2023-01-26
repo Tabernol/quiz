@@ -50,47 +50,84 @@
 </div>
 
 
-<div>
-    <table class="sortable">
-        <thead>
-        <tr>
-            <th><fmt:message key="table.head.test.name"/></th>
-            <th><fmt:message key="table.head.subject"/></th>
-            <th><fmt:message key="table.head.difficult"/></th>
-            <th><fmt:message key="table.head.duration"/></th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
+<%--<div>--%>
+<%--    <table class="sortable">--%>
+<%--        <thead>--%>
+<%--        <tr>--%>
+<%--            <th><fmt:message key="table.head.test.name"/></th>--%>
+<%--            <th><fmt:message key="table.head.subject"/></th>--%>
+<%--            <th><fmt:message key="table.head.difficult"/></th>--%>
+<%--            <th><fmt:message key="table.head.duration"/></th>--%>
+<%--            <th></th>--%>
+<%--            <th></th>--%>
+<%--        </tr>--%>
+<%--        </thead>--%>
+<%--        <tbody>--%>
 
-        <c:forEach var="test" items="${sessionScope.tests}">
-            <tr>
-                <td><c:out value="${test.name}"/></td>
-                <td><c:out value="${test.subject}"/></td>
-                <td><c:out value="${test.difficult}"/></td>
-                <td><c:out value="${test.duration}"/></td>
+<%--        <c:forEach var="test" items="${sessionScope.tests}">--%>
+<%--            <tr>--%>
+<%--                <td><c:out value="${test.name}"/></td>--%>
+<%--                <td><c:out value="${test.subject}"/></td>--%>
+<%--                <td><c:out value="${test.difficult}"/></td>--%>
+<%--                <td><c:out value="${test.duration}"/></td>--%>
 
-                <td>
-                    <form action="edit_test">
-                        <input type="hidden" name="test_id" value="${test.id}">
-                        <input type="hidden" name="page" value="${requestScope.page}">
-                        <input class="button" type="submit" value="<fmt:message key="button.edit.test"/>">
-                    </form>
+<%--                <td>--%>
+<%--                    <form action="edit_test">--%>
+<%--                        <input type="hidden" name="test_id" value="${test.id}">--%>
+<%--                        <input type="hidden" name="page" value="${requestScope.page}">--%>
+<%--                        <input class="button" type="submit" value="<fmt:message key="button.edit"/>">--%>
+<%--                    </form>--%>
 
-                </td>
-                <td>
-                    <form method="post" action="delete_test">
-                        <input type="hidden" name="page" value="${requestScope.page}">
-                        <input type="hidden" name="test_id" value="${test.id}">
-                        <input class="button" type="submit" value="<fmt:message key="button.delete.test"/>">
-                    </form>
-                </td>
-            </tr>
+<%--                </td>--%>
+<%--                <td>--%>
+<%--                    <form method="post" action="delete_test">--%>
+<%--                        <input type="hidden" name="page" value="${requestScope.page}">--%>
+<%--                        <input type="hidden" name="test_id" value="${test.id}">--%>
+<%--                        <input class="button" type="submit" value="<fmt:message key="button.delete"/>">--%>
+<%--                    </form>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--        </c:forEach>--%>
+<%--        </tbody>--%>
+<%--    </table>--%>
+<%--</div>--%>
+
+<table class="table align-middle mb-0 w-auto bg-white">
+    <thead class="bg-light">
+    <tr>
+        <th><fmt:message key="table.head.test.name"/></th>
+        <th><fmt:message key="table.head.subject"/></th>
+        <th><fmt:message key="table.head.difficult"/></th>
+        <th><fmt:message key="table.head.duration"/></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <c:forEach var="test" items="${sessionScope.tests}">
+    <tr>
+        <td><c:out value="${test.name}"/></td>
+        <td><c:out value="${test.subject}"/></td>
+        <td><c:out value="${test.difficult}"/></td>
+        <td><c:out value="${test.duration}"/></td>
+        <td>
+            <form action="edit_test">
+                <input type="hidden" name="test_id" value="${test.id}">
+                <input type="hidden" name="page" value="${requestScope.page}">
+                <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.edit"/>">
+            </form>
+        </td>
+        <td>
+            <form method="post" action="delete_test">
+                <input type="hidden" name="page" value="${requestScope.page}">
+                <input type="hidden" name="test_id" value="${test.id}">
+                <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.delete"/>">
+            </form>
+        </td>
         </c:forEach>
-        </tbody>
-    </table>
-</div>
+    </tbody>
+</table>
 
 <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
 
@@ -101,7 +138,6 @@
                         <c:param name="page" value="${i}"/>
                     </c:url>"> <c:out value="${i}"/> </a>
 </c:forEach>
-<hr>
 
 
 </body>

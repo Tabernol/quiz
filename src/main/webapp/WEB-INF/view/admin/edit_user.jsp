@@ -24,13 +24,13 @@
     <fmt:message key="label.name"/> <input type="text" name="name" value="${requestScope.user.name}"><br>
     <fmt:message key="label.role"/> <input type="text" name="role" value="${requestScope.user.role}"><br>
 
-    <input class="button" type="submit" value="<fmt:message key="button.edit.user"/>">
+    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
     <c:out value="${requestScope.message}"/>
 </form>
 
 <form method="post" action="delete_user">
     <input type="hidden" name="user_id" value="${user.id}">
-    <input class="button" type="submit" value=" <fmt:message key="button.delete.user"/>">
+    <input class="button" type="submit" value=" <fmt:message key="button.delete"/>">
 </form>
 
 <form action="users">

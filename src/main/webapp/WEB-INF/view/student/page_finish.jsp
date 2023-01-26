@@ -25,11 +25,8 @@
 
 <fmt:message key="label.quiz.completed.message"/> <ctg:number></ctg:number>
 
-
-<hr>
 <form action="home">
     <input class="button" type="submit" value="Home">
 </form>
-
 </body>
 </html>

@@ -29,10 +29,6 @@ Q
 !src/test/java/ConnectionTest.java,0\d\0d9c190bc306aa29444d7add1818f212b7011d22
 R
 "src/test/java/DataHendlerTest.java,c\1\c1cfded60f85726593c501f0402d61f5f8ee7021
-d
-4src/main/webapp/WEB-INF/view/student/page_finish.jsp,5\a\5a7d7ef52c6d42763002164d813cd49e539e9ee9
-f
-6src/main/webapp/WEB-INF/view/student/student_tests.jsp,9\7\97150b5abe5326d484f62681683b34eefb0af09a
 U
 %src/main/java/constans/PathConst.java,3\2\32762792d1a9e3edc6c386356f667fa58707cac1
 a
@@ -75,8 +71,6 @@ a
 1src/test/java/service_test/ResultServiceTest.java,a\9\a952874199ca51d86ff1ffdfa277ede3f55fdcd6
 R
 "src/main/java/repo/ResultRepo.java,c\0\c049a1e563720c4aabd4f480f5dc422ca3495dfa
-`
-0src/main/webapp/WEB-INF/view/admin/edit_test.jsp,f\5\f5a7c6267f095cfb9e9a2cec8af7c07603599d97
 Z
 *src/main/java/exeptions/QuizException.java,9\2\922c6e07eb4fcde1cc59b19e19a759d57b677ec5
 e
@@ -85,8 +79,6 @@ e
 +src/main/webapp/WEB-INF/view/error_page.jsp,7\3\738a6ba0a04c7ea47f0594175b5501b7d81272a9
 ^
 .src/main/java/exeptions/DataBaseException.java,b\b\bb570840d8203d880f8bc5a44424bdd3feabf478
-d
-4src/main/webapp/WEB-INF/view/admin/edit_question.jsp,f\d\fdf5005e0e040f95fb61fcd229b761f3453877f0
 b
 2src/main/java/servises/PasswordHashingService.java,d\6\d645d82d736bd9150143ea9db1b47bde096b5ed6
 \
@@ -161,8 +153,6 @@ Z
 *src/main/java/command/post/DeleteTest.java,5\8\5859dfd41bb54466c59b3edf7ea63f9a8d39693d
 Z
 *src/main/java/command/post/DeleteUser.java,2\7\27a9944a26292b0f56aa45295c10b5c9ee8ccd8d
-`
-0src/main/webapp/WEB-INF/view/admin/edit_user.jsp,3\0\302fdb0bb648afbac75518e69f3fa5b726bc9179
 W
 'src/main/java/command/get/EditUser.java,0\4\04052593c01b62c57154219094b8187a27c3394a
 \
@@ -197,8 +187,6 @@ Z
 *src/main/java/command/post/CreateTest.java,1\b\1ba6c458c5afe8a7c13bfc2ff51f186f10ec32cf
 _
 /src/main/java/command/post/EditUserProfile.java,b\2\b27595b01209878f2cfca7121822ed9d92077e1f
-X
-(src/main/webapp/WEB-INF/view/profile.jsp,4\5\450e13be0994604f9253aefa759df1db4f3498ab
 P
  src/test/java/ValidatorTest.java,5\8\588b78f1e6cd56164975813197d21c04f270e038
 ]
@@ -221,10 +209,6 @@ V
 &src/main/webapp/WEB-INF/tags/grade.tag,d\9\d9d44f7a58989f5ae1a3b3b3a83cd71e58982c9b
 ^
 .src/main/java/exeptions/ValidateException.java,3\2\32b8dbbe72895efc6e9e62089f63b45a2a3a84fc
-e
-5src/main/webapp/WEB-INF/view/student/edit_profile.jsp,d\a\da5102c10c863d5e506ad306f5c136d049288fb4
-b
-2src/main/webapp/WEB-INF/view/admin/create_test.jsp,5\5\556efb9033de54b3a98d3e6c38b33a7ed454019f
 Z
 *src/main/java/connection/MyDataSource.java,0\b\0b57b8164257649d704558d08f09d54c37fa4938
 k
@@ -237,8 +221,6 @@ Z
 *src/main/java/command/get/FilterUsers.java,2\6\262187e21ee5783e3fe613ad45b797b59db34711
 X
 (src/main/java/validator/MyValidator.java,0\c\0c42d8705b9149d9da08fa5cdc23479a4f4ffee6
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 V
 &src/main/java/command/get/Profile.java,3\4\342a23bce6ae036a79d4946aa6119ec495676b2b
 9
@@ -259,8 +241,6 @@ s
 Csrc/main/java/controllers/servlet/impl/ContentSupplierCommands.java,5\a\5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944
 \
 ,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
-k
-;src/main/webapp/WEB-INF/view/student/page_base_question.jsp,9\6\966019b30203bf07a1c9c793eec8995d94fbfe2b
 W
 'src/main/java/command/get/NextPage.java,e\1\e1ddd0a5876e1dd208d7ae8112ebde5682bdbf36
 [

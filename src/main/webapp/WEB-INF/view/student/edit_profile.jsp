@@ -26,7 +26,7 @@
 <form method="post" action="edit_user_profile">
     <input type="hidden" name="user_id" value="${sessionScope.user_id}">
     <fmt:message key="label.name"/> <input type="text" name="name" value="${requestScope.name}"><br>
-    <input class="button" type="submit" value="<fmt:message key="button.edit.user"/>">
+    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
     <c:out value="${requestScope.message}"/>
 </form>
 

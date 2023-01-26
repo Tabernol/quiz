@@ -22,11 +22,6 @@
 </head>
 <body class="gen">
 <%--<jsp:include page="/WEB-INF/view/header.jsp"/>--%>
-<br>
-<br>
-<jsp:include page="/WEB-INF/view/student/timer.jsp"/>
-<br>
 <jsp:include page="/WEB-INF/view/student/page_question.jsp"/>
-
 </body>
 </html>

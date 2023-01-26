@@ -34,7 +34,7 @@
     <input type="number" name="difficult" value="${requestScope.difficult}"><br>
     <fmt:message key="table.head.duration"/>
     <input type="number" name="duration" value="${requestScope.duration}"><br>
-    <input class="button" type="submit" value="<fmt:message key="button.edit.test"/>">
+    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
     <c:out value="${requestScope.message}"/>
 </form>
 
@@ -65,7 +65,7 @@
                     <input type="hidden" name="page" value="${requestScope.page}">
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${question.id}">
-                    <input class="button" type="submit" value="<fmt:message key="button.edit.question"/>">
+                    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
                 </form>
 
             </td>
@@ -74,7 +74,7 @@
                     <input type="hidden" name="page" value="${requestScope.page}">
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${question.id}">
-                    <input class="button" type="submit" value="<fmt:message key="button.delete.question"/>">
+                    <input class="button" type="submit" value="<fmt:message key="button.delete"/>">
                 </form>
             </td>
         </tr>

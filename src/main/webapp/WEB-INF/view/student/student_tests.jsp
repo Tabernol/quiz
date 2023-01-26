@@ -45,53 +45,81 @@
         </select><br>
         <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
     </form>
+</div>
+<form action="home">
+    <input class="button" type="submit" value="<fmt:message key="button.home"/>">
+</form>
+<%--    <table class="sortable">--%>
+<%--        <thead>--%>
+<%--        <tr>--%>
+<%--            <th><fmt:message key="table.head.test.name"/></th>--%>
+<%--            <th><fmt:message key="table.head.subject"/></th>--%>
+<%--            <th><fmt:message key="table.head.difficult"/></th>--%>
+<%--            <th><fmt:message key="table.head.duration"/></th>--%>
+<%--            <th></th>--%>
+<%--        </tr>--%>
+<%--        </thead>--%>
+<%--        <tbody>--%>
 
-    <hr>
-    <form action="home">
-        <input class="button" type="submit" value="<fmt:message key="button.home"/>">
-    </form>
-    <table class="sortable">
-        <thead>
-        <tr>
-            <th><fmt:message key="table.head.test.name"/></th>
-            <th><fmt:message key="table.head.subject"/></th>
-            <th><fmt:message key="table.head.difficult"/></th>
-            <th><fmt:message key="table.head.duration"/></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
+<%--        <c:forEach var="test" items="${sessionScope.tests}">--%>
+<%--            <tr>--%>
+<%--                <td><c:out value="${test.name}"/></td>--%>
+<%--                <td><c:out value="${test.subject}"/></td>--%>
+<%--                <td><c:out value="${test.difficult}"/></td>--%>
+<%--                <td><c:out value="${test.duration}"/></td>--%>
 
-        <c:forEach var="test" items="${sessionScope.tests}">
-            <tr>
-                <td><c:out value="${test.name}"/></td>
-                <td><c:out value="${test.subject}"/></td>
-                <td><c:out value="${test.difficult}"/></td>
-                <td><c:out value="${test.duration}"/></td>
+<%--                <td>--%>
+<%--                    <form action="info_test">--%>
+<%--                        <input type="hidden" name="test_id" value="${test.id}">--%>
+<%--                        <input type="hidden" name="page" value="${requestScope.page}">--%>
+<%--                        <input class="button" type="submit" value="<fmt:message key="button.take.test"/>">--%>
+<%--                    </form>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--        </c:forEach>--%>
+<%--        </tbody>--%>
+<%--    </table>--%>
 
-                <td>
-                    <form action="info_test">
-                        <input type="hidden" name="test_id" value="${test.id}">
-                        <input type="hidden" name="page" value="${requestScope.page}">
-                        <input class="button" type="submit" value="<fmt:message key="button.take.test"/>">
-                    </form>
-                </td>
-            </tr>
+<table class="table align-middle mb-0 w-auto bg-white">
+    <thead class="bg-light">
+    <tr>
+        <th><fmt:message key="table.head.test.name"/></th>
+        <th><fmt:message key="table.head.subject"/></th>
+        <th><fmt:message key="table.head.difficult"/></th>
+        <th><fmt:message key="table.head.duration"/></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <c:forEach var="test" items="${sessionScope.tests}">
+    <tr>
+        <td><c:out value="${test.name}"/></td>
+        <td><c:out value="${test.subject}"/></td>
+        <td><c:out value="${test.difficult}"/></td>
+        <td><c:out value="${test.duration}"/></td>
+        <td>
+            <form action="info_test">
+                <input type="hidden" name="test_id" value="${test.id}">
+                <input type="hidden" name="page" value="${requestScope.page}">
+                <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.take.test"/>">
+            </form>
+        </td>
         </c:forEach>
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
+<div>
     <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
-    <a href="<c:url value='/next_page'>
+        <a href="<c:url value='/next_page'>
     <c:param name="order" value="${requestScope.order}"/>
     <c:param name="sub" value="${requestScope.sub}"/>
     <c:param name="rows" value="${requestScope.rows}"/>
     <c:param name="page" value="${i}"/>
 </c:url>">
-        <c:out value="${i}"/></a>
+            <c:out value="${i}"/></a>
 
     </c:forEach>
-    <hr>
-
+</div>
 </body>
 </html>

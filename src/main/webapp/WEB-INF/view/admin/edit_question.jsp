@@ -29,7 +29,7 @@
     <input type="hidden" name="question_id" value="${question.id}">
     <fmt:message key="table.head.text.of.question"/>
     <input type="text" name="text" value="${requestScope.question.text}"><br>
-    <input class="button" type="submit" value="<fmt:message key="button.edit.question"/>">
+    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
     <c:out value="${requestScope.message}"/>
 </form>
 
@@ -61,7 +61,7 @@
                     <input type="hidden" name="test_id" value="${requestScope.test_id}">
                     <input type="hidden" name="question_id" value="${requestScope.question.id}">
                     <input type="hidden" name="answer_id" value="${answer.id}">
-                    <input class="button" type="submit" value="<fmt:message key="button.delete.answer"/>">
+                    <input class="button" type="submit" value="<fmt:message key="button.delete"/>">
                 </form>
             </td>
         </tr>

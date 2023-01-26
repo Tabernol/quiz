@@ -32,7 +32,7 @@
 
 <hr>
 <form action="edit_profile">
-    <input class="button" type="submit" value="<fmt:message key="button.edit.user"/>">
+    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
 </form>
 
 

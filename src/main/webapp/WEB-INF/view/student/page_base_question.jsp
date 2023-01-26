@@ -19,6 +19,9 @@
     <style>
         <%@include file="/static/css/style.css"%>
     </style>
+    <script>
+        <%@include file="/static/js/timer.js"%>
+    </script>
 </head>
 <body class="gen">
 <%--<jsp:include page="/WEB-INF/view/header.jsp"/>--%>

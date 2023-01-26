@@ -24,34 +24,18 @@ tbody tr:nth-child(2n) {
     color: white;
 }
 
-/*#header {*/
-/*    background-color: #333;*/
-/*    font-family: Verdana;*/
-/*    font-size: 34px;*/
-/*}*/
-
 .table {
     margin: auto;
     width: 50% !important;
 }
-
-
-
-/*#bottom_nav {*/
-/*    color: chocolate;*/
-/*}*/
-
-.button_my{
-    color: chocolate;
-}
-
-
 
 .gen{
     /*background-color: slategray;*/
     /*background-image: url('/image/start_page.png');*/
     background-image: url('https://www.thesun.ie/wp-content/uploads/sites/3/2019/06/NINTCHDBPICT000496668972.jpg?strip=all&quality=100&w=1620&h=1080&crop=1')
 }
+
+/*For Timer*/
 
 
 

@@ -1,42 +1,61 @@
+let isTimerRun = true;
 
+function getUserAnswer(params) {
+    let result = "";
+    for (i = 0; i < params.length; i++) {
+        result += "&res=" + params[i].value
+        if (params[i].checked) {
+            result += "&res=on"
+        } else {
+            result += "&res=off"
+        }
+    }
+    return result;
+}
 
-// window.onload = function () {
-//     timer(dur);
-// }
+function loadQuestionAndAnswer(id_question, number_question, res) {
+    if ((${sessionScope.size}).toString() === number_question) {
+        //  isTimerRun = false;
+        document.location.href = "${pageContext.request.contextPath}/finish_test"
+    } else {
+        let result = getUserAnswer(res)
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("text_question").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "get_text_question?id_question=" + id_question +
+            "&number_question=" + number_question +
+            result, true);
+        xhttp.send();
+    }
+}
 
-// function timer(min) {
-//     var minute = --min;
-//     var sec = 59;
-//     setInterval(function() {
-//         document.getElementById("timer").innerHTML = minute + ":" + sec;
-//         sec--;
-//
-//         if (sec == 00) {
-//             minute--;
-//             sec = 60;
-//
-//             if (minute == 0) {
-//                 //finish and result
-//             }
-//         }
-//     }, 1000);
-// }
+function timer(min) {
+    let minute = --min;
+    let sec = 59;
+    setInterval(function () {
+        document.getElementById("timer").innerHTML = "Test will have closed in " + minute + ":" + sec + "minutes!";
+        if (isTimerRun) {
+            sec--;
+            if (sec == 0) {
+                if (minute != 0) {
+                    minute--;
+                    sec = 60;
+                }
+                if (minute == 0 && sec == 0) {
+                    //  isTimerRun = false;
+                    document.getElementById("timer").innerHTML = null;
+                    finishTest();
+                }
+            }
+        }
+    }, 1000);
+}
 
+function finishTest() {
+    document.location.href = "${pageContext.request.contextPath}/finish_test"
+}
 
-
-// function timer(min) {
-//     var minute = min
-//     var sec = 01;
-//     setInterval(function () {
-//         document.getElementById("timer").innerHTML = minute + ":" + sec;
-//         sec--;
-//         if (sec == 00) {
-//             minute--;
-//             sec = 60;
-//
-//             if (minute == 0) {
-//                 minute = 5;
-//             }
-//         }
-//     }, 1000);
-// }
+// test Timer

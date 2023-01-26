@@ -92,13 +92,13 @@ public class GetInfoQuestion implements RequestHandler {
                         "    <input id=\"number_question\" type=\"hidden\" " +
                         "name=\"number_question\" value=\"" + numberQuestion + "\">");
                 writer.print(text);
-                writer.print("<hr>");
+                writer.print("<br>");
                 for (Answer answer : answers) {
                     writer.print("<input type='checkbox' name='res' value='"
                             + answer.getId() + "'>" + answer.getText() + "<br>");
                 }
                 writer.print("<button type=\"button\"\n" +
-                        "        onclick=\"loadDoc(\n" +
+                        "        onclick=\"loadQuestionAndAnswer(\n" +
                         "                document.getElementById('id_question').value,\n" +
                         "                document.getElementById('number_question').value,\n" +
                         "                document.getElementsByName('res'))\">Submit\n" +

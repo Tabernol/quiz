@@ -29,8 +29,6 @@ Q
 !src/test/java/ConnectionTest.java,0\d\0d9c190bc306aa29444d7add1818f212b7011d22
 R
 "src/test/java/DataHendlerTest.java,c\1\c1cfded60f85726593c501f0402d61f5f8ee7021
-U
-%src/main/java/constans/PathConst.java,3\2\32762792d1a9e3edc6c386356f667fa58707cac1
 a
 1src/test/java/servlets/post/DeleteAnswerTest.java,2\e\2e42391d4122024f95113d3a5bc49e223b330106
 [
@@ -195,8 +193,6 @@ m
 =src/main/java/controllers/servlet/impl/DataHandleCommand.java,d\b\db6dcd372de7088abee8256c24a2d4f1ad90dbb1
 e
 5src/main/java/controllers/filters/AbstractFilter.java,5\0\50ed2fb7d884fe911694d0969e4179862753dc27
-O
-src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 P
  src/main/java/repo/UserRepo.java,3\6\368761750be42d9af4fb32376a51d66e59f5c274
 Q
@@ -219,8 +215,6 @@ Z
 *src/main/java/command/get/FilterUsers.java,2\6\262187e21ee5783e3fe613ad45b797b59db34711
 X
 (src/main/java/validator/MyValidator.java,0\c\0c42d8705b9149d9da08fa5cdc23479a4f4ffee6
-V
-&src/main/java/command/get/Profile.java,3\4\342a23bce6ae036a79d4946aa6119ec495676b2b
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 d
@@ -239,16 +233,8 @@ j
 ,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
 W
 'src/main/java/command/get/NextPage.java,e\1\e1ddd0a5876e1dd208d7ae8112ebde5682bdbf36
-[
-+src/main/java/command/get/NextQuestion.java,f\d\fddb22f83fb6357d9e9ac9d7385943da9d06042d
-b
-2src/main/webapp/WEB-INF/view/student/page_test.jsp,7\0\7018362ecf383780af7fdecd7a53f7a164b71fee
 T
 $src/main/java/util/QueryBuilder.java,d\3\d3681c45344dac34b37040da881839634d173fec
-R
-"src/main/webapp/static/js/timer.js,e\b\eb184e330b63946036780068f874a8abb849ed42
-\
-,src/main/java/command/post/ResultAnswer.java,1\a\1a1af3893e9c72f9aaf198320ebb5a5c5a039121
 Y
 )src/main/java/servises/AnswerService.java,c\7\c7b2aa69abb5cd82c9f77796385c4f83da68ab45
 R
@@ -265,10 +251,6 @@ Y
 )src/main/webapp/WEB-INF/view/language.jsp,a\6\a62aaee01c9edd87d0c4b273f45ae04fdeaef052
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-^
-.src/main/java/command/get/GetInfoQuestion.java,5\a\5a2bf09d4310002061fe4fea5c647aa2ba31be0c
-T
-$src/main/webapp/static/css/style.css,8\6\86bb576c68621864156f96fb91807dae854a2ec7
 b
 2src/main/webapp/WEB-INF/view/admin/admin_tests.jsp,b\3\b38debac0bdb8c7ad6372d66ef205ed8791fd307
 b
@@ -285,8 +267,6 @@ d
 0src/main/webapp/WEB-INF/view/admin/edit_user.jsp,3\0\302fdb0bb648afbac75518e69f3fa5b726bc9179
 [
 +src/main/webapp/WEB-INF/view/login_form.jsp,3\2\32bca110e1c8801388c76f6e30f17d953f9147db
-k
-;src/main/webapp/WEB-INF/view/student/page_base_question.jsp,9\6\966019b30203bf07a1c9c793eec8995d94fbfe2b
 d
 4src/main/webapp/WEB-INF/view/student/page_finish.jsp,5\a\5a7d7ef52c6d42763002164d813cd49e539e9ee9
 X

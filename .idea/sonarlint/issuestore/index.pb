@@ -163,8 +163,6 @@ c
 3src/test/java/servlets/post/DeleteQuestionTest.java,9\2\9226c3349e6f04e47bf6304d0e92a9b6c69bf0e8
 _
 /src/test/java/servlets/post/DeleteTestTest.java,f\4\f44fdafdf3cf714854c872e08f09db745b32808b
-`
-0src/main/java/command/post/EditQuestionPost.java,9\1\918c440de6b63426624ace8b4eebdfdf5a893772
 \
 ,src/main/java/command/post/EditTestPost.java,d\8\d8b389717101cd2813dfb9db20214988484f0889
 \

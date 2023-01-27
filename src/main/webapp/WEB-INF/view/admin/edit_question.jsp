@@ -42,8 +42,8 @@
 <hr>
 
 
-<table class="table table-success table-striped">
-    <thead class="class bg-light">
+<table class="table align-middle mb-0 w-auto bg-white">
+    <thead class="bg-secondary">
     <tr>
         <th><fmt:message key="table.head.text.of.answer"/></th>
         <th><fmt:message key="table.head.result.answer"/></th>

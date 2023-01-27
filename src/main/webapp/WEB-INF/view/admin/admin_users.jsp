@@ -24,41 +24,6 @@
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
-<%--<table class="sortable">--%>
-<%--    <thead>--%>
-<%--    <tr>--%>
-<%--        <th><fmt:message key="table.head.name"/></th>--%>
-<%--        <th><fmt:message key="table.head.login"/></th>--%>
-<%--        <th><fmt:message key="table.head.status"/></th>--%>
-<%--        <th></th>--%>
-<%--        <th></th>--%>
-<%--    </tr>--%>
-<%--    </thead>--%>
-<%--    <tbody>--%>
-
-<%--    <c:forEach var="user" items="${requestScope.users}">--%>
-<%--        <tr>--%>
-<%--            <td><c:out value="${user.name}"/></td>--%>
-<%--            <td><c:out value="${user.login}"/></td>--%>
-<%--            <td><c:out value="${user.blocked}"/></td>--%>
-
-
-<%--            <td>--%>
-<%--                <form method="post" action="block">--%>
-<%--                    <input type="hidden" name="user_id" value="${user.id}">--%>
-<%--                    <input class="button" type="submit" value=" <fmt:message key="button.block"/>">--%>
-<%--                </form>--%>
-<%--            </td>--%>
-<%--            <td>--%>
-<%--                <form action="edit_user">--%>
-<%--                    <input type="hidden" name="user_id" value="${user.id}">--%>
-<%--                    <input class="button" type="submit" value=" <fmt:message key="button.edit.user"/>">--%>
-<%--                </form>--%>
-<%--            </td>--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
-<%--    </tbody>--%>
-<%--</table>--%>
 
 
 <table class="table align-middle mb-0 w-auto bg-white">

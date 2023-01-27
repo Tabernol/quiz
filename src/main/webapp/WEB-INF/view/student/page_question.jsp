@@ -16,9 +16,9 @@
 <html lang="${sessionScope.locale}">
 <head>
     <title>Title</title>
-
-
-
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <div id="timer"> </div>
@@ -39,6 +39,14 @@
 <%--</form>--%>
 
 
+<%--<div class="mb-3">--%>
+<%--    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>--%>
+<%--    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>--%>
+<%--</div>--%>
+
+
+
+
 <script>
     window.onload = function () {
         loadQuestionAndAnswer(
@@ -50,14 +58,6 @@
     }
 </script>
 
-
-
-
-
-<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25"
-     aria-valuemin="0" aria-valuemax="100">
-    <div class="progress-bar" style="width: 25%">25%</div>
-</div>
 
 <label for="file">File progress:</label>
 

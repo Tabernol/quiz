@@ -71,8 +71,6 @@ Z
 *src/main/java/exeptions/QuizException.java,9\2\922c6e07eb4fcde1cc59b19e19a759d57b677ec5
 e
 5src/main/java/controllers/filters/LanguageFilter.java,2\4\24594c4f212c001ade6e65efc7cb08133cde074c
-[
-+src/main/webapp/WEB-INF/view/error_page.jsp,7\3\738a6ba0a04c7ea47f0594175b5501b7d81272a9
 ^
 .src/main/java/exeptions/DataBaseException.java,b\b\bb570840d8203d880f8bc5a44424bdd3feabf478
 b
@@ -241,18 +239,6 @@ P
  src/main/java/models/Answer.java,b\a\ba56a0119d3e7cb9dfb8bd370f14670e21dd899f
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-b
-2src/main/webapp/WEB-INF/view/admin/create_test.jsp,5\5\556efb9033de54b3a98d3e6c38b33a7ed454019f
-e
-5src/main/webapp/WEB-INF/view/student/edit_profile.jsp,d\a\da5102c10c863d5e506ad306f5c136d049288fb4
-d
-4src/main/webapp/WEB-INF/view/student/page_finish.jsp,5\a\5a7d7ef52c6d42763002164d813cd49e539e9ee9
-X
-(src/main/webapp/WEB-INF/view/profile.jsp,4\5\450e13be0994604f9253aefa759df1db4f3498ab
-]
--src/main/webapp/WEB-INF/view/registration.jsp,5\1\51f3e03ccaf2cf667b2008bf04b14dd68d5c200f
-f
-6src/main/webapp/WEB-INF/view/student/student_tests.jsp,9\7\97150b5abe5326d484f62681683b34eefb0af09a
 Z
 *src/main/java/command/post/FinishTest.java,f\3\f3d09fffc78c644c90d1d41ca198b6d802ead7db
 Y
@@ -263,8 +249,6 @@ X
 ,src/main/java/command/post/ResultAnswer.java,1\a\1a1af3893e9c72f9aaf198320ebb5a5c5a039121
 e
 5src/main/java/controllers/filters/SecurityFilter.java,9\5\9525a5ff11c78913e78ce4444fd8dfb1b00cfcce
-b
-2src/main/webapp/WEB-INF/view/student/page_test.jsp,7\0\7018362ecf383780af7fdecd7a53f7a164b71fee
 s
 Csrc/main/java/controllers/servlet/impl/ContentSupplierCommands.java,5\a\5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944
 [
@@ -273,11 +257,5 @@ U
 %src/main/java/constans/PathConst.java,3\2\32762792d1a9e3edc6c386356f667fa58707cac1
 k
 ;src/main/java/controllers/servlet/AppControllerServlet.java,4\0\40db2a61aa19e09295a4fa6bf68fda622359a9d9
-k
-;src/main/webapp/WEB-INF/view/student/page_base_question.jsp,9\6\966019b30203bf07a1c9c793eec8995d94fbfe2b
 V
 &src/main/java/command/get/Profile.java,3\4\342a23bce6ae036a79d4946aa6119ec495676b2b
-O
-src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
-U
-%src/main/webapp/WEB-INF/view/menu.jsp,5\6\565bda9476e4ac1859f9cc25deb7b2846e7eb024

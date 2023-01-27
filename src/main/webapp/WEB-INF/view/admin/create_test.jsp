@@ -15,6 +15,9 @@
 <html lang="${sessionScope.locale}">
 <head>
     <title>quiz</title>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>

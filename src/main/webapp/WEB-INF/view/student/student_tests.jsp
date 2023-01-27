@@ -108,18 +108,36 @@
         </c:forEach>
     </tbody>
 </table>
-
-<div>
-    <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
-        <a href="<c:url value='/next_page'>
-    <c:param name="order" value="${requestScope.order}"/>
-    <c:param name="sub" value="${requestScope.sub}"/>
-    <c:param name="rows" value="${requestScope.rows}"/>
-    <c:param name="page" value="${i}"/>
-</c:url>">
-            <c:out value="${i}"/></a>
-
-    </c:forEach>
+<div class="center">
+    <nav aria-label="pagination-sm">
+        <ul class="pagination pagination-sm">
+            <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+                <li class="page-item"><a class="page-link"
+                                         href="<c:url value='/next_page'>
+                        <c:param name="order" value="${requestScope.order}"/>
+                        <c:param name="sub" value="${requestScope.sub}"/>
+                        <c:param name="rows" value="${requestScope.rows}"/>
+                        <c:param name="page" value="${i}"/>
+                    </c:url>"><c:out value="${i}"/></a></li>
+            </c:forEach>
+            <%--            <li class="page-item active" aria-current="page">--%>
+            <%--                <span class="page-link">1</span>--%>
+            <%--            </li>--%>
+        </ul>
+    </nav>
 </div>
+
+<%--<div>--%>
+<%--    <c:forEach var="i" begin="1" end="${requestScope.count_pages}">--%>
+<%--        <a href="<c:url value='/next_page'>--%>
+<%--    <c:param name="order" value="${requestScope.order}"/>--%>
+<%--    <c:param name="sub" value="${requestScope.sub}"/>--%>
+<%--    <c:param name="rows" value="${requestScope.rows}"/>--%>
+<%--    <c:param name="page" value="${i}"/>--%>
+<%--</c:url>">--%>
+<%--            <c:out value="${i}"/></a>--%>
+
+<%--    </c:forEach>--%>
+<%--</div>--%>
 </body>
 </html>

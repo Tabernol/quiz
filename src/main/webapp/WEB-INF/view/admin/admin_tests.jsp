@@ -49,51 +49,8 @@
     </form>
 </div>
 
-
-<%--<div>--%>
-<%--    <table class="sortable">--%>
-<%--        <thead>--%>
-<%--        <tr>--%>
-<%--            <th><fmt:message key="table.head.test.name"/></th>--%>
-<%--            <th><fmt:message key="table.head.subject"/></th>--%>
-<%--            <th><fmt:message key="table.head.difficult"/></th>--%>
-<%--            <th><fmt:message key="table.head.duration"/></th>--%>
-<%--            <th></th>--%>
-<%--            <th></th>--%>
-<%--        </tr>--%>
-<%--        </thead>--%>
-<%--        <tbody>--%>
-
-<%--        <c:forEach var="test" items="${sessionScope.tests}">--%>
-<%--            <tr>--%>
-<%--                <td><c:out value="${test.name}"/></td>--%>
-<%--                <td><c:out value="${test.subject}"/></td>--%>
-<%--                <td><c:out value="${test.difficult}"/></td>--%>
-<%--                <td><c:out value="${test.duration}"/></td>--%>
-
-<%--                <td>--%>
-<%--                    <form action="edit_test">--%>
-<%--                        <input type="hidden" name="test_id" value="${test.id}">--%>
-<%--                        <input type="hidden" name="page" value="${requestScope.page}">--%>
-<%--                        <input class="button" type="submit" value="<fmt:message key="button.edit"/>">--%>
-<%--                    </form>--%>
-
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                    <form method="post" action="delete_test">--%>
-<%--                        <input type="hidden" name="page" value="${requestScope.page}">--%>
-<%--                        <input type="hidden" name="test_id" value="${test.id}">--%>
-<%--                        <input class="button" type="submit" value="<fmt:message key="button.delete"/>">--%>
-<%--                    </form>--%>
-<%--                </td>--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
-<%--        </tbody>--%>
-<%--    </table>--%>
-<%--</div>--%>
-
-<table class="table table-success table-striped mb-0 w-auto bg-white">
-    <thead class="class bg-light">
+<table class="table align-middle mb-0 w-auto bg-white">
+    <thead class="bg-secondary">
     <tr>
         <th><fmt:message key="table.head.test.name"/></th>
         <th><fmt:message key="table.head.subject"/></th>
@@ -128,16 +85,33 @@
         </c:forEach>
     </tbody>
 </table>
-
-<c:forEach var="i" begin="1" end="${requestScope.count_pages}">
-
-    <a href="<c:url value='/next_page'>
+<div class="center">
+    <nav aria-label="pagination-sm">
+        <ul class="pagination pagination-sm">
+            <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+                <li class="page-item"><a class="page-link"
+                                         href="<c:url value='/next_page'>
                         <c:param name="order" value="${requestScope.order}"/>
                         <c:param name="sub" value="${requestScope.sub}"/>
                         <c:param name="rows" value="${requestScope.rows}"/>
                         <c:param name="page" value="${i}"/>
-                    </c:url>"> <c:out value="${i}"/> </a>
-</c:forEach>
+                    </c:url>"><c:out value="${i}"/></a></li>
+            </c:forEach>
+<%--            <li class="page-item active" aria-current="page">--%>
+<%--                <span class="page-link">1</span>--%>
+<%--            </li>--%>
+        </ul>
+    </nav>
+</div>
+
+<%--<c:forEach var="i" begin="1" end="${requestScope.count_pages}">--%>
+<%--    <a href="<c:url value='/next_page'>--%>
+<%--                        <c:param name="order" value="${requestScope.order}"/>--%>
+<%--                        <c:param name="sub" value="${requestScope.sub}"/>--%>
+<%--                        <c:param name="rows" value="${requestScope.rows}"/>--%>
+<%--                        <c:param name="page" value="${i}"/>--%>
+<%--                    </c:url>"> <c:out value="${i}"/> </a>--%>
+<%--</c:forEach>--%>
 
 
 </body>

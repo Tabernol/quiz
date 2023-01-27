@@ -46,23 +46,21 @@ public class GetInfoQuestion implements RequestHandler {
         }
 
 
-
-
         String idQ = req.getParameter("id_question");
         String numQ = req.getParameter("number_question");
         String[] res = req.getParameterValues("res");
 
-        System.out.println("id question "+idQ);
-        System.out.println("number "+numQ);
+        System.out.println("id question " + idQ);
+        System.out.println("number " + numQ);
         System.out.println(Arrays.toString(res));
 
         try {
-            if(res != null){
+            if (res != null) {
                 boolean result = resultService.getResultByQuestion(Long.valueOf(idQ), res);
                 List resultTest = (List<Boolean>) req.getSession().getAttribute("result_test");
                 resultTest.add(result);
                 req.getSession().setAttribute("result_test", resultTest);
-                System.out.println("result "+result);
+                System.out.println("result " + result);
             }
 
         } catch (DataBaseException e) {
@@ -91,7 +89,7 @@ public class GetInfoQuestion implements RequestHandler {
                         "name=\"id_question\" value=\"" + idQuestion + "\">\n" +
                         "    <input id=\"number_question\" type=\"hidden\" " +
                         "name=\"number_question\" value=\"" + numberQuestion + "\">");
-                writer.print(text);
+                writer.print("<h3>" + text + "</h3>");
                 writer.print("<br>");
                 for (Answer answer : answers) {
                     writer.print("<input type='checkbox' name='res' value='"
@@ -105,14 +103,10 @@ public class GetInfoQuestion implements RequestHandler {
                         "</button>");
 
 
-
             } catch (DataBaseException e) {
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             }
         }
-
-
-
 
 
     }

@@ -24,9 +24,9 @@
 
 </style>
 
-    <script type="text/javascript">
-        <%@include  file="/static/js/timer.js"%>
-    </script>
+<%--    <script type="text/javascript">--%>
+<%--        <%@include  file="/static/js/timer.js"%>--%>
+<%--    </script>--%>
 
 </head>
 <body>
@@ -37,8 +37,19 @@
 
 
 
+<%--<div class="d-flex justify-content-center"> Center block</div>--%>
 
-<div><i class="fa-solid fa-skating fa-fw" style="background:DodgerBlue"></i> Skating</div>
-<i class="fas fa-globe"></i>
+
+<div class="w-75 p-3">
+    <div class="d-flex justify-content-center">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Here is my text question</textarea>
+        </div>
+    </div>
+</div>
+
+
+
 </body>
 </html>

@@ -23,6 +23,13 @@
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <br>
+
+
+
+
+
+
+
 <form method="post" action="edit_test">
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
@@ -47,8 +54,9 @@
 
 
 <br>
-<table class="sortable">
-    <thead>
+
+<table class="table table-success table-striped">
+    <thead class="class bg-light">
     <tr>
         <th><fmt:message key="table.head.text.of.question"/></th>
         <th></th>
@@ -58,29 +66,28 @@
     <tbody>
 
     <c:forEach var="question" items="${requestScope.questions}">
-        <tr>
-            <td><c:out value="${question.text}"/></td>
-            <td>
-                <form action="edit_question">
-                    <input type="hidden" name="page" value="${requestScope.page}">
-                    <input type="hidden" name="test_id" value="${requestScope.test_id}">
-                    <input type="hidden" name="question_id" value="${question.id}">
-                    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
-                </form>
-
-            </td>
-            <td>
-                <form method="post" action="delete_question">
-                    <input type="hidden" name="page" value="${requestScope.page}">
-                    <input type="hidden" name="test_id" value="${requestScope.test_id}">
-                    <input type="hidden" name="question_id" value="${question.id}">
-                    <input class="button" type="submit" value="<fmt:message key="button.delete"/>">
-                </form>
-            </td>
-        </tr>
-    </c:forEach>
+    <tr>
+        <td><c:out value="${question.text}"/></td>
+        <td>
+            <form action="edit_question">
+                <input type="hidden" name="page" value="${requestScope.page}">
+                <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                <input type="hidden" name="question_id" value="${question.id}">
+                <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.edit"/>">
+            </form>
+        </td>
+        <td>
+            <form method="post" action="delete_question">
+                <input type="hidden" name="page" value="${requestScope.page}">
+                <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                <input type="hidden" name="question_id" value="${question.id}">
+                <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.delete"/>">
+            </form>
+        </td>
+        </c:forEach>
     </tbody>
 </table>
+
 
 
 <form method="post" action="add_question">

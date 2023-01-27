@@ -103,6 +103,9 @@ public class GetInfoQuestion implements RequestHandler {
                         "                document.getElementById('number_question').value,\n" +
                         "                document.getElementsByName('res'))\">Submit\n" +
                         "</button>");
+
+
+
             } catch (DataBaseException e) {
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             }

@@ -92,8 +92,8 @@
 <%--    </table>--%>
 <%--</div>--%>
 
-<table class="table align-middle mb-0 w-auto bg-white">
-    <thead class="bg-light">
+<table class="table table-success table-striped mb-0 w-auto bg-white">
+    <thead class="class bg-light">
     <tr>
         <th><fmt:message key="table.head.test.name"/></th>
         <th><fmt:message key="table.head.subject"/></th>

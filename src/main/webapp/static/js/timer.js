@@ -1,3 +1,5 @@
+
+
 let isTimerRun = true;
 
 function getUserAnswer(params) {

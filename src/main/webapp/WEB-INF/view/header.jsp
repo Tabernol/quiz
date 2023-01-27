@@ -96,19 +96,18 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                           href="<c:url value='/logout' />"><fmt:message key="label.Logout"/></a>
+                           href="<c:url value='/logout'/>"><fmt:message key="label.Logout"/></a>
                     </li>
                 </c:if>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown link
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <div class="dropdown">
+                        <button class="drop btn">Dropdown</button>
+                        <div class="dropdown-content">
+                            <a href="<c:url value='/language?locale=en'/>"><fmt:message key="language.en"/></a>
+                            <a href="<c:url value='/language?locale=ua'/>"><fmt:message key="language.ukr"/></a>
+                        </div>
+                    </div>
                 </li>
 
             </ul>
@@ -119,6 +118,7 @@
 <div>
     <jsp:include page="/WEB-INF/view/language.jsp"/>
 </div>
+
 
 </body>
 </html>

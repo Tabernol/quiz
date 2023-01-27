@@ -42,8 +42,8 @@
 <hr>
 
 
-<table class="sortable">
-    <thead>
+<table class="table table-success table-striped">
+    <thead class="class bg-light">
     <tr>
         <th><fmt:message key="table.head.text.of.answer"/></th>
         <th><fmt:message key="table.head.result.answer"/></th>
@@ -51,23 +51,24 @@
     </tr>
     </thead>
     <tbody>
+
     <c:forEach var="answer" items="${requestScope.answers}">
-        <tr>
-            <td><c:out value="${answer.text}"/></td>
-            <td><c:out value="${answer.result}"/></td>
-            <td>
-                <form method="post" action="delete_answer">
-                    <input type="hidden" name="page" value="${requestScope.page}">
-                    <input type="hidden" name="test_id" value="${requestScope.test_id}">
-                    <input type="hidden" name="question_id" value="${requestScope.question.id}">
-                    <input type="hidden" name="answer_id" value="${answer.id}">
-                    <input class="button" type="submit" value="<fmt:message key="button.delete"/>">
-                </form>
-            </td>
-        </tr>
-    </c:forEach>
+    <tr>
+        <td><c:out value="${answer.text}"/></td>
+        <td><c:out value="${answer.result}"/></td>
+        <td>
+            <form method="post" action="delete_answer">
+                <input type="hidden" name="page" value="${requestScope.page}">
+                <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                <input type="hidden" name="question_id" value="${requestScope.question.id}">
+                <input type="hidden" name="answer_id" value="${answer.id}">
+                <input class="button btn-secondary" type="submit" value="<fmt:message key="button.delete"/>">
+            </form>
+        </td>
+        </c:forEach>
     </tbody>
 </table>
+
 
 <form method="post" action="add_answer">
     <input type="hidden" name="page" value="${requestScope.page}">

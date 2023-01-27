@@ -36,5 +36,9 @@
 <br>
 
 
+
+
+<div><i class="fa-solid fa-skating fa-fw" style="background:DodgerBlue"></i> Skating</div>
+<i class="fas fa-globe"></i>
 </body>
 </html>

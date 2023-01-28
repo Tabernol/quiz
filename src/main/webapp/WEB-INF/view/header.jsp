@@ -62,10 +62,10 @@
                                     </c:url>">
                             <fmt:message key="label.tests"/></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="<c:url value='/to_create_test'/>"><fmt:message key="label.create.test"/></a>
-                    </li>
+<%--                    <li class="nav-item">--%>
+<%--                        <a class="nav-link active" aria-current="page"--%>
+<%--                           href="<c:url value='/to_create_test'/>"><fmt:message key="label.create.test"/></a>--%>
+<%--                    </li>--%>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            href="<c:url value='/profile'/>"><fmt:message key="label.Profile"/></a>

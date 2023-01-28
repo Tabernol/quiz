@@ -105,6 +105,18 @@
 <c:out value="${requestScope.message_answer}"/>
 <c:out value="${requestScope.message}"/>
 
+<div class="row d-flex justify-content-center align-items-center h-3">
+    <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+                <h5 class="text-center mb-0">${requestScope.question.text}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
 <table class="table align-middle mb-0 w-auto bg-white">
     <thead class="bg-secondary">
     <tr>

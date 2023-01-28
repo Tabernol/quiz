@@ -24,19 +24,7 @@
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
-<%--<form method="post" action="create_test">--%>
-<%--    <input type="hidden" name="page" value="${requestScope.page}">--%>
-<%--    <input type="text" required placeholder="<fmt:message key="table.head.test.name"/>" name="name"--%>
-<%--           value="${requestScope.name}"><br>--%>
-<%--    <input type="text" required placeholder="<fmt:message key="table.head.subject"/>" name="subject"--%>
-<%--           value="${requestScope.subject}"><br>--%>
-<%--    <input type="number" required placeholder="<fmt:message key="table.head.difficult"/>" name="difficult"--%>
-<%--           value="${requestScope.difficult}"><br>--%>
-<%--    <input type="number" required placeholder="<fmt:message key="table.head.duration"/>" name="duration"--%>
-<%--           value="${requestScope.duration}"><br>--%>
-<%--    <input class="button" type="submit" value="<fmt:message key="button.create.test"/>">--%>
-<%--</form>--%>
-<%--<c:out value="${requestScope.message}"/>--%>
+
 
 
 <section class="vh-100 bg-image">

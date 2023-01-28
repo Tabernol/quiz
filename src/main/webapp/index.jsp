@@ -29,13 +29,13 @@
     <%--    </script>--%>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-            rel="stylesheet"/>
+          rel="stylesheet"/>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"/>
+          rel="stylesheet"/>
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
-            rel="stylesheet"/>
+          rel="stylesheet"/>
 
     <!-- MDB -->
     <script type="text/javascript"
@@ -50,7 +50,18 @@
 <h1 id="start_message"><fmt:message key="label.start_message"/></h1>
 <br>
 
+<%--<div class="row d-flex justify-content-center align-items-center h-3">--%>
+<%--    <div class="col-6 col-md-6 col-lg-6 col-xl-6">--%>
+<%--        <div class="card" style="border-radius: 15px;">--%>
+<%--            <div class="card-body p-4">--%>
+<%--                <h5 class="text-uppercase text-center mb-0">Al</h5>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
-
+<div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: 25%">25%</div>
+</div>
 </body>
 </html>

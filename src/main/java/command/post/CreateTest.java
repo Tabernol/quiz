@@ -31,12 +31,14 @@ public class CreateTest implements RequestHandler {
             int result = testService.createTest(name, subject, difficult, duration);
             logger.info("Test " + name + "has created");
             resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/to_create_test" +
+                    "?servlet_path=/filter_tests" +
+                    "&sub=all&order=name+asc&rows=5" +
                     "&message=Test has created");
         } catch (ValidateException e) {
             logger.warn("Test " + name + " is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/to_create_test" +
+                    "?servlet_path=/filter_tests" +
+                    "&sub=all&order=name+asc&rows=5" +
                     "&name=" + name +
                     "&subject=" + subject +
                     "&difficult=" + difficult +

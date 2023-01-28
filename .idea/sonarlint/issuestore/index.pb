@@ -167,16 +167,12 @@ _
 ,src/main/java/command/post/EditTestPost.java,d\8\d8b389717101cd2813dfb9db20214988484f0889
 \
 ,src/main/java/command/post/EditUserPost.java,1\9\19f881be8905365df370608d643e90404e13b622
-R
-"src/main/java/command/get/Prg.java,a\3\a3e5ae00ea916f6f4c41312f09676119be412e44
 c
 3src/test/java/service_test/QuestionServiceTest.java,7\0\70b32da6bee695db240c014bf9e0e5da2d034151
 _
 /src/test/java/service_test/UserServiceTest.java,b\5\b5fb646d9cb78bae1bd9635bf44e66572301a85a
 a
 1src/test/java/service_test/AnswerServiceTest.java,9\0\9085b24ba250e5c210f1ca315b073b6412b510da
-Z
-*src/main/java/command/post/CreateTest.java,1\b\1ba6c458c5afe8a7c13bfc2ff51f186f10ec32cf
 _
 /src/main/java/command/post/EditUserProfile.java,b\2\b27595b01209878f2cfca7121822ed9d92077e1f
 P
@@ -241,8 +237,6 @@ Z
 *src/main/java/command/post/FinishTest.java,f\3\f3d09fffc78c644c90d1d41ca198b6d802ead7db
 Y
 )src/main/java/servises/ResultService.java,9\e\9e50ae6c4fa77987d8ade700be4b94b6163a44d2
-X
-(src/main/java/command/get/StartTest.java,0\e\0e5d7c2f1a95d1f4aa89f0c80c9fe9bfb8ac4721
 \
 ,src/main/java/command/post/ResultAnswer.java,1\a\1a1af3893e9c72f9aaf198320ebb5a5c5a039121
 e

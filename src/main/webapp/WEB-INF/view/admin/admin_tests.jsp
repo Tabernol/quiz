@@ -17,9 +17,45 @@
     <style>
         <%@include file="/static/css/style.css"%>
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
+<br>
+
+<div class="offcanvas offcanvas-start" id="AddTest">
+    <div class="offcanvas-header">
+        <h1 class="offcanvas-title">Add test</h1>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form method="post" action="create_test">
+            <input type="hidden" name="page" value="${requestScope.page}">
+            <input type="text" required placeholder="<fmt:message key="table.head.test.name"/>" name="name"
+                   value="${requestScope.name}"><br>
+            <input type="text" required placeholder="<fmt:message key="table.head.subject"/>" name="subject"
+                   value="${requestScope.subject}"><br>
+            <input type="number" required placeholder="<fmt:message key="table.head.difficult"/>" name="difficult"
+                   value="${requestScope.difficult}"><br>
+            <input type="number" required placeholder="<fmt:message key="table.head.duration"/>" name="duration"
+                   value="${requestScope.duration}"><br>
+            <div class="d-flex justify-content-center">
+                <button type="submit"
+                        class="btn btn-secondary"><fmt:message key="button.create.test"/>
+                </button>
+            </div>
+            <%--            <c:out value="${requestScope.message}"/>--%>
+        </form>
+    </div>
+</div>
+<!-- Button to open the offcanvas sidebar -->
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#AddTest">
+    Add test
+</button>
+
+
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
@@ -48,6 +84,8 @@
         <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
     </form>
 </div>
+
+<c:out value="${requestScope.message}"/>
 
 <table class="table align-middle mb-0 w-auto bg-white">
     <thead class="bg-secondary">
@@ -97,9 +135,9 @@
                         <c:param name="page" value="${i}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
             </c:forEach>
-<%--            <li class="page-item active" aria-current="page">--%>
-<%--                <span class="page-link">1</span>--%>
-<%--            </li>--%>
+            <%--            <li class="page-item active" aria-current="page">--%>
+            <%--                <span class="page-link">1</span>--%>
+            <%--            </li>--%>
         </ul>
     </nav>
 </div>

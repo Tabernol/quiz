@@ -173,8 +173,6 @@ _
 /src/main/java/command/post/EditUserProfile.java,b\2\b27595b01209878f2cfca7121822ed9d92077e1f
 P
  src/test/java/ValidatorTest.java,5\8\588b78f1e6cd56164975813197d21c04f270e038
-]
--src/main/java/servises/PaginationService.java,2\a\2aef5daaae21d9a1688c8d1e02dbf02f875ba01c
 m
 =src/main/java/controllers/servlet/impl/DataHandleCommand.java,d\b\db6dcd372de7088abee8256c24a2d4f1ad90dbb1
 e
@@ -195,8 +193,6 @@ Z
 *src/main/java/connection/MyDataSource.java,0\b\0b57b8164257649d704558d08f09d54c37fa4938
 Z
 *src/main/java/validator/DataValidator.java,b\e\be42e3ca8e36494fd2b7f6f5495251a1a42a56b2
-Z
-*src/main/java/command/get/FilterTests.java,5\7\5782d2af3ef86db6c19b2fa68afcfc7b27a8c176
 Z
 *src/main/java/command/get/FilterUsers.java,2\6\262187e21ee5783e3fe613ad45b797b59db34711
 X
@@ -219,8 +215,6 @@ j
 ,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
 W
 'src/main/java/command/get/NextPage.java,e\1\e1ddd0a5876e1dd208d7ae8112ebde5682bdbf36
-T
-$src/main/java/util/QueryBuilder.java,d\3\d3681c45344dac34b37040da881839634d173fec
 Y
 )src/main/java/servises/AnswerService.java,c\7\c7b2aa69abb5cd82c9f77796385c4f83da68ab45
 R

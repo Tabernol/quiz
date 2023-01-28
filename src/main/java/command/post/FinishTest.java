@@ -29,11 +29,14 @@ public class FinishTest implements RequestHandler {
 
         Integer percentResult = resultService.getGrade(result, size);
         req.setAttribute("percent_result", percentResult);
+        System.out.println("result = " + result);
 
         try {
             resultService.addResult(userId, testId, percentResult);
             logger.info("User with id " + userId + " finished test with id " + testId + " with grade " + percentResult);
-            req.getRequestDispatcher("/WEB-INF/view/student/page_finish.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/finish" +
+                    "&percent_result=" + percentResult);
         } catch (DataBaseException e) {
             logger.warn("User with id " + userId + " finish test with id " + testId + " has trouble finish");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);

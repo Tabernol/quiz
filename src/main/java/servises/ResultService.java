@@ -53,8 +53,8 @@ public class ResultService {
         } else {
             List<Answer> checkingAnswer = convertUserResult(userAnswer);
             List<Answer> trueAnswers = answerService.getAnswers(questionId);
-            System.out.println(checkingAnswer);
-            System.out.println(trueAnswers);
+            System.out.println("user answers  "+checkingAnswer);
+            System.out.println("true answers "+trueAnswers);
 
 
 

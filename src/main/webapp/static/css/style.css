@@ -10,6 +10,16 @@
     padding: 10px;
 }
 
+.checkbox-xl .form-check-input {
+    top: 1.2rem;
+    scale: 1.7;
+    margin-right: 0.8rem;
+}
+
+.checkbox-xl .form-check-label {
+    padding-top: 19px;
+}
+
 table {
     font-family: Verdana;
     font-size: 14px;

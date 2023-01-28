@@ -67,8 +67,7 @@ public class GetInfoQuestion implements RequestHandler {
             //log
         }
 
-        System.out.println("number " + numberQuestion);
-        System.out.println("size " + size);
+        System.out.println("number " + numberQuestion + "   size " + size);
         if (size == numberQuestion) {
             //close timer
             System.out.println(" to finish");
@@ -87,10 +86,9 @@ public class GetInfoQuestion implements RequestHandler {
                 ++numberQuestion;
 
 
-
                 PrintWriter writer = resp.getWriter();
                 writer.print(
-                        "<div class=\"progress\" role=\"progressbar\" aria-label=\"Basic example\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n" +
+                        "<div class=\"progress\" role=\"progressbar\" aria-label=\"Basic example\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n" +
                                 "    <div class=\"progress-bar\" style=\"width: " + progress + "%\">" +
                                 progress + "%</div>\n" +
                                 "</div>");
@@ -111,23 +109,34 @@ public class GetInfoQuestion implements RequestHandler {
                                 "</div>\n" +
                                 "<br>");
                 writer.print("<br>");
+                writer.print("<div class=\"d-flex justify-content-center\">\n" +
+                        "    <div class=\"col-5 col-md-5 col-lg-5 col-xl-5\">\n" +
+                        "        <div class=\"card\" style=\"border-radius: 15px;\">\n" +
+                        "            <div class=\"card-body p-4\">\n" +
+                        "                <div class=\"d-grid gap-2\">");
                 for (Answer answer : answers) {
-                    writer.print("<input type='checkbox' name='res' value='"
-                            + answer.getId() + "'>" + answer.getText() + "<br>");
+                    writer.print(" <input type=\"checkbox\" class=\"btn-check\" " +
+                            "id=\"btncheck" + answer.getId() + "\" name=\"res\" value=\"" + answer.getId() +
+                            "\" autocomplete=\"off\">\n" +
+                            "<label class=\"btn btn-outline-success\" for=\"btncheck" +
+                            answer.getId() + "\">" + answer.getText() + "</label>");
                 }
-                writer.print("<button type=\"button\"\n" +
-                        "        onclick=\"loadQuestionAndAnswer(\n" +
-                        "                document.getElementById('id_question').value,\n" +
-                        "                document.getElementById('number_question').value,\n" +
-                        "                document.getElementsByName('res'))\">Submit\n" +
-                        "</button>");
-
-
+                writer.print("  </div>\n" +
+                        "                <br>\n" +
+                        "                <div class=\"d-flex justify-content-end\">\n" +
+                        "                    <button type=\"btn btn-primary\" onclick=\"loadQuestionAndAnswer(\n" +
+                        "                    document.getElementById('id_question').value,\n" +
+                        "                    document.getElementById('number_question').value,\n" +
+                        "                    document.getElementsByName('res'))\">Submit\n" +
+                        "                    </button>\n" +
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "        </div>\n" +
+                        "    </div>\n" +
+                        "</div>");
             } catch (DataBaseException e) {
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             }
         }
-
-
     }
 }

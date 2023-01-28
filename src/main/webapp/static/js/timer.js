@@ -1,5 +1,3 @@
-
-
 let isTimerRun = true;
 
 function getUserAnswer(params) {
@@ -17,28 +15,28 @@ function getUserAnswer(params) {
 
 function loadQuestionAndAnswer(id_question, number_question, res) {
     if ((${sessionScope.size}).toString() === number_question) {
-        //  isTimerRun = false;
-        document.location.href = "${pageContext.request.contextPath}/finish_test"
-    } else {
-        let result = getUserAnswer(res)
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("text_question").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "get_text_question?id_question=" + id_question +
-            "&number_question=" + number_question +
-            result, true);
-        xhttp.send();
+        isTimerRun = false;
+        document.getElementById("timer").innerHTML = null;
+        // document.location.href = "${pageContext.request.contextPath}/finish_test"
     }
+    let result = getUserAnswer(res)
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("text_question").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "get_text_question?id_question=" + id_question +
+        "&number_question=" + number_question +
+        result, true);
+    xhttp.send();
 }
 
 function timer(min) {
     let minute = --min;
     let sec = 59;
     setInterval(function () {
-        document.getElementById("timer").innerHTML = "Test will have closed in " + minute + ":" + sec + "minutes!";
+        document.getElementById("timer").innerHTML = "<h1>" + minute + " : " + sec + "</h1>";
         if (isTimerRun) {
             sec--;
             if (sec == 0) {

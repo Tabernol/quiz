@@ -37,7 +37,8 @@
 </head>
 <body>
 
-<div id="timer"> </div>
+<div id="timer">
+</div>
 
 
 <div id="text_question">

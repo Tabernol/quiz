@@ -36,7 +36,7 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.NEXT_QUESTION) || servletPath.equals(PathConst.RESULT_ANSWER) ||
                     servletPath.equals("/edit_profile") || servletPath.equals("/edit_user_profile") ||
                     servletPath.equals("/prg") || servletPath.equals("/get_text_question") ||
-                    servletPath.equals("/finish_test")) {
+                    servletPath.equals("/finish_test") || servletPath.equals("/finish")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
 

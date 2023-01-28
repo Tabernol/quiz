@@ -32,6 +32,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/prg", new Prg());
         COMMANDS.put("/get_text_question", new GetInfoQuestion());
         COMMANDS.put("/finish_test", new FinishTest());
+        COMMANDS.put("/finish", new Finish());
 
     }
 

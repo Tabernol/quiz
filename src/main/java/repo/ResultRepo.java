@@ -56,4 +56,20 @@ public class ResultRepo {
             throw new DataBaseException("Can not insert into result" + e.getMessage(), e);
         }
     }
+
+    public Integer getCountResultByUser(Long userId) throws DataBaseException {
+        String sql = "select count(grade) from result where user_id = ?";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setLong(1, userId);
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+            Integer count = resultSet.getInt(1);
+            resultSet.close();
+            return count;
+        } catch (SQLException e) {
+            logger.warn("Can not get count from table result with id = " + userId);
+            throw new DataBaseException("Can not get count from table result" + e.getMessage(), e);
+        }
+    }
 }

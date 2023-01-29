@@ -28,7 +28,7 @@ public class ResultService {
         return resultRepo.resultDtoList(userId);
     }
 
-    private List<Answer> convertUserResult(String[] userAnswer){
+    private List<Answer> convertUserResult(String[] userAnswer) {
         List<Answer> userResult = new ArrayList<>();
         Answer answer = null;
         for (int i = 0; i < userAnswer.length; i++) {
@@ -53,18 +53,11 @@ public class ResultService {
         } else {
             List<Answer> checkingAnswer = convertUserResult(userAnswer);
             List<Answer> trueAnswers = answerService.getAnswers(questionId);
-            System.out.println("user answers  "+checkingAnswer);
-            System.out.println("true answers "+trueAnswers);
-
-
+            System.out.println("user answers  " + checkingAnswer);
+            System.out.println("true answers " + trueAnswers);
 
             for (int i = 0; i < checkingAnswer.size(); i++) {
-              //  if(checkingAnswer.get(i).getId()==trueAnswers.get(i).getId())
-
-
-
-
-
+                //  if(checkingAnswer.get(i).getId()==trueAnswers.get(i).getId())
                 boolean contain = trueAnswers.contains(checkingAnswer.get(i));
                 if (contain == false) {
                     result = false;
@@ -73,6 +66,16 @@ public class ResultService {
             }
         }
         return result;
+    }
+
+    public Integer getCountResultByUser(Long user_id) throws DataBaseException {
+        return resultRepo.getCountResultByUser(user_id);
+    }
+
+    public Integer getCountPagesResult(Long userId, Integer row) throws DataBaseException {
+        Integer passedTest = getCountResultByUser(userId);
+        return passedTest % row == 0 ? passedTest / row : (passedTest / row) + 1;
+
     }
 
 //    private List<Answer> getUserAnswer(String[] res) {

@@ -157,6 +157,28 @@ public class TestRepo {
     }
 
 
+    public List<Test> nextPage(String query) throws DataBaseException {
+        List<Test> tests = new ArrayList<>();
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                Test test = new Test();
+                test.setId(resultSet.getLong("id"));
+                test.setName(resultSet.getString("name"));
+                test.setSubject(resultSet.getString("subject"));
+                test.setDifficult(resultSet.getInt("difficult"));
+                test.setDuration(resultSet.getInt("duration"));
+                tests.add(test);
+            }
+            resultSet.close();
+            return tests;
+        } catch (SQLException e) {
+            logger.warn("Can not get order tests in next page");
+            throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
+        }
+    }
+
     public List<Test> nextPage(String subject, String order, Integer rows, Integer numberOfPage) throws DataBaseException {
         String sql = "select * from test where subject like ? order by " + order + " limit ?,?";
         Integer offSet = (numberOfPage - 1) * rows;

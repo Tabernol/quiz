@@ -1,17 +1,20 @@
 package util;
 
 public interface QBuilder {
-    void setNameTable(String nameTable);
+//    void setNameTable(String nameTable);
 
-    void setWhere(String column);
+//    void setWhere(String column);
+    String getQuery();
+
+    void setFilter(String name);
 
     void setOrderBy(String column);
 
-    void setDirect(Order order);
+//    void setDirect(Order order);
 
-    void setLimit(String limit);
+    void setLimit(Integer limit);
 
-    void setOffSet(String offSet);
+    void setOffSet(Integer offSet);
 
 }
 

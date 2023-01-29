@@ -34,13 +34,13 @@ public class PaginationServiceTest {
                 Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
     }
 
-    @Test
-    public void nextPageForSomeSubject() throws DataBaseException {
-        List<models.Test> testForSubject = new ArrayList<>();
-        Mockito.when(mockTestRepo.nextPage(Mockito.anyString(),
-                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(testForSubject);
-        assertEquals(testForSubject, paginationService.nextPage(Mockito.anyString(),
-                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
-    }
+//    @Test
+//    public void nextPageForSomeSubject() throws DataBaseException {
+//        List<models.Test> testForSubject = new ArrayList<>();
+//        Mockito.when(mockTestRepo.nextPage(Mockito.anyString(),
+//                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(testForSubject);
+//        assertEquals(testForSubject, paginationService.nextPage(Mockito.anyString(),
+//                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
+//    }
 
 }

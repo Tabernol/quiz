@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-public class FilterTests implements RequestHandler {
+public class FilterResult implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -39,13 +39,18 @@ public class FilterTests implements RequestHandler {
         session.setAttribute("rows", rows);
 
 
+        ResultService resultService = new ResultService(new ResultRepo());
         TestService testService = new TestService(new TestRepo(), new ValidatorService());
         List<String> subjects;
         List<Test> filterTests;
         int countPages;
 
+        Long userId = (Long) req.getSession().getAttribute("user_id");
         try {
-            countPages = testService.countPages(sub, Integer.valueOf(rows));
+            countPages = resultService.getCountPagesResult(userId, Integer.valueOf(rows));
+
+
+
             filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
             subjects = testService.getDistinctSubjects();
             req.getSession().setAttribute("subjects", subjects);
@@ -61,7 +66,6 @@ public class FilterTests implements RequestHandler {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             throw new RuntimeException(e);
         }
-
 
     }
 }

@@ -7,6 +7,7 @@ import repo.TestRepo;
 import servises.PaginationService;
 import servises.TestService;
 import servises.ValidatorService;
+import util.MyTable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,7 @@ public class NextPage implements RequestHandler {
             if (sub.equals("all")) {
                 tests = paginationService.nextPage(order, rows, page);
             } else {
-                tests = paginationService.nextPage(sub, order, rows, page);
+                tests = paginationService.nextPage(MyTable.TEST, sub, order, rows, page);
             }
             subjects = testService.getDistinctSubjects();
         } catch (DataBaseException e) {

@@ -13,8 +13,6 @@ e
 5src/main/java/controllers/servlet/RequestHandler.java,9\3\9345d3860452874a607ed5fad2e56b36c6840b9b
 N
 src/main/java/models/Test.java,e\a\ea1601f0a86352308c73f29c695dd575e9501948
-e
-5src/test/java/service_test/PaginationServiceTest.java,d\9\d9756bce43fd04104fbe9c624317ae7033d13360
 c
 3src/test/java/service_test/PasswordHashingTest.java,7\d\7ddcdaa4838036ac8797f1e23316aee626303e49
 P
@@ -63,8 +61,6 @@ $src/main/java/repo/QuestionRepo.java,6\0\60a63bcd0b8d2cb88d58f1a3b9ee97267ea68
 0src/test/java/servlets/get/EditQuestionTest.java,f\4\f40f3a22d1bcb5eada85ade448970692bc545643
 a
 1src/test/java/service_test/ResultServiceTest.java,a\9\a952874199ca51d86ff1ffdfa277ede3f55fdcd6
-R
-"src/main/java/repo/ResultRepo.java,c\0\c049a1e563720c4aabd4f480f5dc422ca3495dfa
 Z
 *src/main/java/exeptions/QuizException.java,9\2\922c6e07eb4fcde1cc59b19e19a759d57b677ec5
 e
@@ -119,8 +115,6 @@ _
 +src/main/java/servises/QuestionService.java,7\2\725354217f3aef9e2376216560a50fb385699a86
 a
 1src/test/java/servlets/post/ResultAnswerTest.java,6\2\62d0087a11a695d35cc8e8fdf696dee3ace20a03
-P
- src/main/java/repo/TestRepo.java,a\6\a62f48d97b657a6614490b2a531090013b925c0f
 _
 /src/test/java/service_test/TestServiceTest.java,5\2\52a28d631962f61a347537a3039709d4bb42a518
 Z
@@ -193,8 +187,6 @@ Z
 *src/main/java/connection/MyDataSource.java,0\b\0b57b8164257649d704558d08f09d54c37fa4938
 Z
 *src/main/java/validator/DataValidator.java,b\e\be42e3ca8e36494fd2b7f6f5495251a1a42a56b2
-Z
-*src/main/java/command/get/FilterUsers.java,2\6\262187e21ee5783e3fe613ad45b797b59db34711
 X
 (src/main/java/validator/MyValidator.java,0\c\0c42d8705b9149d9da08fa5cdc23479a4f4ffee6
 9
@@ -202,19 +194,13 @@ X
 d
 4src/main/java/app_listener/StartServletListener.java,f\3\f350e123bb5fcaf061053bcee181ee8e463b6e28
 W
-'src/main/java/servises/TestService.java,e\8\e88f94216afcfe51bfc304287a1b810b212cfe93
-W
 'src/main/java/servises/UserService.java,a\0\a0a6cf1e9f970f565b9cc3c366a63a634e3476cd
 \
 ,src/main/java/servises/ValidatorService.java,d\f\df5b04690716829e8284155f87d0a72eae059113
 d
 4src/test/java/service_test/ValidatorServiceTest.java,7\a\7a6415e6be259a3b4a2c3224afd1039a8aec6fe5
-j
-:src/main/java/controllers/filters/AuthorizationFilter.java,0\d\0daad85693b2fda67b332a80c0b3456c02b1dd2c
 \
 ,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
-W
-'src/main/java/command/get/NextPage.java,e\1\e1ddd0a5876e1dd208d7ae8112ebde5682bdbf36
 Y
 )src/main/java/servises/AnswerService.java,c\7\c7b2aa69abb5cd82c9f77796385c4f83da68ab45
 R
@@ -225,8 +211,6 @@ P
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 \
 ,src/main/java/command/post/ResultAnswer.java,1\a\1a1af3893e9c72f9aaf198320ebb5a5c5a039121
-[
-+src/main/java/command/get/NextQuestion.java,f\d\fddb22f83fb6357d9e9ac9d7385943da9d06042d
 U
 %src/main/java/constans/PathConst.java,3\2\32762792d1a9e3edc6c386356f667fa58707cac1
 V
@@ -243,8 +227,6 @@ b
 +src/main/webapp/WEB-INF/view/error_page.jsp,7\3\738a6ba0a04c7ea47f0594175b5501b7d81272a9
 U
 %src/main/webapp/WEB-INF/view/menu.jsp,5\6\565bda9476e4ac1859f9cc25deb7b2846e7eb024
-X
-(src/main/webapp/WEB-INF/view/profile.jsp,4\5\450e13be0994604f9253aefa759df1db4f3498ab
 `
 0src/main/webapp/WEB-INF/view/admin/edit_user.jsp,3\0\302fdb0bb648afbac75518e69f3fa5b726bc9179
 f

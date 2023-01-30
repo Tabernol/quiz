@@ -34,7 +34,7 @@
 
 
 <div>
-    <form action="next_page">
+    <form action="filter_tests">
         <input type="hidden" name="page" value="${requestScope.page}">
         <input class="button" type="submit" value="<fmt:message key="button.back"/>">
     </form>

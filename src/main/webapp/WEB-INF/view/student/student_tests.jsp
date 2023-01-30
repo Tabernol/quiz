@@ -43,6 +43,7 @@
             <option value="10"><c:out value="10"/></option>
             <option value="20"><c:out value="20"/></option>
         </select><br>
+        <input type="hidden" name="page" value="1">
         <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
     </form>
 </div>
@@ -113,10 +114,10 @@
         <ul class="pagination pagination-sm">
             <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
                 <li class="page-item"><a class="page-link"
-                                         href="<c:url value='/next_page'>
-                        <c:param name="order" value="${requestScope.order}"/>
-                        <c:param name="sub" value="${requestScope.sub}"/>
-                        <c:param name="rows" value="${requestScope.rows}"/>
+                                         href="<c:url value='/filter_tests'>
+<%--                        <c:param name="order" value="${requestScope.order}"/>--%>
+<%--                        <c:param name="sub" value="${requestScope.sub}"/>--%>
+<%--                        <c:param name="rows" value="${requestScope.rows}"/>--%>
                         <c:param name="page" value="${i}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
             </c:forEach>

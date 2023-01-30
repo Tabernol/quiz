@@ -22,12 +22,10 @@ public class ContentSupplierCommands {
         COMMANDS.put("/edit_test", new EditTest());
         COMMANDS.put("/edit_question", new EditQuestion());
         COMMANDS.put("/profile", new Profile());
-        COMMANDS.put("/next_page", new NextPage());
         COMMANDS.put("/info_test", new PageTest());
         COMMANDS.put("/start_test", new StartTest());
         COMMANDS.put("/next_question", new NextQuestion());
         COMMANDS.put("/to_create_test", new ToCreateTest());
-        COMMANDS.put("/edit_profile", new EditProfile());
         COMMANDS.put("/language", new LanguageChange());
         COMMANDS.put("/prg", new Prg());
         COMMANDS.put("/get_text_question", new GetInfoQuestion());

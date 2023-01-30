@@ -25,14 +25,14 @@ public class PaginationServiceTest {
         paginationService = new PaginationService(mockTestRepo);
     }
 
-    @Test
-    public void nextPageForAll() throws DataBaseException {
-        List<models.Test> allTests = new ArrayList<>();
-        Mockito.when(mockTestRepo.nextPage(
-                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(allTests);
-        assertEquals(allTests, paginationService.nextPage(
-                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
-    }
+//    @Test
+//    public void nextPageForAll() throws DataBaseException {
+//        List<models.Test> allTests = new ArrayList<>();
+//        Mockito.when(mockTestRepo.nextPage(
+//                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(allTests);
+//        assertEquals(allTests, paginationService.nextPage(
+//                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
+//    }
 
 //    @Test
 //    public void nextPageForSomeSubject() throws DataBaseException {

@@ -38,7 +38,7 @@ public class ProfileTest {
         Mockito.when(request.getRequestDispatcher("/WEB-INF/view/profile.jsp")).thenReturn(dispatcher);
         Mockito.when(session.getAttribute("user_id")).thenReturn(12L);
         Mockito.when(userService.get(Mockito.anyLong())).thenReturn(user);
-        Mockito.when(resultService.getResultByUser(Mockito.anyLong())).thenReturn(resultDto);
+
 
         profile.execute(request,response);
 

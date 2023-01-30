@@ -5,6 +5,7 @@ import exeptions.DataBaseException;
 import models.Test;
 import repo.ResultRepo;
 import repo.TestRepo;
+import servises.PaginationService;
 import servises.ResultService;
 import servises.TestService;
 import servises.ValidatorService;
@@ -21,38 +22,72 @@ public class FilterTests implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String role = (String) req.getSession().getAttribute("role");
         String sub = req.getParameter("sub");
         String order = req.getParameter("order");
         String rows = req.getParameter("rows");
+        String page = req.getParameter("page");
 
         if (sub == null || order == null || rows == null) {
-            sub = "all";
-            order = "name asc";
-            rows = "5";
+            sub = (String) req.getSession().getAttribute("sub");
+            order = (String) req.getSession().getAttribute("order");
+            rows = (String) req.getSession().getAttribute("rows");
+            if (sub == null || order == null || rows == null) {
+                sub = "all";
+                order = "name asc";
+                rows = "5";
+                HttpSession session = req.getSession();
+                session.setAttribute("sub", sub);
+                session.setAttribute("order", order);
+                session.setAttribute("rows", rows);
+                page = "1";
+            }
+        } else {
+            HttpSession session = req.getSession();
+            session.setAttribute("sub", sub);
+            session.setAttribute("order", order);
+            session.setAttribute("rows", rows);
+            page = "1";
+        }
+        if (page == null) {
+            page = "1";
         }
 
-        HttpSession session = req.getSession();
 
-        session.setAttribute("sub", sub);
-        session.setAttribute("order", order);
-        session.setAttribute("rows", rows);
-
+//        =======================================
+//        String role = (String) req.getSession().getAttribute("role");
+//        String sub = req.getParameter("sub");
+//        String order = req.getParameter("order");
+//        String rows = req.getParameter("rows");
+//
+//        if (sub == null || order == null || rows == null) {
+//            sub = "all";
+//            order = "name asc";
+//            rows = "5";
+//        }
+//
+//        HttpSession session = req.getSession();
+//
+//        session.setAttribute("sub", sub);
+//        session.setAttribute("order", order);
+//        session.setAttribute("rows", rows);
 
         TestService testService = new TestService(new TestRepo(), new ValidatorService());
+      //  PaginationService paginationService = new PaginationService(new TestRepo());
         List<String> subjects;
         List<Test> filterTests;
         int countPages;
 
         try {
             countPages = testService.countPages(sub, Integer.valueOf(rows));
-            filterTests = testService.getFilterTests(sub, order, Integer.valueOf(rows));
+
+            filterTests = testService.getPageTestList(sub, order, Integer.valueOf(rows), Integer.valueOf(page));
             subjects = testService.getDistinctSubjects();
+
             req.getSession().setAttribute("subjects", subjects);
             req.getSession().setAttribute("tests", filterTests);
             req.setAttribute("count_pages", countPages);
-            req.setAttribute("page", "1");
-            if (session.getAttribute("role").equals("admin")) {
+            req.setAttribute("page", page);
+            if (req.getSession().getAttribute("role").equals("admin")) {
                 req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
             } else {
                 req.getRequestDispatcher("/WEB-INF/view/student/student_tests.jsp").forward(req, resp);

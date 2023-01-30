@@ -28,9 +28,9 @@ public class ResultService {
         return resultRepo.addResult(userId, testId, grade);
     }
 
-    public List<ResultDto> getResultByUser(Long userId) throws DataBaseException {
-        return resultRepo.resultDtoList(userId);
-    }
+//    public List<ResultDto> getResultByUser(Long userId) throws DataBaseException {
+//        return resultRepo.resultDtoList(userId);
+//    }
 
     private List<Answer> convertUserResult(String[] userAnswer) {
         List<Answer> userResult = new ArrayList<>();
@@ -87,7 +87,9 @@ public class ResultService {
 
     }
 
-    public List<ResultDto> getPageResultList(Long idUser, String sub, String order, Integer limit, Integer offSet) throws DataBaseException {
+
+    public List<ResultDto> getPageResultList(Long idUser, String sub, String order, Integer limit, Integer offSet)
+            throws DataBaseException {
         QueryFactory queryFactory = new QueryFactory();
         QueryBuilderForResult queryBuilder = (QueryBuilderForResult) queryFactory.getQueryBuilder(MyTable.RESULT);
         queryBuilder.setFilter(idUser.toString());

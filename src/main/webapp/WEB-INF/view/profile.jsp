@@ -18,20 +18,48 @@
     <style>
         <%@include file="/static/css/style.css"%>
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
 <jsp:include page="/WEB-INF/view/header.jsp"/>
+
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
+
 <h4>
-    <fmt:message key="label.name"/>  <c:out value="${sessionScope.name}"/><br>
+    <fmt:message key="label.name"/> <c:out value="${sessionScope.name}"/><br>
 </h4>
 
-<hr>
-<form action="edit_profile">
-    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
-</form>
+<%--=========================--%>
+<div class="offcanvas offcanvas-start" id="forTest">
+    <div class="offcanvas-header">
+        <h1 class="offcanvas-title">Edit profile</h1>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form method="post" action="edit_profile">
+            <input type="hidden" name="page" value="${requestScope.page}">
+
+            <h6 class="fw-light"><fmt:message key="table.head.name"/></h6>
+            <input type="text" name="name" value="${sessionScope.name}">
+            <div class="d-flex justify-content-center">
+                <button type="submit"
+                        class="btn btn-secondary"><fmt:message key="button.edit"/>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Button to open the offcanvas sidebar -->
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forTest">
+    Edit profile
+</button>
+
+<h3><c:out value="${requestScope.message}"/></h3>
+<%--========================--%>
 
 
 <c:if test="${sessionScope.role == 'student'}">
@@ -61,12 +89,9 @@
             <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
         </form>
     </div>
-
-
-
-
-    <table class="sortable">
-        <thead>
+    <%--==================================--%>
+    <table class="table align-middle mb-0 w-auto bg-white">
+        <thead class="bg-light">
         <tr>
             <th><fmt:message key="table.head.test.name"/></th>
             <th><fmt:message key="table.head.subject"/></th>
@@ -78,25 +103,23 @@
         <tbody>
 
         <c:forEach var="result" items="${requestScope.user_result}">
-            <tr>
-                <td><c:out value="${result.testName}"/></td>
-                <td><c:out value="${result.subject}"/></td>
-                <td><c:out value="${result.difficult}"/></td>
-                <td><c:out value="${result.duration}"/></td>
-                <td><c:out value="${result.grade}"/></td>
-            </tr>
-        </c:forEach>
+        <tr>
+            <td><c:out value="${result.testName}"/></td>
+            <td><c:out value="${result.subject}"/></td>
+            <td><c:out value="${result.difficult}"/></td>
+            <td><c:out value="${result.duration}"/></td>
+            <td><c:out value="${result.grade}"/></td>
+            </c:forEach>
         </tbody>
     </table>
+
+    <%--================================--%>
     <div class="center">
         <nav aria-label="pagination-sm">
             <ul class="pagination pagination-sm">
                 <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
                     <li class="page-item"><a class="page-link"
                                              href="<c:url value='/filter_result'>
-<%--                        <c:param name="order" value="${requestScope.order}"/>--%>
-<%--                        <c:param name="sub" value="${requestScope.sub}"/>--%>
-<%--                        <c:param name="rows" value="${requestScope.rows}"/>--%>
                         <c:param name="page" value="${i}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
                 </c:forEach>

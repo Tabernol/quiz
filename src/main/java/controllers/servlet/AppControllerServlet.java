@@ -21,7 +21,7 @@ import org.apache.logging.log4j.LogManager;
         PathConst.REGISTRATION, PathConst.LOGIN_FORM, PathConst.LOGOUT,
         PathConst.HOME, PathConst.PROFILE,
         PathConst.USERS,
-        PathConst.FILTER_TESTS, PathConst.NEXT_PAGE,
+        PathConst.FILTER_TESTS,
         PathConst.CREATE_TEST,
         PathConst.EDIT_USER, PathConst.EDIT_TEST, PathConst.EDIT_QUESTION,
         PathConst.DELETE_USER, PathConst.DELETE_TEST, PathConst.DELETE_QUESTION, PathConst.DELETE_ANSWER,
@@ -30,7 +30,7 @@ import org.apache.logging.log4j.LogManager;
         PathConst.NEXT_QUESTION, PathConst.RESULT_ANSWER,
         PathConst.LANGUAGE,
         "/prg",
-        "/to_create_test", "/edit_profile", "/edit_user_profile"
+        "/to_create_test", "/edit_profile"
         ,"/block", "/get_text_question", "/finish_test", "/finish",
         "/filter_result"
 

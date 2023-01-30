@@ -24,7 +24,6 @@ public class EditUser implements RequestHandler {
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_user.jsp").forward(req, resp);
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
 
 

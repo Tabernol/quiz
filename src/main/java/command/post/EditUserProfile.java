@@ -1,6 +1,5 @@
 package command.post;
 
-import command.get.EditProfile;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
@@ -27,42 +26,24 @@ public class EditUserProfile implements RequestHandler {
         Long userId = (Long) req.getSession().getAttribute("user_id");
 
         UserService userService = new UserService(new UserRepo(), new ValidatorService());
-        EditProfile editProfile = new EditProfile();
-        DataValidator dataValidator = new DataValidator();
-
 
         try {
             userService.updateUser(userId, name);
             logger.info("User with id " + userId + "changes made successfully");
-            resp.sendRedirect(req.getContextPath()+"/profile");
-
-        } catch (DataBaseException e) {
-            throw new RuntimeException(e);
+            resp.sendRedirect(req.getContextPath() +
+                    "/prg?servlet_path=/profile&message=" +
+                    " changes made successfully");
         } catch (ValidateException e) {
-            throw new RuntimeException(e);
+            logger.warn("User with id " + userId + "name is invalid");
+            resp.sendRedirect(req.getContextPath() +
+                    "/prg?servlet_path=/profile&message=" +
+                    " name is invalid");
+        } catch (DataBaseException e) {
+            logger.warn("User with id " + userId + "did not update");
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
-
-
-        if (!dataValidator.validateForName(name)) {
-            req.setAttribute("message", "name is invalid");
-            req.setAttribute("user_id", userId);
-            logger.info("User with id " + userId + "name is invalid");
-            editProfile.execute(req, resp);
-        } else {
-            try {
-                userService.updateUser(userId, name);
-                req.setAttribute("message", "changes made successfully");
-                req.getSession().setAttribute("name", name);
-                logger.info("User with id " + userId + "changes made successfully");
-                editProfile.execute(req, resp);
-            } catch (DataBaseException e) {
-                logger.warn("User with id " + userId + "did not update");
-                throw new RuntimeException(e);
-            } catch (ValidateException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-
     }
 }
+
+
+

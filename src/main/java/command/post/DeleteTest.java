@@ -1,6 +1,6 @@
 package command.post;
 
-import command.get.NextPage;
+import command.get.FilterTests;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 
@@ -29,10 +29,9 @@ public class DeleteTest implements RequestHandler {
 
         try {
             testService.delete(id);
-            req.getSession().setAttribute("tests", testService.getAll());
             logger.info("Test with id " + id + "has deleted");
-            NextPage nextPage = new NextPage();
-            nextPage.execute(req, resp);
+            FilterTests filterTests = new FilterTests();
+            filterTests.execute(req, resp);
         } catch (DataBaseException e) {
             logger.warn("Test with id " + id + "has not deleted", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);

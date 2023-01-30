@@ -8,12 +8,17 @@ public class QueryBuilderForTest implements QBuilder {
 
     @Override
     public String getQuery() {
-        return "select * from test where subject " + filter + order + " limit " + limit + " offset " + offSet;
+        return "select * from test " + filter + order + " limit " + limit + " offset " + offSet;
     }
 
     @Override
     public void setFilter(String name) {
-        this.filter = "like " + name;
+        if (name.equals("all")) {
+            this.filter = "";
+        } else {
+            this.filter = " where subject like '" + name + "'";
+        }
+
     }
 
     @Override

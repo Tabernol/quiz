@@ -31,10 +31,10 @@ public class SecurityFilter extends AbstractFilter {
             if (servletPath.equals(PathConst.REGISTRATION) || servletPath.equals(PathConst.PROFILE) ||
                     servletPath.equals(PathConst.LOGIN_FORM) || servletPath.equals(PathConst.LOGOUT) ||
                     servletPath.equals(PathConst.HOME) || servletPath.equals(PathConst.LANGUAGE) ||
-                    servletPath.equals(PathConst.FILTER_TESTS) || servletPath.equals(PathConst.NEXT_PAGE) ||
+                    servletPath.equals(PathConst.FILTER_TESTS) ||
                     servletPath.equals(PathConst.INFO_TEST) || servletPath.equals(PathConst.START_TEST) ||
                     servletPath.equals(PathConst.NEXT_QUESTION) || servletPath.equals(PathConst.RESULT_ANSWER) ||
-                    servletPath.equals("/edit_profile") || servletPath.equals("/edit_user_profile") ||
+                    servletPath.equals("/edit_profile") ||
                     servletPath.equals("/prg") || servletPath.equals("/get_text_question") ||
                     servletPath.equals("/finish_test") || servletPath.equals("/finish") ||
                     servletPath.equals("/filter_result")) {
@@ -46,8 +46,7 @@ public class SecurityFilter extends AbstractFilter {
             if (servletPath.equals(PathConst.FILTER_TESTS) || servletPath.equals(PathConst.PROFILE) ||
                     servletPath.equals(PathConst.LOGIN_FORM) || servletPath.equals(PathConst.LOGOUT) ||
                     servletPath.equals(PathConst.REGISTRATION) || servletPath.equals(PathConst.HOME) ||
-                    servletPath.equals(PathConst.LANGUAGE) ||
-                    servletPath.equals(PathConst.NEXT_PAGE) || servletPath.equals(PathConst.USERS) ||
+                    servletPath.equals(PathConst.LANGUAGE) || servletPath.equals(PathConst.USERS) ||
                     servletPath.equals(PathConst.CREATE_TEST) || servletPath.equals(PathConst.ADD_QUESTION) ||
                     servletPath.equals(PathConst.ADD_ANSWER) ||
                     servletPath.equals(PathConst.DELETE_USER) || servletPath.equals(PathConst.DELETE_TEST) ||
@@ -56,7 +55,7 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.EDIT_USER) || servletPath.equals("/prg_edit_question_servlet") ||
                     servletPath.equals("/prg_edit_test_servlet") || servletPath.equals("/to_create_test") ||
                     servletPath.equals("/prg_create_test") || servletPath.equals("/edit_profile") ||
-                    servletPath.equals("/edit_user_profile") || servletPath.equals("/block") ||
+                    servletPath.equals("/block") ||
                     servletPath.equals("/prg")) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {

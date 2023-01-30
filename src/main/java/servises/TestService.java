@@ -4,6 +4,10 @@ import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import models.Test;
 import repo.TestRepo;
+import util.MyTable;
+import util.QBuilder;
+import util.QueryBuilderForTest;
+import util.QueryFactory;
 
 import java.util.List;
 
@@ -16,9 +20,9 @@ public class TestService {
         this.validatorService = validatorService;
     }
 
-    public List<Test> getAll() throws DataBaseException {
-        return testRepo.getAll();
-    }
+//    public List<Test> getAll() throws DataBaseException {
+//        return testRepo.getAll();
+//    }
 
     public int createTest(String name, String subject, int difficult, int duration)
             throws ValidateException, DataBaseException {
@@ -31,12 +35,16 @@ public class TestService {
         return testRepo.getDistinctSubject();
     }
 
-    public List<Test> getFilterTests(String subject, String order, int rows) throws DataBaseException {
-        if (subject.equals("all")) {
-            return testRepo.getAll(order, rows);
-        } else {
-            return testRepo.getFilterTest(subject, order, rows);
-        }
+    public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page) throws DataBaseException {
+        QueryFactory queryFactory = new QueryFactory();
+        QBuilder qBuilder = (QueryBuilderForTest) queryFactory.getQueryBuilder(MyTable.TEST);
+        qBuilder.setFilter(subject);
+        qBuilder.setOrderBy(order);
+        qBuilder.setLimit(rows);
+        qBuilder.setOffSet(page);
+        String query = qBuilder.getQuery();
+        System.out.println("QUERY = " + query);
+        return testRepo.nextPage(query);
     }
 
     public int delete(Long id) throws DataBaseException {

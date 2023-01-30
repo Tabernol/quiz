@@ -31,7 +31,8 @@ import org.apache.logging.log4j.LogManager;
         PathConst.LANGUAGE,
         "/prg",
         "/to_create_test", "/edit_profile", "/edit_user_profile"
-        ,"/block", "/get_text_question", "/finish_test", "/finish"
+        ,"/block", "/get_text_question", "/finish_test", "/finish",
+        "/filter_result"
 
 })
 public class AppControllerServlet extends HttpServlet {

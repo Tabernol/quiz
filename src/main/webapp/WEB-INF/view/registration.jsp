@@ -39,19 +39,19 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-0">Create an account</h2>
-                            <form>
+                            <form method="post" action="registration">
                                 <div class="form-outline mb-0">
-                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="name"/>
                                     <label class="form-label" for="form3Example1cg">Your Name</label>
                                 </div>
 
                                 <div class="form-outline mb-0">
-                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="login"/>
                                     <label class="form-label" for="form3Example3cg">Your Email</label>
                                 </div>
 
                                 <div class="form-outline mb-0">
-                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password"/>
                                     <label class="form-label" for="form3Example4cg">Password</label>
                                 </div>
 
@@ -66,9 +66,8 @@
 <%--                                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>--%>
 <%--                                    </label>--%>
 <%--                                </div>--%>
-
                                 <div class="d-flex justify-content-center">
-                                    <button type="button"
+                                    <button type="submit"
                                             class="btn btn-secondary">Register</button>
                                 </div>
                             </form>

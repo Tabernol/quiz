@@ -43,6 +43,30 @@ public class ResultRepo {
         }
     }
 
+    public List<ResultDto> getPageResultList(String query) throws DataBaseException {
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(query)) {
+            ResultSet resultSet = pst.executeQuery();
+            List<ResultDto> resultDtoList = new ArrayList<>();
+            while (resultSet.next()) {
+                ResultDto resultDto = new ResultDto();
+                resultDto.setTestName(resultSet.getString("name"));
+                resultDto.setSubject(resultSet.getString("subject"));
+                resultDto.setDifficult(resultSet.getInt("difficult"));
+                resultDto.setDuration(resultSet.getInt("duration"));
+                resultDto.setGrade(resultSet.getInt("grade"));
+                resultDtoList.add(resultDto);
+            }
+            resultSet.close();
+            return resultDtoList;
+        } catch (SQLException e) {
+            logger.warn("Can not get order result list");
+            throw new DataBaseException("Can not get order result list" + e.getMessage(), e);
+
+        }
+    }
+
+
     public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
         String sql = "insert into result values(default, ?,?,?)";
         try (Connection con = MyDataSource.getConnection();
@@ -62,6 +86,24 @@ public class ResultRepo {
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, userId);
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+            Integer count = resultSet.getInt(1);
+            resultSet.close();
+            return count;
+        } catch (SQLException e) {
+            logger.warn("Can not get count from table result with id = " + userId);
+            throw new DataBaseException("Can not get count from table result" + e.getMessage(), e);
+        }
+    }
+
+    public Integer getCountResultByUserAndSubject(Long userId, String subject) throws DataBaseException {
+        String sql = "select count(grade) from result inner join test " +
+                "on result.test_id=test.id where user_id = ? and subject like ?";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setLong(1, userId);
+            pst.setString(2, subject);
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
             Integer count = resultSet.getInt(1);

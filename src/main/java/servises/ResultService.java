@@ -6,6 +6,10 @@ import models.Answer;
 import repo.AnswerRepo;
 import repo.ResultRepo;
 import repo.UserRepo;
+import util.MyTable;
+import util.QBuilder;
+import util.QueryBuilderForResult;
+import util.QueryFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,14 +72,33 @@ public class ResultService {
         return result;
     }
 
-    public Integer getCountResultByUser(Long user_id) throws DataBaseException {
-        return resultRepo.getCountResultByUser(user_id);
+    public Integer getCountResultByUser(Long user_id, String sub) throws DataBaseException {
+        if (sub.equals("all")) {
+            return resultRepo.getCountResultByUser(user_id);
+        } else {
+            return resultRepo.getCountResultByUserAndSubject(user_id, sub);
+        }
+
     }
 
-    public Integer getCountPagesResult(Long userId, Integer row) throws DataBaseException {
-        Integer passedTest = getCountResultByUser(userId);
+    public Integer getCountPagesResult(Long userId, Integer row, String sub) throws DataBaseException {
+        Integer passedTest = getCountResultByUser(userId, sub);
         return passedTest % row == 0 ? passedTest / row : (passedTest / row) + 1;
 
+    }
+
+    public List<ResultDto> getPageResultList(Long idUser, String sub, String order, Integer limit, Integer offSet) throws DataBaseException {
+        QueryFactory queryFactory = new QueryFactory();
+        QueryBuilderForResult queryBuilder = (QueryBuilderForResult) queryFactory.getQueryBuilder(MyTable.RESULT);
+        queryBuilder.setFilter(idUser.toString());
+        queryBuilder.setOrderBy(order);
+        queryBuilder.setLimit(limit);
+        queryBuilder.setOffSet(offSet);
+        queryBuilder.setAndSubject(sub);
+
+        String query = queryBuilder.getQuery();
+        System.out.println("QUERY = " + query);
+        return resultRepo.getPageResultList(query);
     }
 
 //    private List<Answer> getUserAnswer(String[] res) {

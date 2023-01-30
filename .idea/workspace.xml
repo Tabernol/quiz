@@ -9,28 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="106 before query builder">
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/get/NextPageResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/MyTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/QueryBuilderForResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/QueryBuilderForTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/QueryFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9756bce43fd04104fbe9c624317ae7033d13360" beforeDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="107 work on query builder and factory and servlet for filtration">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/3/93119a23f0e7217fb1d1d7482cf462fc19f05a55" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/NextPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/NextPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/PaginationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/PaginationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/QBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/QBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Query.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/QueryBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/QueryBuilderForResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/QueryBuilderForResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/PaginationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/PaginationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +109,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
+    <configuration name="FilterResult" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="command.get.FilterResult" />
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="command.get.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="util.QueryBuilderForResult" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="util.QueryBuilderForResult" />
       <module name="startCommand" />
@@ -146,15 +152,6 @@
       <module name="startCommand" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AnswerRepoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AnswerRepoTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -257,20 +254,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.FilterResult" />
       <item itemvalue="Application.util.QueryBuilderForResult" />
       <item itemvalue="Application.util.QueryBuilderForTest" />
-      <item itemvalue="JUnit.AnswerRepoTest" />
       <item itemvalue="JUnit.AnswerRepoTest.testMockDBConnection" />
       <item itemvalue="JUnit.All in startCommand" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FilterResult" />
         <item itemvalue="Application.util.QueryBuilderForResult" />
         <item itemvalue="Application.util.QueryBuilderForTest" />
         <item itemvalue="JUnit.All in startCommand" />
         <item itemvalue="JUnit.AnswerRepoTest.testMockDBConnection" />
-        <item itemvalue="JUnit.AnswerRepoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -330,7 +327,8 @@
       <workItem from="1674661036676" duration="3432000" />
       <workItem from="1674666136284" duration="22678000" />
       <workItem from="1674808887801" duration="27410000" />
-      <workItem from="1674911218109" duration="26740000" />
+      <workItem from="1674911218109" duration="26842000" />
+      <workItem from="1674994965982" duration="11416000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -556,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674928432492</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="107 work on query builder and factory and servlet for filtration">
+      <created>1674954636942</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1674954636942</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="5" />
     <MESSAGE value="6" />
     <MESSAGE value="7" />
     <MESSAGE value="8" />
@@ -599,7 +603,8 @@
     <MESSAGE value="102 Add Right modal" />
     <MESSAGE value="105 add card with answers" />
     <MESSAGE value="106 before query builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="106 before query builder" />
+    <MESSAGE value="107 work on query builder and factory and servlet for filtration" />
+    <option name="LAST_COMMIT_MESSAGE" value="107 work on query builder and factory and servlet for filtration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

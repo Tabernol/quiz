@@ -1,15 +1,17 @@
 package util;
 
 public class QueryBuilderForResult implements QBuilder {
-    private String filter = " ";
-    private String order;
+    private String filter;
+    private String orderBy;
     private Integer limit;
     private Integer offSet;
+    private String andSubject;
+
     @Override
     public String getQuery() {
         return "select * from test inner join result " +
                 "on test.id=result.test_id where user_id like "
-                + filter + " order by " + order + " limit " + limit + " offset " + offSet;
+                + filter + andSubject + " order by " + orderBy + " limit " + limit + " offset " + offSet;
     }
 
 
@@ -20,7 +22,7 @@ public class QueryBuilderForResult implements QBuilder {
 
     @Override
     public void setOrderBy(String column) {
-        this.order = column;
+        this.orderBy = column;
 
     }
 
@@ -35,6 +37,13 @@ public class QueryBuilderForResult implements QBuilder {
         this.offSet = off;
     }
 
+    public void setAndSubject(String andSubject) {
+        if (andSubject.equals("all")) {
+            this.andSubject = "";
+        } else
+            this.andSubject = " and subject like '" + andSubject + "'";
+    }
+}
 //    public static void main(String[] args) {
 //        QueryBuilderForResult queryBuilderForResult = new QueryBuilderForResult();
 //        queryBuilderForResult.setFilter("9");
@@ -44,4 +53,4 @@ public class QueryBuilderForResult implements QBuilder {
 //        String query = queryBuilderForResult.getQuery();
 //        System.out.println(query);
 //    }
-}
+

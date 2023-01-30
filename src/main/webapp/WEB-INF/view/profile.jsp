@@ -25,10 +25,8 @@
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
 <h4>
-    <fmt:message key="label.name"/>  <c:out value="${requestScope.name}"/><br>
+    <fmt:message key="label.name"/>  <c:out value="${sessionScope.name}"/><br>
 </h4>
-
-
 
 <hr>
 <form action="edit_profile">
@@ -37,9 +35,9 @@
 
 
 <c:if test="${sessionScope.role == 'student'}">
-
     <div>
-        <form action="filter_tests">
+        <form action="filter_result">
+            <input type="hidden" name="page" value="1">
             <select name="sub">
                 <option value="all"><c:out value="all"/></option>
                 <c:forEach var="sub" items="${sessionScope.subjects}">
@@ -90,6 +88,24 @@
         </c:forEach>
         </tbody>
     </table>
+    <div class="center">
+        <nav aria-label="pagination-sm">
+            <ul class="pagination pagination-sm">
+                <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+                    <li class="page-item"><a class="page-link"
+                                             href="<c:url value='/filter_result'>
+<%--                        <c:param name="order" value="${requestScope.order}"/>--%>
+<%--                        <c:param name="sub" value="${requestScope.sub}"/>--%>
+<%--                        <c:param name="rows" value="${requestScope.rows}"/>--%>
+                        <c:param name="page" value="${i}"/>
+                    </c:url>"><c:out value="${i}"/></a></li>
+                </c:forEach>
+                    <%--            <li class="page-item active" aria-current="page">--%>
+                    <%--                <span class="page-link">1</span>--%>
+                    <%--            </li>--%>
+            </ul>
+        </nav>
+    </div>
 </c:if>
 
 

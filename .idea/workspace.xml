@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="109 refactor">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/60a63bcd0b8d2cb88d58f1a3b9ee97267ea68217" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7ddcdaa4838036ac8797f1e23316aee626303e49" beforeDir="false" />
-    </list>
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="109 refactor" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +93,7 @@
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\js" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in startCommand">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
     <configuration name="FilterResult" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="command.get.FilterResult" />
       <module name="startCommand" />

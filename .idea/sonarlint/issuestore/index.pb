@@ -219,8 +219,6 @@ O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 Y
 )src/main/webapp/WEB-INF/view/language.jsp,a\6\a62aaee01c9edd87d0c4b273f45ae04fdeaef052
-P
- src/main/java/util/QBuilder.java,6\1\6159665bb557a12c1211e9b841cea5e39b72401d
 ]
 -src/main/java/util/QueryBuilderForResult.java,0\c\0c025e315b3e4d7768d7f1d695c1e69e6646c8b3
 [
@@ -231,8 +229,6 @@ W
 'src/main/webapp/WEB-INF/view/header.jsp,2\8\28a6d4af0b6407217757d73a94a6cdedff8d0e4e
 Z
 *src/main/java/command/post/CreateTest.java,1\b\1ba6c458c5afe8a7c13bfc2ff51f186f10ec32cf
-b
-2src/main/webapp/WEB-INF/view/admin/admin_tests.jsp,b\3\b38debac0bdb8c7ad6372d66ef205ed8791fd307
 Z
 *src/main/java/command/post/DeleteTest.java,5\8\5859dfd41bb54466c59b3edf7ea63f9a8d39693d
 _
@@ -273,10 +269,6 @@ m
 =src/main/java/controllers/servlet/impl/DataHandleCommand.java,d\b\db6dcd372de7088abee8256c24a2d4f1ad90dbb1
 `
 0src/main/webapp/WEB-INF/view/admin/edit_user.jsp,3\0\302fdb0bb648afbac75518e69f3fa5b726bc9179
-Z
-*src/main/java/command/get/FilterTests.java,5\7\5782d2af3ef86db6c19b2fa68afcfc7b27a8c176
-e
-5src/test/java/service_test/PaginationServiceTest.java,d\9\d9756bce43fd04104fbe9c624317ae7033d13360
 c
 3src/test/java/service_test/PasswordHashingTest.java,7\d\7ddcdaa4838036ac8797f1e23316aee626303e49
 \
@@ -285,9 +277,5 @@ e
 5src/main/java/controllers/filters/SecurityFilter.java,9\5\9525a5ff11c78913e78ce4444fd8dfb1b00cfcce
 f
 6src/main/webapp/WEB-INF/view/student/student_tests.jsp,9\7\97150b5abe5326d484f62681683b34eefb0af09a
-W
-'src/main/java/servises/UserService.java,a\0\a0a6cf1e9f970f565b9cc3c366a63a634e3476cd
-_
-/src/test/java/service_test/UserServiceTest.java,b\5\b5fb646d9cb78bae1bd9635bf44e66572301a85a
 \
 ,src/main/java/servises/ValidatorService.java,d\f\df5b04690716829e8284155f87d0a72eae059113

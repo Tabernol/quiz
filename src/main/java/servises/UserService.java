@@ -36,9 +36,9 @@ public class UserService {
         return userRepo.getAll();
     }
 
-    public int deleteUser(Long id) throws DataBaseException {
-        return userRepo.delete(id);
-    }
+//    public int deleteUser(Long id) throws DataBaseException {
+//        return userRepo.delete(id);
+//    }
 
     public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
         validatorService.validateUpdateUser(name, role);

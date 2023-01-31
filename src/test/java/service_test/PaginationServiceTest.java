@@ -1,23 +1,23 @@
-package service_test;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import repo.TestRepo;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class PaginationServiceTest {
-    @Mock
-    TestRepo mockTestRepo;
-
-    PaginationService paginationService;
-
-    @BeforeEach
-    public void setUp() {
-        mockTestRepo = Mockito.mock(TestRepo.class);
-        paginationService = new PaginationService(mockTestRepo);
-    }
+//package service_test;
+//
+//import org.junit.jupiter.api.BeforeEach;
+//import org.mockito.Mock;
+//import org.mockito.Mockito;
+//import repo.TestRepo;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//
+//public class PaginationServiceTest {
+//    @Mock
+//    TestRepo mockTestRepo;
+//
+//    PaginationService paginationService;
+//
+//    @BeforeEach
+//    public void setUp() {
+//        mockTestRepo = Mockito.mock(TestRepo.class);
+//        paginationService = new PaginationService(mockTestRepo);
+//    }
 
 //    @Test
 //    public void nextPageForAll() throws DataBaseException {
@@ -37,4 +37,4 @@ public class PaginationServiceTest {
 //                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
 //    }
 
-}
+//}

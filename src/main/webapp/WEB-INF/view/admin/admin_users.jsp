@@ -18,6 +18,7 @@
     <style>
         <%@include file="/static/css/style.css"%>
     </style>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
@@ -79,6 +80,12 @@
         </c:forEach>
     </tbody>
 </table>
+<br>
+<br>
+<br>
+<br>
+
+<%--==========================================--%>
 
 
 </body>

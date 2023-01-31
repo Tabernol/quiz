@@ -189,8 +189,6 @@ d
 4src/main/webapp/WEB-INF/view/student/page_finish.jsp,5\a\5a7d7ef52c6d42763002164d813cd49e539e9ee9
 S
 #src/main/java/util/MyCustomTag.java,f\0\f00c827ffccccc94ac143045a7b4d5209f62a91a
-T
-$src/main/webapp/static/css/style.css,8\6\86bb576c68621864156f96fb91807dae854a2ec7
 U
 %src/main/java/command/get/Finish.java,0\1\013a30696da170af1776c89dd9148ff6bb753a04
 Z
@@ -261,8 +259,6 @@ k
 ;src/main/java/controllers/servlet/AppControllerServlet.java,4\0\40db2a61aa19e09295a4fa6bf68fda622359a9d9
 [
 +src/main/java/command/get/Registration.java,9\3\93119a23f0e7217fb1d1d7482cf462fc19f05a55
-b
-2src/main/webapp/WEB-INF/view/admin/admin_users.jsp,9\c\9c7b43463cc1d6ed7dfc1652a97b0d8ee97639a1
 s
 Csrc/main/java/controllers/servlet/impl/ContentSupplierCommands.java,5\a\5a227f1fee18a4c9dfa7ac54b0b9864cd66b5944
 m
@@ -271,11 +267,7 @@ m
 0src/main/webapp/WEB-INF/view/admin/edit_user.jsp,3\0\302fdb0bb648afbac75518e69f3fa5b726bc9179
 c
 3src/test/java/service_test/PasswordHashingTest.java,7\d\7ddcdaa4838036ac8797f1e23316aee626303e49
-\
-,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
 e
 5src/main/java/controllers/filters/SecurityFilter.java,9\5\9525a5ff11c78913e78ce4444fd8dfb1b00cfcce
 f
 6src/main/webapp/WEB-INF/view/student/student_tests.jsp,9\7\97150b5abe5326d484f62681683b34eefb0af09a
-\
-,src/main/java/servises/ValidatorService.java,d\f\df5b04690716829e8284155f87d0a72eae059113

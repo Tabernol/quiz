@@ -61,6 +61,6 @@ public class ValidatorService {
     }
 
     public void validateRepeatPassword(String password, String repeatPassword) throws ValidateException {
-        DataValidator.validate(!password.equals(repeatPassword), "password is not the same");
+        DataValidator.validate(password.equals(repeatPassword), "password is not the same");
     }
 }

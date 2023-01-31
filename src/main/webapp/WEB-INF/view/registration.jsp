@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="form-outline mb-0">
-                                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" name="repeat_password"/>
                                     <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                                 </div>
 

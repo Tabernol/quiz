@@ -18,23 +18,55 @@
     <style>
         <%@include file="/static/css/style.css"%>
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <br>
-<form method="post" action="edit_user">
-    <input type="hidden" name="user_id" value="${requestScope.user.id}">
-    <fmt:message key="label.name"/> <input type="text" name="name" value="${requestScope.user.name}"><br>
-    <fmt:message key="label.role"/> <input type="text" name="role" value="${requestScope.user.role}"><br>
+<%--<form method="post" action="edit_user">--%>
+<%--    <input type="hidden" name="user_id" value="${requestScope.user.id}">--%>
+<%--    <fmt:message key="label.name"/> <input type="text" name="name" value="${requestScope.user.name}"><br>--%>
+<%--    <fmt:message key="label.role"/> <input type="text" name="role" value="${requestScope.user.role}"><br>--%>
 
-    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">
-    <c:out value="${requestScope.message}"/>
-</form>
+<%--    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">--%>
+<%--    <c:out value="${requestScope.message}"/>--%>
+<%--</form>--%>
 
-<form method="post" action="delete_user">
-    <input type="hidden" name="user_id" value="${user.id}">
-    <input class="button" type="submit" value=" <fmt:message key="button.delete"/>">
-</form>
+<%--=========================--%>
+<div class="offcanvas offcanvas-start" id="forTest">
+    <div class="offcanvas-header">
+        <h1 class="offcanvas-title">Edit user</h1>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form method="post" action="edit_user">
+            <input type="hidden" name="page" value="${requestScope.page}">
+
+            <h6 class="fw-light"><fmt:message key="table.head.name"/></h6>
+            <input type="text" name="name" value="${requestScope.user.name}">
+            <h6 class="fw-light"><fmt:message key="label.role"/></h6>
+            <input type="text" name="role" value="${requestScope.user.role}">
+            <br>
+            <div class="d-flex justify-content-center">
+                <button type="submit"
+                        class="btn btn-secondary"><fmt:message key="button.edit"/>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Button to open the offcanvas sidebar -->
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forTest">
+    Edit
+</button>
+
+<h3><c:out value="${requestScope.message}"/></h3>
+
+
+
+
+
 
 <form action="users">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">

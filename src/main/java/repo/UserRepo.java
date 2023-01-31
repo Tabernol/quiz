@@ -40,17 +40,17 @@ public class UserRepo {
         }
     }
 
-    public int delete(Long id) throws DataBaseException {
-        String sql = "delete from user where id = ?";
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setLong(1, id);
-            return pst.executeUpdate();
-        } catch (SQLException e) {
-            logger.warn("Can not delete user");
-            throw new DataBaseException("Can not delete user" + e.getMessage(), e);
-        }
-    }
+//    public int delete(Long id) throws DataBaseException {
+//        String sql = "delete from user where id = ?";
+//        try (Connection con = MyDataSource.getConnection();
+//             PreparedStatement pst = con.prepareStatement(sql)) {
+//            pst.setLong(1, id);
+//            return pst.executeUpdate();
+//        } catch (SQLException e) {
+//            logger.warn("Can not delete user");
+//            throw new DataBaseException("Can not delete user" + e.getMessage(), e);
+//        }
+//    }
 
     public List<User> getAll() throws DataBaseException {
         String sql = "select * from user";

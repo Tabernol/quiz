@@ -3,10 +3,7 @@ package command.get;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Test;
-import repo.ResultRepo;
 import repo.TestRepo;
-import servises.PaginationService;
-import servises.ResultService;
 import servises.TestService;
 import servises.ValidatorService;
 

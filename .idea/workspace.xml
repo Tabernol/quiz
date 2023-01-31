@@ -9,35 +9,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="108 Add filter and pagination for table-result">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/7457ba6c51699cad780bce36f935a06efea68f76" beforeDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="108 Add table to profile. Delete command next_page and edit_user_profile">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/QueryBuilderForUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bc4f776b79babff1835a50e3a98a328169572b6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c4d189863a6ed40e78c93b9693a38d6e17621d7" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditProfile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/NextPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/NextPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/NextPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/PageTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/PaginationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/PaginationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/QueryBuilderForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/QueryBuilderForTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_test.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/PaginationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/student_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/student_tests.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/PaginationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/PaginationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/ProfileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/get/ProfileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/PasswordHashingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/PasswordHashingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/PageTestTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteUserTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +48,8 @@
       <list>
         <option value="Jsp File" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -122,7 +121,7 @@
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\js" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
+  <component name="RunManager" selected="JUnit.All in startCommand">
     <configuration name="FilterResult" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="command.get.FilterResult" />
       <module name="startCommand" />
@@ -277,10 +276,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in startCommand" />
         <item itemvalue="Application.FilterResult" />
         <item itemvalue="Application.util.QueryBuilderForResult" />
         <item itemvalue="Application.util.QueryBuilderForTest" />
-        <item itemvalue="JUnit.All in startCommand" />
         <item itemvalue="JUnit.AnswerRepoTest.testMockDBConnection" />
       </list>
     </recent_temporary>
@@ -342,7 +341,7 @@
       <workItem from="1674666136284" duration="22678000" />
       <workItem from="1674808887801" duration="27410000" />
       <workItem from="1674911218109" duration="26842000" />
-      <workItem from="1674994965982" duration="17665000" />
+      <workItem from="1674994965982" duration="21631000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -582,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675115879642</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="108 Add table to profile. Delete command next_page and edit_user_profile">
+      <created>1675122062917</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1675122062917</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +606,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="7" />
     <MESSAGE value="8" />
     <MESSAGE value="9" />
     <MESSAGE value="10" />
@@ -625,18 +630,10 @@
     <MESSAGE value="106 before query builder" />
     <MESSAGE value="107 work on query builder and factory and servlet for filtration" />
     <MESSAGE value="108 Add filter and pagination for table-result" />
-    <option name="LAST_COMMIT_MESSAGE" value="108 Add filter and pagination for table-result" />
+    <MESSAGE value="108 Add table to profile. Delete command next_page and edit_user_profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="108 Add table to profile. Delete command next_page and edit_user_profile" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="MyDataSource" language="JAVA" />
@@ -669,7 +666,7 @@
     <SUITE FILE_PATH="coverage/startCommand$AllUserTest_allUsers.ic" NAME="AllUserTest.allUsers Coverage Results" MODIFIED="1674077880846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>servlets.get.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1674839344736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1675126215224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest_findAllByQuestionIdTest.ic" NAME="AnswerServiceTest.findAllByQuestionIdTest Coverage Results" MODIFIED="1673392408583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>
     </SUITE>

@@ -1,15 +1,9 @@
 package service_test;
 
-import exeptions.DataBaseException;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.TestRepo;
-import servises.PaginationService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

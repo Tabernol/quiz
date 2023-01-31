@@ -49,7 +49,7 @@ public class SecurityFilter extends AbstractFilter {
                     servletPath.equals(PathConst.LANGUAGE) || servletPath.equals(PathConst.USERS) ||
                     servletPath.equals(PathConst.CREATE_TEST) || servletPath.equals(PathConst.ADD_QUESTION) ||
                     servletPath.equals(PathConst.ADD_ANSWER) ||
-                    servletPath.equals(PathConst.DELETE_USER) || servletPath.equals(PathConst.DELETE_TEST) ||
+                    servletPath.equals(PathConst.DELETE_TEST) ||
                     servletPath.equals(PathConst.DELETE_QUESTION) || servletPath.equals(PathConst.DELETE_ANSWER) ||
                     servletPath.equals(PathConst.EDIT_TEST) || servletPath.equals(PathConst.EDIT_QUESTION) ||
                     servletPath.equals(PathConst.EDIT_USER) || servletPath.equals("/prg_edit_question_servlet") ||

@@ -59,4 +59,8 @@ public class ValidatorService {
         DataValidator.validate(DataValidator.validateAvailabilityRole(role),
                 "Role must be 'admin' or 'student'");
     }
+
+    public void validateRepeatPassword(String password, String repeatPassword) throws ValidateException {
+        DataValidator.validate(!password.equals(repeatPassword), "password is not the same");
+    }
 }

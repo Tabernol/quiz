@@ -23,10 +23,11 @@ public class UserService {
         return userRepo.get(id);
     }
 
-    public int createUser(String name, String login, String password)
+    public int createUser(String name, String login, String password, String repeatPassword)
             throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
         validatorService.validateFieldsUser(name, login, password);
         validatorService.isLoginExist(userRepo.isLoginExist(login));
+        validatorService.validateRepeatPassword(password, repeatPassword);
         String passwordHash = PasswordHashingService.generateStrongPasswordHash(password);
         return userRepo.createUser(login, passwordHash, name);
     }

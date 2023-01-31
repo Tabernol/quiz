@@ -31,11 +31,12 @@ public class Registration implements RequestHandler {
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+        String repeatPassword = req.getParameter("repeat_password");
 
         UserService userService = new UserService(new UserRepo(), new ValidatorService());
 
         try {
-            userService.createUser(name, login, password);
+            userService.createUser(name, login, password, repeatPassword);
             User user = userService.get(userService.getId(login));
             HttpSession session = req.getSession();
             session.setAttribute("user_id", userService.getId(login));// get id

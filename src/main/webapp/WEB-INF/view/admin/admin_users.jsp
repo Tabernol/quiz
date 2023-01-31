@@ -21,9 +21,6 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
-<form action="home">
-    <input class="button" type="submit" value="<fmt:message key="button.back"/>">
-</form>
 
 
 <table class="table align-middle mb-0 w-auto bg-white">
@@ -32,8 +29,8 @@
         <th><fmt:message key="table.head.name"/></th>
         <th><fmt:message key="table.head.login"/></th>
         <th><fmt:message key="table.head.status"/></th>
-        <th>Position</th>
-        <th>Actions</th>
+        <th>Block</th>
+        <th>Edit</th>
     </tr>
     </thead>
     <tbody>

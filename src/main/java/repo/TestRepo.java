@@ -36,31 +36,31 @@ public class TestRepo {
     }
 
 
-    public List<Test> getFilterTest(String subject, String order, int rows) throws DataBaseException {
-        String sql = "select * from test where subject like ? order by " + order + " limit ?";
-        List<Test> tests = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, subject);
-            pst.setInt(2, rows);
-            ResultSet resultSet = pst.executeQuery();
-            //  pst.setString(2, order);
-            while (resultSet.next()) {
-                Test test = new Test();
-                test.setId(resultSet.getLong("id"));
-                test.setName(resultSet.getString("name"));
-                test.setSubject(resultSet.getString("subject"));
-                test.setDifficult(resultSet.getInt("difficult"));
-                test.setDuration(resultSet.getInt("duration"));
-                tests.add(test);
-            }
-            resultSet.close();
-            return tests;
-        } catch (SQLException e) {
-            logger.warn("Can not get order filter test");
-            throw new DataBaseException("Can not get order filter test" + e.getMessage(), e);
-        }
-    }
+//    public List<Test> getFilterTest(String subject, String order, int rows) throws DataBaseException {
+//        String sql = "select * from test where subject like ? order by " + order + " limit ?";
+//        List<Test> tests = new ArrayList<>();
+//        try (Connection con = MyDataSource.getConnection();
+//             PreparedStatement pst = con.prepareStatement(sql)) {
+//            pst.setString(1, subject);
+//            pst.setInt(2, rows);
+//            ResultSet resultSet = pst.executeQuery();
+//            //  pst.setString(2, order);
+//            while (resultSet.next()) {
+//                Test test = new Test();
+//                test.setId(resultSet.getLong("id"));
+//                test.setName(resultSet.getString("name"));
+//                test.setSubject(resultSet.getString("subject"));
+//                test.setDifficult(resultSet.getInt("difficult"));
+//                test.setDuration(resultSet.getInt("duration"));
+//                tests.add(test);
+//            }
+//            resultSet.close();
+//            return tests;
+//        } catch (SQLException e) {
+//            logger.warn("Can not get order filter test");
+//            throw new DataBaseException("Can not get order filter test" + e.getMessage(), e);
+//        }
+//    }
 
     public int updateInfoTest(Long id, String name, String subject, int difficult, int duration) throws DataBaseException {
         String sql = "update test set name = ?, subject = ?, difficult = ?, duration = ? where id = ? ";

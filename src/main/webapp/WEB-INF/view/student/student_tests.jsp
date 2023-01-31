@@ -100,9 +100,10 @@
         <td><c:out value="${test.difficult}"/></td>
         <td><c:out value="${test.duration}"/></td>
         <td>
-            <form action="info_test">
+            <form action="start_test">
                 <input type="hidden" name="test_id" value="${test.id}">
                 <input type="hidden" name="page" value="${requestScope.page}">
+                <input type="hidden" name="duration" value="${test.duration}">
                 <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.take.test"/>">
             </form>
         </td>

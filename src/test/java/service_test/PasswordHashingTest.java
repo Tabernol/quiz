@@ -1,11 +1,9 @@
 package service_test;
 
 import org.junit.jupiter.api.Test;
-import servises.PaginationService;
 import servises.PasswordHashingService;
 
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 import static org.junit.jupiter.api.Assertions.*;

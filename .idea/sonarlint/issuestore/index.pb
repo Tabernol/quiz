@@ -13,8 +13,6 @@ e
 5src/main/java/controllers/servlet/RequestHandler.java,9\3\9345d3860452874a607ed5fad2e56b36c6840b9b
 N
 src/main/java/models/Test.java,e\a\ea1601f0a86352308c73f29c695dd575e9501948
-c
-3src/test/java/service_test/PasswordHashingTest.java,7\d\7ddcdaa4838036ac8797f1e23316aee626303e49
 P
  src/main/java/dto/ResultDto.java,9\0\90a5a93b2266495b99ce23b34cc9b8a7282755e7
 P
@@ -31,16 +29,12 @@ a
 1src/test/java/servlets/post/DeleteAnswerTest.java,2\e\2e42391d4122024f95113d3a5bc49e223b330106
 [
 +src/test/java/servlets/get/AllUserTest.java,1\8\1819169ebad78fd7ab98a2e77dec4f2a5d741237
-_
-/src/test/java/servlets/post/DeleteUserTest.java,8\b\8bc4f776b79babff1835a50e3a98a328169572b6
 X
 (src/test/java/servlets/get/HomeTest.java,3\8\3812908a02dbd13e284720488ce17e0b08a7b80a
 ]
 -src/test/java/servlets/get/LoginFormTest.java,b\e\be16a0f6e59dbcb4c67fe0e8f243212c29d2456d
 Z
 *src/test/java/servlets/get/LogoutTest.java,2\5\25b101f37f9d2a74ffdf1c550f253fc3672fe32b
-\
-,src/test/java/servlets/get/PageTestTest.java,9\c\9c4d189863a6ed40e78c93b9693a38d6e17621d7
 \
 ,src/test/java/servlets/get/Redistration.java,b\b\bb36bd1854c6cb32d90853b1375a24f1339527d2
 [
@@ -51,8 +45,6 @@ _
 /src/test/java/servlets/get/EditProfileTest.java,b\8\b83e1f3d327936bd291e60b887db2f7c3aff0924
 \
 ,src/test/java/servlets/get/EditUserTest.java,0\d\0dda0263738887e4260e916e9cbec0ac89faa47d
-T
-$src/main/java/repo/QuestionRepo.java,6\0\60a63bcd0b8d2cb88d58f1a3b9ee97267ea68217
 `
 0src/test/java/servlets/get/EditQuestionTest.java,f\4\f40f3a22d1bcb5eada85ade448970692bc545643
 Z
@@ -117,14 +109,10 @@ X
 (src/main/java/command/get/LoginForm.java,6\5\65c354b03ccaa5cebdef81e6713b6e89d3b66203
 U
 %src/main/java/command/get/Logout.java,7\b\7bb20346640425cc000947aeaa0777e05bad3189
-W
-'src/main/java/command/get/PageTest.java,f\a\fa4752042e9939fabbc57519da966e935595f434
 N
 src/main/java/models/User.java,f\7\f7010c4f46d3b9dd8d59899249df5ba3ee23f96b
 V
 &src/main/java/command/get/AllUser.java,d\5\d53f0d0f5e7a3a7c281d7ab8e953f4b101de014b
-Z
-*src/main/java/command/post/DeleteUser.java,2\7\27a9944a26292b0f56aa45295c10b5c9ee8ccd8d
 \
 ,src/main/java/command/post/DeleteAnswer.java,7\0\70c5ca2dc14ca47cae874448b8e9a5173ebbdd3e
 ^
@@ -143,16 +131,12 @@ _
 ,src/main/java/command/post/EditUserPost.java,1\9\19f881be8905365df370608d643e90404e13b622
 c
 3src/test/java/service_test/QuestionServiceTest.java,7\0\70b32da6bee695db240c014bf9e0e5da2d034151
-_
-/src/test/java/service_test/UserServiceTest.java,b\5\b5fb646d9cb78bae1bd9635bf44e66572301a85a
 a
 1src/test/java/service_test/AnswerServiceTest.java,9\0\9085b24ba250e5c210f1ca315b073b6412b510da
 P
  src/test/java/ValidatorTest.java,5\8\588b78f1e6cd56164975813197d21c04f270e038
 e
 5src/main/java/controllers/filters/AbstractFilter.java,5\0\50ed2fb7d884fe911694d0969e4179862753dc27
-P
- src/main/java/repo/UserRepo.java,3\6\368761750be42d9af4fb32376a51d66e59f5c274
 Q
 !src/test/java/AnswerRepoTest.java,0\c\0c901e56338591817ffcaa8a016eb1edb09ab218
 _
@@ -165,24 +149,14 @@ V
 .src/main/java/exeptions/ValidateException.java,3\2\32b8dbbe72895efc6e9e62089f63b45a2a3a84fc
 Z
 *src/main/java/connection/MyDataSource.java,0\b\0b57b8164257649d704558d08f09d54c37fa4938
-Z
-*src/main/java/validator/DataValidator.java,b\e\be42e3ca8e36494fd2b7f6f5495251a1a42a56b2
-X
-(src/main/java/validator/MyValidator.java,0\c\0c42d8705b9149d9da08fa5cdc23479a4f4ffee6
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 d
 4src/main/java/app_listener/StartServletListener.java,f\3\f350e123bb5fcaf061053bcee181ee8e463b6e28
-W
-'src/main/java/servises/UserService.java,a\0\a0a6cf1e9f970f565b9cc3c366a63a634e3476cd
-\
-,src/main/java/servises/ValidatorService.java,d\f\df5b04690716829e8284155f87d0a72eae059113
 d
 4src/test/java/service_test/ValidatorServiceTest.java,7\a\7a6415e6be259a3b4a2c3224afd1039a8aec6fe5
 Y
 )src/main/java/servises/AnswerService.java,c\7\c7b2aa69abb5cd82c9f77796385c4f83da68ab45
-R
-"src/main/java/repo/AnswerRepo.java,a\c\acae41e15d1e2a3a8da893c2b927c5ea813c04a3
 P
  src/main/java/models/Answer.java,b\a\ba56a0119d3e7cb9dfb8bd370f14670e21dd899f
 7
@@ -202,13 +176,7 @@ k
 U
 %src/main/webapp/WEB-INF/view/menu.jsp,5\6\565bda9476e4ac1859f9cc25deb7b2846e7eb024
 `
-0src/main/webapp/WEB-INF/view/admin/edit_user.jsp,3\0\302fdb0bb648afbac75518e69f3fa5b726bc9179
-b
-2src/main/webapp/WEB-INF/view/admin/admin_users.jsp,9\c\9c7b43463cc1d6ed7dfc1652a97b0d8ee97639a1
-`
 0src/main/java/command/post/EditQuestionPost.java,9\1\918c440de6b63426624ace8b4eebdfdf5a893772
-X
-(src/main/java/command/get/StartTest.java,0\e\0e5d7c2f1a95d1f4aa89f0c80c9fe9bfb8ac4721
 b
 2src/main/webapp/WEB-INF/view/admin/create_test.jsp,5\5\556efb9033de54b3a98d3e6c38b33a7ed454019f
 d

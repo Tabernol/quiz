@@ -50,7 +50,7 @@ public class UserServiceTest {
         Mockito.when(mockUserRepo.createUser(Mockito.anyString(),
                 Mockito.anyString(), Mockito.anyString())).thenReturn(1);
         assertEquals(1,
-                userService.createUser(Mockito.anyString(), Mockito.anyString(), Mockito.anyString()));
+                userService.createUser(Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.anyString()));
     }
 
     @Test

@@ -180,8 +180,6 @@ b
 d
 4src/main/webapp/WEB-INF/view/admin/edit_question.jsp,f\d\fdf5005e0e040f95fb61fcd229b761f3453877f0
 [
-+src/main/webapp/WEB-INF/view/login_form.jsp,3\2\32bca110e1c8801388c76f6e30f17d953f9147db
-[
 +src/main/java/command/post/AddQuestion.java,4\2\42da38324f7544d0f944105b6e44f825e278108e
 R
 "src/main/java/command/get/Prg.java,a\3\a3e5ae00ea916f6f4c41312f09676119be412e44
@@ -199,8 +197,6 @@ f
 6src/main/webapp/WEB-INF/view/student/page_question.jsp,5\2\5276c9ef68f9382a32e744448cf55a5bfdd0b37e
 R
 "src/main/webapp/static/js/timer.js,e\b\eb184e330b63946036780068f874a8abb849ed42
-I
-src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 [
 +src/main/java/command/get/NextQuestion.java,f\d\fddb22f83fb6357d9e9ac9d7385943da9d06042d
 Z

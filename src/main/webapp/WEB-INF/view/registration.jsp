@@ -18,6 +18,9 @@
     <style>
         <%@include file="/static/css/style.css"%>
     </style>
+    <script>
+        <%@include file="/static/js/general.js"%>
+    </script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
@@ -41,24 +44,26 @@
                             <h2 class="text-uppercase text-center mb-0">Create an account</h2>
                             <form method="post" action="registration">
                                 <div class="form-outline mb-0">
-                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="name"/>
-                                    <label class="form-label" for="form3Example1cg">Your Name</label>
+                                    <input type="text" id="form1" class="form-control form-control-lg" name="name"/>
+                                    <label class="form-label" for="form1">Your Name</label>
                                 </div>
 
                                 <div class="form-outline mb-0">
-                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="login"/>
-                                    <label class="form-label" for="form3Example3cg">Your Email</label>
+                                    <input type="email" id="form3" class="form-control form-control-lg" name="login"/>
+                                    <label class="form-label" for="form3">Your Email</label>
                                 </div>
 
                                 <div class="form-outline mb-0">
-                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password"/>
-                                    <label class="form-label" for="form3Example4cg">Password</label>
+                                    <input type="password" id="pass" class="form-control form-control-lg" name="password"/>
+                                    <label class="form-label" for="pass">Password</label>
                                 </div>
 
                                 <div class="form-outline mb-0">
-                                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" name="repeat_password"/>
-                                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                    <input type="password" id="form5" class="form-control form-control-lg" name="repeat_password"/>
+                                    <label class="form-label" for="form5">Repeat your password</label>
                                 </div>
+
+                                <input type="checkbox" onclick="showPassword()">Show Password
 
 <%--                                <div class="form-check d-flex justify-content-center mb-5">--%>
 <%--                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />--%>

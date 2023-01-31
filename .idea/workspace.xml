@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="111 merge dev6">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="112 repeat password work">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/js/general.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -579,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675172835989</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="112 repeat password work">
+      <created>1675173923584</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1675173923584</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +606,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="10" />
     <MESSAGE value="11" />
     <MESSAGE value="12" />
     <MESSAGE value="13" />
@@ -622,7 +630,8 @@
     <MESSAGE value="108 Add table to profile. Delete command next_page and edit_user_profile" />
     <MESSAGE value="109 refactor" />
     <MESSAGE value="111 merge dev6" />
-    <option name="LAST_COMMIT_MESSAGE" value="111 merge dev6" />
+    <MESSAGE value="112 repeat password work" />
+    <option name="LAST_COMMIT_MESSAGE" value="112 repeat password work" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

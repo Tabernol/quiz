@@ -18,6 +18,9 @@
     <style>
         <%@include file="/static/css/style.css"%>
     </style>
+    <script>
+        <%@include file="/static/js/general.js"%>
+    </script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
@@ -33,22 +36,25 @@
                         <form method="post" action="login">
                             <div class="form-outline mb-0">
 <%--                                change text on email--%>
-                                <input type="text" id="form3Example3cg" class="form-control form-control-lg"
+                                <input type="text" id="login" class="form-control form-control-lg"
                                        name="login"/>
-                                <label class="form-label" for="form3Example3cg"><fmt:message key="label.login"/></label>
+                                <label class="form-label" for="login"><fmt:message key="label.login"/></label>
                             </div>
                             <div class="form-outline mb-0">
-                                <input type="password" id="form3Example4cg" class="form-control form-control-lg"
+                                <input type="password" id="pass" class="form-control form-control-lg"
                                        name="password"/>
-                                <label class="form-label" for="form3Example4cg"><fmt:message
+                                <label class="form-label" for="pass"><fmt:message
                                         key="label.password"/></label>
                             </div>
+                            <input type="checkbox" onclick="showPassword()">Show Password
                             <div class="d-flex justify-content-center">
                                 <button type="submit"
                                         class="btn btn-secondary">
                                     <fmt:message key="label.Login"/></button>
                             </div>
-                            <c:out value="${requestScope.message}"/>
+
+                                <c:out value="${requestScope.message}"/>
+
 
                         </form>
                     </div>

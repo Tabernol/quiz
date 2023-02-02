@@ -19,51 +19,50 @@ public class DataValidator implements MyValidator {
     private static final Integer MAX_DURATION = 30;
 
 
-    public static boolean validateLogin(String login) {
+    public boolean validateLogin(String login) {
         return Pattern.matches(REGEX_LOGIN, login);
     }
 
-    public static boolean validatePassword(String password) {
-
+    public boolean validatePassword(String password) {
         return Pattern.matches(REGEX_PASSWORD, password);
     }
 
-    public static boolean validateDifficult(Integer difficult) {
+    public boolean validateDifficult(Integer difficult) {
         return difficult >= MIN_DIFFICULT && difficult <= MAX_DIFFICULT;
     }
 
-    public static boolean validateDuration(Integer time) {
+    public boolean validateDuration(Integer time) {
         return time >= MIN_DURATION && time <= MAX_DURATION;
     }
 
-    public static boolean validateForNotLongString(String string) {
+    public boolean validateForNotLongString(String string) {
         return Pattern.matches(REGEX_NOT_LONG_STRING, string);
     }
 
-    public static boolean validateForName(String string) {
+    public boolean validateForName(String string) {
         return Pattern.matches(REGEX_NAME, string);
     }
 
-    public static boolean validateForNamePlusNumber(String string) {
+    public boolean validateForNamePlusNumber(String string) {
         return Pattern.matches(REGEX_NAME_NUMBER, string);
     }
 
-    public static boolean validateAvailabilityRole(String role) {
+    public boolean validateAvailabilityRole(String role) {
         return role.equals("admin") || role.equals("student");
     }
 
 
-    public static boolean validate(boolean check, String message) throws ValidateException {
-        if (!check) {
-            throw new ValidateException(message);
-        }
-        return true;
-    }
+//    public static boolean validate(boolean check, String message) throws ValidateException {
+//        if (!check) {
+//            throw new ValidateException(message);
+//        }
+//        return true;
+//    }
 
     @Override
     public boolean isValid(boolean result, String message) throws ValidateException {
-        if(!result){
-            throw  new ValidateException(message);
+        if (!result) {
+            throw new ValidateException(message);
         }
         return true;
     }

@@ -110,8 +110,7 @@ public class UserRepo {
     }
 
 
-    public int updateUser(Long id, String name, String role)
-            throws DataBaseException {
+    public int updateUser(Long id, String name, String role) throws DataBaseException {
         String sql = "update user set name = ?, role = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {

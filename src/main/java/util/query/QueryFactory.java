@@ -1,4 +1,6 @@
-package util;
+package util.query;
+
+import util.MyTable;
 
 public class QueryFactory {
 

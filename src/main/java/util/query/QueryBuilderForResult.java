@@ -1,4 +1,4 @@
-package util;
+package util.query;
 
 public class QueryBuilderForResult implements QBuilder {
     private String filter;

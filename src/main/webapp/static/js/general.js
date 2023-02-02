@@ -6,3 +6,8 @@ function showPassword() {
         x.type = "password";
     }
 }
+
+function showMessage(message) {
+    console.log(message);
+    alert(message);
+}

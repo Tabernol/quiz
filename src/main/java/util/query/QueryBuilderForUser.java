@@ -1,6 +1,6 @@
-package util;
+package util.query;
 
-public class QueryBuilderForUser implements QBuilder{
+public class QueryBuilderForUser implements QBuilder {
     @Override
     public String getQuery() {
         return null;

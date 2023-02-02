@@ -5,11 +5,9 @@ import exeptions.DataBaseException;
 import models.Answer;
 import repo.AnswerRepo;
 import repo.ResultRepo;
-import repo.UserRepo;
 import util.MyTable;
-import util.QBuilder;
-import util.QueryBuilderForResult;
-import util.QueryFactory;
+import util.query.QueryBuilderForResult;
+import util.query.QueryFactory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,9 +5,9 @@ import exeptions.ValidateException;
 import models.Test;
 import repo.TestRepo;
 import util.MyTable;
-import util.QBuilder;
-import util.QueryBuilderForTest;
-import util.QueryFactory;
+import util.query.QBuilder;
+import util.query.QueryBuilderForTest;
+import util.query.QueryFactory;
 
 import java.util.List;
 

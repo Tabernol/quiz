@@ -17,14 +17,6 @@ P
  src/main/java/dto/ResultDto.java,9\0\90a5a93b2266495b99ce23b34cc9b8a7282755e7
 P
  src/main/webapp/static/js/ti.jsp,a\7\a739c58451110f11faf4ac16de3d3e2e613b26a7
-]
--.idea/artifacts/startCommand_war_exploded.xml,2\9\29b2dd87a4df7a124f550480e186219f4025729e
-Q
-!src/test/java/ExeceptionTest.java,2\1\217ad5a3eb5e6259f01a695e0a80744397e01016
-Q
-!src/test/java/ConnectionTest.java,0\d\0d9c190bc306aa29444d7add1818f212b7011d22
-R
-"src/test/java/DataHendlerTest.java,c\1\c1cfded60f85726593c501f0402d61f5f8ee7021
 a
 1src/test/java/servlets/post/DeleteAnswerTest.java,2\e\2e42391d4122024f95113d3a5bc49e223b330106
 [
@@ -39,8 +31,6 @@ Z
 ,src/test/java/servlets/get/Redistration.java,b\b\bb36bd1854c6cb32d90853b1375a24f1339527d2
 [
 +src/main/java/command/get/ToCreateTest.java,d\f\dfdad7fd5c86f6f0730f24fa2b25599af33c4f51
-`
-0src/test/java/servlets/get/ToCreateTestTest.java,0\0\00cf8fdd3eaa8b63197b0db3c8f8ad11d7667490
 _
 /src/test/java/servlets/get/EditProfileTest.java,b\8\b83e1f3d327936bd291e60b887db2f7c3aff0924
 \
@@ -77,8 +67,6 @@ w
 G.idea/sonarlint/issuestore/1/f/1f1763f358c257ea3515417352b82b0165647ad1,4\4\441e6168af36afe9568996929caf6842abd87b08
 w
 G.idea/sonarlint/issuestore/0/6/0693d8845d3720185f303db976a53534be123248,9\3\9301d038337a27fab9ef2aeba33cc82e8c28e089
-w
-G.idea/sonarlint/issuestore/9/3/93119a23f0e7217fb1d1d7482cf462fc19f05a55,c\b\cb0632a180906fb08e4b67833fdc844d99b71ecd
 w
 G.idea/sonarlint/issuestore/8/e/8e6d3b70c9f5b02570779b0441540d45eceb0ded,2\8\285d93d018524d3673e3fdd07a9fbe884e450078
 w
@@ -129,14 +117,8 @@ _
 ,src/main/java/command/post/EditUserPost.java,1\9\19f881be8905365df370608d643e90404e13b622
 c
 3src/test/java/service_test/QuestionServiceTest.java,7\0\70b32da6bee695db240c014bf9e0e5da2d034151
-a
-1src/test/java/service_test/AnswerServiceTest.java,9\0\9085b24ba250e5c210f1ca315b073b6412b510da
-P
- src/test/java/ValidatorTest.java,5\8\588b78f1e6cd56164975813197d21c04f270e038
 e
 5src/main/java/controllers/filters/AbstractFilter.java,5\0\50ed2fb7d884fe911694d0969e4179862753dc27
-Q
-!src/test/java/AnswerRepoTest.java,0\c\0c901e56338591817ffcaa8a016eb1edb09ab218
 _
 /src/main/java/app_listener/QuizAppListener.java,8\a\8ad4bfa2f427369b1095bb66276ed26920743885
 W
@@ -145,8 +127,6 @@ V
 &src/main/webapp/WEB-INF/tags/grade.tag,d\9\d9d44f7a58989f5ae1a3b3b3a83cd71e58982c9b
 ^
 .src/main/java/exeptions/ValidateException.java,3\2\32b8dbbe72895efc6e9e62089f63b45a2a3a84fc
-Z
-*src/main/java/connection/MyDataSource.java,0\b\0b57b8164257649d704558d08f09d54c37fa4938
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 d
@@ -157,8 +137,6 @@ Y
 )src/main/java/servises/AnswerService.java,c\7\c7b2aa69abb5cd82c9f77796385c4f83da68ab45
 P
  src/main/java/models/Answer.java,b\a\ba56a0119d3e7cb9dfb8bd370f14670e21dd899f
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 \
 ,src/main/java/command/post/ResultAnswer.java,1\a\1a1af3893e9c72f9aaf198320ebb5a5c5a039121
 U
@@ -195,8 +173,6 @@ Z
 .src/main/java/command/get/GetInfoQuestion.java,5\a\5a2bf09d4310002061fe4fea5c647aa2ba31be0c
 f
 6src/main/webapp/WEB-INF/view/student/page_question.jsp,5\2\5276c9ef68f9382a32e744448cf55a5bfdd0b37e
-R
-"src/main/webapp/static/js/timer.js,e\b\eb184e330b63946036780068f874a8abb849ed42
 [
 +src/main/java/command/get/NextQuestion.java,f\d\fddb22f83fb6357d9e9ac9d7385943da9d06042d
 Z
@@ -205,16 +181,12 @@ Z
 -src/main/java/command/get/NextPageResult.java,3\d\3d803b948a2fb36d74bbaa6f4f1f54ff8f71bcdd
 j
 :src/main/java/controllers/filters/AuthorizationFilter.java,0\d\0daad85693b2fda67b332a80c0b3456c02b1dd2c
-T
-$src/main/java/util/QueryFactory.java,3\9\391d6e18625216531cfcd57f6a876907a95a8c6f
 V
 &src/main/java/command/get/Profile.java,3\4\342a23bce6ae036a79d4946aa6119ec495676b2b
 O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 Y
 )src/main/webapp/WEB-INF/view/language.jsp,a\6\a62aaee01c9edd87d0c4b273f45ae04fdeaef052
-]
--src/main/java/util/QueryBuilderForResult.java,0\c\0c025e315b3e4d7768d7f1d695c1e69e6646c8b3
 [
 +src/main/java/command/get/FilterResult.java,3\6\36dabf0e6eec361eb6df358b61f5123d3ef8a49a
 b
@@ -229,12 +201,8 @@ _
 /src/main/java/command/post/EditUserProfile.java,b\2\b27595b01209878f2cfca7121822ed9d92077e1f
 [
 +src/test/java/servlets/get/ProfileTest.java,7\4\7457ba6c51699cad780bce36f935a06efea68f76
-Y
-)src/main/java/servises/ResultService.java,9\e\9e50ae6c4fa77987d8ade700be4b94b6163a44d2
 a
 1src/test/java/service_test/ResultServiceTest.java,a\9\a952874199ca51d86ff1ffdfa277ede3f55fdcd6
-W
-'src/main/java/servises/TestService.java,e\8\e88f94216afcfe51bfc304287a1b810b212cfe93
 _
 /src/test/java/service_test/TestServiceTest.java,5\2\52a28d631962f61a347537a3039709d4bb42a518
 O
@@ -267,3 +235,31 @@ e
 5src/main/java/controllers/filters/SecurityFilter.java,9\5\9525a5ff11c78913e78ce4444fd8dfb1b00cfcce
 f
 6src/main/webapp/WEB-INF/view/student/student_tests.jsp,9\7\97150b5abe5326d484f62681683b34eefb0af09a
+P
+ src/main/java/repo/UserRepo.java,3\6\368761750be42d9af4fb32376a51d66e59f5c274
+P
+ src/main/java/repo/TestRepo.java,a\6\a62f48d97b657a6614490b2a531090013b925c0f
+R
+"src/main/java/repo/ResultRepo.java,c\0\c049a1e563720c4aabd4f480f5dc422ca3495dfa
+w
+G.idea/sonarlint/issuestore/7/d/7ddcdaa4838036ac8797f1e23316aee626303e49,6\a\6a0b8a6568e24ac313d3b17664ef01ec6f0b7567
+b
+2src/main/webapp/WEB-INF/view/admin/admin_tests.jsp,b\3\b38debac0bdb8c7ad6372d66ef205ed8791fd307
+Z
+*src/main/java/command/get/FilterTests.java,5\7\5782d2af3ef86db6c19b2fa68afcfc7b27a8c176
+e
+5src/test/java/service_test/PaginationServiceTest.java,d\9\d9756bce43fd04104fbe9c624317ae7033d13360
+_
+/src/test/java/service_test/UserServiceTest.java,b\5\b5fb646d9cb78bae1bd9635bf44e66572301a85a
+T
+$src/main/webapp/static/css/style.css,8\6\86bb576c68621864156f96fb91807dae854a2ec7
+\
+,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
+Z
+*src/main/java/validator/DataValidator.java,b\e\be42e3ca8e36494fd2b7f6f5495251a1a42a56b2
+b
+2src/main/webapp/WEB-INF/view/admin/admin_users.jsp,9\c\9c7b43463cc1d6ed7dfc1652a97b0d8ee97639a1
+\
+,src/main/java/servises/ValidatorService.java,d\f\df5b04690716829e8284155f87d0a72eae059113
+W
+'src/main/java/servises/UserService.java,a\0\a0a6cf1e9f970f565b9cc3c366a63a634e3476cd

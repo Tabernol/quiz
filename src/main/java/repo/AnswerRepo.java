@@ -16,13 +16,13 @@ import org.apache.logging.log4j.LogManager;
 
 public class AnswerRepo {
     Logger logger = LogManager.getLogger(AnswerRepo.class);
+    MyDataSource myDataSource;
 
 
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
         String sql = "select * from answer where question_id = ?";
         List<Answer> answers = new ArrayList<>();
-
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = myDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, questionId.toString());
             ResultSet resultSet = pst.executeQuery();

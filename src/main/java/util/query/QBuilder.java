@@ -1,4 +1,4 @@
-package util;
+package util.query;
 
 public interface QBuilder {
 //    void setNameTable(String nameTable);

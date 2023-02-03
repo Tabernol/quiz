@@ -40,6 +40,31 @@ public class ResultRepo {
         }
     }
 
+    public List<ResultDto> getAllResult(Long userId) throws DataBaseException {
+        String sql = "select * from test inner join result on test.id=result.test_id where user_id = ?";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setLong(1, userId);
+            ResultSet resultSet = pst.executeQuery();
+            List<ResultDto> resultDtoList = new ArrayList<>();
+            while (resultSet.next()) {
+                ResultDto resultDto = new ResultDto();
+                resultDto.setTestName(resultSet.getString("name"));
+                resultDto.setSubject(resultSet.getString("subject"));
+                resultDto.setDifficult(resultSet.getInt("difficult"));
+                resultDto.setDuration(resultSet.getInt("duration"));
+                resultDto.setGrade(resultSet.getInt("grade"));
+                resultDtoList.add(resultDto);
+            }
+            resultSet.close();
+            return resultDtoList;
+        } catch (SQLException e) {
+            logger.warn("Can not get order result list");
+            throw new DataBaseException("Can not get order result list" + e.getMessage(), e);
+
+        }
+    }
+
 
     public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
         String sql = "insert into result values(default, ?,?,?)";

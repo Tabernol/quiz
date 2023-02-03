@@ -49,7 +49,7 @@
                             <input type="checkbox" onclick="showPassword()">Show Password
                             <div class="d-flex justify-content-center">
                                 <button type="submit"
-                                        class="btn btn-secondary" onclick="showMessage(${requestScope.message})">
+                                        class="btn btn-secondary">
                                     <fmt:message key="label.Login"/></button>
                             </div>
 
@@ -64,6 +64,11 @@
     </div>
 </div>
 </section>
+
+
+
+
+
 
 
 </body>

@@ -9,22 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="113">
-      <change afterPath="$PROJECT_DIR$/src/test/java/repo/ResultRepoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/repo/TestRepoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/repo/UserRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29b2dd87a4df7a124f550480e186219f4025729e" beforeDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="115 test for Repo layer">
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/get/DownLoad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/sample.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ValidatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/MyPdfWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/MyPdfWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +111,20 @@
       <recent name="repo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in startCommand">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
+    <configuration name="MyPdfWriter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="util.MyPdfWriter" />
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in startCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <option name="PACKAGE_NAME" value="" />
@@ -147,22 +159,6 @@
       <option name="PACKAGE_NAME" value="service_test" />
       <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
       <option name="METHOD_NAME" value="isLoginThrowExTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ValidatorServiceTest.repeatPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service_test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
-      <option name="METHOD_NAME" value="repeatPassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -272,20 +268,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.MyPdfWriter" />
       <item itemvalue="JUnit.ValidatorServiceTest" />
       <item itemvalue="JUnit.ValidatorServiceTest.isLoginThrowExTest" />
-      <item itemvalue="JUnit.ValidatorServiceTest.repeatPassword" />
       <item itemvalue="JUnit.ValidatorServiceTest.validateTextTest" />
       <item itemvalue="JUnit.All in startCommand" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyPdfWriter" />
         <item itemvalue="JUnit.All in startCommand" />
         <item itemvalue="JUnit.ValidatorServiceTest.validateTextTest" />
         <item itemvalue="JUnit.ValidatorServiceTest" />
         <item itemvalue="JUnit.ValidatorServiceTest.isLoginThrowExTest" />
-        <item itemvalue="JUnit.ValidatorServiceTest.repeatPassword" />
       </list>
     </recent_temporary>
   </component>
@@ -622,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675205426752</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="115 test for Repo layer">
+      <created>1675381162630</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1675381162630</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,7 +643,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="12" />
     <MESSAGE value="13" />
     <MESSAGE value="17" />
     <MESSAGE value="18" />
@@ -665,7 +667,8 @@
     <MESSAGE value="111 merge dev6" />
     <MESSAGE value="112 repeat password work" />
     <MESSAGE value="113" />
-    <option name="LAST_COMMIT_MESSAGE" value="113" />
+    <MESSAGE value="115 test for Repo layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="115 test for Repo layer" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -703,7 +706,7 @@
     <SUITE FILE_PATH="coverage/startCommand$AllUserTest_allUsers.ic" NAME="AllUserTest.allUsers Coverage Results" MODIFIED="1674077880846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>servlets.get.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1675380599218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1675381059540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest_findAllByQuestionIdTest.ic" NAME="AnswerServiceTest.findAllByQuestionIdTest Coverage Results" MODIFIED="1673392408583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>
     </SUITE>

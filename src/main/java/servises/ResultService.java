@@ -101,23 +101,9 @@ public class ResultService {
         return resultRepo.getPageResultList(query);
     }
 
-//    private List<Answer> getUserAnswer(String[] res) {
-//        Answer answer;
-//        List<Answer> userAnswers = new ArrayList<>();
-//        int count = -1;
-//        for (int i = 0; i < res.length; i++) {
-//            if (!res[i].equals("on")) {
-//                answer = new Answer();
-//                answer.setId(Long.parseLong(res[i]));
-//                answer.setResult(false);
-//                userAnswers.add(answer);
-//                count++;
-//            } else {
-//                userAnswers.get(count).setResult(true);
-//            }
-//        }
-//        return userAnswers;
-//    }
+    public List<ResultDto> getAllResultByUserId(Long userId) throws DataBaseException {
+        return resultRepo.getAllResult(userId);
+    }
 
 
     public Integer getGrade(List<Boolean> userAnswer, Integer countQuestion) {

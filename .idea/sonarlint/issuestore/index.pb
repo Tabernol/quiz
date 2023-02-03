@@ -139,8 +139,6 @@ k
 ;src/main/webapp/WEB-INF/view/student/page_base_question.jsp,9\6\966019b30203bf07a1c9c793eec8995d94fbfe2b
 [
 +src/main/webapp/WEB-INF/view/error_page.jsp,7\3\738a6ba0a04c7ea47f0594175b5501b7d81272a9
-U
-%src/main/webapp/WEB-INF/view/menu.jsp,5\6\565bda9476e4ac1859f9cc25deb7b2846e7eb024
 `
 0src/main/java/command/post/EditQuestionPost.java,9\1\918c440de6b63426624ace8b4eebdfdf5a893772
 b
@@ -189,10 +187,6 @@ _
 /src/main/java/command/post/EditUserProfile.java,b\2\b27595b01209878f2cfca7121822ed9d92077e1f
 a
 1src/test/java/service_test/ResultServiceTest.java,a\9\a952874199ca51d86ff1ffdfa277ede3f55fdcd6
-O
-src/main/java/util/MyTable.java,a\d\ad1c88813e1bb6444781e83e51bc47cccceb09a8
-X
-(src/main/webapp/WEB-INF/view/profile.jsp,4\5\450e13be0994604f9253aefa759df1db4f3498ab
 `
 0src/main/webapp/WEB-INF/view/admin/edit_test.jsp,f\5\f5a7c6267f095cfb9e9a2cec8af7c07603599d97
 W

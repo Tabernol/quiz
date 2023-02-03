@@ -89,6 +89,13 @@
             <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
         </form>
     </div>
+
+    <form action="download">
+        <div class="d-flex justify-content-center">
+            <button type="submit"
+                    class="btn btn-secondary">DownLoad</button>
+        </div>
+    </form>
     <%--==================================--%>
     <table class="table align-middle mb-0 w-auto bg-white">
         <thead class="bg-light">

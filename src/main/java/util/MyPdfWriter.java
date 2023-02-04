@@ -8,10 +8,7 @@ import exeptions.DataBaseException;
 import repo.ResultRepo;
 import servises.ResultService;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,33 +18,14 @@ import java.util.stream.Stream;
 public class MyPdfWriter {
     ResultService resultService;
 
-    public void createPdf(Long userId) {
-        System.out.println("start creat");
-        Document document = new Document();
-        try {
-            PdfWriter.getInstance(document,
-                    new FileOutputStream("src/main/webapp/WEB-INF/pdf/table" + userId + ".pdf"));
-            System.out.println("before open");
-            document.open();
-
-
-            PdfPTable table = new PdfPTable(5);
-            MyPdfWriter myPdfWriter = new MyPdfWriter();
-            myPdfWriter.addTableHeader(table);
-            myPdfWriter.addRows(table, userId);
-            //  addCustomRows(table);
-            document.add(table);
-            System.out.println("Finish creat");
-        } catch (DocumentException e) {
-            throw new RuntimeException(e);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } finally {
-            document.close();
-        }
+    public PdfPTable getPdfTable(Long userId) {
+        PdfPTable table = new PdfPTable(5);
+        table = addTableHeader(table);
+        table = addRows(table, userId);
+        return table;
     }
 
-    private void addTableHeader(PdfPTable table) {
+    private PdfPTable addTableHeader(PdfPTable table) {
         Stream.of("Test name", "Subject", "Difficult", "Duration", "Grade")
                 .forEach(columnTitle -> {
                     PdfPCell header = new PdfPCell();
@@ -56,9 +34,10 @@ public class MyPdfWriter {
                     header.setPhrase(new Phrase(columnTitle));
                     table.addCell(header);
                 });
+        return table;
     }
 
-    private void addRows(PdfPTable table, Long userId) {
+    private PdfPTable addRows(PdfPTable table, Long userId) {
         resultService = new ResultService(new ResultRepo());
         List<ResultDto> allResultByUserId = null;
         try {
@@ -73,6 +52,7 @@ public class MyPdfWriter {
             table.addCell(resultDto.getDuration().toString());
             table.addCell(resultDto.getGrade().toString());
         }
+        return table;
     }
 
 //    private static void addCustomRows(PdfPTable table)

@@ -4,6 +4,7 @@ import exeptions.ValidateException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -11,7 +12,7 @@ import servises.ValidatorService;
 import validator.DataValidator;
 
 public class ValidatorServiceTest {
-    @Mock
+    @InjectMocks
     DataValidator mockDataValidator;
     ValidatorService validatorService;
 
@@ -24,7 +25,7 @@ public class ValidatorServiceTest {
     @Test
     public void isLoginExist() throws ValidateException {
         Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(false));
+        Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
     }
 
 //    @Test

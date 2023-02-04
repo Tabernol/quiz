@@ -8,6 +8,5 @@ function showPassword() {
 }
 
 function showMessage(message) {
-    console.log(message);
     alert(message);
 }

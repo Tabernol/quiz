@@ -31,6 +31,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/finish_test", new FinishTest());
         COMMANDS.put("/finish", new Finish());
         COMMANDS.put("/filter_result", new FilterResult());
+        COMMANDS.put("/download", new DownLoad());
     }
 
 

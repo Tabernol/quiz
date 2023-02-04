@@ -48,28 +48,9 @@ public class FilterTests implements RequestHandler {
         if (page == null) {
             page = "1";
         }
-
-
 //        =======================================
-//        String role = (String) req.getSession().getAttribute("role");
-//        String sub = req.getParameter("sub");
-//        String order = req.getParameter("order");
-//        String rows = req.getParameter("rows");
-//
-//        if (sub == null || order == null || rows == null) {
-//            sub = "all";
-//            order = "name asc";
-//            rows = "5";
-//        }
-//
-//        HttpSession session = req.getSession();
-//
-//        session.setAttribute("sub", sub);
-//        session.setAttribute("order", order);
-//        session.setAttribute("rows", rows);
 
         TestService testService = new TestService(new TestRepo(), new ValidatorService());
-      //  PaginationService paginationService = new PaginationService(new TestRepo());
         List<String> subjects;
         List<Test> filterTests;
         int countPages;

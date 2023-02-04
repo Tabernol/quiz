@@ -49,11 +49,15 @@
                             <input type="checkbox" onclick="showPassword()">Show Password
                             <div class="d-flex justify-content-center">
                                 <button type="submit"
-                                        class="btn btn-secondary" onclick="showMessage(${requestScope.message})">
+                                        class="btn btn-secondary">
                                     <fmt:message key="label.Login"/></button>
                             </div>
 
-                                <c:out value="${requestScope.message}"/>
+                            <div class="alert alert-warning">
+<%--                                <strong>Warning!</strong> Indicates a warning that might need attention.--%>
+                            </div>
+
+<%--                                <c:out value="${requestScope.message}"/>--%>
 
 
                         </form>
@@ -64,6 +68,11 @@
     </div>
 </div>
 </section>
+
+
+
+
+
 
 
 </body>

@@ -18,13 +18,13 @@ public interface QBuilder {
 
 }
 
-enum Order {
-    ASC("ASC"),
-    DESC("DESC");
-    private String order;
-
-    Order(String order) {
-        this.order = order;
-    }
-}
+//enum Order {
+//    ASC("ASC"),
+//    DESC("DESC");
+//    private String order;
+//
+//    Order(String order) {
+//        this.order = order;
+//    }
+//}
 

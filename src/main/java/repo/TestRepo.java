@@ -179,59 +179,6 @@ public class TestRepo {
         }
     }
 
-//    public List<Test> nextPage(String subject, String order, Integer rows, Integer numberOfPage) throws DataBaseException {
-//        String sql = "select * from test where subject like ? order by " + order + " limit ?,?";
-//        Integer offSet = (numberOfPage - 1) * rows;
-//        List<Test> tests = new ArrayList<>();
-//        try (Connection con = MyDataSource.getConnection();
-//             PreparedStatement pst = con.prepareStatement(sql)) {
-//            pst.setString(1, subject);
-//            pst.setInt(2, offSet);
-//            pst.setInt(3, rows);
-//            ResultSet resultSet = pst.executeQuery();
-//            while (resultSet.next()) {
-//                Test test = new Test();
-//                test.setId(resultSet.getLong("id"));
-//                test.setName(resultSet.getString("name"));
-//                test.setSubject(resultSet.getString("subject"));
-//                test.setDifficult(resultSet.getInt("difficult"));
-//                test.setDuration(resultSet.getInt("duration"));
-//                tests.add(test);
-//            }
-//            resultSet.close();
-//            return tests;
-//        } catch (SQLException e) {
-//            logger.warn("Can not get order tests in next page");
-//            throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
-//        }
-//    }
-
-//    public List<Test> nextPage(String order, Integer rows, Integer numberOfPage) throws DataBaseException {
-//        String sql = "select * from test order by " + order + " limit ?,?";
-//        Integer offSet = (numberOfPage - 1) * rows;
-//        List<Test> tests = new ArrayList<>();
-//        try (Connection con = MyDataSource.getConnection();
-//             PreparedStatement pst = con.prepareStatement(sql)) {
-//            pst.setInt(1, offSet);
-//            pst.setInt(2, rows);
-//            ResultSet resultSet = pst.executeQuery();
-//            while (resultSet.next()) {
-//                Test test = new Test();
-//                test.setId(resultSet.getLong("id"));
-//                test.setName(resultSet.getString("name"));
-//                test.setSubject(resultSet.getString("subject"));
-//                test.setDifficult(resultSet.getInt("difficult"));
-//                test.setDuration(resultSet.getInt("duration"));
-//                tests.add(test);
-//            }
-//            resultSet.close();
-//            return tests;
-//        } catch (SQLException e) {
-//            logger.warn("Can not get order tests in next page");
-//            throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
-//        }
-//    }
-
     public Test get(Long id) throws DataBaseException {
         String sql = "select * from test where id = ?";
         Test test = null;

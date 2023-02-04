@@ -44,13 +44,4 @@ public class QueryBuilderForResult implements QBuilder {
             this.andSubject = " and subject like '" + andSubject + "'";
     }
 }
-//    public static void main(String[] args) {
-//        QueryBuilderForResult queryBuilderForResult = new QueryBuilderForResult();
-//        queryBuilderForResult.setFilter("9");
-//        queryBuilderForResult.setOrderBy("name");
-//        queryBuilderForResult.setLimit("5");
-//        queryBuilderForResult.setOffSet("1");
-//        String query = queryBuilderForResult.getQuery();
-//        System.out.println(query);
-//    }
 

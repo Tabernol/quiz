@@ -56,7 +56,7 @@
         </td>
         <td>
             <p class="fw-normal mb-1"><c:out value="${user.blocked}"/></p>
-            <span class="badge badge-success rounded-pill d-inline"><c:out value="${user.blocked}"/></span>
+<%--            <span class="badge badge-success rounded-pill d-inline"><c:out value="${user.blocked}"/></span>--%>
         </td>
         <td>
             <form method="post" action="block">

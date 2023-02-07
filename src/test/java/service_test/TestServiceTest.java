@@ -9,6 +9,7 @@ import repo.TestRepo;
 import servises.TestService;
 import org.junit.jupiter.api.Test;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +20,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestServiceTest {
     @Mock
     TestRepo mockTestRepo;
+    @Mock
+    ValidatorService mockValidateService;
     TestService testService;
 
     @BeforeEach
     public void setUp() {
+        mockValidateService = Mockito.mock(ValidatorService.class);
         mockTestRepo = Mockito.mock(TestRepo.class);
-        testService = new TestService(mockTestRepo, new ValidatorService());
+        testService = new TestService(mockTestRepo, mockValidateService);
     }
 
 //    @Test

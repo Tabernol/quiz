@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import repo.QuestionRepo;
 import servises.QuestionService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,7 @@ public class DeleteQuestion implements RequestHandler {
         req.setAttribute("page", req.getParameter("page"));
         req.setAttribute("test_id", req.getParameter("test_id"));
 
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
         String id = req.getParameter("question_id");
         try {
             questionService.deleteQuestion(Long.valueOf(id));

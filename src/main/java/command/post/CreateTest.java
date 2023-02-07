@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,7 @@ public class CreateTest implements RequestHandler {
         int difficult = Integer.parseInt(req.getParameter("difficult"));
         int duration = Integer.parseInt(req.getParameter("duration"));
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
 
         try {
             int result = testService.createTest(name, subject, difficult, duration);

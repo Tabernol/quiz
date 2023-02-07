@@ -9,6 +9,7 @@ import repo.QuestionRepo;
 import servises.AnswerService;
 import servises.QuestionService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +22,8 @@ public class EditQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
-        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
         String testId = req.getParameter("test_id");
         String questionId = req.getParameter("question_id");
 

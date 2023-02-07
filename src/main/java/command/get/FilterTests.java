@@ -6,6 +6,7 @@ import models.Test;
 import repo.TestRepo;
 import servises.TestService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -50,7 +51,7 @@ public class FilterTests implements RequestHandler {
         }
 //        =======================================
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
         List<String> subjects;
         List<Test> filterTests;
         int countPages;

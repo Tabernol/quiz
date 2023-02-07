@@ -8,6 +8,7 @@ import repo.ResultRepo;
 import util.MyTable;
 import util.query.QueryBuilderForResult;
 import util.query.QueryFactory;
+import validator.DataValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class ResultService {
     private AnswerService answerService;
 
     public ResultService(ResultRepo resultRepo) {
-        this.answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
+        this.answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
         this.resultRepo = resultRepo;
     }
 

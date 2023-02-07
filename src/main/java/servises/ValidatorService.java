@@ -9,10 +9,10 @@ import validator.MyValidator;
 import java.util.logging.Level;
 
 public class ValidatorService {
-    DataValidator dataValidator;
+    private DataValidator dataValidator;
 
-    public ValidatorService() {
-        this.dataValidator = new DataValidator();
+    public ValidatorService(MyValidator myValidator) {
+        this.dataValidator = (DataValidator) myValidator;
     }
 
     public void checkFieldsTest(String name, String subject, Integer difficult, Integer duration)
@@ -33,8 +33,8 @@ public class ValidatorService {
         dataValidator.isValid(!isExist, "Test with this name already exist");
     }
 
-    public void isLoginExist(boolean isExist) throws ValidateException {
-        dataValidator.isValid(!isExist, "This login already exist");
+    public boolean isLoginExist(boolean isExist) throws ValidateException {
+        return dataValidator.isValid(!isExist, "This login already exist");
     }
 
     public void validateText(String text) throws ValidateException {
@@ -51,7 +51,7 @@ public class ValidatorService {
     }
 
     public boolean validateUpdateUserName(String name) throws ValidateException {
-        return  dataValidator.isValid(dataValidator.validateForName(name),
+        return dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
     }
 

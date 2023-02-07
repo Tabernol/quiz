@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class DeleteTest implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 

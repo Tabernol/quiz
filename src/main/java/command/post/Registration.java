@@ -33,7 +33,7 @@ public class Registration implements RequestHandler {
         String password = req.getParameter("password");
         String repeatPassword = req.getParameter("repeat_password");
 
-        UserService userService = new UserService(new UserRepo(), new ValidatorService());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
 
         try {
             userService.createUser(name, login, password, repeatPassword);

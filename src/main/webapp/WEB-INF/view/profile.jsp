@@ -32,7 +32,7 @@
 <%--=========================--%>
 <div class="offcanvas offcanvas-start" id="forTest">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">Edit profile</h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.edit.profile"/></h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -55,7 +55,7 @@
 </div>
 <!-- Button to open the offcanvas sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forTest">
-    Edit profile
+    <fmt:message key="button.edit.profile"/>
 </button>
 
 <h3><c:out value="${requestScope.message}"/></h3>
@@ -135,7 +135,7 @@
     <div class="d-flex justify-content-around">
         <form action="download">
             <button type="submit"
-                    class="btn btn-primary">DownLoad
+                    class="btn btn-primary"><fmt:message key="button.download"/>
             </button>
         </form>
     </div>

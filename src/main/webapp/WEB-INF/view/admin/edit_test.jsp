@@ -29,7 +29,7 @@
 
 <div class="offcanvas offcanvas-start" id="forTest">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">Edit test</h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.edit.test"/> </h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -56,13 +56,13 @@
 </div>
 <!-- Button to open the offcanvas sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forTest">
-    Edit test
+    <fmt:message key="button.edit.test"/>
 </button>
 <%--======================================================--%>
 
 <div class="offcanvas offcanvas-start" id="forAddQuestion">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">Add Question</h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.add.question"/> </h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -74,7 +74,7 @@
             <br>
             <div class="d-flex justify-content-center">
                 <button type="submit"
-                        class="btn btn-secondary"><fmt:message key="button.add.question"/>
+                        class="btn btn-secondary"><fmt:message key="button.add"/>
                 </button>
             </div>
         </form>
@@ -82,7 +82,7 @@
 </div>
 <!-- Button to open the offcanvas sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddQuestion">
-    Add Question
+    <fmt:message key="button.add.question"/>
 </button>
 
 <form action="filter_tests">

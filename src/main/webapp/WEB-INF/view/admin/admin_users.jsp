@@ -30,8 +30,8 @@
         <th><fmt:message key="table.head.name"/></th>
         <th><fmt:message key="table.head.login"/></th>
         <th><fmt:message key="table.head.status"/></th>
-        <th>Block</th>
-        <th>Edit</th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>

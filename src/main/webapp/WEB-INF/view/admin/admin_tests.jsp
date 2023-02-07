@@ -27,7 +27,7 @@
 
 <div class="offcanvas offcanvas-start" id="AddTest">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">Add test</h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.create.test"/> </h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -43,7 +43,7 @@
                    value="${requestScope.duration}"><br>
             <div class="d-flex justify-content-center">
                 <button type="submit"
-                        class="btn btn-secondary"><fmt:message key="button.create.test"/>
+                        class="btn btn-secondary"><fmt:message key="button.create"/>
                 </button>
             </div>
             <%--            <c:out value="${requestScope.message}"/>--%>
@@ -52,7 +52,7 @@
 </div>
 <!-- Button to open the offcanvas sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#AddTest">
-    Add test
+    <fmt:message key="button.create.test"/>
 </button>
 
 
@@ -141,9 +141,6 @@
             <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
                 <li class="page-item"><a class="page-link"
                                          href="<c:url value='/filter_tests'>
-<%--                        <c:param name="order" value="${requestScope.order}"/>--%>
-<%--                        <c:param name="sub" value="${requestScope.sub}"/>--%>
-<%--                        <c:param name="rows" value="${requestScope.rows}"/>--%>
                         <c:param name="page" value="${i}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
             </c:forEach>

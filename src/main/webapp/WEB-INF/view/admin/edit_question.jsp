@@ -27,7 +27,7 @@
 <br>
 <div class="offcanvas offcanvas-start" id="forAddQuestion">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">Edit Question</h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.edit.question"/> </h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -48,13 +48,13 @@
 </div>
 <!-- Button to open the offcanvas sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddQuestion">
-    Edit Question
+    <fmt:message key="button.edit.question"/>
 </button>
 <%--+++==================================================--%>
 
 <div class="offcanvas offcanvas-start" id="forAddAnswer">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">Add answer</h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.add.answer"/> </h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -68,7 +68,7 @@
             <input type="radio" name="result" value="false"><fmt:message key="select.option.false"/> <br>
             <div class="d-flex justify-content-center">
                 <button type="submit"
-                        class="btn btn-secondary"><fmt:message key="button.add.answer"/>
+                        class="btn btn-secondary"><fmt:message key="button.add"/>
                 </button>
             </div>
         </form>
@@ -76,7 +76,7 @@
 </div>
 <!-- Button to open the offcanvas sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddAnswer">
-    Add Answer
+    <fmt:message key="button.add.answer"/>
 </button>
 
 
@@ -136,7 +136,7 @@
                 <input type="hidden" name="test_id" value="${requestScope.test_id}">
                 <input type="hidden" name="question_id" value="${requestScope.question.id}">
                 <input type="hidden" name="answer_id" value="${answer.id}">
-                <input class="button btn-secondary" type="submit" value="<fmt:message key="button.delete"/>">
+                <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.delete"/>">
             </form>
         </td>
         </c:forEach>

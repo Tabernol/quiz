@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.UserService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class BlockUnblockUser implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        UserService userService = new UserService(new UserRepo(), new ValidatorService());
+        UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
 
         Long userId = Long.valueOf(req.getParameter("user_id"));
 

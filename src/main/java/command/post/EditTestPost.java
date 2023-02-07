@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import repo.TestRepo;
 import servises.TestService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class EditTestPost implements RequestHandler {
         int duration = Integer.parseInt(req.getParameter("duration"));
         String page = req.getParameter("page");
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
 
         try {
             testService.update(testId, name, subject, difficult, duration);

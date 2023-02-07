@@ -12,6 +12,7 @@ import servises.AnswerService;
 import servises.QuestionService;
 import servises.ResultService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class GetInfoQuestion implements RequestHandler {
@@ -32,7 +34,7 @@ public class GetInfoQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
+        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
         ResultService resultService = new ResultService(new ResultRepo());
         req.setAttribute("duration", req.getParameter("duration"));
 
@@ -79,6 +81,7 @@ public class GetInfoQuestion implements RequestHandler {
             List<Answer> answers = null;
             try {
                 answers = answerService.getAnswers(idQuestion);
+                Collections.shuffle(answers);
                 String text = questions.get(numberQuestion).getText();
 
                 int progress = numberQuestion * 100 / size;

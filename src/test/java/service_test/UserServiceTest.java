@@ -74,13 +74,13 @@ public class UserServiceTest {
                 Mockito.anyString(), Mockito.anyString()));
     }
 
-    @Test
-    public void updateSmall() throws DataBaseException, ValidateException {
-        Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
-                Mockito.anyString())).thenReturn(1);
-        assertEquals(1, userService.updateUser(Mockito.anyLong(),
-                Mockito.anyString()));
-    }
+//    @Test
+//    public void updateSmall() throws DataBaseException, ValidateException {
+//        Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
+//                Mockito.anyString())).thenReturn(1);
+//        assertEquals(1, userService.updateUser(Mockito.anyLong(),
+//                Mockito.anyString()));
+//    }
 
 
 }

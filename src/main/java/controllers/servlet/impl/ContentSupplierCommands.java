@@ -17,7 +17,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/login_form", new LoginForm());
         COMMANDS.put("/home", new Home());
         COMMANDS.put("/logout", new Logout());
-        COMMANDS.put("/edit_user", new EditUser());
+//        COMMANDS.put("/edit_user", new EditUser());
         COMMANDS.put("/filter_tests", new FilterTests());
         COMMANDS.put("/edit_test", new EditTest());
         COMMANDS.put("/edit_question", new EditQuestion());
@@ -31,6 +31,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/finish_test", new FinishTest());
         COMMANDS.put("/finish", new Finish());
         COMMANDS.put("/filter_result", new FilterResult());
+        COMMANDS.put("/download", new DownLoad());
     }
 
 

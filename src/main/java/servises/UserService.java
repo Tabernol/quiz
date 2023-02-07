@@ -41,14 +41,19 @@ public class UserService {
 //    }
 
     public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
-        validatorService.validateUpdateUser(name, role);
-        return userRepo.updateUser(id, name, role);
+        if (role == null) {
+            validatorService.validateUpdateUserName(name);
+            return userRepo.updateUser(id, name);
+        } else {
+            validatorService.validateUpdateUser(name, role);
+            return userRepo.updateUser(id, name, role);
+        }
     }
 
-    public int updateUser(Long id, String name) throws DataBaseException, ValidateException {
-        validatorService.validateUpdateUserName(name);
-        return userRepo.updateUser(id, name);
-    }
+//    public int updateUser(Long id, String name) throws DataBaseException, ValidateException {
+//        validatorService.validateUpdateUserName(name);
+//        return userRepo.updateUser(id, name);
+//    }
 
     public long getId(String login) throws DataBaseException {
         return userRepo.getId(login);

@@ -16,7 +16,7 @@ public class QueryBuilderForTest implements QBuilder {
         if (name.equals("all")) {
             this.filter = "";
         } else {
-            this.filter = " where subject like '" + name + "'";
+            this.filter = "where subject like '" + name + "'";
         }
 
     }

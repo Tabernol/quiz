@@ -55,17 +55,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            href="<c:url value='/filter_tests'>
-<%--                                    <c:param name="order" value="name asc" />--%>
-<%--                                    <c:param name="sub" value="all"/>--%>
-<%--                                    <c:param name="rows" value="5"/>--%>
-<%--                                    <c:param name="page" value="1"/>--%>
                                     </c:url>">
                             <fmt:message key="label.tests"/></a>
                     </li>
-<%--                    <li class="nav-item">--%>
-<%--                        <a class="nav-link active" aria-current="page"--%>
-<%--                           href="<c:url value='/to_create_test'/>"><fmt:message key="label.create.test"/></a>--%>
-<%--                    </li>--%>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            href="<c:url value='/profile'/>"><fmt:message key="label.Profile"/></a>
@@ -80,10 +72,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            href="<c:url value='/filter_tests'>
-<%--                            <c:param name="order" value="name asc" />--%>
-<%--                            <c:param name="sub" value="all"/>--%>
-<%--                            <c:param name="rows" value="5"/>--%>
-<%--                            <c:param name="page" value="1"/>--%>
                         </c:url>">
                             <fmt:message key="label.tests"/></a>
                     </li>

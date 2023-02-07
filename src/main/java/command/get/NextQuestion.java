@@ -8,6 +8,7 @@ import repo.AnswerRepo;
 import servises.AnswerService;
 import servises.QuestionService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ public class NextQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
+        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
 
         List<Question> questions = (List<Question>) req.getSession().getAttribute("questions");
 

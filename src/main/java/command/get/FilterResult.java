@@ -7,10 +7,13 @@ import exeptions.DataBaseException;
 import models.Test;
 import repo.ResultRepo;
 import repo.TestRepo;
+import repo.UserRepo;
 import servises.ResultService;
 import servises.TestService;
+import servises.UserService;
 import servises.ValidatorService;
 import util.MyTable;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -58,11 +61,19 @@ public class FilterResult implements RequestHandler {
         System.out.println("page = " + page);
 
         ResultService resultService = new ResultService(new ResultRepo());
-        TestService testService = new TestService(new TestRepo(), new ValidatorService());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
         List<String> subjects;
         int countPages;
 
-        Long userId = (Long) req.getSession().getAttribute("user_id");
+        Long userId;
+        if (req.getParameter("user_id") != null) {
+            userId = Long.valueOf(req.getParameter("user_id"));
+        } else {
+            userId = (Long) req.getSession().getAttribute("user_id");
+        }
+
+
         try {
             countPages = resultService.getCountPagesResult(userId, Integer.valueOf(rows), sub);
             System.out.println("count page = " + countPages);
@@ -75,6 +86,7 @@ public class FilterResult implements RequestHandler {
             req.getSession().setAttribute("subjects", subjects);
             req.setAttribute("user_result", pageResultList);
             req.setAttribute("count_pages", countPages);
+            req.setAttribute("user", userService.get(userId));
 
             //    req.setAttribute("page", page);
 

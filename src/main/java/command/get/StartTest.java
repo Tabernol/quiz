@@ -8,6 +8,7 @@ import repo.TestRepo;
 import servises.QuestionService;
 import servises.TestService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +24,8 @@ public class StartTest implements RequestHandler {
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
-        TestService testService = new TestService(new TestRepo(), new ValidatorService());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
         List<Question> questions = null;
         Integer duration = 0;
         Integer size = 0;

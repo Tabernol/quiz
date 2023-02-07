@@ -27,7 +27,7 @@
 
 <div class="offcanvas offcanvas-start" id="AddTest">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">Add test</h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.create.test"/> </h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -43,7 +43,7 @@
                    value="${requestScope.duration}"><br>
             <div class="d-flex justify-content-center">
                 <button type="submit"
-                        class="btn btn-secondary"><fmt:message key="button.create.test"/>
+                        class="btn btn-secondary"><fmt:message key="button.create"/>
                 </button>
             </div>
             <%--            <c:out value="${requestScope.message}"/>--%>
@@ -52,37 +52,48 @@
 </div>
 <!-- Button to open the offcanvas sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#AddTest">
-    Add test
+    <fmt:message key="button.create.test"/>
 </button>
 
 
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
-<div>
-    <form action="filter_tests">
-        <select name="sub">
-            <option value="all"><c:out value="all"/></option>
-            <c:forEach var="sub" items="${sessionScope.subjects}">
-                <option value="${sub}"><c:out value="${sub}"/></option>
-            </c:forEach>
-        </select>
-        <select name="order">
-            <option value="name asc"><fmt:message key="sort.name.asc"/></option>
-            <option value="name desc"><fmt:message key="sort.name.desc"/></option>
-            <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
-            <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
-            <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>
-            <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>
-        </select>
-        <select name="rows">
-            <option value="2"><c:out value="2"/></option>
-            <option value="5"><c:out value="5"/></option>
-            <option value="10"><c:out value="10"/></option>
-            <option value="20"><c:out value="20"/></option>
-        </select><br>
-        <input type="hidden" name="page" value="1">
-        <input class="button" type="submit" value="<fmt:message key="button.filter"/>">
+
+
+<div class="d-flex flex-row justify-content-center">
+    <form>
+        <div class="input-group">
+            <div class="p-2 bd-highlight">
+                <select class="form-select" name="sub">
+                    <option value="all"><c:out value="all"/></option>
+                    <c:forEach var="sub" items="${sessionScope.subjects}">
+                        <option value="${sub}"><c:out value="${sub}"/></option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="p-2 bd-highlight">
+                <select class="form-select" name="rows">
+                    <option value="2"><c:out value="2"/></option>
+                    <option value="5"><c:out value="5"/></option>
+                    <option value="10"><c:out value="10"/></option>
+                    <option value="20"><c:out value="20"/></option>
+                </select>
+            </div>
+            <div class="p-2 bd-highlight">
+                <select class="form-select" name="order">
+                    <option value="name asc"><fmt:message key="sort.name.asc"/></option>
+                    <option value="name desc"><fmt:message key="sort.name.desc"/></option>
+                    <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
+                    <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
+                    <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>
+                    <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>
+                </select>
+            </div>
+            <div class="p-2 bd-highlight">
+                <input class="btn btn-primary" type="submit" value="<fmt:message key="button.filter"/>">
+            </div>
+        </div>
     </form>
 </div>
 
@@ -130,9 +141,6 @@
             <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
                 <li class="page-item"><a class="page-link"
                                          href="<c:url value='/filter_tests'>
-<%--                        <c:param name="order" value="${requestScope.order}"/>--%>
-<%--                        <c:param name="sub" value="${requestScope.sub}"/>--%>
-<%--                        <c:param name="rows" value="${requestScope.rows}"/>--%>
                         <c:param name="page" value="${i}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
             </c:forEach>

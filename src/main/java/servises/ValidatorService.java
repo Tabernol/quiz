@@ -9,58 +9,60 @@ import validator.MyValidator;
 import java.util.logging.Level;
 
 public class ValidatorService {
+    private DataValidator dataValidator;
 
-    MyValidator myValidator;
-
-
+    public ValidatorService(MyValidator myValidator) {
+        this.dataValidator = (DataValidator) myValidator;
+    }
 
     public void checkFieldsTest(String name, String subject, Integer difficult, Integer duration)
             throws ValidateException {
-        DataValidator.validate(DataValidator.validateForNamePlusNumber(name),
+        dataValidator.isValid(dataValidator.validateForNamePlusNumber(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
-        DataValidator.validate(DataValidator.validateForName(subject),
+        dataValidator.isValid(dataValidator.validateForNamePlusNumber(name),
+                "name must contains only liters and numbers and space from 2-20 symbols");
+        dataValidator.isValid(dataValidator.validateForName(subject),
                 "subject must contains only liters and space from 2-20 symbols");
-        DataValidator.validate(DataValidator.validateDifficult(difficult),
+        dataValidator.isValid(dataValidator.validateDifficult(difficult),
                 "difficult must be from 1 to 100");
-        DataValidator.validate(DataValidator.validateDuration(duration),
+        dataValidator.isValid(dataValidator.validateDuration(duration),
                 "duration must be from 1 to 30 minutes");
     }
 
     public void isNameExist(boolean isExist) throws ValidateException {
-        DataValidator.validate(!isExist, "Test with this name already exist");
+        dataValidator.isValid(!isExist, "Test with this name already exist");
     }
 
-    public void isLoginExist(boolean isExist) throws ValidateException {
-      //  myValidator.isValid(!isExist, "This login already exist");
-        DataValidator.validate(!isExist, "This login already exist");
+    public boolean isLoginExist(boolean isExist) throws ValidateException {
+        return dataValidator.isValid(!isExist, "This login already exist");
     }
 
-    public boolean validateText(String text) throws ValidateException {
-        return DataValidator.validate(DataValidator.validateForNotLongString(text), "Text answer is too long");
+    public void validateText(String text) throws ValidateException {
+        dataValidator.isValid(dataValidator.validateForNotLongString(text), "Text answer is too long");
     }
 
     public void validateFieldsUser(String name, String login, String passwordHash) throws ValidateException {
-        DataValidator.validate(DataValidator.validateForName(name),
+        dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
-        DataValidator.validate(DataValidator.validateLogin(login),
+        dataValidator.isValid(dataValidator.validateLogin(login),
                 "login is invalid");
-        DataValidator.validate(DataValidator.validatePassword(passwordHash),
+        dataValidator.isValid(dataValidator.validatePassword(passwordHash),
                 "password is invalid must 4-10 symbols");
     }
 
     public boolean validateUpdateUserName(String name) throws ValidateException {
-        return DataValidator.validate(DataValidator.validateForName(name),
+        return dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
     }
 
     public void validateUpdateUser(String name, String role) throws ValidateException {
-        DataValidator.validate(DataValidator.validateForName(name),
+        dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
-        DataValidator.validate(DataValidator.validateAvailabilityRole(role),
+        dataValidator.isValid(dataValidator.validateAvailabilityRole(role),
                 "Role must be 'admin' or 'student'");
     }
 
     public void validateRepeatPassword(String password, String repeatPassword) throws ValidateException {
-        DataValidator.validate(password.equals(repeatPassword), "password is not the same");
+        dataValidator.isValid(password.equals(repeatPassword), "password is not the same");
     }
 }

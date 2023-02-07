@@ -93,8 +93,6 @@ S
 #src/main/java/util/MyCustomTag.java,f\0\f00c827ffccccc94ac143045a7b4d5209f62a91a
 U
 %src/main/java/command/get/Finish.java,0\1\013a30696da170af1776c89dd9148ff6bb753a04
-Z
-*src/main/java/command/post/FinishTest.java,f\3\f3d09fffc78c644c90d1d41ca198b6d802ead7db
 ]
 -src/main/java/command/get/NextPageResult.java,3\d\3d803b948a2fb36d74bbaa6f4f1f54ff8f71bcdd
 O
@@ -133,8 +131,6 @@ W
 'src/main/java/servises/TestService.java,e\8\e88f94216afcfe51bfc304287a1b810b212cfe93
 [
 +src/test/java/servlets/get/ProfileTest.java,7\4\7457ba6c51699cad780bce36f935a06efea68f76
-^
-.src/main/java/exeptions/ValidateException.java,3\2\32b8dbbe72895efc6e9e62089f63b45a2a3a84fc
 X
 (src/test/java/repo/QuestionRepoTest.java,b\3\b3e8da139e82201a4cdac34c23c4e9fd8359af77
 V
@@ -203,12 +199,8 @@ Z
 *src/main/java/command/get/FilterTests.java,5\7\5782d2af3ef86db6c19b2fa68afcfc7b27a8c176
 T
 $src/main/webapp/static/js/general.js,f\8\f8af304df4189f066c6f13356e15e2066415e5ee
-^
-.src/main/java/command/get/GetInfoQuestion.java,5\a\5a2bf09d4310002061fe4fea5c647aa2ba31be0c
 [
 +src/main/java/command/get/NextQuestion.java,f\d\fddb22f83fb6357d9e9ac9d7385943da9d06042d
-\
-,src/main/java/command/post/Registration.java,2\7\27e13ec749c5b4095d6dff27202b2695ba2e499d
 \
 ,src/main/java/command/post/ResultAnswer.java,1\a\1a1af3893e9c72f9aaf198320ebb5a5c5a039121
 Y

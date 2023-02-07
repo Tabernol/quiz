@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class GetInfoQuestion implements RequestHandler {
@@ -80,6 +81,7 @@ public class GetInfoQuestion implements RequestHandler {
             List<Answer> answers = null;
             try {
                 answers = answerService.getAnswers(idQuestion);
+                Collections.shuffle(answers);
                 String text = questions.get(numberQuestion).getText();
 
                 int progress = numberQuestion * 100 / size;

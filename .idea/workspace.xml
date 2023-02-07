@@ -9,20 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="117 add filter and refactor profile/edit_profile">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="117 add content in resource bundle">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language_ua.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_ua.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/create_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/create_test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/edit_profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/edit_profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +100,7 @@
       <recent name="repo" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
+  <component name="RunManager" selected="JUnit.All in startCommand">
     <configuration name="All in startCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <option name="PACKAGE_NAME" value="" />
@@ -279,8 +269,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ValidatorServiceTest.validateFieldUserInputTest" />
         <item itemvalue="JUnit.All in startCommand" />
+        <item itemvalue="JUnit.ValidatorServiceTest.validateFieldUserInputTest" />
         <item itemvalue="JUnit.ValidatorServiceTest" />
         <item itemvalue="JUnit.ValidatorServiceTest.validateTextTest" />
         <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
@@ -348,7 +338,7 @@
       <workItem from="1675238280316" duration="14568000" />
       <workItem from="1675427842302" duration="14456000" />
       <workItem from="1675711258145" duration="10611000" />
-      <workItem from="1675788618058" duration="3297000" />
+      <workItem from="1675788618058" duration="3942000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -644,7 +634,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675736242061</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="117 add content in resource bundle">
+      <created>1675792059926</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1675792059926</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +659,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="18" />
     <MESSAGE value="21" />
     <MESSAGE value="27" />
     <MESSAGE value="28" />
@@ -687,7 +683,8 @@
     <MESSAGE value="115 test for Repo layer" />
     <MESSAGE value="116 work with Pdf" />
     <MESSAGE value="117 add filter and refactor profile/edit_profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="117 add filter and refactor profile/edit_profile" />
+    <MESSAGE value="117 add content in resource bundle" />
+    <option name="LAST_COMMIT_MESSAGE" value="117 add content in resource bundle" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

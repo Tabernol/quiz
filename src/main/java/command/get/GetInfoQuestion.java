@@ -12,6 +12,7 @@ import servises.AnswerService;
 import servises.QuestionService;
 import servises.ResultService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,7 @@ public class GetInfoQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
+        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
         ResultService resultService = new ResultService(new ResultRepo());
         req.setAttribute("duration", req.getParameter("duration"));
 

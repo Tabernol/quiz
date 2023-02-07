@@ -9,6 +9,7 @@ import repo.TestRepo;
 import servises.QuestionService;
 import servises.TestService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +25,8 @@ public class EditTest implements RequestHandler {
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService());
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
         List<Question> all;
 
         try {

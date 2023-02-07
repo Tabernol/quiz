@@ -30,7 +30,7 @@ public class AddQuestion implements RequestHandler {
 
         String text = req.getParameter("text");
 
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
         try {
             questionService.addQuestion(testId, text);
             logger.info("Question for test id " + testId + "has added");

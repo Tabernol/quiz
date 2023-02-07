@@ -6,6 +6,7 @@ import models.User;
 import repo.UserRepo;
 import servises.UserService;
 import servises.ValidatorService;
+import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ public class AllUser implements RequestHandler {
     public void execute(HttpServletRequest req, 
                         HttpServletResponse resp) 
             throws ServletException, IOException {
-        userService = new UserService(new UserRepo(), new ValidatorService());
+        userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
         List<User> all;
         try {
             all = userService.getAll();

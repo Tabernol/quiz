@@ -72,9 +72,9 @@
             </form>
         </td>
         <td>
-            <form action="edit_user">
+            <form action="profile">
                 <input type="hidden" name="user_id" value="${user.id}">
-                <button type="submit" class="btn btn-secondary"><fmt:message key="button.edit"/></button>
+                <button type="submit" class="btn btn-secondary"><fmt:message key="button.info"/></button>
             </form>
         </td>
         </c:forEach>

@@ -8,5 +8,5 @@ function showPassword() {
 }
 
 function showMessage(message) {
-    alert(message);
+    window.alert(message)
 }

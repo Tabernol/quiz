@@ -24,14 +24,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <br>
-<%--<form method="post" action="edit_user">--%>
-<%--    <input type="hidden" name="user_id" value="${requestScope.user.id}">--%>
-<%--    <fmt:message key="label.name"/> <input type="text" name="name" value="${requestScope.user.name}"><br>--%>
-<%--    <fmt:message key="label.role"/> <input type="text" name="role" value="${requestScope.user.role}"><br>--%>
 
-<%--    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">--%>
-<%--    <c:out value="${requestScope.message}"/>--%>
-<%--</form>--%>
 
 <%--=========================--%>
 <div class="offcanvas offcanvas-start" id="forTest">
@@ -42,7 +35,6 @@
     <div class="offcanvas-body">
         <form method="post" action="edit_user">
             <input type="hidden" name="page" value="${requestScope.page}">
-
             <h6 class="fw-light"><fmt:message key="table.head.name"/></h6>
             <input type="text" name="name" value="${requestScope.user.name}">
             <h6 class="fw-light"><fmt:message key="label.role"/></h6>
@@ -62,10 +54,6 @@
 </button>
 
 <h3><c:out value="${requestScope.message}"/></h3>
-
-
-
-
 
 
 <form action="users">

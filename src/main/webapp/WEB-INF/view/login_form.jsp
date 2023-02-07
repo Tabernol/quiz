@@ -53,11 +53,7 @@
                                     <fmt:message key="label.Login"/></button>
                             </div>
 
-                            <div class="alert alert-warning">
-<%--                                <strong>Warning!</strong> Indicates a warning that might need attention.--%>
-                            </div>
-
-<%--                                <c:out value="${requestScope.message}"/>--%>
+                                <c:out value="${requestScope.message}"/>
 
 
                         </form>

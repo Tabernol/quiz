@@ -10,22 +10,28 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import servises.ValidatorService;
 import validator.DataValidator;
+import validator.MyValidator;
 
 public class ValidatorServiceTest {
-    @InjectMocks
+    @Mock
     DataValidator mockDataValidator;
+    @Mock
+    MyValidator mockMyValidator;
     ValidatorService validatorService;
 
     @BeforeEach
     public void setUp() {
+        mockMyValidator = Mockito.mock(MyValidator.class);
         mockDataValidator = Mockito.mock(DataValidator.class);
-        validatorService = new ValidatorService();
+        validatorService = new ValidatorService(mockDataValidator);
     }
 
     @Test
     public void isLoginExist() throws ValidateException {
+        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
         Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
+        Assertions.assertEquals(true, validatorService.isLoginExist(Mockito.anyBoolean()));
+        // Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
     }
 
 //    @Test
@@ -37,7 +43,20 @@ public class ValidatorServiceTest {
     @Test
     public void repeatPassword() throws ValidateException {
         Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        Assertions.assertDoesNotThrow(() -> validatorService.validateRepeatPassword(Mockito.anyString(),Mockito.anyString()));
+        Assertions.assertDoesNotThrow(() -> validatorService.validateRepeatPassword(Mockito.anyString(), Mockito.anyString()));
+    }
+
+    @Test
+    public void validateTextTest() throws ValidateException {
+        Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
+        Assertions.assertDoesNotThrow(()->validatorService.validateText(Mockito.anyString()));
+    }
+
+    @Test
+    public void validateFieldUserInputTest() throws ValidateException {
+        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
+        Assertions.assertDoesNotThrow(
+                ()->validatorService.validateFieldsUser(Mockito.anyString(), Mockito.anyString(), Mockito.anyString()));
     }
 }
 

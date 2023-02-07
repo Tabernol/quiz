@@ -17,7 +17,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/login_form", new LoginForm());
         COMMANDS.put("/home", new Home());
         COMMANDS.put("/logout", new Logout());
-        COMMANDS.put("/edit_user", new EditUser());
+//        COMMANDS.put("/edit_user", new EditUser());
         COMMANDS.put("/filter_tests", new FilterTests());
         COMMANDS.put("/edit_test", new EditTest());
         COMMANDS.put("/edit_question", new EditQuestion());

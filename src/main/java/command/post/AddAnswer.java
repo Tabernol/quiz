@@ -20,8 +20,8 @@ import java.io.IOException;
 
 public class AddAnswer implements RequestHandler {
     private static Logger logger = LogManager.getLogger(AddAnswer.class);
-    AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService());
-    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService());
+    AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
+    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
 
     @Override
     public void execute(HttpServletRequest req,

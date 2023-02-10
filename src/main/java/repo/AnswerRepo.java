@@ -17,13 +17,20 @@ import org.apache.logging.log4j.LogManager;
 /**
  * Class repository has relationship with table Answer in MySQL
  *
- *@author MaxKrasnopolskyi
+ * @author MaxKrasnopolskyi
  */
 public class AnswerRepo {
     Logger logger = LogManager.getLogger(AnswerRepo.class);
     MyDataSource myDataSource;
 
-
+    /**
+     * method return List of answer for this questionId
+     *
+     * @param questionId is identification question in database,
+     *                   and it is foreign key for few answers in table 'answer' in database
+     * @return List of Answer by question
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
         String sql = "select * from answer where question_id = ?";
         List<Answer> answers = new ArrayList<>();
@@ -47,7 +54,16 @@ public class AnswerRepo {
         }
     }
 
-
+    /**
+     * method create new Answer for has chosen question by questionId
+     *
+     * @param questionId is identification question in database,
+     *                   and it is foreign key for few answers in table 'answer' in database
+     * @param text is text of Answer
+     * @param result it is an answer, can be true or false
+     * @return 1 if Answer has created
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException {
         String sql = "insert into answer (id, question_id, a_text, result) values(default, ?,?,?)";
         try (Connection con = MyDataSource.getConnection();
@@ -62,6 +78,13 @@ public class AnswerRepo {
         }
     }
 
+    /**
+     * method delete answer from database
+     *
+     * @param id is identification Answer in database
+     * @return 1 if Answer has deleted
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public int delete(Long id) throws DataBaseException {
         String sql = "delete from answer where id = ?";
         try (Connection con = MyDataSource.getConnection();

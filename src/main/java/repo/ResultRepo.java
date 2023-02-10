@@ -21,6 +21,12 @@ import org.apache.logging.log4j.LogManager;
 public class ResultRepo {
     Logger logger = LogManager.getLogger(ResultRepo.class);
 
+    /**
+     * method get list of result with some limit, offset, order by, where
+     * @param query is ready SQL query. query has an order, limit and offset
+     * @return list of ResultDto
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public List<ResultDto> getPageResultList(String query) throws DataBaseException {
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(query)) {
@@ -44,6 +50,12 @@ public class ResultRepo {
         }
     }
 
+    /**
+     * method get List of all result by user id on table 'result'
+     * @param userId is identification User in database
+     * @return list of result by User id
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public List<ResultDto> getAllResult(Long userId) throws DataBaseException {
         String sql = "select * from test inner join result on test.id=result.test_id where user_id = ?";
         try (Connection con = MyDataSource.getConnection();
@@ -69,7 +81,14 @@ public class ResultRepo {
         }
     }
 
-
+    /**
+     * method insert result on table 'result' in database
+     * @param userId is identification User in database
+     * @param testId is identification Test(quiz) in database
+     * @param grade is grade of test(quiz)
+     * @return 1 if data has inserted
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
         String sql = "insert into result values(default, ?,?,?)";
         try (Connection con = MyDataSource.getConnection();
@@ -84,6 +103,12 @@ public class ResultRepo {
         }
     }
 
+    /**
+     * method count how many grade has User by id
+     * @param userId is identification User in database
+     * @return count of result
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public Integer getCountResultByUser(Long userId) throws DataBaseException {
         String sql = "select count(grade) from result where user_id = ?";
         try (Connection con = MyDataSource.getConnection();
@@ -100,6 +125,13 @@ public class ResultRepo {
         }
     }
 
+    /**
+     * method count how many grade has User by id and subjectId
+     * @param userId is identification User in database
+     * @param subject is name on table 'subject'
+     * @return count of result
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public Integer getCountResultByUserAndSubject(Long userId, String subject) throws DataBaseException {
         String sql = "select count(grade) from result inner join test " +
                 "on result.test_id=test.id where user_id = ? and subject like ?";

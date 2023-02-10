@@ -23,7 +23,7 @@ public class ContentSupplierCommands {
         COMMANDS.put("/edit_question", new EditQuestion());
         COMMANDS.put("/profile", new Profile());
         COMMANDS.put("/start_test", new StartTest());
-        COMMANDS.put("/next_question", new NextQuestion());
+        //COMMANDS.put("/next_question", new NextQuestion());
         COMMANDS.put("/to_create_test", new ToCreateTest());
         COMMANDS.put("/language", new LanguageChange());
         COMMANDS.put("/prg", new Prg());

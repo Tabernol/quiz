@@ -73,6 +73,7 @@ public class GetInfoQuestion implements RequestHandler {
         if (size == numberQuestion) {
             //close timer
             System.out.println(" to finish");
+
             FinishTest finishTest = new FinishTest();
             finishTest.execute(req, resp);
         } else {

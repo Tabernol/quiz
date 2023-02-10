@@ -48,6 +48,7 @@ class AnswerRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
             int answer = answerRepo.createAnswer(256863L, "new", true);
+//            int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
             Assertions.assertEquals(13, answer);
         }
 

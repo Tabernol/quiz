@@ -37,7 +37,6 @@ public class StartTest implements RequestHandler {
             size = questions.size();
         } catch (DataBaseException e) {
             req.getRequestDispatcher("/WEB-INF/view/error_page.jsp").forward(req, resp);
-
         }
         //must start timer
 

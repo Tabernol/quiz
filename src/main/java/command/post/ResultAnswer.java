@@ -1,6 +1,6 @@
 package command.post;
 
-import command.get.NextQuestion;
+
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import repo.AnswerRepo;

@@ -13,7 +13,11 @@ import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-
+/**
+ * Class repository has relationship with table Test in MySQL
+ *
+ *@author MaxKrasnopolskyi
+ */
 public class TestRepo {
     private static final Logger logger = LogManager.getLogger(TestRepo.class);
 

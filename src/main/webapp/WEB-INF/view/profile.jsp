@@ -25,10 +25,6 @@
 
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
-<h4>
-    <fmt:message key="label.name"/> <c:out value="${sessionScope.name}"/><br>
-</h4>
-
 <%--=========================--%>
 <div class="offcanvas offcanvas-start" id="forTest">
     <div class="offcanvas-header">

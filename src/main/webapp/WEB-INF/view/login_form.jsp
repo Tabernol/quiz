@@ -21,58 +21,67 @@
     <script>
         <%@include file="/static/js/general.js"%>
     </script>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <br>
 <section class="vh-100 bg-image">
-<div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-1">
-            <div class="col-4 col-md-5 col-lg-5 col-xl-6">
-                <div class="card" style="border-radius: 15px;">
-                    <div class="card-body p-5">
-                        <h2 class="text-uppercase text-center mb-0">Login</h2>
-                        <form method="post" action="login">
-                            <div class="form-outline mb-0">
-<%--                                change text on email--%>
-                                <input type="text" id="login" class="form-control form-control-lg"
-                                       name="login"/>
-                                <label class="form-label" for="login"><fmt:message key="label.login"/></label>
-                            </div>
-                            <div class="form-outline mb-0">
-                                <input type="password" id="pass" class="form-control form-control-lg"
-                                       name="password"/>
-                                <label class="form-label" for="pass"><fmt:message
-                                        key="label.password"/></label>
-                            </div>
-                            <input type="checkbox" onclick="showPassword()">Show Password
-                            <div class="d-flex justify-content-center">
-                                <button type="submit"
-                                        class="btn btn-secondary" onclick="showMessage((${requestScope.message}).value)">
-                                    <fmt:message key="label.Login"/></button>
-                            </div>
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-1">
+                <div class="col-4 col-md-5 col-lg-5 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-0">Login</h2>
+                            <form method="post" action="login">
+                                <div class="form-outline mb-0">
+                                    <%--                                change text on email--%>
+                                    <input type="text" id="login" class="form-control form-control-lg"
+                                           name="login"/>
+                                    <label class="form-label" for="login"><fmt:message key="label.login"/></label>
+                                </div>
+                                <div class="form-outline mb-0">
+                                    <input type="password" id="pass" class="form-control form-control-lg"
+                                           name="password"/>
+                                    <label class="form-label" for="pass"><fmt:message
+                                            key="label.password"/></label>
+                                </div>
+                                <input type="checkbox" onclick="showPassword()">
 
-                            <div class="alert alert-warning">
-<%--                                <strong>Warning!</strong> Indicates a warning that might need attention.--%>
-                            </div>
+                                Show Password
+
+                                <div class="d-flex justify-content-center">
+                                    <div class="g-recaptcha"
+                                         data-sitekey="6LcpCHEkAAAAAD39lvkIlgR8GR53qSOtfv3_dZP0"></div>
+                                </div>
+
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-secondary">
+                                        <fmt:message key="label.Login"/></button>
+                                </div>
+
+                                <script>
+                                    function onSubmit(token) {
+                                        document.getElementById("demo-form").submit();
+                                    }
+
+                                </script>
 
                                 <c:out value="${requestScope.message}"/>
 
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </section>
-
-
-
-
-
 
 
 </body>

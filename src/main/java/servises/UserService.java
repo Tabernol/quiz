@@ -2,8 +2,14 @@ package servises;
 
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
+import models.Test;
 import models.User;
 import repo.UserRepo;
+import util.MyTable;
+import util.query.QBuilder;
+import util.query.QueryBuilderForTest;
+import util.query.QueryBuilderForUser;
+import util.query.QueryFactory;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -66,5 +72,35 @@ public class UserService {
             userRepo.changeStatus(userId, true);
         }
         return get(userId).isBlocked();
+    }
+
+    public List<User> getPageUserList(String filter, String order, Integer rows, Integer page) throws DataBaseException {
+        QueryFactory queryFactory = new QueryFactory();
+        QBuilder qBuilder = (QueryBuilderForUser) queryFactory.getQueryBuilder(MyTable.USER);
+        qBuilder.setFilter(filter);
+        qBuilder.setOrderBy(order);
+        qBuilder.setLimit(rows);
+        qBuilder.setOffSet(page);
+        String query = qBuilder.getQuery();
+        System.out.println("QUERY = " + query);
+        return userRepo.nextPage(query);
+    }
+
+    public Integer getCountUsers(String status) throws DataBaseException {
+        if (status.equals("all")) {
+            return userRepo.getAll().size();
+        } else {
+            return userRepo.getCountUsers(status);
+        }
+    }
+
+    public List<User> nextPage(String filter, String order, String rows, String page) throws DataBaseException {
+        return getPageUserList(filter, order, Integer.valueOf(rows), Integer.valueOf(page));
+    }
+
+    public int countPages(String status, String rows) throws DataBaseException {
+        Integer count = getCountUsers(status);
+        Integer rowsOnPage = Integer.valueOf(rows);
+        return count % rowsOnPage == 0 ? count / rowsOnPage : count / rowsOnPage + 1;
     }
 }

@@ -10,9 +10,9 @@ public class QueryFactory {
             case TEST:
                 qBuilder = new QueryBuilderForTest();
                 break;
-//            case USER:
-//                qBuilder = new
-//                break;
+            case USER:
+                qBuilder = new QueryBuilderForUser();
+                break;
             case RESULT:
                 qBuilder = new QueryBuilderForResult();
                 break;

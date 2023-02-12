@@ -64,7 +64,6 @@ public class GetInfoQuestion implements RequestHandler {
                 req.getSession().setAttribute("result_test", resultTest);
                 System.out.println("result " + result);
             }
-
         } catch (DataBaseException e) {
             //log
         }

@@ -14,10 +14,11 @@ function getUserAnswer(params) {
 }
 
 function loadQuestionAndAnswer(id_question, number_question, res) {
+    console.log("===question number" + number_question + "=============");
     if ((${sessionScope.size}).toString() === number_question) {
         isTimerRun = false;
         document.getElementById("timer").innerHTML = null;
-        // document.location.href = "${pageContext.request.contextPath}/finish_test"
+        finishTest();
     }
     let result = getUserAnswer(res)
     var xhttp = new XMLHttpRequest();

@@ -21,6 +21,7 @@
     <script>
         <%@include file="/static/js/general.js"%>
     </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
@@ -71,6 +72,11 @@
 <%--                                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>--%>
 <%--                                    </label>--%>
 <%--                                </div>--%>
+                                <div class="d-flex justify-content-center">
+                                    <div class="g-recaptcha"
+                                         data-sitekey="6LcpCHEkAAAAAD39lvkIlgR8GR53qSOtfv3_dZP0"></div>
+                                </div>
+
                                 <div class="d-flex justify-content-center">
                                     <button type="submit"
                                             class="btn btn-secondary">Register</button>

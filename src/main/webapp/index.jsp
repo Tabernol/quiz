@@ -48,6 +48,8 @@
     <script>
         <%@include file="/static/js/general.js"%>
     </script>
+
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
@@ -55,7 +57,8 @@
 <h1 id="start_message"><fmt:message key="label.start_message"/></h1>
 <br>
 
-
+<img src="start_page.png" alt="q1" width="256" height="256">
+🠉
 
 </body>
 </html>

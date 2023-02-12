@@ -21,6 +21,7 @@ import java.security.spec.InvalidKeySpecException;
 
 import org.apache.logging.log4j.LogManager;
 import servises.ValidatorService;
+import util.VerifyRecaptcha;
 import validator.DataValidator;
 
 //@WebFilter(filterName = "AuthorizationFilter", value = "/login")
@@ -39,6 +40,13 @@ public class AuthorizationFilter extends AbstractFilter {
         String role;
         long id;
 
+        // get reCAPTCHA request param
+        String gRecaptchaResponse = req
+                .getParameter("g-recaptcha-response");
+        System.out.println("reCaptcha = "+gRecaptchaResponse);
+        boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
+
         try {
             id = userService.getId(login);
             if (id == -1) {
@@ -48,7 +56,7 @@ public class AuthorizationFilter extends AbstractFilter {
                 logger.warn("User with id " + userService.get(id).getId() + "is block, and try login");
                 req.setAttribute("message", "You are blocked");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-            } else if (isCorrectPassword(id, password)) {
+            } else if (isCorrectPassword(id, password) && verify) {
                 logger.warn("User with id " + userService.get(id).getId() + "has come");
                 session.setAttribute("user_id", id);// get id
                 session.setAttribute("name", userService.get(id).getName());

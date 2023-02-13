@@ -9,18 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="add reCaptcha and fix bag with timer">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="refactor, remove command AllUser">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/AllUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/AllUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/ToCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/ToCreateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/AllUserTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/ToCreateTestTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -360,7 +356,7 @@
       <workItem from="1676148474119" duration="12074000" />
       <workItem from="1676205170209" duration="2776000" />
       <workItem from="1676238679557" duration="5917000" />
-      <workItem from="1676250691584" duration="1286000" />
+      <workItem from="1676250691584" duration="4924000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -677,7 +673,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676244625954</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="refactor, remove command AllUser">
+      <created>1676252344329</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1676252344329</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,7 +698,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="28" />
     <MESSAGE value="29" />
     <MESSAGE value="31" />
     <MESSAGE value="24" />
@@ -720,7 +722,8 @@
     <MESSAGE value="Add Javadoc in  some Repo class" />
     <MESSAGE value="121" />
     <MESSAGE value="add reCaptcha and fix bag with timer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add reCaptcha and fix bag with timer" />
+    <MESSAGE value="refactor, remove command AllUser" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor, remove command AllUser" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

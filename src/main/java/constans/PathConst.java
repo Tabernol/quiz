@@ -3,28 +3,36 @@ package constans;
 public interface PathConst {
     //for all
     String REGISTRATION = "/registration";
-    String LOGOUT = "/logout";
-    String PROFILE = "/profile";
     String LOGIN_FORM = "/login_form";
-
     String LANGUAGE = "/language";
 
 
     // for both
+    String LOGOUT = "/logout";
+    String PROFILE = "/profile";
     String FILTER_TESTS = "/filter_tests";
-    String NEXT_PAGE = "/next_page";
+
+    String FILTER_RESULT = "/filter_result";
+
+    String DOWNLOAD = "/download";
     String HOME = "/home";
+
+    String PRG = "/prg";
 
 
     //only student
     String INFO_TEST = "/info_test";
     String START_TEST = "/start_test";
-    String NEXT_QUESTION = "/next_question";
+    //    String NEXT_QUESTION = "/next_question";
     String RESULT_ANSWER = "/result_answer";
+    String GET_INFO_QUESTION = "/get_text_question";
+    String FINISH = "/finish";
+    String FINISH_TEST = "/finish_test";
 
 
     //only admin
-    String USERS = "/users";
+    String FILTER_USERS = "/filter_users";
+    String BLOCK = "/block";
 
 
     String CREATE_TEST = "/create_test";

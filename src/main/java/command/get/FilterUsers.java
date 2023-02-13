@@ -1,6 +1,8 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
+import models.User;
 import repo.UserRepo;
 import servises.UserService;
 import servises.ValidatorService;
@@ -10,20 +12,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class FilterUsers implements RequestHandler {
-
+    UserService userService;
 
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+        userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
 
         String status = req.getParameter("status");
         String rows = req.getParameter("rows");
         String order = req.getParameter("order");
-
+        String page = req.getParameter("page");
 
         if (status == null || rows == null || order == null) {
             status = (String) req.getSession().getAttribute("status");
@@ -40,7 +43,21 @@ public class FilterUsers implements RequestHandler {
             req.getSession().setAttribute("order", order);
         }
 
+        if (page == null) {
+            page = "1";
+        }
 
 
+        List<User> userList;
+        try {
+            userList = userService.nextPage(status, order, rows, page);
+            req.setAttribute("users", userList);
+            req.setAttribute("page", page);
+            req.setAttribute("count_pages", userService.countPages(status, rows));
+            req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req, resp);
+        } catch (DataBaseException e) {
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            throw new RuntimeException(e);
+        }
     }
 }

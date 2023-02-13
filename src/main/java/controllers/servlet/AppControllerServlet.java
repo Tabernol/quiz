@@ -32,7 +32,7 @@ import org.apache.logging.log4j.LogManager;
         "/prg",
         "/to_create_test", "/edit_profile"
         ,"/block", "/get_text_question", "/finish_test", "/finish",
-        "/filter_result", "/download"
+        "/filter_result", "/download", "/filter_users"
 
 })
 public class AppControllerServlet extends HttpServlet {

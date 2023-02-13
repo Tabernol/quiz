@@ -118,7 +118,7 @@
         <ul class="pagination pagination-sm">
             <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
                 <li class="page-item"><a class="page-link"
-                                         href="<c:url value='/users'>
+                                         href="<c:url value='/filter_users'>
                         <c:param name="page" value="${i}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
             </c:forEach>

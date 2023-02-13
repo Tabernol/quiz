@@ -9,26 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="121">
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/VerifyRecaptcha.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="add reCaptcha and fix bag with timer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/AllUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/AllUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login_form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/registration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/edit_profile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/student/page_question.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/timer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/ToCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/ToCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/AllUserTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/ToCreateTestTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -367,7 +359,8 @@
       <workItem from="1676035293285" duration="11321000" />
       <workItem from="1676148474119" duration="12074000" />
       <workItem from="1676205170209" duration="2776000" />
-      <workItem from="1676238679557" duration="4983000" />
+      <workItem from="1676238679557" duration="5917000" />
+      <workItem from="1676250691584" duration="1286000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -677,7 +670,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676124374706</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="add reCaptcha and fix bag with timer">
+      <created>1676244625954</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1676244625954</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,7 +695,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="27" />
     <MESSAGE value="28" />
     <MESSAGE value="29" />
     <MESSAGE value="31" />
@@ -720,7 +719,8 @@
     <MESSAGE value="refactor nextQuestion and nextPage" />
     <MESSAGE value="Add Javadoc in  some Repo class" />
     <MESSAGE value="121" />
-    <option name="LAST_COMMIT_MESSAGE" value="121" />
+    <MESSAGE value="add reCaptcha and fix bag with timer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add reCaptcha and fix bag with timer" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

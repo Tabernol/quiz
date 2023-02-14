@@ -19,7 +19,7 @@ import org.apache.logging.log4j.LogManager;
 
 //rename edit_user, edit_test because use one url post and get methods
 @WebServlet(urlPatterns = {
-        PathConst.REGISTRATION, PathConst.LOGIN_FORM, PathConst.LOGOUT,      PathConst.LANGUAGE,
+        PathConst.REGISTRATION, PathConst.LOGIN_FORM, PathConst.LOGOUT, PathConst.LANGUAGE,
 
         PathConst.HOME, PathConst.PROFILE, PathConst.BLOCK, PathConst.EDIT_USER,
 //        PathConst.DELETE_USER,
@@ -32,11 +32,10 @@ import org.apache.logging.log4j.LogManager;
 
         PathConst.ADD_ANSWER, PathConst.DELETE_ANSWER,
 
-        PathConst.START_TEST,PathConst.RESULT_ANSWER,   PathConst.DOWNLOAD,
-        PathConst.GET_INFO_QUESTION, "/finish_test", "/finish",
+        PathConst.START_TEST, PathConst.RESULT_ANSWER, PathConst.DOWNLOAD,
+        PathConst.GET_INFO_QUESTION, PathConst.FINISH_TEST, PathConst.FINISH,
 
         PathConst.PRG,
-
 
 
 })
@@ -52,7 +51,6 @@ public class AppControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req,
                          HttpServletResponse resp)
             throws ServletException, IOException {
-        log.info("get");
         String servletPath = req.getServletPath();
         ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
     }
@@ -61,7 +59,6 @@ public class AppControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req,
                           HttpServletResponse resp)
             throws ServletException, IOException {
-        log.info("post");
         String servletPath = req.getServletPath();
         DataHandleCommand.COMMANDS.get(servletPath).execute(req, resp);
     }

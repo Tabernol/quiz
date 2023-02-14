@@ -5,7 +5,10 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import command.post.Registration;
 import controllers.servlet.RequestHandler;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import util.MyPdfWriter;
 
 import javax.servlet.ServletException;
@@ -16,14 +19,7 @@ import java.util.Date;
 
 public class DownLoad implements RequestHandler {
 
-//    public static void main(String[] args) {
-//        File fileResult = new File("src/main/resources/pdf/table0.pdf");
-//        try {
-//            fileResult.createNewFile();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private static Logger logger = LogManager.getLogger(DownLoad.class);
 
     private final int ARBITARY_SIZE = 1048;
 
@@ -31,7 +27,19 @@ public class DownLoad implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/pdf");
         MyPdfWriter myPdfWriter = new MyPdfWriter();
-        Long id = (Long) req.getSession().getAttribute("user_id");
+
+
+        Long id;
+        String userId = req.getParameter("user_id");
+        if (userId != null) {
+            id = Long.valueOf(userId);
+            logger.info("Admin downloads result user with id " + id);
+        } else {
+            id = (Long) req.getSession().getAttribute("user_id");
+            logger.info("User downloads result user with id " + id);
+        }
+
+
         try {
             // step 1
             Document document = new Document();
@@ -44,7 +52,8 @@ public class DownLoad implements RequestHandler {
             // step 5
             document.close();
         } catch (DocumentException de) {
-            throw new IOException(de.getMessage());
+            logger.warn("Trouble with downloading result with ID " + id, de);
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }
 }

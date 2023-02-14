@@ -20,6 +20,10 @@ public class SecurityFilter extends AbstractFilter {
         String role = (String) req.getSession().getAttribute("role");
         String servletPath = req.getServletPath();
 
+
+
+
+
         if (role == null) {
             if (AccessUtil.guestAccess.contains(servletPath)) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);

@@ -1,6 +1,8 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,8 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Prg implements RequestHandler {
+    private static Logger logger = LogManager.getLogger(Prg.class);
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -18,6 +22,7 @@ public class Prg implements RequestHandler {
         }
 
         String servletPath = req.getParameter("servlet_path");
+        logger.info("Command PRG works with servlet path " + servletPath);
         req.getRequestDispatcher(servletPath).forward(req, resp);
     }
 }

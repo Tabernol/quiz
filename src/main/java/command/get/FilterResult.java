@@ -5,6 +5,8 @@ import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import models.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.ResultRepo;
 import repo.TestRepo;
 import repo.UserRepo;
@@ -23,11 +25,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class FilterResult implements RequestHandler {
+    private static Logger logger = LogManager.getLogger(FilterResult.class);
+
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String role = (String) req.getSession().getAttribute("role");
         String sub = req.getParameter("sub");
         String order = req.getParameter("order");
         String rows = req.getParameter("rows");
@@ -73,6 +76,8 @@ public class FilterResult implements RequestHandler {
             userId = (Long) req.getSession().getAttribute("user_id");
         }
 
+        System.out.println("user id filter_result   " + userId);
+
 
         try {
             countPages = resultService.getCountPagesResult(userId, Integer.valueOf(rows), sub);
@@ -87,14 +92,15 @@ public class FilterResult implements RequestHandler {
             req.setAttribute("user_result", pageResultList);
             req.setAttribute("count_pages", countPages);
             req.setAttribute("user", userService.get(userId));
+            req.setAttribute("user_id", userId);
 
             //    req.setAttribute("page", page);
 
-
+            logger.info("Filter result was used");
             req.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(req, resp);
         } catch (DataBaseException e) {
+            logger.warn("Trouble with using filter result ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
     }
 }

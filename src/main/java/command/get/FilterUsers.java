@@ -3,6 +3,8 @@ package command.get;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
 import servises.UserService;
 import servises.ValidatorService;
@@ -15,7 +17,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class FilterUsers implements RequestHandler {
-    UserService userService;
+
+    private static Logger logger = LogManager.getLogger(FilterUsers.class);
+    private UserService userService;
 
     @Override
     public void execute(HttpServletRequest req,
@@ -54,10 +58,11 @@ public class FilterUsers implements RequestHandler {
             req.setAttribute("users", userList);
             req.setAttribute("page", page);
             req.setAttribute("count_pages", userService.countPages(status, rows));
+            logger.info("filter users was used");
             req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req, resp);
         } catch (DataBaseException e) {
+            logger.warn("Trouble with using filter users ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
     }
 }

@@ -35,9 +35,7 @@ public class AuthorizationFilter extends AbstractFilter {
         final HttpSession session = req.getSession();//what first??
         final String login = req.getParameter("login");
         final String password = req.getParameter("password");// or this first??
-        String lang = req.getParameter("lang");
         UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
-        String role;
         long id;
 
         // get reCAPTCHA request param
@@ -57,7 +55,7 @@ public class AuthorizationFilter extends AbstractFilter {
                 req.setAttribute("message", "You are blocked");
                 req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
             } else if (isCorrectPassword(id, password) && verify) {
-                logger.warn("User with id " + userService.get(id).getId() + "has come");
+                logger.info("User with id " + userService.get(id).getId() + " has come");
                 session.setAttribute("user_id", id);// get id
                 session.setAttribute("name", userService.get(id).getName());
                 session.setAttribute("role", userService.get(id).getRole());

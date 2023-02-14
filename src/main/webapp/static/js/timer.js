@@ -15,11 +15,7 @@ function getUserAnswer(params) {
 
 function loadQuestionAndAnswer(id_question, number_question, res) {
     console.log("===question number" + number_question + "=============");
-    if ((${sessionScope.size}).toString() === number_question) {
-        isTimerRun = false;
-        document.getElementById("timer").innerHTML = null;
-        finishTest();
-    }
+
     let result = getUserAnswer(res)
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -31,6 +27,12 @@ function loadQuestionAndAnswer(id_question, number_question, res) {
         "&number_question=" + number_question +
         result, true);
     xhttp.send();
+
+    if ((${sessionScope.size}).toString() === number_question) {
+        isTimerRun = false;
+        document.getElementById("timer").innerHTML = null;
+        finishTest();
+    }
 }
 
 function timer(min) {

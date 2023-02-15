@@ -71,8 +71,8 @@ public class TestServiceTest {
     public void updateTest() throws DataBaseException, ValidateException {
         Mockito.when(mockTestRepo.updateInfoTest(Mockito.anyLong(),
                 Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(1);
-        assertEquals(1, testService.update(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
+        assertEquals(1, testService.update(12L,
+                "newName", "newSubject", 45, 26));
     }
 
     @Test

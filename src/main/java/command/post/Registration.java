@@ -44,10 +44,10 @@ public class Registration implements RequestHandler {
             UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
 
             try {
-                userService.createUser(name, login, password, repeatPassword);
-                User user = userService.get(userService.getId(login));
+                int userId = userService.createUser(name, login, password, repeatPassword);
+                User user = userService.get(userId);
                 HttpSession session = req.getSession();
-                session.setAttribute("user_id", userService.getId(login));// get id
+                session.setAttribute("user_id", userId);// get id
                 session.setAttribute("name", user.getName());
                 session.setAttribute("role", user.getRole());
                 logger.info("User has created with login " + login);

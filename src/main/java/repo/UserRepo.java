@@ -23,7 +23,6 @@ import org.apache.logging.log4j.LogManager;
 public class UserRepo {
     Logger logger = LogManager.getLogger(UserRepo.class.getName());
 
-
     /**
      * method return User from database by ID
      * if ID does not exist return empty User
@@ -109,17 +108,44 @@ public class UserRepo {
     public int createUser(String login, String password, String name) throws DataBaseException {
         String sql = "insert into user (id, login, password, role, name) " +
                 "values (default, ?, ?, ?, ?)";
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet resultSet = null;
+        try {
+            con = MyDataSource.getConnection();
+            con.setAutoCommit(false);
+            pst = con.prepareStatement(sql);
             pst.setString(1, login);
             pst.setString(2, password);
             pst.setString(3, "student");
             pst.setString(4, name);
-            return pst.executeUpdate();
-            //   return row;
+            pst.executeUpdate();
+
+            pst = con.prepareStatement("select last_insert_id()");
+            resultSet = pst.executeQuery();
+            resultSet.next();
+            int userId = resultSet.getInt("last_insert_id()");
+            con.commit();
+            System.out.println("userId = " + userId);
+            return userId;
         } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException ex) {
+                logger.warn("Catch exception at rollback");
+                throw new DataBaseException("Can not create user" + e.getMessage(), e);
+            }
             logger.warn("Can not create user");
             throw new DataBaseException("Can not create user" + e.getMessage(), e);
+        } finally {
+            try {
+                resultSet.close();
+                pst.close();
+                con.close();
+            } catch (SQLException e) {
+                logger.warn("Problem in finally block during create user");
+                throw new DataBaseException("Can not create user" + e.getMessage(), e);
+            }
         }
     }
 

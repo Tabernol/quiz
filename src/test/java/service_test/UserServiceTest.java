@@ -50,7 +50,8 @@ public class UserServiceTest {
         Mockito.when(mockUserRepo.createUser(Mockito.anyString(),
                 Mockito.anyString(), Mockito.anyString())).thenReturn(1);
         assertEquals(1,
-                userService.createUser(Mockito.anyString(), Mockito.anyString(), Mockito.anyString(), Mockito.anyString()));
+                userService.createUser(
+                        "name", "login", "password", "repeatPassword"));
     }
 
     @Test
@@ -70,8 +71,8 @@ public class UserServiceTest {
     public void updateLarge() throws DataBaseException, ValidateException {
         Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
                 Mockito.anyString(), Mockito.anyString())).thenReturn(1);
-        assertEquals(1, userService.updateUser(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString()));
+        assertEquals(1, userService.updateUser(23L,
+                "newNAme", "newRole"));
     }
 
 //    @Test

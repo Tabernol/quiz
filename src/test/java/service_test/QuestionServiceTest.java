@@ -43,7 +43,7 @@ public class QuestionServiceTest {
     @Test
     public void addQuestionAddTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepo.createQuestion(Mockito.anyLong(), Mockito.anyString())).thenReturn(1);
-        int i = questionService.addQuestion(Mockito.anyLong(), Mockito.anyString());
+        int i = questionService.addQuestion(1234123L, "newText");
         assertEquals(1, i);
 
     }
@@ -58,7 +58,7 @@ public class QuestionServiceTest {
     @Test
     public void updateQuestionTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepo.updateQuestion(Mockito.anyString(), Mockito.anyLong())).thenReturn(12);
-        int update = questionService.update(Mockito.anyString(), Mockito.anyLong());
+        int update = questionService.update("newText", 34L);
         assertEquals(12, update);
     }
 }

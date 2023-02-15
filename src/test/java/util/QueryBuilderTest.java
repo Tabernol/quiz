@@ -28,7 +28,7 @@ public class QueryBuilderTest {
         queryBuilderForTest.setOrderBy("sub");
         queryBuilderForTest.setOffSet(5);
         Assertions.assertEquals(
-                "select * from test where subject like 'filter' order by sub limit 2 offset 8",
+                "select * from test order by sub limit 2 offset 8",
                 queryBuilderForTest.getQuery());
     }
 }

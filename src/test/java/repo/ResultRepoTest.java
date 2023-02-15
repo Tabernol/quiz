@@ -1,6 +1,7 @@
 package repo;
 
 import connection.MyDataSource;
+import dto.ResultDto;
 import exeptions.DataBaseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ResultRepoTest {
     @Mock
@@ -91,5 +93,27 @@ public class ResultRepoTest {
         }
     }
 
+    @Test
+    public void getAllResultTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenReturn(false);
+            Assertions.assertEquals(new ArrayList<ResultDto>(), resultRepo.getAllResult(12L));
+        }
+    }
+
+    @Test
+    public void getAllResultThrowEx() throws SQLException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class,
+                    () -> resultRepo.getAllResult(12L));
+        }
+    }
 
 }

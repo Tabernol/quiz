@@ -30,8 +30,8 @@ public class ValidatorServiceTest {
     @Test
     public void isLoginExist() throws ValidateException {
         Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        Assertions.assertEquals(true, validatorService.isLoginExist(Mockito.anyBoolean()));
+      //  Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
+        Assertions.assertEquals(true, validatorService.isLoginExist(true));
         // Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
     }
 
@@ -57,7 +57,7 @@ public class ValidatorServiceTest {
     public void validateFieldUserInputTest() throws ValidateException {
         Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
         Assertions.assertDoesNotThrow(
-                ()->validatorService.validateFieldsUser(Mockito.anyString(), Mockito.anyString(), Mockito.anyString()));
+                ()->validatorService.validateFieldsUser("name", "login", "passwordHash"));
     }
 }
 

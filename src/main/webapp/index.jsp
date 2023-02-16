@@ -57,8 +57,8 @@
 <h1 id="start_message"><fmt:message key="label.start_message"/></h1>
 <br>
 
-<img src="start_page.png" alt="q1" width="256" height="256">
-🠉
+
+<%--<img src="http://localhost:8081/demo_war/My.jpg" width="256" height="256" alt="img"/>--%>
 
 </body>
 </html>

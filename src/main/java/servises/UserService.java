@@ -48,7 +48,7 @@ public class UserService {
 
     public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
         if (role == null) {
-            validatorService.validateUpdateUserName(name);
+            validatorService.validateUpdateUser(name);
             return userRepo.updateUser(id, name);
         } else {
             validatorService.validateUpdateUser(name, role);
@@ -66,15 +66,13 @@ public class UserService {
     }
 
     public boolean blockUnBlockUser(Long userId) throws DataBaseException {
-        if (get(userId).isBlocked()) {
-            userRepo.changeStatus(userId, false);
-        } else {
-            userRepo.changeStatus(userId, true);
-        }
+        boolean status = get(userId).isBlocked();
+        userRepo.changeStatus(userId,!status);
         return get(userId).isBlocked();
     }
 
-    public List<User> getPageUserList(String filter, String order, Integer rows, Integer page) throws DataBaseException {
+    private List<User>
+    getPageUserList(String filter, String order, Integer rows, Integer page) throws DataBaseException {
         QueryFactory queryFactory = new QueryFactory();
         QBuilder qBuilder = (QueryBuilderForUser) queryFactory.getQueryBuilder(MyTable.USER);
         qBuilder.setFilter(filter);
@@ -94,7 +92,8 @@ public class UserService {
         }
     }
 
-    public List<User> nextPage(String filter, String order, String rows, String page) throws DataBaseException {
+    public List<User> nextPage(String filter, String order, String rows, String page)
+            throws DataBaseException {
         return getPageUserList(filter, order, Integer.valueOf(rows), Integer.valueOf(page));
     }
 
@@ -102,5 +101,16 @@ public class UserService {
         Integer count = getCountUsers(status);
         Integer rowsOnPage = Integer.valueOf(rows);
         return count % rowsOnPage == 0 ? count / rowsOnPage : count / rowsOnPage + 1;
+    }
+
+    public boolean isCorrectPassword(Long userId, String password) throws DataBaseException, ValidateException {
+        try {
+            String passwordInDataBase = get(userId).getPassword();
+            return PasswordHashingService.validatePassword(password, passwordInDataBase);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new ValidateException("Password is not the same " + e);
+        } catch (DataBaseException e) {
+            throw new DataBaseException("Cannot find user in DB " + e);
+        }
     }
 }

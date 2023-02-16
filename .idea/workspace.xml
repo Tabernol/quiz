@@ -9,24 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="refactor timer. Add log to GET command">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add, refactor test and process create user">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/tacx.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AuthorizationFilterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/MyPdfWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/MyPdfWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/repo/ResultRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/ResultRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/UserRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/UserRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/EditProfileTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/EditUserTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/LogoutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/get/LogoutTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/ProfileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/get/ProfileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/util/QueryBuilderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/QueryBuilderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,39 +87,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Max/IdeaProjects/PrepereProject/startCommand&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.40229884&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "ToolWindowRun.ShowToolbar": "false",
+    "WebServerToolWindowFactoryState": "false",
+    "js.last.introduce.type": "LET",
+    "last_opened_file_path": "C:/Users/Max/IdeaProjects/PrepereProject/startCommand",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.40229884",
+    "settings.editor.selected.configurable": "Docker"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\image" />
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp" />
+      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\image" />
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\static" />
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF" />
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF\view" />
-      <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\js" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="repo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in startCommand">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
     <configuration name="All in startCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <option name="PACKAGE_NAME" value="" />
@@ -131,7 +131,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuestionServiceTest.updateQuestionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.isCorrectPassword" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
@@ -140,30 +140,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.QuestionServiceTest" />
-      <option name="METHOD_NAME" value="updateQuestionTest" />
+      <option name="MAIN_CLASS_NAME" value="service_test.UserServiceTest" />
+      <option name="METHOD_NAME" value="isCorrectPassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestServiceTest.updateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service_test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.TestServiceTest" />
-      <option name="METHOD_NAME" value="updateTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ValidatorServiceTest.isLoginExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ValidatorServiceTest.validateUpdateUser1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
@@ -173,13 +157,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="service_test" />
       <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
-      <option name="METHOD_NAME" value="isLoginExist" />
+      <option name="METHOD_NAME" value="validateUpdateUser1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ValidatorServiceTest.validateFieldUserInputTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ValidatorServiceTest.validateUpdateUser2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
@@ -189,7 +173,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="service_test" />
       <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
-      <option name="METHOD_NAME" value="validateFieldUserInputTest" />
+      <option name="METHOD_NAME" value="validateUpdateUser2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidatorServiceTest.validateUpdateUserName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service_test" />
+      <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
+      <option name="METHOD_NAME" value="validateUpdateUserName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidatorServiceTest.validateUpdateUserName2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service_test" />
+      <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
+      <option name="METHOD_NAME" value="validateUpdateUserName2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -283,20 +299,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.QuestionServiceTest.updateQuestionTest" />
-      <item itemvalue="JUnit.TestServiceTest.updateTest" />
-      <item itemvalue="JUnit.ValidatorServiceTest.validateFieldUserInputTest" />
-      <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
+      <item itemvalue="JUnit.UserServiceTest.isCorrectPassword" />
+      <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUser1" />
+      <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUser2" />
+      <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUserName" />
+      <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUserName2" />
       <item itemvalue="JUnit.All in startCommand" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUser2" />
+        <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUser1" />
+        <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUserName" />
         <item itemvalue="JUnit.All in startCommand" />
-        <item itemvalue="JUnit.QuestionServiceTest.updateQuestionTest" />
-        <item itemvalue="JUnit.TestServiceTest.updateTest" />
-        <item itemvalue="JUnit.ValidatorServiceTest.validateFieldUserInputTest" />
-        <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
+        <item itemvalue="JUnit.ValidatorServiceTest.validateUpdateUserName2" />
       </list>
     </recent_temporary>
   </component>
@@ -369,7 +386,10 @@
       <workItem from="1676238679557" duration="5917000" />
       <workItem from="1676250691584" duration="5025000" />
       <workItem from="1676328965674" duration="6281000" />
-      <workItem from="1676378119715" duration="6192000" />
+      <workItem from="1676378119715" duration="8694000" />
+      <workItem from="1676426822467" duration="641000" />
+      <workItem from="1676504958427" duration="9293000" />
+      <workItem from="1676541076063" duration="9732000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1671657466632</created>
@@ -707,7 +727,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676335170587</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Add, refactor test and process create user">
+      <created>1676422834358</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1676422834358</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -725,7 +752,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="24" />
     <MESSAGE value="25" />
     <MESSAGE value="26" />
     <MESSAGE value="Timer work" />
@@ -750,7 +776,8 @@
     <MESSAGE value="refactor, remove command AllUser" />
     <MESSAGE value="refactor SecurityFilter, add AccessUtil" />
     <MESSAGE value="refactor timer. Add log to GET command" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor timer. Add log to GET command" />
+    <MESSAGE value="Add, refactor test and process create user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add, refactor test and process create user" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -788,7 +815,7 @@
     <SUITE FILE_PATH="coverage/startCommand$AllUserTest_allUsers.ic" NAME="AllUserTest.allUsers Coverage Results" MODIFIED="1674077880846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>servlets.get.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1676420275507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1676568000757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest_findAllByQuestionIdTest.ic" NAME="AnswerServiceTest.findAllByQuestionIdTest Coverage Results" MODIFIED="1673392408583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>
     </SUITE>

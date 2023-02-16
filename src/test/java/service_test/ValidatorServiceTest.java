@@ -30,7 +30,7 @@ public class ValidatorServiceTest {
     @Test
     public void isLoginExist() throws ValidateException {
         Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-      //  Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
+        //  Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
         Assertions.assertEquals(true, validatorService.isLoginExist(true));
         // Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
     }
@@ -50,14 +50,31 @@ public class ValidatorServiceTest {
     @Test
     public void validateTextTest() throws ValidateException {
         Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        Assertions.assertDoesNotThrow(()->validatorService.validateText(Mockito.anyString()));
+        Assertions.assertDoesNotThrow(() -> validatorService.validateText(Mockito.anyString()));
     }
 
     @Test
     public void validateFieldUserInputTest() throws ValidateException {
         Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
         Assertions.assertDoesNotThrow(
-                ()->validatorService.validateFieldsUser("name", "login", "passwordHash"));
+                () -> validatorService.validateFieldsUser("name", "login", "passwordHash"));
     }
+
+    @Test
+    public void validateUpdateUser1() throws ValidateException {
+        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(),
+                Mockito.anyString())).thenReturn(true);
+        Assertions.assertDoesNotThrow(() -> validatorService.validateUpdateUser(Mockito.anyString()));
+    }
+
+//    @Test
+//    public void validateUpdateUser2() throws ValidateException {
+//        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(),
+//                Mockito.anyString())).thenReturn(true);
+//        Mockito.when(mockDataValidator.validateForName(Mockito.anyString())).thenReturn(true);
+//        Assertions.assertDoesNotThrow(() ->
+//                validatorService.validateUpdateUser(Mockito.anyString(), Mockito.anyString()));
+//    }
+
 }
 

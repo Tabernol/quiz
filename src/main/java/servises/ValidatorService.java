@@ -37,8 +37,8 @@ public class ValidatorService {
         return dataValidator.isValid(!isExist, "This login already exist");
     }
 
-    public void validateText(String text) throws ValidateException {
-        dataValidator.isValid(dataValidator.validateForNotLongString(text), "Text answer is too long");
+    public boolean validateText(String text) throws ValidateException {
+        return dataValidator.isValid(dataValidator.validateForNotLongString(text), "Text answer is too long");
     }
 
     public void validateFieldsUser(String name, String login, String passwordHash) throws ValidateException {
@@ -50,8 +50,8 @@ public class ValidatorService {
                 "password is invalid must 4-10 symbols");
     }
 
-    public boolean validateUpdateUserName(String name) throws ValidateException {
-        return dataValidator.isValid(dataValidator.validateForName(name),
+    public void validateUpdateUser(String name) throws ValidateException {
+        dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
     }
 

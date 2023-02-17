@@ -9,21 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add, refactor test and process create user">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add, some test and refactor">
       <change afterPath="$PROJECT_DIR$/src/main/webapp/tacx.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AuthorizationFilterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/ResultRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/ResultRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,25 +77,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "js.last.introduce.type": "LET",
-    "last_opened_file_path": "C:/Users/Max/IdeaProjects/PrepereProject/startCommand",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.40229884",
-    "settings.editor.selected.configurable": "Docker"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Max/IdeaProjects/PrepereProject/startCommand&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40229884&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Docker&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\image" />
@@ -389,14 +379,8 @@
       <workItem from="1676378119715" duration="8694000" />
       <workItem from="1676426822467" duration="641000" />
       <workItem from="1676504958427" duration="9293000" />
-      <workItem from="1676541076063" duration="9732000" />
-    </task>
-    <task id="LOCAL-00001" summary="1">
-      <created>1671657466632</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1671657466632</updated>
+      <workItem from="1676541076063" duration="14320000" />
+      <workItem from="1676590311357" duration="610000" />
     </task>
     <task id="LOCAL-00002" summary="2">
       <created>1671835492999</created>
@@ -734,7 +718,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676422834358</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Add, some test and refactor">
+      <created>1676568814117</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1676568814118</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -752,7 +743,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="25" />
     <MESSAGE value="26" />
     <MESSAGE value="Timer work" />
     <MESSAGE value="drop down list add" />
@@ -777,7 +767,8 @@
     <MESSAGE value="refactor SecurityFilter, add AccessUtil" />
     <MESSAGE value="refactor timer. Add log to GET command" />
     <MESSAGE value="Add, refactor test and process create user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add, refactor test and process create user" />
+    <MESSAGE value="Add, some test and refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add, some test and refactor" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -49,14 +49,15 @@ public class AnswerServiceTest {
         assertEquals(answers, answerService.getAnswers(1L));
     }
 
-//    @Test
-//    public void createAnswerServiceTest() throws DataBaseException, ValidateException {
-//        Mockito.when(mockValidatorService.validateText(Mockito.anyString())).thenReturn(true);
-//        Mockito.when(mockAnswerRepo.createAnswer(Mockito.anyLong(),
-//                Mockito.anyString(), Mockito.anyBoolean())).thenReturn(12);
-//
-//        assertEquals(12, answerService.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean()));
-//    }
+    @Test
+    public void createAnswerServiceTest() throws DataBaseException, ValidateException {
+        Mockito.when(mockValidatorService.validateText(Mockito.anyString())).thenReturn(true);
+        Mockito.when(mockAnswerRepo.createAnswer(Mockito.anyLong(),
+                Mockito.anyString(), Mockito.anyBoolean())).thenReturn(12);
+
+        assertEquals(12, answerService.createAnswer(
+                Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean()));
+    }
 
     @Test
     public void deleteAnswerTest() throws DataBaseException {

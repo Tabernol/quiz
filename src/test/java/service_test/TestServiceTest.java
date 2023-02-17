@@ -2,6 +2,7 @@ package service_test;
 
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -71,8 +72,8 @@ public class TestServiceTest {
     public void updateTest() throws DataBaseException, ValidateException {
         Mockito.when(mockTestRepo.updateInfoTest(Mockito.anyLong(),
                 Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(1);
-        assertEquals(1, testService.update(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()));
+        assertEquals(1, testService.update(12L,
+                "newName", "newSubject", 45, 26));
     }
 
     @Test
@@ -82,17 +83,17 @@ public class TestServiceTest {
     }
 
 
-    @Test
-    public void getFilterTests() throws DataBaseException {
-        List<models.Test> allTests = new ArrayList<>();
-        List<models.Test> subjectTest = new ArrayList<>();
+//    @Test
+//    public void getFilterTests() throws DataBaseException {
+//        List<models.Test> allTests = new ArrayList<>();
+//        List<models.Test> subjectTest = new ArrayList<>();
 //        Mockito.when(mockTestRepo
 //                .getAll( Mockito.anyString(), Mockito.anyInt())).thenReturn(allTests);//Must think about
 //        Mockito.when(mockTestRepo
 //                .getFilterTest(Mockito.anyString(), Mockito.anyString(), Mockito.anyInt())).thenReturn(subjectTest);
 //        assertEquals(allTests, testService.getFilterTests("all", Mockito.anyString(), Mockito.anyInt()));
 //        assertEquals(subjectTest, testService.getFilterTests(Mockito.anyString(), Mockito.anyString(), Mockito.anyInt()));
-    }
+//    }
 
     @Test
     public void amountTests() throws DataBaseException {
@@ -104,6 +105,13 @@ public class TestServiceTest {
         assertEquals(1, testService.countPages(Mockito.anyString(), 3));
         assertEquals(3, testService.countPages(Mockito.anyString(), 1));
         assertEquals(2, testService.countPages(Mockito.anyString(), 2));
+    }
 
+    @Test
+    public void getPageTestList() throws DataBaseException {
+        List<models.Test> testList = new ArrayList<>();
+        Mockito.when(mockTestRepo.nextPage(Mockito.anyString())).thenReturn(testList);
+        Assertions.assertEquals(testList,
+                testService.getPageTestList("Sub", "order by ...", 2,2));
     }
 }

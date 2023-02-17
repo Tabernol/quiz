@@ -23,6 +23,38 @@
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
+<div class="d-flex flex-row justify-content-center">
+    <form>
+        <div class="input-group">
+            <div class="p-2 bd-highlight">
+                <select class="form-select" name="status">
+                    <option value="all"><c:out value="all"/></option>
+                    <option value="true"><c:out value="blocked"/></option>
+                    <option value="false"><c:out value="unblocked"/></option>
+                </select>
+            </div>
+            <div class="p-2 bd-highlight">
+                <select class="form-select" name="rows">
+                    <option value="2"><c:out value="2"/></option>
+                    <option value="5"><c:out value="5"/></option>
+                    <option value="10"><c:out value="10"/></option>
+                    <option value="20"><c:out value="20"/></option>
+                </select>
+            </div>
+            <div class="p-2 bd-highlight">
+                <select class="form-select" name="order">
+                    <option value="name asc"><fmt:message key="sort.name.asc"/></option>
+                    <option value="name desc"><fmt:message key="sort.name.desc"/></option>
+                    <option value="login asc"><fmt:message key="sort.difficult.asc"/></option>
+                    <option value="login desc"><fmt:message key="sort.difficult.desc"/></option>
+                </select>
+            </div>
+            <div class="p-2 bd-highlight">
+                <input class="btn btn-primary" type="submit" value="<fmt:message key="button.filter"/>">
+            </div>
+        </div>
+    </form>
+</div>
 
 <table class="table align-middle mb-0 w-auto bg-white">
     <thead class="bg-secondary">
@@ -80,6 +112,22 @@
         </c:forEach>
     </tbody>
 </table>
+
+<div class="center">
+    <nav aria-label="pagination-sm">
+        <ul class="pagination pagination-sm">
+            <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+                <li class="page-item"><a class="page-link"
+                                         href="<c:url value='/filter_users'>
+                        <c:param name="page" value="${i}"/>
+                    </c:url>"><c:out value="${i}"/></a></li>
+            </c:forEach>
+            <%--            <li class="page-item active" aria-current="page">--%>
+            <%--                <span class="page-link">1</span>--%>
+            <%--            </li>--%>
+        </ul>
+    </nav>
+</div>
 <br>
 <br>
 <br>

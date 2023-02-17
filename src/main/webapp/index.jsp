@@ -48,6 +48,8 @@
     <script>
         <%@include file="/static/js/general.js"%>
     </script>
+
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
@@ -56,6 +58,7 @@
 <br>
 
 
+<%--<img src="http://localhost:8081/demo_war/My.jpg" width="256" height="256" alt="img"/>--%>
 
 </body>
 </html>

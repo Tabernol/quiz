@@ -40,7 +40,6 @@ public class FinishTest implements RequestHandler {
         } catch (DataBaseException e) {
             logger.warn("User with id " + userId + " finish test with id " + testId + " has trouble finish");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
-            throw new RuntimeException(e);
         }
 
 

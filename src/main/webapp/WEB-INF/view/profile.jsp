@@ -25,6 +25,7 @@
 
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
+
 <%--=========================--%>
 <div class="offcanvas offcanvas-start" id="forTest">
     <div class="offcanvas-header">
@@ -92,6 +93,7 @@
 <%--==================================--%>
 <div class="d-flex flex-row justify-content-center">
     <form>
+        <input type="hidden" name="user_id" value="${requestScope.user_id}">
         <div class="input-group">
             <div class="p-2 bd-highlight">
                 <select class="form-select" name="sub">
@@ -130,6 +132,7 @@
 <table class="table align-middle mb-0 w-auto bg-white">
     <div class="d-flex justify-content-around">
         <form action="download">
+            <input type="hidden" name="user_id" value="${requestScope.user_id}">
             <button type="submit"
                     class="btn btn-primary"><fmt:message key="button.download"/>
             </button>
@@ -165,6 +168,7 @@
                 <li class="page-item"><a class="page-link"
                                          href="<c:url value='/filter_result'>
                         <c:param name="page" value="${i}"/>
+                        <c:param name="user_id" value="${requestScope.user_id}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
             </c:forEach>
             <%--            <li class="page-item active" aria-current="page">--%>

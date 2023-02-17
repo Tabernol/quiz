@@ -1,6 +1,6 @@
 package command.post;
 
-import command.get.AllUser;
+
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.User;
@@ -31,7 +31,7 @@ public class BlockUnblockUser implements RequestHandler {
         try {
             boolean block = userService.blockUnBlockUser(userId);
             logger.info("User with id " + userId + "is block " + block);
-            resp.sendRedirect(req.getContextPath() + "/users");
+            resp.sendRedirect(req.getContextPath() + "/filter_users");
         } catch (DataBaseException e) {
             logger.warn("User with id " + userId + "has not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);

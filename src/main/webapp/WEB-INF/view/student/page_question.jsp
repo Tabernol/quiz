@@ -70,8 +70,8 @@
             document.getElementById('id_question').value,
             document.getElementById('number_question').value,
             document.getElementsByName('res'));
-
         timer(${requestScope.duration})
+        console.log("=============start=================")
     }
 </script>
 

@@ -54,24 +54,4 @@ public class MyPdfWriter {
         }
         return table;
     }
-
-//    private static void addCustomRows(PdfPTable table)
-//            throws URISyntaxException, BadElementException, IOException {
-//        //   Path path = Paths.get(ClassLoader.getSystemResource("Java_logo.png").toURI());
-//        //  Image img = Image.getInstance(path.toAbsolutePath().toString());
-//        //  img.scalePercent(10);
-//
-////        PdfPCell imageCell = new PdfPCell(img);
-////        table.addCell(imageCell);
-//
-//        PdfPCell horizontalAlignCell = new PdfPCell(new Phrase("row 2, col 2"));
-//        horizontalAlignCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        table.addCell(horizontalAlignCell);
-//
-//        PdfPCell verticalAlignCell = new PdfPCell(new Phrase("row 2, col 3"));
-//        verticalAlignCell.setVerticalAlignment(Element.ALIGN_BOTTOM);
-//        table.addCell(verticalAlignCell);
-//    }
-
-
 }

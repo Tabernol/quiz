@@ -16,14 +16,14 @@ public class QueryBuilderForTest implements QBuilder {
         if (name.equals("all")) {
             this.filter = "";
         } else {
-            this.filter = "where subject like '" + name + "'";
+            this.filter = "where subject like '" + name + "' ";
         }
 
     }
 
     @Override
     public void setOrderBy(String column) {
-        this.order = " order by " + column;
+        this.order = "order by " + column;
 
     }
 

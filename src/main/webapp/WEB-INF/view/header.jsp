@@ -50,7 +50,7 @@
                 <c:if test="${sessionScope.role == 'admin'}">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                           href="<c:url value='/users' />"><fmt:message key="label.users"/></a>
+                           href="<c:url value='/filter_users' />"><fmt:message key="label.users"/></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"

@@ -14,7 +14,7 @@ public class Logout implements RequestHandler {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userId = (String) req.getSession().getAttribute("user_id");
+        Long userId = (Long) req.getSession().getAttribute("user_id");
         logger.info("User with Id " + userId + " logout");
         req.getSession().invalidate();
         req.getRequestDispatcher("/").forward(req, resp);

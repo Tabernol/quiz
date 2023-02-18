@@ -8,6 +8,7 @@ import connection.MyDataSource;
 
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,10 +36,15 @@ import org.apache.logging.log4j.LogManager;
         PathConst.START_TEST, PathConst.RESULT_ANSWER, PathConst.DOWNLOAD,
         PathConst.GET_INFO_QUESTION, PathConst.FINISH_TEST, PathConst.FINISH,
 
-        PathConst.PRG,
+        PathConst.PRG, PathConst.UPLOAD_IMAGE
 
 
 })
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+        maxFileSize = 1024 * 1024 * 10,      // 10 MB
+        maxRequestSize = 1024 * 1024 * 100   // 100 MB
+)
 public class AppControllerServlet extends HttpServlet {
 
     static final Logger log = LogManager.getLogger(AppControllerServlet.class);

@@ -12,6 +12,7 @@ public class AccessUtil {
     public static final Set<String> guestAccess = new HashSet<>();
 
     static {
+//        for admin
         adminAccess.add(PathConst.FILTER_TESTS);
         adminAccess.add(PathConst.FILTER_USERS);
         adminAccess.add(PathConst.FILTER_RESULT);
@@ -39,7 +40,9 @@ public class AccessUtil {
         adminAccess.add(PathConst.DOWNLOAD);
 
         adminAccess.add(PathConst.PRG);
+        adminAccess.add(PathConst.UPLOAD_IMAGE);
 //        =====================================================
+//        for student
         studentAccess.add(PathConst.REGISTRATION);
         studentAccess.add(PathConst.LOGIN_FORM);
         studentAccess.add(PathConst.LOGOUT);
@@ -61,6 +64,7 @@ public class AccessUtil {
 
         studentAccess.add(PathConst.PRG);
 //        =======================================
+//        for guest
         guestAccess.add(PathConst.LOGIN_FORM);
         guestAccess.add(PathConst.LANGUAGE);
         guestAccess.add(PathConst.REGISTRATION);

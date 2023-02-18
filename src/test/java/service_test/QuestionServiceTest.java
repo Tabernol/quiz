@@ -43,7 +43,7 @@ public class QuestionServiceTest {
     @Test
     public void addQuestionAddTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepo.createQuestion(Mockito.anyLong(), Mockito.anyString())).thenReturn(1);
-        int i = questionService.addQuestion(1234123L, "newText");
+        int i = questionService.addQuestion(Mockito.anyLong(), Mockito.anyString());
         assertEquals(1, i);
 
     }

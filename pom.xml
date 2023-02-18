@@ -133,11 +133,18 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.56</version>
         </dependency>
-
+<!--using for reCaptcha-->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
             <version>1.0.2</version>
+        </dependency>
+
+<!--        for load to cloudinary-->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.31.0</version>
         </dependency>
 
     </dependencies>

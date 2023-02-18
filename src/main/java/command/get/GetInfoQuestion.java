@@ -84,6 +84,7 @@ public class GetInfoQuestion implements RequestHandler {
                 answers = answerService.getAnswers(nextIdQuestion);
                 Collections.shuffle(answers);
                 String text = questions.get(numberQuestion).getText();
+                String urlImage = questions.get(numberQuestion).getUrlImage();
 
                 int progress = numberQuestion * 100 / size;
                 System.out.println("PROGRESS = " + progress);
@@ -101,6 +102,8 @@ public class GetInfoQuestion implements RequestHandler {
                                 "name=\"id_question\" value=\"" + nextIdQuestion + "\">\n" +
                                 "    <input id=\"number_question\" type=\"hidden\" " +
                                 "name=\"number_question\" value=\"" + numberQuestion + "\">");
+                writer.print("<img src=\"" + urlImage + "\"" +
+                        " width=\"256\" height=\"256\" alt=\"img\"/>");
                 writer.print(
                         "<div class=\"row d-flex justify-content-center align-items-center h-3\">\n" +
                                 "    <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n" +

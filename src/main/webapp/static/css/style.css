@@ -6,15 +6,13 @@
 }
 
 
-
-
 .right {float: right;}
-.center {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-
+/*.center {*/
+/*    display: block;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    width: 50%;*/
+/*}*/
 .checkbox-xl .form-check-input {
     top: 1.2rem;
     scale: 1.7;

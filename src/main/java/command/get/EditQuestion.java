@@ -42,6 +42,7 @@ public class EditQuestion implements RequestHandler {
             answers = answerService.getAnswers(Long.valueOf(questionId));
             req.setAttribute("answers", answers);
             req.setAttribute("question", question);
+            System.out.println("URL = "+question.getUrlImage());
 
             logger.info("Question with ID " + questionId + "has updated");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);

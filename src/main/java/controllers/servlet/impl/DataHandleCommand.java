@@ -25,7 +25,6 @@ public class DataHandleCommand {
         COMMANDS.put("/edit_user", new EditUserPost());
         COMMANDS.put("/result_answer", new ResultAnswer());
         COMMANDS.put("/block", new BlockUnblockUser());
-
-
+        COMMANDS.put("/upload_image", new UpLoadImage());
     }
 }

@@ -37,7 +37,7 @@ public class TestService {
 
     public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page) throws DataBaseException {
         QueryFactory queryFactory = new QueryFactory();
-        QBuilder qBuilder = (QueryBuilderForTest) queryFactory.getQueryBuilder(MyTable.TEST);
+        QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.TEST);
         qBuilder.setFilter(subject);
         qBuilder.setOrderBy(order);
         qBuilder.setLimit(rows);

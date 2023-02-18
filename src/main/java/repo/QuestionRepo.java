@@ -40,6 +40,7 @@ public class QuestionRepo {
                 question.setId(resultSet.getLong("id"));
                 question.setTestId(resultSet.getLong("test_id"));
                 question.setText(resultSet.getString("q_text"));
+                question.setUrlImage(resultSet.getString("url"));
                 questions.add(question);
             }
             resultSet.close();
@@ -69,6 +70,7 @@ public class QuestionRepo {
                 question.setId(resultSet.getLong("id"));
                 question.setTestId(resultSet.getLong("test_id"));
                 question.setText(resultSet.getString("q_text"));
+                question.setUrlImage(resultSet.getString("url"));
                 // question.setAnswerOptions(answerRepo.getAnswersByQuestionId(id));
             }
             resultSet.close();
@@ -138,6 +140,19 @@ public class QuestionRepo {
         } catch (SQLException e) {
             logger.warn("Can not create question by id");
             throw new DataBaseException("Can not create question by id" + e.getMessage(), e);
+        }
+    }
+
+    public int updateImageQuestion(String url, Long id) throws DataBaseException {
+        String sql = "update question set url = ? where id = ? ";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, url);
+            pst.setLong(2, id);
+            return pst.executeUpdate();
+        } catch (SQLException e) {
+            logger.warn("Can' update image question by id");
+            throw new DataBaseException("Can' update image question by id" + e.getMessage(), e);
         }
     }
 }

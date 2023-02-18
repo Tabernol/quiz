@@ -74,7 +74,7 @@ public class UserService {
     private List<User>
     getPageUserList(String filter, String order, Integer rows, Integer page) throws DataBaseException {
         QueryFactory queryFactory = new QueryFactory();
-        QBuilder qBuilder = (QueryBuilderForUser) queryFactory.getQueryBuilder(MyTable.USER);
+        QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.USER);
         qBuilder.setFilter(filter);
         qBuilder.setOrderBy(order);
         qBuilder.setLimit(rows);

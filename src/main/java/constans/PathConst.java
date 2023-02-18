@@ -49,5 +49,7 @@ public interface PathConst {
     String DELETE_QUESTION = "/delete_question";
     String DELETE_ANSWER = "/delete_answer";
 
+    String UPLOAD_IMAGE = "/upload_image";
+
 
 }

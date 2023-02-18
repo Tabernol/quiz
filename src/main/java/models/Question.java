@@ -6,6 +6,16 @@ public class Question {
     private long id;
     private long testId;
     private String text;
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    private String urlImage;
     //private List<Answer> answerOptions;
 
     public Question() {

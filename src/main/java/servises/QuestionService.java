@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class QuestionService {
     private QuestionRepo questionRepo;
-   private ValidatorService validatorService;
+    private ValidatorService validatorService;
 
     public QuestionService(QuestionRepo questionRepo, ValidatorService validatorService) {
         this.questionRepo = questionRepo;
@@ -21,6 +21,7 @@ public class QuestionService {
 
     /**
      * The method takes input questionId and calls to repository layer
+     *
      * @param id is unique number Test is database
      * @return List of Question by TestId
      * @throws DataBaseException
@@ -31,8 +32,9 @@ public class QuestionService {
 
     /**
      * The method takes input, validates it, and calls the repository layer to create a new question
+     *
      * @param testId is unique number Test in database
-     * @param text is text of new Question
+     * @param text   is text of new Question
      * @return 1 if question has added
      * @throws DataBaseException
      * @throws ValidateException
@@ -44,6 +46,7 @@ public class QuestionService {
 
     /**
      * The method takes questionId, and calls the repository layer to delete question
+     *
      * @param id is unique number Question in database
      * @return 1 if question has deleted
      * @throws DataBaseException
@@ -54,6 +57,7 @@ public class QuestionService {
 
     /**
      * The method takes questionId, and calls the repository layer to get question by id
+     *
      * @param id s unique number Question in database
      * @return Question by
      * @throws DataBaseException
@@ -64,8 +68,9 @@ public class QuestionService {
 
     /**
      * The method takes input, validates it, and calls the repository layer to update this question
+     *
      * @param newText is new text of question
-     * @param id id s unique number Question in database
+     * @param id      id s unique number Question in database
      * @return 1 if question has updated
      * @throws DataBaseException
      * @throws ValidateException
@@ -73,5 +78,9 @@ public class QuestionService {
     public int update(String newText, Long id) throws DataBaseException, ValidateException {
         validatorService.validateText(newText);
         return questionRepo.updateQuestion(newText, id);
+    }
+
+    public int updateImage(String url, Long id) throws DataBaseException, ValidateException {
+        return questionRepo.updateImageQuestion(url, id);
     }
 }

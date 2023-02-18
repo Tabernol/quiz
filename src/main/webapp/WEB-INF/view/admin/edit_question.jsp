@@ -27,7 +27,7 @@
 <br>
 <div class="offcanvas offcanvas-start" id="forAddQuestion">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title"><fmt:message key="button.edit.question"/> </h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.edit.question"/></h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -50,11 +50,11 @@
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddQuestion">
     <fmt:message key="button.edit.question"/>
 </button>
-<%--+++==================================================--%>
+<%--==================================================--%>
 
 <div class="offcanvas offcanvas-start" id="forAddAnswer">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title"><fmt:message key="button.add.answer"/> </h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.add.answer"/></h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -78,17 +78,29 @@
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddAnswer">
     <fmt:message key="button.add.answer"/>
 </button>
+<br>
+<%--====================================================--%>
+<div class="offcanvas offcanvas-start" id="forAddImage">
+    <div class="offcanvas-header">
+        <h1 class="offcanvas-title">EDIT IMAGE </h1>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form method="post" action="upload_image" enctype="multipart/form-data">
+            <input type="hidden" name="page" value="${requestScope.page}">
+            <input type="hidden" name="test_id" value="${requestScope.test_id}">
+            <input type="hidden" name="question_id" value="${requestScope.question.id}">
+            <input type="file" name="file"/>
+            <input type="submit" value="Upload"/>
+        </form>
+    </div>
+</div>
 
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddImage">
+    EDIT IMAGE
+</button>
 
-<%--<form method="post" action="edit_question">--%>
-<%--    <input type="hidden" name="page" value="${requestScope.page}">--%>
-<%--    <input type="hidden" name="test_id" value="${requestScope.test_id}">--%>
-<%--    <input type="hidden" name="question_id" value="${question.id}">--%>
-<%--    <fmt:message key="table.head.text.of.question"/>--%>
-<%--    <input type="text" name="text" value="${requestScope.question.text}"><br>--%>
-<%--    <input class="button" type="submit" value="<fmt:message key="button.edit"/>">--%>
-<%--    <c:out value="${requestScope.message}"/>--%>
-<%--</form>--%>
+<%--=========================================--%>
 
 <form action="edit_test">
     <input type="hidden" name="page" value="${requestScope.page}">
@@ -97,13 +109,13 @@
 </form>
 
 
-<%--<div class="form-outline">--%>
-<%--    <textarea class="form-control" id="textAreaExample" rows="4" ></textarea>--%>
-<%--    <label class="form-label" for="textAreaExample"></label>--%>
-<%--</div>--%>
-
 <c:out value="${requestScope.message_answer}"/>
 <c:out value="${requestScope.message}"/>
+
+
+<c:if test="${requestScope.question.urlImage!= null}">
+    <img src="${requestScope.question.urlImage}" width="256" height="256" alt="img" class="center"/>
+</c:if>
 
 <div class="row d-flex justify-content-center align-items-center h-3">
     <div class="col-6 col-md-6 col-lg-6 col-xl-6">
@@ -143,18 +155,6 @@
     </tbody>
 </table>
 
-
-<%--<form method="post" action="add_answer">--%>
-<%--    <input type="hidden" name="page" value="${requestScope.page}">--%>
-<%--    <input type="hidden" name="test_id" value="${requestScope.test_id}">--%>
-<%--    <input type="hidden" name="question_id" value="${requestScope.question.id}">--%>
-<%--    <input type="text" required placeholder="<fmt:message key="table.head.text.of.answer"/>"--%>
-<%--           name="text" value="${requestScope.too_long_answer}"><br>--%>
-<%--    <input type="radio" name="result" value="true"><fmt:message key="select.option.true"/> <br>--%>
-<%--    <input type="radio" name="result" value="false"><fmt:message key="select.option.false"/> <br>--%>
-<%--    <input class="button" type="submit" value="<fmt:message key="button.add.answer"/>">--%>
-<%--    <c:out value="${requestScope.message_answer}"/>--%>
-<%--</form>--%>
 
 </body>
 </html>

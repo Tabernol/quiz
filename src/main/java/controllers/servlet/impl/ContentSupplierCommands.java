@@ -32,11 +32,6 @@ public class ContentSupplierCommands {
         COMMANDS.put("/download", new DownLoad());
         COMMANDS.put("/filter_users", new FilterUsers());
 
-
-        //COMMANDS.put("/next_question", new NextQuestion());
-//        COMMANDS.put("/to_create_test", new ToCreateTest());
-        //        COMMANDS.put("/edit_user", new EditUser());
-//        COMMANDS.put("/users", new AllUser());
     }
 
 

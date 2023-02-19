@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add load image, for question and view in quiz">
-      <change afterPath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add ImageRepo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -381,14 +383,7 @@
       <workItem from="1676590311357" duration="610000" />
       <workItem from="1676724670417" duration="10772000" />
       <workItem from="1676750479831" duration="10959000" />
-      <workItem from="1676806749712" duration="614000" />
-    </task>
-    <task id="LOCAL-00004" summary="4">
-      <created>1672018023781</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1672018023781</updated>
+      <workItem from="1676806749712" duration="2429000" />
     </task>
     <task id="LOCAL-00005" summary="5">
       <created>1672192180977</created>
@@ -726,7 +721,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676763512029</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Add ImageRepo">
+      <created>1676807476156</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1676807476157</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -744,7 +746,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="drop down list add" />
     <MESSAGE value="101" />
     <MESSAGE value="102 Add Right modal" />
     <MESSAGE value="105 add card with answers" />
@@ -769,7 +770,8 @@
     <MESSAGE value="Add, some test and refactor" />
     <MESSAGE value="a little fix with logger" />
     <MESSAGE value="Add load image, for question and view in quiz" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add load image, for question and view in quiz" />
+    <MESSAGE value="Add ImageRepo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ImageRepo" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -103,7 +103,7 @@ public class GetInfoQuestion implements RequestHandler {
                                 "    <input id=\"number_question\" type=\"hidden\" " +
                                 "name=\"number_question\" value=\"" + numberQuestion + "\">");
                 writer.print("<img src=\"" + urlImage + "\"" +
-                        " width=\"256\" height=\"256\" alt=\"img\"/>");
+                        " width=\"256\" height=\"256\" class=\"rounded mx-auto d-block\" alt=\"img\"/>");
                 writer.print(
                         "<div class=\"row d-flex justify-content-center align-items-center h-3\">\n" +
                                 "    <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n" +

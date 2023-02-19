@@ -113,8 +113,8 @@
 <c:out value="${requestScope.message}"/>
 
 
-<c:if test="${requestScope.question.urlImage!= null}">
-    <img src="${requestScope.question.urlImage}" width="256" height="256" alt="img" class="center"/>
+<c:if test="${requestScope.question.urlImage != null}">
+    <img src="${requestScope.question.urlImage}" width="256" height="256" class="rounded mx-auto d-block" alt="...">
 </c:if>
 
 <div class="row d-flex justify-content-center align-items-center h-3">

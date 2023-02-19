@@ -7,12 +7,12 @@
 
 
 .right {float: right;}
-/*.center {*/
-/*    display: block;*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
-/*    width: 50%;*/
-/*}*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 .checkbox-xl .form-check-input {
     top: 1.2rem;
     scale: 1.7;

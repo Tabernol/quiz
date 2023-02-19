@@ -6,6 +6,7 @@ public class Question {
     private long id;
     private long testId;
     private String text;
+    private String urlImage;
 
     public String getUrlImage() {
         return urlImage;
@@ -14,9 +15,6 @@ public class Question {
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
     }
-
-    private String urlImage;
-    //private List<Answer> answerOptions;
 
     public Question() {
     }
@@ -59,7 +57,7 @@ public class Question {
                 "id=" + id +
                 ", testId=" + testId +
                 ", text='" + text + '\'' +
-              //  ", answerOptions=" + answerOptions +
+                //  ", answerOptions=" + answerOptions +
                 '}';
     }
 }

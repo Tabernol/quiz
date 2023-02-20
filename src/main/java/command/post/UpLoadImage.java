@@ -19,19 +19,19 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-//@MultipartConfig(
-//        fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
-//        maxFileSize = 1024 * 1024 * 10,      // 10 MB
-//        maxRequestSize = 1024 * 1024 * 100   // 100 MB
-//)
+/**
+ * UpLoadImage.class is responsible for accept image and passing to service layer to load in cloud
+ */
 public class UpLoadImage implements RequestHandler {
+    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String questionId = req.getParameter("question_id");
         String webInfPath = req.getServletContext().getRealPath("WEB-INF");
 
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+
 
 //        Part file = req.getPart("file");
 //        String contentType = file.getContentType();

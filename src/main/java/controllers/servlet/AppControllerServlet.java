@@ -2,9 +2,8 @@ package controllers.servlet;
 
 
 import constans.PathConst;
-import controllers.servlet.impl.ContentSupplierCommands;
-import controllers.servlet.impl.DataHandleCommand;
-import connection.MyDataSource;
+import controllers.servlet.impl.Commands;
+
 
 
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-//rename edit_user, edit_test because use one url post and get methods
+
 @WebServlet(urlPatterns = {
         PathConst.REGISTRATION, PathConst.LOGIN_FORM, PathConst.LOGOUT, PathConst.LANGUAGE,
 
@@ -37,8 +36,6 @@ import org.apache.logging.log4j.LogManager;
         PathConst.GET_INFO_QUESTION, PathConst.FINISH_TEST, PathConst.FINISH,
 
         PathConst.PRG, PathConst.UPLOAD_IMAGE
-
-
 })
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
@@ -58,7 +55,8 @@ public class AppControllerServlet extends HttpServlet {
                          HttpServletResponse resp)
             throws ServletException, IOException {
         String servletPath = req.getServletPath();
-        ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
+        Commands.GET_COMMANDS.get(servletPath).execute(req, resp);
+       // ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
     }
 
     @Override
@@ -66,7 +64,8 @@ public class AppControllerServlet extends HttpServlet {
                           HttpServletResponse resp)
             throws ServletException, IOException {
         String servletPath = req.getServletPath();
-        DataHandleCommand.COMMANDS.get(servletPath).execute(req, resp);
+        Commands.POST_COMMANDS.get(servletPath).execute(req, resp);
+       // DataHandleCommand.COMMANDS.get(servletPath).execute(req, resp);
     }
 
 

@@ -21,6 +21,8 @@ import java.util.List;
 
 public class EditTest implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditTest.class);
+    TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
 
     @Override
     public void execute(HttpServletRequest req,
@@ -29,8 +31,6 @@ public class EditTest implements RequestHandler {
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
         List<Question> all;
 
         try {
@@ -50,6 +50,5 @@ public class EditTest implements RequestHandler {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
 
         }
-
     }
 }

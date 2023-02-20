@@ -21,10 +21,27 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
+/**
+ * Registration.class is responsible for passing parameters to create a user.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class Registration implements RequestHandler {
 
     private static Logger logger = LogManager.getLogger(Registration.class);
+    UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
 
+    /**
+     * This method is read parameter from request.
+     * It checks the parameter "g-recaptcha-response" and allows registration or not
+     * It calls the service layer to create new User
+     * if DataBaseException or NoSuchAlgorithmException or InvalidKeySpecException
+     * is caught, redirects to error page.
+     * if ValidateException is caught, redirects to the page from which the request was made
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -41,8 +58,6 @@ public class Registration implements RequestHandler {
         boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 
         if(verify){
-            UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
-
             try {
                 int userId = userService.createUser(name, login, password, repeatPassword);
                 User user = userService.get(userId);

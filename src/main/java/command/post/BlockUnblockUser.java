@@ -16,16 +16,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * BlockUnblockUser.class is allowed only for admin.
+ * it keeps responsibility for block and block user
+ */
 public class BlockUnblockUser implements RequestHandler {
 
     private static Logger logger = LogManager.getLogger(BlockUnblockUser.class);
+    UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
 
+    /**
+     * This method is read parameter from request.
+     * It calls the service layer to change status user (block/unblock)
+     * if DataBaseException is caught, redirects to error page.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
-
         Long userId = Long.valueOf(req.getParameter("user_id"));
 
         try {
@@ -36,7 +48,5 @@ public class BlockUnblockUser implements RequestHandler {
             logger.warn("User with id " + userId + "has not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
-
-
     }
 }

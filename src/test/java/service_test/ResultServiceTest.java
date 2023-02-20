@@ -10,24 +10,31 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.ResultRepo;
 import repo.TestRepo;
+import servises.AnswerService;
 import servises.ResultService;
 import servises.TestService;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultServiceTest {
     @Mock
     ResultRepo mockResultRepo;
+    @Mock
+    AnswerService answerService;
 
     ResultService resultService;
+
 
     @BeforeEach
     public void setUp() {
         mockResultRepo = Mockito.mock(ResultRepo.class);
+        answerService = Mockito.mock(AnswerService.class);
         resultService = new ResultService(mockResultRepo);
     }
+
     @Test
     public void addResultTest() throws DataBaseException {
         Mockito.when(mockResultRepo.addResult(Mockito.anyLong(),
@@ -44,9 +51,9 @@ public class ResultServiceTest {
 //    }
 
     @Test
-    public void getGrade(){
-        List<Boolean> result = List.of(true,false);
-        assertEquals(50,resultService.getGrade(result,2));
+    public void getGrade() {
+        List<Boolean> result = List.of(true, false);
+        assertEquals(50, resultService.getGrade(result, 2));
     }
 
     @Test
@@ -54,5 +61,29 @@ public class ResultServiceTest {
         List<ResultDto> resultDtoList = new ArrayList<>();
         Mockito.when(mockResultRepo.getAllResult(Mockito.anyLong())).thenReturn(resultDtoList);
         Assertions.assertEquals(resultDtoList, resultService.getAllResultByUserId(Mockito.anyLong()));
+    }
+
+    @Test
+    public void getResultByQuestionWithNull() throws DataBaseException {
+        Assertions.assertEquals(true,
+                resultService.getResultByQuestion(12L, null));
+    }
+
+    @Test
+    public void getResultByQuestion() throws DataBaseException {
+        String[] userAnswers = {"2", "off", "1", "on"};
+        List<Answer> answers = new ArrayList<>();
+        Answer answer1 = new Answer();
+        answer1.setId(1);
+        answer1.setResult(true);
+        Answer answer2 = new Answer();
+        answer2.setId(2);
+        answer2.setResult(false);
+        answers.add(answer1);
+        answers.add(answer2);
+        System.out.println(answers);
+        Mockito.when(answerService.getAnswers(123L)).thenReturn(answers);
+        Assertions.assertEquals(true,
+                resultService.getResultByQuestion(123L, userAnswers));
     }
 }

@@ -29,7 +29,7 @@ public class DeleteAnswerTest {
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
-        //   final HttpSession session = Mockito.mock(HttpSession.class);
+        //final HttpSession session = Mockito.mock(HttpSession.class);
         AnswerService answerService = Mockito.mock(AnswerService.class);
         QuestionService questionService = Mockito.mock(QuestionService.class);
 
@@ -57,7 +57,6 @@ public class DeleteAnswerTest {
         Mockito.verify(request, Mockito.times(1)).getRequestDispatcher(path);
         Mockito.verify(request, Mockito.never()).getSession();
         Mockito.verify(dispatcher).forward(request, response);
-
     }
 
 //    @Test

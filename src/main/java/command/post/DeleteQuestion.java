@@ -14,20 +14,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * DeleteQuestion.class is allowed only for admin.
+ * The meaning of the class is to delete an Question in an existing Question in database.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class DeleteQuestion implements RequestHandler {
 
     private static Logger logger = LogManager.getLogger(DeleteQuestion.class);
 
+    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+
+    /**
+     * This method is read parameter from request.
+     * It calls the service layer to delete a Question
+     * if DataBaseException is caught, redirects to error page.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
         req.setAttribute("page", req.getParameter("page"));
         req.setAttribute("test_id", req.getParameter("test_id"));
-
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
         String id = req.getParameter("question_id");
+
         try {
             questionService.deleteQuestion(Long.valueOf(id));
             logger.info("Question with id " + id + "has deleted");

@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * EditQuestion class is res
+ */
+
 public class EditQuestion implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditQuestion.class);
 
@@ -28,7 +32,6 @@ public class EditQuestion implements RequestHandler {
             throws ServletException, IOException {
         QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
         AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
-        String testId = req.getParameter("test_id");
         String questionId = req.getParameter("question_id");
 
         req.setAttribute("test_id", req.getParameter("test_id"));
@@ -42,7 +45,6 @@ public class EditQuestion implements RequestHandler {
             answers = answerService.getAnswers(Long.valueOf(questionId));
             req.setAttribute("answers", answers);
             req.setAttribute("question", question);
-            System.out.println("URL = "+question.getUrlImage());
 
             logger.info("Question with ID " + questionId + "has updated");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
@@ -50,7 +52,5 @@ public class EditQuestion implements RequestHandler {
             logger.warn("Question with ID " + questionId + " has NOT updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
-
-
     }
 }

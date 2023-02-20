@@ -15,16 +15,28 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * DeleteTest.class is allowed only for admin.
+ * The meaning of the class is to delete Test(quiz) in database.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class DeleteTest implements RequestHandler {
     private static Logger logger = LogManager.getLogger(DeleteTest.class);
+    TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
 
+    /**
+     * This method is read parameter from request.
+     * It calls the service layer to delete a Test(quiz)
+     * if DataBaseException is caught, redirects to error page.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-
-        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 

@@ -14,10 +14,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * EditUserPost.class is allowed only for admin.
+ * The meaning of the class is to update User in database.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class EditUserPost implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditUserPost.class);
-
+    UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+    /**
+     * This method is read parameter from request.
+     * It calls the service layer to update this User
+     * if DataBaseException is caught, redirects to error page.
+     * if ValidateException is caught, redirects to the page from which the request was made
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -25,8 +39,6 @@ public class EditUserPost implements RequestHandler {
         Long userId = Long.valueOf(req.getParameter("user_id"));
         String name = req.getParameter("name");
         String role = req.getParameter("role");
-
-        UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
 
         try {
             userService.updateUser(userId, name, role);

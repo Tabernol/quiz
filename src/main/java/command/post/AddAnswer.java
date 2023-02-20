@@ -18,11 +18,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * AddAnswer.class is allowed only for admin.
+ * The meaning of the class is to add an Answer to an existing Question in database.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class AddAnswer implements RequestHandler {
     private static Logger logger = LogManager.getLogger(AddAnswer.class);
     AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
-    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
 
+    /**
+     * This method is read parameter from request.
+     * It calls the service layer to create Answer
+     * if DataBaseException is caught, redirects to error page.
+     * if ValidateException is caught, redirects to the page from which the request was made
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -30,13 +44,9 @@ public class AddAnswer implements RequestHandler {
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         String page = req.getParameter("page");
-
-        req.setAttribute("test_id", testId);
-        req.setAttribute("question_id", questionId);
-        req.setAttribute("page", req.getParameter("page"));
-
         String text = req.getParameter("text");
         Boolean result = Boolean.valueOf(req.getParameter("result"));
+
         try {
             answerService.createAnswer(questionId, text, result);
             logger.info("Answer for question id " + questionId + "has added");

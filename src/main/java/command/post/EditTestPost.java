@@ -14,10 +14,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * EditTestPost.class is allowed only for admin.
+ * The meaning of the class is to update a Test(quiz) in database.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class EditTestPost implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditTestPost.class);
-
+    TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+    /**
+     * This method is read parameter from request.
+     * It calls the service layer to update this Test(quiz)
+     * if DataBaseException is caught, redirects to error page.
+     * if ValidateException is caught, redirects to the page from which the request was made
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +42,6 @@ public class EditTestPost implements RequestHandler {
         int duration = Integer.parseInt(req.getParameter("duration"));
         String page = req.getParameter("page");
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
 
         try {
             testService.update(testId, name, subject, difficult, duration);

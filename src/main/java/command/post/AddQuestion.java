@@ -15,22 +15,33 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * AddQuestion.class is allowed only for admin.
+ * The meaning of the class is to add a Question to an existing Test(quiz) in database.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class AddQuestion implements RequestHandler {
 
     private static Logger logger = LogManager.getLogger(AddQuestion.class);
+    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
 
+    /**
+     * This method is read parameter from request.
+     * It calls the service layer to create Question
+     * if DataBaseException is caught, redirects to error page.
+     * if ValidateException is caught, redirects to the page from which the request was made
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
         String page = req.getParameter("page");
-        req.setAttribute("test_id", testId);
-        req.setAttribute("page", page);
-
         String text = req.getParameter("text");
 
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
         try {
             questionService.addQuestion(testId, text);
             logger.info("Question for test id " + testId + "has added");

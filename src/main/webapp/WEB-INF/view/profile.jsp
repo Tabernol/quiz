@@ -59,125 +59,95 @@
 <%--========================--%>
 
 
-<%--<c:if test="${sessionScope.role == 'student'}">--%>
-
-
-<%--    <div>--%>
-<%--        <form action="filter_result">--%>
-<%--            <input type="hidden" name="page" value="1">--%>
-<%--            <select name="sub">--%>
-<%--                <option value="all"><c:out value="all"/></option>--%>
-<%--                <c:forEach var="sub" items="${sessionScope.subjects}">--%>
-<%--                    <option value="${sub}"><c:out value="${sub}"/></option>--%>
-<%--                </c:forEach>--%>
-<%--            </select>--%>
-<%--            <select name="order">--%>
-<%--                <option value="name asc"><fmt:message key="sort.name.asc"/></option>--%>
-<%--                <option value="name desc"><fmt:message key="sort.name.desc"/></option>--%>
-<%--                <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>--%>
-<%--                <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>--%>
-<%--                <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>--%>
-<%--                <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>--%>
-<%--            </select>--%>
-<%--            <select name="rows">--%>
-<%--                <option value="2"><c:out value="2"/></option>--%>
-<%--                <option value="5"><c:out value="5"/></option>--%>
-<%--                <option value="10"><c:out value="10"/></option>--%>
-<%--                <option value="20"><c:out value="20"/></option>--%>
-<%--            </select>--%>
-<%--            <input class="button" type="submit" value="<fmt:message key="button.filter"/>">--%>
-<%--        </form>--%>
-<%--    </div>--%>
-
-
-<%--==================================--%>
-<div class="d-flex flex-row justify-content-center">
-    <form>
-        <input type="hidden" name="user_id" value="${requestScope.user_id}">
-        <div class="input-group">
-            <div class="p-2 bd-highlight">
-                <select class="form-select" name="sub">
-                    <option value="all"><c:out value="all"/></option>
-                    <c:forEach var="sub" items="${sessionScope.subjects}">
-                        <option value="${sub}"><c:out value="${sub}"/></option>
-                    </c:forEach>
-                </select>
+<c:if test="${requestScope.user_result != null}">
+    <%--==================================--%>
+    <div class="d-flex flex-row justify-content-center">
+        <form>
+            <input type="hidden" name="user_id" value="${requestScope.user.id}">
+            <div class="input-group">
+                <div class="p-2 bd-highlight">
+                    <select class="form-select" name="sub">
+                        <option value="all"><c:out value="all"/></option>
+                        <c:forEach var="sub" items="${sessionScope.subjects}">
+                            <option value="${sub}"><c:out value="${sub}"/></option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <select class="form-select" name="rows">
+                        <option value="2"><c:out value="2"/></option>
+                        <option value="5"><c:out value="5"/></option>
+                        <option value="10"><c:out value="10"/></option>
+                        <option value="20"><c:out value="20"/></option>
+                    </select>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <select class="form-select" name="order">
+                        <option value="name asc"><fmt:message key="sort.name.asc"/></option>
+                        <option value="name desc"><fmt:message key="sort.name.desc"/></option>
+                        <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
+                        <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
+                        <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>
+                        <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>
+                    </select>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <input class="btn btn-primary" type="submit" value="<fmt:message key="button.filter"/>">
+                </div>
             </div>
-            <div class="p-2 bd-highlight">
-                <select class="form-select" name="rows">
-                    <option value="2"><c:out value="2"/></option>
-                    <option value="5"><c:out value="5"/></option>
-                    <option value="10"><c:out value="10"/></option>
-                    <option value="20"><c:out value="20"/></option>
-                </select>
-            </div>
-            <div class="p-2 bd-highlight">
-                <select class="form-select" name="order">
-                    <option value="name asc"><fmt:message key="sort.name.asc"/></option>
-                    <option value="name desc"><fmt:message key="sort.name.desc"/></option>
-                    <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
-                    <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
-                    <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>
-                    <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>
-                </select>
-            </div>
-            <div class="p-2 bd-highlight">
-                <input class="btn btn-primary" type="submit" value="<fmt:message key="button.filter"/>">
-            </div>
-        </div>
-    </form>
-</div>
-
-
-<table class="table align-middle mb-0 w-auto bg-white">
-    <div class="d-flex justify-content-around">
-        <form action="download">
-            <input type="hidden" name="user_id" value="${requestScope.user_id}">
-            <button type="submit"
-                    class="btn btn-primary"><fmt:message key="button.download"/>
-            </button>
         </form>
     </div>
-    <thead class="bg-light">
-    <tr>
-        <th><fmt:message key="table.head.test.name"/></th>
-        <th><fmt:message key="table.head.subject"/></th>
-        <th><fmt:message key="table.head.difficult"/></th>
-        <th><fmt:message key="table.head.duration"/></th>
-        <th><fmt:message key="table.head.grade"/></th>
-    </tr>
-    </thead>
-    <tbody>
 
-    <c:forEach var="result" items="${requestScope.user_result}">
-    <tr>
-        <td><c:out value="${result.testName}"/></td>
-        <td><c:out value="${result.subject}"/></td>
-        <td><c:out value="${result.difficult}"/></td>
-        <td><c:out value="${result.duration}"/></td>
-        <td><c:out value="${result.grade}"/></td>
-        </c:forEach>
-    </tbody>
-</table>
 
-<%--================================--%>
-<div class="center">
-    <nav aria-label="pagination-sm">
-        <ul class="pagination pagination-sm">
-            <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
-                <li class="page-item"><a class="page-link"
-                                         href="<c:url value='/filter_result'>
-                        <c:param name="page" value="${i}"/>
-                        <c:param name="user_id" value="${requestScope.user_id}"/>
-                    </c:url>"><c:out value="${i}"/></a></li>
+    <table class="table align-middle mb-0 w-auto bg-white">
+        <div class="d-flex justify-content-around">
+            <form action="download">
+                <input type="hidden" name="user_id" value="${requestScope.user.id}">
+                <button type="submit"
+                        class="btn btn-primary"><fmt:message key="button.download"/>
+                </button>
+            </form>
+        </div>
+        <thead class="bg-light">
+        <tr>
+            <th><fmt:message key="table.head.test.name"/></th>
+            <th><fmt:message key="table.head.subject"/></th>
+            <th><fmt:message key="table.head.difficult"/></th>
+            <th><fmt:message key="table.head.duration"/></th>
+            <th><fmt:message key="table.head.grade"/></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <c:forEach var="result" items="${requestScope.user_result}">
+        <tr>
+            <td><c:out value="${result.testName}"/></td>
+            <td><c:out value="${result.subject}"/></td>
+            <td><c:out value="${result.difficult}"/></td>
+            <td><c:out value="${result.duration}"/></td>
+            <td><c:out value="${result.grade}"/></td>
             </c:forEach>
-            <%--            <li class="page-item active" aria-current="page">--%>
-            <%--                <span class="page-link">1</span>--%>
-            <%--            </li>--%>
-        </ul>
-    </nav>
-</div>
-<%--</c:if>--%>
+        </tbody>
+    </table>
+
+    <%--================================--%>
+    <div class="center">
+        <nav aria-label="pagination-sm">
+            <ul class="pagination pagination-sm">
+                <c:forEach var="i" begin="1" end="${requestScope.count_pages}">
+                    <li class="page-item"><a class="page-link"
+                                             href="<c:url value='/filter_result'>
+                        <c:param name="page" value="${i}"/>
+                        <c:param name="user_id" value="${requestScope.user.id}"/>
+                    </c:url>"><c:out value="${i}"/></a></li>
+                </c:forEach>
+                    <%--            <li class="page-item active" aria-current="page">--%>
+                    <%--                <span class="page-link">1</span>--%>
+                    <%--            </li>--%>
+            </ul>
+        </nav>
+    </div>
+</c:if>
 
 
 </body>

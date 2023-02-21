@@ -9,35 +9,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="delete some classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/servlets/post/AddAnswerTest.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add JavaDoc for PostCommands">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserProfile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/ResultAnswer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/ContentSupplierCommands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/DataHandleCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteQuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteQuestionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/ResultAnswerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language_ua.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_ua.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,25 +95,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "js.last.introduce.type": "LET",
-    "last_opened_file_path": "C:/Users/Max/IdeaProjects/PrepereProject/startCommand",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.40229884",
-    "settings.editor.selected.configurable": "editor.preferences.gutterIcons"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Max/IdeaProjects/PrepereProject/startCommand&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40229884&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\image" />
@@ -136,7 +130,7 @@
       <recent name="repo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ResultServiceTest.getResultByQuestion">
+  <component name="RunManager" selected="JUnit.BlockUnblockUserTest.blockUnblockTest">
     <configuration name="AddAnswerTest.AddAnswerTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
@@ -161,7 +155,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeleteQuestionTest.deleteQuestionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BlockUnblockUserTest.blockUnblockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
@@ -170,8 +164,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="servlets.post" />
-      <option name="MAIN_CLASS_NAME" value="servlets.post.DeleteQuestionTest" />
-      <option name="METHOD_NAME" value="deleteQuestionTest" />
+      <option name="MAIN_CLASS_NAME" value="servlets.post.BlockUnblockUserTest" />
+      <option name="METHOD_NAME" value="blockUnblockTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -314,8 +308,8 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.UserServiceTest.isCorrectPassword" />
+      <item itemvalue="JUnit.BlockUnblockUserTest.blockUnblockTest" />
       <item itemvalue="JUnit.AddAnswerTest.AddAnswerTest1" />
-      <item itemvalue="JUnit.DeleteQuestionTest.deleteQuestionTest" />
       <item itemvalue="JUnit.DeleteTestTest.deleteTest" />
       <item itemvalue="JUnit.ResultServiceTest.getResultByQuestion" />
       <item itemvalue="JUnit.All in startCommand" />
@@ -323,11 +317,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ResultServiceTest.getResultByQuestion" />
+        <item itemvalue="JUnit.BlockUnblockUserTest.blockUnblockTest" />
         <item itemvalue="JUnit.All in startCommand" />
+        <item itemvalue="JUnit.ResultServiceTest.getResultByQuestion" />
         <item itemvalue="JUnit.AddAnswerTest.AddAnswerTest1" />
         <item itemvalue="JUnit.DeleteTestTest.deleteTest" />
-        <item itemvalue="JUnit.DeleteQuestionTest.deleteQuestionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -408,13 +402,7 @@
       <workItem from="1676724670417" duration="10772000" />
       <workItem from="1676750479831" duration="10959000" />
       <workItem from="1676806749712" duration="2429000" />
-    </task>
-    <task id="LOCAL-00006" summary="6">
-      <created>1672276664070</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1672276664070</updated>
+      <workItem from="1676932581258" duration="6468000" />
     </task>
     <task id="LOCAL-00007" summary="7">
       <created>1672370378079</created>
@@ -752,7 +740,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676837411274</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Add JavaDoc for PostCommands">
+      <created>1676851853827</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1676851853827</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -770,7 +765,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="102 Add Right modal" />
     <MESSAGE value="105 add card with answers" />
     <MESSAGE value="106 before query builder" />
     <MESSAGE value="107 work on query builder and factory and servlet for filtration" />
@@ -795,7 +789,8 @@
     <MESSAGE value="Add load image, for question and view in quiz" />
     <MESSAGE value="Add ImageRepo" />
     <MESSAGE value="delete some classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete some classes" />
+    <MESSAGE value="Add JavaDoc for PostCommands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add JavaDoc for PostCommands" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -833,7 +828,7 @@
     <SUITE FILE_PATH="coverage/startCommand$AllUserTest_allUsers.ic" NAME="AllUserTest.allUsers Coverage Results" MODIFIED="1674077880846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>servlets.get.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1676849509199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1676937385806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest_findAllByQuestionIdTest.ic" NAME="AnswerServiceTest.findAllByQuestionIdTest Coverage Results" MODIFIED="1673392408583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>
     </SUITE>

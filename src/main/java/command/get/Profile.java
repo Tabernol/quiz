@@ -22,9 +22,20 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Profile.class provides information about User
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class Profile implements RequestHandler {
     private static Logger logger = LogManager.getLogger(Profile.class);
 
+    /**
+     * This method calls to FilterResul command
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)

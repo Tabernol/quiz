@@ -80,19 +80,23 @@ public class FilterResult implements RequestHandler {
 
 
         try {
+            subjects = testService.getDistinctSubjects();
+            req.getSession().setAttribute("subjects", subjects);
+            req.setAttribute("user", userService.get(userId));
+
+
             countPages = resultService.getCountPagesResult(userId, Integer.valueOf(rows), sub);
             System.out.println("count page = " + countPages);
 
             List<ResultDto> pageResultList = resultService
                     .getPageResultList(userId, sub, order, Integer.valueOf(rows), Integer.valueOf(page));
-            System.out.println(pageResultList);
 
-            subjects = testService.getDistinctSubjects();
-            req.getSession().setAttribute("subjects", subjects);
-            req.setAttribute("user_result", pageResultList);
-            req.setAttribute("count_pages", countPages);
-            req.setAttribute("user", userService.get(userId));
-            req.setAttribute("user_id", userId);
+            System.out.println(pageResultList);
+            if (countPages != 0 || !pageResultList.isEmpty()) {
+                req.setAttribute("user_result", pageResultList);
+                req.setAttribute("count_pages", countPages);
+            }
+//            req.setAttribute("user_id", userId);
 
             //    req.setAttribute("page", page);
 

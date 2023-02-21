@@ -9,10 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Language.class is responsible for changing the language of the interface in the API
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class LanguageChange implements RequestHandler {
-
     private static Logger logger = LogManager.getLogger(LanguageChange.class);
 
+    /**
+     * This method reads the "locale" parameter,
+     * changes it in the session, and redirects to the last page
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)

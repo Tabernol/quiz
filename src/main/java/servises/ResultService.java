@@ -111,6 +111,4 @@ public class ResultService {
         long count = userAnswer.stream().filter(bool -> bool.equals(true)).count();
         return Math.toIntExact(count * 100 / countQuestion);
     }
-
-
 }

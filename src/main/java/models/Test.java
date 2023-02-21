@@ -9,6 +9,8 @@ public class Test {
     private int difficult;
     private int duration; //DateTime
 
+    private int popularity;
+
     public Test() {
     }
 
@@ -50,6 +52,14 @@ public class Test {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public int getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(int popularity) {
+        this.popularity = popularity;
     }
 
     @Override

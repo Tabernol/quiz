@@ -44,33 +44,6 @@ public class TestRepo {
         }
     }
 
-
-//    public List<Test> getFilterTest(String subject, String order, int rows) throws DataBaseException {
-//        String sql = "select * from test where subject like ? order by " + order + " limit ?";
-//        List<Test> tests = new ArrayList<>();
-//        try (Connection con = MyDataSource.getConnection();
-//             PreparedStatement pst = con.prepareStatement(sql)) {
-//            pst.setString(1, subject);
-//            pst.setInt(2, rows);
-//            ResultSet resultSet = pst.executeQuery();
-//            //  pst.setString(2, order);
-//            while (resultSet.next()) {
-//                Test test = new Test();
-//                test.setId(resultSet.getLong("id"));
-//                test.setName(resultSet.getString("name"));
-//                test.setSubject(resultSet.getString("subject"));
-//                test.setDifficult(resultSet.getInt("difficult"));
-//                test.setDuration(resultSet.getInt("duration"));
-//                tests.add(test);
-//            }
-//            resultSet.close();
-//            return tests;
-//        } catch (SQLException e) {
-//            logger.warn("Can not get order filter test");
-//            throw new DataBaseException("Can not get order filter test" + e.getMessage(), e);
-//        }
-//    }
-
     /**
      * method update field in table 'test' in database
      * @param id is identification Test in database, table 'test'
@@ -137,54 +110,6 @@ public class TestRepo {
         }
     }
 
-//    public List<Test> getAll(String order, int rows) throws DataBaseException {
-//        String sql = "select * from test order by " + order + " limit ?";
-//        List<Test> tests = new ArrayList<>();
-//        try (Connection con = MyDataSource.getConnection();
-//             PreparedStatement pst = con.prepareStatement(sql)) {
-//            pst.setInt(1, rows);
-//            ResultSet resultSet = pst.executeQuery();
-//            while (resultSet.next()) {
-//                Test test = new Test();
-//                test.setId(resultSet.getLong("id"));
-//                test.setName(resultSet.getString("name"));
-//                test.setSubject(resultSet.getString("subject"));
-//                test.setDifficult(resultSet.getInt("difficult"));
-//                test.setDuration(resultSet.getInt("duration"));
-//                tests.add(test);
-//            }
-//            resultSet.close();
-//            return tests;
-//        } catch (SQLException e) {
-//            logger.warn("Can not get order tests");
-//            throw new DataBaseException("Can not get order tests" + e.getMessage(), e);
-//        }
-//    }
-
-//    public List<Test> getAll() throws DataBaseException {
-//        String sql = "select * from test";
-//        List<Test> tests;
-//        try (Connection con = MyDataSource.getConnection();
-//             PreparedStatement pst = con.prepareStatement(sql);
-//             ResultSet resultSet = pst.executeQuery()) {
-//            tests = new ArrayList<>();
-//            Test test;
-//            while (resultSet.next()) {
-//                test = new Test();
-//                test.setId(resultSet.getLong("id"));
-//                test.setName(resultSet.getString("name"));
-//                test.setSubject(resultSet.getString("subject"));
-//                test.setDifficult(resultSet.getInt("difficult"));
-//                test.setDuration(resultSet.getInt("duration"));
-//                tests.add(test);
-//            }
-//            return tests;
-//        } catch (SQLException e) {
-//            logger.warn("Can not get order tests");
-//            throw new DataBaseException("Can not get order tests" + e.getMessage(), e);
-//        }
-//    }
-
     /**
      * method return list of test(quiz) with some limit, offset, order by, where
      *
@@ -204,6 +129,7 @@ public class TestRepo {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
+                test.setPopularity(resultSet.getInt("popularity"));
                 tests.add(test);
             }
             resultSet.close();
@@ -234,6 +160,7 @@ public class TestRepo {
                 test.setSubject(resultSet.getString("subject"));
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
+                test.setPopularity(resultSet.getInt("popularity"));
             }
             resultSet.close();
             return test;

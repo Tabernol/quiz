@@ -46,7 +46,6 @@ public class ResultRepo {
         } catch (SQLException e) {
             logger.warn("Can not get order result list");
             throw new DataBaseException("Can not get order result list" + e.getMessage(), e);
-
         }
     }
 

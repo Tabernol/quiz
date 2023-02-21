@@ -43,21 +43,12 @@ public class Question {
         this.text = text;
     }
 
-//    public List<Answer> getAnswerOptions() {
-//        return answerOptions;
-//    }
-//
-//    public void setAnswerOptions(List<Answer> answerOptions) {
-//        this.answerOptions = answerOptions;
-//    }
-
     @Override
     public String toString() {
         return "Question{" +
                 "id=" + id +
                 ", testId=" + testId +
                 ", text='" + text + '\'' +
-                //  ", answerOptions=" + answerOptions +
                 '}';
     }
 }

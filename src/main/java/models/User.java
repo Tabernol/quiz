@@ -11,15 +11,15 @@ public class User {
     private String role;
     private boolean isBlocked;
 
+    public User() {
+    }
+
     public boolean isBlocked() {
         return isBlocked;
     }
 
     public void setBlocked(boolean blocked) {
         isBlocked = blocked;
-    }
-
-    public User() {
     }
 
     public long getId() {

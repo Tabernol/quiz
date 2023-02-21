@@ -106,6 +106,7 @@
         <th><fmt:message key="table.head.subject"/></th>
         <th><fmt:message key="table.head.difficult"/></th>
         <th><fmt:message key="table.head.duration"/></th>
+        <th><fmt:message key="table.head.popularity"/></th>
         <th></th>
         <th></th>
     </tr>
@@ -118,6 +119,7 @@
         <td><c:out value="${test.subject}"/></td>
         <td><c:out value="${test.difficult}"/></td>
         <td><c:out value="${test.duration}"/></td>
+        <td><c:out value="${test.popularity}"/></td>
         <td>
             <form action="edit_test">
                 <input type="hidden" name="test_id" value="${test.id}">

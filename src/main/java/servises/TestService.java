@@ -5,9 +5,7 @@ import exeptions.ValidateException;
 import models.Test;
 import repo.TestRepo;
 import util.MyTable;
-import util.query.QBuilder;
-import util.query.QueryBuilderForTest;
-import util.query.QueryFactory;
+import util.query.*;
 
 import java.util.List;
 
@@ -36,13 +34,17 @@ public class TestService {
     }
 
     public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page) throws DataBaseException {
-        QueryFactory queryFactory = new QueryFactory();
-        QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.TEST);
-        qBuilder.setFilter(subject);
-        qBuilder.setOrderBy(order);
-        qBuilder.setLimit(rows);
-        qBuilder.setOffSet(page);
-        String query = qBuilder.getQuery();
+   //     QueryFactory queryFactory = new QueryFactory();
+        QueryBuilderForTest queryBuilderForTest = new QueryBuilderForTest();
+        String query = queryBuilderForTest.getQuery(subject, order, rows, page);
+
+
+        //      QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.TEST);
+//        qBuilder.setFilter(subject);
+//        qBuilder.setOrderBy(order);
+//        qBuilder.setLimit(rows);
+//        qBuilder.setOffSet(page);
+     //   String query = qBuilder.getQuery(subject, order, rows, page);
         System.out.println("QUERY = " + query);
         return testRepo.nextPage(query);
     }

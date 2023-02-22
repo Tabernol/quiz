@@ -60,6 +60,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
+                           href="<c:url value='/filter_images' />">Image</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
                            href="<c:url value='/profile'/>"><fmt:message key="label.Profile"/></a>
                     </li>
                     <li class="nav-item">

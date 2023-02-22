@@ -23,8 +23,10 @@ public class Commands {
         GET_COMMANDS.put("/edit_test", new EditTest());
         GET_COMMANDS.put("/edit_question", new EditQuestion());
         GET_COMMANDS.put("/profile", new Profile());
-        GET_COMMANDS.put("/start_test", new StartTest());
+        GET_COMMANDS.put("/filter_users", new FilterUsers());
+
         //student
+        GET_COMMANDS.put("/start_test", new StartTest());
         GET_COMMANDS.put("/language", new LanguageChange());
         GET_COMMANDS.put("/prg", new Prg());
         GET_COMMANDS.put("/get_text_question", new GetInfoQuestion());
@@ -32,7 +34,8 @@ public class Commands {
         GET_COMMANDS.put("/finish", new Finish());
         GET_COMMANDS.put("/filter_result", new FilterResult());
         GET_COMMANDS.put("/download", new DownLoad());
-        GET_COMMANDS.put("/filter_users", new FilterUsers());
+        //dev
+        GET_COMMANDS.put("/filter_images", new FilterImages());
     }
 
     static {
@@ -48,5 +51,7 @@ public class Commands {
         POST_COMMANDS.put("/edit_user", new EditUserPost());
         POST_COMMANDS.put("/block", new BlockUnblockUser());
         POST_COMMANDS.put("/upload_image", new UpLoadImage());
+        POST_COMMANDS.put("/load", new LoadToCloud());
+        POST_COMMANDS.put("/remove_image", new RemoveFromCloud());
     }
 }

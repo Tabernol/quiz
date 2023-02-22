@@ -1,13 +1,12 @@
 package util.query;
 
-public class QueryBuilderForResult implements QBuilder {
+public class QueryBuilderForResult {
     private String filter;
     private String orderBy;
     private Integer limit;
     private Integer offSet;
     private String andSubject;
 
-    @Override
     public String getQuery() {
         return "select * from test inner join result " +
                 "on test.id=result.test_id where user_id like "
@@ -15,23 +14,23 @@ public class QueryBuilderForResult implements QBuilder {
     }
 
 
-    @Override
+ //   @Override
     public void setFilter(String idUser) {
         this.filter = idUser;
     }
 
-    @Override
+  //  @Override
     public void setOrderBy(String column) {
         this.orderBy = column;
 
     }
 
-    @Override
+ //   @Override
     public void setLimit(Integer limit) {
         this.limit = limit;
     }
 
-    @Override
+//   @Override
     public void setOffSet(Integer numberOfPage) {
         Integer off = (Integer.valueOf(numberOfPage) - 1) * Integer.valueOf(limit);
         this.offSet = off;

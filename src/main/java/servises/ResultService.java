@@ -5,9 +5,7 @@ import exeptions.DataBaseException;
 import models.Answer;
 import repo.AnswerRepo;
 import repo.ResultRepo;
-import util.MyTable;
 import util.query.QueryBuilderForResult;
-import util.query.QueryFactory;
 import validator.DataValidator;
 
 import java.util.ArrayList;
@@ -89,8 +87,7 @@ public class ResultService {
 
     public List<ResultDto> getPageResultList(Long idUser, String sub, String order, Integer limit, Integer offSet)
             throws DataBaseException {
-        QueryFactory queryFactory = new QueryFactory();
-        QueryBuilderForResult queryBuilder = (QueryBuilderForResult) queryFactory.getQueryBuilder(MyTable.RESULT);
+        QueryBuilderForResult queryBuilder = new QueryBuilderForResult();
         queryBuilder.setFilter(idUser.toString());
         queryBuilder.setOrderBy(order);
         queryBuilder.setLimit(limit);

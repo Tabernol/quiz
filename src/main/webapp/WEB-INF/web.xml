@@ -11,6 +11,24 @@
     </jsp-config>
 
 
+    <context-param>
+        <param-name>CLOUD_NAME</param-name>
+        <param-value>dluwxouux</param-value>
+    </context-param>
+    <context-param>
+        <param-name>API_KEY</param-name>
+        <param-value>377146951856361</param-value>
+    </context-param>
+    <context-param>
+        <param-name>API_SECRET</param-name>
+        <param-value>sNoheqeDLHGf2z8HgyNmAAQU1CI</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>app_listener.LoadMediaContextListener</listener-class>
+    </listener>
+
+
 <!--    <filter>-->
 <!--        <filter-name>LanguageFilter</filter-name>-->
 <!--        <filter-class>controllers.filters.LanguageFilter</filter-class>-->

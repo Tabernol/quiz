@@ -41,6 +41,9 @@ public class AccessUtil {
 
         adminAccess.add(PathConst.PRG);
         adminAccess.add(PathConst.UPLOAD_IMAGE);
+        adminAccess.add("/filter_images");
+        adminAccess.add("/load");
+        adminAccess.add("/remove_image");
 //        =====================================================
 //        for student
         studentAccess.add(PathConst.REGISTRATION);

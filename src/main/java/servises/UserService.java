@@ -2,14 +2,9 @@ package servises;
 
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import models.Test;
 import models.User;
 import repo.UserRepo;
-import util.MyTable;
-import util.query.QBuilder;
-import util.query.QueryBuilderForTest;
 import util.query.QueryBuilderForUser;
-import util.query.QueryFactory;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -73,13 +68,15 @@ public class UserService {
 
     private List<User>
     getPageUserList(String filter, String order, Integer rows, Integer page) throws DataBaseException {
-        QueryFactory queryFactory = new QueryFactory();
-        QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.USER);
-        qBuilder.setFilter(filter);
-        qBuilder.setOrderBy(order);
-        qBuilder.setLimit(rows);
-        qBuilder.setOffSet(page);
-        String query = qBuilder.getQuery();
+        QueryBuilderForUser queryBuilderForUser = new QueryBuilderForUser();
+        String query = queryBuilderForUser.getQuery(filter, order, rows, page);
+//        QueryFactory queryFactory = new QueryFactory();
+//        QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.USER);
+//        qBuilder.setFilter(filter);
+//        qBuilder.setOrderBy(order);
+//        qBuilder.setLimit(rows);
+//        qBuilder.setOffSet(page);
+//        String query = qBuilder.getQuery(filter, order, rows, page);
         System.out.println("QUERY = " + query);
         return userRepo.nextPage(query);
     }

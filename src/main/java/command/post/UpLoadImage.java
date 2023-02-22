@@ -44,17 +44,10 @@ public class UpLoadImage implements RequestHandler {
             part.write(fullPath);
         }
 
-        Map config = new HashMap();
-
-        config.put("cloud_name", "dluwxouux");
-
-        config.put("api_key", "377146951856361");
-
-        config.put("api_secret", "sNoheqeDLHGf2z8HgyNmAAQU1CI");
-        Cloudinary cloudinary = new Cloudinary(config);
+        Cloudinary cloud = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
 
         File file = new File(fullPath);
-        Map uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
+        Map uploadResult = cloud.uploader().upload(file, ObjectUtils.emptyMap());
         int i = 0;
         for (Object item : uploadResult.keySet()) {
 

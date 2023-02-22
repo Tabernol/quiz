@@ -1,40 +1,20 @@
 package util.query;
 
-public class QueryBuilderForTest implements QBuilder {
-    private String filter;
-    private String order;
-    private Integer limit;
-    private String offSet;
+public class QueryBuilderForTest extends QueryBuilder {
 
     @Override
-    public String getQuery() {
-        return "select * from test " + filter + order + " limit " + limit + " offset " + offSet;
-    }
-
-    @Override
-    public void setFilter(String name) {
-        if (name.equals("all")) {
-            this.filter = "";
+    public String getQuery(String filter, String order, Integer limit, Integer offSet) {
+        if (filter.equals("all")) {
+            filter = "";
         } else {
-            this.filter = "where subject like '" + name + "' ";
+            filter = "where subject like '" + filter + "' ";
         }
 
-    }
+        order = "order by " + order;
 
-    @Override
-    public void setOrderBy(String column) {
-        this.order = "order by " + column;
+        offSet = (Integer.valueOf(offSet) - 1) * Integer.valueOf(limit);
 
-    }
 
-    @Override
-    public void setLimit(Integer rows) {
-        this.limit = rows;
-    }
-
-    @Override
-    public void setOffSet(Integer numberOfPage) {
-        Integer off = (Integer.valueOf(numberOfPage) - 1) * Integer.valueOf(limit);
-        this.offSet = off.toString();
+        return "select * from test " + filter + order + " limit " + limit + " offset " + offSet;
     }
 }

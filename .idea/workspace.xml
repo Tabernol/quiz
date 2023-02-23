@@ -9,31 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add a few JavaDoc for GetCommands&#10;Add column popularity to view for admin">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/RemoveFromCloud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add a part of loadImage service">
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/RemoveImageForQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/RemoveFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/util/QueryBuilderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/util/QueryBuilderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +33,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -405,14 +393,8 @@
       <workItem from="1676750479831" duration="10959000" />
       <workItem from="1676806749712" duration="2429000" />
       <workItem from="1676932581258" duration="9489000" />
-      <workItem from="1677018046022" duration="8640000" />
-    </task>
-    <task id="LOCAL-00008" summary="8">
-      <created>1672539440993</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1672539440993</updated>
+      <workItem from="1677018046022" duration="8716000" />
+      <workItem from="1677077211750" duration="5535000" />
     </task>
     <task id="LOCAL-00009" summary="9">
       <created>1672944987102</created>
@@ -750,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676939217836</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Add a part of loadImage service">
+      <created>1677027213672</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1677027213673</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -768,7 +757,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="106 before query builder" />
     <MESSAGE value="107 work on query builder and factory and servlet for filtration" />
     <MESSAGE value="108 Add filter and pagination for table-result" />
     <MESSAGE value="108 Add table to profile. Delete command next_page and edit_user_profile" />
@@ -793,7 +781,8 @@
     <MESSAGE value="delete some classes" />
     <MESSAGE value="Add JavaDoc for PostCommands" />
     <MESSAGE value="Add a few JavaDoc for GetCommands&#10;Add column popularity to view for admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add a few JavaDoc for GetCommands&#10;Add column popularity to view for admin" />
+    <MESSAGE value="Add a part of loadImage service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add a part of loadImage service" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

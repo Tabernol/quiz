@@ -7,8 +7,7 @@ public class Test {
     private String name;
     private String subject;
     private int difficult;
-    private int duration; //DateTime
-
+    private int duration; //DateTime???
     private int popularity;
 
     public Test() {

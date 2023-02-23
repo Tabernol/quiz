@@ -80,25 +80,25 @@
 </button>
 <br>
 <%--====================================================--%>
-<div class="offcanvas offcanvas-start" id="forAddImage">
-    <div class="offcanvas-header">
-        <h1 class="offcanvas-title">EDIT IMAGE </h1>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body">
-        <form method="post" action="upload_image" enctype="multipart/form-data">
-            <input type="hidden" name="page" value="${requestScope.page}">
-            <input type="hidden" name="test_id" value="${requestScope.test_id}">
-            <input type="hidden" name="question_id" value="${requestScope.question.id}">
-            <input type="file" name="file"/>
-            <input type="submit" value="Upload"/>
-        </form>
-    </div>
-</div>
+<%--<div class="offcanvas offcanvas-start" id="forAddImage">--%>
+<%--    <div class="offcanvas-header">--%>
+<%--        <h1 class="offcanvas-title">EDIT IMAGE </h1>--%>
+<%--        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>--%>
+<%--    </div>--%>
+<%--    <div class="offcanvas-body">--%>
+<%--        <form method="post" action="upload_image" enctype="multipart/form-data">--%>
+<%--            <input type="hidden" name="page" value="${requestScope.page}">--%>
+<%--            <input type="hidden" name="test_id" value="${requestScope.test_id}">--%>
+<%--            <input type="hidden" name="question_id" value="${requestScope.question.id}">--%>
+<%--            <input type="file" name="file"/>--%>
+<%--            <input type="submit" value="Upload"/>--%>
+<%--        </form>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddImage">
-    EDIT IMAGE
-</button>
+<%--<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddImage">--%>
+<%--    EDIT IMAGE--%>
+<%--</button>--%>
 
 <%--=========================================--%>
 
@@ -106,6 +106,20 @@
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
+</form>
+
+<form action="filter_images">
+    <input type="hidden" name="page" value="${requestScope.page}">
+    <input type="hidden" name="test_id" value="${requestScope.test_id}">
+    <input type="hidden" name="question_id" value="${requestScope.question.id}">
+    <input class="btn btn-secondary" type="submit" value="to Filter Image">
+</form>
+
+<form method="post" action="remove_image">
+    <input type="hidden" name="page" value="${requestScope.page}">
+    <input type="hidden" name="test_id" value="${requestScope.test_id}">
+    <input type="hidden" name="question_id" value="${requestScope.question.id}">
+    <input class="btn btn-secondary" type="submit" value="Remove Image">
 </form>
 
 

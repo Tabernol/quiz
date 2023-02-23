@@ -43,6 +43,8 @@ public class AccessUtil {
         adminAccess.add(PathConst.UPLOAD_IMAGE);
         adminAccess.add("/filter_images");
         adminAccess.add("/load");
+        adminAccess.add("/delete_image");
+        adminAccess.add("/update_image");
         adminAccess.add("/remove_image");
 //        =====================================================
 //        for student

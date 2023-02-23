@@ -23,6 +23,9 @@ public class FilterImages implements RequestHandler {
         } catch (DataBaseException e) {
             throw new RuntimeException(e);
         }
+        req.setAttribute("question_id", req.getParameter("question_id"));
+        req.setAttribute("test_id", req.getParameter("test_id"));
+        req.setAttribute("page", req.getParameter("page"));
         req.getRequestDispatcher("/WEB-INF/view/admin/admin_images.jsp").forward(req, resp);
     }
 }

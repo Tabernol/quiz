@@ -44,40 +44,72 @@
     EDIT IMAGE
 </button>
 
+<c:choose>
+    <c:when test="${requestScope.question_id != null}">
+        <table class="table align-middle mb-0 w-auto bg-white">
+            <thead class="bg-secondary">
+            <tr>
+                <th>image</th>
+                <th>width</th>
+                <th>height</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="image" items="${requestScope.all_images}">
+            <tr>
+                <td>
+                    <a href="${image.url}">
+                        <img src="${image.url}" alt="icon" width="150" height="150">
+                    </a>
+                </td>
+                <td><c:out value="${image.width}"/></td>
+                <td><c:out value="${image.height}"/></td>
+                <td>
+                    <form method="post" action="update_image">
+                        <input type="hidden" name="page" value="${requestScope.page}">
+                        <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                        <input type="hidden" name="question_id" value="${requestScope.question_id}">
+                        <input type="hidden" name="url" value="${image.url}">
+                        <input class="btn btn-secondary" type="submit" value="IMAGE">
+                    </form>
+                </td>
+                </c:forEach>
+            </tbody>
+        </table>
+    </c:when>
+    <c:otherwise>
+        <table class="table align-middle mb-0 w-auto bg-white">
+            <thead class="bg-secondary">
+            <tr>
+                <th>image</th>
+                <th>width</th>
+                <th>height</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
 
-<table class="table align-middle mb-0 w-auto bg-white">
-    <thead class="bg-secondary">
-    <tr>
-        <th>id</th>
-        <th>public_id</th>
-        <th>url</th>
-        <th>width</th>
-        <th>height</th>
-        <th>action</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <c:forEach var="image" items="${requestScope.all_images}">
-    <tr>
-        <td>
-            <a href="${image.url}">
-                <img src="${image.url}" alt="icon" width="150" height="150">
-            </a>
-        </td>
-        <td><c:out value="${image.publicId}"/></td>
-        <td><c:out value="${image.url}"/></td>
-        <td><c:out value="${image.width}"/></td>
-        <td><c:out value="${image.height}"/></td>
-        <td>
-            <form method="post" action="remove_image">
-                <input type="hidden" name="public_id" value="${image.publicId}">
-                <input class="btn btn-secondary" type="submit" value="delete IMG">
-            </form>
-        </td>
-        </c:forEach>
-    </tbody>
-</table>
+            <c:forEach var="image" items="${requestScope.all_images}">
+            <tr>
+                <td>
+                    <a href="${image.url}">
+                        <img src="${image.url}" alt="icon" width="150" height="150">
+                    </a>
+                </td>
+                <td><c:out value="${image.width}"/></td>
+                <td><c:out value="${image.height}"/></td>
+                <td>
+                    <form method="post" action="delete_image">
+                        <input type="hidden" name="public_id" value="${image.publicId}">
+                        <input class="btn btn-secondary" type="submit" value="delete IMG">
+                    </form>
+                </td>
+                </c:forEach>
+            </tbody>
+        </table>
+    </c:otherwise>
+</c:choose>
 
 </body>
 </html>

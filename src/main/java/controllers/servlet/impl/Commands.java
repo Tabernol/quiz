@@ -52,6 +52,8 @@ public class Commands {
         POST_COMMANDS.put("/block", new BlockUnblockUser());
         POST_COMMANDS.put("/upload_image", new UpLoadImage());
         POST_COMMANDS.put("/load", new LoadToCloud());
-        POST_COMMANDS.put("/remove_image", new RemoveFromCloud());
+        POST_COMMANDS.put("/delete_image", new DeleteFromCloud());
+        POST_COMMANDS.put("/update_image", new UpdateImageForQuestion());
+        POST_COMMANDS.put("/remove_image", new RemoveImageForQuestion());
     }
 }

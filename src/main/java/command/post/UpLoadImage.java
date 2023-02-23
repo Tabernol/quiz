@@ -32,7 +32,6 @@ public class UpLoadImage implements RequestHandler {
         String webInfPath = req.getServletContext().getRealPath("WEB-INF");
 
 
-
 //        Part file = req.getPart("file");
 //        String contentType = file.getContentType();
 //        contentType = contentType.substring(contentType.indexOf("/")).replace("/", ".");
@@ -59,16 +58,16 @@ public class UpLoadImage implements RequestHandler {
             System.out.print(++k + " = " + item.toString() + " , ");
         }
 
-        String url = (String) uploadResult.get("url");
-        try {
-            questionService.updateImage(url, Long.valueOf(questionId));
-        } catch (DataBaseException e) {
-            throw new RuntimeException(e);
-        } catch (ValidateException e) {
-            throw new RuntimeException(e);
-        }
+//        String url = (String) uploadResult.get("url");
+//        try {
+//            questionService.updateImage(url, Long.valueOf(questionId));
+//        } catch (DataBaseException e) {
+//            throw new RuntimeException(e);
+//        } catch (ValidateException e) {
+//            throw new RuntimeException(e);
+//        }
 
 
-        resp.getWriter().print("The file uploaded sucessfully.");
+        resp.sendRedirect(req.getContextPath() + "/prg?servlet_path=/filter_images");
     }
 }

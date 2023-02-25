@@ -57,7 +57,5 @@
 <h1 id="start_message"><fmt:message key="label.start_message"/></h1>
 <br>
 
-
-
 </body>
 </html>

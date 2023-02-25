@@ -130,6 +130,8 @@ public class TestRepo {
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
                 test.setPopularity(resultSet.getInt("popularity"));
+                // do not show blocked for student
+                test.setStatus(Test.Status.valueOf(resultSet.getString("status").toUpperCase()));
                 tests.add(test);
             }
             resultSet.close();
@@ -161,6 +163,7 @@ public class TestRepo {
                 test.setDifficult(resultSet.getInt("difficult"));
                 test.setDuration(resultSet.getInt("duration"));
                 test.setPopularity(resultSet.getInt("popularity"));
+                test.setStatus(Test.Status.valueOf(resultSet.getString("status").toUpperCase()));
             }
             resultSet.close();
             return test;
@@ -238,8 +241,7 @@ public class TestRepo {
      * @throws DataBaseException is wrapper of SQLException
      */
     public int createTest(String name, String subject, int difficult, int duration) throws DataBaseException {
-
-        String sql = "insert into test (id, name, subject, difficult, duration) values(default, ?, ?, ?, ?)";
+        String sql = "insert into test (id, name, subject, difficult, duration, status) values(default, ?, ?, ?, ?, default)";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, name);

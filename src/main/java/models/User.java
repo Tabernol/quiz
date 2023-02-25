@@ -1,14 +1,11 @@
 package models;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class User {
     private long id;
     private String login;
     private String password;
     private String name;
-    private String role;
+    private Role role;
     private boolean isBlocked;
 
     public User() {
@@ -54,13 +51,22 @@ public class User {
         this.name = name;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
+
+    //    public String getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(String role) {
+//        this.role = role;
+//    }
+
 
     @Override
     public String toString() {
@@ -69,8 +75,23 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
-                ", role='" + role + '\'' +
+                ", role=" + role +
                 ", isBlocked=" + isBlocked +
                 '}';
+    }
+
+    public enum Role {
+        ADMIN("admin"),
+        STUDENT("student");
+
+        private final String role;
+
+        private Role(String role) {
+            this.role = role;
+        }
+
+        public String getRole(){
+            return this.role;
+        }
     }
 }

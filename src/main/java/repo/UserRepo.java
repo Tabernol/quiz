@@ -2,7 +2,6 @@ package repo;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
-import models.Test;
 import models.User;
 
 import java.sql.Connection;
@@ -42,7 +41,7 @@ public class UserRepo {
                 user.setLogin(resultSet.getString("login"));
                 user.setPassword(resultSet.getString("password"));
                 user.setName(resultSet.getString("name"));
-                user.setRole(resultSet.getString("role"));
+                user.setRole(User.Role.valueOf(resultSet.getString("role").toUpperCase()));
                 user.setBlocked(resultSet.getBoolean("is_blocked"));
             }
             resultSet.close();
@@ -84,7 +83,7 @@ public class UserRepo {
                 user.setLogin(resultSet.getString("login"));
                 user.setPassword(resultSet.getString("password"));
                 user.setName(resultSet.getString("name"));
-                user.setRole(resultSet.getString("role"));
+                user.setRole(User.Role.valueOf(resultSet.getString("role").toUpperCase()));
                 user.setBlocked(resultSet.getBoolean("is_blocked"));
                 users.add(user);
             }
@@ -117,7 +116,7 @@ public class UserRepo {
             pst = con.prepareStatement(sql);
             pst.setString(1, login);
             pst.setString(2, password);
-            pst.setString(3, "student");
+            pst.setString(3, User.Role.STUDENT.getRole());
             pst.setString(4, name);
             pst.executeUpdate();
 
@@ -280,7 +279,7 @@ public class UserRepo {
                 user.setLogin(resultSet.getString("login"));
                 user.setBlocked(resultSet.getBoolean("is_blocked"));
                 user.setId(resultSet.getLong("id"));
-                user.setRole(resultSet.getString("role"));
+                user.setRole(User.Role.valueOf(resultSet.getString("role").toUpperCase()));
                 users.add(user);
             }
             resultSet.close();

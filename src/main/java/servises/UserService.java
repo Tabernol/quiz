@@ -21,6 +21,7 @@ public class UserService {
 
 
     public User get(long id) throws DataBaseException {
+        System.out.println(userRepo.get(id));
         return userRepo.get(id);
     }
 

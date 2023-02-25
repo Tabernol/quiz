@@ -56,7 +56,7 @@ public class AnswerServiceTest {
                 Mockito.anyString(), Mockito.anyBoolean())).thenReturn(12);
 
         assertEquals(12, answerService.createAnswer(
-                Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean()));
+                123L, "text", true));
     }
 
     @Test

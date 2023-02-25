@@ -71,7 +71,7 @@ public class AuthorizationFilter extends AbstractFilter {
             logger.info("User with id " + user.getId() + " has come");
             session.setAttribute("user_id", id);// get id
             session.setAttribute("name", user.getName());
-            session.setAttribute("role", user.getRole());
+            session.setAttribute("role", user.getRole().getRole());
             filterChain.doFilter(req, resp);
 
         } else {

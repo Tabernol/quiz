@@ -20,11 +20,12 @@ public class SecurityFilter extends AbstractFilter {
         String role = (String) req.getSession().getAttribute("role");
         String servletPath = req.getServletPath();
 
-
+        System.out.println(role);
 
 
 
         if (role == null) {
+            System.out.println("role == null");
             if (AccessUtil.guestAccess.contains(servletPath)) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {

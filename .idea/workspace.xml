@@ -9,19 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add a part of loadImage service">
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/RemoveImageForQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="made the loadImage service better">
+      <change afterPath="$PROJECT_DIR$/src/test/java/servlets/post/AddQuestionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/RemoveFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/UserRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/UserRepoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,26 +125,26 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
-    <configuration name="AddAnswerTest.AddAnswerTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="servlets.post.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="servlets.post" />
-      <option name="MAIN_CLASS_NAME" value="servlets.post.AddAnswerTest" />
-      <option name="METHOD_NAME" value="AddAnswerTest1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All in startCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnswerServiceTest.createAnswerServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service_test" />
+      <option name="MAIN_CLASS_NAME" value="service_test.AnswerServiceTest" />
+      <option name="METHOD_NAME" value="createAnswerServiceTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,33 +165,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeleteTestTest.deleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepoTest.createUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="servlets.post.*" />
+          <option name="PATTERN" value="repo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="servlets.post" />
-      <option name="MAIN_CLASS_NAME" value="servlets.post.DeleteTestTest" />
-      <option name="METHOD_NAME" value="deleteTest" />
+      <option name="PACKAGE_NAME" value="repo" />
+      <option name="MAIN_CLASS_NAME" value="repo.UserRepoTest" />
+      <option name="METHOD_NAME" value="createUserTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ResultServiceTest.getResultByQuestion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepoTest.createUserThrowEx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="service_test.*" />
+          <option name="PATTERN" value="repo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.ResultServiceTest" />
-      <option name="METHOD_NAME" value="getResultByQuestion" />
+      <option name="PACKAGE_NAME" value="repo" />
+      <option name="MAIN_CLASS_NAME" value="repo.UserRepoTest" />
+      <option name="METHOD_NAME" value="createUserThrowEx" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -298,20 +302,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.UserServiceTest.isCorrectPassword" />
+      <item itemvalue="JUnit.AnswerServiceTest.createAnswerServiceTest" />
+      <item itemvalue="JUnit.UserRepoTest.createUserTest" />
+      <item itemvalue="JUnit.UserRepoTest.createUserThrowEx" />
       <item itemvalue="JUnit.BlockUnblockUserTest.blockUnblockTest" />
-      <item itemvalue="JUnit.AddAnswerTest.AddAnswerTest1" />
-      <item itemvalue="JUnit.DeleteTestTest.deleteTest" />
-      <item itemvalue="JUnit.ResultServiceTest.getResultByQuestion" />
       <item itemvalue="JUnit.All in startCommand" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in startCommand" />
+        <item itemvalue="JUnit.AnswerServiceTest.createAnswerServiceTest" />
+        <item itemvalue="JUnit.UserRepoTest.createUserTest" />
+        <item itemvalue="JUnit.UserRepoTest.createUserThrowEx" />
         <item itemvalue="JUnit.BlockUnblockUserTest.blockUnblockTest" />
-        <item itemvalue="JUnit.ResultServiceTest.getResultByQuestion" />
-        <item itemvalue="JUnit.AddAnswerTest.AddAnswerTest1" />
-        <item itemvalue="JUnit.DeleteTestTest.deleteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -394,14 +398,9 @@
       <workItem from="1676806749712" duration="2429000" />
       <workItem from="1676932581258" duration="9489000" />
       <workItem from="1677018046022" duration="8716000" />
-      <workItem from="1677077211750" duration="5535000" />
-    </task>
-    <task id="LOCAL-00009" summary="9">
-      <created>1672944987102</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1672944987102</updated>
+      <workItem from="1677077211750" duration="5705000" />
+      <workItem from="1677192237591" duration="5609000" />
+      <workItem from="1677248491122" duration="4375000" />
     </task>
     <task id="LOCAL-00010" summary="10">
       <created>1673057744256</created>
@@ -739,7 +738,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677027213673</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="made the loadImage service better">
+      <created>1677114017442</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1677114017442</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -757,7 +763,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="107 work on query builder and factory and servlet for filtration" />
     <MESSAGE value="108 Add filter and pagination for table-result" />
     <MESSAGE value="108 Add table to profile. Delete command next_page and edit_user_profile" />
     <MESSAGE value="109 refactor" />
@@ -782,7 +787,8 @@
     <MESSAGE value="Add JavaDoc for PostCommands" />
     <MESSAGE value="Add a few JavaDoc for GetCommands&#10;Add column popularity to view for admin" />
     <MESSAGE value="Add a part of loadImage service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add a part of loadImage service" />
+    <MESSAGE value="made the loadImage service better" />
+    <option name="LAST_COMMIT_MESSAGE" value="made the loadImage service better" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -820,7 +826,7 @@
     <SUITE FILE_PATH="coverage/startCommand$AllUserTest_allUsers.ic" NAME="AllUserTest.allUsers Coverage Results" MODIFIED="1674077880846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>servlets.get.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1676942112126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1677195584500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest_findAllByQuestionIdTest.ic" NAME="AnswerServiceTest.findAllByQuestionIdTest Coverage Results" MODIFIED="1673392408583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>
     </SUITE>

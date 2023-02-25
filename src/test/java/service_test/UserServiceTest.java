@@ -134,7 +134,7 @@ public class UserServiceTest {
     public void blockUnblockUser() throws DataBaseException {
         User user = new User();
         user.setId(123L);
-        user.setRole("student");
+        user.setRole(User.Role.STUDENT);
         user.setName("Test");
         user.setPassword("testPassword");
         user.setLogin("test@ua.ua");

@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,7 +53,10 @@ public class UserRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
-            Assertions.assertEquals(12, userRepo.createUser("login", "password", "name"));
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenReturn(true);
+            Mockito.when(mockResultSet.getInt("last_insert_id()")).thenReturn(123);
+            Assertions.assertEquals(123, userRepo.createUser("login", "password", "name"));
         }
     }
 
@@ -61,7 +65,9 @@ public class UserRepoTest {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
                     () -> userRepo.createUser("login", "password", "name"));
         }

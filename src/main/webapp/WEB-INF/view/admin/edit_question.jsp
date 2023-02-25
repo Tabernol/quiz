@@ -24,7 +24,8 @@
 <body>
 
 <jsp:include page="/WEB-INF/view/header.jsp"/>
-<br>
+
+
 <div class="offcanvas offcanvas-start" id="forAddQuestion">
     <div class="offcanvas-header">
         <h1 class="offcanvas-title"><fmt:message key="button.edit.question"/></h1>
@@ -78,7 +79,6 @@
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddAnswer">
     <fmt:message key="button.add.answer"/>
 </button>
-<br>
 <%--====================================================--%>
 <%--<div class="offcanvas offcanvas-start" id="forAddImage">--%>
 <%--    <div class="offcanvas-header">--%>

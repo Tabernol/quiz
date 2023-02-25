@@ -10,6 +10,8 @@ public class Test {
     private int duration; //DateTime???
     private int popularity;
 
+    private Status status;
+
     public Test() {
     }
 
@@ -61,6 +63,14 @@ public class Test {
         this.popularity = popularity;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Test{" +
@@ -70,5 +80,17 @@ public class Test {
                 ", difficult=" + difficult +
                 ", duration=" + duration +
                 '}';
+    }
+
+    public enum Status {
+        BLOCKED("blocked"),
+        FREE("free"),
+        PAID("paid");
+
+        private String status;
+
+        Status(String status) {
+            this.status = status;
+        }
     }
 }

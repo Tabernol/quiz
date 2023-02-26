@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="add Test block/unblock">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="better filter for result view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/timer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -392,14 +389,7 @@
       <workItem from="1677192237591" duration="5609000" />
       <workItem from="1677248491122" duration="8870000" />
       <workItem from="1677367189608" duration="4177000" />
-      <workItem from="1677409086941" duration="2105000" />
-    </task>
-    <task id="LOCAL-00012" summary="12">
-      <created>1673481507379</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1673481507379</updated>
+      <workItem from="1677409086941" duration="3309000" />
     </task>
     <task id="LOCAL-00013" summary="13">
       <created>1673653827110</created>
@@ -737,7 +727,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677374463189</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="better filter for result view">
+      <created>1677412972292</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1677412972292</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -755,7 +752,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="109 refactor" />
     <MESSAGE value="111 merge dev6" />
     <MESSAGE value="112 repeat password work" />
     <MESSAGE value="113" />
@@ -780,7 +776,8 @@
     <MESSAGE value="made the loadImage service better" />
     <MESSAGE value="add Enum ROLE for User. and Status for Test" />
     <MESSAGE value="add Test block/unblock" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Test block/unblock" />
+    <MESSAGE value="better filter for result view" />
+    <option name="LAST_COMMIT_MESSAGE" value="better filter for result view" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

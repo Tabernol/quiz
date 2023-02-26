@@ -80,7 +80,7 @@ public class FilterResult implements RequestHandler {
 
 
         try {
-            subjects = testService.getDistinctSubjects();
+            subjects = resultService.getDistinctSubject(userId);
             req.getSession().setAttribute("subjects", subjects);
             req.setAttribute("user", userService.get(userId));
 

@@ -148,4 +148,24 @@ public class ResultRepo {
             throw new DataBaseException("Can not get count from table result" + e.getMessage(), e);
         }
     }
+
+    public List<String> getDistinctSubject(Long user_id) throws DataBaseException {
+        String sql = "select distinct subject from test" +
+                " inner join result on test.id = result.test_id where user_id = ?";
+        List<String> subjects;
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setLong(1, user_id);
+            ResultSet resultSet = pst.executeQuery();
+            subjects = new ArrayList<>();
+            while (resultSet.next()) {
+                String sub = resultSet.getString("subject");
+                subjects.add(sub);
+            }
+            return subjects;
+        } catch (SQLException e) {
+            logger.warn("Can not get order distinct subject from test");
+            throw new DataBaseException("Can not get order distinct subject from test" + e.getMessage(), e);
+        }
+    }
 }

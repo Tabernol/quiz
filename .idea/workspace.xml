@@ -9,28 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="add Enum ROLE for User. and Status for Test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockTest.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="add Test block/unblock">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/LanguageFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_tests.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/TestRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/TestRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/timer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,14 +391,8 @@
       <workItem from="1677077211750" duration="5705000" />
       <workItem from="1677192237591" duration="5609000" />
       <workItem from="1677248491122" duration="8870000" />
-      <workItem from="1677367189608" duration="4112000" />
-    </task>
-    <task id="LOCAL-00011" summary="11">
-      <created>1673395772702</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1673395772702</updated>
+      <workItem from="1677367189608" duration="4177000" />
+      <workItem from="1677409086941" duration="2105000" />
     </task>
     <task id="LOCAL-00012" summary="12">
       <created>1673481507379</created>
@@ -751,7 +730,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677286384847</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="add Test block/unblock">
+      <created>1677374463188</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1677374463189</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -769,7 +755,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="108 Add table to profile. Delete command next_page and edit_user_profile" />
     <MESSAGE value="109 refactor" />
     <MESSAGE value="111 merge dev6" />
     <MESSAGE value="112 repeat password work" />
@@ -794,7 +779,8 @@
     <MESSAGE value="Add a part of loadImage service" />
     <MESSAGE value="made the loadImage service better" />
     <MESSAGE value="add Enum ROLE for User. and Status for Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Enum ROLE for User. and Status for Test" />
+    <MESSAGE value="add Test block/unblock" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Test block/unblock" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

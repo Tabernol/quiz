@@ -108,4 +108,8 @@ public class ResultService {
         long count = userAnswer.stream().filter(bool -> bool.equals(true)).count();
         return Math.toIntExact(count * 100 / countQuestion);
     }
+
+    public List<String> getDistinctSubject(Long userId) throws DataBaseException {
+        return resultRepo.getDistinctSubject(userId);
+    }
 }

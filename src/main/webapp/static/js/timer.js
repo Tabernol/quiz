@@ -31,7 +31,7 @@ function loadQuestionAndAnswer(id_question, number_question, res) {
     if ((${sessionScope.size}).toString() === number_question) {
         isTimerRun = false;
         document.getElementById("timer").innerHTML = null;
-        finishTest();
+        // finishTest();
     }
 }
 

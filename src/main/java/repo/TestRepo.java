@@ -13,16 +13,18 @@ import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+
 /**
  * Class repository has relationship with table Test in MySQL
  *
- *@author MaxKrasnopolskyi
+ * @author MaxKrasnopolskyi
  */
 public class TestRepo {
     private static final Logger logger = LogManager.getLogger(TestRepo.class);
 
     /**
      * method return list of unique name of subject
+     *
      * @return List of String(name Subject)
      * @throws DataBaseException is wrapper of SQLException
      */
@@ -46,11 +48,12 @@ public class TestRepo {
 
     /**
      * method update field in table 'test' in database
-     * @param id is identification Test in database, table 'test'
-     * @param name is unique new name of test(quiz)
-     * @param subject is new subject of test(quiz)
+     *
+     * @param id        is identification Test in database, table 'test'
+     * @param name      is unique new name of test(quiz)
+     * @param subject   is new subject of test(quiz)
      * @param difficult is new difficult of test(quiz)
-     * @param duration is new duration of test(quiz)
+     * @param duration  is new duration of test(quiz)
      * @return 1 if test(quiz) will be updated
      * @throws DataBaseException is wrapper of SQLException
      */
@@ -72,6 +75,7 @@ public class TestRepo {
 
     /**
      * method count how many test with the same name in table 'test'
+     *
      * @param subject is name of tests(quiz)
      * @return count of test with the same name
      * @throws DataBaseException is wrapper of SQLException
@@ -94,6 +98,7 @@ public class TestRepo {
 
     /**
      * method count all tests in database on table 'test'
+     *
      * @return count of all test(quiz)
      * @throws DataBaseException is wrapper of SQLException
      */
@@ -144,6 +149,7 @@ public class TestRepo {
 
     /**
      * method return Test(quiz) by id
+     *
      * @param id is identification Test in database, table 'test'
      * @return test(quiz) by id
      * @throws DataBaseException is wrapper of SQLException
@@ -175,6 +181,7 @@ public class TestRepo {
 
     /**
      * method add +1 to field popularity on table 'test'
+     *
      * @param idTest is identification Test in database, table 'test'
      * @return 1 if field will be updated
      * @throws DataBaseException is wrapper of SQLException
@@ -194,6 +201,7 @@ public class TestRepo {
 
     /**
      * method check exist this name test(quiz) on table 'test' in database
+     *
      * @param name is unique name on table 'test' in database
      * @return true if name exist and false if this name no exist
      * @throws DataBaseException is wrapper of SQLException
@@ -215,6 +223,7 @@ public class TestRepo {
 
     /**
      * method delete test from database
+     *
      * @param id is identification Test in database, table 'test'
      * @return 1 if test(quiz) will be deleted
      * @throws DataBaseException is wrapper of SQLException
@@ -233,10 +242,11 @@ public class TestRepo {
 
     /**
      * method insert new test(quiz) on table 'test' in database
-     * @param name is unique new name of test(quiz)
-     * @param subject is new subject of test(quiz)
+     *
+     * @param name      is unique new name of test(quiz)
+     * @param subject   is new subject of test(quiz)
      * @param difficult is new difficult of test(quiz)
-     * @param duration is new duration of test(quiz)
+     * @param duration  is new duration of test(quiz)
      * @return 1 if test(quiz) has created
      * @throws DataBaseException is wrapper of SQLException
      */

@@ -89,8 +89,12 @@ public class Test {
 
         private String status;
 
-        Status(String status) {
+        private Status(String status) {
             this.status = status;
+        }
+
+        public String getStatus() {
+            return this.status;
         }
     }
 }

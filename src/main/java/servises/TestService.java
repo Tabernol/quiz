@@ -24,8 +24,8 @@ public class TestService {
 
     public int createTest(String name, String subject, int difficult, int duration)
             throws ValidateException, DataBaseException {
-      validatorService.checkFieldsTest(name,subject,difficult,duration);
-      validatorService.isNameExist(testRepo.isNameExist(name));
+        validatorService.checkFieldsTest(name, subject, difficult, duration);
+        validatorService.isNameExist(testRepo.isNameExist(name));
         return testRepo.createTest(name, subject, difficult, duration);
     }
 
@@ -33,10 +33,10 @@ public class TestService {
         return testRepo.getDistinctSubject();
     }
 
-    public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page) throws DataBaseException {
-   //     QueryFactory queryFactory = new QueryFactory();
+    public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page, String role) throws DataBaseException {
+        //     QueryFactory queryFactory = new QueryFactory();
         QueryBuilderForTest queryBuilderForTest = new QueryBuilderForTest();
-        String query = queryBuilderForTest.getQuery(subject, order, rows, page);
+        String query = queryBuilderForTest.getQuery(subject, order, rows, page, role);
 
 
         //      QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.TEST);
@@ -44,7 +44,7 @@ public class TestService {
 //        qBuilder.setOrderBy(order);
 //        qBuilder.setLimit(rows);
 //        qBuilder.setOffSet(page);
-     //   String query = qBuilder.getQuery(subject, order, rows, page);
+        //   String query = qBuilder.getQuery(subject, order, rows, page);
         System.out.println("QUERY = " + query);
         return testRepo.nextPage(query);
     }
@@ -58,7 +58,8 @@ public class TestService {
     }
 
     public int update(Long id, String name, String subject, int difficult, int duration) throws DataBaseException, ValidateException {
-        validatorService.checkFieldsTest(name,subject,difficult,duration);
+        validatorService.checkFieldsTest(name, subject, difficult, duration);
+        //check by validator status
         return testRepo.updateInfoTest(id, name, subject, difficult, duration);
     }
 
@@ -88,4 +89,13 @@ public class TestService {
 //    public boolean isNameExist(String name) throws DataBaseException {
 //        return testRepo.isNameExist(name);
 //    }
+
+    public int changeStatus(Long testId) throws DataBaseException {
+        Test test = testRepo.get(testId);
+        if (test.getStatus().equals(Test.Status.BLOCKED)) {
+            return testRepo.changeStatus(testId, Test.Status.FREE);
+        } else {
+            return testRepo.changeStatus(testId, Test.Status.BLOCKED);
+        }
+    }
 }

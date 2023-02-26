@@ -41,7 +41,8 @@ public class TestRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
             Assertions.assertEquals(13,
-                    testRepo.updateInfoTest(1231L, "name text", "name Subject", 23, 12));
+                    testRepo.updateInfoTest(1231L,
+                            "name text", "name Subject", 23, 12));
         }
     }
 
@@ -52,7 +53,8 @@ public class TestRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.updateInfoTest(1231L, "name text", "name Subject", 23, 12));
+                    () -> testRepo.updateInfoTest(1231L,
+                            "name text", "name Subject", 23, 12));
         }
     }
 

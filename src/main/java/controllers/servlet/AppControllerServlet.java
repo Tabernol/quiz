@@ -35,7 +35,9 @@ import org.apache.logging.log4j.LogManager;
         PathConst.START_TEST, PathConst.RESULT_ANSWER, PathConst.DOWNLOAD,
         PathConst.GET_INFO_QUESTION, PathConst.FINISH_TEST, PathConst.FINISH,
 
-        PathConst.PRG, PathConst.UPLOAD_IMAGE,  "/load", "/filter_images", "/delete_image", "/update_image", "/remove_image"
+        PathConst.PRG, PathConst.UPLOAD_IMAGE,
+        "/load", "/filter_images", "/delete_image",
+        "/update_image", "/remove_image", "/block_test"
 })
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB

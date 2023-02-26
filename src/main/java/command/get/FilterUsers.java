@@ -31,6 +31,7 @@ public class FilterUsers implements RequestHandler {
         String rows = req.getParameter("rows");
         String order = req.getParameter("order");
         String page = req.getParameter("page");
+      //  String role = (String) req.getSession().getAttribute("role");
 
         if (status == null || rows == null || order == null) {
             status = (String) req.getSession().getAttribute("status");

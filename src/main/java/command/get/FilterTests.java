@@ -28,6 +28,7 @@ public class FilterTests implements RequestHandler {
         String order = req.getParameter("order");
         String rows = req.getParameter("rows");
         String page = req.getParameter("page");
+        String role = (String) req.getSession().getAttribute("role");
 
         if (sub == null || order == null || rows == null) {
             sub = (String) req.getSession().getAttribute("sub");
@@ -63,14 +64,14 @@ public class FilterTests implements RequestHandler {
         try {
             countPages = testService.countPages(sub, Integer.valueOf(rows));
 
-            filterTests = testService.getPageTestList(sub, order, Integer.valueOf(rows), Integer.valueOf(page));
+            filterTests = testService.getPageTestList(sub, order, Integer.valueOf(rows), Integer.valueOf(page), role);
             subjects = testService.getDistinctSubjects();
 
             req.getSession().setAttribute("subjects", subjects);
             req.getSession().setAttribute("tests", filterTests);
             req.setAttribute("count_pages", countPages);
             req.setAttribute("page", page);
-            if (req.getSession().getAttribute("role").equals("admin")) {
+            if (role.equals("admin")) {
                 logger.info("admin uses filter test");
                 req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
             } else {

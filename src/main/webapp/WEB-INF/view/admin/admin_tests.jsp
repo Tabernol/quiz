@@ -27,7 +27,7 @@
 
 <div class="offcanvas offcanvas-start" id="AddTest">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title"><fmt:message key="button.create.test"/> </h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.create.test"/></h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -110,6 +110,7 @@
         <th>Status</th>
         <th></th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -122,6 +123,13 @@
         <td><c:out value="${test.duration}"/></td>
         <td><c:out value="${test.popularity}"/></td>
         <td><c:out value="${test.status}"/></td>
+        <td>
+            <form method="post" action="block_test">
+                <input type="hidden" name="test_id" value="${test.id}">
+                <input type="hidden" name="page" value="${requestScope.page}">
+                <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.block"/>">
+            </form>
+        </td>
         <td>
             <form action="edit_test">
                 <input type="hidden" name="test_id" value="${test.id}">

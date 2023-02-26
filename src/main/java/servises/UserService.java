@@ -70,14 +70,7 @@ public class UserService {
     private List<User>
     getPageUserList(String filter, String order, Integer rows, Integer page) throws DataBaseException {
         QueryBuilderForUser queryBuilderForUser = new QueryBuilderForUser();
-        String query = queryBuilderForUser.getQuery(filter, order, rows, page);
-//        QueryFactory queryFactory = new QueryFactory();
-//        QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.USER);
-//        qBuilder.setFilter(filter);
-//        qBuilder.setOrderBy(order);
-//        qBuilder.setLimit(rows);
-//        qBuilder.setOffSet(page);
-//        String query = qBuilder.getQuery(filter, order, rows, page);
+        String query = queryBuilderForUser.getQuery(filter, order, rows, page, "admin");
         System.out.println("QUERY = " + query);
         return userRepo.nextPage(query);
     }
@@ -90,8 +83,7 @@ public class UserService {
         }
     }
 
-    public List<User> nextPage(String filter, String order, String rows, String page)
-            throws DataBaseException {
+    public List<User> nextPage(String filter, String order, String rows, String page) throws DataBaseException {
         return getPageUserList(filter, order, Integer.valueOf(rows), Integer.valueOf(page));
     }
 

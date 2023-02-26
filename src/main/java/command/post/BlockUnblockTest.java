@@ -1,12 +1,12 @@
 package command.post;
 
-
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import repo.TestRepo;
 import repo.UserRepo;
+import servises.TestService;
 import servises.UserService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -16,19 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * BlockUnblockUser.class is allowed only for admin.
- * it keeps responsibility for block and block user
- */
-public class BlockUnblockUser implements RequestHandler {
+public class BlockUnblockTest implements RequestHandler {
+    private static Logger logger = LogManager.getLogger(BlockUnblockTest.class);
 
-    private static Logger logger = LogManager.getLogger(BlockUnblockUser.class);
-    UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+    TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
 
     /**
      * This method is read parameter from request.
-     * It calls the service layer to change status user (block/unblock)
+     * It calls the service layer to change status Test (block/unblock)
      * if DataBaseException is caught, redirects to error page.
+     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -38,17 +35,17 @@ public class BlockUnblockUser implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        Long userId = Long.valueOf(req.getParameter("user_id"));
+        Long testId = Long.valueOf(req.getParameter("test_id"));
         String page = req.getParameter("page");
 
         try {
-            boolean block = userService.blockUnBlockUser(userId);
-            logger.info("User with id " + userId + "is block " + block);
+            testService.changeStatus(testId);
+            logger.info("Test with id " + testId + " changed status.");
             resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/filter_users"+
+                    "?servlet_path=/filter_tests"+
                     "&page=" + page);
         } catch (DataBaseException e) {
-            logger.warn("User with id " + userId + "has not updated", e);
+            logger.warn("Test with id " + testId + " has not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

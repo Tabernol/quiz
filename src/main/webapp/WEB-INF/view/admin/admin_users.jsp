@@ -93,8 +93,9 @@
         <td>
             <form method="post" action="block">
                 <input type="hidden" name="user_id" value="${user.id}">
+                <input type="hidden" name="page" value="${requestScope.page}">
                 <c:choose>
-                    <c:when test="${user.role == 'admin'}">
+                    <c:when test="${user.role.role == 'admin'}">
                         <button disabled type="submit" class="btn btn-secondary"><fmt:message key="button.block"/></button>
                     </c:when>
                     <c:otherwise>
@@ -128,10 +129,6 @@
         </ul>
     </nav>
 </div>
-<br>
-<br>
-<br>
-<br>
 
 <%--==========================================--%>
 

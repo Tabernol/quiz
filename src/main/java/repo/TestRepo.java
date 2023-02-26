@@ -254,4 +254,17 @@ public class TestRepo {
             throw new DataBaseException("Can not crete test" + e.getMessage(), e);
         }
     }
+
+    public int changeStatus(Long id, Test.Status status) throws DataBaseException {
+        String sql = "update test set status = ? where id = ? ";
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, status.getStatus());
+            pst.setLong(2, id);
+            return pst.executeUpdate();
+        } catch (SQLException e) {
+            logger.warn("Can not change status test with id " + id);
+            throw new DataBaseException("Can not update test " + e.getMessage(), e);
+        }
+    }
 }

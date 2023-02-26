@@ -112,6 +112,6 @@ public class TestServiceTest {
         List<models.Test> testList = new ArrayList<>();
         Mockito.when(mockTestRepo.nextPage(Mockito.anyString())).thenReturn(testList);
         Assertions.assertEquals(testList,
-                testService.getPageTestList("Sub", "order by ...", 2,2));
+                testService.getPageTestList("Sub", "order by ...", 2,2,"admin"));
     }
 }

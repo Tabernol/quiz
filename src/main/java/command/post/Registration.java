@@ -64,7 +64,7 @@ public class Registration implements RequestHandler {
                 HttpSession session = req.getSession();
                 session.setAttribute("user_id", userId);// get id
                 session.setAttribute("name", user.getName());
-                session.setAttribute("role", user.getRole());
+                session.setAttribute("role", user.getRole().getRole());
                 logger.info("User has created with login " + login);
                 req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
             } catch (DataBaseException e) {

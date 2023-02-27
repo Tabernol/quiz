@@ -25,14 +25,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
-<%--<div class="form">--%>
-<%--    <form method="post" action="registration">--%>
-<%--        <input type="text" required placeholder="<fmt:message key="label.name"/>" name="name"><br>--%>
-<%--        <input type="text" required placeholder="<fmt:message key="label.login"/>" name="login"><br>--%>
-<%--        <input type="password" required placeholder="<fmt:message key="label.password"/>" name="password"><br>--%>
-<%--        <input class="button" type="submit" value="<fmt:message key="label.Registration"/>">--%>
-<%--    </form>--%>
-<%--</div>--%>
+
 <c:out value="${requestScope.message}"/>
 <section class="vh-100 bg-image"
 <%--         style="background-image: url('https://www.thesun.ie/wp-content/uploads/sites/3/2019/06/NINTCHDBPICT000496668972.jpg?strip=all&quality=100&w=1620&h=1080&crop=1');">--%>

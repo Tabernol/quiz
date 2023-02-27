@@ -93,6 +93,14 @@
 <c:out value="${requestScope.message_question}"/>
 <c:out value="${requestScope.message}"/>
 
+<c:if test="${requestScope.message != null}">
+    <div class="alert alert-warning">
+        <strong>Warning!</strong> <c:out value="${requestScope.message}"/>
+    </div>
+</c:if>
+
+
+
 
 
 <table class="table align-middle mb-0 w-auto bg-white">

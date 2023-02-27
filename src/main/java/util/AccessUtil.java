@@ -47,6 +47,7 @@ public class AccessUtil {
         adminAccess.add("/update_image");
         adminAccess.add("/remove_image");
         adminAccess.add("/block_test");
+        adminAccess.add(PathConst.LOGIN);
 //        =====================================================
 //        for student
         studentAccess.add(PathConst.REGISTRATION);
@@ -69,6 +70,7 @@ public class AccessUtil {
         studentAccess.add(PathConst.FINISH);
 
         studentAccess.add(PathConst.PRG);
+        studentAccess.add(PathConst.LOGIN);
 //        =======================================
 //        for guest
         guestAccess.add(PathConst.LOGIN_FORM);

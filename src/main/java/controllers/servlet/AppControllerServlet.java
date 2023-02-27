@@ -36,6 +36,9 @@ import org.apache.logging.log4j.LogManager;
         PathConst.GET_INFO_QUESTION, PathConst.FINISH_TEST, PathConst.FINISH,
 
         PathConst.PRG, PathConst.UPLOAD_IMAGE,
+//        ============================================
+        PathConst.LOGIN,
+
         "/load", "/filter_images", "/delete_image",
         "/update_image", "/remove_image", "/block_test"
 })

@@ -3,6 +3,7 @@ package controllers.servlet.impl;
 import command.get.*;
 import command.get.Registration;
 import command.post.*;
+import constans.PathConst;
 import controllers.servlet.RequestHandler;
 
 import java.util.HashMap;
@@ -18,14 +19,16 @@ public class Commands {
         GET_COMMANDS.put("/login_form", new LoginForm());
         GET_COMMANDS.put("/home", new Home());
         GET_COMMANDS.put("/logout", new Logout());
-        //admin
+        //admin??
         GET_COMMANDS.put("/filter_tests", new FilterTests());
         GET_COMMANDS.put("/edit_test", new EditTest());
         GET_COMMANDS.put("/edit_question", new EditQuestion());
         GET_COMMANDS.put("/profile", new Profile());
         GET_COMMANDS.put("/filter_users", new FilterUsers());
+        GET_COMMANDS.put(PathConst.LOGIN, new MainMenu());
 
-        //student
+
+        //student??
         GET_COMMANDS.put("/start_test", new StartTest());
         GET_COMMANDS.put("/language", new LanguageChange());
         GET_COMMANDS.put("/prg", new Prg());
@@ -56,5 +59,6 @@ public class Commands {
         POST_COMMANDS.put("/update_image", new UpdateImageForQuestion());
         POST_COMMANDS.put("/remove_image", new RemoveImageForQuestion());
         POST_COMMANDS.put("/block_test", new BlockUnblockTest());
+        POST_COMMANDS.put(PathConst.LOGIN, new MainMenu());
     }
 }

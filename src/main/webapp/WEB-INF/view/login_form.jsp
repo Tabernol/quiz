@@ -68,7 +68,6 @@
                                     function onSubmit(token) {
                                         document.getElementById("demo-form").submit();
                                     }
-
                                 </script>
 
                                 <c:out value="${requestScope.message}"/>

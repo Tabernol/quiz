@@ -8,6 +8,7 @@ public interface PathConst {
 
 
     // for both
+    String LOGIN = "/login";
     String LOGOUT = "/logout";
     String PROFILE = "/profile";
     String FILTER_TESTS = "/filter_tests";

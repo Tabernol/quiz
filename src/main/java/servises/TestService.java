@@ -18,9 +18,6 @@ public class TestService {
         this.validatorService = validatorService;
     }
 
-//    public List<Test> getAll() throws DataBaseException {
-//        return testRepo.getAll();
-//    }
 
     public int createTest(String name, String subject, int difficult, int duration)
             throws ValidateException, DataBaseException {
@@ -37,14 +34,6 @@ public class TestService {
         //     QueryFactory queryFactory = new QueryFactory();
         QueryBuilderForTest queryBuilderForTest = new QueryBuilderForTest();
         String query = queryBuilderForTest.getQuery(subject, order, rows, page, role);
-
-
-        //      QBuilder qBuilder = queryFactory.getQueryBuilder(MyTable.TEST);
-//        qBuilder.setFilter(subject);
-//        qBuilder.setOrderBy(order);
-//        qBuilder.setLimit(rows);
-//        qBuilder.setOffSet(page);
-        //   String query = qBuilder.getQuery(subject, order, rows, page);
         System.out.println("QUERY = " + query);
         return testRepo.nextPage(query);
     }
@@ -73,22 +62,9 @@ public class TestService {
         return subject.equals("all") ? testRepo.getCount() : testRepo.getCount(subject);
     }
 
-
-//    public List<Test> nextPage(String subject, String order, Integer rows, Integer numberOfPage) {
-//        return testRepo.nextPage(subject, order, rows, numberOfPage);
-//    }
-//
-//    public List<Test> nextPage(String order, Integer rows, Integer numberOfPage) {
-//        return testRepo.nextPage(order, rows, numberOfPage);
-//    }
-
     public int addPointPopularity(Long idTest) throws DataBaseException {
         return testRepo.addPopularity(idTest);
     }
-
-//    public boolean isNameExist(String name) throws DataBaseException {
-//        return testRepo.isNameExist(name);
-//    }
 
     public int changeStatus(Long testId) throws DataBaseException {
         Test test = testRepo.get(testId);

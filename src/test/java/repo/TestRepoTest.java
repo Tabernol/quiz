@@ -18,13 +18,13 @@ import java.util.List;
 
 public class TestRepoTest {
     @Mock
-    Connection mockConnection;
+    private Connection mockConnection;
     @Mock
-    PreparedStatement mockPreparedStatement;
+    private PreparedStatement mockPreparedStatement;
     @Mock
-    ResultSet mockResultSet;
+    private ResultSet mockResultSet;
 
-    TestRepo testRepo;
+    private TestRepo testRepo;
 
     @BeforeEach
     public void setUp() throws SQLException {
@@ -201,6 +201,48 @@ public class TestRepoTest {
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
                     () -> testRepo.createTest("nameTEST", "subject", 45, 12));
+        }
+    }
+
+    @Test
+    public void changeStatusTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
+            Assertions.assertEquals(13, testRepo.changeStatus(12413L, models.Test.Status.FREE));
+        }
+    }
+
+    @Test
+    public void changeStatusThrowEx() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class,
+                    () -> testRepo.changeStatus(123L, models.Test.Status.BLOCKED));
+        }
+    }
+
+    @Test
+    public void getDistinctSubjectTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenReturn(false);
+            Assertions.assertEquals(null, testRepo.getDistinctSubject());
+        }
+    }
+
+    @Test
+    public void getDistinctSubjectThrowEx() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class, () -> testRepo.getDistinctSubject());
         }
     }
 

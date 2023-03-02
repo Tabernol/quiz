@@ -149,6 +149,13 @@ public class ResultRepo {
         }
     }
 
+    /**
+     * method returns a list of the unique subject names
+     * of the test(quiz) items that the user has completed
+     *
+     * @return List of String(name Subject)
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public List<String> getDistinctSubject(Long user_id) throws DataBaseException {
         String sql = "select distinct subject from test" +
                 " inner join result on test.id = result.test_id where user_id = ?";

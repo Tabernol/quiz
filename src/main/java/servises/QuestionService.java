@@ -8,9 +8,15 @@ import repo.QuestionRepo;
 import java.util.List;
 
 /**
- *
+ * This class receives data from top-level classes.
+ * It checks the input and decides whether to call QuestionRepo.class or throw an exception
  */
 public class QuestionService {
+    /**
+     * Class contains:
+     * questionRepo field for work with QuestionRepo.class
+     * validatorService field for validate input date from other
+     */
     private QuestionRepo questionRepo;
     private ValidatorService validatorService;
 
@@ -59,7 +65,7 @@ public class QuestionService {
      * The method takes questionId, and calls the repository layer to get question by id
      *
      * @param id s unique number Question in database
-     * @return Question by
+     * @return Question by id
      * @throws DataBaseException
      */
     public Question get(Long id) throws DataBaseException {
@@ -70,7 +76,7 @@ public class QuestionService {
      * The method takes input, validates it, and calls the repository layer to update this question
      *
      * @param newText is new text of question
-     * @param id      id s unique number Question in database
+     * @param id is unique number Question in database
      * @return 1 if question has updated
      * @throws DataBaseException
      * @throws ValidateException
@@ -80,6 +86,14 @@ public class QuestionService {
         return questionRepo.updateQuestion(newText, id);
     }
 
+    /**
+     * This method calls Question Repo.class to update the URL in the specific question identified by questionId
+     * @param url is new URL
+     * @param id is unique number Question in database
+     * @return 1 if question has updated
+     * @throws DataBaseException
+     * @throws ValidateException
+     */
     public int updateImage(String url, Long id) throws DataBaseException, ValidateException {
         return questionRepo.updateImageQuestion(url, id);
     }

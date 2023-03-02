@@ -26,22 +26,19 @@
 
 <div class="offcanvas offcanvas-start" id="forAddImage">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title">EDIT IMAGE </h1>
+        <h1 class="offcanvas-title"></h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
         <form method="post" action="load" enctype="multipart/form-data">
-            <%--            <input type="hidden" name="page" value="${requestScope.page}">--%>
-            <%--            <input type="hidden" name="test_id" value="${requestScope.test_id}">--%>
-            <%--            <input type="hidden" name="question_id" value="${requestScope.question.id}">--%>
             <input type="file" name="file"/>
-            <input type="submit" value="Upload"/>
+            <input type="submit" value="<fmt:message key="button.load"/>">
         </form>
     </div>
 </div>
 
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddImage">
-    EDIT IMAGE
+    <fmt:message key="button.load.image"/>
 </button>
 
 <c:choose>
@@ -49,10 +46,10 @@
         <table class="table align-middle mb-0 w-auto bg-white">
             <thead class="bg-secondary">
             <tr>
-                <th>image</th>
-                <th>width</th>
-                <th>height</th>
-                <th>action</th>
+                <th><fmt:message key="table.head.image"/> </th>
+                <th><fmt:message key="table.head.width"/></th>
+                <th><fmt:message key="table.head.height"/></th>
+                <th><fmt:message key="table.head.action"/></th>
             </tr>
             </thead>
             <tbody>
@@ -71,7 +68,7 @@
                         <input type="hidden" name="test_id" value="${requestScope.test_id}">
                         <input type="hidden" name="question_id" value="${requestScope.question_id}">
                         <input type="hidden" name="url" value="${image.url}">
-                        <input class="btn btn-secondary" type="submit" value="IMAGE">
+                        <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.add.image"/>">
                     </form>
                 </td>
                 </c:forEach>
@@ -82,10 +79,10 @@
         <table class="table align-middle mb-0 w-auto bg-white">
             <thead class="bg-secondary">
             <tr>
-                <th>image</th>
-                <th>width</th>
-                <th>height</th>
-                <th>action</th>
+                <th><fmt:message key="table.head.image"/> </th>
+                <th><fmt:message key="table.head.width"/></th>
+                <th><fmt:message key="table.head.height"/></th>
+                <th><fmt:message key="table.head.action"/></th>
             </tr>
             </thead>
             <tbody>
@@ -102,7 +99,7 @@
                 <td>
                     <form method="post" action="delete_image">
                         <input type="hidden" name="public_id" value="${image.publicId}">
-                        <input class="btn btn-secondary" type="submit" value="delete IMG">
+                        <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.remove.image"/>">
                     </form>
                 </td>
                 </c:forEach>

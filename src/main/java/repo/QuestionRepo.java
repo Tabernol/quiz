@@ -143,6 +143,13 @@ public class QuestionRepo {
         }
     }
 
+    /**
+     * method update URL column in database
+     * @param url is url-address of image
+     * @param id is identification of Question in table 'question'
+     * @return 1 if question will be updated
+     * @throws DataBaseException
+     */
     public int updateImageQuestion(String url, Long id) throws DataBaseException {
         String sql = "update question set url = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();

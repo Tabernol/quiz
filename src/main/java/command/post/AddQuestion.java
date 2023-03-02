@@ -49,7 +49,7 @@ public class AddQuestion implements RequestHandler {
                     "?servlet_path=/edit_test"+
                     "&test_id=" + testId +
                     "&page=" + page +
-                    "&message_question=All Right)");
+                    "&message_success=Question added");
 
         } catch (DataBaseException e) {
             logger.warn("Question for test id " + testId + "has not added", e);
@@ -60,7 +60,7 @@ public class AddQuestion implements RequestHandler {
                     "?servlet_path=/edit_test"+
                     "&test_id=" + testId +
                     "&page=" + page +
-                    "&message_question=" + "text of question is too long");
+                    "&message_bad_request=" + "text of question is too long");
         }
     }
 }

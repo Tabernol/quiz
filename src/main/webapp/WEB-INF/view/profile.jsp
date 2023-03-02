@@ -25,7 +25,18 @@
 
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
-
+<c:choose>
+    <c:when test="${requestScope.message_bad_request != null}">
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> <c:out value="${requestScope.message_bad_request}"/>
+        </div>
+    </c:when>
+    <c:when test="${requestScope.message_success != null}">
+        <div class="alert alert-success">
+            <strong>Success!</strong> <c:out value="${requestScope.message_success}"/>
+        </div>
+    </c:when>
+</c:choose>
 <%--=========================--%>
 <div class="offcanvas offcanvas-start" id="forTest">
     <div class="offcanvas-header">

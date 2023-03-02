@@ -20,12 +20,12 @@ import java.util.List;
 
 public class UserRepoTest {
     @Mock
-    Connection mockConnection;
+    private Connection mockConnection;
     @Mock
-    PreparedStatement mockPreparedStatement;
+    private PreparedStatement mockPreparedStatement;
     @Mock
-    ResultSet mockResultSet;
-    UserRepo userRepo;
+    private ResultSet mockResultSet;
+    private UserRepo userRepo;
 
     @BeforeEach
     public void setUp() throws SQLException {

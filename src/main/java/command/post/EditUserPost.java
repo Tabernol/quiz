@@ -47,7 +47,7 @@ public class EditUserPost implements RequestHandler {
                     "?servlet_path=/profile" +
                     "&user_id=" + userId +
                     "&name=" + name +
-                    "&message=changes made successfully");
+                    "&message_success=changes made successfully");
         } catch (DataBaseException e) {
             logger.warn("User with id " + userId + "did not update");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
@@ -57,7 +57,7 @@ public class EditUserPost implements RequestHandler {
                     "?servlet_path=/profile" +
                     "&user_id=" + userId +
                     "&name=" + name +
-                    "&message=" + e.getMessage());
+                    "&message_bad_request=" + e.getMessage());
         }
     }
 }

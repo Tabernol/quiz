@@ -7,10 +7,9 @@ import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
-import servises.PasswordHashingService;
 import servises.UserService;
 import servises.ValidatorService;
-import util.VerifyRecaptcha;
+import util.reCaptcha.VerifyRecaptcha;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -59,7 +58,7 @@ public class Registration implements RequestHandler {
 
         if(verify){
             try {
-                int userId = userService.createUser(name, login, password, repeatPassword);
+                Long userId = userService.createUser(name, login, password, repeatPassword);
                 User user = userService.get(userId);
                 HttpSession session = req.getSession();
                 session.setAttribute("user_id", userId);// get id
@@ -72,7 +71,9 @@ public class Registration implements RequestHandler {
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             } catch (ValidateException e) {
                 logger.info("User field is invalid ", e.getMessage());
-                req.setAttribute("message", e.getMessage());
+                req.setAttribute("message_bad_request", e.getMessage());
+                req.setAttribute("repeat_name", name);
+                req.setAttribute("repeat_login", login);
                 req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
             } catch (NoSuchAlgorithmException e) {
                 logger.warn("Problem with hash password ", e.getMessage());
@@ -82,7 +83,9 @@ public class Registration implements RequestHandler {
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             }
         } else {
-            req.setAttribute("message", "reCAPTCHA is not true");
+            req.setAttribute("message_bad_request", "reCAPTCHA is false");
+            req.setAttribute("repeat_name", name);
+            req.setAttribute("repeat_login", login);
             req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
         }
     }

@@ -13,8 +13,8 @@ public class ImageService {
         this.imageRepo = imageRepo;
     }
 
-    public void addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException {
-        imageRepo.addImage(publicId, url, width, height);
+    public int addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException {
+        return imageRepo.addImage(publicId, url, width, height);
     }
 
     public List<Image> getAll() throws DataBaseException {

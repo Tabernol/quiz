@@ -26,10 +26,23 @@
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <br>
 
+<c:choose>
+    <c:when test="${requestScope.message_bad_request != null}">
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> <c:out value="${requestScope.message_bad_request}"/>
+        </div>
+    </c:when>
+    <c:when test="${requestScope.message_success != null}">
+        <div class="alert alert-success">
+            <strong>Success!</strong> <c:out value="${requestScope.message_success}"/>
+        </div>
+    </c:when>
+</c:choose>
+
 
 <div class="offcanvas offcanvas-start" id="forTest">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title"><fmt:message key="button.edit.test"/> </h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.edit.test"/></h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -62,7 +75,7 @@
 
 <div class="offcanvas offcanvas-start" id="forAddQuestion">
     <div class="offcanvas-header">
-        <h1 class="offcanvas-title"><fmt:message key="button.add.question"/> </h1>
+        <h1 class="offcanvas-title"><fmt:message key="button.add.question"/></h1>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -89,18 +102,6 @@
     <input type="hidden" name="page" value="${requestScope.page}">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">
 </form>
-
-<c:out value="${requestScope.message_question}"/>
-<c:out value="${requestScope.message}"/>
-
-<c:if test="${requestScope.message != null}">
-    <div class="alert alert-warning">
-        <strong>Warning!</strong> <c:out value="${requestScope.message}"/>
-    </div>
-</c:if>
-
-
-
 
 
 <table class="table align-middle mb-0 w-auto bg-white">

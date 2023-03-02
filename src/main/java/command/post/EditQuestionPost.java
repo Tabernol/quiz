@@ -53,7 +53,7 @@ public class EditQuestionPost implements RequestHandler {
                     "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
-                    "&message=All Right");
+                    "&message_success=The question updated");
 
         } catch (DataBaseException e) {
             logger.warn("Question with id " + questionId + "has not updated", e);
@@ -65,7 +65,7 @@ public class EditQuestionPost implements RequestHandler {
                     "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
-                    "&message=" + "text of question is too long" +
+                    "&message_bad_request=" + "text of question is too long" +
                     "&tooLongAnswer=" + text);
         }
     }

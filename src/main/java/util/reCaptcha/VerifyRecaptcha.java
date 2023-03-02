@@ -1,4 +1,4 @@
-package util;
+package util.reCaptcha;
 
 import javax.json.Json;
 import javax.json.JsonObject;

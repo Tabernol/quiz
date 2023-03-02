@@ -52,18 +52,6 @@ public class UserRepo {
         }
     }
 
-//    public int delete(Long id) throws DataBaseException {
-//        String sql = "delete from user where id = ?";
-//        try (Connection con = MyDataSource.getConnection();
-//             PreparedStatement pst = con.prepareStatement(sql)) {
-//            pst.setLong(1, id);
-//            return pst.executeUpdate();
-//        } catch (SQLException e) {
-//            logger.warn("Can not delete user");
-//            throw new DataBaseException("Can not delete user" + e.getMessage(), e);
-//        }
-//    }
-
     /**
      * method return List of all User from database
      *
@@ -104,7 +92,7 @@ public class UserRepo {
      * @param name     is name of User
      * @throws DataBaseException is wrapper of SQLException
      */
-    public int createUser(String login, String password, String name) throws DataBaseException {
+    public Long createUser(String login, String password, String name) throws DataBaseException {
         String sql = "insert into user (id, login, password, role, name) " +
                 "values (default, ?, ?, ?, ?)";
         Connection con = null;
@@ -123,7 +111,7 @@ public class UserRepo {
             pst = con.prepareStatement("select last_insert_id()");
             resultSet = pst.executeQuery();
             resultSet.next();
-            int userId = resultSet.getInt("last_insert_id()");
+            Long userId = resultSet.getLong("last_insert_id()");
             con.commit();
             System.out.println("userId = " + userId);
             return userId;
@@ -268,6 +256,13 @@ public class UserRepo {
         }
     }
 
+    /**
+     * method return list of users with some limit, offset, order by,  and filter
+     *
+     * @param query is ready SQL query. query has an order, limit and offset
+     * @return list of user
+     * @throws DataBaseException is wrapper of SQLException
+     */
     public List<User> nextPage(String query) throws DataBaseException {
         List<User> users = new ArrayList<>();
         try (Connection con = MyDataSource.getConnection();
@@ -290,6 +285,12 @@ public class UserRepo {
         }
     }
 
+    /**
+     * method returns the number of users with the selected status from the database
+     * @param isBlocked can be  'BLOCKED' 'UNBLOCKED' or 'ALL'
+     * @return count of users with choose filter
+     * @throws DataBaseException
+     */
     public Integer getCountUsers(String isBlocked) throws DataBaseException {
         String sql = "select count(id) from user where is_blocked like ?";
         try (Connection con = MyDataSource.getConnection();

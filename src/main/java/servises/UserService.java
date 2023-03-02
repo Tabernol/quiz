@@ -25,7 +25,7 @@ public class UserService {
         return userRepo.get(id);
     }
 
-    public int createUser(String name, String login, String password, String repeatPassword)
+    public Long createUser(String name, String login, String password, String repeatPassword)
             throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
         validatorService.validateFieldsUser(name, login, password);
         validatorService.isLoginExist(userRepo.isLoginExist(login));
@@ -38,9 +38,6 @@ public class UserService {
         return userRepo.getAll();
     }
 
-//    public int deleteUser(Long id) throws DataBaseException {
-//        return userRepo.delete(id);
-//    }
 
     public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
         if (role == null) {
@@ -51,11 +48,6 @@ public class UserService {
             return userRepo.updateUser(id, name, role);
         }
     }
-
-//    public int updateUser(Long id, String name) throws DataBaseException, ValidateException {
-//        validatorService.validateUpdateUserName(name);
-//        return userRepo.updateUser(id, name);
-//    }
 
     public long getId(String login) throws DataBaseException {
         return userRepo.getId(login);

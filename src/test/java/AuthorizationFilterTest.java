@@ -1,9 +1,7 @@
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import servises.UserService;
-import util.VerifyRecaptcha;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

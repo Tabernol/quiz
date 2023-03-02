@@ -52,8 +52,8 @@ public class UserServiceTest {
     @Test
     public void createUser() throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
         Mockito.when(mockUserRepo.createUser(Mockito.anyString(),
-                Mockito.anyString(), Mockito.anyString())).thenReturn(1);
-        assertEquals(1,
+                Mockito.anyString(), Mockito.anyString())).thenReturn(123L);
+        assertEquals(123L,
                 userService.createUser(
                         "name", "login", "password", "repeatPassword"));
     }

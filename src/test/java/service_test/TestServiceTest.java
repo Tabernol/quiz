@@ -114,4 +114,16 @@ public class TestServiceTest {
         Assertions.assertEquals(testList,
                 testService.getPageTestList("Sub", "order by ...", 2,2,"admin"));
     }
+
+    @Test
+    public void changeStatusTest() throws DataBaseException {
+        models.Test test = new models.Test();
+        test.setStatus(models.Test.Status.BLOCKED);
+        Mockito.when(mockTestRepo.get(Mockito.anyLong())).thenReturn(test);
+        Mockito.when(mockTestRepo.changeStatus(Mockito.anyLong(),
+                Mockito.any(models.Test.Status.class))).thenReturn(12);
+        Assertions.assertEquals(12, testService.changeStatus(Mockito.anyLong()));
+        test.setStatus(models.Test.Status.FREE);
+        Assertions.assertEquals(12, testService.changeStatus(Mockito.anyLong()));
+    }
 }

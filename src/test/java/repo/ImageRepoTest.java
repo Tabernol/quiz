@@ -2,27 +2,21 @@ package repo;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
-import models.Answer;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-
-import repo.AnswerRepo;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mockStatic;
 
-class AnswerRepoTest {
+public class ImageRepoTest {
     @Mock
     private Connection mockConnection;
     @Mock
@@ -30,72 +24,68 @@ class AnswerRepoTest {
     @Mock
     private ResultSet mockResultSet;
 
-    private AnswerRepo answerRepo;
+    private ImageRepo imageRepo;
 
     @BeforeEach
     public void setUp() throws SQLException {
         mockConnection = Mockito.mock(Connection.class);
         mockPreparedStatement = Mockito.mock(PreparedStatement.class);
         mockResultSet = Mockito.mock(ResultSet.class);
-        answerRepo = new AnswerRepo();
+        imageRepo = new ImageRepo();
     }
 
-
     @Test
-    public void testCreateAnswer() throws Exception {
+    public void testAddImage() throws Exception {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int answer = answerRepo.createAnswer(256863L, "new", true);
-//            int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
-            Assertions.assertEquals(13, answer);
+            int image = imageRepo.addImage("publicID", "URL", 600, 600);
+            Assertions.assertEquals(13, image);
         }
-
     }
 
     @Test
-    public void testThrowExceptionCreateAnswer() throws Exception {
+    public void testAddImageThrowException() throws Exception {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException());
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
             Assertions.assertThrows(DataBaseException.class,
-                    () -> answerRepo.createAnswer(256863L, "new", true));
+                    () -> imageRepo.addImage("publicID", "URL", 600, 600));
         }
     }
 
     @Test
-    public void testGetAnswerByQuestionId() throws Exception {
-        List<Answer> answerListTest = new ArrayList<>();
+    public void testDeleteImage() throws SQLException, DataBaseException {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
-            Mockito.when(mockResultSet.next()).thenReturn(false);
-            List<Answer> answersByQuestionId = answerRepo.getAnswersByQuestionId(1L);
-            assertEquals(answerListTest, answersByQuestionId);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
+            int count = imageRepo.deleteImage("publicID");
+            Assertions.assertEquals(13, count);
         }
     }
 
     @Test
-    public void testThrowAnswerByQuestionId() throws Exception {
+    public void testDeleteImageThrowException() throws Exception {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException());
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
+            Assertions.assertThrows(DataBaseException.class,
+                    () -> imageRepo.deleteImage("publicID"));
+        }
+    }
+
+    @Test
+    public void testThrowGetAllImages() throws Exception {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
             Mockito.when(mockResultSet.next()).thenReturn(false);
-            assertThrows(DataBaseException.class, () -> answerRepo.getAnswersByQuestionId(1232L));
-        }
-    }
-
-    @Test
-    public void testThrowDeleteAnswer() throws Exception {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> answerRepo.delete(2342L));
+            assertThrows(DataBaseException.class, () -> imageRepo.getAll());
         }
     }
 }

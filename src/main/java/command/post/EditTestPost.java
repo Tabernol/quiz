@@ -50,7 +50,7 @@ public class EditTestPost implements RequestHandler {
                     "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
                     "&page=" + page +
-                    "&message=All Right)");
+                    "&message_success=The test updated");
         } catch (DataBaseException e) {
             logger.warn("Test with id " + testId + "has not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
@@ -60,7 +60,7 @@ public class EditTestPost implements RequestHandler {
                     "?servlet_path=/edit_test" +
                     "&page=" + page +
                     "&test_id=" + testId +
-                    "&message=" + e.getMessage());
+                    "&message_bad_request=" + e.getMessage());
         }
     }
 }

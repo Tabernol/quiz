@@ -55,7 +55,7 @@ public class AddAnswer implements RequestHandler {
                     "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
-                    "&message_answer=All Right");
+                    "&message_success=The answer added");
 
         } catch (DataBaseException e) {
             logger.warn("Answer for question id " + questionId + "has not added", e);
@@ -68,7 +68,7 @@ public class AddAnswer implements RequestHandler {
                     "&question_id=" + questionId +
                     "&page=" + page +
                     "&too_long_answer=" + text +
-                    "&message_answer=" + "answer is too long");
+                    "&message_bad_request=" + "answer is too long");
         }
     }
 }

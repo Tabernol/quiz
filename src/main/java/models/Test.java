@@ -84,8 +84,7 @@ public class Test {
 
     public enum Status {
         BLOCKED("blocked"),
-        FREE("free"),
-        PAID("paid");
+        FREE("free");
 
         private String status;
 

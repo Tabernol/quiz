@@ -46,7 +46,7 @@ public class CreateTest implements RequestHandler {
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
                     "&sub=all&order=name+asc&rows=5" +
-                    "&message=Test has created");
+                    "&message_success=The test created");
         } catch (ValidateException e) {
             logger.warn("Test " + name + " is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
@@ -56,7 +56,7 @@ public class CreateTest implements RequestHandler {
                     "&subject=" + subject +
                     "&difficult=" + difficult +
                     "&duration=" + duration +
-                    "&message=" + e.getMessage());
+                    "&message_bad_request=" + e.getMessage());
         } catch (DataBaseException e) {
             logger.warn("Test " + name + "have not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);

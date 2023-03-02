@@ -23,7 +23,7 @@ public class TestRepo {
     private static final Logger logger = LogManager.getLogger(TestRepo.class);
 
     /**
-     * method return list of unique name of subject
+     * method returns a list of the unique subject names of the test(quiz)
      *
      * @return List of String(name Subject)
      * @throws DataBaseException is wrapper of SQLException
@@ -116,7 +116,7 @@ public class TestRepo {
     }
 
     /**
-     * method return list of test(quiz) with some limit, offset, order by, where
+     * method return list of test(quiz) with some limit, offset, order by and filter
      *
      * @param query is ready SQL query. query has an order, limit and offset
      * @return list of test(quiz)
@@ -265,6 +265,13 @@ public class TestRepo {
         }
     }
 
+    /**
+     * method change column 'status' in table 'test' in database
+     * @param id is identification Test in database, table 'test'
+     * @param status is enum in Test.clas can be FREE or BLOCKED
+     * @return 1 if test(quiz) has updated
+     * @throws DataBaseException
+     */
     public int changeStatus(Long id, Test.Status status) throws DataBaseException {
         String sql = "update test set status = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();

@@ -22,13 +22,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuestionRepoTest {
     @Mock
-    Connection mockConnection;
+    private Connection mockConnection;
     @Mock
-    PreparedStatement mockPreparedStatement;
+    private PreparedStatement mockPreparedStatement;
     @Mock
-    ResultSet mockResultSet;
+    private ResultSet mockResultSet;
 
-    QuestionRepo questionRepo;
+    private QuestionRepo questionRepo;
 
     @BeforeEach
     public void setUp() throws SQLException {
@@ -134,6 +134,27 @@ public class QuestionRepoTest {
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
                     () -> questionRepo.createQuestion(34467L, "new text Question"));
+        }
+    }
+
+    @Test
+    public void testUpdateImageQuestion() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
+            int rowsUpdate = questionRepo.updateImageQuestion("URL", 323L);
+            Assertions.assertEquals(13, rowsUpdate);
+        }
+    }
+
+    @Test
+    public void updateImageQuestionThrowEx() throws SQLException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class, () -> questionRepo.updateImageQuestion("URL", 34467L));
         }
     }
 }

@@ -61,4 +61,11 @@ public class QuestionServiceTest {
         int update = questionService.update("newText", 34L);
         assertEquals(12, update);
     }
+
+    @Test
+    public void updateImageTest() throws DataBaseException, ValidateException {
+        Mockito.when(mockQuestionRepo.updateImageQuestion(Mockito.anyString(), Mockito.anyLong())).thenReturn(13);
+        int update = questionService.updateImage("newURL", 34L);
+        assertEquals(13, update);
+    }
 }

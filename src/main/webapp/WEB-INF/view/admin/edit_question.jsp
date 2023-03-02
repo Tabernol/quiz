@@ -25,6 +25,18 @@
 
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 
+<c:choose>
+    <c:when test="${requestScope.message_bad_request != null}">
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> <c:out value="${requestScope.message_bad_request}"/>
+        </div>
+    </c:when>
+    <c:when test="${requestScope.message_success != null}">
+        <div class="alert alert-success">
+            <strong>Success!</strong> <c:out value="${requestScope.message_success}"/>
+        </div>
+    </c:when>
+</c:choose>
 
 <div class="offcanvas offcanvas-start" id="forAddQuestion">
     <div class="offcanvas-header">
@@ -112,14 +124,14 @@
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="hidden" name="question_id" value="${requestScope.question.id}">
-    <input class="btn btn-secondary" type="submit" value="to Filter Image">
+    <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.add.image"/>">
 </form>
 
 <form method="post" action="remove_image">
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="hidden" name="question_id" value="${requestScope.question.id}">
-    <input class="btn btn-secondary" type="submit" value="Remove Image">
+    <input class="btn btn-secondary" type="submit" value=" <fmt:message key="button.remove.image"/>">
 </form>
 
 

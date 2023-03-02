@@ -19,13 +19,13 @@ import java.util.List;
 
 public class ResultRepoTest {
     @Mock
-    Connection mockConnection;
+    private Connection mockConnection;
     @Mock
-    PreparedStatement mockPreparedStatement;
+    private PreparedStatement mockPreparedStatement;
     @Mock
-    ResultSet mockResultSet;
+    private ResultSet mockResultSet;
 
-    ResultRepo resultRepo;
+    private ResultRepo resultRepo;
 
     @BeforeEach
     public void setUp() throws SQLException {

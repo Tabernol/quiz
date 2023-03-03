@@ -58,7 +58,7 @@ public class TestService {
      * his method return List of test(quiz) on each page
      * @param subject is subject to testing and was selected during filtering
      * @param order is order of test was selected during filtering
-     * @param rows is number of rows was selected during filtering
+     * @param rows is number of rows on one page was selected during filtering
      * @param page is page of chosen tests
      * @param role is role of user in session
      * @return List of test on current page

@@ -9,12 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add test for Image service and repo. and add some JavaDoc">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add JavaDoc for ImageService and TestService">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -396,14 +394,7 @@
       <workItem from="1677575760107" duration="14098000" />
       <workItem from="1677689003713" duration="7013000" />
       <workItem from="1677792489037" duration="8490000" />
-      <workItem from="1677879990472" duration="2607000" />
-    </task>
-    <task id="LOCAL-00015" summary="18">
-      <created>1673975926458</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1673975926458</updated>
+      <workItem from="1677879990472" duration="4898000" />
     </task>
     <task id="LOCAL-00016" summary="21">
       <created>1673984605080</created>
@@ -741,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677800996333</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Add JavaDoc for ImageService and TestService">
+      <created>1677882718758</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1677882718759</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,7 +757,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="113" />
     <MESSAGE value="118" />
     <MESSAGE value="119" />
     <MESSAGE value="refactor nextQuestion and nextPage" />
@@ -784,7 +781,8 @@
     <MESSAGE value="better filter for result view" />
     <MESSAGE value="changed in securityFilter and add page 'access'" />
     <MESSAGE value="Add test for Image service and repo. and add some JavaDoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add test for Image service and repo. and add some JavaDoc" />
+    <MESSAGE value="Add JavaDoc for ImageService and TestService" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add JavaDoc for ImageService and TestService" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

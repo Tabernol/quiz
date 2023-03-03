@@ -38,7 +38,6 @@ public class QuestionService {
 
     /**
      * The method takes input, validates it, and calls the repository layer to create a new question
-     *
      * @param testId is unique number Test in database
      * @param text   is text of new Question
      * @return 1 if question has added

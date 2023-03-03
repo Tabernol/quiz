@@ -17,20 +17,19 @@ public class DeleteFromCloud implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String publicId = req.getParameter("public_id");
+
+        //delete image from cloudinary
         Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
         Map deleteParams = ObjectUtils.asMap("invalidate", true );
-
         cloudinary.uploader().destroy(publicId,deleteParams );
         System.out.println("need to Remove from DB");
 
+
+        //delete data from database
         ImageService imageService = new ImageService(new ImageRepo());
         try {
             imageService.deleteImage(publicId);
         } catch (DataBaseException e) {
-
-
-
-
         }
     }
 }

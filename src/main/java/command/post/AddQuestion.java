@@ -15,9 +15,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * AddQuestion.class is allowed only for admin.
  * The meaning of the class is to add a Question to an existing Test(quiz) in database.
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class AddQuestion implements RequestHandler {
@@ -30,6 +32,7 @@ public class AddQuestion implements RequestHandler {
      * It calls the service layer to create Question
      * if DataBaseException is caught, redirects to error page.
      * if ValidateException is caught, redirects to the page from which the request was made
+     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -46,7 +49,7 @@ public class AddQuestion implements RequestHandler {
             questionService.addQuestion(testId, text);
             logger.info("Question for test id " + testId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/edit_test"+
+                    "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
                     "&page=" + page +
                     "&message_success=Question added");
@@ -57,7 +60,7 @@ public class AddQuestion implements RequestHandler {
         } catch (ValidateException e) {
             logger.info("Question for test id " + testId + "is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/edit_test"+
+                    "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
                     "&page=" + page +
                     "&message_bad_request=" + "text of question is too long");

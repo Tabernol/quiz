@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class Image {
     private Long id;
     private Long questionId;
@@ -69,5 +71,23 @@ public class Image {
                 ", width=" + width +
                 ", height=" + height +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Image image = (Image) o;
+        return Objects.equals(id, image.id) &&
+                Objects.equals(questionId, image.questionId) &&
+                Objects.equals(publicId, image.publicId) &&
+                Objects.equals(url, image.url) &&
+                Objects.equals(width, image.width) &&
+                Objects.equals(height, image.height);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, questionId, publicId, url, width, height);
     }
 }

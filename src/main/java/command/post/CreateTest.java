@@ -14,9 +14,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * CreateTest.class is allowed only for admin.
  * The meaning of the class is to create Test(quiz) in database.
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class CreateTest implements RequestHandler {
@@ -28,6 +30,7 @@ public class CreateTest implements RequestHandler {
      * It calls the service layer to create Test(quiz)
      * if DataBaseException is caught, redirects to error page.
      * if ValidateException is caught, redirects to the page from which the request was made
+     *
      * @param req
      * @param resp
      * @throws ServletException

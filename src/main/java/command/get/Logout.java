@@ -11,6 +11,8 @@ import java.io.IOException;
 
 /**
  * Logout.class is responsibility for exit User from API
+ * This class is allowed for admin and student
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class Logout implements RequestHandler {
@@ -18,6 +20,7 @@ public class Logout implements RequestHandler {
 
     /**
      * This removes all parameters from the session and redirects to the index.jsp page
+     *
      * @param req
      * @param resp
      * @throws ServletException

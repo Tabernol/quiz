@@ -19,6 +19,8 @@ import java.io.IOException;
 /**
  * BlockUnblockUser.class is allowed only for admin.
  * it keeps responsibility for block and block user
+ *
+ * @author makskrasnopolskyi@gmail.com
  */
 public class BlockUnblockUser implements RequestHandler {
 

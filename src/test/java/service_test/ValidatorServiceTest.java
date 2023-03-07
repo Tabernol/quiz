@@ -27,19 +27,20 @@ public class ValidatorServiceTest {
         validatorService = new ValidatorService(mockDataValidator);
     }
 
-    @Test
-    public void isLoginExist() throws ValidateException {
-        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        //  Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-        Assertions.assertEquals(true, validatorService.isLoginExist(true));
-        // Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
-    }
-
 //    @Test
-//    public void isLoginThrowExTest() throws ValidateException {
-//        Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(false);
-//        Assertions.assertThrows(ValidateException.class, () -> validatorService.isLoginExist(true));
+//    public void isLoginExist() throws ValidateException {
+//        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
+//        //  Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
+//        Assertions.assertEquals(true, validatorService.isLoginExist(true));
+//        // Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
 //    }
+
+    @Test
+    public void isLoginThrowExTest() throws ValidateException {
+        Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString()))
+                .thenThrow(new ValidateException("test"));
+        Assertions.assertThrows(ValidateException.class, () -> validatorService.isLoginExist(false));
+    }
 
     @Test
     public void repeatPassword() throws ValidateException {

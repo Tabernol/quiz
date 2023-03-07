@@ -45,7 +45,6 @@ public class AccessUtil {
         adminAccess.add("/load");
         adminAccess.add("/delete_image");
         adminAccess.add("/update_image");
-        adminAccess.add("/remove_image");
         adminAccess.add("/block_test");
         adminAccess.add(PathConst.LOGIN);
 //        =====================================================

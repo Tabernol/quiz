@@ -19,8 +19,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * StartTest.class is allowed only for student
+ * This class is responsible for starting the selected test (quiz)
+ */
 public class StartTest implements RequestHandler {
     private static Logger logger = LogManager.getLogger(StartTest.class);
+    private QuestionService questionService;
+    private TestService testService;
 
     @Override
     public void execute(HttpServletRequest req,
@@ -28,8 +34,8 @@ public class StartTest implements RequestHandler {
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
-        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
         List<Question> questions = null;
         Integer duration = 0;
         Integer size = 0;

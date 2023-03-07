@@ -17,9 +17,24 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * FilterTests.class is allowed for admin and student
+ * The purpose of the class is to provide a sheet of tests(quizzes) with the selected filter and page
+ *
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class FilterTests implements RequestHandler {
     private static Logger logger = LogManager.getLogger(FilterTests.class);
+    private TestService testService;
 
+    /**
+     * This method contacts with service layer to retrieve the sheet of tests(quiz) with selected filter and page
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -38,25 +53,19 @@ public class FilterTests implements RequestHandler {
                 sub = "all";
                 order = "name asc";
                 rows = "5";
-                HttpSession session = req.getSession();
-                session.setAttribute("sub", sub);
-                session.setAttribute("order", order);
-                session.setAttribute("rows", rows);
-                page = "1";
+                setParametersToSession(sub, order, rows, req, resp);
             }
         } else {
-            HttpSession session = req.getSession();
-            session.setAttribute("sub", sub);
-            session.setAttribute("order", order);
-            session.setAttribute("rows", rows);
-            page = "1";
+            setParametersToSession(sub, order, rows, req, resp);
         }
+
+
         if (page == null) {
             page = "1";
         }
 //        =======================================
 
-        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
         List<String> subjects;
         List<Test> filterTests;
         int countPages;
@@ -82,7 +91,13 @@ public class FilterTests implements RequestHandler {
             logger.warn("Trouble with using filter tests ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
+    }
 
-
+    private void setParametersToSession(String sub, String order, String rows,
+                                        HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession session = req.getSession();
+        session.setAttribute("sub", sub);
+        session.setAttribute("order", order);
+        session.setAttribute("rows", rows);
     }
 }

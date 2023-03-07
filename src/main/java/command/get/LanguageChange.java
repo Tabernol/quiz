@@ -8,9 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Language.class is responsible for changing the language of the interface in the API
+ * This class is allowed for admin and student
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class LanguageChange implements RequestHandler {
@@ -19,6 +22,7 @@ public class LanguageChange implements RequestHandler {
     /**
      * This method reads the "locale" parameter,
      * changes it in the session, and redirects to the last page
+     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -29,7 +33,13 @@ public class LanguageChange implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         String lang = req.getParameter("locale");
-        req.getSession().setAttribute("locale", lang);
+        Locale locale;
+        if (lang.equals("ua")) {
+            locale = new Locale("ua", "UA");
+        } else {
+            locale = new Locale("en", "UK");
+        }
+        req.getSession().setAttribute("locale", locale);
 
         logger.info("Language has changed to " + lang);
         String referer = req.getHeader("referer");

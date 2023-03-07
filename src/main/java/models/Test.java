@@ -1,6 +1,7 @@
 package models;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Test {
     private long id;
@@ -80,6 +81,25 @@ public class Test {
                 ", difficult=" + difficult +
                 ", duration=" + duration +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Test test = (Test) o;
+        return id == test.id &&
+                difficult == test.difficult &&
+                duration == test.duration &&
+                popularity == test.popularity &&
+                Objects.equals(name, test.name) &&
+                Objects.equals(subject, test.subject) &&
+                status == test.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, subject, difficult, duration, popularity, status);
     }
 
     public enum Status {

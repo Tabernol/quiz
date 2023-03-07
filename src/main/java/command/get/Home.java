@@ -9,6 +9,8 @@ import java.io.IOException;
 
 /**
  * Home.class is responsible for the home page in the API
+ * This class is allowed for admin and student
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class Home implements RequestHandler {
@@ -16,6 +18,7 @@ public class Home implements RequestHandler {
      * This method reads the 'role' parameter from the session and redirects.
      * If role is unknown (guest) redirects to index.jsp page,
      * otherwise redirects to menu.jsp page
+     *
      * @param req
      * @param resp
      * @throws ServletException

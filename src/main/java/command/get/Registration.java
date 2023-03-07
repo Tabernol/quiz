@@ -9,11 +9,14 @@ import java.io.IOException;
 
 /**
  * Registration.class provides conditions for registration
+ * This class is only allowed for guest
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class Registration implements RequestHandler {
     /**
      * This method redirects to the registration page
+     *
      * @param req
      * @param resp
      * @throws ServletException

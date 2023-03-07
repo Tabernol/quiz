@@ -24,9 +24,27 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * FilterResults.class is allowed for admin and student
+ * The purpose of the class is to provide a sheet of user`s results with the selected filter
+ *
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class FilterResult implements RequestHandler {
     private static Logger logger = LogManager.getLogger(FilterResult.class);
 
+    private ResultService resultService;
+    private TestService testService;
+    private UserService userService;
+
+    /**
+     * This method contacts with service layer to retrieve the sheet of results with selected filter and page
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -44,28 +62,22 @@ public class FilterResult implements RequestHandler {
                 sub = "all";
                 order = "name asc";
                 rows = "5";
-                HttpSession session = req.getSession();
-                session.setAttribute("sub", sub);
-                session.setAttribute("order", order);
-                session.setAttribute("rows", rows);
-                page = "1";
+                setParametersToSession(sub, order, rows, req, resp);
             }
         } else {
-            HttpSession session = req.getSession();
-            session.setAttribute("sub", sub);
-            session.setAttribute("order", order);
-            session.setAttribute("rows", rows);
-            page = "1";
+            setParametersToSession(sub, order, rows, req, resp);
         }
+
+
         if (page == null) {
             page = "1";
         }
 
         System.out.println("page = " + page);
 
-        ResultService resultService = new ResultService(new ResultRepo());
-        TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
-        UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+        resultService = new ResultService(new ResultRepo());
+        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
         List<String> subjects;
         int countPages;
 
@@ -106,5 +118,14 @@ public class FilterResult implements RequestHandler {
             logger.warn("Trouble with using filter result ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
+    }
+
+
+    private void setParametersToSession(String sub, String order, String rows,
+                                        HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession session = req.getSession();
+        session.setAttribute("sub", sub);
+        session.setAttribute("order", order);
+        session.setAttribute("rows", rows);
     }
 }

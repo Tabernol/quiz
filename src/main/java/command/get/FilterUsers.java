@@ -16,11 +16,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * FilterUsers.class is allowed only for admin
+ * The purpose of the class is to provide a sheet of users with the selected filter and page
+ *
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class FilterUsers implements RequestHandler {
 
     private static Logger logger = LogManager.getLogger(FilterUsers.class);
     private UserService userService;
 
+    /**
+     * This method contacts with service layer to retrieve the sheet of users with selected filter and page
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
@@ -31,7 +45,7 @@ public class FilterUsers implements RequestHandler {
         String rows = req.getParameter("rows");
         String order = req.getParameter("order");
         String page = req.getParameter("page");
-      //  String role = (String) req.getSession().getAttribute("role");
+        //  String role = (String) req.getSession().getAttribute("role");
 
         if (status == null || rows == null || order == null) {
             status = (String) req.getSession().getAttribute("status");

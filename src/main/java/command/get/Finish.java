@@ -9,11 +9,14 @@ import java.io.IOException;
 
 /**
  * Finish.class is responsible for displaying the results of the completed test (quiz)
+ * This class is only allowed for student
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class Finish implements RequestHandler {
     /**
      * This method redirects to page_finish.jsp page
+     *
      * @param req
      * @param resp
      * @throws ServletException

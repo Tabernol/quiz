@@ -38,6 +38,7 @@ public class QuestionService {
 
     /**
      * The method takes input, validates it, and calls the repository layer to create a new question
+     *
      * @param testId is unique number Test in database
      * @param text   is text of new Question
      * @return 1 if question has added
@@ -75,7 +76,7 @@ public class QuestionService {
      * The method takes input, validates it, and calls the repository layer to update this question
      *
      * @param newText is new text of question
-     * @param id is unique number Question in database
+     * @param id      is unique number Question in database
      * @return 1 if question has updated
      * @throws DataBaseException
      * @throws ValidateException
@@ -87,13 +88,17 @@ public class QuestionService {
 
     /**
      * This method calls Question Repo.class to update the URL in the specific question identified by questionId
+     *
      * @param url is new URL
-     * @param id is unique number Question in database
+     * @param id  is unique number Question in database
      * @return 1 if question has updated
      * @throws DataBaseException
      * @throws ValidateException
      */
     public int updateImage(String url, Long id) throws DataBaseException, ValidateException {
+        if (url.equals("")) {
+            url = null;
+        }
         return questionRepo.updateImageQuestion(url, id);
     }
 }

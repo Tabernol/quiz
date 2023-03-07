@@ -127,10 +127,11 @@
     <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.add.image"/>">
 </form>
 
-<form method="post" action="remove_image">
+<form method="post" action="update_image">
     <input type="hidden" name="page" value="${requestScope.page}">
     <input type="hidden" name="test_id" value="${requestScope.test_id}">
     <input type="hidden" name="question_id" value="${requestScope.question.id}">
+    <input type="hidden" name="url" value="">
     <input class="btn btn-secondary" type="submit" value=" <fmt:message key="button.remove.image"/>">
 </form>
 

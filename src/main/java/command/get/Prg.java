@@ -12,6 +12,8 @@ import java.util.Map;
 
 /**
  * Prg.class implements protection against resubmitting a request
+ * This class is allowed for admin and student
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class Prg implements RequestHandler {
@@ -19,6 +21,7 @@ public class Prg implements RequestHandler {
 
     /**
      * This method reads all parameters from the request, sets them in the next request.
+     *
      * @param req
      * @param resp
      * @throws ServletException

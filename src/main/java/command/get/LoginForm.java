@@ -9,11 +9,14 @@ import java.io.IOException;
 
 /**
  * LoginForm.class supports user authentication in the API
+ * This class is only allowed for guest
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class LoginForm implements RequestHandler {
     /**
      * This method redirects to login_form.jsp page
+     *
      * @param req
      * @param resp
      * @throws ServletException

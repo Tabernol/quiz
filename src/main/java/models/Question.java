@@ -1,6 +1,7 @@
 package models;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Question {
     private long id;
@@ -50,5 +51,21 @@ public class Question {
                 ", testId=" + testId +
                 ", text='" + text + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Question question = (Question) o;
+        return id == question.id &&
+                testId == question.testId &&
+                Objects.equals(text, question.text) &&
+                Objects.equals(urlImage, question.urlImage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, testId, text, urlImage);
     }
 }

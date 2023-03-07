@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%@ taglib prefix="ctg" uri="customtags" %>
 
 <fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="language"/>
@@ -87,6 +88,9 @@
                     </li>
                 </c:if>
             </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="myTime">
+            <ctg:myDate></ctg:myDate>
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
             <ul class="navbar-nav">

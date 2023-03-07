@@ -51,8 +51,9 @@ public class UserRepoTest {
     public void createUserTest() throws SQLException, DataBaseException {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            mockConnection.setAutoCommit(false);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+         //   Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(true);
             Mockito.when(mockResultSet.getInt("last_insert_id()")).thenReturn(123);

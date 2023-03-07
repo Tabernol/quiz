@@ -20,26 +20,42 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * EditQuestion class is res
+ * EditQuestion.class is allowed only for admin.
+ * The purpose of this class is to redirect to page for editing question.
+ *
+ * @author makskrasnopolskyi@gmail.com
  */
 
 public class EditQuestion implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditQuestion.class);
+    private QuestionService questionService;
+    private AnswerService answerService;
+    private Question question;
+    private List<Answer> answers;
 
+    /**
+     * This method reads parameters.
+     * He contacts the service level to get information about his question and answers for it.
+     * Set this information in request and calls it.
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
-        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
+        questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+        answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
         String questionId = req.getParameter("question_id");
 
         req.setAttribute("test_id", req.getParameter("test_id"));
         req.setAttribute("question_id", req.getParameter("question_id"));
         req.setAttribute("page", req.getParameter("page"));
 
-        Question question = null;
-        List<Answer> answers = null;
+
         try {
             question = questionService.get(Long.valueOf(questionId));
             answers = answerService.getAnswers(Long.valueOf(questionId));

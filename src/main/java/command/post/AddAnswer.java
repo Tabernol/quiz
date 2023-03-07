@@ -21,6 +21,7 @@ import java.io.IOException;
 /**
  * AddAnswer.class is allowed only for admin.
  * The meaning of the class is to add an Answer to an existing Question in database.
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class AddAnswer implements RequestHandler {
@@ -32,6 +33,7 @@ public class AddAnswer implements RequestHandler {
      * It calls the service layer to create Answer
      * if DataBaseException is caught, redirects to error page.
      * if ValidateException is caught, redirects to the page from which the request was made
+     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -51,7 +53,7 @@ public class AddAnswer implements RequestHandler {
             answerService.createAnswer(questionId, text, result);
             logger.info("Answer for question id " + questionId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/edit_question"+
+                    "?servlet_path=/edit_question" +
                     "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
@@ -63,7 +65,7 @@ public class AddAnswer implements RequestHandler {
         } catch (ValidateException e) {
             logger.info("Answer for question id " + questionId + "is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/edit_question"+
+                    "?servlet_path=/edit_question" +
                     "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +

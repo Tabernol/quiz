@@ -11,7 +11,7 @@
     <uri>/WEB-INF/tags/mytags.tld</uri>
 
     <tag>
-        <name>number</name>
+        <name>myDate</name>
         <tag-class>util.MyCustomTag</tag-class>
     </tag>
 </taglib>

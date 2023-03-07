@@ -24,6 +24,8 @@ import java.util.List;
 
 /**
  * Profile.class provides information about User
+ * This class is allowed for admin and student
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class Profile implements RequestHandler {
@@ -31,6 +33,7 @@ public class Profile implements RequestHandler {
 
     /**
      * This method calls to FilterResul command
+     *
      * @param req
      * @param resp
      * @throws ServletException

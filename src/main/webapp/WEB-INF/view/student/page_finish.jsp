@@ -9,7 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ taglib prefix="ctg" uri="customtags" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
 <fmt:setLocale value="${sessionScope.locale}"/>
@@ -26,10 +25,8 @@
 
 <h2><tags:grade grade="${requestScope.percent_result}"></tags:grade></h2>
 
-<fmt:message key="label.quiz.completed.message"/> <ctg:number></ctg:number>
-
 <form action="home">
-    <input class="button" type="submit" value="Home">
+    <input class="button" type="submit" value="<fmt:message key="button.home"/>">
 </form>
 </body>
 </html>

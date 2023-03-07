@@ -25,9 +25,8 @@ public class AnswerRepo {
 
     /**
      * method return List of answer for this questionId
-     *
      * @param questionId is identification question in database,
-     *                   and it is foreign key for few answers in table 'answer' in database
+     * and it is foreign key for few answers in table 'answer' in database
      * @return List of Answer by question
      * @throws DataBaseException is wrapper of SQLException
      */

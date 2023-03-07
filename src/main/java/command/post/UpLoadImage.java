@@ -27,14 +27,9 @@ public class UpLoadImage implements RequestHandler {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String questionId = req.getParameter("question_id");
         String webInfPath = req.getServletContext().getRealPath("WEB-INF");
 
-
-//        Part file = req.getPart("file");
-//        String contentType = file.getContentType();
-//        contentType = contentType.substring(contentType.indexOf("/")).replace("/", ".");
 
         String fullPath = webInfPath + "\\question" + questionId + ".jpeg";
         System.out.println(fullPath);
@@ -57,16 +52,6 @@ public class UpLoadImage implements RequestHandler {
         for (Object item : uploadResult.values()) {
             System.out.print(++k + " = " + item.toString() + " , ");
         }
-
-//        String url = (String) uploadResult.get("url");
-//        try {
-//            questionService.updateImage(url, Long.valueOf(questionId));
-//        } catch (DataBaseException e) {
-//            throw new RuntimeException(e);
-//        } catch (ValidateException e) {
-//            throw new RuntimeException(e);
-//        }
-
 
         resp.sendRedirect(req.getContextPath() + "/prg?servlet_path=/filter_images");
     }

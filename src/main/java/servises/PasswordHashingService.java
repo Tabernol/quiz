@@ -1,5 +1,8 @@
 package servises;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
@@ -12,6 +15,8 @@ import java.security.spec.InvalidKeySpecException;
  * and verifying it during the next authentication
  */
 public class PasswordHashingService {
+
+    private static final Logger logger = LogManager.getLogger(PasswordHashingService.class);
     /**
      * This method generates a hash based on the input String
      *
@@ -30,6 +35,7 @@ public class PasswordHashingService {
         SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 
         byte[] hash = skf.generateSecret(spec).getEncoded();
+        logger.info("SERVICE PASSWORD generate strongHashPassword");
         return iterations + ":" + toHex(salt) + ":" + toHex(hash);
     }
 
@@ -84,6 +90,7 @@ public class PasswordHashingService {
         for (int i = 0; i < hash.length && i < testHash.length; i++) {
             diff |= hash[i] ^ testHash[i];
         }
+        logger.info("SERVICE PASSWORD is working");
         return diff == 0;
     }
 

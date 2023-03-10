@@ -3,6 +3,8 @@ package servises;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import models.Question;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.QuestionRepo;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
  * It checks the input and decides whether to call QuestionRepo.class or throw an exception
  */
 public class QuestionService {
+    private static final Logger logger = LogManager.getLogger(QuestionService.class);
     /**
      * Class contains:
      * questionRepo field for work with QuestionRepo.class
@@ -33,6 +36,7 @@ public class QuestionService {
      * @throws DataBaseException
      */
     public List<Question> getAllById(Long id) throws DataBaseException {
+        logger.info("SERVICE QUESTION get all");
         return questionRepo.getAllById(id);
     }
 
@@ -47,6 +51,7 @@ public class QuestionService {
      */
     public int addQuestion(Long testId, String text) throws DataBaseException, ValidateException {
         validatorService.validateText(text);
+        logger.info("SERVICE QUESTION add question for test " + testId);
         return questionRepo.createQuestion(testId, text);
     }
 
@@ -58,6 +63,7 @@ public class QuestionService {
      * @throws DataBaseException
      */
     public int deleteQuestion(Long id) throws DataBaseException {
+        logger.info("SERVICE QUESTION deleting question with id " + id);
         return questionRepo.delete(id);
     }
 
@@ -69,6 +75,7 @@ public class QuestionService {
      * @throws DataBaseException
      */
     public Question get(Long id) throws DataBaseException {
+        logger.info("SERVICE QUESTION get question with id " + id);
         return questionRepo.get(id);
     }
 
@@ -83,6 +90,7 @@ public class QuestionService {
      */
     public int update(String newText, Long id) throws DataBaseException, ValidateException {
         validatorService.validateText(newText);
+        logger.info("SERVICE QUESTION update question with id " + id);
         return questionRepo.updateQuestion(newText, id);
     }
 
@@ -99,6 +107,7 @@ public class QuestionService {
         if (url.equals("")) {
             url = null;
         }
+        logger.info("SERVICE QUESTION update url image for question with id " + id);
         return questionRepo.updateImageQuestion(url, id);
     }
 }

@@ -3,7 +3,10 @@ package servises;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import models.Answer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repo.AnswerRepo;
+import repo.TestRepo;
 import validator.DataValidator;
 
 import java.sql.SQLException;
@@ -14,6 +17,7 @@ import java.util.List;
  * It checks the input and decides whether to call Answer Repo.class or throw an exception
  */
 public class AnswerService {
+    private static final Logger logger = LogManager.getLogger(AnswerService.class);
     /**
      * Class contains:
      * answerRepo field for work with AnswerRepo.class
@@ -26,6 +30,7 @@ public class AnswerService {
     public AnswerService(AnswerRepo answerRepo, ValidatorService validatorService) {
         this.validatorService = validatorService;
         this.answerRepo = answerRepo;
+        logger.info("Creating new AnswerService");
     }
 
     /**
@@ -36,6 +41,7 @@ public class AnswerService {
      * @throws DataBaseException
      */
     public List<Answer> getAnswers(Long questionId) throws DataBaseException {
+        logger.info("SERVICE ANSWER get answers by  question "+ questionId);
         return answerRepo.getAnswersByQuestionId(questionId);
     }
 
@@ -51,6 +57,7 @@ public class AnswerService {
      */
     public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException, ValidateException {
         validatorService.validateText(text);
+        logger.info("SERVICE ANSWER creating new answer");
         return answerRepo.createAnswer(questionId, text, result);
     }
 
@@ -62,6 +69,7 @@ public class AnswerService {
      * @throws DataBaseException
      */
     public int deleteAnswer(Long id) throws DataBaseException {
+        logger.info("SERVICE ANSWER delete answer "+ id);
         return answerRepo.delete(id);
     }
 

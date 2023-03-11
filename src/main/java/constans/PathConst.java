@@ -50,7 +50,13 @@ public interface PathConst {
     String DELETE_QUESTION = "/delete_question";
     String DELETE_ANSWER = "/delete_answer";
 
-    String UPLOAD_IMAGE = "/upload_image";
+   // String UPLOAD_IMAGE = "/upload_image";
+    String FILTER_IMAGES = "/filter_images";
+    String LOAD = "/load";
+    String DELETE_IMAGE = "/delete_image";
+    String UPDATE_IMAGE = "/update_image";
+    String REMOVE_IMAGE = "/remove_image";
+    String BLOCK_TEST = "/block_test";
 
 
 }

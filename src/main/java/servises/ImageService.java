@@ -57,4 +57,8 @@ public class ImageService {
         logger.info("SERVICE IMAGE delete from database with publicId " + publicId);
         return imageRepo.deleteImage(publicId);
     }
+
+    public List<String> canDeleteImage(String publicId){
+        return imageRepo.canDeleteImage(publicId);
+    }
 }

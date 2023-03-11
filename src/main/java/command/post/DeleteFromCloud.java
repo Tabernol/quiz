@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -41,23 +42,35 @@ public class DeleteFromCloud implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String publicId = req.getParameter("public_id");
 
-        //delete image from cloudinary
-        Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
-        Map deleteParams = ObjectUtils.asMap("invalidate", true);
-        cloudinary.uploader().destroy(publicId, deleteParams);
-        logger.info("The Image with publicID " + publicId + " was deleted from cloudinary");
-
-
-        //delete data from database
         imageService = new ImageService(new ImageRepo());
-        try {
-            imageService.deleteImage(publicId);
-            logger.info("The Image with publicID " + publicId + " was deleted from database");
-            FilterImages filterImages = new FilterImages();
-            filterImages.execute(req, resp);
-        } catch (DataBaseException e) {
-            logger.info("There was a problem with deleting the image. publicID = " + publicId);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+
+        if (imageService.canDeleteImage(publicId).isEmpty()) {
+            //delete image from cloudinary
+            // need to check where use this image
+            Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
+            Map deleteParams = ObjectUtils.asMap("invalidate", true);
+            cloudinary.uploader().destroy(publicId, deleteParams);
+            logger.info("The Image with publicID " + publicId + " was deleted from cloudinary");
+
+
+            //delete data from database
+
+            try {
+                imageService.deleteImage(publicId);
+                logger.info("The Image with publicID " + publicId + " was deleted from database");
+                FilterImages filterImages = new FilterImages();
+                filterImages.execute(req, resp);
+            } catch (DataBaseException e) {
+                logger.info("There was a problem with deleting the image. publicID = " + publicId);
+                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            }
+        } else {
+            List<String> nameTestWithDeletedURL = imageService.canDeleteImage(publicId);
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/filter_images" +
+                    "&message_bad_request=" + "Test with name: " + nameTestWithDeletedURL.get(0) + " contains this image");
         }
+
+
     }
 }

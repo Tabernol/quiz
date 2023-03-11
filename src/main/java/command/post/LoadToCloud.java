@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class LoadToCloud implements RequestHandler {
 
-    int count = 0;
+    private int count = 0;
 
     private ImageService imageService;
 
@@ -40,17 +40,6 @@ public class LoadToCloud implements RequestHandler {
         File file = new File(fullPath);
         Map uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
 
-        int i = 0;
-        for (Object item : uploadResult.keySet()) {
-
-            System.out.print(++i + " = " + item.toString() + " , ");
-        }
-        System.out.println("=========================");
-        int k = 0;
-        for (Object item : uploadResult.values()) {
-            System.out.print(++k + " = " + item.toString() + " , ");
-        }
-
         try {
             imageService.addImage(
                     (String) uploadResult.get("public_id"),
@@ -59,10 +48,9 @@ public class LoadToCloud implements RequestHandler {
                     (Integer) uploadResult.get("height"));
 //
         } catch (DataBaseException e) {
-            throw new RuntimeException(e);
+            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
 
-
-        resp.getWriter().print("The file uploaded sucessfully.");
+        resp.sendRedirect(req.getContextPath() + "/prg?servlet_path=/filter_images");
     }
 }

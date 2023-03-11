@@ -9,17 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add JavaDoc">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add log for services layer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/constans/Sort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/PasswordHashingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/PasswordHashingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/MyCustomTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/MyCustomTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/language_ua.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_ua.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,8 +312,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRepoTest.createUserTest" />
         <item itemvalue="JUnit.All in startCommand" />
+        <item itemvalue="JUnit.UserRepoTest.createUserTest" />
         <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
         <item itemvalue="JUnit.ValidatorServiceTest.isLoginThrowExTest" />
         <item itemvalue="JUnit.TestRepoTest.getDistinctSubjectThrowEx" />
@@ -404,14 +411,7 @@
       <workItem from="1677879990472" duration="5778000" />
       <workItem from="1677971317765" duration="6466000" />
       <workItem from="1678011595347" duration="16318000" />
-      <workItem from="1678399216681" duration="3603000" />
-    </task>
-    <task id="LOCAL-00018" summary="25">
-      <created>1674094899240</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1674094899241</updated>
+      <workItem from="1678399216681" duration="13206000" />
     </task>
     <task id="LOCAL-00019" summary="26">
       <created>1674157155830</created>
@@ -749,7 +749,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678187748905</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Add log for services layer">
+      <created>1678458367848</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1678458367849</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -767,7 +774,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor nextQuestion and nextPage" />
     <MESSAGE value="Add Javadoc in  some Repo class" />
     <MESSAGE value="121" />
     <MESSAGE value="add reCaptcha and fix bag with timer" />
@@ -792,7 +798,8 @@
     <MESSAGE value="Add JavaDoc for ImageService and TestService" />
     <MESSAGE value="Add JavaDoc for UserService" />
     <MESSAGE value="Add JavaDoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add JavaDoc" />
+    <MESSAGE value="Add log for services layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add log for services layer" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -813,7 +820,7 @@
       <FILTER>service_test.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/startCommand$DataHendlerTest.ic" NAME="DataHendlerTest Coverage Results" MODIFIED="1673823560611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1678013934824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1678467318286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerRepoTest_testCreateAnswer.ic" NAME="AnswerRepoTest.testCreateAnswer Coverage Results" MODIFIED="1673213161020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest.ic" NAME="AnswerServiceTest Coverage Results" MODIFIED="1673473203875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>

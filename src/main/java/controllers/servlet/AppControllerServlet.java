@@ -19,28 +19,26 @@ import org.apache.logging.log4j.LogManager;
 
 
 @WebServlet(urlPatterns = {
-        PathConst.REGISTRATION, PathConst.LOGIN_FORM, PathConst.LOGOUT, PathConst.LANGUAGE,
+        PathConst.REGISTRATION, PathConst.LOGIN_FORM, PathConst.LOGOUT,
+        PathConst.LANGUAGE, PathConst.LOGIN,
 
         PathConst.HOME, PathConst.PROFILE, PathConst.BLOCK, PathConst.EDIT_USER,
-//        PathConst.DELETE_USER,
 
-        PathConst.FILTER_USERS, PathConst.FILTER_TESTS, PathConst.FILTER_RESULT,
+        PathConst.FILTER_USERS, PathConst.FILTER_TESTS, PathConst.FILTER_RESULT,PathConst.FILTER_IMAGES,
 
-        PathConst.CREATE_TEST, PathConst.EDIT_TEST, PathConst.DELETE_TEST,
+        PathConst.CREATE_TEST, PathConst.EDIT_TEST, PathConst.DELETE_TEST, PathConst.BLOCK_TEST,
 
         PathConst.ADD_QUESTION, PathConst.EDIT_QUESTION, PathConst.DELETE_QUESTION,
+        PathConst.UPDATE_IMAGE, PathConst.REMOVE_IMAGE,
 
         PathConst.ADD_ANSWER, PathConst.DELETE_ANSWER,
+
+        PathConst.LOAD, PathConst.DELETE_IMAGE,
 
         PathConst.START_TEST, PathConst.RESULT_ANSWER, PathConst.DOWNLOAD,
         PathConst.GET_INFO_QUESTION, PathConst.FINISH_TEST, PathConst.FINISH,
 
-        PathConst.PRG, PathConst.UPLOAD_IMAGE,
-//        ============================================
-        PathConst.LOGIN,
-
-        "/load", "/filter_images", "/delete_image",
-        "/update_image", "/remove_image", "/block_test"
+        PathConst.PRG
 })
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB

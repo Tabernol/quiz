@@ -92,27 +92,6 @@
     <fmt:message key="button.add.answer"/>
 </button>
 <%--====================================================--%>
-<%--<div class="offcanvas offcanvas-start" id="forAddImage">--%>
-<%--    <div class="offcanvas-header">--%>
-<%--        <h1 class="offcanvas-title">EDIT IMAGE </h1>--%>
-<%--        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>--%>
-<%--    </div>--%>
-<%--    <div class="offcanvas-body">--%>
-<%--        <form method="post" action="upload_image" enctype="multipart/form-data">--%>
-<%--            <input type="hidden" name="page" value="${requestScope.page}">--%>
-<%--            <input type="hidden" name="test_id" value="${requestScope.test_id}">--%>
-<%--            <input type="hidden" name="question_id" value="${requestScope.question.id}">--%>
-<%--            <input type="file" name="file"/>--%>
-<%--            <input type="submit" value="Upload"/>--%>
-<%--        </form>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
-<%--<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddImage">--%>
-<%--    EDIT IMAGE--%>
-<%--</button>--%>
-
-<%--=========================================--%>
 
 <form action="edit_test">
     <input type="hidden" name="page" value="${requestScope.page}">

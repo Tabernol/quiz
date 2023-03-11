@@ -91,4 +91,24 @@ public class ImageRepo {
             throw new DataBaseException("Can't delete Image " + e.getMessage(), e);
         }
     }
+
+    public List<String> canDeleteImage(String publicId){
+        List<String> testName = new ArrayList<>();
+        String sql = "select name from question" +
+                " inner join test on test.id = question.test_id \n" +
+                " inner join image on question.url = image.url\n" +
+                " where public_id like ?";
+        try (Connection con = MyDataSource.getConnection();
+        PreparedStatement pst = con.prepareStatement(sql)){
+            pst.setString(1, publicId);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()){
+                String name = resultSet.getString("name");
+                testName.add(name);
+            }
+            return testName;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

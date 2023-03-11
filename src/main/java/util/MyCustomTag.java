@@ -22,8 +22,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Timer;
 
-public class
-MyCustomTag extends UpdateTagSupport {
+public class MyCustomTag extends UpdateTagSupport {
 
 
     @Override

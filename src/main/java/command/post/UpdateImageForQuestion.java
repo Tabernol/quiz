@@ -34,7 +34,7 @@ public class UpdateImageForQuestion implements RequestHandler {
                     "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
-                    "&message=All Right");
+                    "&message_success=The question has updated");
 
         } catch (DataBaseException e) {
             logger.warn("Question with id " + questionId + " has not updated image", e);

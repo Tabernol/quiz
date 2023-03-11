@@ -15,49 +15,48 @@ public class Commands {
 
     static {
         //guest
-        GET_COMMANDS.put("/registration", new Registration());
-        GET_COMMANDS.put("/login_form", new LoginForm());
-        GET_COMMANDS.put("/home", new Home());
-        GET_COMMANDS.put("/logout", new Logout());
+        GET_COMMANDS.put(PathConst.REGISTRATION, new Registration());
+        GET_COMMANDS.put(PathConst.LOGIN_FORM, new LoginForm());
+        GET_COMMANDS.put(PathConst.HOME, new Home());
+        GET_COMMANDS.put(PathConst.LOGOUT, new Logout());
+        GET_COMMANDS.put(PathConst.LANGUAGE, new LanguageChange());
         //admin??
-        GET_COMMANDS.put("/filter_tests", new FilterTests());
-        GET_COMMANDS.put("/edit_test", new EditTest());
-        GET_COMMANDS.put("/edit_question", new EditQuestion());
-        GET_COMMANDS.put("/profile", new Profile());
-        GET_COMMANDS.put("/filter_users", new FilterUsers());
+        GET_COMMANDS.put(PathConst.FILTER_TESTS, new FilterTests());
+        GET_COMMANDS.put(PathConst.EDIT_TEST, new EditTest());
+        GET_COMMANDS.put(PathConst.EDIT_QUESTION, new EditQuestion());
+        GET_COMMANDS.put(PathConst.PROFILE, new Profile());
+        GET_COMMANDS.put(PathConst.FILTER_USERS, new FilterUsers());
         GET_COMMANDS.put(PathConst.LOGIN, new MainMenu());
 
 
         //student??
-        GET_COMMANDS.put("/start_test", new StartTest());
-        GET_COMMANDS.put("/language", new LanguageChange());
-        GET_COMMANDS.put("/prg", new Prg());
-        GET_COMMANDS.put("/get_text_question", new GetInfoQuestion());
-        GET_COMMANDS.put("/finish_test", new FinishTest());
-        GET_COMMANDS.put("/finish", new Finish());
-        GET_COMMANDS.put("/filter_result", new FilterResult());
-        GET_COMMANDS.put("/download", new DownLoad());
-        //dev
-        GET_COMMANDS.put("/filter_images", new FilterImages());
+        GET_COMMANDS.put(PathConst.START_TEST, new StartTest());
+        GET_COMMANDS.put(PathConst.PRG, new Prg());
+        GET_COMMANDS.put(PathConst.GET_INFO_QUESTION, new GetInfoQuestion());
+        GET_COMMANDS.put(PathConst.FINISH_TEST, new FinishTest());
+        GET_COMMANDS.put(PathConst.FINISH, new Finish());
+        GET_COMMANDS.put(PathConst.FILTER_RESULT, new FilterResult());
+        GET_COMMANDS.put(PathConst.DOWNLOAD, new DownLoad());
+        GET_COMMANDS.put(PathConst.FILTER_IMAGES, new FilterImages());
     }
 
     static {
-        POST_COMMANDS.put("/registration", new command.post.Registration());
-        POST_COMMANDS.put("/create_test", new CreateTest());
-        POST_COMMANDS.put("/delete_test", new DeleteTest());
-        POST_COMMANDS.put("/edit_test", new EditTestPost());
-        POST_COMMANDS.put("/add_question", new AddQuestion());
-        POST_COMMANDS.put("/delete_question", new DeleteQuestion());
-        POST_COMMANDS.put("/add_answer", new AddAnswer());
-        POST_COMMANDS.put("/edit_question", new EditQuestionPost());
-        POST_COMMANDS.put("/delete_answer", new DeleteAnswer());
-        POST_COMMANDS.put("/edit_user", new EditUserPost());
-        POST_COMMANDS.put("/block", new BlockUnblockUser());
-        POST_COMMANDS.put("/upload_image", new UpLoadImage());
-        POST_COMMANDS.put("/load", new LoadToCloud());
-        POST_COMMANDS.put("/delete_image", new DeleteFromCloud());
-        POST_COMMANDS.put("/update_image", new UpdateImageForQuestion());
-        POST_COMMANDS.put("/block_test", new BlockUnblockTest());
+        POST_COMMANDS.put(PathConst.REGISTRATION, new command.post.Registration());
+        POST_COMMANDS.put(PathConst.CREATE_TEST, new CreateTest());
+        POST_COMMANDS.put(PathConst.DELETE_TEST, new DeleteTest());
+        POST_COMMANDS.put(PathConst.EDIT_TEST, new EditTestPost());
+        POST_COMMANDS.put(PathConst.ADD_QUESTION, new AddQuestion());
+        POST_COMMANDS.put(PathConst.DELETE_QUESTION, new DeleteQuestion());
+        POST_COMMANDS.put(PathConst.ADD_ANSWER, new AddAnswer());
+        POST_COMMANDS.put(PathConst.EDIT_QUESTION, new EditQuestionPost());
+        POST_COMMANDS.put(PathConst.DELETE_ANSWER, new DeleteAnswer());
+        POST_COMMANDS.put(PathConst.EDIT_USER, new EditUserPost());
+        POST_COMMANDS.put(PathConst.BLOCK, new BlockUnblockUser());
+      //  POST_COMMANDS.put(PathConst.UPLOAD_IMAGE, new UpLoadImage());
+        POST_COMMANDS.put(PathConst.LOAD, new LoadToCloud());
+        POST_COMMANDS.put(PathConst.DELETE_IMAGE, new DeleteFromCloud());
+        POST_COMMANDS.put(PathConst.UPDATE_IMAGE, new UpdateImageForQuestion());
+        POST_COMMANDS.put(PathConst.BLOCK_TEST, new BlockUnblockTest());
         POST_COMMANDS.put(PathConst.LOGIN, new MainMenu());
     }
 }

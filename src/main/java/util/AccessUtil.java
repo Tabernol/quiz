@@ -40,12 +40,12 @@ public class AccessUtil {
         adminAccess.add(PathConst.DOWNLOAD);
 
         adminAccess.add(PathConst.PRG);
-        adminAccess.add(PathConst.UPLOAD_IMAGE);
-        adminAccess.add("/filter_images");
-        adminAccess.add("/load");
-        adminAccess.add("/delete_image");
-        adminAccess.add("/update_image");
-        adminAccess.add("/block_test");
+       // adminAccess.add(PathConst.UPLOAD_IMAGE);
+        adminAccess.add(PathConst.FILTER_IMAGES);
+        adminAccess.add(PathConst.LOAD);
+        adminAccess.add(PathConst.DELETE_IMAGE);
+        adminAccess.add(PathConst.UPDATE_IMAGE);
+        adminAccess.add(PathConst.BLOCK_TEST);
         adminAccess.add(PathConst.LOGIN);
 //        =====================================================
 //        for student

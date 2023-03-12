@@ -6,7 +6,9 @@ import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.UserRepo;
+import util.query.MyQuery;
 import util.query.QueryBuilderForUser;
+import util.query.QueryCreator;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -157,9 +159,13 @@ public class UserService {
      * @return list of models.User
      * @throws DataBaseException
      */
-    public List<User> nextPage(String filter, String order, String rows, String page) throws DataBaseException {
-        QueryBuilderForUser queryBuilderForUser = new QueryBuilderForUser();
-        String query = queryBuilderForUser.getQuery(filter, order, Integer.valueOf(rows), Integer.valueOf(page), "admin");
+    public List<User> nextPage(String filter, String order, Integer rows, Integer page) throws DataBaseException {
+        QueryCreator queryCreator = new QueryBuilderForUser();
+        String query = queryCreator.getSQL(new MyQuery(filter, order, rows, page));
+
+
+//        QueryBuilderForUser queryBuilderForUser = new QueryBuilderForUser();
+//        String query = queryBuilderForUser.getQuery(filter, order, Integer.valueOf(rows), Integer.valueOf(page), "admin");
         logger.info("SERVICE USER get list of user with selected filter");
         return userRepo.nextPage(query);
     }

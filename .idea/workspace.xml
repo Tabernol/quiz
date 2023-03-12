@@ -9,24 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add log for services layer">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Added safety delete image&#10;Refactor constants&#10;Refactor showed message">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/query/MyQuery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpLoadImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AccessUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/MyCustomTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/MyCustomTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/language_ua.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/language_ua.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_images.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/edit_question.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +32,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -411,14 +406,8 @@
       <workItem from="1677879990472" duration="5778000" />
       <workItem from="1677971317765" duration="6466000" />
       <workItem from="1678011595347" duration="16318000" />
-      <workItem from="1678399216681" duration="13206000" />
-    </task>
-    <task id="LOCAL-00019" summary="26">
-      <created>1674157155830</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1674157155830</updated>
+      <workItem from="1678399216681" duration="13515000" />
+      <workItem from="1678611543781" duration="3905000" />
     </task>
     <task id="LOCAL-00020" summary="27">
       <created>1674181359624</created>
@@ -756,7 +745,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678458367849</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Added safety delete image&#10;Refactor constants&#10;Refactor showed message">
+      <created>1678493697860</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1678493697860</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -774,7 +770,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Javadoc in  some Repo class" />
     <MESSAGE value="121" />
     <MESSAGE value="add reCaptcha and fix bag with timer" />
     <MESSAGE value="refactor, remove command AllUser" />
@@ -799,7 +794,8 @@
     <MESSAGE value="Add JavaDoc for UserService" />
     <MESSAGE value="Add JavaDoc" />
     <MESSAGE value="Add log for services layer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add log for services layer" />
+    <MESSAGE value="Added safety delete image&#10;Refactor constants&#10;Refactor showed message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added safety delete image&#10;Refactor constants&#10;Refactor showed message" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -168,6 +168,6 @@ public class UserServiceTest {
     public void nextPageUserList() throws DataBaseException {
         List<User> userList = new ArrayList<>();
         Mockito.when(mockUserRepo.nextPage(Mockito.anyString())).thenReturn(userList);
-        Assertions.assertEquals(userList, userService.nextPage("filter", "order", "2", "2"));
+        Assertions.assertEquals(userList, userService.nextPage("filter", "order", 2, 2));
     }
 }

@@ -7,7 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import repo.AnswerRepo;
 import repo.ResultRepo;
+import util.query.MyQuery;
 import util.query.QueryBuilderForResult;
+import util.query.QueryCreator;
 import validator.DataValidator;
 
 import java.util.ArrayList;
@@ -134,21 +136,22 @@ public class ResultService {
      * @param userId is unique number of user in database
      * @param sub    is a unique name subject in the 'test' table in the database or all of them
      * @param order  is order of sample from table'test'
-     * @param limit  is number of how many results include in List
-     * @param offSet is number of how many rows should not include in List
+     * @param rows  is number of how many results include in List
+     * @param page is page of result
      * @return List of passed test(quiz) by user
      * @throws DataBaseException
      */
-    public List<ResultDto> getPageResultList(Long userId, String sub, String order, Integer limit, Integer offSet)
+    public List<ResultDto> getPageResultList(Long userId, String sub, String order, Integer rows, Integer page)
             throws DataBaseException {
-        QueryBuilderForResult queryBuilder = new QueryBuilderForResult();
-        queryBuilder.setFilter(userId.toString());
-        queryBuilder.setOrderBy(order);
-        queryBuilder.setLimit(limit);
-        queryBuilder.setOffSet(offSet);
-        queryBuilder.setAndSubject(sub);
+        QueryCreator queryCreator = new QueryBuilderForResult();
+        MyQuery myQuery = new MyQuery();
+        myQuery.setFilter(String.valueOf(userId));
+        myQuery.setAnd(sub);
+        myQuery.setOrderBy(order);
+        myQuery.setLimit(rows);
+        myQuery.setPage(page);
+        String query = queryCreator.getSQL(myQuery);
 
-        String query = queryBuilder.getQuery();
         logger.info("SERVICE RESULT get list of result with selected filter");
         return resultRepo.getPageResultList(query);
     }
@@ -161,7 +164,7 @@ public class ResultService {
      * @throws DataBaseException
      */
     public List<ResultDto> getAllResultByUserId(Long userId) throws DataBaseException {
-        logger.info("SERVICE RESULT get result by user");
+        logger.info("SERVICE RESULT get result by user" + userId);
         return resultRepo.getAllResult(userId);
     }
 

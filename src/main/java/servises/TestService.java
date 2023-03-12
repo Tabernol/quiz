@@ -73,9 +73,13 @@ public class TestService {
      * @return List of test on current page
      * @throws DataBaseException
      */
-    public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page, String role) throws DataBaseException {
-        QueryBuilderForTest queryBuilderForTest = new QueryBuilderForTest();
-        String query = queryBuilderForTest.getQuery(subject, order, rows, page, role);
+    public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page, String role)
+            throws DataBaseException {
+        QueryCreator queryCreator = new QueryBuilderForTest();
+        String query = queryCreator.getSQL(new MyQuery(subject, order, rows, page, role));
+
+//        QueryBuilderForTest queryBuilderForTest = new QueryBuilderForTest();
+//        String query = queryBuilderForTest.getQuery(subject, order, rows, page, role);
         logger.info("SERVICE TEST get list of test with selected filter");
         return testRepo.nextPage(query);
     }

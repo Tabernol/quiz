@@ -69,7 +69,7 @@ public class FilterUsers implements RequestHandler {
 
         List<User> userList;
         try {
-            userList = userService.nextPage(status, order, rows, page);
+            userList = userService.nextPage(status, order, Integer.valueOf(rows), Integer.valueOf(page));
             req.setAttribute("users", userList);
             req.setAttribute("page", page);
             req.setAttribute("count_pages", userService.countPages(status, rows));

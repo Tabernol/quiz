@@ -4,7 +4,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import repo.ImageRepo;
+import repo.impl.ImageRepoImpl;
 import servises.ImageService;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class LoadToCloud implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        imageService = new ImageService(new ImageRepo());
+        imageService = new ImageService(new ImageRepoImpl());
 
         String webInfPath = req.getServletContext().getRealPath("WEB-INF");
         String fullPath = webInfPath + "\\image" + (++count) + ".jpeg";

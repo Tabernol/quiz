@@ -4,7 +4,7 @@ import exeptions.DataBaseException;
 import models.Image;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.ImageRepo;
+import repo.impl.ImageRepoImpl;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class ImageService {
     private static final Logger logger = LogManager.getLogger(ImageService.class);
-    private ImageRepo imageRepo;
+    private ImageRepoImpl imageRepoImpl;
 
-    public ImageService(ImageRepo imageRepo) {
-        this.imageRepo = imageRepo;
+    public ImageService(ImageRepoImpl imageRepoImpl) {
+        this.imageRepoImpl = imageRepoImpl;
     }
 
     /**
@@ -32,7 +32,7 @@ public class ImageService {
      */
     public int addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException {
         logger.info("SERVICE IMAGE add new image to database with publicId " + publicId);
-        return imageRepo.addImage(publicId, url, width, height);
+        return imageRepoImpl.addImage(publicId, url, width, height);
     }
 
     /**
@@ -43,7 +43,7 @@ public class ImageService {
      */
     public List<Image> getAll() throws DataBaseException {
         logger.info("SERVICE IMAGE get all images");
-        return imageRepo.getAll();
+        return imageRepoImpl.getAll();
     }
 
     /**
@@ -55,10 +55,10 @@ public class ImageService {
      */
     public int deleteImage(String publicId) throws DataBaseException {
         logger.info("SERVICE IMAGE delete from database with publicId " + publicId);
-        return imageRepo.deleteImage(publicId);
+        return imageRepoImpl.deleteImage(publicId);
     }
 
     public List<String> canDeleteImage(String publicId){
-        return imageRepo.canDeleteImage(publicId);
+        return imageRepoImpl.canDeleteImage(publicId);
     }
 }

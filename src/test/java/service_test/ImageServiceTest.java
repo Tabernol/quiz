@@ -7,45 +7,42 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import repo.AnswerRepo;
-import repo.ImageRepo;
-import servises.AnswerService;
+import repo.impl.ImageRepoImpl;
 import servises.ImageService;
-import servises.ValidatorService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ImageServiceTest {
     @Mock
-    private ImageRepo mockImageRepo;
+    private ImageRepoImpl mockImageRepoImpl;
 
     private ImageService imageService;
 
 
     @BeforeEach
     public void setUp() {
-        mockImageRepo = Mockito.mock(ImageRepo.class);
-        imageService = new ImageService(mockImageRepo);
+        mockImageRepoImpl = Mockito.mock(ImageRepoImpl.class);
+        imageService = new ImageService(mockImageRepoImpl);
     }
 
     @Test
     public void addImageTest() throws DataBaseException {
-        Mockito.when(mockImageRepo.addImage(Mockito.anyString(),
+        Mockito.when(mockImageRepoImpl.addImage(Mockito.anyString(),
                 Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(12);
         Assertions.assertEquals(12, imageService.addImage("publicID", "URL", 600, 600));
     }
 
     @Test
     public void deleteImageTest() throws DataBaseException {
-        Mockito.when(mockImageRepo.deleteImage(Mockito.anyString())).thenReturn(13);
+        Mockito.when(mockImageRepoImpl.deleteImage(Mockito.anyString())).thenReturn(13);
         Assertions.assertEquals(13, imageService.deleteImage("publicId"));
     }
 
     @Test
     public void getAllTest() throws DataBaseException {
         List<Image> imageList = new ArrayList<>();
-        Mockito.when(mockImageRepo.getAll()).thenReturn(imageList);
+        Mockito.when(mockImageRepoImpl.getAll()).thenReturn(imageList);
         Assertions.assertEquals(imageList, imageService.getAll());
     }
 }

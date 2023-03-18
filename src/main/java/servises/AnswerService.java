@@ -5,11 +5,8 @@ import exeptions.ValidateException;
 import models.Answer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.AnswerRepo;
-import repo.TestRepo;
-import validator.DataValidator;
+import repo.impl.AnswerRepoImpl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -23,14 +20,13 @@ public class AnswerService {
      * answerRepo field for work with AnswerRepo.class
      * validatorService field for validate input date from other
      */
-    private AnswerRepo answerRepo;
+    private AnswerRepoImpl answerRepoImpl;
     private ValidatorService validatorService;
 
 
-    public AnswerService(AnswerRepo answerRepo, ValidatorService validatorService) {
+    public AnswerService(AnswerRepoImpl answerRepoImpl, ValidatorService validatorService) {
         this.validatorService = validatorService;
-        this.answerRepo = answerRepo;
-        logger.info("Creating new AnswerService");
+        this.answerRepoImpl = answerRepoImpl;
     }
 
     /**
@@ -42,7 +38,7 @@ public class AnswerService {
      */
     public List<Answer> getAnswers(Long questionId) throws DataBaseException {
         logger.info("SERVICE ANSWER get answers by  question "+ questionId);
-        return answerRepo.getAnswersByQuestionId(questionId);
+        return answerRepoImpl.getAnswersByQuestionId(questionId);
     }
 
     /**
@@ -58,7 +54,7 @@ public class AnswerService {
     public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException, ValidateException {
         validatorService.validateText(text);
         logger.info("SERVICE ANSWER creating new answer");
-        return answerRepo.createAnswer(questionId, text, result);
+        return answerRepoImpl.createAnswer(questionId, text, result);
     }
 
     /**
@@ -70,7 +66,7 @@ public class AnswerService {
      */
     public int deleteAnswer(Long id) throws DataBaseException {
         logger.info("SERVICE ANSWER delete answer "+ id);
-        return answerRepo.delete(id);
+        return answerRepoImpl.delete(id);
     }
 
 }

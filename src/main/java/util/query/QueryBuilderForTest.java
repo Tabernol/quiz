@@ -33,23 +33,22 @@ public class QueryBuilderForTest implements QueryCreator {
         Integer page = query.getPage();
         String role = query.getRole();
 
-        if (filter.equals("all")) {
-            filter = "";
+        if (filter.equals(QueryCreator.ALL)) {
+            filter = QueryCreator.EMPTY;
         } else {
-            filter = "where subject like '" + filter + "' ";
+            filter = WHERE_SUBJECT_LIKE + "'" + filter + "'";
         }
-        String and = "";
-        if (role.equals("student")){
-            if(filter.isEmpty()){
-                and = "where status not like 'blocked' ";
-            }
-            else {
-                and = "and status not like 'blocked' ";
+        String and = EMPTY;
+        if (role.equals(STUDENT)) {
+            if (filter.isEmpty()) {
+                and = WHERE_STATUS_NOT_LIKE_BLOCKED;
+            } else {
+                and = AND_STATUS_NOT_LIKE_BLOCKED;
             }
         }
-        orderBy = "order by " + orderBy;
+        orderBy = ORDER_BY + orderBy;
         int offSet = (Integer.valueOf(page) - 1) * Integer.valueOf(limit);
 
-        return "select * from test " + filter + and + orderBy + " limit " + limit + " offset " + offSet;
+        return SELECT_FROM_TEST + filter + and + orderBy + LIMIT + limit + OFFSET + offSet;
     }
 }

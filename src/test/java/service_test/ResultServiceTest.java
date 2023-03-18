@@ -8,11 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import repo.ResultRepo;
-import repo.TestRepo;
+import repo.impl.ResultRepoImpl;
 import servises.AnswerService;
 import servises.ResultService;
-import servises.TestService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultServiceTest {
     @Mock
-    ResultRepo mockResultRepo;
+    ResultRepoImpl mockResultRepoImpl;
     @Mock
     AnswerService answerService;
 
@@ -30,14 +28,14 @@ public class ResultServiceTest {
 
     @BeforeEach
     public void setUp() {
-        mockResultRepo = Mockito.mock(ResultRepo.class);
+        mockResultRepoImpl = Mockito.mock(ResultRepoImpl.class);
         answerService = Mockito.mock(AnswerService.class);
-        resultService = new ResultService(mockResultRepo);
+        resultService = new ResultService(mockResultRepoImpl);
     }
 
     @Test
     public void addResultTest() throws DataBaseException {
-        Mockito.when(mockResultRepo.addResult(Mockito.anyLong(),
+        Mockito.when(mockResultRepoImpl.addResult(Mockito.anyLong(),
                 Mockito.anyLong(), Mockito.anyInt())).thenReturn(1);
         assertEquals(1, resultService.addResult(Mockito.anyLong(), Mockito.anyLong(), Mockito.anyInt()));
     }
@@ -59,7 +57,7 @@ public class ResultServiceTest {
     @Test
     public void getAllResultByUser() throws DataBaseException {
         List<ResultDto> resultDtoList = new ArrayList<>();
-        Mockito.when(mockResultRepo.getAllResult(Mockito.anyLong())).thenReturn(resultDtoList);
+        Mockito.when(mockResultRepoImpl.getAllResult(Mockito.anyLong())).thenReturn(resultDtoList);
         Assertions.assertEquals(resultDtoList, resultService.getAllResultByUserId(Mockito.anyLong()));
     }
 

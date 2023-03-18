@@ -59,7 +59,6 @@ public class AppControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         String servletPath = req.getServletPath();
         Commands.GET_COMMANDS.get(servletPath).execute(req, resp);
-       // ContentSupplierCommands.COMMANDS.get(servletPath).execute(req, resp);
     }
 
     @Override
@@ -68,7 +67,6 @@ public class AppControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         String servletPath = req.getServletPath();
         Commands.POST_COMMANDS.get(servletPath).execute(req, resp);
-       // DataHandleCommand.COMMANDS.get(servletPath).execute(req, resp);
     }
 
 

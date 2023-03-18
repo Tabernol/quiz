@@ -5,7 +5,7 @@ import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.TestRepo;
+import repo.impl.TestRepoImpl;
 import servises.TestService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -21,7 +21,7 @@ import java.io.IOException;
  */
 public class EditTestPost implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditTestPost.class);
-    TestService testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+    TestService testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
     /**
      * This method is read parameter from request.
      * It calls the service layer to update this Test(quiz)

@@ -4,7 +4,7 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.ResultRepo;
+import repo.impl.ResultRepoImpl;
 import servises.ResultService;
 
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class FinishTest implements RequestHandler {
     private static Logger logger = LogManager.getLogger(FinishTest.class);
-    ResultService resultService = new ResultService(new ResultRepo());
+    ResultService resultService = new ResultService(new ResultRepoImpl());
 
     /**
      * This method is read parameter from request.

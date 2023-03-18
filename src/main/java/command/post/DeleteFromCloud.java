@@ -5,17 +5,15 @@ import com.cloudinary.utils.ObjectUtils;
 import command.get.FilterImages;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import models.Image;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.ImageRepo;
+import repo.impl.ImageRepoImpl;
 import servises.ImageService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +40,7 @@ public class DeleteFromCloud implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String publicId = req.getParameter("public_id");
 
-        imageService = new ImageService(new ImageRepo());
+        imageService = new ImageService(new ImageRepoImpl());
 
         if (imageService.canDeleteImage(publicId).isEmpty()) {
             //delete image from cloudinary

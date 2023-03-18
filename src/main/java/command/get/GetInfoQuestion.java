@@ -1,16 +1,14 @@
 package command.get;
 
-import command.post.FinishTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import models.Answer;
 import models.Question;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.AnswerRepo;
-import repo.ResultRepo;
+import repo.impl.AnswerRepoImpl;
+import repo.impl.ResultRepoImpl;
 import servises.AnswerService;
-import servises.QuestionService;
 import servises.ResultService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -20,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,8 +31,8 @@ public class GetInfoQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
-        ResultService resultService = new ResultService(new ResultRepo());
+        AnswerService answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
+        ResultService resultService = new ResultService(new ResultRepoImpl());
         req.setAttribute("duration", req.getParameter("duration"));
 
         String idQuestion = req.getParameter("id_question");

@@ -5,8 +5,8 @@ import exeptions.DataBaseException;
 import models.Answer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.AnswerRepo;
-import repo.ResultRepo;
+import repo.impl.AnswerRepoImpl;
+import repo.impl.ResultRepoImpl;
 import util.query.MyQuery;
 import util.query.QueryBuilderForResult;
 import util.query.QueryCreator;
@@ -21,13 +21,13 @@ import java.util.List;
  */
 public class ResultService {
     private static final Logger logger = LogManager.getLogger(ResultService.class);
-    private ResultRepo resultRepo;
+    private ResultRepoImpl resultRepoImpl;
     private AnswerService answerService;
 
 
-    public ResultService(ResultRepo resultRepo) {
-        this.answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
-        this.resultRepo = resultRepo;
+    public ResultService(ResultRepoImpl resultRepoImpl) {
+        this.answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
+        this.resultRepoImpl = resultRepoImpl;
     }
 
     /**
@@ -41,7 +41,7 @@ public class ResultService {
      */
     public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
         logger.info("SERVICE RESULT add result to database");
-        return resultRepo.addResult(userId, testId, grade);
+        return resultRepoImpl.addResult(userId, testId, grade);
     }
 
     /**
@@ -110,9 +110,9 @@ public class ResultService {
     public Integer getCountResultByUser(Long user_id, String sub) throws DataBaseException {
         logger.info("SERVICE RESULT getting count of result with selected filter");
         if (sub.equals("all")) {
-            return resultRepo.getCountResultByUser(user_id);
+            return resultRepoImpl.getCountResultByUser(user_id);
         } else {
-            return resultRepo.getCountResultByUserAndSubject(user_id, sub);
+            return resultRepoImpl.getCountResultByUserAndSubject(user_id, sub);
         }
     }
 
@@ -153,7 +153,7 @@ public class ResultService {
         String query = queryCreator.getSQL(myQuery);
 
         logger.info("SERVICE RESULT get list of result with selected filter");
-        return resultRepo.getPageResultList(query);
+        return resultRepoImpl.getPageResultList(query);
     }
 
     /**
@@ -165,7 +165,7 @@ public class ResultService {
      */
     public List<ResultDto> getAllResultByUserId(Long userId) throws DataBaseException {
         logger.info("SERVICE RESULT get result by user" + userId);
-        return resultRepo.getAllResult(userId);
+        return resultRepoImpl.getAllResult(userId);
     }
 
     /**
@@ -190,6 +190,6 @@ public class ResultService {
      */
     public List<String> getDistinctSubject(Long userId) throws DataBaseException {
         logger.info("SERVICE RESULT get distinct subject of completed quiz");
-        return resultRepo.getDistinctSubject(userId);
+        return resultRepoImpl.getDistinctSubject(userId);
     }
 }

@@ -6,8 +6,8 @@ import models.Question;
 import models.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.QuestionRepo;
-import repo.TestRepo;
+import repo.impl.QuestionRepoImpl;
+import repo.impl.TestRepoImpl;
 import servises.QuestionService;
 import servises.TestService;
 import servises.ValidatorService;
@@ -44,8 +44,8 @@ public class EditTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
-        questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+        questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 

@@ -1,12 +1,11 @@
 package command.post;
 
-import command.get.EditTest;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.QuestionRepo;
+import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -25,7 +24,7 @@ import java.io.IOException;
 public class AddQuestion implements RequestHandler {
 
     private static Logger logger = LogManager.getLogger(AddQuestion.class);
-    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+    QuestionService questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
 
     /**
      * This method is read parameter from request.

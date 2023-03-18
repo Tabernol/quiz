@@ -5,7 +5,7 @@ import exeptions.ValidateException;
 import models.Question;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.QuestionRepo;
+import repo.impl.QuestionRepoImpl;
 
 import java.util.List;
 
@@ -20,11 +20,11 @@ public class QuestionService {
      * questionRepo field for work with QuestionRepo.class
      * validatorService field for validate input date from other
      */
-    private QuestionRepo questionRepo;
+    private QuestionRepoImpl questionRepoImpl;
     private ValidatorService validatorService;
 
-    public QuestionService(QuestionRepo questionRepo, ValidatorService validatorService) {
-        this.questionRepo = questionRepo;
+    public QuestionService(QuestionRepoImpl questionRepoImpl, ValidatorService validatorService) {
+        this.questionRepoImpl = questionRepoImpl;
         this.validatorService = validatorService;
     }
 
@@ -37,7 +37,7 @@ public class QuestionService {
      */
     public List<Question> getAllById(Long id) throws DataBaseException {
         logger.info("SERVICE QUESTION get all");
-        return questionRepo.getAllById(id);
+        return questionRepoImpl.getAllById(id);
     }
 
     /**
@@ -52,7 +52,7 @@ public class QuestionService {
     public int addQuestion(Long testId, String text) throws DataBaseException, ValidateException {
         validatorService.validateText(text);
         logger.info("SERVICE QUESTION add question for test " + testId);
-        return questionRepo.createQuestion(testId, text);
+        return questionRepoImpl.createQuestion(testId, text);
     }
 
     /**
@@ -64,7 +64,7 @@ public class QuestionService {
      */
     public int deleteQuestion(Long id) throws DataBaseException {
         logger.info("SERVICE QUESTION deleting question with id " + id);
-        return questionRepo.delete(id);
+        return questionRepoImpl.delete(id);
     }
 
     /**
@@ -76,7 +76,7 @@ public class QuestionService {
      */
     public Question get(Long id) throws DataBaseException {
         logger.info("SERVICE QUESTION get question with id " + id);
-        return questionRepo.get(id);
+        return questionRepoImpl.get(id);
     }
 
     /**
@@ -91,7 +91,7 @@ public class QuestionService {
     public int update(String newText, Long id) throws DataBaseException, ValidateException {
         validatorService.validateText(newText);
         logger.info("SERVICE QUESTION update question with id " + id);
-        return questionRepo.updateQuestion(newText, id);
+        return questionRepoImpl.updateQuestion(newText, id);
     }
 
     /**
@@ -108,6 +108,6 @@ public class QuestionService {
             url = null;
         }
         logger.info("SERVICE QUESTION update url image for question with id " + id);
-        return questionRepo.updateImageQuestion(url, id);
+        return questionRepoImpl.updateImageQuestion(url, id);
     }
 }

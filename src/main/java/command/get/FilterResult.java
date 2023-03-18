@@ -1,20 +1,17 @@
 package command.get;
 
-import connection.MyDataSource;
 import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
-import models.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.ResultRepo;
-import repo.TestRepo;
-import repo.UserRepo;
+import repo.impl.ResultRepoImpl;
+import repo.impl.TestRepoImpl;
+import repo.impl.UserRepoImpl;
 import servises.ResultService;
 import servises.TestService;
 import servises.UserService;
 import servises.ValidatorService;
-import util.MyTable;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -75,9 +72,9 @@ public class FilterResult implements RequestHandler {
 
         System.out.println("page = " + page);
 
-        resultService = new ResultService(new ResultRepo());
-        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
-        userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+        resultService = new ResultService(new ResultRepoImpl());
+        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+        userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
         List<String> subjects;
         int countPages;
 

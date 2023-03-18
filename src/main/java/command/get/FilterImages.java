@@ -5,7 +5,7 @@ import exeptions.DataBaseException;
 import models.Image;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.ImageRepo;
+import repo.impl.ImageRepoImpl;
 import servises.ImageService;
 
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class FilterImages implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        imageService = new ImageService(new ImageRepo());
+        imageService = new ImageService(new ImageRepoImpl());
 
         try {
             List<Image> all = imageService.getAll();

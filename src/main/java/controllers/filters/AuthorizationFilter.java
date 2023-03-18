@@ -5,7 +5,7 @@ import exeptions.ValidateException;
 import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.UserRepo;
+import repo.impl.UserRepoImpl;
 import servises.UserService;
 
 import javax.servlet.FilterChain;
@@ -32,7 +32,7 @@ public class AuthorizationFilter extends AbstractFilter {
         final HttpSession session = req.getSession();
         final String login = req.getParameter("login");
         final String password = req.getParameter("password");
-        userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+        userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
         long id = -1;
         User user = null;
         boolean isCorrectPassword = false;

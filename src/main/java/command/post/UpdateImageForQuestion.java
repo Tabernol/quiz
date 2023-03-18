@@ -5,7 +5,7 @@ import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.QuestionRepo;
+import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -26,7 +26,7 @@ public class UpdateImageForQuestion implements RequestHandler {
         String page = req.getParameter("page");
 
         try {
-            questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
+            questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
             questionService.updateImage(url, questionId);
             logger.info("Question with id " + questionId + " has updated image ");
             resp.sendRedirect(req.getContextPath() + "/prg" +

@@ -9,15 +9,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import repo.impl.ResultRepoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ResultRepoTest {
+public class ResultRepoImplTest {
     @Mock
     private Connection mockConnection;
     @Mock
@@ -25,14 +25,14 @@ public class ResultRepoTest {
     @Mock
     private ResultSet mockResultSet;
 
-    private ResultRepo resultRepo;
+    private ResultRepoImpl resultRepoImpl;
 
     @BeforeEach
     public void setUp() throws SQLException {
         mockConnection = Mockito.mock(Connection.class);
         mockPreparedStatement = Mockito.mock(PreparedStatement.class);
         mockResultSet = Mockito.mock(ResultSet.class);
-        resultRepo = new ResultRepo();
+        resultRepoImpl = new ResultRepoImpl();
     }
 
     @Test
@@ -41,7 +41,7 @@ public class ResultRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
-            Assertions.assertEquals(12, resultRepo.addResult(11122L, 1234L, 45));
+            Assertions.assertEquals(12, resultRepoImpl.addResult(11122L, 1234L, 45));
         }
     }
 
@@ -52,7 +52,7 @@ public class ResultRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> resultRepo.addResult(11122L, 1234L, 45));
+                    () -> resultRepoImpl.addResult(11122L, 1234L, 45));
         }
     }
 
@@ -64,7 +64,7 @@ public class ResultRepoTest {
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(true);
             Mockito.when(mockResultSet.getInt(1)).thenReturn(15);
-            Assertions.assertEquals(15, resultRepo.getCountResultByUserAndSubject(134L, "sub"));
+            Assertions.assertEquals(15, resultRepoImpl.getCountResultByUserAndSubject(134L, "sub"));
         }
     }
 
@@ -76,9 +76,9 @@ public class ResultRepoTest {
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> resultRepo.getCountResultByUserAndSubject(134L, "sub"));
+                    () -> resultRepoImpl.getCountResultByUserAndSubject(134L, "sub"));
             Assertions.assertThrows(DataBaseException.class,
-                    () -> resultRepo.getCountResultByUser(34768L));
+                    () -> resultRepoImpl.getCountResultByUser(34768L));
         }
     }
 
@@ -90,7 +90,7 @@ public class ResultRepoTest {
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> resultRepo.getPageResultList("sql"));
+                    () -> resultRepoImpl.getPageResultList("sql"));
         }
     }
 
@@ -101,7 +101,7 @@ public class ResultRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(false);
-            Assertions.assertEquals(new ArrayList<ResultDto>(), resultRepo.getAllResult(12L));
+            Assertions.assertEquals(new ArrayList<ResultDto>(), resultRepoImpl.getAllResult(12L));
         }
     }
 
@@ -113,7 +113,7 @@ public class ResultRepoTest {
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> resultRepo.getAllResult(12L));
+                    () -> resultRepoImpl.getAllResult(12L));
         }
     }
 

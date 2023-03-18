@@ -4,10 +4,8 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.TestRepo;
-import repo.UserRepo;
+import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.UserService;
 import servises.ValidatorService;
 import validator.DataValidator;
 
@@ -41,7 +39,7 @@ public class BlockUnblockTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
 
         Long testId = Long.valueOf(req.getParameter("test_id"));
         String page = req.getParameter("page");

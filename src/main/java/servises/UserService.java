@@ -5,7 +5,7 @@ import exeptions.ValidateException;
 import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.UserRepo;
+import repo.impl.UserRepoImpl;
 import util.query.MyQuery;
 import util.query.QueryBuilderForUser;
 import util.query.QueryCreator;
@@ -25,11 +25,11 @@ public class UserService {
      * userRepo field for work with UserRepo.class
      * validatorService field for validate input date from other
      */
-    private UserRepo userRepo;
+    private UserRepoImpl userRepoImpl;
     private ValidatorService validatorService;
 
-    public UserService(UserRepo userRepo, ValidatorService validatorService) {
-        this.userRepo = userRepo;
+    public UserService(UserRepoImpl userRepoImpl, ValidatorService validatorService) {
+        this.userRepoImpl = userRepoImpl;
         this.validatorService = validatorService;
     }
 
@@ -42,7 +42,7 @@ public class UserService {
      */
     public User get(long id) throws DataBaseException {
         logger.info("SERVICE USER get user with id " + id);
-        return userRepo.get(id);
+        return userRepoImpl.get(id);
     }
 
     /**
@@ -64,11 +64,11 @@ public class UserService {
     public Long createUser(String name, String login, String password, String repeatPassword)
             throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
         validatorService.validateFieldsUser(name, login, password);
-        validatorService.isLoginExist(userRepo.isLoginExist(login));
+        validatorService.isLoginExist(userRepoImpl.isLoginExist(login));
         validatorService.validateRepeatPassword(password, repeatPassword);
         String passwordHash = PasswordHashingService.generateStrongPasswordHash(password);
         logger.info("SERVICE USER create new user");
-        return userRepo.createUser(login, passwordHash, name);
+        return userRepoImpl.createUser(login, passwordHash, name);
     }
 
     /**
@@ -79,7 +79,7 @@ public class UserService {
      */
     public List<User> getAll() throws DataBaseException {
         logger.info("SERVICE USER get all users");
-        return userRepo.getAll();
+        return userRepoImpl.getAll();
     }
 
     /**
@@ -96,11 +96,11 @@ public class UserService {
         if (role == null) {
             validatorService.validateUpdateUser(name);
             logger.info("SERVICE USER update user with id " + id + " new name = " + name);
-            return userRepo.updateUser(id, name);
+            return userRepoImpl.updateUser(id, name);
         } else {
             validatorService.validateUpdateUser(name, role);
             logger.info("SERVICE USER update user with id " + id + " new name = " + name + " new role = " + role);
-            return userRepo.updateUser(id, name, role);
+            return userRepoImpl.updateUser(id, name, role);
         }
     }
 
@@ -113,7 +113,7 @@ public class UserService {
      */
     public long getId(String login) throws DataBaseException {
         logger.info("SERVICE USER get id user with login " + login);
-        return userRepo.getId(login);
+        return userRepoImpl.getId(login);
     }
 
     /**
@@ -125,7 +125,7 @@ public class UserService {
      */
     public boolean blockUnBlockUser(Long userId) throws DataBaseException {
         boolean status = get(userId).isBlocked();
-        userRepo.changeStatus(userId, !status);
+        userRepoImpl.changeStatus(userId, !status);
         logger.info("SERVICE USER  change status user");
         return get(userId).isBlocked();
     }
@@ -141,10 +141,10 @@ public class UserService {
     public Integer getCountUsers(String status) throws DataBaseException {
         if (status.equals("all")) {
             logger.info("SERVICE USER get all users");
-            return userRepo.getAll().size();
+            return userRepoImpl.getAll().size();
         } else {
             logger.info("SERVICE USER get users with status = " + status);
-            return userRepo.getCountUsers(status);
+            return userRepoImpl.getCountUsers(status);
         }
     }
 
@@ -167,7 +167,7 @@ public class UserService {
 //        QueryBuilderForUser queryBuilderForUser = new QueryBuilderForUser();
 //        String query = queryBuilderForUser.getQuery(filter, order, Integer.valueOf(rows), Integer.valueOf(page), "admin");
         logger.info("SERVICE USER get list of user with selected filter");
-        return userRepo.nextPage(query);
+        return userRepoImpl.nextPage(query);
     }
 
     /**

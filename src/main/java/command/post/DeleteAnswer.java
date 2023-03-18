@@ -4,8 +4,8 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.AnswerRepo;
-import repo.QuestionRepo;
+import repo.impl.AnswerRepoImpl;
+import repo.impl.QuestionRepoImpl;
 import servises.AnswerService;
 import servises.QuestionService;
 import servises.ValidatorService;
@@ -24,8 +24,8 @@ import java.io.IOException;
  */
 public class DeleteAnswer implements RequestHandler {
     private static Logger logger = LogManager.getLogger(DeleteAnswer.class);
-    QuestionService questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
-    AnswerService answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
+    QuestionService questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
+    AnswerService answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
 
     /**
      * This method is read parameter from request.

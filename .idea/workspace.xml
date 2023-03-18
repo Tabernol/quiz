@@ -9,18 +9,73 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Added safety delete image&#10;Refactor constants&#10;Refactor showed message">
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/query/MyQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryCreator.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="pagination has become better">
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/impl/AnswerRepoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/impl/ImageRepoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/impl/QuestionRepoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/impl/ResultRepoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/impl/TestRepoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/impl/UserRepoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app_listener/QuizAppListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_listener/QuizAppListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/AppControllerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/impl/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exeptions/QuizException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exeptions/QuizException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/pdfWriter/MyPdfWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/pdfWriter/MyPdfWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryBuilderForUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/query/QueryCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/query/QueryCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ExeceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ExeceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/ImageRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/ImageRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/ResultRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/ResultRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/TestRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/TestRepoTestImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/UserRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/UserRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ImageServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ImageServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,32 +184,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRepoTest.getDistinctSubjectThrowEx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestRepoTestImpl.getDistinctSubjectThrowEx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repo.*" />
+          <option name="PATTERN" value="repo.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="repo" />
-      <option name="MAIN_CLASS_NAME" value="repo.TestRepoTest" />
+      <option name="MAIN_CLASS_NAME" value="repo.TestRepoTestImpl" />
       <option name="METHOD_NAME" value="getDistinctSubjectThrowEx" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepoTest.createUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepoImplTest.createUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repo.*" />
+          <option name="PATTERN" value="repo.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="repo" />
-      <option name="MAIN_CLASS_NAME" value="repo.UserRepoTest" />
+      <option name="MAIN_CLASS_NAME" value="repo.UserRepoImplTest" />
       <option name="METHOD_NAME" value="createUserTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -298,20 +353,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.UserServiceTest.isCorrectPassword" />
-      <item itemvalue="JUnit.UserRepoTest.createUserTest" />
+      <item itemvalue="JUnit.TestRepoTestImpl.getDistinctSubjectThrowEx" />
+      <item itemvalue="JUnit.UserRepoImplTest.createUserTest" />
       <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
       <item itemvalue="JUnit.ValidatorServiceTest.isLoginThrowExTest" />
-      <item itemvalue="JUnit.TestRepoTest.getDistinctSubjectThrowEx" />
       <item itemvalue="JUnit.All in startCommand" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in startCommand" />
-        <item itemvalue="JUnit.UserRepoTest.createUserTest" />
+        <item itemvalue="JUnit.UserRepoImplTest.createUserTest" />
         <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
         <item itemvalue="JUnit.ValidatorServiceTest.isLoginThrowExTest" />
-        <item itemvalue="JUnit.TestRepoTest.getDistinctSubjectThrowEx" />
+        <item itemvalue="JUnit.TestRepoTestImpl.getDistinctSubjectThrowEx" />
       </list>
     </recent_temporary>
   </component>
@@ -407,14 +462,12 @@
       <workItem from="1677971317765" duration="6466000" />
       <workItem from="1678011595347" duration="16318000" />
       <workItem from="1678399216681" duration="13515000" />
-      <workItem from="1678611543781" duration="3905000" />
-    </task>
-    <task id="LOCAL-00020" summary="27">
-      <created>1674181359624</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1674181359624</updated>
+      <workItem from="1678611543781" duration="6528000" />
+      <workItem from="1678816167622" duration="5355000" />
+      <workItem from="1679041231433" duration="665000" />
+      <workItem from="1679073820774" duration="97000" />
+      <workItem from="1679091241658" duration="2501000" />
+      <workItem from="1679098975466" duration="472000" />
     </task>
     <task id="LOCAL-00021" summary="28">
       <created>1674219577970</created>
@@ -752,7 +805,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678493697860</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="pagination has become better">
+      <created>1678615633501</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1678615633501</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -770,7 +830,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="121" />
     <MESSAGE value="add reCaptcha and fix bag with timer" />
     <MESSAGE value="refactor, remove command AllUser" />
     <MESSAGE value="refactor SecurityFilter, add AccessUtil" />
@@ -795,7 +854,8 @@
     <MESSAGE value="Add JavaDoc" />
     <MESSAGE value="Add log for services layer" />
     <MESSAGE value="Added safety delete image&#10;Refactor constants&#10;Refactor showed message" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added safety delete image&#10;Refactor constants&#10;Refactor showed message" />
+    <MESSAGE value="pagination has become better" />
+    <option name="LAST_COMMIT_MESSAGE" value="pagination has become better" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

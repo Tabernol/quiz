@@ -5,8 +5,8 @@ import exeptions.DataBaseException;
 import models.Question;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.QuestionRepo;
-import repo.TestRepo;
+import repo.impl.QuestionRepoImpl;
+import repo.impl.TestRepoImpl;
 import servises.QuestionService;
 import servises.TestService;
 import servises.ValidatorService;
@@ -34,8 +34,8 @@ public class StartTest implements RequestHandler {
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
-        questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
-        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
+        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
         List<Question> questions = null;
         Integer duration = 0;
         Integer size = 0;

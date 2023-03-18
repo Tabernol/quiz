@@ -52,7 +52,6 @@ public class Commands {
         POST_COMMANDS.put(PathConst.DELETE_ANSWER, new DeleteAnswer());
         POST_COMMANDS.put(PathConst.EDIT_USER, new EditUserPost());
         POST_COMMANDS.put(PathConst.BLOCK, new BlockUnblockUser());
-      //  POST_COMMANDS.put(PathConst.UPLOAD_IMAGE, new UpLoadImage());
         POST_COMMANDS.put(PathConst.LOAD, new LoadToCloud());
         POST_COMMANDS.put(PathConst.DELETE_IMAGE, new DeleteFromCloud());
         POST_COMMANDS.put(PathConst.UPDATE_IMAGE, new UpdateImageForQuestion());

@@ -6,11 +6,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import repo.TestRepo;
+import repo.impl.TestRepoImpl;
 import servises.TestService;
 import org.junit.jupiter.api.Test;
 import servises.ValidatorService;
-import validator.DataValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestServiceTest {
     @Mock
-    TestRepo mockTestRepo;
+    TestRepoImpl mockTestRepoImpl;
     @Mock
     ValidatorService mockValidateService;
     TestService testService;
@@ -28,8 +27,8 @@ public class TestServiceTest {
     @BeforeEach
     public void setUp() {
         mockValidateService = Mockito.mock(ValidatorService.class);
-        mockTestRepo = Mockito.mock(TestRepo.class);
-        testService = new TestService(mockTestRepo, mockValidateService);
+        mockTestRepoImpl = Mockito.mock(TestRepoImpl.class);
+        testService = new TestService(mockTestRepoImpl, mockValidateService);
     }
 
 //    @Test
@@ -51,26 +50,26 @@ public class TestServiceTest {
     @Test
     public void getDistinctSubject() throws DataBaseException {
         List<String> subjects = new ArrayList<>();
-        Mockito.when(mockTestRepo.getDistinctSubject()).thenReturn(subjects);
+        Mockito.when(mockTestRepoImpl.getDistinctSubject()).thenReturn(subjects);
         assertEquals(subjects, testService.getDistinctSubjects());
     }
 
     @Test
     public void deleteTest() throws DataBaseException {
-        Mockito.when(mockTestRepo.delete(Mockito.anyLong())).thenReturn(1);
+        Mockito.when(mockTestRepoImpl.delete(Mockito.anyLong())).thenReturn(1);
         assertEquals(1, testService.delete(Mockito.anyLong()));
     }
 
     @Test
     public void getTest() throws DataBaseException {
         models.Test myTest = new models.Test();
-        Mockito.when(mockTestRepo.get(Mockito.anyLong())).thenReturn(myTest);
+        Mockito.when(mockTestRepoImpl.get(Mockito.anyLong())).thenReturn(myTest);
         assertEquals(myTest, testService.get(Mockito.anyLong()));
     }
 
     @Test
     public void updateTest() throws DataBaseException, ValidateException {
-        Mockito.when(mockTestRepo.updateInfoTest(Mockito.anyLong(),
+        Mockito.when(mockTestRepoImpl.updateInfoTest(Mockito.anyLong(),
                 Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(1);
         assertEquals(1, testService.update(12L,
                 "newName", "newSubject", 45, 26));
@@ -78,7 +77,7 @@ public class TestServiceTest {
 
     @Test
     public void AddPointPopularity() throws DataBaseException {
-        Mockito.when(mockTestRepo.addPopularity(Mockito.anyLong())).thenReturn(1);
+        Mockito.when(mockTestRepoImpl.addPopularity(Mockito.anyLong())).thenReturn(1);
         assertEquals(1, testService.addPointPopularity(Mockito.anyLong()));
     }
 
@@ -97,8 +96,8 @@ public class TestServiceTest {
 
     @Test
     public void amountTests() throws DataBaseException {
-        Mockito.when(mockTestRepo.getCount()).thenReturn(5);
-        Mockito.when(mockTestRepo.getCount(Mockito.anyString())).thenReturn(3);
+        Mockito.when(mockTestRepoImpl.getCount()).thenReturn(5);
+        Mockito.when(mockTestRepoImpl.getCount(Mockito.anyString())).thenReturn(3);
         assertEquals(1, testService.countPages("all", 5));
         assertEquals(3, testService.countPages("all", 2));
         assertEquals(1, testService.countPages("all", 10));
@@ -110,7 +109,7 @@ public class TestServiceTest {
     @Test
     public void getPageTestList() throws DataBaseException {
         List<models.Test> testList = new ArrayList<>();
-        Mockito.when(mockTestRepo.nextPage(Mockito.anyString())).thenReturn(testList);
+        Mockito.when(mockTestRepoImpl.nextPage(Mockito.anyString())).thenReturn(testList);
         Assertions.assertEquals(testList,
                 testService.getPageTestList("Sub", "order by ...", 2,2,"admin"));
     }
@@ -119,8 +118,8 @@ public class TestServiceTest {
     public void changeStatusTest() throws DataBaseException {
         models.Test test = new models.Test();
         test.setStatus(models.Test.Status.BLOCKED);
-        Mockito.when(mockTestRepo.get(Mockito.anyLong())).thenReturn(test);
-        Mockito.when(mockTestRepo.changeStatus(Mockito.anyLong(),
+        Mockito.when(mockTestRepoImpl.get(Mockito.anyLong())).thenReturn(test);
+        Mockito.when(mockTestRepoImpl.changeStatus(Mockito.anyLong(),
                 Mockito.any(models.Test.Status.class))).thenReturn(12);
         Assertions.assertEquals(12, testService.changeStatus(Mockito.anyLong()));
         test.setStatus(models.Test.Status.FREE);

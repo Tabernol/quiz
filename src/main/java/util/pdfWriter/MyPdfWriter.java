@@ -5,13 +5,9 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import dto.ResultDto;
 import exeptions.DataBaseException;
-import repo.ResultRepo;
+import repo.impl.ResultRepoImpl;
 import servises.ResultService;
 
-import java.io.*;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -38,7 +34,7 @@ public class MyPdfWriter {
     }
 
     private PdfPTable addRows(PdfPTable table, Long userId) {
-        resultService = new ResultService(new ResultRepo());
+        resultService = new ResultService(new ResultRepoImpl());
         List<ResultDto> allResultByUserId = null;
         try {
             allResultByUserId = resultService.getAllResultByUserId(userId);

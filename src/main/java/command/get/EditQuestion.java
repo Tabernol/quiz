@@ -6,8 +6,8 @@ import models.Answer;
 import models.Question;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.AnswerRepo;
-import repo.QuestionRepo;
+import repo.impl.AnswerRepoImpl;
+import repo.impl.QuestionRepoImpl;
 import servises.AnswerService;
 import servises.QuestionService;
 import servises.ValidatorService;
@@ -47,8 +47,8 @@ public class EditQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        questionService = new QuestionService(new QuestionRepo(), new ValidatorService(new DataValidator()));
-        answerService = new AnswerService(new AnswerRepo(), new ValidatorService(new DataValidator()));
+        questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
+        answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
         String questionId = req.getParameter("question_id");
 
         req.setAttribute("test_id", req.getParameter("test_id"));

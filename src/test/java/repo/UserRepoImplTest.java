@@ -8,79 +8,188 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import repo.impl.UserRepoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class TestRepoTest {
+public class UserRepoImplTest {
     @Mock
     private Connection mockConnection;
     @Mock
     private PreparedStatement mockPreparedStatement;
     @Mock
     private ResultSet mockResultSet;
-
-    private TestRepo testRepo;
+    private UserRepoImpl userRepoImpl;
 
     @BeforeEach
     public void setUp() throws SQLException {
         mockConnection = Mockito.mock(Connection.class);
         mockPreparedStatement = Mockito.mock(PreparedStatement.class);
         mockResultSet = Mockito.mock(ResultSet.class);
-        testRepo = new TestRepo();
+        userRepoImpl = new UserRepoImpl();
     }
 
     @Test
-    public void updateInfoTest() throws SQLException, DataBaseException {
+    public void getAllThrowEx() throws SQLException {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            Assertions.assertEquals(13,
-                    testRepo.updateInfoTest(1231L,
-                            "name text", "name Subject", 23, 12));
-        }
-    }
-
-    @Test
-    public void updateInfoTestThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.updateInfoTest(1231L,
-                            "name text", "name Subject", 23, 12));
+                    () -> userRepoImpl.getAll());
         }
     }
 
     @Test
-    public void getCountTest() throws SQLException, DataBaseException {
+    public void createUserTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            mockConnection.setAutoCommit(false);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+         //   Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenReturn(true);
+            Mockito.when(mockResultSet.getInt("last_insert_id()")).thenReturn(123);
+            Assertions.assertEquals(123, userRepoImpl.createUser("login", "password", "name"));
+        }
+    }
+
+    @Test
+    public void createUserThrowEx() throws SQLException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class,
+                    () -> userRepoImpl.createUser("login", "password", "name"));
+        }
+    }
+
+    @Test
+    public void isLoginExistTest() throws SQLException, DataBaseException {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(true);
-            Mockito.when(mockResultSet.getInt(1)).thenReturn(20);
-            Assertions.assertEquals(20, testRepo.getCount());
-            Assertions.assertEquals(20, testRepo.getCount("math"));
+            Assertions.assertEquals(true, userRepoImpl.isLoginExist("login"));
         }
     }
 
     @Test
-    public void getCountTestThrowEx() throws SQLException, DataBaseException {
+    public void isLoginExistThrowEx() throws SQLException {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.getCount("sub"));
+                    () -> userRepoImpl.isLoginExist("login"));
+        }
+    }
+
+    @Test
+    public void updateUserTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+            Assertions.assertEquals(12, userRepoImpl.updateUser(12312L, "name"));
+        }
+    }
+
+    @Test
+    public void updateUserThrowEx() throws SQLException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.getCount());
+                    () -> userRepoImpl.updateUser(1234L, "name"));
+            Assertions.assertThrows(DataBaseException.class,
+                    () -> userRepoImpl.updateUser(1234L, "name", "student"));
+        }
+    }
+
+    @Test
+    public void updateUserFullTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+            Assertions.assertEquals(12, userRepoImpl.updateUser(1234L, "name", "student"));
+        }
+    }
+
+    @Test
+    public void getIdTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenReturn(true);
+            Mockito.when(mockResultSet.getLong("id")).thenReturn(123L);
+            Assertions.assertEquals(123L, userRepoImpl.getId("login"));
+        }
+    }
+
+    @Test
+    public void getIdThrowExTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class, () -> userRepoImpl.getId("login"));
+        }
+    }
+
+
+    @Test
+    public void changeStatusTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+            Assertions.assertEquals(12, userRepoImpl.changeStatus(123L, false));
+        }
+    }
+
+    @Test
+    public void changeStatusThrowExTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class, () -> userRepoImpl.changeStatus(123L, true));
+        }
+    }
+
+    @Test
+    public void getCountUsersTest() throws SQLException, DataBaseException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+            Mockito.when(mockResultSet.next()).thenReturn(true);
+            Mockito.when(mockResultSet.getInt(1)).thenReturn(13);
+            Integer countUsers = userRepoImpl.getCountUsers("true");
+            Assertions.assertEquals(13, countUsers);
+        }
+    }
+
+    @Test
+    public void getCountUsersThrow() throws SQLException {
+        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
+            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
+            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+            Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
+            Assertions.assertThrows(DataBaseException.class, () -> userRepoImpl.getCountUsers("true"));
         }
     }
 
@@ -91,159 +200,17 @@ public class TestRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(false);
-            Assertions.assertEquals(new ArrayList<>(), testRepo.nextPage("sql"));
+            Assertions.assertEquals(new ArrayList<>(), userRepoImpl.nextPage("query"));
         }
     }
 
     @Test
-    public void nextPageThrowEx() throws SQLException, DataBaseException {
+    public void nextPageThrow() throws SQLException {
         try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.nextPage("sub"));
+            Assertions.assertThrows(DataBaseException.class, () -> userRepoImpl.nextPage("query"));
         }
     }
-
-    @Test
-    public void getTest() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
-            Mockito.when(mockResultSet.next()).thenReturn(false);
-            Assertions.assertEquals(null, testRepo.get(12413L));
-        }
-    }
-
-    @Test
-    public void getThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.get(23141L));
-        }
-    }
-
-    @Test
-    public void addPopularityTest() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            Assertions.assertEquals(13, testRepo.addPopularity(12413L));
-        }
-    }
-
-    @Test
-    public void addPopularityThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.addPopularity(23141L));
-        }
-    }
-
-
-    @Test
-    public void isNameExistThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.isNameExist("name"));
-        }
-    }
-
-    @Test
-    public void deleteTest() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            Assertions.assertEquals(13, testRepo.delete(12413L));
-        }
-    }
-
-    @Test
-    public void deleteTestThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.delete(324L));
-        }
-    }
-
-    @Test
-    public void createTest() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            Assertions.assertEquals(13,
-                    testRepo.createTest("nameTEST", "subject", 45, 12));
-        }
-    }
-
-    @Test
-    public void createTestThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.createTest("nameTEST", "subject", 45, 12));
-        }
-    }
-
-    @Test
-    public void changeStatusTest() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            Assertions.assertEquals(13, testRepo.changeStatus(12413L, models.Test.Status.FREE));
-        }
-    }
-
-    @Test
-    public void changeStatusThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepo.changeStatus(123L, models.Test.Status.BLOCKED));
-        }
-    }
-
-    @Test
-    public void getDistinctSubjectTest() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
-            Mockito.when(mockResultSet.next()).thenReturn(false);
-            Assertions.assertEquals(null, testRepo.getDistinctSubject());
-        }
-    }
-
-    @Test
-    public void getDistinctSubjectThrowEx() throws SQLException, DataBaseException {
-        try (MockedStatic<MyDataSource> myDataSourceMockedStatic = Mockito.mockStatic(MyDataSource.class)) {
-            myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
-            Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-            Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> testRepo.getDistinctSubject());
-        }
-    }
-
 }

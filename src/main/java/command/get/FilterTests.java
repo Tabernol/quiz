@@ -5,7 +5,7 @@ import exeptions.DataBaseException;
 import models.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.TestRepo;
+import repo.impl.TestRepoImpl;
 import servises.TestService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -65,7 +65,7 @@ public class FilterTests implements RequestHandler {
         }
 //        =======================================
 
-        testService = new TestService(new TestRepo(), new ValidatorService(new DataValidator()));
+        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
         List<String> subjects;
         List<Test> filterTests;
         int countPages;

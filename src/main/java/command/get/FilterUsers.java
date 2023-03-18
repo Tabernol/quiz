@@ -5,7 +5,7 @@ import exeptions.DataBaseException;
 import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.UserRepo;
+import repo.impl.UserRepoImpl;
 import servises.UserService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -39,7 +39,7 @@ public class FilterUsers implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+        userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
 
         String status = req.getParameter("status");
         String rows = req.getParameter("rows");

@@ -2,7 +2,6 @@ package repo;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
-import models.Answer;
 import models.Question;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import repo.impl.QuestionRepoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +20,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class QuestionRepoTest {
+public class QuestionRepoImplTest {
     @Mock
     private Connection mockConnection;
     @Mock
@@ -28,14 +28,14 @@ public class QuestionRepoTest {
     @Mock
     private ResultSet mockResultSet;
 
-    private QuestionRepo questionRepo;
+    private QuestionRepoImpl questionRepoImpl;
 
     @BeforeEach
     public void setUp() throws SQLException {
         mockConnection = Mockito.mock(Connection.class);
         mockPreparedStatement = Mockito.mock(PreparedStatement.class);
         mockResultSet = Mockito.mock(ResultSet.class);
-        questionRepo = new QuestionRepo();
+        questionRepoImpl = new QuestionRepoImpl();
     }
 
     @Test
@@ -44,7 +44,7 @@ public class QuestionRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepo.createQuestion(321L, "test text");
+            int rowsUpdate = questionRepoImpl.createQuestion(321L, "test text");
             Assertions.assertEquals(13, rowsUpdate);
         }
     }
@@ -55,7 +55,7 @@ public class QuestionRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepo.updateQuestion("test text", 323L);
+            int rowsUpdate = questionRepoImpl.updateQuestion("test text", 323L);
             Assertions.assertEquals(13, rowsUpdate);
         }
     }
@@ -66,7 +66,7 @@ public class QuestionRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepo.delete(323L);
+            int rowsUpdate = questionRepoImpl.delete(323L);
             Assertions.assertEquals(13, rowsUpdate);
         }
     }
@@ -79,7 +79,7 @@ public class QuestionRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(false);
-            List<Question> allById = questionRepo.getAllById(342L);
+            List<Question> allById = questionRepoImpl.getAllById(342L);
             assertEquals(questionList, allById);
         }
     }
@@ -91,7 +91,7 @@ public class QuestionRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> questionRepo.getAllById(34467L));
+            Assertions.assertThrows(DataBaseException.class, () -> questionRepoImpl.getAllById(34467L));
         }
     }
 
@@ -102,7 +102,7 @@ public class QuestionRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> questionRepo.get(34467L));
+            Assertions.assertThrows(DataBaseException.class, () -> questionRepoImpl.get(34467L));
         }
     }
 
@@ -112,7 +112,7 @@ public class QuestionRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> questionRepo.delete(34467L));
+            Assertions.assertThrows(DataBaseException.class, () -> questionRepoImpl.delete(34467L));
         }
     }
 
@@ -122,7 +122,7 @@ public class QuestionRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> questionRepo.updateQuestion("new text", 34467L));
+            Assertions.assertThrows(DataBaseException.class, () -> questionRepoImpl.updateQuestion("new text", 34467L));
         }
     }
 
@@ -133,7 +133,7 @@ public class QuestionRepoTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> questionRepo.createQuestion(34467L, "new text Question"));
+                    () -> questionRepoImpl.createQuestion(34467L, "new text Question"));
         }
     }
 
@@ -143,7 +143,7 @@ public class QuestionRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepo.updateImageQuestion("URL", 323L);
+            int rowsUpdate = questionRepoImpl.updateImageQuestion("URL", 323L);
             Assertions.assertEquals(13, rowsUpdate);
         }
     }
@@ -154,7 +154,7 @@ public class QuestionRepoTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> questionRepo.updateImageQuestion("URL", 34467L));
+            Assertions.assertThrows(DataBaseException.class, () -> questionRepoImpl.updateImageQuestion("URL", 34467L));
         }
     }
 }

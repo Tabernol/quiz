@@ -5,7 +5,7 @@ import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repo.UserRepo;
+import repo.impl.UserRepoImpl;
 import servises.UserService;
 import servises.ValidatorService;
 import validator.DataValidator;
@@ -21,7 +21,7 @@ import java.io.IOException;
  */
 public class EditUserPost implements RequestHandler {
     private static Logger logger = LogManager.getLogger(EditUserPost.class);
-    UserService userService = new UserService(new UserRepo(), new ValidatorService(new DataValidator()));
+    UserService userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
     /**
      * This method is read parameter from request.
      * It calls the service layer to update this User

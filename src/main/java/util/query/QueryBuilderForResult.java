@@ -11,14 +11,13 @@ public class QueryBuilderForResult implements QueryCreator {
 
         Integer offSet = (Integer.valueOf(page) - 1) * Integer.valueOf(limit);
 
-        if (and.equals("all")) {
-            and = "";
+        if (and.equals(ALL)) {
+            and = EMPTY;
         } else
-            and = " and subject like '" + and + "'";
+            and = AND_SUBJECT_LIKE + "'" + and + "'";
 
-        return "select * from test inner join result " +
-                "on test.id=result.test_id where user_id like "
-                + filter + and + " order by " + orderBy + " limit " + limit + " offset " + offSet;
+        return SELECT_FROM_TEST_INNER_JOIN_RESULT
+                + filter + and + ORDER_BY + orderBy + LIMIT + limit + OFFSET + offSet;
     }
 }
 

@@ -19,7 +19,7 @@ public class QuizAppListener implements ServletContextListener {
 //        ServletContext servletContext = sce.getServletContext();
 //        Locale locale = new Locale("en","UK");
 //        servletContext.setAttribute("locale", locale);
-        LOGGER.info("Webapp 'Quiz Service' was started.");
+        LOGGER.info("Webapp 'Quiz Service' has started.");
     }
 
     @Override

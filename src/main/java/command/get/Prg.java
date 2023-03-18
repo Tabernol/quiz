@@ -22,10 +22,10 @@ public class Prg implements RequestHandler {
     /**
      * This method reads all parameters from the request, sets them in the next request.
      *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req  the HttpServletRequest object containing information about the request
+     * @param resp the HttpServletResponse object for sending the response to the client
+     * @throws ServletException if there is an error with the servlet
+     * @throws IOException      if there is an I/O error
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp)

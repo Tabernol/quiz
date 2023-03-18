@@ -14,13 +14,26 @@ import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-
+/**
+ * LoadToCloud.class is allowed only for admin.
+ * The meaning of the class is to load image to cloud
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class LoadToCloud implements RequestHandler {
 
     private int count = 0;
 
     private ImageService imageService;
 
+    /**
+     * Executes the image upload process, saving the uploaded image to a file, uploading the file to a
+     * cloud storage service, and adding the image to the database via the ImageService.
+     *
+     * @param req  the HttpServletRequest object containing information about the request
+     * @param resp the HttpServletResponse object for sending the response to the client
+     * @throws ServletException if there is an error with the servlet
+     * @throws IOException      if there is an I/O error
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -28,8 +41,6 @@ public class LoadToCloud implements RequestHandler {
 
         String webInfPath = req.getServletContext().getRealPath("WEB-INF");
         String fullPath = webInfPath + "\\image" + (++count) + ".jpeg";
-
-        System.out.println(fullPath);
 
         for (Part part : req.getParts()) {
             part.write(fullPath);
@@ -46,7 +57,6 @@ public class LoadToCloud implements RequestHandler {
                     (String) uploadResult.get("url"),
                     (Integer) uploadResult.get("width"),
                     (Integer) uploadResult.get("height"));
-//
         } catch (DataBaseException e) {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }

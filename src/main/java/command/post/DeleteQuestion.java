@@ -32,10 +32,10 @@ public class DeleteQuestion implements RequestHandler {
      * It calls the service layer to delete a Question
      * if DataBaseException is caught, redirects to error page.
      *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req  the HttpServletRequest object containing information about the request
+     * @param resp the HttpServletResponse object for sending the response to the client
+     * @throws ServletException if there is an error with the servlet
+     * @throws IOException      if there is an I/O error
      */
     @Override
     public void execute(HttpServletRequest req,

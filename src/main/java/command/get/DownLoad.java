@@ -29,10 +29,10 @@ public class DownLoad implements RequestHandler {
      * This method takes user`s id from request or from session.
      * It creates pdf file with completed tests(quizs) by user Id
      *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req  the HttpServletRequest object containing information about the request
+     * @param resp the HttpServletResponse object for sending the response to the client
+     * @throws ServletException if there is an error with the servlet
+     * @throws IOException      if there is an I/O error
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -14,10 +14,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * UpdateImageForQuestion.class is allowed only for admin.
+ * The meaning of the class is to update url of image of Question to an existing Test(quiz) in database.
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class UpdateImageForQuestion implements RequestHandler {
     private static Logger logger = LogManager.getLogger(UpdateImageForQuestion.class);
     private QuestionService questionService;
+
+    /**
+     * Updates the image for a question identified by its ID and redirects the user to the page to edit the question.
+     *
+     * @param req  the HttpServletRequest object containing the parameters required to update the question's image
+     * @param resp the HttpServletResponse object used to send the response back to the client
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException      if an I/O error occurs
+     */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));

@@ -20,13 +20,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * GetInfoQuestion.class is allowed for student
+ * The purpose of the class is to provide an information: text of question, answers for it, image for question
+ *
+ * @author makskrasnopolskyi@gmail.com
+ */
 public class GetInfoQuestion implements RequestHandler {
 
     private static Logger logger = LogManager.getLogger(GetInfoQuestion.class);
 
     Integer index = 0;
 
+    /**
+     * This method supply information: text of question, answers for it, image for question
+     *
+     * @param req  the HttpServletRequest object containing information about the request
+     * @param resp the HttpServletResponse object for sending the response to the client
+     * @throws ServletException if there is an error with the servlet
+     * @throws IOException      if there is an I/O error
+     */
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)

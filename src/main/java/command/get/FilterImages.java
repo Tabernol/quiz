@@ -28,10 +28,10 @@ public class FilterImages implements RequestHandler {
     /**
      * This method contacts with service layer to retrieve all information about images
      *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req  the HttpServletRequest object containing information about the request
+     * @param resp the HttpServletResponse object for sending the response to the client
+     * @throws ServletException if there is an error with the servlet
+     * @throws IOException      if there is an I/O error
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -35,10 +35,10 @@ public class EditTest implements RequestHandler {
      * He contacts the service level to get information about his test(quiz) and questions for it.
      * Set this information in request and calls it.
      *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req  the HttpServletRequest object containing information about the request
+     * @param resp the HttpServletResponse object for sending the response to the client
+     * @throws ServletException if there is an error with the servlet
+     * @throws IOException      if there is an I/O error
      */
     @Override
     public void execute(HttpServletRequest req,

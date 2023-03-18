@@ -9,9 +9,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="refactor name for repositories&#10;Add JavaDoc&#10;Add interfaces">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add JavaDoc for DataValidator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/DataValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/DownLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/DownLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,14 +436,7 @@
       <workItem from="1679073820774" duration="97000" />
       <workItem from="1679091241658" duration="2501000" />
       <workItem from="1679098975466" duration="1797000" />
-      <workItem from="1679156458094" duration="663000" />
-    </task>
-    <task id="LOCAL-00022" summary="29">
-      <created>1674236252130</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1674236252130</updated>
+      <workItem from="1679156458094" duration="1646000" />
     </task>
     <task id="LOCAL-00023" summary="31">
       <created>1674350594837</created>
@@ -748,7 +774,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679099559997</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Add JavaDoc for DataValidator">
+      <created>1679157325990</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1679157325991</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -766,7 +799,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor, remove command AllUser" />
     <MESSAGE value="refactor SecurityFilter, add AccessUtil" />
     <MESSAGE value="refactor timer. Add log to GET command" />
     <MESSAGE value="Add, refactor test and process create user" />
@@ -791,7 +823,8 @@
     <MESSAGE value="Added safety delete image&#10;Refactor constants&#10;Refactor showed message" />
     <MESSAGE value="pagination has become better" />
     <MESSAGE value="refactor name for repositories&#10;Add JavaDoc&#10;Add interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor name for repositories&#10;Add JavaDoc&#10;Add interfaces" />
+    <MESSAGE value="Add JavaDoc for DataValidator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add JavaDoc for DataValidator" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

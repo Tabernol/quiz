@@ -76,9 +76,6 @@ public class TestService {
             throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForTest();
         String query = queryCreator.getSQL(new MyQuery(subject, order, rows, page, role));
-
-//        QueryBuilderForTest queryBuilderForTest = new QueryBuilderForTest();
-//        String query = queryBuilderForTest.getQuery(subject, order, rows, page, role);
         logger.info("SERVICE TEST get list of test with selected filter");
         return testRepoImpl.nextPage(query);
     }

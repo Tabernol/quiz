@@ -39,7 +39,6 @@ public class DeleteTest implements RequestHandler {
             throws ServletException, IOException {
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
-
         try {
             testService.delete(id);
             logger.info("Test with id " + id + "has deleted");
@@ -50,7 +49,5 @@ public class DeleteTest implements RequestHandler {
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
 
         }
-
-
     }
 }

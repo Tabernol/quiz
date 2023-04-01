@@ -9,42 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add JavaDoc for DataValidator">
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Refactor JavaDoc for commands">
+      <change afterPath="$PROJECT_DIR$/src/test/java/AppControllerServletTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/FilterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/util/MyCustomTagTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/util/MyPdfWriterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/DownLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/DownLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Logout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/BlockUnblockUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteFromCloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app_listener/QuizAppListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_listener/QuizAppListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditUserPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/FinishTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/LoadToCloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AbstractFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AbstractFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AuthorizationFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AuthorizationFilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +34,8 @@
       <list>
         <option value="Enum" />
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -140,10 +118,11 @@
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\WEB-INF\view" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="util" />
       <recent name="repo" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
+  <component name="RunManager" selected="JUnit.All in startCommand">
     <configuration name="All in startCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <option name="PACKAGE_NAME" value="" />
@@ -152,33 +131,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRepoTestImpl.getDistinctSubjectThrowEx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppControllerServletTest.testDoGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="repo.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="repo" />
-      <option name="MAIN_CLASS_NAME" value="repo.TestRepoTestImpl" />
-      <option name="METHOD_NAME" value="getDistinctSubjectThrowEx" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AppControllerServletTest" />
+      <option name="METHOD_NAME" value="testDoGet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepoImplTest.createUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthorizationFilterTest.testDoCustomFilter_InvalidInput_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AuthorizationFilterTest" />
+      <option name="METHOD_NAME" value="testDoCustomFilter_InvalidInput_Failure" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthorizationFilterTest.testDoCustomFilter_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AuthorizationFilterTest" />
+      <option name="METHOD_NAME" value="testDoCustomFilter_ValidInput_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyPdfWriterTest.testGetPdfTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repo.impl.*" />
+          <option name="PATTERN" value="util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="repo" />
-      <option name="MAIN_CLASS_NAME" value="repo.UserRepoImplTest" />
-      <option name="METHOD_NAME" value="createUserTest" />
+      <option name="PACKAGE_NAME" value="util" />
+      <option name="MAIN_CLASS_NAME" value="util.MyPdfWriterTest" />
+      <option name="METHOD_NAME" value="testGetPdfTable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -195,38 +188,6 @@
       <option name="PACKAGE_NAME" value="service_test" />
       <option name="MAIN_CLASS_NAME" value="service_test.UserServiceTest" />
       <option name="METHOD_NAME" value="isCorrectPassword" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ValidatorServiceTest.isLoginExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service_test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
-      <option name="METHOD_NAME" value="isLoginExist" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ValidatorServiceTest.isLoginThrowExTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service_test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.ValidatorServiceTest" />
-      <option name="METHOD_NAME" value="isLoginThrowExTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -321,20 +282,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.UserServiceTest.isCorrectPassword" />
-      <item itemvalue="JUnit.TestRepoTestImpl.getDistinctSubjectThrowEx" />
-      <item itemvalue="JUnit.UserRepoImplTest.createUserTest" />
-      <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
-      <item itemvalue="JUnit.ValidatorServiceTest.isLoginThrowExTest" />
+      <item itemvalue="JUnit.AppControllerServletTest.testDoGet" />
+      <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_InvalidInput_Failure" />
+      <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_ValidInput_Success" />
+      <item itemvalue="JUnit.MyPdfWriterTest.testGetPdfTable" />
       <item itemvalue="JUnit.All in startCommand" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in startCommand" />
-        <item itemvalue="JUnit.UserRepoImplTest.createUserTest" />
-        <item itemvalue="JUnit.ValidatorServiceTest.isLoginExist" />
-        <item itemvalue="JUnit.ValidatorServiceTest.isLoginThrowExTest" />
-        <item itemvalue="JUnit.TestRepoTestImpl.getDistinctSubjectThrowEx" />
+        <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_ValidInput_Success" />
+        <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_InvalidInput_Failure" />
+        <item itemvalue="JUnit.AppControllerServletTest.testDoGet" />
+        <item itemvalue="JUnit.MyPdfWriterTest.testGetPdfTable" />
       </list>
     </recent_temporary>
   </component>
@@ -436,14 +397,13 @@
       <workItem from="1679073820774" duration="97000" />
       <workItem from="1679091241658" duration="2501000" />
       <workItem from="1679098975466" duration="1797000" />
-      <workItem from="1679156458094" duration="1646000" />
-    </task>
-    <task id="LOCAL-00023" summary="31">
-      <created>1674350594837</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1674350594837</updated>
+      <workItem from="1679156458094" duration="6514000" />
+      <workItem from="1679225160329" duration="1013000" />
+      <workItem from="1679273380135" duration="1098000" />
+      <workItem from="1679520862524" duration="84000" />
+      <workItem from="1679526623261" duration="1285000" />
+      <workItem from="1679861435038" duration="1839000" />
+      <workItem from="1680304409556" duration="4372000" />
     </task>
     <task id="LOCAL-00024" summary="24">
       <created>1674664473414</created>
@@ -781,7 +741,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679157325991</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Refactor JavaDoc for commands">
+      <created>1679158453114</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1679158453114</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -799,7 +766,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor SecurityFilter, add AccessUtil" />
     <MESSAGE value="refactor timer. Add log to GET command" />
     <MESSAGE value="Add, refactor test and process create user" />
     <MESSAGE value="Add, some test and refactor" />
@@ -824,7 +790,8 @@
     <MESSAGE value="pagination has become better" />
     <MESSAGE value="refactor name for repositories&#10;Add JavaDoc&#10;Add interfaces" />
     <MESSAGE value="Add JavaDoc for DataValidator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add JavaDoc for DataValidator" />
+    <MESSAGE value="Refactor JavaDoc for commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor JavaDoc for commands" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -845,7 +812,7 @@
       <FILTER>service_test.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/startCommand$DataHendlerTest.ic" NAME="DataHendlerTest Coverage Results" MODIFIED="1673823560611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1678467318286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1680305850448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerRepoTest_testCreateAnswer.ic" NAME="AnswerRepoTest.testCreateAnswer Coverage Results" MODIFIED="1673213161020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest.ic" NAME="AnswerServiceTest Coverage Results" MODIFIED="1673473203875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>

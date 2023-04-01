@@ -22,8 +22,7 @@ import validator.DataValidator;
 //@WebFilter(filterName = "AuthorizationFilter", value = "/login")
 public class AuthorizationFilter extends AbstractFilter {
     private static Logger logger = LogManager.getLogger(AuthorizationFilter.class);
-
-    UserService userService;
+    private UserService userService;
 
     @Override
     public void doCustomFilter(HttpServletRequest req,

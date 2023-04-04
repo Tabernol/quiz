@@ -3,8 +3,7 @@ package command.get;
 import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.ResultRepoImpl;
 import repo.impl.TestRepoImpl;
 import repo.impl.UserRepoImpl;
@@ -27,8 +26,8 @@ import java.util.List;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class FilterResult implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(FilterResult.class);
 
     private ResultService resultService;
     private TestService testService;
@@ -109,10 +108,10 @@ public class FilterResult implements RequestHandler {
 
             //    req.setAttribute("page", page);
 
-            logger.info("Filter result was used");
+            log.info("Filter result was used");
             req.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("Trouble with using filter result ", e);
+            log.warn("Trouble with using filter result ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

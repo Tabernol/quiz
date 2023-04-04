@@ -5,8 +5,7 @@ import com.cloudinary.utils.ObjectUtils;
 import command.get.FilterImages;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.ImageRepoImpl;
 import servises.ImageService;
 
@@ -23,9 +22,8 @@ import java.util.Map;
  *
  * @author makskrasnopolskyi@gmail.com
  */
-
+@Slf4j
 public class DeleteFromCloud implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(DeleteFromCloud.class);
     private ImageService imageService;
 
     /**
@@ -48,18 +46,18 @@ public class DeleteFromCloud implements RequestHandler {
             Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
             Map deleteParams = ObjectUtils.asMap("invalidate", true);
             cloudinary.uploader().destroy(publicId, deleteParams);
-            logger.info("The Image with publicID " + publicId + " was deleted from cloudinary");
+            log.info("The Image with publicID " + publicId + " was deleted from cloudinary");
 
 
             //delete data from database
 
             try {
                 imageService.deleteImage(publicId);
-                logger.info("The Image with publicID " + publicId + " was deleted from database");
+                log.info("The Image with publicID " + publicId + " was deleted from database");
                 FilterImages filterImages = new FilterImages();
                 filterImages.execute(req, resp);
             } catch (DataBaseException e) {
-                logger.info("There was a problem with deleting the image. publicID = " + publicId);
+                log.info("There was a problem with deleting the image. publicID = " + publicId);
                 req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
             }
         } else {

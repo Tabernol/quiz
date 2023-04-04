@@ -11,8 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import lombok.extern.slf4j.Slf4j;
 import repo.ResultRepo;
 
 /**
@@ -20,8 +19,9 @@ import repo.ResultRepo;
  *
  *@author MaxKrasnopolskyi
  */
+@Slf4j
 public class ResultRepoImpl implements ResultRepo {
-    private static final Logger logger = LogManager.getLogger(ResultRepoImpl.class);
+
 
     /**
      * method get list of result with some limit, offset, order by, where
@@ -47,7 +47,7 @@ public class ResultRepoImpl implements ResultRepo {
             resultSet.close();
             return resultDtoList;
         } catch (SQLException e) {
-            logger.warn("Can not get order result list");
+            log.warn("Can not get order result list");
             throw new DataBaseException("Can not get order result list" + e.getMessage(), e);
         }
     }
@@ -78,7 +78,7 @@ public class ResultRepoImpl implements ResultRepo {
             resultSet.close();
             return resultDtoList;
         } catch (SQLException e) {
-            logger.warn("Can not get order result list");
+            log.warn("Can not get order result list");
             throw new DataBaseException("Can not get order result list" + e.getMessage(), e);
 
         }
@@ -102,7 +102,7 @@ public class ResultRepoImpl implements ResultRepo {
             pst.setInt(3, grade);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can not insert into result");
+            log.warn("Can not insert into result");
             throw new DataBaseException("Can not insert into result" + e.getMessage(), e);
         }
     }
@@ -125,7 +125,7 @@ public class ResultRepoImpl implements ResultRepo {
             resultSet.close();
             return count;
         } catch (SQLException e) {
-            logger.warn("Can not get count from table result with id = " + userId);
+            log.warn("Can not get count from table result with id = " + userId);
             throw new DataBaseException("Can not get count from table result" + e.getMessage(), e);
         }
     }
@@ -151,7 +151,7 @@ public class ResultRepoImpl implements ResultRepo {
             resultSet.close();
             return count;
         } catch (SQLException e) {
-            logger.warn("Can not get count from table result with id = " + userId);
+            log.warn("Can not get count from table result with id = " + userId);
             throw new DataBaseException("Can not get count from table result" + e.getMessage(), e);
         }
     }
@@ -179,7 +179,7 @@ public class ResultRepoImpl implements ResultRepo {
             }
             return subjects;
         } catch (SQLException e) {
-            logger.warn("Can not get order distinct subject from test");
+            log.warn("Can not get order distinct subject from test");
             throw new DataBaseException("Can not get order distinct subject from test" + e.getMessage(), e);
         }
     }

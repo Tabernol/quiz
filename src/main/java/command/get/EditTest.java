@@ -2,10 +2,9 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Question;
 import models.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.QuestionRepoImpl;
 import repo.impl.TestRepoImpl;
 import servises.QuestionService;
@@ -25,8 +24,8 @@ import java.util.List;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class EditTest implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(EditTest.class);
     private TestService testService;
     private QuestionService questionService;
 
@@ -61,10 +60,10 @@ public class EditTest implements RequestHandler {
             req.setAttribute("difficult", test.getDifficult());
             req.setAttribute("duration", test.getDuration());
             req.setAttribute("questions", all);
-            logger.info("Test with ID " + id + " has updated");
+            log.info("Test with ID " + id + " has updated");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("Test with ID " + id + " has NOT updated ", e);
+            log.warn("Test with ID " + id + " has NOT updated ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
 
         }

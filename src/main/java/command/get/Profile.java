@@ -1,9 +1,7 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import lombok.extern.slf4j.Slf4j;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,8 +13,8 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class Profile implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(Profile.class);
 
     /**
      * This method calls to FilterResul command
@@ -30,7 +28,7 @@ public class Profile implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        logger.info("Go to filter result");
+        log.info("Go to filter result");
         FilterResult filterResult = new FilterResult();
         filterResult.execute(req, resp);
     }

@@ -2,9 +2,8 @@ package servises;
 
 import dto.ResultDto;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Answer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.AnswerRepoImpl;
 import repo.impl.ResultRepoImpl;
 import util.query.MyQuery;
@@ -19,8 +18,8 @@ import java.util.List;
  * This class is responsibility for checking answer and supplying grade after test(quiz),
  * and calls to insert completed result to database
  */
+@Slf4j
 public class ResultService {
-    private static final Logger logger = LogManager.getLogger(ResultService.class);
     private ResultRepoImpl resultRepoImpl;
     private AnswerService answerService;
 
@@ -40,7 +39,7 @@ public class ResultService {
      * @throws DataBaseException
      */
     public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
-        logger.info("SERVICE RESULT add result to database");
+        log.info("SERVICE RESULT add result to database");
         return resultRepoImpl.addResult(userId, testId, grade);
     }
 
@@ -94,7 +93,7 @@ public class ResultService {
                 }
             }
         }
-        logger.info("SERVICE RESULT get result by question " + questionId);
+        log.info("SERVICE RESULT get result by question " + questionId);
         return result;
     }
 
@@ -108,7 +107,7 @@ public class ResultService {
      * @throws DataBaseException
      */
     public Integer getCountResultByUser(Long user_id, String sub) throws DataBaseException {
-        logger.info("SERVICE RESULT getting count of result with selected filter");
+        log.info("SERVICE RESULT getting count of result with selected filter");
         if (sub.equals("all")) {
             return resultRepoImpl.getCountResultByUser(user_id);
         } else {
@@ -124,7 +123,7 @@ public class ResultService {
      * @throws DataBaseException
      */
     public Integer getCountPagesResult(Long userId, Integer row, String sub) throws DataBaseException {
-        logger.info("SERVICE RESULT get count of pages for selected filter");
+        log.info("SERVICE RESULT get count of pages for selected filter");
         Integer passedTest = getCountResultByUser(userId, sub);
         return passedTest % row == 0 ? passedTest / row : (passedTest / row) + 1;
 
@@ -152,7 +151,7 @@ public class ResultService {
         myQuery.setPage(page);
         String query = queryCreator.getSQL(myQuery);
 
-        logger.info("SERVICE RESULT get list of result with selected filter");
+        log.info("SERVICE RESULT get list of result with selected filter");
         return resultRepoImpl.getPageResultList(query);
     }
 
@@ -164,7 +163,7 @@ public class ResultService {
      * @throws DataBaseException
      */
     public List<ResultDto> getAllResultByUserId(Long userId) throws DataBaseException {
-        logger.info("SERVICE RESULT get result by user" + userId);
+        log.info("SERVICE RESULT get result by user" + userId);
         return resultRepoImpl.getAllResult(userId);
     }
 
@@ -177,7 +176,7 @@ public class ResultService {
      */
     public Integer getGrade(List<Boolean> userAnswer, Integer countQuestion) {
         long count = userAnswer.stream().filter(bool -> bool.equals(true)).count();
-        logger.info("SERVICE RESULT get grade of completed quiz");
+        log.info("SERVICE RESULT get grade of completed quiz");
         return Math.toIntExact(count * 100 / countQuestion);
     }
 
@@ -189,7 +188,7 @@ public class ResultService {
      * @throws DataBaseException
      */
     public List<String> getDistinctSubject(Long userId) throws DataBaseException {
-        logger.info("SERVICE RESULT get distinct subject of completed quiz");
+        log.info("SERVICE RESULT get distinct subject of completed quiz");
         return resultRepoImpl.getDistinctSubject(userId);
     }
 }

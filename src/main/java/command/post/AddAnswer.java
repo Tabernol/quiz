@@ -3,8 +3,7 @@ package command.post;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.AnswerRepoImpl;
 import servises.AnswerService;
 import servises.ValidatorService;
@@ -21,8 +20,8 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class AddAnswer implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(AddAnswer.class);
     AnswerService answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
 
     /**
@@ -48,7 +47,7 @@ public class AddAnswer implements RequestHandler {
 
         try {
             answerService.createAnswer(questionId, text, result);
-            logger.info("Answer for question id " + questionId + "has added");
+            log.info("Answer for question id " + questionId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +
@@ -57,10 +56,10 @@ public class AddAnswer implements RequestHandler {
                     "&message_success=The answer added");
 
         } catch (DataBaseException e) {
-            logger.warn("Answer for question id " + questionId + "has not added", e);
+            log.warn("Answer for question id " + questionId + "has not added", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
-            logger.info("Answer for question id " + questionId + "is invalid", e);
+            log.info("Answer for question id " + questionId + "is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +

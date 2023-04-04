@@ -2,10 +2,10 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Answer;
 import models.Question;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import repo.impl.AnswerRepoImpl;
 import repo.impl.QuestionRepoImpl;
 import servises.AnswerService;
@@ -25,9 +25,8 @@ import java.util.List;
  *
  * @author makskrasnopolskyi@gmail.com
  */
-
+@Slf4j
 public class EditQuestion implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(EditQuestion.class);
     private QuestionService questionService;
     private AnswerService answerService;
     private Question question;
@@ -62,10 +61,10 @@ public class EditQuestion implements RequestHandler {
             req.setAttribute("answers", answers);
             req.setAttribute("question", question);
 
-            logger.info("Question with ID " + questionId + "has updated");
+            log.info("Question with ID " + questionId + "has updated");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("Question with ID " + questionId + " has NOT updated", e);
+            log.warn("Question with ID " + questionId + " has NOT updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

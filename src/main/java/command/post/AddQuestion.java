@@ -3,8 +3,7 @@ package command.post;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
 import servises.ValidatorService;
@@ -21,9 +20,8 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class AddQuestion implements RequestHandler {
-
-    private static Logger logger = LogManager.getLogger(AddQuestion.class);
     QuestionService questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
 
     /**
@@ -46,7 +44,7 @@ public class AddQuestion implements RequestHandler {
 
         try {
             questionService.addQuestion(testId, text);
-            logger.info("Question for test id " + testId + "has added");
+            log.info("Question for test id " + testId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
@@ -54,10 +52,10 @@ public class AddQuestion implements RequestHandler {
                     "&message_success=Question added");
 
         } catch (DataBaseException e) {
-            logger.warn("Question for test id " + testId + "has not added", e);
+            log.warn("Question for test id " + testId + "has not added", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
-            logger.info("Question for test id " + testId + "is invalid", e);
+            log.info("Question for test id " + testId + "is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
                     "&test_id=" + testId +

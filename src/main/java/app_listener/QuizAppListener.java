@@ -1,14 +1,13 @@
 package app_listener;
 
-import command.post.FinishTest;
+
 import connection.MyDataSource;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebListener;
-import java.util.Locale;
+
 
 /**
  * The QuizAppListener class implements the ServletContextListener interface to listen
@@ -17,8 +16,9 @@ import java.util.Locale;
  * is started and stopped.
  */
 @WebListener
+@Slf4j
 public class QuizAppListener implements ServletContextListener {
-    private final Logger LOGGER = LogManager.getLogger(QuizAppListener.class);
+
 
     /**
      * This method is called when the webapp is initialized.
@@ -28,7 +28,7 @@ public class QuizAppListener implements ServletContextListener {
      */
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        LOGGER.info("Webapp 'Quiz Service' has started.");
+        log.info("Webapp 'Quiz Service' has started.");
     }
 
     /**
@@ -41,6 +41,6 @@ public class QuizAppListener implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         MyDataSource.closePool();
-        LOGGER.info("Webapp 'Quiz service' was closed");
+        log.info("Webapp 'Quiz service' was closed");
     }
 }

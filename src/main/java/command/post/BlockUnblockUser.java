@@ -3,8 +3,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.UserRepoImpl;
 import servises.UserService;
 import servises.ValidatorService;
@@ -21,9 +20,8 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class BlockUnblockUser implements RequestHandler {
-
-    private static Logger logger = LogManager.getLogger(BlockUnblockUser.class);
     UserService userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
 
     /**
@@ -44,12 +42,12 @@ public class BlockUnblockUser implements RequestHandler {
 
         try {
             boolean block = userService.blockUnBlockUser(userId);
-            logger.info("User with id " + userId + "is block " + block);
+            log.info("User with id " + userId + "is block " + block);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_users"+
                     "&page=" + page);
         } catch (DataBaseException e) {
-            logger.warn("User with id " + userId + "has not updated", e);
+            log.warn("User with id " + userId + "has not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

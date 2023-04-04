@@ -2,9 +2,8 @@ package servises;
 
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
+import lombok.extern.slf4j.Slf4j;
 import models.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.UserRepoImpl;
 import util.query.MyQuery;
 import util.query.QueryBuilderForUser;
@@ -18,8 +17,8 @@ import java.util.List;
  * This class receives data from top-level classes.
  * It checks the input and decides whether to call UserRepo.class or throw an exception
  */
+@Slf4j
 public class UserService {
-    private static final Logger logger = LogManager.getLogger(UserService.class);
     /**
      * Class contains:
      * userRepo field for work with UserRepo.class
@@ -41,7 +40,7 @@ public class UserService {
      * @throws DataBaseException
      */
     public User get(long id) throws DataBaseException {
-        logger.info("SERVICE USER get user with id " + id);
+        log.info("SERVICE USER get user with id " + id);
         return userRepoImpl.get(id);
     }
 
@@ -67,7 +66,7 @@ public class UserService {
         validatorService.isLoginExist(userRepoImpl.isLoginExist(login));
         validatorService.validateRepeatPassword(password, repeatPassword);
         String passwordHash = PasswordHashingService.generateStrongPasswordHash(password);
-        logger.info("SERVICE USER create new user");
+        log.info("SERVICE USER create new user");
         return userRepoImpl.createUser(login, passwordHash, name);
     }
 
@@ -78,7 +77,7 @@ public class UserService {
      * @throws DataBaseException
      */
     public List<User> getAll() throws DataBaseException {
-        logger.info("SERVICE USER get all users");
+        log.info("SERVICE USER get all users");
         return userRepoImpl.getAll();
     }
 
@@ -95,11 +94,11 @@ public class UserService {
     public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
         if (role == null) {
             validatorService.validateUpdateUser(name);
-            logger.info("SERVICE USER update user with id " + id + " new name = " + name);
+            log.info("SERVICE USER update user with id " + id + " new name = " + name);
             return userRepoImpl.updateUser(id, name);
         } else {
             validatorService.validateUpdateUser(name, role);
-            logger.info("SERVICE USER update user with id " + id + " new name = " + name + " new role = " + role);
+            log.info("SERVICE USER update user with id " + id + " new name = " + name + " new role = " + role);
             return userRepoImpl.updateUser(id, name, role);
         }
     }
@@ -112,7 +111,7 @@ public class UserService {
      * @throws DataBaseException
      */
     public long getId(String login) throws DataBaseException {
-        logger.info("SERVICE USER get id user with login " + login);
+        log.info("SERVICE USER get id user with login " + login);
         return userRepoImpl.getId(login);
     }
 
@@ -126,7 +125,7 @@ public class UserService {
     public boolean blockUnBlockUser(Long userId) throws DataBaseException {
         boolean status = get(userId).isBlocked();
         userRepoImpl.changeStatus(userId, !status);
-        logger.info("SERVICE USER  change status user");
+        log.info("SERVICE USER  change status user");
         return get(userId).isBlocked();
     }
 
@@ -140,10 +139,10 @@ public class UserService {
      */
     public Integer getCountUsers(String status) throws DataBaseException {
         if (status.equals("all")) {
-            logger.info("SERVICE USER get all users");
+            log.info("SERVICE USER get all users");
             return userRepoImpl.getAll().size();
         } else {
-            logger.info("SERVICE USER get users with status = " + status);
+            log.info("SERVICE USER get users with status = " + status);
             return userRepoImpl.getCountUsers(status);
         }
     }
@@ -166,7 +165,7 @@ public class UserService {
 
 //        QueryBuilderForUser queryBuilderForUser = new QueryBuilderForUser();
 //        String query = queryBuilderForUser.getQuery(filter, order, Integer.valueOf(rows), Integer.valueOf(page), "admin");
-        logger.info("SERVICE USER get list of user with selected filter");
+        log.info("SERVICE USER get list of user with selected filter");
         return userRepoImpl.nextPage(query);
     }
 
@@ -196,13 +195,13 @@ public class UserService {
     public boolean isCorrectPassword(Long userId, String password) throws DataBaseException, ValidateException {
         try {
             String passwordInDataBase = get(userId).getPassword();
-            logger.info("SERVICE USER checking user password");
+            log.info("SERVICE USER checking user password");
             return PasswordHashingService.validatePassword(password, passwordInDataBase);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            logger.warn("SERVICE USER problem with verify password");
+            log.warn("SERVICE USER problem with verify password");
             throw new ValidateException("Password is not the same " + e);
         } catch (DataBaseException e) {
-            logger.warn("SERVICE USER problem with storage password in database");
+            log.warn("SERVICE USER problem with storage password in database");
             throw new DataBaseException("Cannot find user in DB " + e);
         }
     }

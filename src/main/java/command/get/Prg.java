@@ -1,9 +1,7 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import lombok.extern.slf4j.Slf4j;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +14,8 @@ import java.util.Map;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class Prg implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(Prg.class);
 
     /**
      * This method reads all parameters from the request, sets them in the next request.
@@ -35,7 +33,7 @@ public class Prg implements RequestHandler {
             req.setAttribute(param.getKey(), param.getValue()[0]);
         }
         String servletPath = req.getParameter("servlet_path");
-        logger.info("Command PRG works with servlet path " + servletPath);
+        log.info("Command PRG works with servlet path " + servletPath);
         req.getRequestDispatcher(servletPath).forward(req, resp);
     }
 }

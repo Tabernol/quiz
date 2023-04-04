@@ -67,7 +67,7 @@ public class AuthorizationFilterTest {
     }
 
     @Test
-    public void testDoCustomFilter_ValidInput_Success() throws ServletException, IOException, ValidateException, DataBaseException {
+    public void testDoCustomFilter_ValidInputFailWithRecaptcha() throws ServletException, IOException, ValidateException, DataBaseException {
         User user = new User();
         user.setId(USER_ID);
         user.setPassword(PASSWORD);

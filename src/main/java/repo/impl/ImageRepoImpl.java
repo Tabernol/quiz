@@ -2,9 +2,8 @@ package repo.impl;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Image;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.ImageRepo;
 
 import java.sql.Connection;
@@ -19,8 +18,8 @@ import java.util.List;
  *
  * @author MaxKrasnopolskyi
  */
+@Slf4j
 public class ImageRepoImpl implements ImageRepo {
-    private static final Logger logger = LogManager.getLogger(ImageRepoImpl.class);
     /**
      * method create add new image in database
      *
@@ -42,7 +41,7 @@ public class ImageRepoImpl implements ImageRepo {
             pst.setInt(4, height);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can not add image");
+            log.warn("Can not add image");
             throw new DataBaseException("Can not add image" + e.getMessage(), e);
         }
     }
@@ -71,7 +70,7 @@ public class ImageRepoImpl implements ImageRepo {
             resultSet.close();
             return imageList;
         } catch (SQLException e) {
-            logger.warn("Can not get order Image list");
+            log.warn("Can not get order Image list");
             throw new DataBaseException("Can not get order Image list" + e.getMessage(), e);
         }
     }
@@ -90,7 +89,7 @@ public class ImageRepoImpl implements ImageRepo {
             pst.setString(1, publicId);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can't delete Image ");
+            log.warn("Can't delete Image ");
             throw new DataBaseException("Can't delete Image " + e.getMessage(), e);
         }
     }

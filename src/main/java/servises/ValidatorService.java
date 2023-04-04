@@ -1,20 +1,15 @@
 package servises;
 
-import exeptions.DataBaseException;
-import exeptions.QuizException;
 import exeptions.ValidateException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import validator.DataValidator;
 import validator.MyValidator;
-
-import java.util.logging.Level;
 
 /**
  * This class validate input data
  */
+@Slf4j
 public class ValidatorService {
-    private static final Logger logger = LogManager.getLogger(ValidatorService.class);
     private DataValidator dataValidator;
 
     public ValidatorService(MyValidator myValidator) {
@@ -34,16 +29,16 @@ public class ValidatorService {
             throws ValidateException {
         dataValidator.isValid(dataValidator.validateForNamePlusNumber(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
-        logger.info("SERVICE VALIDATOR name is valid");
+        log.info("SERVICE VALIDATOR name is valid");
         dataValidator.isValid(dataValidator.validateForName(subject),
                 "subject must contains only liters and space from 2-20 symbols");
-        logger.info("SERVICE VALIDATOR subject is valid");
+        log.info("SERVICE VALIDATOR subject is valid");
         dataValidator.isValid(dataValidator.validateDifficult(difficult),
                 "difficult must be from 1 to 100");
-        logger.info("SERVICE VALIDATOR difficult is valid");
+        log.info("SERVICE VALIDATOR difficult is valid");
         dataValidator.isValid(dataValidator.validateDuration(duration),
                 "duration must be from 1 to 30 minutes");
-        logger.info("SERVICE VALIDATOR duration is valid");
+        log.info("SERVICE VALIDATOR duration is valid");
     }
 
     /**
@@ -54,7 +49,7 @@ public class ValidatorService {
      */
     public void isNameExist(boolean isExist) throws ValidateException {
         dataValidator.isValid(!isExist, "Test with this name already exist");
-        logger.info("SERVICE VALIDATOR name is valid");
+        log.info("SERVICE VALIDATOR name is valid");
     }
 
     /**
@@ -78,7 +73,7 @@ public class ValidatorService {
     public boolean validateText(String text) throws ValidateException {
         boolean textAnswerIsTooLong = dataValidator.isValid(dataValidator.validateForNotLongString(text),
                 "Text answer is too long");
-        logger.info("SERVICE VALIDATOR text is long " + textAnswerIsTooLong);
+        log.info("SERVICE VALIDATOR text is long " + textAnswerIsTooLong);
         return textAnswerIsTooLong;
     }
 
@@ -94,13 +89,13 @@ public class ValidatorService {
     public void validateFieldsUser(String name, String login, String password) throws ValidateException {
         dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
-        logger.info("SERVICE VALIDATOR name is valid");
+        log.info("SERVICE VALIDATOR name is valid");
         dataValidator.isValid(dataValidator.validateLogin(login),
                 "login is invalid");
-        logger.info("SERVICE VALIDATOR login is valid");
+        log.info("SERVICE VALIDATOR login is valid");
         dataValidator.isValid(dataValidator.validatePassword(password),
                 "password is invalid must 4-10 symbols");
-        logger.info("SERVICE VALIDATOR password is valid");
+        log.info("SERVICE VALIDATOR password is valid");
     }
 
     /**
@@ -112,7 +107,7 @@ public class ValidatorService {
     public void validateUpdateUser(String name) throws ValidateException {
         dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
-        logger.info("SERVICE VALIDATOR name is valid");
+        log.info("SERVICE VALIDATOR name is valid");
     }
 
     /**
@@ -125,10 +120,10 @@ public class ValidatorService {
     public void validateUpdateUser(String name, String role) throws ValidateException {
         dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
-        logger.info("SERVICE VALIDATOR name is valid");
+        log.info("SERVICE VALIDATOR name is valid");
         dataValidator.isValid(dataValidator.validateAvailabilityRole(role),
                 "Role must be 'admin' or 'student'");
-        logger.info("SERVICE VALIDATOR role is valid");
+        log.info("SERVICE VALIDATOR role is valid");
     }
 
     /**
@@ -140,6 +135,6 @@ public class ValidatorService {
      */
     public void validateRepeatPassword(String password, String repeatPassword) throws ValidateException {
         dataValidator.isValid(password.equals(repeatPassword), "password is not the same");
-        logger.info("SERVICE VALIDATOR passwords is valid");
+        log.info("SERVICE VALIDATOR passwords is valid");
     }
 }

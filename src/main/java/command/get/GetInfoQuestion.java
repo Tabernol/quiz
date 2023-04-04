@@ -2,10 +2,9 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Answer;
 import models.Question;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.AnswerRepoImpl;
 import repo.impl.ResultRepoImpl;
 import servises.AnswerService;
@@ -20,17 +19,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
+
 /**
  * GetInfoQuestion.class is allowed for student
  * The purpose of the class is to provide an information: text of question, answers for it, image for question
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class GetInfoQuestion implements RequestHandler {
-
-    private static Logger logger = LogManager.getLogger(GetInfoQuestion.class);
-
-    Integer index = 0;
 
     /**
      * This method supply information: text of question, answers for it, image for question
@@ -73,7 +70,7 @@ public class GetInfoQuestion implements RequestHandler {
                 resultTest.add(result);
                 req.getSession().setAttribute("result_test", resultTest);
                 System.out.println("result " + result);
-                logger.info("Question = " + idQuestion + "\n" + "user result " + result);
+                log.info("Question = " + idQuestion + "\n" + "user result " + result);
             }
         } catch (DataBaseException e) {
             //log
@@ -150,7 +147,7 @@ public class GetInfoQuestion implements RequestHandler {
                     "    </div>\n" +
                     "</div>");
         } catch (DataBaseException e) {
-            logger.warn("Problem with supply question-answer");
+            log.warn("Problem with supply question-answer");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

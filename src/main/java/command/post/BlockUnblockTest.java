@@ -2,8 +2,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
 import servises.ValidatorService;
@@ -20,9 +19,8 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class BlockUnblockTest implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(BlockUnblockTest.class);
-
     private TestService testService;
 
     /**
@@ -46,12 +44,12 @@ public class BlockUnblockTest implements RequestHandler {
 
         try {
             testService.changeStatus(testId);
-            logger.info("Test with id " + testId + " changed status.");
+            log.info("Test with id " + testId + " changed status.");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
                     "&page=" + page);
         } catch (DataBaseException e) {
-            logger.warn("Test with id " + testId + " has not updated", e);
+            log.warn("Test with id " + testId + " has not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

@@ -2,6 +2,7 @@ package repo.impl;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.User;
 
 import java.sql.Connection;
@@ -10,9 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import repo.UserRepo;
 
 /**
@@ -20,8 +18,8 @@ import repo.UserRepo;
  *
  * @author MaxKrasnopolskyi
  */
+@Slf4j
 public class UserRepoImpl implements UserRepo {
-    private static final Logger logger = LogManager.getLogger(UserRepoImpl.class.getName());
 
     /**
      * method return User from database by ID
@@ -49,7 +47,7 @@ public class UserRepoImpl implements UserRepo {
             resultSet.close();
             return user;
         } catch (SQLException e) {
-            logger.warn("Can not get order user");
+            log.warn("Can not get order user");
             throw new DataBaseException("Can not get order user" + e.getMessage(), e);
         }
     }
@@ -80,7 +78,7 @@ public class UserRepoImpl implements UserRepo {
             }
             return users;
         } catch (SQLException e) {
-            logger.warn("Can not get order all user");
+            log.warn("Can not get order all user");
             throw new DataBaseException("Can not get order all user" + e.getMessage(), e);
         }
     }
@@ -123,10 +121,10 @@ public class UserRepoImpl implements UserRepo {
             try {
                 con.rollback();
             } catch (SQLException ex) {
-                logger.warn("Catch exception at rollback");
+                log.warn("Catch exception at rollback");
                 throw new DataBaseException("Can not create user" + e.getMessage(), e);
             }
-            logger.warn("Can not create user");
+            log.warn("Can not create user");
             throw new DataBaseException("Can not create user" + e.getMessage(), e);
         } finally {
             try {
@@ -134,7 +132,7 @@ public class UserRepoImpl implements UserRepo {
                 pst.close();
                 con.close();
             } catch (SQLException e) {
-                logger.warn("Problem in finally block during create user");
+                log.warn("Problem in finally block during create user");
                 throw new DataBaseException("Can not create user" + e.getMessage(), e);
             }
         }
@@ -160,7 +158,7 @@ public class UserRepoImpl implements UserRepo {
             resultSet.close();
             return result;
         } catch (SQLException e) {
-            logger.warn("Can not get id by login");
+            log.warn("Can not get id by login");
             throw new DataBaseException("Can not get id by login" + e.getMessage(), e);
         }
     }
@@ -186,7 +184,7 @@ public class UserRepoImpl implements UserRepo {
             pst.setLong(3, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can not update user");
+            log.warn("Can not update user");
             throw new DataBaseException("Can not update user" + e.getMessage(), e);
         }
     }
@@ -212,7 +210,7 @@ public class UserRepoImpl implements UserRepo {
             pst.setLong(2, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can not update user");
+            log.warn("Can not update user");
             throw new DataBaseException("Can not update user" + e.getMessage(), e);
         }
     }
@@ -238,7 +236,7 @@ public class UserRepoImpl implements UserRepo {
             resultSet.close();
             return result;
         } catch (SQLException e) {
-            logger.warn("Can not get id by login");
+            log.warn("Can not get id by login");
             throw new DataBaseException("Can not get id by login" + e.getMessage(), e);
         }
     }
@@ -260,7 +258,7 @@ public class UserRepoImpl implements UserRepo {
             pst.setLong(2, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can not change status user with id " + id);
+            log.warn("Can not change status user with id " + id);
             throw new DataBaseException("Can not update user" + e.getMessage(), e);
         }
     }
@@ -290,7 +288,7 @@ public class UserRepoImpl implements UserRepo {
             resultSet.close();
             return users;
         } catch (SQLException e) {
-            logger.warn("Can not get order users in next page");
+            log.warn("Can not get order users in next page");
             throw new DataBaseException("Can not get order users in next page" + e.getMessage(), e);
         }
     }
@@ -314,7 +312,7 @@ public class UserRepoImpl implements UserRepo {
             return count;
 
         } catch (SQLException e) {
-            logger.warn("Can not get count users");
+            log.warn("Can not get count users");
             throw new DataBaseException("Can not get count users" + e.getMessage(), e);
         }
     }

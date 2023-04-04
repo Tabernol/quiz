@@ -1,9 +1,8 @@
 package servises;
 
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Image;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.ImageRepoImpl;
 
 import java.util.List;
@@ -12,8 +11,9 @@ import java.util.List;
  * This class receives data from top-level classes.
  * it calls to ImageRepo.class for to do something actions
  */
+@Slf4j
 public class ImageService {
-    private static final Logger logger = LogManager.getLogger(ImageService.class);
+
     private ImageRepoImpl imageRepoImpl;
 
     public ImageService(ImageRepoImpl imageRepoImpl) {
@@ -31,7 +31,7 @@ public class ImageService {
      * @throws DataBaseException
      */
     public int addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException {
-        logger.info("SERVICE IMAGE add new image to database with publicId " + publicId);
+        log.info("SERVICE IMAGE add new image to database with publicId " + publicId);
         return imageRepoImpl.addImage(publicId, url, width, height);
     }
 
@@ -42,7 +42,7 @@ public class ImageService {
      * @throws DataBaseException
      */
     public List<Image> getAll() throws DataBaseException {
-        logger.info("SERVICE IMAGE get all images");
+        log.info("SERVICE IMAGE get all images");
         return imageRepoImpl.getAll();
     }
 
@@ -54,7 +54,7 @@ public class ImageService {
      * @throws DataBaseException
      */
     public int deleteImage(String publicId) throws DataBaseException {
-        logger.info("SERVICE IMAGE delete from database with publicId " + publicId);
+        log.info("SERVICE IMAGE delete from database with publicId " + publicId);
         return imageRepoImpl.deleteImage(publicId);
     }
 

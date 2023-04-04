@@ -2,6 +2,7 @@ package repo.impl;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Answer;
 
 import java.sql.Connection;
@@ -11,8 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import repo.AnswerRepo;
 
 /**
@@ -20,8 +22,8 @@ import repo.AnswerRepo;
  *
  * @author MaxKrasnopolskyi
  */
+@Slf4j
 public class AnswerRepoImpl implements AnswerRepo {
-    private static final Logger logger = LogManager.getLogger(AnswerRepoImpl.class);
     private MyDataSource myDataSource;
 
     /**
@@ -51,7 +53,7 @@ public class AnswerRepoImpl implements AnswerRepo {
             resultSet.close();
             return answers;
         } catch (SQLException e) {
-            logger.warn("Can't get orders answer by question id problem");
+            log.warn("Can't get orders answer by question id problem");
             throw new DataBaseException("Can't get orders by question id problem" + e.getMessage(), e);
         }
     }
@@ -76,7 +78,7 @@ public class AnswerRepoImpl implements AnswerRepo {
             pst.setBoolean(3, result);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can't insert answer problem ");
+            log.warn("Can't insert answer problem ");
             throw new DataBaseException("Can't insert answer problem " + e.getMessage(), e);
         }
     }
@@ -96,7 +98,7 @@ public class AnswerRepoImpl implements AnswerRepo {
             pst.setLong(1, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can't delete answer problem");
+            log.warn("Can't delete answer problem");
             throw new DataBaseException("Can't delete answer problem" + e.getMessage(), e);
         }
     }

@@ -2,9 +2,8 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.UserRepoImpl;
 import servises.UserService;
 import servises.ValidatorService;
@@ -22,9 +21,9 @@ import java.util.List;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class FilterUsers implements RequestHandler {
 
-    private static Logger logger = LogManager.getLogger(FilterUsers.class);
     private UserService userService;
 
     /**
@@ -73,10 +72,10 @@ public class FilterUsers implements RequestHandler {
             req.setAttribute("users", userList);
             req.setAttribute("page", page);
             req.setAttribute("count_pages", userService.countPages(status, rows));
-            logger.info("filter users was used");
+            log.info("filter users was used");
             req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req, resp);
         } catch (DataBaseException e) {
-            logger.warn("Trouble with using filter users ", e);
+            log.warn("Trouble with using filter users ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

@@ -4,8 +4,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import controllers.servlet.RequestHandler;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import util.pdfWriter.MyPdfWriter;
 
 import javax.servlet.ServletException;
@@ -19,9 +18,8 @@ import java.io.*;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class DownLoad implements RequestHandler {
-
-    private static Logger logger = LogManager.getLogger(DownLoad.class);
 
     private final int ARBITARY_SIZE = 1048;
 
@@ -43,10 +41,10 @@ public class DownLoad implements RequestHandler {
         String userId = req.getParameter("user_id");
         if (userId != null) {
             id = Long.valueOf(userId);
-            logger.info("Admin downloads result user with id " + id);
+            log.info("Admin downloads result user with id " + id);
         } else {
             id = (Long) req.getSession().getAttribute("user_id");
-            logger.info("User downloads result user with id " + id);
+            log.info("User downloads result user with id " + id);
         }
 
 
@@ -62,7 +60,7 @@ public class DownLoad implements RequestHandler {
             // step 5
             document.close();
         } catch (DocumentException de) {
-            logger.warn("Trouble with downloading result with ID " + id, de);
+            log.warn("Trouble with downloading result with ID " + id, de);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

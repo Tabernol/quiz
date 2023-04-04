@@ -3,8 +3,7 @@ package command.post;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
 import servises.ValidatorService;
@@ -21,9 +20,10 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class CreateTest implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(CreateTest.class);
-    TestService testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+
+    private TestService testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
 
     /**
      * This method is read parameter from request.
@@ -45,13 +45,13 @@ public class CreateTest implements RequestHandler {
 
         try {
             int result = testService.createTest(name, subject, difficult, duration);
-            logger.info("Test " + name + "has created");
+            log.info("Test " + name + "has created");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
                     "&sub=all&order=name+asc&rows=5" +
                     "&message_success=The test created");
         } catch (ValidateException e) {
-            logger.warn("Test " + name + " is invalid", e);
+            log.warn("Test " + name + " is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
                     "&sub=all&order=name+asc&rows=5" +
@@ -61,7 +61,7 @@ public class CreateTest implements RequestHandler {
                     "&duration=" + duration +
                     "&message_bad_request=" + e.getMessage());
         } catch (DataBaseException e) {
-            logger.warn("Test " + name + "have not updated", e);
+            log.warn("Test " + name + "have not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

@@ -2,9 +2,8 @@ package servises;
 
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
+import lombok.extern.slf4j.Slf4j;
 import models.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.TestRepoImpl;
 import util.query.*;
 
@@ -14,8 +13,8 @@ import java.util.List;
  * This class receives data from top-level classes.
  * It checks the input and decides whether to call TestRepo.class or throw an exception
  */
+@Slf4j
 public class TestService {
-    private static final Logger logger = LogManager.getLogger(TestService.class);
     /**
      * Class contains:
      * testRepo field for work with TestRepo.class
@@ -46,7 +45,7 @@ public class TestService {
             throws ValidateException, DataBaseException {
         validatorService.checkFieldsTest(name, subject, difficult, duration);
         validatorService.isNameExist(testRepoImpl.isNameExist(name));
-        logger.info("SERVICE TEST create new test with name " + name);
+        log.info("SERVICE TEST create new test with name " + name);
         return testRepoImpl.createTest(name, subject, difficult, duration);
     }
 
@@ -57,7 +56,7 @@ public class TestService {
      * @throws DataBaseException
      */
     public List<String> getDistinctSubjects() throws DataBaseException {
-        logger.info("SERVICE TEST get distinct subject");
+        log.info("SERVICE TEST get distinct subject");
         return testRepoImpl.getDistinctSubject();
     }
 
@@ -76,7 +75,7 @@ public class TestService {
             throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForTest();
         String query = queryCreator.getSQL(new MyQuery(subject, order, rows, page, role));
-        logger.info("SERVICE TEST get list of test with selected filter");
+        log.info("SERVICE TEST get list of test with selected filter");
         return testRepoImpl.nextPage(query);
     }
 
@@ -88,7 +87,7 @@ public class TestService {
      * @throws DataBaseException
      */
     public int delete(Long id) throws DataBaseException {
-        logger.info("SERVICE TEST delete test with id " + id);
+        log.info("SERVICE TEST delete test with id " + id);
         return testRepoImpl.delete(id);
     }
 
@@ -100,7 +99,7 @@ public class TestService {
      * @throws DataBaseException
      */
     public Test get(Long id) throws DataBaseException {
-        logger.info("SERVICE TEST get test with id " + id);
+        log.info("SERVICE TEST get test with id " + id);
         return testRepoImpl.get(id);
     }
 
@@ -118,7 +117,7 @@ public class TestService {
      */
     public int update(Long id, String name, String subject, int difficult, int duration) throws DataBaseException, ValidateException {
         validatorService.checkFieldsTest(name, subject, difficult, duration);
-        logger.info("SERVICE TEST update test with id " + id);
+        log.info("SERVICE TEST update test with id " + id);
         return testRepoImpl.updateInfoTest(id, name, subject, difficult, duration);
     }
 
@@ -144,7 +143,7 @@ public class TestService {
      * @throws DataBaseException
      */
     private int amountTests(String subject) throws DataBaseException {
-        logger.info("SERVICE TEST count of test with selected subject");
+        log.info("SERVICE TEST count of test with selected subject");
         return subject.equals("all") ? testRepoImpl.getCount() : testRepoImpl.getCount(subject);
     }
 
@@ -156,7 +155,7 @@ public class TestService {
      * @throws DataBaseException
      */
     public int addPointPopularity(Long idTest) throws DataBaseException {
-        logger.info("SERVICE TEST  add point of popularity");
+        log.info("SERVICE TEST  add point of popularity");
         return testRepoImpl.addPopularity(idTest);
     }
 
@@ -170,10 +169,10 @@ public class TestService {
     public int changeStatus(Long testId) throws DataBaseException {
         Test test = testRepoImpl.get(testId);
         if (test.getStatus().equals(Test.Status.BLOCKED)) {
-            logger.info("SERVICE TEST with id " + testId + " is " + Test.Status.FREE);
+            log.info("SERVICE TEST with id " + testId + " is " + Test.Status.FREE);
             return testRepoImpl.changeStatus(testId, Test.Status.FREE);
         } else {
-            logger.info("SERVICE TEST with id " + testId + " is " + Test.Status.BLOCKED);
+            log.info("SERVICE TEST with id " + testId + " is " + Test.Status.BLOCKED);
             return testRepoImpl.changeStatus(testId, Test.Status.BLOCKED);
         }
     }

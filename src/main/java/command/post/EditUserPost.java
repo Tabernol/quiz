@@ -3,8 +3,7 @@ package command.post;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.UserRepoImpl;
 import servises.UserService;
 import servises.ValidatorService;
@@ -19,9 +18,9 @@ import java.io.IOException;
  * The meaning of the class is to update User in database.
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class EditUserPost implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(EditUserPost.class);
-    UserService userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
+   private UserService userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
     /**
      * This method is read parameter from request.
      * It calls the service layer to update this User
@@ -42,17 +41,17 @@ public class EditUserPost implements RequestHandler {
 
         try {
             userService.updateUser(userId, name, role);
-            logger.info("User with id " + userId + "changes made successfully");
+            log.info("User with id " + userId + "changes made successfully");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/profile" +
                     "&user_id=" + userId +
                     "&name=" + name +
                     "&message_success=changes made successfully");
         } catch (DataBaseException e) {
-            logger.warn("User with id " + userId + "did not update");
+            log.warn("User with id " + userId + "did not update");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
-            logger.info("User with id " + userId + "input data is wrong");
+            log.info("User with id " + userId + "input data is wrong");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/profile" +
                     "&user_id=" + userId +

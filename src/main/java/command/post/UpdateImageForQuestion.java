@@ -3,8 +3,7 @@ package command.post;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
 import servises.ValidatorService;
@@ -19,8 +18,8 @@ import java.io.IOException;
  * The meaning of the class is to update url of image of Question to an existing Test(quiz) in database.
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class UpdateImageForQuestion implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(UpdateImageForQuestion.class);
     private QuestionService questionService;
 
     /**
@@ -41,7 +40,7 @@ public class UpdateImageForQuestion implements RequestHandler {
         try {
             questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
             questionService.updateImage(url, questionId);
-            logger.info("Question with id " + questionId + " has updated image ");
+            log.info("Question with id " + questionId + " has updated image ");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +
@@ -50,10 +49,10 @@ public class UpdateImageForQuestion implements RequestHandler {
                     "&message_success=The question has updated");
 
         } catch (DataBaseException e) {
-            logger.warn("Question with id " + questionId + " has not updated image", e);
+            log.warn("Question with id " + questionId + " has not updated image", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
-            logger.info("Question with id " + questionId + " is invalid ");
+            log.info("Question with id " + questionId + " is invalid ");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +

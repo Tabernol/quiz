@@ -2,13 +2,14 @@ package connection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
-
+@Slf4j
 public class MyDataSource {
     private static HikariConfig config;
     private static HikariDataSource ds;
@@ -41,12 +42,14 @@ public class MyDataSource {
     public static Connection getConnection() throws SQLException {
         if (ds == null) {
             init();
+            log.info("The connection pool is initialized");
         }
         return ds.getConnection();
     }
 
     public static void closePool() {
         ds.close();
+        log.info("The connection pool is closed");
     }
 
 }

@@ -1,4 +1,4 @@
-import org.apache.logging.log4j.core.util.Assert;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

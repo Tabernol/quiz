@@ -3,8 +3,7 @@ package command.post;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
 import servises.ValidatorService;
@@ -19,9 +18,9 @@ import java.io.IOException;
  * The meaning of the class is to update a Test(quiz) in database.
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class EditTestPost implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(EditTestPost.class);
-    TestService testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+    private TestService testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
     /**
      * This method is read parameter from request.
      * It calls the service layer to update this Test(quiz)
@@ -45,17 +44,17 @@ public class EditTestPost implements RequestHandler {
 
         try {
             testService.update(testId, name, subject, difficult, duration);
-            logger.info("Test with id " + testId + "has updated");
+            log.info("Test with id " + testId + "has updated");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
                     "&page=" + page +
                     "&message_success=The test updated");
         } catch (DataBaseException e) {
-            logger.warn("Test with id " + testId + "has not updated", e);
+            log.warn("Test with id " + testId + "has not updated", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         } catch (ValidateException e) {
-            logger.info("Test with id " + testId + "is invalid, because ", e);
+            log.info("Test with id " + testId + "is invalid, because ", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
                     "&page=" + page +

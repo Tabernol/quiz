@@ -2,9 +2,8 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Question;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.QuestionRepoImpl;
 import repo.impl.TestRepoImpl;
 import servises.QuestionService;
@@ -23,8 +22,8 @@ import java.util.List;
  * StartTest.class is allowed only for student
  * This class is responsible for starting the selected test (quiz)
  */
+@Slf4j
 public class StartTest implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(StartTest.class);
     private QuestionService questionService;
     private TestService testService;
 
@@ -53,9 +52,9 @@ public class StartTest implements RequestHandler {
             duration = testService.get(testId).getDuration();
             questions = questionService.getAllById(Long.valueOf(testId));
             size = questions.size();
-            logger.info("give parameter test with id " + testId);
+            log.info("give parameter test with id " + testId);
         } catch (DataBaseException e) {
-            logger.warn("problem with received parameter test with id " + testId, e);
+            log.warn("problem with received parameter test with id " + testId, e);
             req.getRequestDispatcher("/WEB-INF/view/error_page.jsp").forward(req, resp);
         }
 
@@ -71,12 +70,12 @@ public class StartTest implements RequestHandler {
 
             GetInfoQuestion getInfoQuestion = new GetInfoQuestion();
             getInfoQuestion.execute(req, resp);
-            logger.info("Start test with id " + testId);
+            log.info("Start test with id " + testId);
             req.getRequestDispatcher("/WEB-INF/view/student/page_base_question.jsp").forward(req, resp);
         } else {
             req.setAttribute("page", req.getParameter("page"));
             req.setAttribute("message", "Sorry, this test now is empty");
-            logger.info("Test with id " + testId + " is empty. And not started");
+            log.info("Test with id " + testId + " is empty. And not started");
             req.getRequestDispatcher("/WEB-INF/view/student/page_test.jsp").forward(req, resp);
         }
 

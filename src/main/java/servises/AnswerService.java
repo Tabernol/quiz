@@ -2,9 +2,8 @@ package servises;
 
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
+import lombok.extern.slf4j.Slf4j;
 import models.Answer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.AnswerRepoImpl;
 
 import java.util.List;
@@ -13,8 +12,8 @@ import java.util.List;
  * This class receives data from top-level classes.
  * It checks the input and decides whether to call Answer Repo.class or throw an exception
  */
+@Slf4j
 public class AnswerService {
-    private static final Logger logger = LogManager.getLogger(AnswerService.class);
     /**
      * Class contains:
      * answerRepo field for work with AnswerRepo.class
@@ -37,7 +36,7 @@ public class AnswerService {
      * @throws DataBaseException
      */
     public List<Answer> getAnswers(Long questionId) throws DataBaseException {
-        logger.info("SERVICE ANSWER get answers by  question "+ questionId);
+        log.info("SERVICE ANSWER get answers by  question "+ questionId);
         return answerRepoImpl.getAnswersByQuestionId(questionId);
     }
 
@@ -53,7 +52,7 @@ public class AnswerService {
      */
     public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException, ValidateException {
         validatorService.validateText(text);
-        logger.info("SERVICE ANSWER creating new answer");
+        log.info("SERVICE ANSWER creating new answer");
         return answerRepoImpl.createAnswer(questionId, text, result);
     }
 
@@ -65,7 +64,7 @@ public class AnswerService {
      * @throws DataBaseException
      */
     public int deleteAnswer(Long id) throws DataBaseException {
-        logger.info("SERVICE ANSWER delete answer "+ id);
+        log.info("SERVICE ANSWER delete answer "+ id);
         return answerRepoImpl.delete(id);
     }
 

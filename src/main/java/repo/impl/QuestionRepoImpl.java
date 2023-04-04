@@ -2,6 +2,7 @@ package repo.impl;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Question;
 
 import java.sql.Connection;
@@ -11,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import repo.QuestionRepo;
 
 /**
@@ -20,8 +21,8 @@ import repo.QuestionRepo;
  *
  * @author MaxKrasnopolskyi
  */
+@Slf4j
 public class QuestionRepoImpl implements QuestionRepo {
-    private static final Logger logger = LogManager.getLogger(QuestionRepoImpl.class);
 
     /**
      * @param testId is identification Test(quiz) in database,
@@ -48,7 +49,7 @@ public class QuestionRepoImpl implements QuestionRepo {
             resultSet.close();
             return questions;
         } catch (SQLException e) {
-            logger.warn("Can't get order question by test id");
+            log.warn("Can't get order question by test id");
             throw new DataBaseException("Can't get order question by test id" + e.getMessage(), e);
 
         }
@@ -79,7 +80,7 @@ public class QuestionRepoImpl implements QuestionRepo {
             resultSet.close();
             return question;
         } catch (SQLException e) {
-            logger.warn("Can't get question by id");
+            log.warn("Can't get question by id");
             throw new DataBaseException("Can't get question by id" + e.getMessage(), e);
         }
     }
@@ -101,7 +102,7 @@ public class QuestionRepoImpl implements QuestionRepo {
             pst.setLong(2, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can' update question by id");
+            log.warn("Can' update question by id");
             throw new DataBaseException("Can' update question by id" + e.getMessage(), e);
         }
     }
@@ -121,7 +122,7 @@ public class QuestionRepoImpl implements QuestionRepo {
             pst.setLong(1, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can' delete question by id");
+            log.warn("Can' delete question by id");
             throw new DataBaseException("Can' delete question by id" + e.getMessage(), e);
         }
     }
@@ -144,15 +145,16 @@ public class QuestionRepoImpl implements QuestionRepo {
             pst.setString(2, text);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can not create question by id");
+            log.warn("Can not create question by id");
             throw new DataBaseException("Can not create question by id" + e.getMessage(), e);
         }
     }
 
     /**
      * method update URL column in database
+     *
      * @param url is url-address of image
-     * @param id is identification of Question in table 'question'
+     * @param id  is identification of Question in table 'question'
      * @return 1 if question will be updated
      * @throws DataBaseException
      */
@@ -165,7 +167,7 @@ public class QuestionRepoImpl implements QuestionRepo {
             pst.setLong(2, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
-            logger.warn("Can' update image question by id");
+            log.warn("Can' update image question by id");
             throw new DataBaseException("Can' update image question by id" + e.getMessage(), e);
         }
     }

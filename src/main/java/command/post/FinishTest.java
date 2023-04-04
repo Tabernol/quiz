@@ -2,8 +2,7 @@ package command.post;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.ResultRepoImpl;
 import servises.ResultService;
 
@@ -18,9 +17,9 @@ import java.util.List;
  * The meaning of the class is to calculate the result of the completed test, and show it
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class FinishTest implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(FinishTest.class);
-    ResultService resultService = new ResultService(new ResultRepoImpl());
+    private ResultService resultService = new ResultService(new ResultRepoImpl());
 
     /**
      * This method is read parameter from request.
@@ -44,12 +43,12 @@ public class FinishTest implements RequestHandler {
         try {
             Integer percentResult = resultService.getGrade(result, size);
             resultService.addResult(userId, testId, percentResult);
-            logger.info("User with id " + userId + " finished test with id " + testId + " with grade " + percentResult);
+            log.info("User with id " + userId + " finished test with id " + testId + " with grade " + percentResult);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/finish" +
                     "&percent_result=" + percentResult);
         } catch (DataBaseException e) {
-            logger.warn("User with id " + userId + " finish test with id " + testId + " has trouble finish");
+            log.warn("User with id " + userId + " finish test with id " + testId + " has trouble finish");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
 

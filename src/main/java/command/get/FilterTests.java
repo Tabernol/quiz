@@ -2,9 +2,8 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
 import servises.ValidatorService;
@@ -23,8 +22,8 @@ import java.util.List;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class FilterTests implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(FilterTests.class);
     private TestService testService;
 
     /**
@@ -81,14 +80,14 @@ public class FilterTests implements RequestHandler {
             req.setAttribute("count_pages", countPages);
             req.setAttribute("page", page);
             if (role.equals("admin")) {
-                logger.info("admin uses filter test");
+                log.info("admin uses filter test");
                 req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
             } else {
-                logger.info("student uses filter test");
+                log.info("student uses filter test");
                 req.getRequestDispatcher("/WEB-INF/view/student/student_tests.jsp").forward(req, resp);
             }
         } catch (DataBaseException e) {
-            logger.warn("Trouble with using filter tests ", e);
+            log.warn("Trouble with using filter tests ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
     }

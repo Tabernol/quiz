@@ -1,9 +1,7 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import lombok.extern.slf4j.Slf4j;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +14,8 @@ import java.util.Locale;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class LanguageChange implements RequestHandler {
-    private static Logger logger = LogManager.getLogger(LanguageChange.class);
 
     /**
      * This method reads the "locale" parameter,
@@ -41,7 +39,7 @@ public class LanguageChange implements RequestHandler {
         }
         req.getSession().setAttribute("locale", locale);
 
-        logger.info("Language has changed to " + lang);
+        log.info("Language has changed to " + lang);
         String referer = req.getHeader("referer");
         resp.sendRedirect(referer);
     }

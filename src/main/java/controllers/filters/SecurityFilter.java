@@ -1,21 +1,17 @@
 package controllers.filters;
 
-import command.get.LanguageChange;
-import constans.PathConst;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import util.AccessUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@WebFilter(filterName = "SecurityFilter", value = "/*")
+@Slf4j
 public class SecurityFilter extends AbstractFilter {
-    private static Logger logger = LogManager.getLogger(SecurityFilter.class);
 
     @Override
     public void doCustomFilter(HttpServletRequest req,
@@ -39,7 +35,7 @@ public class SecurityFilter extends AbstractFilter {
             if (AccessUtil.studentAccess.contains(servletPath)) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
-                logger.warn("User with id " + userId + " uses no correct path");
+                log.warn("User with id " + userId + " uses no correct path");
                 req.getRequestDispatcher("/WEB-INF/view/access.jsp").forward(req, resp);
             }
 
@@ -48,7 +44,7 @@ public class SecurityFilter extends AbstractFilter {
             if (AccessUtil.adminAccess.contains(servletPath)) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {
-                logger.warn("User-admin with id " + userId + " uses no correct path");
+                log.warn("User-admin with id " + userId + " uses no correct path");
                 req.getRequestDispatcher("/WEB-INF/view/access.jsp").forward(req, resp);
             }
         }

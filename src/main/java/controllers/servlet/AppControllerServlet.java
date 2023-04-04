@@ -14,8 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import lombok.extern.slf4j.Slf4j;
 
 
 @WebServlet(urlPatterns = {
@@ -45,9 +44,8 @@ import org.apache.logging.log4j.LogManager;
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
+@Slf4j
 public class AppControllerServlet extends HttpServlet {
-
-    static final Logger log = LogManager.getLogger(AppControllerServlet.class);
 
     static {
         log.info("start APP");

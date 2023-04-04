@@ -2,9 +2,8 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import models.Image;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import repo.impl.ImageRepoImpl;
 import servises.ImageService;
 
@@ -20,10 +19,9 @@ import java.util.List;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class FilterImages implements RequestHandler {
     private ImageService imageService;
-
-    private static Logger logger = LogManager.getLogger(FilterImages.class);
 
     /**
      * This method contacts with service layer to retrieve all information about images
@@ -40,9 +38,9 @@ public class FilterImages implements RequestHandler {
         try {
             List<Image> all = imageService.getAll();
             req.setAttribute("all_images", all);
-            logger.info("Set all images to request");
+            log.info("Set all images to request");
         } catch (DataBaseException e) {
-            logger.warn("Failed to retrieve image from database ", e);
+            log.warn("Failed to retrieve image from database ", e);
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
         }
 

@@ -1,7 +1,11 @@
 package models;
 
-import java.util.Objects;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+@Data
+@NoArgsConstructor
 public class User {
     private long id;
     private String login;
@@ -9,96 +13,6 @@ public class User {
     private String name;
     private Role role;
     private boolean isBlocked;
-
-    public User() {
-    }
-
-    public boolean isBlocked() {
-        return isBlocked;
-    }
-
-    public void setBlocked(boolean blocked) {
-        isBlocked = blocked;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    //    public String getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(String role) {
-//        this.role = role;
-//    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", role=" + role +
-                ", isBlocked=" + isBlocked +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id &&
-                isBlocked == user.isBlocked &&
-                Objects.equals(login, user.login) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(name, user.name) &&
-                role == user.role;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, login, password, name, role, isBlocked);
-    }
 
     public enum Role {
         ADMIN("admin"),

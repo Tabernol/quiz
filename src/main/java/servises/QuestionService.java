@@ -1,5 +1,6 @@
 package servises;
 
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +8,7 @@ import models.Question;
 
 import repo.impl.QuestionRepoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +16,7 @@ import java.util.List;
  * It checks the input and decides whether to call QuestionRepo.class or throw an exception
  */
 @Slf4j
-public class QuestionService {
+public class QuestionService implements ConvertToDtoAble<QuestionDto, Question> {
     /**
      * Class contains:
      * questionRepo field for work with QuestionRepo.class
@@ -35,9 +37,13 @@ public class QuestionService {
      * @return List of Question by TestId
      * @throws DataBaseException
      */
-    public List<Question> getAllById(Long id) throws DataBaseException {
+    public List<QuestionDto> getAllById(Long id) throws DataBaseException {
         log.info("SERVICE QUESTION get all");
-        return questionRepoImpl.getAllById(id);
+        List<QuestionDto> questionDtoList = new ArrayList<>();
+        for(Question question : questionRepoImpl.getAllById(id)){
+            questionDtoList.add(mapToDto(question));
+        }
+        return questionDtoList;
     }
 
     /**
@@ -74,9 +80,9 @@ public class QuestionService {
      * @return Question by id
      * @throws DataBaseException
      */
-    public Question get(Long id) throws DataBaseException {
+    public QuestionDto get(Long id) throws DataBaseException {
         log.info("SERVICE QUESTION get question with id " + id);
-        return questionRepoImpl.get(id);
+        return mapToDto(questionRepoImpl.get(id));
     }
 
     /**
@@ -109,5 +115,15 @@ public class QuestionService {
         }
         log.info("SERVICE QUESTION update url image for question with id " + id);
         return questionRepoImpl.updateImageQuestion(url, id);
+    }
+
+    @Override
+    public QuestionDto mapToDto(Question entity) {
+        QuestionDto questionDto = new QuestionDto();
+        questionDto.setId(entity.getId());
+        questionDto.setText(entity.getText());
+        questionDto.setTestId(entity.getTestId());
+        questionDto.setUrlImage(entity.getUrlImage());
+        return questionDto;
     }
 }

@@ -1,6 +1,7 @@
 package servlets.post;
 
 import command.post.DeleteAnswer;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import models.Question;
 import org.junit.jupiter.api.Assertions;
@@ -33,7 +34,7 @@ public class DeleteAnswerTest {
         AnswerService answerService = Mockito.mock(AnswerService.class);
         QuestionService questionService = Mockito.mock(QuestionService.class);
 
-        Question question = new Question();
+        QuestionDto questionDto = new QuestionDto();
         DeleteAnswer deleteAnswer = new DeleteAnswer();
         String path = "/WEB-INF/view/admin/edit_question.jsp";
 
@@ -43,7 +44,7 @@ public class DeleteAnswerTest {
         when(request.getParameter("page")).thenReturn("4");
         Mockito.when(request.getRequestDispatcher(path)).thenReturn(dispatcher);
         Mockito.when(answerService.deleteAnswer(Mockito.anyLong())).thenReturn(1);
-        Mockito.when(questionService.get(Mockito.anyLong())).thenReturn(question);
+        Mockito.when(questionService.get(Mockito.anyLong())).thenReturn(questionDto);
 
 
         assertEquals(1L, Long.valueOf(request.getParameter("test_id")));

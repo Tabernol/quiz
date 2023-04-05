@@ -9,17 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Add lombok&#10;refactor logger">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dto/AnswerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/ConvertToDtoAble.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Added AnswerDto&#10;And refactored this functionality">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dto/QuestionDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/EditQuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/get/EditQuestionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +30,8 @@
       <list>
         <option value="Enum" />
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -398,14 +397,7 @@
       <workItem from="1680470653344" duration="1443000" />
       <workItem from="1680474190936" duration="1589000" />
       <workItem from="1680563034959" duration="6811000" />
-      <workItem from="1680644156138" duration="5420000" />
-    </task>
-    <task id="LOCAL-00026" summary="26">
-      <created>1674697642429</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1674697642431</updated>
+      <workItem from="1680644156138" duration="6481000" />
     </task>
     <task id="LOCAL-00027" summary="Timer work">
       <created>1674774450742</created>
@@ -743,7 +735,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680569861046</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Added AnswerDto&#10;And refactored this functionality">
+      <created>1680653659432</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1680653659433</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -761,7 +760,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add, some test and refactor" />
     <MESSAGE value="a little fix with logger" />
     <MESSAGE value="Add load image, for question and view in quiz" />
     <MESSAGE value="Add ImageRepo" />
@@ -786,7 +784,8 @@
     <MESSAGE value="Refactor JavaDoc for commands" />
     <MESSAGE value="work with tests" />
     <MESSAGE value="Add lombok&#10;refactor logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add lombok&#10;refactor logger" />
+    <MESSAGE value="Added AnswerDto&#10;And refactored this functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added AnswerDto&#10;And refactored this functionality" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

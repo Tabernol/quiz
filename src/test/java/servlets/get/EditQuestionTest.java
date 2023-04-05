@@ -2,6 +2,7 @@ package servlets.get;
 
 import command.get.EditQuestion;
 import dto.AnswerDto;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import models.Answer;
 import models.Question;
@@ -34,12 +35,12 @@ public class EditQuestionTest {
         AnswerService mockAnswerService = Mockito.mock(AnswerService.class);
 
 
-        Question question = new Question();
+        QuestionDto questionDto = new QuestionDto();
         Set<AnswerDto> answerList = new HashSet<>();
         Mockito.when(request.getParameter("test_id")).thenReturn("12");
         Mockito.when(request.getParameter("question_id")).thenReturn("44");
 
-        Mockito.when(mockQuestionService.get(Mockito.anyLong())).thenReturn(question);
+        Mockito.when(mockQuestionService.get(Mockito.anyLong())).thenReturn(questionDto);
         Mockito.when(mockAnswerService.getAnswers(Mockito.anyLong())).thenReturn(answerList);
 
         Mockito.when(request.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp")).thenReturn(dispatcher);

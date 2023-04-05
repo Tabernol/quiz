@@ -1,6 +1,7 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Question;
@@ -43,7 +44,7 @@ public class StartTest implements RequestHandler {
 
         questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
         testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
-        List<Question> questions = null;
+        List<QuestionDto> questions = null;
         Integer duration = 0;
         Integer size = 0;
 

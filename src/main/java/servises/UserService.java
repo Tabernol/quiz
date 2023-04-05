@@ -40,7 +40,7 @@ public class UserService {
      * @throws DataBaseException
      */
     public User get(long id) throws DataBaseException {
-        log.info("SERVICE USER get user with id " + id);
+        log.info("SERVICE USER get user with id {}", id);
         return userRepoImpl.get(id);
     }
 
@@ -94,11 +94,11 @@ public class UserService {
     public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
         if (role == null) {
             validatorService.validateUpdateUser(name);
-            log.info("SERVICE USER update user with id " + id + " new name = " + name);
+            log.info("SERVICE USER update user with id {} new name = {}", id, name);
             return userRepoImpl.updateUser(id, name);
         } else {
             validatorService.validateUpdateUser(name, role);
-            log.info("SERVICE USER update user with id " + id + " new name = " + name + " new role = " + role);
+            log.info("SERVICE USER update user with id {} new name = {} new role = {}", id, name, role);
             return userRepoImpl.updateUser(id, name, role);
         }
     }
@@ -111,7 +111,7 @@ public class UserService {
      * @throws DataBaseException
      */
     public long getId(String login) throws DataBaseException {
-        log.info("SERVICE USER get id user with login " + login);
+        log.info("SERVICE USER get id user with login {}", login);
         return userRepoImpl.getId(login);
     }
 
@@ -142,7 +142,7 @@ public class UserService {
             log.info("SERVICE USER get all users");
             return userRepoImpl.getAll().size();
         } else {
-            log.info("SERVICE USER get users with status = " + status);
+            log.info("SERVICE USER get users with status = {}", status);
             return userRepoImpl.getCountUsers(status);
         }
     }
@@ -161,10 +161,6 @@ public class UserService {
     public List<User> nextPage(String filter, String order, Integer rows, Integer page) throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForUser();
         String query = queryCreator.getSQL(new MyQuery(filter, order, rows, page));
-
-
-//        QueryBuilderForUser queryBuilderForUser = new QueryBuilderForUser();
-//        String query = queryBuilderForUser.getQuery(filter, order, Integer.valueOf(rows), Integer.valueOf(page), "admin");
         log.info("SERVICE USER get list of user with selected filter");
         return userRepoImpl.nextPage(query);
     }

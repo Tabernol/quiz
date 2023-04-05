@@ -2,10 +2,9 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import dto.AnswerDto;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.Answer;
-import models.Question;
 
 import repo.impl.AnswerRepoImpl;
 import repo.impl.QuestionRepoImpl;
@@ -18,7 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -31,7 +29,7 @@ import java.util.Set;
 public class EditQuestion implements RequestHandler {
     private QuestionService questionService;
     private AnswerService answerService;
-    private Question question;
+    private QuestionDto questionDto;
     private Set<AnswerDto> answers;
 
     /**
@@ -58,10 +56,10 @@ public class EditQuestion implements RequestHandler {
 
 
         try {
-            question = questionService.get(Long.valueOf(questionId));
+            questionDto = questionService.get(Long.valueOf(questionId));
             answers = answerService.getAnswers(Long.valueOf(questionId));
             req.setAttribute("answers", answers);
-            req.setAttribute("question", question);
+            req.setAttribute("question", questionDto);
 
             log.info("Question with ID " + questionId + "has updated");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);

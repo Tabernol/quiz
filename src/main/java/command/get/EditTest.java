@@ -1,6 +1,7 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Question;
@@ -48,7 +49,7 @@ public class EditTest implements RequestHandler {
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
-        List<Question> all;
+        List<QuestionDto> all;
 
         try {
             Test test = testService.get(id);

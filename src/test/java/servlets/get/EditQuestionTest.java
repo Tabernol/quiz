@@ -1,6 +1,7 @@
 package servlets.get;
 
 import command.get.EditQuestion;
+import dto.AnswerDto;
 import exeptions.DataBaseException;
 import models.Answer;
 import models.Question;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class EditQuestionTest {
     EditQuestion editQuestion = new EditQuestion();
@@ -32,7 +35,7 @@ public class EditQuestionTest {
 
 
         Question question = new Question();
-        List<Answer> answerList = new ArrayList<>();
+        Set<AnswerDto> answerList = new HashSet<>();
         Mockito.when(request.getParameter("test_id")).thenReturn("12");
         Mockito.when(request.getParameter("question_id")).thenReturn("44");
 

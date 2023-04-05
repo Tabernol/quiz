@@ -1,19 +1,24 @@
 package servises;
 
+import dto.AnswerDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import models.Answer;
 import repo.impl.AnswerRepoImpl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 
 /**
  * This class receives data from top-level classes.
  * It checks the input and decides whether to call Answer Repo.class or throw an exception
  */
 @Slf4j
-public class AnswerService {
+public class AnswerService implements ConvertToDtoAble<AnswerDto, Answer> {
     /**
      * Class contains:
      * answerRepo field for work with AnswerRepo.class
@@ -35,9 +40,13 @@ public class AnswerService {
      * @return list of Answer by questionId
      * @throws DataBaseException
      */
-    public List<Answer> getAnswers(Long questionId) throws DataBaseException {
-        log.info("SERVICE ANSWER get answers by  question "+ questionId);
-        return answerRepoImpl.getAnswersByQuestionId(questionId);
+    public Set<AnswerDto> getAnswers(Long questionId) throws DataBaseException {
+        log.info("SERVICE ANSWER get answers by  question " + questionId);
+        Set<AnswerDto> answerDtoSet = new HashSet<>();
+        for(Answer answer : answerRepoImpl.getAnswersByQuestionId(questionId)){
+            answerDtoSet.add(mapToDto(answer));
+        }
+       return answerDtoSet;
     }
 
     /**
@@ -64,8 +73,18 @@ public class AnswerService {
      * @throws DataBaseException
      */
     public int deleteAnswer(Long id) throws DataBaseException {
-        log.info("SERVICE ANSWER delete answer "+ id);
+        log.info("SERVICE ANSWER delete answer " + id);
         return answerRepoImpl.delete(id);
     }
 
+
+    @Override
+    public AnswerDto mapToDto(Answer entity) {
+        AnswerDto answerDto = new AnswerDto();
+        answerDto.setId(entity.getId());
+        answerDto.setQuestionId(entity.getQuestionId());
+        answerDto.setResult(entity.isResult());
+        answerDto.setText(entity.getText());
+        return answerDto;
+    }
 }

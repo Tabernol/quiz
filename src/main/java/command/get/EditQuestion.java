@@ -1,6 +1,7 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
+import dto.AnswerDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Answer;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 /**
  * EditQuestion.class is allowed only for admin.
@@ -30,7 +32,7 @@ public class EditQuestion implements RequestHandler {
     private QuestionService questionService;
     private AnswerService answerService;
     private Question question;
-    private List<Answer> answers;
+    private Set<AnswerDto> answers;
 
     /**
      * This method reads parameters.

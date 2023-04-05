@@ -1,6 +1,7 @@
 package command.get;
 
 import controllers.servlet.RequestHandler;
+import dto.AnswerDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Answer;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 /**
  * GetInfoQuestion.class is allowed for student
@@ -80,10 +82,10 @@ public class GetInfoQuestion implements RequestHandler {
 
         long nextIdQuestion = questions.get(numberQuestion).getId();
 
-        List<Answer> answers = null;
+        Set<AnswerDto> answers = null;
         try {
             answers = answerService.getAnswers(nextIdQuestion);
-            Collections.shuffle(answers);
+           // Collections.shuffle(answers);
             String text = questions.get(numberQuestion).getText();
             String urlImage = questions.get(numberQuestion).getUrlImage();
 
@@ -126,12 +128,12 @@ public class GetInfoQuestion implements RequestHandler {
                     "        <div class=\"card\" style=\"border-radius: 15px;\">\n" +
                     "            <div class=\"card-body p-4\">\n" +
                     "                <div class=\"d-grid gap-2\">");
-            for (Answer answer : answers) {
+            for (AnswerDto answerDto : answers) {
                 writer.print(" <input type=\"checkbox\" class=\"btn-check\" " +
-                        "id=\"btncheck" + answer.getId() + "\" name=\"res\" value=\"" + answer.getId() +
+                        "id=\"btncheck" + answerDto.getId() + "\" name=\"res\" value=\"" + answerDto.getId() +
                         "\" autocomplete=\"off\">\n" +
                         "<label class=\"btn btn-outline-success\" for=\"btncheck" +
-                        answer.getId() + "\">" + answer.getText() + "</label>");
+                        answerDto.getId() + "\">" + answerDto.getText() + "</label>");
             }
             writer.print("  </div>\n" +
                     "                <br>\n" +

@@ -1,5 +1,6 @@
 package service_test;
 
+import dto.AnswerDto;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import models.Answer;
@@ -13,7 +14,9 @@ import servises.AnswerService;
 import servises.ResultService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -70,11 +73,11 @@ public class ResultServiceTest {
     @Test
     public void getResultByQuestion() throws DataBaseException {
         String[] userAnswers = {"2", "off", "1", "on"};
-        List<Answer> answers = new ArrayList<>();
-        Answer answer1 = new Answer();
+        Set<AnswerDto> answers = new HashSet<>();
+        AnswerDto answer1 = new AnswerDto();
         answer1.setId(1);
         answer1.setResult(true);
-        Answer answer2 = new Answer();
+        AnswerDto answer2 = new AnswerDto();
         answer2.setId(2);
         answer2.setResult(false);
         answers.add(answer1);

@@ -1,5 +1,6 @@
 package servises;
 
+import dto.AnswerDto;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,9 @@ import util.query.QueryCreator;
 import validator.DataValidator;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This class is responsibility for checking answer and supplying grade after test(quiz),
@@ -50,19 +53,37 @@ public class ResultService {
      *                   for example {"12", "on", "13" "off", "23" "off"}
      * @return List of user`s Answers
      */
-    private List<Answer> convertUserResult(String[] userAnswer) {
-        List<Answer> userResult = new ArrayList<>();
-        Answer answer = null;
+//    private List<Answer> convertUserResult(String[] userAnswer) {
+//        List<Answer> userResult = new ArrayList<>();
+//        Answer answer = null;
+//        for (int i = 0; i < userAnswer.length; i++) {
+//            if (userAnswer[i].equals("on")) {
+//                answer.setResult(true);
+//                userResult.add(answer);
+//            } else if (userAnswer[i].equals("off")) {
+//                answer.setResult(false);
+//                userResult.add(answer);
+//            } else {
+//                answer = new Answer();
+//                answer.setId(Long.parseLong(userAnswer[i]));
+//            }
+//        }
+//        return userResult;
+//    }
+
+    private Set<AnswerDto> convertUserResult(String[] userAnswer) {
+        Set<AnswerDto> userResult = new HashSet<>();
+        AnswerDto answerDto = null;
         for (int i = 0; i < userAnswer.length; i++) {
             if (userAnswer[i].equals("on")) {
-                answer.setResult(true);
-                userResult.add(answer);
+                answerDto.setResult(true);
+                userResult.add(answerDto);
             } else if (userAnswer[i].equals("off")) {
-                answer.setResult(false);
-                userResult.add(answer);
+                answerDto.setResult(false);
+                userResult.add(answerDto);
             } else {
-                answer = new Answer();
-                answer.setId(Long.parseLong(userAnswer[i]));
+                answerDto = new AnswerDto();
+                answerDto.setId(Long.parseLong(userAnswer[i]));
             }
         }
         return userResult;
@@ -82,16 +103,26 @@ public class ResultService {
         if (userAnswer == null) {
             return result;
         } else {
-            List<Answer> checkingAnswer = convertUserResult(userAnswer);
-            List<Answer> trueAnswers = answerService.getAnswers(questionId);
+          //  List<Answer> checkingAnswer = convertUserResult(userAnswer);
+            Set<AnswerDto> checkingAnswer = convertUserResult(userAnswer);
+            Set<AnswerDto> trueAnswers = answerService.getAnswers(questionId);
 
-            for (int i = 0; i < checkingAnswer.size(); i++) {
-                boolean contain = trueAnswers.contains(checkingAnswer.get(i));
+            for(AnswerDto answerUser : checkingAnswer){
+                boolean contain = trueAnswers.contains(answerUser);
                 if (contain == false) {
                     result = false;
                     break;
                 }
             }
+
+
+//            for (int i = 0; i < checkingAnswer.size(); i++) {
+//                boolean contain = trueAnswers.contains(checkingAnswer);
+//                if (contain == false) {
+//                    result = false;
+//                    break;
+//                }
+//            }
         }
         log.info("SERVICE RESULT get result by question " + questionId);
         return result;
@@ -135,8 +166,8 @@ public class ResultService {
      * @param userId is unique number of user in database
      * @param sub    is a unique name subject in the 'test' table in the database or all of them
      * @param order  is order of sample from table'test'
-     * @param rows  is number of how many results include in List
-     * @param page is page of result
+     * @param rows   is number of how many results include in List
+     * @param page   is page of result
      * @return List of passed test(quiz) by user
      * @throws DataBaseException
      */

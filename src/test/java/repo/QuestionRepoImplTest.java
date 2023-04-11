@@ -44,7 +44,7 @@ public class QuestionRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepoImpl.create(new Question());
+            int rowsUpdate = questionRepoImpl.create(new Question(121L, 1234L, "text", "url"));
             Assertions.assertEquals(13, rowsUpdate);
         }
     }
@@ -55,7 +55,7 @@ public class QuestionRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepoImpl.updateQuestion("test text", 323L);
+            int rowsUpdate = questionRepoImpl.update(new Question(123L, 23L, "test text", "url"));
             Assertions.assertEquals(13, rowsUpdate);
         }
     }
@@ -122,7 +122,8 @@ public class QuestionRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
-            Assertions.assertThrows(DataBaseException.class, () -> questionRepoImpl.updateQuestion("new text", 34467L));
+            Assertions.assertThrows(DataBaseException.class, () ->
+                    questionRepoImpl.update(new Question(12L, 123L, "new text", "url")));
         }
     }
 
@@ -133,7 +134,7 @@ public class QuestionRepoImplTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> questionRepoImpl.create(new Question()));
+                    () -> questionRepoImpl.create(new Question(12L, 123L, "new text", "url")));
         }
     }
 

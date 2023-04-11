@@ -41,7 +41,7 @@ public class TestRepoTestImpl {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
             Assertions.assertEquals(13,
-                    testRepoImpl.updateInfoTest(
+                    testRepoImpl.update(
                             new models.Test(12L, "name", "subject",
                                     80, 25, 234, models.Test.Status.FREE)));
         }
@@ -54,7 +54,7 @@ public class TestRepoTestImpl {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepoImpl.updateInfoTest(
+                    () -> testRepoImpl.update(
                             new models.Test(12L, "name", "subject",
                                     23, 23, 100, models.Test.Status.FREE)));
         }

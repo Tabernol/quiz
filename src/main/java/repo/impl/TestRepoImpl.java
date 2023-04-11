@@ -30,10 +30,9 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public List<String> getDistinctSubject() throws DataBaseException {
-        String sql = "select distinct subject from epam_project_testing.test";
         List<String> subjects;
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql);
+             PreparedStatement pst = con.prepareStatement(GET_DISTINCT_SUBJECT);
              ResultSet resultSet = pst.executeQuery()) {
             subjects = new ArrayList<>();
             while (resultSet.next()) {
@@ -60,10 +59,9 @@ public class TestRepoImpl implements TestRepo {
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int updateInfoTest(Test test) throws DataBaseException {
-        String sql = "update epam_project_testing.test set name = ?, subject = ?, difficult = ?, duration = ? where id = ? ";
+    public int update(Test test) throws DataBaseException {
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(UPDATE_TEST)) {
             pst.setString(1, test.getName());
             pst.setString(2, test.getSubject());
             pst.setInt(3, test.getDifficult());
@@ -85,9 +83,8 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Integer getCount(String subject) throws DataBaseException {
-        String sql = "select count(subject) from epam_project_testing.test where subject like ?";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(COUNT_BY_SUBJECT)) {
             pst.setString(1, subject);
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
@@ -108,9 +105,8 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Integer getCount() throws DataBaseException {
-        String sql = "select count(subject) from epam_project_testing.test";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql);
+             PreparedStatement pst = con.prepareStatement(COUNT_OF_SUBJECTS);
              ResultSet resultSet = pst.executeQuery()) {
             resultSet.next();
             return resultSet.getInt(1);
@@ -162,10 +158,9 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Test get(Long id) throws DataBaseException {
-        String sql = "select * from epam_project_testing.test where id = ?";
         Test test = null;
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(GET_TEST)) {
             pst.setLong(1, id);
             ResultSet resultSet = pst.executeQuery();
             if (resultSet.next()) {
@@ -195,9 +190,8 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int addPopularity(Long idTest) throws DataBaseException {
-        String sql = "update epam_project_testing.test set popularity = popularity + 1 where id = ?";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(ADD_POINT_POPULARITY)) {
             pst.setLong(1, idTest);
             return pst.executeUpdate();
         } catch (SQLException e) {
@@ -216,9 +210,8 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public boolean isNameExist(String name) throws DataBaseException {
-        String sql = "select * from epam_project_testing.test where name like ?";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(IS_TEST_EXIST)) {
             pst.setString(1, name);
             ResultSet resultSet = pst.executeQuery();
             boolean isExist = resultSet.next();
@@ -239,9 +232,8 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        String sql = "delete from epam_project_testing.test where id = ?";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(DELETE_TEST)) {
             pst.setLong(1, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
@@ -263,9 +255,8 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int create(Test test) throws DataBaseException {
-        String sql = "insert into epam_project_testing.test (id, name, subject, difficult, duration, status) values(default, ?, ?, ?, ?, default)";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(CREATE_TEST)) {
             pst.setString(1, test.getName());
             pst.setString(2, test.getSubject());
             pst.setInt(3, test.getDifficult());
@@ -287,9 +278,8 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int changeStatus(Long id, Test.Status status) throws DataBaseException {
-        String sql = "update epam_project_testing.test set status = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(CHANGE_STATUS_TEST)) {
             pst.setString(1, status.getStatus());
             pst.setLong(2, id);
             return pst.executeUpdate();

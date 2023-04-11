@@ -9,43 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Added lombok annotations">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dto/TestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repo/BaseRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/ConvertToEntityAble.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/app_listener/LoadMediaContextListenerTest.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Added TestDto&#10;interface BaseRepo&#10;did refactor many layers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/AnswerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/AnswerDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/QuestionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/QuestionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/ResultDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/ResultDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/DeleteAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditQuestionPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/BaseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/BaseRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/AnswerRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/AnswerRepoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/QuestionRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/QuestionRepoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/TestRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/TestRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/EmailUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/SimpleEmail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/TLSEmail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/repo/TestRepoTestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/TestRepoTestImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/AddAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/AddAnswerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +132,22 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
-    <configuration name="AnswerServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QuestionRepoImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repo" />
+      <option name="MAIN_CLASS_NAME" value="repo.QuestionRepoImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
         <pattern>
@@ -160,8 +156,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.AnswerServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="service_test.QuestionServiceTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionServiceTest.updateQuestionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service_test" />
+      <option name="MAIN_CLASS_NAME" value="service_test.QuestionServiceTest" />
+      <option name="METHOD_NAME" value="updateQuestionTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,22 +193,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRepoTestImpl.updateInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="repo" />
-      <option name="MAIN_CLASS_NAME" value="repo.TestRepoTestImpl" />
-      <option name="METHOD_NAME" value="updateInfoTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestRepoTestImpl.updateInfoTestThrowEx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
       <extension name="coverage">
@@ -208,22 +204,6 @@
       <option name="PACKAGE_NAME" value="repo" />
       <option name="MAIN_CLASS_NAME" value="repo.TestRepoTestImpl" />
       <option name="METHOD_NAME" value="updateInfoTestThrowEx" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestServiceTest.updateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service_test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service_test" />
-      <option name="MAIN_CLASS_NAME" value="service_test.TestServiceTest" />
-      <option name="METHOD_NAME" value="updateTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -334,20 +314,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.UserServiceTest.isCorrectPassword" />
-      <item itemvalue="JUnit.AnswerServiceTest" />
+      <item itemvalue="JUnit.QuestionRepoImplTest" />
+      <item itemvalue="JUnit.QuestionServiceTest" />
+      <item itemvalue="JUnit.QuestionServiceTest.updateQuestionTest" />
       <item itemvalue="JUnit.TestRepoTestImpl" />
-      <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTest" />
       <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTestThrowEx" />
-      <item itemvalue="JUnit.TestServiceTest.updateTest" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.QuestionRepoImplTest" />
+        <item itemvalue="JUnit.QuestionServiceTest" />
+        <item itemvalue="JUnit.QuestionServiceTest.updateQuestionTest" />
         <item itemvalue="JUnit.TestRepoTestImpl" />
         <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTestThrowEx" />
-        <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTest" />
-        <item itemvalue="JUnit.TestServiceTest.updateTest" />
-        <item itemvalue="JUnit.AnswerServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -460,14 +440,7 @@
       <workItem from="1680474190936" duration="1589000" />
       <workItem from="1680563034959" duration="6811000" />
       <workItem from="1680644156138" duration="8453000" />
-      <workItem from="1681163159721" duration="8371000" />
-    </task>
-    <task id="LOCAL-00029" summary="101">
-      <created>1674843206513</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1674843206513</updated>
+      <workItem from="1681163159721" duration="12111000" />
     </task>
     <task id="LOCAL-00030" summary="102 Add Right modal">
       <created>1674863874162</created>
@@ -805,7 +778,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680654877233</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Added TestDto&#10;interface BaseRepo&#10;did refactor many layers">
+      <created>1681171718822</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1681171718822</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -823,7 +803,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add ImageRepo" />
     <MESSAGE value="delete some classes" />
     <MESSAGE value="Add JavaDoc for PostCommands" />
     <MESSAGE value="Add a few JavaDoc for GetCommands&#10;Add column popularity to view for admin" />
@@ -848,7 +827,8 @@
     <MESSAGE value="Added AnswerDto&#10;And refactored this functionality" />
     <MESSAGE value="Added QuestionDto&#10;And refactored this functionality" />
     <MESSAGE value="Added lombok annotations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added lombok annotations" />
+    <MESSAGE value="Added TestDto&#10;interface BaseRepo&#10;did refactor many layers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added TestDto&#10;interface BaseRepo&#10;did refactor many layers" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

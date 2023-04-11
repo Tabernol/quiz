@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 public class QuestionService implements
         ConvertToDtoAble<QuestionDto, Question>,
-        ConvertToEntityAble<Question, QuestionDto>{
+        ConvertToEntityAble<Question, QuestionDto> {
     /**
      * Class contains:
      * questionRepo field for work with QuestionRepo.class
@@ -42,7 +42,7 @@ public class QuestionService implements
     public List<QuestionDto> getAllById(Long id) throws DataBaseException {
         log.info("SERVICE QUESTION get all");
         List<QuestionDto> questionDtoList = new ArrayList<>();
-        for(Question question : questionRepoImpl.getAllById(id)){
+        for (Question question : questionRepoImpl.getAllById(id)) {
             questionDtoList.add(mapToDto(question));
         }
         return questionDtoList;
@@ -51,8 +51,7 @@ public class QuestionService implements
     /**
      * The method takes input, validates it, and calls the repository layer to create a new question
      *
-     * @param testId is unique number Test in database
-     * @param text   is text of new Question
+     * @param questionDto The data transfer object containing information about the question.
      * @return 1 if question has added
      * @throws DataBaseException
      * @throws ValidateException
@@ -91,16 +90,15 @@ public class QuestionService implements
     /**
      * The method takes input, validates it, and calls the repository layer to update this question
      *
-     * @param newText is new text of question
-     * @param id      is unique number Question in database
+     * @param questionDto The data transfer object containing information about the question.
      * @return 1 if question has updated
      * @throws DataBaseException
      * @throws ValidateException
      */
-    public int update(String newText, Long id) throws DataBaseException, ValidateException {
-        validatorService.validateText(newText);
-        log.info("SERVICE QUESTION update question with id " + id);
-        return questionRepoImpl.updateQuestion(newText, id);
+    public int update(QuestionDto questionDto) throws DataBaseException, ValidateException {
+        validatorService.validateText(questionDto.getText());
+        log.info("SERVICE QUESTION update question {}", questionDto);
+        return questionRepoImpl.update(mapToEntity(questionDto));
     }
 
     /**
@@ -133,10 +131,10 @@ public class QuestionService implements
     @Override
     public Question mapToEntity(QuestionDto questionDto) {
         Question question = new Question();
-       // question.setId(questionDto.getId());
+        question.setId(questionDto.getId());
         question.setTestId(questionDto.getTestId());
         question.setText(questionDto.getText());
-      //  question.setUrlImage(questionDto.getUrlImage());
+        question.setUrlImage(questionDto.getUrlImage());
         return question;
     }
 }

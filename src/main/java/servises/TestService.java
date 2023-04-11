@@ -34,11 +34,7 @@ public class TestService implements ConvertToEntityAble<Test, TestDto> {
      * it checks the test name for uniqueness.
      * it causes the insertion of new data
      *
-     * @param testDto where:
-     *                name is unique name of test
-     *                subject is subject of test
-     *                difficult can be from 0 to 100
-     *                duration can be less than 30
+     * @param testDto The data transfer object containing information about the test
      * @return 1 if test has created
      * @throws ValidateException
      * @throws DataBaseException
@@ -108,11 +104,7 @@ public class TestService implements ConvertToEntityAble<Test, TestDto> {
     /**
      * this method validate input data and calls to TestRepo.class to update new data
      *
-     * @param id        is unique number of test in database
-     * @param name      is unique name of test
-     * @param subject   is subject of tests or 'all' by default
-     * @param difficult can be from 0 to 100
-     * @param duration  can be less than 30
+     * @param testDto The data transfer object containing information about the test
      * @return 1 if test has updated
      * @throws DataBaseException
      * @throws ValidateException
@@ -120,7 +112,7 @@ public class TestService implements ConvertToEntityAble<Test, TestDto> {
     public int update(TestDto testDto) throws DataBaseException, ValidateException {
         validatorService.checkFieldsTest(testDto);
         log.info("SERVICE TEST update test {}", testDto);
-        return testRepoImpl.updateInfoTest(mapToEntity(testDto));
+        return testRepoImpl.update(mapToEntity(testDto));
     }
 
     /**

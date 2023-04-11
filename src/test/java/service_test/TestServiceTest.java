@@ -70,7 +70,7 @@ public class TestServiceTest {
 
     @Test
     public void updateTest() throws DataBaseException, ValidateException {
-        Mockito.when(mockTestRepoImpl.updateInfoTest(Mockito.any(models.Test.class))).thenReturn(1);
+        Mockito.when(mockTestRepoImpl.update(Mockito.any(models.Test.class))).thenReturn(1);
         assertEquals(1, testService.update(new TestDto(12L,
                 "newName", "newSubject", 45, 26)));
     }

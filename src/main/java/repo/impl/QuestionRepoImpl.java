@@ -30,10 +30,9 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public List<Question> getAllById(Long testId) throws DataBaseException {
-        String sql = "select * from epam_project_testing.question where test_id = ?";
         List<Question> questions = new ArrayList<>();
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(GET_ALL_BY_ID)) {
             pst.setString(1, testId.toString());
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
@@ -62,10 +61,9 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public Question get(Long id) throws DataBaseException {
-        String sql = "select * from epam_project_testing.question where id = ?";
         Question question = new Question();
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(GET_QUESTION)) {
             pst.setLong(1, id);
             ResultSet resultSet = pst.executeQuery();
             if (resultSet.next()) {
@@ -83,28 +81,6 @@ public class QuestionRepoImpl implements QuestionRepo {
     }
 
     /**
-     * method update text of Question in database in table 'question'
-     *
-     * @param newText new text of question
-     * @param id      is identification of Question in table 'question'
-     * @return 1 if question will be updated
-     * @throws DataBaseException is wrapper of SQLException
-     */
-    @Override
-    public int updateQuestion(String newText, Long id) throws DataBaseException {
-        String sql = "update epam_project_testing.question set q_text = ? where id = ? ";
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, newText);
-            pst.setLong(2, id);
-            return pst.executeUpdate();
-        } catch (SQLException e) {
-            log.warn("Can' update question by id");
-            throw new DataBaseException("Can' update question by id" + e.getMessage(), e);
-        }
-    }
-
-    /**
      * method delete Question from database by id
      *
      * @param id is identification of Question in table 'question'
@@ -113,9 +89,8 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        String sql = "delete from epam_project_testing.question where id = ?";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(DELETE_QUESTION)) {
             pst.setLong(1, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
@@ -123,6 +98,20 @@ public class QuestionRepoImpl implements QuestionRepo {
             throw new DataBaseException("Can' delete question by id" + e.getMessage(), e);
         }
     }
+
+    @Override
+    public int update(Question question) throws DataBaseException {
+        try (Connection con = MyDataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(UPDATE_QUESTION)) {
+            pst.setString(1, question.getText());
+            pst.setLong(2, question.getId());
+            return pst.executeUpdate();
+        } catch (SQLException e) {
+            log.warn("Can' update question by id");
+            throw new DataBaseException("Can' update question by id" + e.getMessage(), e);
+        }
+    }
+
 
     /**
      * method create new Question and input in database
@@ -133,9 +122,8 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public int create(Question question) throws DataBaseException {
-        String sql = "insert into epam_project_testing.question (id, test_id, q_text) values(default, ?, ?)";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(CREATE_QUESTION)) {
             pst.setLong(1, question.getTestId());
             pst.setString(2, question.getText());
             return pst.executeUpdate();
@@ -155,9 +143,8 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public int updateImageQuestion(String url, Long id) throws DataBaseException {
-        String sql = "update epam_project_testing.question set url = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(UPDATE_URL)) {
             pst.setString(1, url);
             pst.setLong(2, id);
             return pst.executeUpdate();

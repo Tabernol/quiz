@@ -32,10 +32,9 @@ public class AnswerRepoImpl implements AnswerRepo {
      */
     @Override
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
-        String sql = "select * from epam_project_testing.answer where question_id = ?";
         List<Answer> answers = new ArrayList<>();
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(GET_ANSWERS_BY_QUESTION_ID)) {
             pst.setString(1, questionId.toString());
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
@@ -63,9 +62,8 @@ public class AnswerRepoImpl implements AnswerRepo {
      */
     @Override
     public int create(Answer answer) throws DataBaseException {
-        String sql = "insert into epam_project_testing.answer (id, question_id, a_text, result) values(default, ?,?,?)";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(CREATE_ANSWER)) {
             pst.setLong(1, answer.getQuestionId());
             pst.setString(2, answer.getText());
             pst.setBoolean(3, answer.isResult());
@@ -85,9 +83,8 @@ public class AnswerRepoImpl implements AnswerRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        String sql = "delete from epam_project_testing.answer where id = ?";
         try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+             PreparedStatement pst = con.prepareStatement(DELETE_ANSWER)) {
             pst.setLong(1, id);
             return pst.executeUpdate();
         } catch (SQLException e) {
@@ -95,4 +92,15 @@ public class AnswerRepoImpl implements AnswerRepo {
             throw new DataBaseException("Can't delete answer problem" + e.getMessage(), e);
         }
     }
+
+    @Override
+    public int update(Answer answer) throws DataBaseException {
+        return 0;
+    }
+
+    @Override
+    public Answer get(Long id) throws DataBaseException {
+        return null;
+    }
+
 }

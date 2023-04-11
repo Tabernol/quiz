@@ -52,6 +52,8 @@ public class DeleteAnswer implements RequestHandler {
             req.setAttribute("question_id", questionId);
             req.setAttribute("question", questionService.get(questionId));
             req.setAttribute("page", page);
+            req.setAttribute("message_success", "The answer was deleted");
+
             log.info("Answer with id " + answerId + " has deleted");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
         } catch (DataBaseException e) {

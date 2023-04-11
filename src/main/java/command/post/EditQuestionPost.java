@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +46,7 @@ public class EditQuestionPost implements RequestHandler {
         String page = req.getParameter("page");
 
         try {
-            questionService.update(text, questionId);
+            questionService.update(new QuestionDto(questionId, text));
             log.info("Question with id " + questionId + "has updated");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +

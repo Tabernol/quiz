@@ -1,5 +1,6 @@
 package service_test;
 
+import dto.AnswerDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import models.Answer;
@@ -11,7 +12,9 @@ import servises.AnswerService;
 import servises.ValidatorService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -23,7 +26,9 @@ public class AnswerServiceTest {
     @Mock
     private ValidatorService mockValidatorService;
 
-    AnswerService answerService;
+    private AnswerService answerService;
+
+    private Answer answer;
 
 
     @BeforeEach
@@ -31,6 +36,7 @@ public class AnswerServiceTest {
         mockAnswerRepoImpl = Mockito.mock(AnswerRepoImpl.class);
         mockValidatorService = Mockito.mock(ValidatorService.class);
         answerService = new AnswerService(mockAnswerRepoImpl, mockValidatorService);
+      //  answer = new Answer(12L, 123L, "text", true);
     }
 
 
@@ -43,17 +49,22 @@ public class AnswerServiceTest {
         List<Answer> answers = new ArrayList<>();
         answers.add(answer);
         Mockito.when(mockAnswerRepoImpl.getAnswersByQuestionId(Mockito.anyLong())).thenReturn(answers);
-        assertEquals(answers, answerService.getAnswers(1L));
+
+        Set<AnswerDto> answerDtoSet = new HashSet<>();
+        for (Answer ans : answers) {
+            answerDtoSet.add(answerService.mapToDto(ans));
+        }
+
+        assertEquals(answerDtoSet, answerService.getAnswers(1L));
     }
 
     @Test
     public void createAnswerServiceTest() throws DataBaseException, ValidateException {
         Mockito.when(mockValidatorService.validateText(Mockito.anyString())).thenReturn(true);
-        Mockito.when(mockAnswerRepoImpl.createAnswer(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyBoolean())).thenReturn(12);
+        Mockito.when(mockAnswerRepoImpl.create(Mockito.any(Answer.class))).thenReturn(12);
 
         assertEquals(12, answerService.createAnswer(
-                123L, "text", true));
+                new AnswerDto(1L, 123L, "text", true)));
     }
 
     @Test

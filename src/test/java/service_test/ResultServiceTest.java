@@ -75,14 +75,13 @@ public class ResultServiceTest {
         String[] userAnswers = {"2", "off", "1", "on"};
         Set<AnswerDto> answers = new HashSet<>();
         AnswerDto answer1 = new AnswerDto();
-        answer1.setId(1);
+        answer1.setId(1L);
         answer1.setResult(true);
         AnswerDto answer2 = new AnswerDto();
-        answer2.setId(2);
+        answer2.setId(2L);
         answer2.setResult(false);
         answers.add(answer1);
         answers.add(answer2);
-        System.out.println(answers);
         Mockito.when(answerService.getAnswers(123L)).thenReturn(answers);
         Assertions.assertEquals(true,
                 resultService.getResultByQuestion(123L, userAnswers));

@@ -1,6 +1,7 @@
 package app_listener;
 
 import com.cloudinary.Cloudinary;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -17,6 +18,7 @@ import java.util.Map;
  * @author makskrasnopolskyi@gmail.com
  */
 @WebListener
+@Slf4j
 public class LoadMediaContextListener implements ServletContextListener {
     /**
      * Initializes the Cloudinary service for the application by setting up the Cloudinary configuration and creating
@@ -43,7 +45,7 @@ public class LoadMediaContextListener implements ServletContextListener {
         Cloudinary cloudinary = new Cloudinary(config);
 
         servletContext.setAttribute("cloudinary", cloudinary);
+        log.info("Cloud load service initialized for Application.");
 
-        System.out.println("Cloud load service initialized for Application.");
     }
 }

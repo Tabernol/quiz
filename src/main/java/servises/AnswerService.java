@@ -18,7 +18,9 @@ import java.util.function.Function;
  * It checks the input and decides whether to call Answer Repo.class or throw an exception
  */
 @Slf4j
-public class AnswerService implements ConvertToDtoAble<AnswerDto, Answer> {
+public class AnswerService implements
+        ConvertToDtoAble<AnswerDto, Answer>,
+        ConvertToEntityAble<Answer, AnswerDto> {
     /**
      * Class contains:
      * answerRepo field for work with AnswerRepo.class
@@ -41,12 +43,12 @@ public class AnswerService implements ConvertToDtoAble<AnswerDto, Answer> {
      * @throws DataBaseException
      */
     public Set<AnswerDto> getAnswers(Long questionId) throws DataBaseException {
-        log.info("SERVICE ANSWER get answers by  question " + questionId);
+        log.info("SERVICE ANSWER get answers by  question {}", questionId);
         Set<AnswerDto> answerDtoSet = new HashSet<>();
-        for(Answer answer : answerRepoImpl.getAnswersByQuestionId(questionId)){
+        for (Answer answer : answerRepoImpl.getAnswersByQuestionId(questionId)) {
             answerDtoSet.add(mapToDto(answer));
         }
-       return answerDtoSet;
+        return answerDtoSet;
     }
 
     /**
@@ -59,10 +61,10 @@ public class AnswerService implements ConvertToDtoAble<AnswerDto, Answer> {
      * @throws DataBaseException
      * @throws ValidateException
      */
-    public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException, ValidateException {
-        validatorService.validateText(text);
+    public int createAnswer(AnswerDto answerDto) throws DataBaseException, ValidateException {
+        validatorService.validateText(answerDto.getText());
         log.info("SERVICE ANSWER creating new answer");
-        return answerRepoImpl.createAnswer(questionId, text, result);
+        return answerRepoImpl.create(mapToEntity(answerDto));
     }
 
     /**
@@ -86,5 +88,15 @@ public class AnswerService implements ConvertToDtoAble<AnswerDto, Answer> {
         answerDto.setResult(entity.isResult());
         answerDto.setText(entity.getText());
         return answerDto;
+    }
+
+    @Override
+    public Answer mapToEntity(AnswerDto answerDto) {
+        Answer answer = new Answer();
+      //  answer.setId(answerDto.getId());
+        answer.setText(answerDto.getText());
+        answer.setQuestionId(answerDto.getQuestionId());
+        answer.setResult(answerDto.getResult());
+        return answer;
     }
 }

@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import dto.TestDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,7 @@ public class EditTestPost implements RequestHandler {
 
 
         try {
-            testService.update(testId, name, subject, difficult, duration);
+            testService.update(new TestDto(testId, name, subject, difficult, duration));
             log.info("Test with id " + testId + "has updated");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +

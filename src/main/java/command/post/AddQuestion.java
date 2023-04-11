@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,7 @@ public class AddQuestion implements RequestHandler {
         String text = req.getParameter("text");
 
         try {
-            questionService.addQuestion(testId, text);
+            questionService.addQuestion(new QuestionDto(testId,text));
             log.info("Question for test id " + testId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +

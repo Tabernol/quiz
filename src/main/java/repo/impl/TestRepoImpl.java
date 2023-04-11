@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import repo.TestRepo;
 
 /**
@@ -29,7 +30,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public List<String> getDistinctSubject() throws DataBaseException {
-        String sql = "select distinct subject from test";
+        String sql = "select distinct subject from epam_project_testing.test";
         List<String> subjects;
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql);
@@ -49,24 +50,25 @@ public class TestRepoImpl implements TestRepo {
     /**
      * method update field in table 'test' in database
      *
-     * @param id        is identification Test in database, table 'test'
-     * @param name      is unique new name of test(quiz)
-     * @param subject   is new subject of test(quiz)
-     * @param difficult is new difficult of test(quiz)
-     * @param duration  is new duration of test(quiz)
+     * @param test where:
+     *             id        is identification Test in database, table 'test'
+     *             name      is unique new name of test(quiz)
+     *             subject   is new subject of test(quiz)
+     *             difficult is new difficult of test(quiz)
+     *             duration  is new duration of test(quiz)
      * @return 1 if test(quiz) will be updated
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int updateInfoTest(Long id, String name, String subject, int difficult, int duration) throws DataBaseException {
-        String sql = "update test set name = ?, subject = ?, difficult = ?, duration = ? where id = ? ";
+    public int updateInfoTest(Test test) throws DataBaseException {
+        String sql = "update epam_project_testing.test set name = ?, subject = ?, difficult = ?, duration = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, name);
-            pst.setString(2, subject);
-            pst.setString(3, String.valueOf(difficult));
-            pst.setString(4, String.valueOf(duration));
-            pst.setString(5, String.valueOf(id));
+            pst.setString(1, test.getName());
+            pst.setString(2, test.getSubject());
+            pst.setInt(3, test.getDifficult());
+            pst.setInt(4, test.getDuration());
+            pst.setLong(5, test.getId());
             return pst.executeUpdate();
         } catch (SQLException e) {
             log.warn("Can not update test");
@@ -83,7 +85,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Integer getCount(String subject) throws DataBaseException {
-        String sql = "select count(subject) from test where subject like ?";
+        String sql = "select count(subject) from epam_project_testing.test where subject like ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, subject);
@@ -106,7 +108,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Integer getCount() throws DataBaseException {
-        String sql = "select count(subject) from test";
+        String sql = "select count(subject) from epam_project_testing.test";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql);
              ResultSet resultSet = pst.executeQuery()) {
@@ -160,7 +162,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Test get(Long id) throws DataBaseException {
-        String sql = "select * from test where id = ?";
+        String sql = "select * from epam_project_testing.test where id = ?";
         Test test = null;
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -193,7 +195,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int addPopularity(Long idTest) throws DataBaseException {
-        String sql = "update test set popularity = popularity + 1 where id = ?";
+        String sql = "update epam_project_testing.test set popularity = popularity + 1 where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, idTest);
@@ -214,7 +216,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public boolean isNameExist(String name) throws DataBaseException {
-        String sql = "select * from test where name like ?";
+        String sql = "select * from epam_project_testing.test where name like ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, name);
@@ -237,7 +239,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        String sql = "delete from test where id = ?";
+        String sql = "delete from epam_project_testing.test where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
@@ -251,22 +253,23 @@ public class TestRepoImpl implements TestRepo {
     /**
      * method insert new test(quiz) on table 'test' in database
      *
-     * @param name      is unique new name of test(quiz)
-     * @param subject   is new subject of test(quiz)
-     * @param difficult is new difficult of test(quiz)
-     * @param duration  is new duration of test(quiz)
+     * @param test where:
+     *             name      is unique new name of test(quiz)
+     *             subject   is new subject of test(quiz)
+     *             difficult is new difficult of test(quiz)
+     *             duration  is new duration of test(quiz)
      * @return 1 if test(quiz) has created
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int createTest(String name, String subject, int difficult, int duration) throws DataBaseException {
-        String sql = "insert into test (id, name, subject, difficult, duration, status) values(default, ?, ?, ?, ?, default)";
+    public int create(Test test) throws DataBaseException {
+        String sql = "insert into epam_project_testing.test (id, name, subject, difficult, duration, status) values(default, ?, ?, ?, ?, default)";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, name);
-            pst.setString(2, subject);
-            pst.setInt(3, difficult);
-            pst.setInt(4, duration);
+            pst.setString(1, test.getName());
+            pst.setString(2, test.getSubject());
+            pst.setInt(3, test.getDifficult());
+            pst.setInt(4, test.getDuration());
             return pst.executeUpdate();
         } catch (SQLException e) {
             log.warn("Can not create test");
@@ -276,14 +279,15 @@ public class TestRepoImpl implements TestRepo {
 
     /**
      * method change column 'status' in table 'test' in database
-     * @param id is identification Test in database, table 'test'
+     *
+     * @param id     is identification Test in database, table 'test'
      * @param status is enum in Test.clas can be FREE or BLOCKED
      * @return 1 if test(quiz) has updated
      * @throws DataBaseException
      */
     @Override
     public int changeStatus(Long id, Test.Status status) throws DataBaseException {
-        String sql = "update test set status = ? where id = ? ";
+        String sql = "update epam_project_testing.test set status = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, status.getStatus());

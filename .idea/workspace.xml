@@ -9,16 +9,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Added AnswerDto&#10;And refactored this functionality">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dto/QuestionDto.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="Added lombok annotations">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dto/TestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/BaseRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servises/ConvertToEntityAble.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app_listener/LoadMediaContextListenerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/CreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/EditTestPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/AnswerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/AnswerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/QuestionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/QuestionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/ResultDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/ResultDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Answer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/AnswerRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/QuestionRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/TestRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/AnswerRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/AnswerRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/QuestionRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/QuestionRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/TestRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/TestRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/EditQuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/get/EditQuestionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/EmailUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/SimpleEmail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/TLSEmail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repo/TestRepoTestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/TestRepoTestImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/AddAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/AddAnswerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +57,8 @@
       <list>
         <option value="Enum" />
         <option value="Jsp File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -91,7 +118,7 @@
     "ToolWindowRun.ShowToolbar": "false",
     "WebServerToolWindowFactoryState": "false",
     "js.last.introduce.type": "LET",
-    "last_opened_file_path": "C:/Users/Max/IdeaProjects/Taco/first/taco1",
+    "last_opened_file_path": "C:/Users/Max/IdeaProjects/PrepereProject/startCommand",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -99,6 +126,11 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.40229884",
     "settings.editor.selected.configurable": "editor.preferences.gutterIcons"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -119,49 +151,79 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
-    <configuration name="All in startCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnswerServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service_test" />
+      <option name="MAIN_CLASS_NAME" value="service_test.AnswerServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppControllerServletTest.testDoGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestRepoTestImpl" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AppControllerServletTest" />
-      <option name="METHOD_NAME" value="testDoGet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repo" />
+      <option name="MAIN_CLASS_NAME" value="repo.TestRepoTestImpl" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRepoTestImpl.updateInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="startCommand" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repo" />
+      <option name="MAIN_CLASS_NAME" value="repo.TestRepoTestImpl" />
+      <option name="METHOD_NAME" value="updateInfoTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthorizationFilterTest.testDoCustomFilter_InvalidInput_Failure" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestRepoTestImpl.updateInfoTestThrowEx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AuthorizationFilterTest" />
-      <option name="METHOD_NAME" value="testDoCustomFilter_InvalidInput_Failure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repo" />
+      <option name="MAIN_CLASS_NAME" value="repo.TestRepoTestImpl" />
+      <option name="METHOD_NAME" value="updateInfoTestThrowEx" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthorizationFilterTest.testDoCustomFilter_ValidInputFailWithRecaptcha" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestServiceTest.updateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="startCommand" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AuthorizationFilterTest" />
-      <option name="METHOD_NAME" value="testDoCustomFilter_ValidInputFailWithRecaptcha" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthorizationFilterTest.testDoCustomFilter_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="startCommand" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AuthorizationFilterTest" />
-      <option name="METHOD_NAME" value="testDoCustomFilter_ValidInput_Success" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service_test" />
+      <option name="MAIN_CLASS_NAME" value="service_test.TestServiceTest" />
+      <option name="METHOD_NAME" value="updateTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -272,20 +334,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.UserServiceTest.isCorrectPassword" />
-      <item itemvalue="JUnit.AppControllerServletTest.testDoGet" />
-      <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_InvalidInput_Failure" />
-      <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_ValidInputFailWithRecaptcha" />
-      <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_ValidInput_Success" />
-      <item itemvalue="JUnit.All in startCommand" />
+      <item itemvalue="JUnit.AnswerServiceTest" />
+      <item itemvalue="JUnit.TestRepoTestImpl" />
+      <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTest" />
+      <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTestThrowEx" />
+      <item itemvalue="JUnit.TestServiceTest.updateTest" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.69" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_ValidInputFailWithRecaptcha" />
-        <item itemvalue="JUnit.All in startCommand" />
-        <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_ValidInput_Success" />
-        <item itemvalue="JUnit.AuthorizationFilterTest.testDoCustomFilter_InvalidInput_Failure" />
-        <item itemvalue="JUnit.AppControllerServletTest.testDoGet" />
+        <item itemvalue="JUnit.TestRepoTestImpl" />
+        <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTestThrowEx" />
+        <item itemvalue="JUnit.TestRepoTestImpl.updateInfoTest" />
+        <item itemvalue="JUnit.TestServiceTest.updateTest" />
+        <item itemvalue="JUnit.AnswerServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -397,21 +459,8 @@
       <workItem from="1680470653344" duration="1443000" />
       <workItem from="1680474190936" duration="1589000" />
       <workItem from="1680563034959" duration="6811000" />
-      <workItem from="1680644156138" duration="6481000" />
-    </task>
-    <task id="LOCAL-00027" summary="Timer work">
-      <created>1674774450742</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1674774450742</updated>
-    </task>
-    <task id="LOCAL-00028" summary="drop down list add">
-      <created>1674811320485</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1674811320485</updated>
+      <workItem from="1680644156138" duration="8453000" />
+      <workItem from="1681163159721" duration="8371000" />
     </task>
     <task id="LOCAL-00029" summary="101">
       <created>1674843206513</created>
@@ -742,7 +791,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680653659433</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Added QuestionDto&#10;And refactored this functionality">
+      <created>1680654579538</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1680654579538</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Added lombok annotations">
+      <created>1680654877232</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1680654877233</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -760,8 +823,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="a little fix with logger" />
-    <MESSAGE value="Add load image, for question and view in quiz" />
     <MESSAGE value="Add ImageRepo" />
     <MESSAGE value="delete some classes" />
     <MESSAGE value="Add JavaDoc for PostCommands" />
@@ -785,7 +846,9 @@
     <MESSAGE value="work with tests" />
     <MESSAGE value="Add lombok&#10;refactor logger" />
     <MESSAGE value="Added AnswerDto&#10;And refactored this functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AnswerDto&#10;And refactored this functionality" />
+    <MESSAGE value="Added QuestionDto&#10;And refactored this functionality" />
+    <MESSAGE value="Added lombok annotations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added lombok annotations" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -806,7 +869,7 @@
       <FILTER>service_test.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/startCommand$DataHendlerTest.ic" NAME="DataHendlerTest Coverage Results" MODIFIED="1673823560611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1680310083984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/startCommand$All_in_startCommand.ic" NAME="All in startCommand Coverage Results" MODIFIED="1680655826034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerRepoTest_testCreateAnswer.ic" NAME="AnswerRepoTest.testCreateAnswer Coverage Results" MODIFIED="1673213161020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/startCommand$AnswerServiceTest.ic" NAME="AnswerServiceTest Coverage Results" MODIFIED="1673473203875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service_test.*</FILTER>

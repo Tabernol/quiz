@@ -44,7 +44,7 @@ public class QuestionRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepoImpl.createQuestion(321L, "test text");
+            int rowsUpdate = questionRepoImpl.create(new Question());
             Assertions.assertEquals(13, rowsUpdate);
         }
     }
@@ -133,7 +133,7 @@ public class QuestionRepoImplTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> questionRepoImpl.createQuestion(34467L, "new text Question"));
+                    () -> questionRepoImpl.create(new Question()));
         }
     }
 

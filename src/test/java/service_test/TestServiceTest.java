@@ -1,5 +1,6 @@
 package service_test;
 
+import dto.TestDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import org.junit.jupiter.api.Assertions;
@@ -69,10 +70,9 @@ public class TestServiceTest {
 
     @Test
     public void updateTest() throws DataBaseException, ValidateException {
-        Mockito.when(mockTestRepoImpl.updateInfoTest(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(1);
-        assertEquals(1, testService.update(12L,
-                "newName", "newSubject", 45, 26));
+        Mockito.when(mockTestRepoImpl.updateInfoTest(Mockito.any(models.Test.class))).thenReturn(1);
+        assertEquals(1, testService.update(new TestDto(12L,
+                "newName", "newSubject", 45, 26)));
     }
 
     @Test
@@ -111,7 +111,7 @@ public class TestServiceTest {
         List<models.Test> testList = new ArrayList<>();
         Mockito.when(mockTestRepoImpl.nextPage(Mockito.anyString())).thenReturn(testList);
         Assertions.assertEquals(testList,
-                testService.getPageTestList("Sub", "order by ...", 2,2,"admin"));
+                testService.getPageTestList("Sub", "order by ...", 2, 2, "admin"));
     }
 
     @Test

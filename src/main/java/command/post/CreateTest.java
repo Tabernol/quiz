@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import dto.TestDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,7 @@ public class CreateTest implements RequestHandler {
         int duration = Integer.parseInt(req.getParameter("duration"));
 
         try {
-            int result = testService.createTest(name, subject, difficult, duration);
+            int result = testService.createTest(new TestDto(name,subject,difficult,duration));
             log.info("Test " + name + "has created");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +

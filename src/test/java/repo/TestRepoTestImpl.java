@@ -41,8 +41,9 @@ public class TestRepoTestImpl {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
             Assertions.assertEquals(13,
-                    testRepoImpl.updateInfoTest(1231L,
-                            "name text", "name Subject", 23, 12));
+                    testRepoImpl.updateInfoTest(
+                            new models.Test(12L, "name", "subject",
+                                    80, 25, 234, models.Test.Status.FREE)));
         }
     }
 
@@ -53,8 +54,9 @@ public class TestRepoTestImpl {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepoImpl.updateInfoTest(1231L,
-                            "name text", "name Subject", 23, 12));
+                    () -> testRepoImpl.updateInfoTest(
+                            new models.Test(12L, "name", "subject",
+                                    23, 23, 100, models.Test.Status.FREE)));
         }
     }
 
@@ -189,7 +191,7 @@ public class TestRepoTestImpl {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
             Assertions.assertEquals(13,
-                    testRepoImpl.createTest("nameTEST", "subject", 45, 12));
+                    testRepoImpl.create(new models.Test("nameTEST", "subject", 45, 12)));
         }
     }
 
@@ -200,7 +202,7 @@ public class TestRepoTestImpl {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> testRepoImpl.createTest("nameTEST", "subject", 45, 12));
+                    () -> testRepoImpl.create(new models.Test("nameTEST", "subject", 45, 12)));
         }
     }
 
@@ -232,7 +234,7 @@ public class TestRepoTestImpl {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(false);
-            Assertions.assertEquals(null, testRepoImpl.getDistinctSubject());
+            Assertions.assertEquals(new ArrayList<>(), testRepoImpl.getDistinctSubject());
         }
     }
 

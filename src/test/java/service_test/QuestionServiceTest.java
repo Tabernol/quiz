@@ -1,5 +1,6 @@
 package service_test;
 
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import models.Question;
@@ -28,7 +29,8 @@ public class QuestionServiceTest {
         Question question = new Question();
         question.setId(12);
         Mockito.when(mockQuestionRepoImpl.get(Mockito.anyLong())).thenReturn(question);
-        Assertions.assertEquals(question, questionService.get(1L));
+        QuestionDto questionDto = questionService.mapToDto(question);
+        Assertions.assertEquals(questionDto, questionService.get(1L));
     }
 
     @Test
@@ -42,8 +44,8 @@ public class QuestionServiceTest {
 
     @Test
     public void addQuestionAddTest() throws DataBaseException, ValidateException {
-        Mockito.when(mockQuestionRepoImpl.createQuestion(Mockito.anyLong(), Mockito.anyString())).thenReturn(1);
-        int i = questionService.addQuestion(123L, "text Question");
+        Mockito.when(mockQuestionRepoImpl.create(new Question())).thenReturn(1);
+        int i = questionService.addQuestion(new QuestionDto());
         assertEquals(1, i);
 
     }
@@ -54,7 +56,8 @@ public class QuestionServiceTest {
         int i = questionService.deleteQuestion(Mockito.anyLong());
         assertEquals(12, i);
     }
-//
+
+    //
     @Test
     public void updateQuestionTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepoImpl.updateQuestion(Mockito.anyString(), Mockito.anyLong())).thenReturn(12);

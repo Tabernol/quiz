@@ -12,8 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import repo.QuestionRepo;
 
 /**
@@ -32,7 +30,7 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public List<Question> getAllById(Long testId) throws DataBaseException {
-        String sql = "select * from question where test_id = ?";
+        String sql = "select * from epam_project_testing.question where test_id = ?";
         List<Question> questions = new ArrayList<>();
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -64,7 +62,7 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public Question get(Long id) throws DataBaseException {
-        String sql = "select * from question where id = ?";
+        String sql = "select * from epam_project_testing.question where id = ?";
         Question question = new Question();
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -75,7 +73,6 @@ public class QuestionRepoImpl implements QuestionRepo {
                 question.setTestId(resultSet.getLong("test_id"));
                 question.setText(resultSet.getString("q_text"));
                 question.setUrlImage(resultSet.getString("url"));
-                // question.setAnswerOptions(answerRepo.getAnswersByQuestionId(id));
             }
             resultSet.close();
             return question;
@@ -95,7 +92,7 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public int updateQuestion(String newText, Long id) throws DataBaseException {
-        String sql = "update question set q_text = ? where id = ? ";
+        String sql = "update epam_project_testing.question set q_text = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, newText);
@@ -116,7 +113,7 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        String sql = "delete from question where id = ?";
+        String sql = "delete from epam_project_testing.question where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);
@@ -130,19 +127,17 @@ public class QuestionRepoImpl implements QuestionRepo {
     /**
      * method create new Question and input in database
      *
-     * @param testId is identification Test(quiz) in database,
-     *               it is foreign key for few Question in table 'question' in database
-     * @param text   text of question
+     * @param question - a new question is passed from the service layer
      * @return 1 if question will be deleted
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int createQuestion(Long testId, String text) throws DataBaseException {
-        String sql = "insert into question (id, test_id, q_text) values(default, ?, ?)";
+    public int create(Question question) throws DataBaseException {
+        String sql = "insert into epam_project_testing.question (id, test_id, q_text) values(default, ?, ?)";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setString(1, String.valueOf(testId));
-            pst.setString(2, text);
+            pst.setLong(1, question.getTestId());
+            pst.setString(2, question.getText());
             return pst.executeUpdate();
         } catch (SQLException e) {
             log.warn("Can not create question by id");
@@ -156,11 +151,11 @@ public class QuestionRepoImpl implements QuestionRepo {
      * @param url is url-address of image
      * @param id  is identification of Question in table 'question'
      * @return 1 if question will be updated
-     * @throws DataBaseException
+     * @throws DataBaseException is wrapper of SQLException
      */
     @Override
     public int updateImageQuestion(String url, Long id) throws DataBaseException {
-        String sql = "update question set url = ? where id = ? ";
+        String sql = "update epam_project_testing.question set url = ? where id = ? ";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, url);

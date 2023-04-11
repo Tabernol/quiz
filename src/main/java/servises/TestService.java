@@ -1,5 +1,6 @@
 package servises;
 
+import dto.TestDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,7 @@ import java.util.List;
  * It checks the input and decides whether to call TestRepo.class or throw an exception
  */
 @Slf4j
-public class TestService {
+public class TestService implements ConvertToEntityAble<Test, TestDto> {
     /**
      * Class contains:
      * testRepo field for work with TestRepo.class
@@ -33,20 +34,21 @@ public class TestService {
      * it checks the test name for uniqueness.
      * it causes the insertion of new data
      *
-     * @param name      is unique name of test
-     * @param subject   is subject of test
-     * @param difficult can be from 0 to 100
-     * @param duration  can be less than 30
+     * @param testDto where:
+     *                name is unique name of test
+     *                subject is subject of test
+     *                difficult can be from 0 to 100
+     *                duration can be less than 30
      * @return 1 if test has created
      * @throws ValidateException
      * @throws DataBaseException
      */
-    public int createTest(String name, String subject, int difficult, int duration)
+    public int createTest(TestDto testDto)
             throws ValidateException, DataBaseException {
-        validatorService.checkFieldsTest(name, subject, difficult, duration);
-        validatorService.isNameExist(testRepoImpl.isNameExist(name));
-        log.info("SERVICE TEST create new test with name " + name);
-        return testRepoImpl.createTest(name, subject, difficult, duration);
+        validatorService.checkFieldsTest(testDto);
+        validatorService.isNameExist(testRepoImpl.isNameExist(testDto.getName()));
+        log.info("SERVICE TEST create new test with name {}", testDto);
+        return testRepoImpl.create(mapToEntity(testDto));
     }
 
     /**
@@ -115,10 +117,10 @@ public class TestService {
      * @throws DataBaseException
      * @throws ValidateException
      */
-    public int update(Long id, String name, String subject, int difficult, int duration) throws DataBaseException, ValidateException {
-        validatorService.checkFieldsTest(name, subject, difficult, duration);
-        log.info("SERVICE TEST update test with id " + id);
-        return testRepoImpl.updateInfoTest(id, name, subject, difficult, duration);
+    public int update(TestDto testDto) throws DataBaseException, ValidateException {
+        validatorService.checkFieldsTest(testDto);
+        log.info("SERVICE TEST update test {}", testDto);
+        return testRepoImpl.updateInfoTest(mapToEntity(testDto));
     }
 
     /**
@@ -175,5 +177,17 @@ public class TestService {
             log.info("SERVICE TEST with id " + testId + " is " + Test.Status.BLOCKED);
             return testRepoImpl.changeStatus(testId, Test.Status.BLOCKED);
         }
+    }
+
+    @Override
+    public Test mapToEntity(TestDto testDto) {
+        Test test = new Test();
+        test.setId(testDto.getId());
+        test.setName(testDto.getName());
+        test.setSubject(testDto.getSubject());
+        test.setDifficult(testDto.getDifficult());
+        test.setDuration(testDto.getDuration());
+        test.setPopularity(testDto.getPopularity());
+        return test;
     }
 }

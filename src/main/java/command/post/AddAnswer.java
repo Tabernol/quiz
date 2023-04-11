@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import dto.AnswerDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -45,8 +46,10 @@ public class AddAnswer implements RequestHandler {
         String text = req.getParameter("text");
         Boolean result = Boolean.valueOf(req.getParameter("result"));
 
+        AnswerDto answerDto = new AnswerDto(0L, questionId, text, result);
+
         try {
-            answerService.createAnswer(questionId, text, result);
+            answerService.createAnswer(answerDto);
             log.info("Answer for question id " + questionId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +

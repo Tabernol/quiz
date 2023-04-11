@@ -12,9 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import repo.AnswerRepo;
 
 /**
@@ -24,7 +21,6 @@ import repo.AnswerRepo;
  */
 @Slf4j
 public class AnswerRepoImpl implements AnswerRepo {
-    private MyDataSource myDataSource;
 
     /**
      * method return List of answer for this questionId
@@ -36,9 +32,9 @@ public class AnswerRepoImpl implements AnswerRepo {
      */
     @Override
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
-        String sql = "select * from answer where question_id = ?";
+        String sql = "select * from epam_project_testing.answer where question_id = ?";
         List<Answer> answers = new ArrayList<>();
-        try (Connection con = myDataSource.getConnection();
+        try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, questionId.toString());
             ResultSet resultSet = pst.executeQuery();
@@ -61,21 +57,18 @@ public class AnswerRepoImpl implements AnswerRepo {
     /**
      * method create new Answer for has chosen question by questionId
      *
-     * @param questionId is identification question in database,
-     *                   and it is foreign key for few answers in table 'answer' in database
-     * @param text       is text of Answer
-     * @param result     it is an answer, can be true or false
+     * @param answer is a new answer is passed from the service layer
      * @return 1 if Answer has created
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int createAnswer(Long questionId, String text, boolean result) throws DataBaseException {
-        String sql = "insert into answer (id, question_id, a_text, result) values(default, ?,?,?)";
+    public int create(Answer answer) throws DataBaseException {
+        String sql = "insert into epam_project_testing.answer (id, question_id, a_text, result) values(default, ?,?,?)";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setLong(1, questionId);
-            pst.setString(2, text);
-            pst.setBoolean(3, result);
+            pst.setLong(1, answer.getQuestionId());
+            pst.setString(2, answer.getText());
+            pst.setBoolean(3, answer.isResult());
             return pst.executeUpdate();
         } catch (SQLException e) {
             log.warn("Can't insert answer problem ");
@@ -92,7 +85,7 @@ public class AnswerRepoImpl implements AnswerRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        String sql = "delete from answer where id = ?";
+        String sql = "delete from epam_project_testing.answer where id = ?";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setLong(1, id);

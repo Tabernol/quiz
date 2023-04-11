@@ -1,5 +1,6 @@
 package servises;
 
+import dto.TestDto;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import validator.DataValidator;
@@ -19,24 +20,25 @@ public class ValidatorService {
     /**
      * This method calls DataValidator.class to validate each input parameter
      *
-     * @param name      is name of test(quiz)
-     * @param subject   is topic of test
-     * @param difficult is difficult of test must be from 0 to 100
-     * @param duration  is duration of test must be from 1 to 30 minutes
+     * @param testDto where:
+     *                  name  is name of test(quiz)
+     *                  subject is topic of test
+     *                  difficult is difficult of test must be from 0 to 100
+     *                  duration is duration of test must be from 1 to 30 minutes
      * @throws ValidateException
      */
-    public void checkFieldsTest(String name, String subject, Integer difficult, Integer duration)
+    public void checkFieldsTest(TestDto testDto)
             throws ValidateException {
-        dataValidator.isValid(dataValidator.validateForNamePlusNumber(name),
+        dataValidator.isValid(dataValidator.validateForNamePlusNumber(testDto.getName()),
                 "name must contains only liters and numbers and space from 2-20 symbols");
         log.info("SERVICE VALIDATOR name is valid");
-        dataValidator.isValid(dataValidator.validateForName(subject),
+        dataValidator.isValid(dataValidator.validateForName(testDto.getSubject()),
                 "subject must contains only liters and space from 2-20 symbols");
         log.info("SERVICE VALIDATOR subject is valid");
-        dataValidator.isValid(dataValidator.validateDifficult(difficult),
+        dataValidator.isValid(dataValidator.validateDifficult(testDto.getDifficult()),
                 "difficult must be from 1 to 100");
         log.info("SERVICE VALIDATOR difficult is valid");
-        dataValidator.isValid(dataValidator.validateDuration(duration),
+        dataValidator.isValid(dataValidator.validateDuration(testDto.getDuration()),
                 "duration must be from 1 to 30 minutes");
         log.info("SERVICE VALIDATOR duration is valid");
     }

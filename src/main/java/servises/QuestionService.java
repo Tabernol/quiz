@@ -16,7 +16,9 @@ import java.util.List;
  * It checks the input and decides whether to call QuestionRepo.class or throw an exception
  */
 @Slf4j
-public class QuestionService implements ConvertToDtoAble<QuestionDto, Question> {
+public class QuestionService implements
+        ConvertToDtoAble<QuestionDto, Question>,
+        ConvertToEntityAble<Question, QuestionDto>{
     /**
      * Class contains:
      * questionRepo field for work with QuestionRepo.class
@@ -55,10 +57,11 @@ public class QuestionService implements ConvertToDtoAble<QuestionDto, Question> 
      * @throws DataBaseException
      * @throws ValidateException
      */
-    public int addQuestion(Long testId, String text) throws DataBaseException, ValidateException {
-        validatorService.validateText(text);
-        log.info("SERVICE QUESTION add question for test " + testId);
-        return questionRepoImpl.createQuestion(testId, text);
+    public int addQuestion(QuestionDto questionDto) throws DataBaseException, ValidateException {
+        validatorService.validateText(questionDto.getText());
+        Question question = mapToEntity(questionDto);
+        log.info("SERVICE QUESTION add question for test {}", question);
+        return questionRepoImpl.create(question);
     }
 
     /**
@@ -125,5 +128,15 @@ public class QuestionService implements ConvertToDtoAble<QuestionDto, Question> 
         questionDto.setTestId(entity.getTestId());
         questionDto.setUrlImage(entity.getUrlImage());
         return questionDto;
+    }
+
+    @Override
+    public Question mapToEntity(QuestionDto questionDto) {
+        Question question = new Question();
+       // question.setId(questionDto.getId());
+        question.setTestId(questionDto.getTestId());
+        question.setText(questionDto.getText());
+      //  question.setUrlImage(questionDto.getUrlImage());
+        return question;
     }
 }

@@ -1,5 +1,6 @@
 package service_test;
 
+import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import models.User;
@@ -25,12 +26,17 @@ public class UserServiceTest {
     @Mock
     ValidatorService mockValidateService;
     UserService userService;
+    User testUser;
 
     @BeforeEach
     public void setUp() {
         mockUserRepoImpl = Mockito.mock(UserRepoImpl.class);
         mockValidateService = Mockito.mock(ValidatorService.class);
         userService = new UserService(mockUserRepoImpl, mockValidateService);
+        testUser = new User();
+        testUser.setId(12L);
+        testUser.setName("newName");
+        testUser.setRole(User.Role.ADMIN);
     }
 
 //    @Test
@@ -48,8 +54,7 @@ public class UserServiceTest {
 
     @Test
     public void createUser() throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
-        Mockito.when(mockUserRepoImpl.createUser(Mockito.anyString(),
-                Mockito.anyString(), Mockito.anyString())).thenReturn(123L);
+        Mockito.when(mockUserRepoImpl.create(testUser)).thenReturn(123L);
         assertEquals(123L,
                 userService.createUser(
                         "name", "login", "password", "repeatPassword"));
@@ -70,19 +75,11 @@ public class UserServiceTest {
 
     @Test
     public void updateLarge() throws DataBaseException, ValidateException {
-        Mockito.when(mockUserRepoImpl.updateUser(Mockito.anyLong(),
-                Mockito.anyString(), Mockito.anyString())).thenReturn(1);
-        assertEquals(1, userService.updateUser(23L,
-                "newNAme", "newRole"));
+        Mockito.when(mockUserRepoImpl.update(testUser)).thenReturn(1);
+        assertEquals(1, userService.updateUser(new UserDto(23L,
+                "newNAme", "ADMIN")));
     }
 
-//    @Test
-//    public void updateSmall() throws DataBaseException, ValidateException {
-//        Mockito.when(mockUserRepo.updateUser(Mockito.anyLong(),
-//                Mockito.anyString())).thenReturn(1);
-//        assertEquals(1, userService.updateUser(Mockito.anyLong(),
-//                Mockito.anyString()));
-//    }
 
 //    @Test
 //    public void isCorrectPassword() throws DataBaseException, ValidateException {

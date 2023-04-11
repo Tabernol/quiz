@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionDto {
-    private long id;
-    private long testId;
+    private Long id;
+    private Long testId;
     private String text;
     private String urlImage;
 

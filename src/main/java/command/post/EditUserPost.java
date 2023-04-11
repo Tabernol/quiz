@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -39,8 +40,9 @@ public class EditUserPost implements RequestHandler {
         String name = req.getParameter("name");
         String role = req.getParameter("role");
 
+
         try {
-            userService.updateUser(userId, name, role);
+            userService.updateUser(new UserDto(userId, name, role));
             log.info("User with id " + userId + "changes made successfully");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/profile" +

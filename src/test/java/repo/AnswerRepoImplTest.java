@@ -46,9 +46,9 @@ class AnswerRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int answer = answerRepoImpl.create(new Answer(123L, 256863L, "new", true));
+            long answer = answerRepoImpl.create(new Answer(123L, 256863L, "new", true));
 //            int answer = answerRepo.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
-            Assertions.assertEquals(13, answer);
+            Assertions.assertEquals(13L, answer);
         }
 
     }

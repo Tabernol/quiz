@@ -15,7 +15,7 @@ import java.util.List;
  * It checks the input and decides whether to call TestRepo.class or throw an exception
  */
 @Slf4j
-public class TestService implements ConvertToEntityAble<Test, TestDto> {
+public class TestService implements ConvertToEntityAble<Test, TestDto>, ConvertToDtoAble<TestDto, Test> {
     /**
      * Class contains:
      * testRepo field for work with TestRepo.class
@@ -39,7 +39,7 @@ public class TestService implements ConvertToEntityAble<Test, TestDto> {
      * @throws ValidateException
      * @throws DataBaseException
      */
-    public int createTest(TestDto testDto)
+    public long createTest(TestDto testDto)
             throws ValidateException, DataBaseException {
         validatorService.checkFieldsTest(testDto);
         validatorService.isNameExist(testRepoImpl.isNameExist(testDto.getName()));
@@ -96,9 +96,9 @@ public class TestService implements ConvertToEntityAble<Test, TestDto> {
      * @return models.Test
      * @throws DataBaseException
      */
-    public Test get(Long id) throws DataBaseException {
+    public TestDto get(Long id) throws DataBaseException {
         log.info("SERVICE TEST get test with id " + id);
-        return testRepoImpl.get(id);
+        return mapToDto(testRepoImpl.get(id));
     }
 
     /**
@@ -180,6 +180,20 @@ public class TestService implements ConvertToEntityAble<Test, TestDto> {
         test.setDifficult(testDto.getDifficult());
         test.setDuration(testDto.getDuration());
         test.setPopularity(testDto.getPopularity());
+    //    test.setStatus(Test.Status.valueOf(testDto.getStatus()));
         return test;
+    }
+
+    @Override
+    public TestDto mapToDto(Test entity) {
+        TestDto testDto = new TestDto();
+        testDto.setId(entity.getId());
+        testDto.setName(entity.getName());
+        testDto.setDifficult(entity.getDifficult());
+        testDto.setDuration(entity.getDuration());
+        testDto.setSubject(entity.getSubject());
+        testDto.setPopularity(entity.getPopularity());
+        testDto.setStatus(entity.getStatus().getStatus());
+        return testDto;
     }
 }

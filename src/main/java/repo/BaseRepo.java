@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BaseRepo<T> {
 
-    int create(T t) throws DataBaseException;
+    long create(T t) throws DataBaseException;
 
     int delete(Long id) throws DataBaseException;
 

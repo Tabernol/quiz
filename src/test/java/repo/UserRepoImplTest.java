@@ -2,6 +2,7 @@ package repo;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import models.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,12 +26,20 @@ public class UserRepoImplTest {
     private ResultSet mockResultSet;
     private UserRepoImpl userRepoImpl;
 
+    User testUser;
+
     @BeforeEach
     public void setUp() throws SQLException {
         mockConnection = Mockito.mock(Connection.class);
         mockPreparedStatement = Mockito.mock(PreparedStatement.class);
         mockResultSet = Mockito.mock(ResultSet.class);
         userRepoImpl = new UserRepoImpl();
+        testUser = new User();
+        testUser.setId(1245L);
+        testUser.setName("name");
+        testUser.setLogin("login");
+        testUser.setRole(User.Role.ADMIN);
+        testUser.setBlocked(false);
     }
 
     @Test
@@ -51,11 +60,11 @@ public class UserRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             mockConnection.setAutoCommit(false);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
-         //   Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
+            //   Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenReturn(true);
             Mockito.when(mockResultSet.getInt("last_insert_id()")).thenReturn(123);
-            Assertions.assertEquals(123, userRepoImpl.createUser("login", "password", "name"));
+            Assertions.assertEquals(123, userRepoImpl.create(new User("login", "password", "name")));
         }
     }
 
@@ -68,7 +77,7 @@ public class UserRepoImplTest {
             Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
             Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> userRepoImpl.createUser("login", "password", "name"));
+                    () -> userRepoImpl.create(new User("login", "password", "name")));
         }
     }
 
@@ -100,7 +109,7 @@ public class UserRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
-            Assertions.assertEquals(12, userRepoImpl.updateUser(12312L, "name"));
+            Assertions.assertEquals(12, userRepoImpl.update(testUser));
         }
     }
 
@@ -111,9 +120,9 @@ public class UserRepoImplTest {
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenThrow(new SQLException());
             Assertions.assertThrows(DataBaseException.class,
-                    () -> userRepoImpl.updateUser(1234L, "name"));
+                    () -> userRepoImpl.update(testUser));
             Assertions.assertThrows(DataBaseException.class,
-                    () -> userRepoImpl.updateUser(1234L, "name", "student"));
+                    () -> userRepoImpl.update(testUser));
         }
     }
 
@@ -123,7 +132,7 @@ public class UserRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
-            Assertions.assertEquals(12, userRepoImpl.updateUser(1234L, "name", "student"));
+            Assertions.assertEquals(12, userRepoImpl.update(testUser));
         }
     }
 

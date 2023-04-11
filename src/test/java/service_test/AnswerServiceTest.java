@@ -61,7 +61,7 @@ public class AnswerServiceTest {
     @Test
     public void createAnswerServiceTest() throws DataBaseException, ValidateException {
         Mockito.when(mockValidatorService.validateText(Mockito.anyString())).thenReturn(true);
-        Mockito.when(mockAnswerRepoImpl.create(Mockito.any(Answer.class))).thenReturn(12);
+        Mockito.when(mockAnswerRepoImpl.create(Mockito.any(Answer.class))).thenReturn(12L);
 
         assertEquals(12, answerService.createAnswer(
                 new AnswerDto(1L, 123L, "text", true)));

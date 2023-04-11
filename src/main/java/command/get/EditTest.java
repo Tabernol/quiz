@@ -2,6 +2,7 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import dto.QuestionDto;
+import dto.TestDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Question;
@@ -52,14 +53,16 @@ public class EditTest implements RequestHandler {
         List<QuestionDto> all;
 
         try {
-            Test test = testService.get(id);
+            TestDto testDto = testService.get(id);
             all = questionService.getAllById(id);
 
-            req.setAttribute("test_id", test.getId());
-            req.setAttribute("name", test.getName());
-            req.setAttribute("subject", test.getSubject());
-            req.setAttribute("difficult", test.getDifficult());
-            req.setAttribute("duration", test.getDuration());
+
+            req.setAttribute("test", testDto);
+//            req.setAttribute("test_id", test.getId());
+//            req.setAttribute("name", test.getName());
+//            req.setAttribute("subject", test.getSubject());
+//            req.setAttribute("difficult", test.getDifficult());
+//            req.setAttribute("duration", test.getDuration());
             req.setAttribute("questions", all);
             log.info("Test with ID " + id + " has updated");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);

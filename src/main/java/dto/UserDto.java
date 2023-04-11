@@ -1,12 +1,21 @@
 package dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import models.User;
-
+@Data
+@NoArgsConstructor
 public class UserDto {
-    private long id;
+    private Long id;
     private String login;
-    private String password;
     private String name;
-    private User.Role role;
+    private String role;
     private boolean isBlocked;
+
+    public UserDto(Long id, String name, String role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+    }
 }

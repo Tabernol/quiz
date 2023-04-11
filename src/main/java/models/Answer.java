@@ -10,8 +10,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Answer {
-    private long id;
-    private long questionId;
+    private Long id;
+    private Long questionId;
     private String text;
     private boolean result;
 

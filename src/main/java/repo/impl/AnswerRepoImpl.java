@@ -61,7 +61,7 @@ public class AnswerRepoImpl implements AnswerRepo {
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int create(Answer answer) throws DataBaseException {
+    public long create(Answer answer) throws DataBaseException {
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_ANSWER)) {
             pst.setLong(1, answer.getQuestionId());

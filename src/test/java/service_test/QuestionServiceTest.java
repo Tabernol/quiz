@@ -44,8 +44,8 @@ public class QuestionServiceTest {
 
     @Test
     public void addQuestionAddTest() throws DataBaseException, ValidateException {
-        Mockito.when(mockQuestionRepoImpl.create(new Question())).thenReturn(1);
-        int i = questionService.addQuestion(new QuestionDto());
+        Mockito.when(mockQuestionRepoImpl.create(new Question())).thenReturn(1L);
+        long i = questionService.addQuestion(new QuestionDto());
         assertEquals(1, i);
 
     }

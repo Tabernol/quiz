@@ -53,15 +53,12 @@ public class AnswerService implements
 
     /**
      * Mhe method takes input, validates it, and calls to repository layer to create Answer
-     *
-     * @param questionId is unique number Question in database
-     * @param text       is new text of answer for question by id
-     * @param result     can be true or false, and define the result
+     * @param answerDto contains information about answer
      * @return 1 if Answer has created
      * @throws DataBaseException
      * @throws ValidateException
      */
-    public int createAnswer(AnswerDto answerDto) throws DataBaseException, ValidateException {
+    public long createAnswer(AnswerDto answerDto) throws DataBaseException, ValidateException {
         validatorService.validateText(answerDto.getText());
         log.info("SERVICE ANSWER creating new answer");
         return answerRepoImpl.create(mapToEntity(answerDto));
@@ -93,10 +90,10 @@ public class AnswerService implements
     @Override
     public Answer mapToEntity(AnswerDto answerDto) {
         Answer answer = new Answer();
-      //  answer.setId(answerDto.getId());
+        answer.setId(answerDto.getId());
         answer.setText(answerDto.getText());
         answer.setQuestionId(answerDto.getQuestionId());
-        answer.setResult(answerDto.getResult());
+        answer.setResult(answerDto.isResult());
         return answer;
     }
 }

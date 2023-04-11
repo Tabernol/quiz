@@ -6,14 +6,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class TestDto {
-    private long id;
+    private Long id;
     private String name;
     private String subject;
-    private int difficult;
-    private int duration;
-    private int popularity;
+    private Integer difficult;
+    private Integer duration;
+    private Integer popularity;
+    private String status;
 
     public TestDto(String name, String subject, int difficult, int duration) {
         this.name = name;

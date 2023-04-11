@@ -44,8 +44,8 @@ public class QuestionRepoImplTest {
             myDataSourceMockedStatic.when(() -> MyDataSource.getConnection()).thenReturn(mockConnection);
             Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
             Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-            int rowsUpdate = questionRepoImpl.create(new Question(121L, 1234L, "text", "url"));
-            Assertions.assertEquals(13, rowsUpdate);
+            long rowsUpdate = questionRepoImpl.create(new Question(121L, 1234L, "text", "url"));
+            Assertions.assertEquals(13L, rowsUpdate);
         }
     }
 

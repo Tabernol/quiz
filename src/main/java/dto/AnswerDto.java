@@ -12,7 +12,7 @@ public class AnswerDto {
     private Long id;
     private Long questionId;
     private String text;
-    private Boolean result;
+    private boolean result;
 
     public AnswerDto(Long questionId, String text, Boolean result) {
         this.questionId = questionId;

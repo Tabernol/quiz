@@ -48,16 +48,16 @@
     <div class="offcanvas-body">
         <form method="post" action="edit_test">
             <input type="hidden" name="page" value="${requestScope.page}">
-            <input type="hidden" name="test_id" value="${requestScope.test_id}">
+            <input type="hidden" name="test_id" value="${requestScope.test.id}">
 
             <h6 class="fw-light"><fmt:message key="table.head.test.name"/></h6>
-            <input type="text" name="name" value="${requestScope.name}">
+            <input type="text" name="name" value="${requestScope.test.name}">
             <h6 class="fw-light"><fmt:message key="table.head.subject"/></h6>
-            <input type="text" value="${requestScope.subject}" name="subject">
+            <input type="text" value="${requestScope.test.subject}" name="subject">
             <h6 class="fw-light"><fmt:message key="table.head.difficult"/></h6>
-            <input type="number" name="difficult" value="${requestScope.difficult}">
+            <input type="number" name="difficult" value="${requestScope.test.difficult}">
             <h6 class="fw-light"><fmt:message key="table.head.duration"/></h6>
-            <input type="number" name="duration" value="${requestScope.duration}"><br>
+            <input type="number" name="duration" value="${requestScope.test.duration}"><br>
             <div class="d-flex justify-content-center">
                 <button type="submit"
                         class="btn btn-secondary"><fmt:message key="button.edit"/>

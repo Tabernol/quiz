@@ -56,7 +56,7 @@ public class QuestionService implements
      * @throws DataBaseException
      * @throws ValidateException
      */
-    public int addQuestion(QuestionDto questionDto) throws DataBaseException, ValidateException {
+    public long addQuestion(QuestionDto questionDto) throws DataBaseException, ValidateException {
         validatorService.validateText(questionDto.getText());
         Question question = mapToEntity(questionDto);
         log.info("SERVICE QUESTION add question for test {}", question);

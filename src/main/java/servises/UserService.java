@@ -1,5 +1,6 @@
 package servises;
 
+import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,9 @@ import java.util.List;
  * It checks the input and decides whether to call UserRepo.class or throw an exception
  */
 @Slf4j
-public class UserService {
+public class UserService implements
+        ConvertToDtoAble<UserDto, User>,
+        ConvertToEntityAble<User, UserDto> {
     /**
      * Class contains:
      * userRepo field for work with UserRepo.class
@@ -67,7 +70,7 @@ public class UserService {
         validatorService.validateRepeatPassword(password, repeatPassword);
         String passwordHash = PasswordHashingService.generateStrongPasswordHash(password);
         log.info("SERVICE USER create new user");
-        return userRepoImpl.createUser(login, passwordHash, name);
+        return userRepoImpl.create(new User(login, passwordHash, name));
     }
 
     /**
@@ -84,23 +87,15 @@ public class UserService {
     /**
      * this method calls validate input parameters and calls to UserRepo.class
      *
-     * @param id   is unique number of user in database
-     * @param name is new name of user
-     * @param role is new role of user
+     * @param userdto contains information for update user in database
      * @return 1 if user has updated
      * @throws DataBaseException
      * @throws ValidateException
      */
-    public int updateUser(Long id, String name, String role) throws DataBaseException, ValidateException {
-        if (role == null) {
-            validatorService.validateUpdateUser(name);
-            log.info("SERVICE USER update user with id {} new name = {}", id, name);
-            return userRepoImpl.updateUser(id, name);
-        } else {
-            validatorService.validateUpdateUser(name, role);
-            log.info("SERVICE USER update user with id {} new name = {} new role = {}", id, name, role);
-            return userRepoImpl.updateUser(id, name, role);
-        }
+    public int updateUser(UserDto userdto) throws DataBaseException, ValidateException {
+            validatorService.validateUpdateUser(userdto.getName(), userdto.getRole());
+            log.info("SERVICE USER update user {}", userdto);
+            return userRepoImpl.update(mapToEntity(userdto));
     }
 
     /**
@@ -200,5 +195,27 @@ public class UserService {
             log.warn("SERVICE USER problem with storage password in database");
             throw new DataBaseException("Cannot find user in DB " + e);
         }
+    }
+
+    @Override
+    public UserDto mapToDto(User entity) {
+        UserDto userDto = new UserDto();
+        userDto.setId(entity.getId());
+        userDto.setName(entity.getName());
+        userDto.setLogin(entity.getLogin());
+        userDto.setRole(entity.getRole().getRole());
+        userDto.setBlocked(entity.isBlocked());
+        return userDto;
+    }
+
+    @Override
+    public User mapToEntity(UserDto userDto) {
+        User user = new User();
+        user.setId(userDto.getId());
+        user.setLogin(userDto.getLogin());
+        user.setName(userDto.getName());
+        user.setRole(User.Role.valueOf(userDto.getRole().toUpperCase()));
+        user.setBlocked(userDto.isBlocked());
+        return user;
     }
 }

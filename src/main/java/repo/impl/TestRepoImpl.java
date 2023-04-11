@@ -36,7 +36,7 @@ public class TestRepoImpl implements TestRepo {
              ResultSet resultSet = pst.executeQuery()) {
             subjects = new ArrayList<>();
             while (resultSet.next()) {
-                String sub = resultSet.getString("subject");
+                String sub = resultSet.getString(SUBJECT);
                 subjects.add(sub);
             }
             return subjects;
@@ -130,16 +130,7 @@ public class TestRepoImpl implements TestRepo {
              PreparedStatement pst = con.prepareStatement(query)) {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                Test test = new Test();
-                test.setId(resultSet.getLong("id"));
-                test.setName(resultSet.getString("name"));
-                test.setSubject(resultSet.getString("subject"));
-                test.setDifficult(resultSet.getInt("difficult"));
-                test.setDuration(resultSet.getInt("duration"));
-                test.setPopularity(resultSet.getInt("popularity"));
-                // do not show blocked for student
-                test.setStatus(Test.Status.valueOf(resultSet.getString("status").toUpperCase()));
-                tests.add(test);
+                tests.add(buildTest(resultSet));
             }
             resultSet.close();
             return tests;
@@ -147,6 +138,18 @@ public class TestRepoImpl implements TestRepo {
             log.warn("Can not get order tests in next page");
             throw new DataBaseException("Can not get order tests in next page" + e.getMessage(), e);
         }
+    }
+
+    private Test buildTest(ResultSet resultSet) throws SQLException {
+        Test test = new Test();
+        test.setId(resultSet.getLong("id"));
+        test.setName(resultSet.getString("name"));
+        test.setSubject(resultSet.getString("subject"));
+        test.setDifficult(resultSet.getInt("difficult"));
+        test.setDuration(resultSet.getInt("duration"));
+        test.setPopularity(resultSet.getInt("popularity"));
+        test.setStatus(Test.Status.valueOf(resultSet.getString("status").toUpperCase()));
+        return test;
     }
 
     /**
@@ -164,14 +167,7 @@ public class TestRepoImpl implements TestRepo {
             pst.setLong(1, id);
             ResultSet resultSet = pst.executeQuery();
             if (resultSet.next()) {
-                test = new Test();
-                test.setId(resultSet.getLong("id"));
-                test.setName(resultSet.getString("name"));
-                test.setSubject(resultSet.getString("subject"));
-                test.setDifficult(resultSet.getInt("difficult"));
-                test.setDuration(resultSet.getInt("duration"));
-                test.setPopularity(resultSet.getInt("popularity"));
-                test.setStatus(Test.Status.valueOf(resultSet.getString("status").toUpperCase()));
+                test = buildTest(resultSet);
             }
             resultSet.close();
             return test;
@@ -254,7 +250,7 @@ public class TestRepoImpl implements TestRepo {
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int create(Test test) throws DataBaseException {
+    public long create(Test test) throws DataBaseException {
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_TEST)) {
             pst.setString(1, test.getName());

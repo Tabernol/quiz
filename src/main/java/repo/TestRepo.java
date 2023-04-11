@@ -39,4 +39,6 @@ public interface TestRepo extends BaseRepo<Test> {
     String IS_TEST_EXIST = "select * from epam_project_testing.test where name like ?";
 
     String CHANGE_STATUS_TEST = "update epam_project_testing.test set status = ? where id = ? ";
+
+    String SUBJECT = "subject";
 }

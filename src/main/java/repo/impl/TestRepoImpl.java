@@ -270,7 +270,7 @@ public class TestRepoImpl implements TestRepo {
      * @param id     is identification Test in database, table 'test'
      * @param status is enum in Test.clas can be FREE or BLOCKED
      * @return 1 if test(quiz) has updated
-     * @throws DataBaseException
+     * @throws DataBaseException is wrapper of SQLException
      */
     @Override
     public int changeStatus(Long id, Test.Status status) throws DataBaseException {

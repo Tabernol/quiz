@@ -1,9 +1,9 @@
 package controllers.filters;
 
+import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
-import models.User;
 import repo.impl.UserRepoImpl;
 import servises.UserService;
 
@@ -32,7 +32,7 @@ public class AuthorizationFilter extends AbstractFilter {
         final String password = req.getParameter("password");
         userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
         long id = -1;
-        User user = null;
+        UserDto userDto = null;
         boolean isCorrectPassword = false;
 
         // get reCAPTCHA request param
@@ -51,7 +51,7 @@ public class AuthorizationFilter extends AbstractFilter {
 
         try {
             id = userService.getId(login);
-            user = userService.get(id);
+            userDto = userService.get(id);
             isCorrectPassword = userService.isCorrectPassword(id, password);
         } catch (DataBaseException | ValidateException e) {
             log.warn("Problem in authorization filter");
@@ -59,7 +59,7 @@ public class AuthorizationFilter extends AbstractFilter {
         }
 
         if (!verify) {
-            log.info("User with id " + user.getId() + " reCAPTCHA is false");
+            log.info("User with id " + userDto.getId() + " reCAPTCHA is false");
             req.setAttribute("message_bad_request", "reCAPTCHA is false");
             req.setAttribute("repeat_login", login);
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
@@ -68,18 +68,18 @@ public class AuthorizationFilter extends AbstractFilter {
             req.setAttribute("message_bad_request", "You do not registered");
             req.setAttribute("repeat_login", login);
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
-        } else if (user.isBlocked()) {
-            log.warn("User with id " + user.getId() + "is block, and try login");
+        } else if (userDto.isBlocked()) {
+            log.warn("User with id " + userDto.getId() + "is block, and try login");
             req.setAttribute("message_bad_request", "You have been blocked");
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
         } else if (isCorrectPassword) {
-            log.info("User with id " + user.getId() + " has come");
+            log.info("User with id " + userDto.getId() + " has come");
             session.setAttribute("user_id", id);// get id
-            session.setAttribute("name", user.getName());
-            session.setAttribute("role", user.getRole().getRole());
+            session.setAttribute("name", userDto.getName());
+            session.setAttribute("role", userDto.getRole());
             filterChain.doFilter(req, resp);
         } else {
-            log.warn("User with id " + user.getId() + "has input wrong password");
+            log.warn("User with id " + userDto.getId() + "has input wrong password");
             req.setAttribute("repeat_login", login);
             req.setAttribute("message_bad_request", "Something wrong(");
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);

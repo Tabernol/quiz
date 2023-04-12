@@ -1,6 +1,7 @@
 
 import connection.MyDataSource;
 import controllers.filters.AuthorizationFilter;
+import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import models.User;
@@ -68,12 +69,12 @@ public class AuthorizationFilterTest {
 
     @Test
     public void testDoCustomFilter_ValidInputFailWithRecaptcha() throws ServletException, IOException, ValidateException, DataBaseException {
-        User user = new User();
-        user.setId(USER_ID);
-        user.setPassword(PASSWORD);
+        UserDto userDto = new UserDto();
+        userDto.setId(USER_ID);
+        //user.setPassword(PASSWORD);
 
         when(userService.getId(anyString())).thenReturn(USER_ID);
-        when(userService.get(USER_ID)).thenReturn(user);
+        when(userService.get(USER_ID)).thenReturn(userDto);
         when(userService.isCorrectPassword(USER_ID, PASSWORD)).thenReturn(true);
         when(request.getParameter("g-recaptcha-response")).thenReturn("valid_recaptcha_response");
 

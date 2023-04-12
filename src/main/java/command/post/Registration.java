@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.servlet.RequestHandler;
+import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import java.security.spec.InvalidKeySpecException;
 
 /**
  * Registration.class is responsible for passing parameters to create a user.
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
@@ -35,6 +37,7 @@ public class Registration implements RequestHandler {
      * if DataBaseException or NoSuchAlgorithmException or InvalidKeySpecException
      * is caught, redirects to error page.
      * if ValidateException is caught, redirects to the page from which the request was made
+     *
      * @param req  the HttpServletRequest object containing information about the request
      * @param resp the HttpServletResponse object for sending the response to the client
      * @throws ServletException if there is an error with the servlet
@@ -52,18 +55,18 @@ public class Registration implements RequestHandler {
         // get reCAPTCHA request param
         String gRecaptchaResponse = req
                 .getParameter("g-recaptcha-response");
-        System.out.println("reCaptcha = "+gRecaptchaResponse);
+        System.out.println("reCaptcha = " + gRecaptchaResponse);
         boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 
-        if(verify){
+        if (verify) {
             try {
-                Long userId = userService.createUser(name, login, password, repeatPassword);
-                User user = userService.get(userId);
+                Long userId = userService.createUser(new UserDto(login,name), password, repeatPassword);
+                UserDto userDto = userService.get(userId);
                 HttpSession session = req.getSession();
                 session.setAttribute("user_id", userId);// get id
-                session.setAttribute("name", user.getName());
-                session.setAttribute("role", user.getRole().getRole());
-                log.info("User has created with login " + login);
+                session.setAttribute("name", userDto.getName());
+                session.setAttribute("role", userDto.getRole());
+                log.info("User has created with login {}", login);
                 req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
             } catch (DataBaseException e) {
                 log.warn("User have not created", e.getMessage());

@@ -93,7 +93,7 @@ public class ResultRepoImpl implements ResultRepo {
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
+    public Integer addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
         String sql = "insert into result values(default, ?,?,?)";
         try (Connection con = MyDataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {

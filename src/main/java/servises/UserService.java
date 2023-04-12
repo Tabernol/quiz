@@ -12,6 +12,7 @@ import util.query.QueryCreator;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,9 +43,9 @@ public class UserService implements
      * @return models.User
      * @throws DataBaseException
      */
-    public User get(long id) throws DataBaseException {
+    public UserDto get(long id) throws DataBaseException {
         log.info("SERVICE USER get user with id {}", id);
-        return userRepoImpl.get(id);
+        return mapToDto(userRepoImpl.get(id));
     }
 
     /**
@@ -53,8 +54,9 @@ public class UserService implements
      * it checks password and repeatPassword
      * and hashing password before insert to database
      *
-     * @param name           is name of user
-     * @param login          is unique email address of user
+     * @param userDto        contains data of:
+     *                       name is name of user
+     *                       login is unique email address of user
      * @param password       is user`s password
      * @param repeatPassword is repeat password
      * @return id of new user
@@ -63,14 +65,15 @@ public class UserService implements
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeySpecException
      */
-    public Long createUser(String name, String login, String password, String repeatPassword)
+    public Long createUser(UserDto userDto, String password, String repeatPassword)
             throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
-        validatorService.validateFieldsUser(name, login, password);
-        validatorService.isLoginExist(userRepoImpl.isLoginExist(login));
+        validatorService.validateFieldsUser(userDto.getName(), userDto.getLogin(), password);
+        validatorService.isLoginExist(userRepoImpl.isLoginExist(userDto.getLogin()));
         validatorService.validateRepeatPassword(password, repeatPassword);
         String passwordHash = PasswordHashingService.generateStrongPasswordHash(password);
-        log.info("SERVICE USER create new user");
-        return userRepoImpl.create(new User(login, passwordHash, name));
+        log.info("SERVICE USER create new user {}", userDto);
+
+        return userRepoImpl.create(new User(userDto.getLogin(), passwordHash, userDto.getName()));
     }
 
     /**
@@ -79,9 +82,9 @@ public class UserService implements
      * @return List of all users from database
      * @throws DataBaseException
      */
-    public List<User> getAll() throws DataBaseException {
+    public List<UserDto> getAll() throws DataBaseException {
         log.info("SERVICE USER get all users");
-        return userRepoImpl.getAll();
+        return mapToDtoList(userRepoImpl.getAll());
     }
 
     /**
@@ -93,9 +96,9 @@ public class UserService implements
      * @throws ValidateException
      */
     public int updateUser(UserDto userdto) throws DataBaseException, ValidateException {
-            validatorService.validateUpdateUser(userdto.getName(), userdto.getRole());
-            log.info("SERVICE USER update user {}", userdto);
-            return userRepoImpl.update(mapToEntity(userdto));
+        validatorService.validateUpdateUser(userdto.getName(), userdto.getRole());
+        log.info("SERVICE USER update user {}", userdto);
+        return userRepoImpl.update(mapToEntity(userdto));
     }
 
     /**
@@ -153,11 +156,11 @@ public class UserService implements
      * @return list of models.User
      * @throws DataBaseException
      */
-    public List<User> nextPage(String filter, String order, Integer rows, Integer page) throws DataBaseException {
+    public List<UserDto> nextPage(String filter, String order, Integer rows, Integer page) throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForUser();
         String query = queryCreator.getSQL(new MyQuery(filter, order, rows, page));
         log.info("SERVICE USER get list of user with selected filter");
-        return userRepoImpl.nextPage(query);
+        return mapToDtoList(userRepoImpl.nextPage(query));
     }
 
     /**
@@ -185,7 +188,7 @@ public class UserService implements
      */
     public boolean isCorrectPassword(Long userId, String password) throws DataBaseException, ValidateException {
         try {
-            String passwordInDataBase = get(userId).getPassword();
+            String passwordInDataBase = userRepoImpl.get(userId).getPassword();
             log.info("SERVICE USER checking user password");
             return PasswordHashingService.validatePassword(password, passwordInDataBase);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
@@ -217,5 +220,13 @@ public class UserService implements
         user.setRole(User.Role.valueOf(userDto.getRole().toUpperCase()));
         user.setBlocked(userDto.isBlocked());
         return user;
+    }
+
+    private List<UserDto> mapToDtoList(List<User> userList) {
+        List<UserDto> userDtoList = new ArrayList<>();
+        for (User user : userList) {
+            userDtoList.add(mapToDto(user));
+        }
+        return userDtoList;
     }
 }

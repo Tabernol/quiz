@@ -8,9 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.impl.TestRepoImpl;
-import servises.TestService;
+import servises.impl.TestServiceImpl;
 import org.junit.jupiter.api.Test;
-import servises.ValidatorService;
+import servises.impl.ValidatorServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +22,14 @@ public class TestServiceTest {
     @Mock
     TestRepoImpl mockTestRepoImpl;
     @Mock
-    ValidatorService mockValidateService;
-    TestService testService;
+    ValidatorServiceImpl mockValidateService;
+    TestServiceImpl testService;
 
     @BeforeEach
     public void setUp() {
-        mockValidateService = Mockito.mock(ValidatorService.class);
+        mockValidateService = Mockito.mock(ValidatorServiceImpl.class);
         mockTestRepoImpl = Mockito.mock(TestRepoImpl.class);
-        testService = new TestService(mockTestRepoImpl, mockValidateService);
+        testService = new TestServiceImpl(mockTestRepoImpl, mockValidateService);
     }
 
 //    @Test

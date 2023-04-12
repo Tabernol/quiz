@@ -8,8 +8,8 @@ import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.impl.AnswerRepoImpl;
-import servises.AnswerService;
-import servises.ValidatorService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,9 +24,9 @@ public class AnswerServiceTest {
     @Mock
     private AnswerRepoImpl mockAnswerRepoImpl;
     @Mock
-    private ValidatorService mockValidatorService;
+    private ValidatorServiceImpl mockValidatorService;
 
-    private AnswerService answerService;
+    private AnswerServiceImpl answerService;
 
     private Answer answer;
 
@@ -34,8 +34,8 @@ public class AnswerServiceTest {
     @BeforeEach
     public void setUp() {
         mockAnswerRepoImpl = Mockito.mock(AnswerRepoImpl.class);
-        mockValidatorService = Mockito.mock(ValidatorService.class);
-        answerService = new AnswerService(mockAnswerRepoImpl, mockValidatorService);
+        mockValidatorService = Mockito.mock(ValidatorServiceImpl.class);
+        answerService = new AnswerServiceImpl(mockAnswerRepoImpl, mockValidatorService);
       //  answer = new Answer(12L, 123L, "text", true);
     }
 

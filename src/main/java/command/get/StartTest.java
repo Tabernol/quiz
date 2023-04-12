@@ -1,15 +1,17 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.QuestionDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.Question;
 import repo.impl.QuestionRepoImpl;
 import repo.impl.TestRepoImpl;
 import servises.QuestionService;
 import servises.TestService;
-import servises.ValidatorService;
+import servises.impl.QuestionServiceImpl;
+import servises.impl.TestServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -42,8 +44,8 @@ public class StartTest implements RequestHandler {
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
-        questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
-        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+        questionService = AppContext.getInstance().getQuestionService();
+        testService = AppContext.getInstance().getTestService();
         List<QuestionDto> questions = null;
         Integer duration = 0;
         Integer size = 0;

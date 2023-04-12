@@ -2,11 +2,13 @@ package app_listener;
 
 
 import connection.MyDataSource;
+import controllers.AppContext;
 import lombok.extern.slf4j.Slf4j;
 
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebListener;
+import java.sql.SQLException;
 
 
 /**
@@ -28,6 +30,7 @@ public class QuizAppListener implements ServletContextListener {
      */
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+       AppContext.getInstance();
         log.info("Webapp 'Quiz Service' has started.");
     }
 
@@ -38,9 +41,9 @@ public class QuizAppListener implements ServletContextListener {
      *
      * @param sce the ServletContextEvent that triggered this destruction
      */
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        MyDataSource.closePool();
-        log.info("Webapp 'Quiz service' was closed");
-    }
+//    @Override
+//    public void contextDestroyed(ServletContextEvent sce) {
+//        MyDataSource.closePool();
+//        log.info("Webapp 'Quiz service' was closed");
+//    }
 }

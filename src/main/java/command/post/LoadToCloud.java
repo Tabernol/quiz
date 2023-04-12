@@ -2,10 +2,12 @@ package command.post;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import repo.impl.ImageRepoImpl;
 import servises.ImageService;
+import servises.impl.ImageServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +16,11 @@ import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+
 /**
  * LoadToCloud.class is allowed only for admin.
  * The meaning of the class is to load image to cloud
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 public class LoadToCloud implements RequestHandler {
@@ -37,7 +41,7 @@ public class LoadToCloud implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        imageService = new ImageService(new ImageRepoImpl());
+        imageService = AppContext.getInstance().getImageService();
 
         String webInfPath = req.getServletContext().getRealPath("WEB-INF");
         String fullPath = webInfPath + "\\image" + (++count) + ".jpeg";

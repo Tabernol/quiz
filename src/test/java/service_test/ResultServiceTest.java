@@ -3,15 +3,17 @@ package service_test;
 import dto.AnswerDto;
 import dto.ResultDto;
 import exeptions.DataBaseException;
-import models.Answer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import repo.ResultRepo;
 import repo.impl.ResultRepoImpl;
-import servises.AnswerService;
 import servises.ResultService;
+import servises.ValidatorService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.ResultServiceImpl;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,23 +24,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResultServiceTest {
     @Mock
-    ResultRepoImpl mockResultRepoImpl;
+    private ResultRepo mockResultRepo;
     @Mock
-    AnswerService answerService;
+    private AnswerServiceImpl answerService;
 
-    ResultService resultService;
+    private ResultService resultService;
 
 
     @BeforeEach
     public void setUp() {
-        mockResultRepoImpl = Mockito.mock(ResultRepoImpl.class);
-        answerService = Mockito.mock(AnswerService.class);
-        resultService = new ResultService(mockResultRepoImpl);
+        mockResultRepo = Mockito.mock(ResultRepoImpl.class);
+        answerService = Mockito.mock(AnswerServiceImpl.class);
+        resultService = new ResultServiceImpl(mockResultRepo, answerService);
     }
 
     @Test
     public void addResultTest() throws DataBaseException {
-        Mockito.when(mockResultRepoImpl.addResult(Mockito.anyLong(),
+        Mockito.when(mockResultRepo.addResult(Mockito.anyLong(),
                 Mockito.anyLong(), Mockito.anyInt())).thenReturn(1);
         assertEquals(1, resultService.addResult(Mockito.anyLong(), Mockito.anyLong(), Mockito.anyInt()));
     }
@@ -60,7 +62,7 @@ public class ResultServiceTest {
     @Test
     public void getAllResultByUser() throws DataBaseException {
         List<ResultDto> resultDtoList = new ArrayList<>();
-        Mockito.when(mockResultRepoImpl.getAllResult(Mockito.anyLong())).thenReturn(resultDtoList);
+        Mockito.when(mockResultRepo.getAllResult(Mockito.anyLong())).thenReturn(resultDtoList);
         Assertions.assertEquals(resultDtoList, resultService.getAllResultByUserId(Mockito.anyLong()));
     }
 

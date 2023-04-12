@@ -1,21 +1,25 @@
 package command.post;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
-import servises.ValidatorService;
+import servises.impl.QuestionServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * UpdateImageForQuestion.class is allowed only for admin.
  * The meaning of the class is to update url of image of Question to an existing Test(quiz) in database.
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
@@ -32,13 +36,13 @@ public class UpdateImageForQuestion implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        questionService = AppContext.getInstance().getQuestionService();
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         String url = req.getParameter("url");
         String page = req.getParameter("page");
 
         try {
-            questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
             questionService.updateImage(url, questionId);
             log.info("Question with id " + questionId + " has updated image ");
             resp.sendRedirect(req.getContextPath() + "/prg" +

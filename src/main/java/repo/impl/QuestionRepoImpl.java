@@ -14,6 +14,8 @@ import java.util.List;
 
 import repo.QuestionRepo;
 
+import javax.sql.DataSource;
+
 /**
  * Class repository has relationship with table Question in MySQL
  *
@@ -21,6 +23,12 @@ import repo.QuestionRepo;
  */
 @Slf4j
 public class QuestionRepoImpl implements QuestionRepo {
+    private final DataSource dataSource;
+    public QuestionRepoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+
 
     /**
      * @param testId is identification Test(quiz) in database,
@@ -31,7 +39,7 @@ public class QuestionRepoImpl implements QuestionRepo {
     @Override
     public List<Question> getAllById(Long testId) throws DataBaseException {
         List<Question> questions = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_ALL_BY_ID)) {
             pst.setString(1, testId.toString());
             ResultSet resultSet = pst.executeQuery();
@@ -62,7 +70,7 @@ public class QuestionRepoImpl implements QuestionRepo {
     @Override
     public Question get(Long id) throws DataBaseException {
         Question question = new Question();
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_QUESTION)) {
             pst.setLong(1, id);
             ResultSet resultSet = pst.executeQuery();
@@ -89,7 +97,7 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(DELETE_QUESTION)) {
             pst.setLong(1, id);
             return pst.executeUpdate();
@@ -101,7 +109,7 @@ public class QuestionRepoImpl implements QuestionRepo {
 
     @Override
     public int update(Question question) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_QUESTION)) {
             pst.setString(1, question.getText());
             pst.setLong(2, question.getId());
@@ -122,7 +130,7 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public long create(Question question) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_QUESTION)) {
             pst.setLong(1, question.getTestId());
             pst.setString(2, question.getText());
@@ -143,7 +151,7 @@ public class QuestionRepoImpl implements QuestionRepo {
      */
     @Override
     public int updateImageQuestion(String url, Long id) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_URL)) {
             pst.setString(1, url);
             pst.setLong(2, id);

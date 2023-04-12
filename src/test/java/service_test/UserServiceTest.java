@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.impl.UserRepoImpl;
-import servises.UserService;
-import servises.ValidatorService;
+import servises.impl.UserServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -24,15 +24,15 @@ public class UserServiceTest {
     @Mock
     UserRepoImpl mockUserRepoImpl;
     @Mock
-    ValidatorService mockValidateService;
-    UserService userService;
+    ValidatorServiceImpl mockValidateService;
+    UserServiceImpl userService;
     User testUser;
 
     @BeforeEach
     public void setUp() {
         mockUserRepoImpl = Mockito.mock(UserRepoImpl.class);
-        mockValidateService = Mockito.mock(ValidatorService.class);
-        userService = new UserService(mockUserRepoImpl, mockValidateService);
+        mockValidateService = Mockito.mock(ValidatorServiceImpl.class);
+        userService = new UserServiceImpl(mockUserRepoImpl, mockValidateService);
         testUser = new User();
         testUser.setId(12L);
         testUser.setName("newName");

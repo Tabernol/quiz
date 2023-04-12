@@ -1,11 +1,13 @@
 package command.post;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.ValidatorService;
+import servises.impl.TestServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -37,7 +39,7 @@ public class BlockUnblockTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+        testService = AppContext.getInstance().getTestService();
 
         Long testId = Long.valueOf(req.getParameter("test_id"));
         String page = req.getParameter("page");

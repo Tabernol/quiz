@@ -4,15 +4,17 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
+
 @Slf4j
 public class MyDataSource {
+    private static DataSource dataSource;
     private static HikariConfig config;
-    private static HikariDataSource ds;
 
     private static void init() {
         config = new HikariConfig();
@@ -30,7 +32,7 @@ public class MyDataSource {
             config.setPassword(properties.getProperty("password"));
             config.setDriverClassName(properties.getProperty("driver.class.name"));
 
-            ds = new HikariDataSource(config);
+            dataSource = new HikariDataSource(config);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -39,17 +41,15 @@ public class MyDataSource {
     private MyDataSource() {
     }
 
-    public static Connection getConnection() throws SQLException {
-        if (ds == null) {
+    public static DataSource getInstance(){
+        if(dataSource==null){
             init();
-            log.info("The connection pool is initialized");
         }
-        return ds.getConnection();
+        return dataSource;
     }
 
-    public static void closePool() {
-        ds.close();
-        log.info("The connection pool is closed");
-    }
+//    public static void closePool() {
+//        log.info("The connection pool is closed");
+//    }
 
 }

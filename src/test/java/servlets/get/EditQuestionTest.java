@@ -4,23 +4,17 @@ import command.get.EditQuestion;
 import dto.AnswerDto;
 import dto.QuestionDto;
 import exeptions.DataBaseException;
-import models.Answer;
-import models.Question;
-import models.User;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import servises.AnswerService;
-import servises.QuestionService;
-import servises.UserService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.QuestionServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class EditQuestionTest {
@@ -31,8 +25,8 @@ public class EditQuestionTest {
         final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
         final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
-        QuestionService mockQuestionService = Mockito.mock(QuestionService.class);
-        AnswerService mockAnswerService = Mockito.mock(AnswerService.class);
+        QuestionServiceImpl mockQuestionService = Mockito.mock(QuestionServiceImpl.class);
+        AnswerServiceImpl mockAnswerService = Mockito.mock(AnswerServiceImpl.class);
 
 
         QuestionDto questionDto = new QuestionDto();

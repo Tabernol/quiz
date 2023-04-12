@@ -1,26 +1,6 @@
 package servlets.post;
 
-import command.post.AddAnswer;
-import command.post.DeleteAnswer;
-import dto.AnswerDto;
-import exeptions.DataBaseException;
-import exeptions.ValidateException;
-import models.Question;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import servises.AnswerService;
-import servises.QuestionService;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import java.io.IOException;
-
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class AddAnswerTest {
 //    @Test

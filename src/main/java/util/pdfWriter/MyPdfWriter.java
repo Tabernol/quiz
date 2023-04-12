@@ -3,10 +3,12 @@ package util.pdfWriter;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import controllers.AppContext;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import repo.impl.ResultRepoImpl;
 import servises.ResultService;
+import servises.impl.ResultServiceImpl;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -34,7 +36,7 @@ public class MyPdfWriter {
     }
 
     private PdfPTable addRows(PdfPTable table, Long userId) {
-        resultService = new ResultService(new ResultRepoImpl());
+        resultService = AppContext.getInstance().getResultService();
         List<ResultDto> allResultByUserId = null;
         try {
             allResultByUserId = resultService.getAllResultByUserId(userId);

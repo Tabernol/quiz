@@ -14,6 +14,8 @@ import java.util.List;
 
 import repo.TestRepo;
 
+import javax.sql.DataSource;
+
 /**
  * Class repository has relationship with table Test in MySQL
  *
@@ -21,6 +23,11 @@ import repo.TestRepo;
  */
 @Slf4j
 public class TestRepoImpl implements TestRepo {
+    private final DataSource dataSource;
+
+    public TestRepoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     /**
      * method returns a list of the unique subject names of the test(quiz)
@@ -31,7 +38,7 @@ public class TestRepoImpl implements TestRepo {
     @Override
     public List<String> getDistinctSubject() throws DataBaseException {
         List<String> subjects;
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_DISTINCT_SUBJECT);
              ResultSet resultSet = pst.executeQuery()) {
             subjects = new ArrayList<>();
@@ -60,7 +67,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int update(Test test) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_TEST)) {
             pst.setString(1, test.getName());
             pst.setString(2, test.getSubject());
@@ -83,7 +90,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Integer getCount(String subject) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(COUNT_BY_SUBJECT)) {
             pst.setString(1, subject);
             ResultSet resultSet = pst.executeQuery();
@@ -105,7 +112,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public Integer getCount() throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(COUNT_OF_SUBJECTS);
              ResultSet resultSet = pst.executeQuery()) {
             resultSet.next();
@@ -126,7 +133,7 @@ public class TestRepoImpl implements TestRepo {
     @Override
     public List<Test> nextPage(String query) throws DataBaseException {
         List<Test> tests = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(query)) {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
@@ -162,7 +169,7 @@ public class TestRepoImpl implements TestRepo {
     @Override
     public Test get(Long id) throws DataBaseException {
         Test test = null;
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_TEST)) {
             pst.setLong(1, id);
             ResultSet resultSet = pst.executeQuery();
@@ -186,7 +193,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int addPopularity(Long idTest) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(ADD_POINT_POPULARITY)) {
             pst.setLong(1, idTest);
             return pst.executeUpdate();
@@ -206,7 +213,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public boolean isNameExist(String name) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(IS_TEST_EXIST)) {
             pst.setString(1, name);
             ResultSet resultSet = pst.executeQuery();
@@ -228,7 +235,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(DELETE_TEST)) {
             pst.setLong(1, id);
             return pst.executeUpdate();
@@ -251,7 +258,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public long create(Test test) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_TEST)) {
             pst.setString(1, test.getName());
             pst.setString(2, test.getSubject());
@@ -274,7 +281,7 @@ public class TestRepoImpl implements TestRepo {
      */
     @Override
     public int changeStatus(Long id, Test.Status status) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CHANGE_STATUS_TEST)) {
             pst.setString(1, status.getStatus());
             pst.setLong(2, id);

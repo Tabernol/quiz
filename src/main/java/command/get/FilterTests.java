@@ -1,12 +1,14 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Test;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.ValidatorService;
+import servises.impl.TestServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -64,7 +66,7 @@ public class FilterTests implements RequestHandler {
         }
 //        =======================================
 
-        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+        testService = AppContext.getInstance().getTestService();
         List<String> subjects;
         List<Test> filterTests;
         int countPages;

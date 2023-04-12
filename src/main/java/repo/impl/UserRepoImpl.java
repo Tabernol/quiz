@@ -14,6 +14,8 @@ import java.util.List;
 
 import repo.UserRepo;
 
+import javax.sql.DataSource;
+
 /**
  * Class repository has relationship with table User in MySQL
  *
@@ -21,6 +23,11 @@ import repo.UserRepo;
  */
 @Slf4j
 public class UserRepoImpl implements UserRepo {
+    private final DataSource dataSource;
+
+    public UserRepoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     /**
      * method return User from database by ID
@@ -32,7 +39,7 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public User get(Long id) throws DataBaseException {
         User user = null;
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_USER_BY_ID)) {
             pst.setString(1, String.valueOf(id));
             ResultSet resultSet = pst.executeQuery();
@@ -55,7 +62,7 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public List<User> getAll() throws DataBaseException {
         List<User> users = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_ALL);
              ResultSet resultSet = pst.executeQuery()) {
             while (resultSet.next()) {
@@ -100,7 +107,7 @@ public class UserRepoImpl implements UserRepo {
         PreparedStatement pst = null;
         ResultSet resultSet = null;
         try {
-            con = MyDataSource.getConnection();
+            con = dataSource.getConnection();
             con.setAutoCommit(false);
             pst = con.prepareStatement(INSERT_NEW_USER);
             pst.setString(1, user.getLogin());
@@ -148,7 +155,7 @@ public class UserRepoImpl implements UserRepo {
      */
     @Override
     public boolean isLoginExist(String login) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(IS_LOGIN_UNIQUE)) {
             pst.setString(1, login);
             ResultSet resultSet = pst.executeQuery();
@@ -172,7 +179,7 @@ public class UserRepoImpl implements UserRepo {
      */
     @Override
     public int update(User user) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(UPDATE_USER)) {
             pst.setString(1, user.getName());
             pst.setString(2, user.getRole().getRole());
@@ -194,7 +201,7 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public long getId(String login) throws DataBaseException {
         long result = -1;
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_ID_BY_LOGIN)) {
             pst.setString(1, login);
             ResultSet resultSet = pst.executeQuery();
@@ -219,7 +226,7 @@ public class UserRepoImpl implements UserRepo {
      */
     @Override
     public int changeStatus(Long id, boolean isBlock) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CHANGE_STATUS)) {
             pst.setBoolean(1, isBlock);
             pst.setLong(2, id);
@@ -240,7 +247,7 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public List<User> nextPage(String query) throws DataBaseException {
         List<User> users = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(query)) {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
@@ -263,7 +270,7 @@ public class UserRepoImpl implements UserRepo {
      */
     @Override
     public Integer getCountUsers(String isBlocked) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_COUNT_USERS_BY_STATUS)) {
             pst.setString(1, isBlocked);
             ResultSet resultSet = pst.executeQuery();

@@ -1,5 +1,6 @@
 package command.post;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.TestDto;
 import exeptions.DataBaseException;
@@ -7,7 +8,8 @@ import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.ValidatorService;
+import servises.impl.TestServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -23,8 +25,7 @@ import java.io.IOException;
  */
 @Slf4j
 public class CreateTest implements RequestHandler {
-
-    private TestService testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+    private TestService testService;
 
     /**
      * This method is read parameter from request.
@@ -39,6 +40,7 @@ public class CreateTest implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        testService = AppContext.getInstance().getTestService();
         String name = req.getParameter("name");
         String subject = req.getParameter("subject");
         int difficult = Integer.parseInt(req.getParameter("difficult"));

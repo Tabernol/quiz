@@ -2,14 +2,11 @@ package service_test;
 
 import exeptions.ValidateException;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import servises.ValidatorService;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 import validator.MyValidator;
 
@@ -18,13 +15,13 @@ public class ValidatorServiceTest {
     DataValidator mockDataValidator;
     @Mock
     MyValidator mockMyValidator;
-    ValidatorService validatorService;
+    ValidatorServiceImpl validatorService;
 
     @BeforeEach
     public void setUp() {
         mockMyValidator = Mockito.mock(MyValidator.class);
         mockDataValidator = Mockito.mock(DataValidator.class);
-        validatorService = new ValidatorService(mockDataValidator);
+        validatorService = new ValidatorServiceImpl(mockDataValidator);
     }
 
 //    @Test

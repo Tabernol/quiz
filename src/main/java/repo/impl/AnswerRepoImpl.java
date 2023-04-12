@@ -1,6 +1,7 @@
 package repo.impl;
 
 import connection.MyDataSource;
+import controllers.AppContext;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Answer;
@@ -14,6 +15,8 @@ import java.util.List;
 
 import repo.AnswerRepo;
 
+import javax.sql.DataSource;
+
 /**
  * Class repository has relationship with table Answer in MySQL
  *
@@ -21,6 +24,12 @@ import repo.AnswerRepo;
  */
 @Slf4j
 public class AnswerRepoImpl implements AnswerRepo {
+
+    private final DataSource dataSource;
+
+    public AnswerRepoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     /**
      * method return List of answer for this questionId
@@ -33,7 +42,7 @@ public class AnswerRepoImpl implements AnswerRepo {
     @Override
     public List<Answer> getAnswersByQuestionId(Long questionId) throws DataBaseException {
         List<Answer> answers = new ArrayList<>();
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(GET_ANSWERS_BY_QUESTION_ID)) {
             pst.setString(1, questionId.toString());
             ResultSet resultSet = pst.executeQuery();
@@ -62,7 +71,7 @@ public class AnswerRepoImpl implements AnswerRepo {
      */
     @Override
     public long create(Answer answer) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(CREATE_ANSWER)) {
             pst.setLong(1, answer.getQuestionId());
             pst.setString(2, answer.getText());
@@ -83,7 +92,7 @@ public class AnswerRepoImpl implements AnswerRepo {
      */
     @Override
     public int delete(Long id) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(DELETE_ANSWER)) {
             pst.setLong(1, id);
             return pst.executeUpdate();

@@ -3,19 +3,15 @@ package servlets.post;
 import command.post.DeleteAnswer;
 import dto.QuestionDto;
 import exeptions.DataBaseException;
-import models.Question;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import servises.AnswerService;
-import servises.QuestionService;
-import servises.UserService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.QuestionServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -31,8 +27,8 @@ public class DeleteAnswerTest {
         HttpServletResponse response = mock(HttpServletResponse.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
         //final HttpSession session = Mockito.mock(HttpSession.class);
-        AnswerService answerService = Mockito.mock(AnswerService.class);
-        QuestionService questionService = Mockito.mock(QuestionService.class);
+        AnswerServiceImpl answerService = Mockito.mock(AnswerServiceImpl.class);
+        QuestionServiceImpl questionService = Mockito.mock(QuestionServiceImpl.class);
 
         QuestionDto questionDto = new QuestionDto();
         DeleteAnswer deleteAnswer = new DeleteAnswer();

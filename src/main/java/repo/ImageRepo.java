@@ -12,11 +12,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ImageRepo {
-    public int addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException;
+    int addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException;
 
-    public List<Image> getAll() throws DataBaseException;
+    List<Image> getAll() throws DataBaseException;
 
-    public int deleteImage(String publicId) throws DataBaseException;
+    int deleteImage(String publicId) throws DataBaseException;
 
-    public List<String> canDeleteImage(String publicId);
+    List<String> canDeleteImage(String publicId);
+
+    String INSERT_IMAGE = "INSERT INTO image values(default, ?, ?, ?, ?)";
+
+    String GET_ALL = "select * from image";
+
+    String DELETE_IMAGE = "delete from image where public_id like ?";
+
+    String CAN_DELETE_THIS_IMAGE = "select name from question" +
+            " inner join test on test.id = question.test_id \n" +
+            " inner join image on question.url = image.url\n" +
+            " where public_id like ?";
 }

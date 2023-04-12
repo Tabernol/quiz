@@ -8,8 +8,8 @@ import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.impl.QuestionRepoImpl;
-import servises.QuestionService;
-import servises.ValidatorService;
+import servises.impl.QuestionServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,9 @@ public class QuestionServiceTest {
     @Mock
     private QuestionRepoImpl mockQuestionRepoImpl = Mockito.mock(QuestionRepoImpl.class);
     @Mock
-    private ValidatorService mockValidatorService = Mockito.mock(ValidatorService.class);
+    private ValidatorServiceImpl mockValidatorService = Mockito.mock(ValidatorServiceImpl.class);
 
-    QuestionService questionService = new QuestionService(mockQuestionRepoImpl, mockValidatorService);
+    QuestionServiceImpl questionService = new QuestionServiceImpl(mockQuestionRepoImpl, mockValidatorService);
 
     @Test
     public void getQuestionTest() throws DataBaseException {

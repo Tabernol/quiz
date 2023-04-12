@@ -3,11 +3,13 @@ package command.post;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import command.get.FilterImages;
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import repo.impl.ImageRepoImpl;
 import servises.ImageService;
+import servises.impl.ImageServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +40,8 @@ public class DeleteFromCloud implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String publicId = req.getParameter("public_id");
 
-        imageService = new ImageService(new ImageRepoImpl());
+
+        imageService = AppContext.getInstance().getImageService();
 
         if (imageService.canDeleteImage(publicId).isEmpty()) {
             //delete image from cloudinary

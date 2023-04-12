@@ -14,6 +14,8 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import repo.ResultRepo;
 
+import javax.sql.DataSource;
+
 /**
  * Class repository has relationship with table Result in MySQL
  *
@@ -21,7 +23,11 @@ import repo.ResultRepo;
  */
 @Slf4j
 public class ResultRepoImpl implements ResultRepo {
+    private final DataSource dataSource;
 
+    public ResultRepoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     /**
      * method get list of result with some limit, offset, order by, where
@@ -31,18 +37,12 @@ public class ResultRepoImpl implements ResultRepo {
      */
     @Override
     public List<ResultDto> getPageResultList(String query) throws DataBaseException {
-        try (Connection con = MyDataSource.getConnection();
+        try (Connection con = dataSource.getConnection();
              PreparedStatement pst = con.prepareStatement(query)) {
             ResultSet resultSet = pst.executeQuery();
             List<ResultDto> resultDtoList = new ArrayList<>();
             while (resultSet.next()) {
-                ResultDto resultDto = new ResultDto();
-                resultDto.setTestName(resultSet.getString("name"));
-                resultDto.setSubject(resultSet.getString("subject"));
-                resultDto.setDifficult(resultSet.getInt("difficult"));
-                resultDto.setDuration(resultSet.getInt("duration"));
-                resultDto.setGrade(resultSet.getInt("grade"));
-                resultDtoList.add(resultDto);
+                resultDtoList.add(buildResultDto(resultSet));
             }
             resultSet.close();
             return resultDtoList;
@@ -60,20 +60,13 @@ public class ResultRepoImpl implements ResultRepo {
      */
     @Override
     public List<ResultDto> getAllResult(Long userId) throws DataBaseException {
-        String sql = "select * from test inner join result on test.id=result.test_id where user_id = ?";
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(GET_ALL_RESULTS_BY_USER)) {
             pst.setLong(1, userId);
             ResultSet resultSet = pst.executeQuery();
             List<ResultDto> resultDtoList = new ArrayList<>();
             while (resultSet.next()) {
-                ResultDto resultDto = new ResultDto();
-                resultDto.setTestName(resultSet.getString("name"));
-                resultDto.setSubject(resultSet.getString("subject"));
-                resultDto.setDifficult(resultSet.getInt("difficult"));
-                resultDto.setDuration(resultSet.getInt("duration"));
-                resultDto.setGrade(resultSet.getInt("grade"));
-                resultDtoList.add(resultDto);
+                resultDtoList.add(buildResultDto(resultSet));
             }
             resultSet.close();
             return resultDtoList;
@@ -82,6 +75,16 @@ public class ResultRepoImpl implements ResultRepo {
             throw new DataBaseException("Can not get order result list" + e.getMessage(), e);
 
         }
+    }
+
+    private ResultDto buildResultDto(ResultSet resultSet) throws SQLException {
+        ResultDto resultDto = new ResultDto();
+        resultDto.setTestName(resultSet.getString("name"));
+        resultDto.setSubject(resultSet.getString("subject"));
+        resultDto.setDifficult(resultSet.getInt("difficult"));
+        resultDto.setDuration(resultSet.getInt("duration"));
+        resultDto.setGrade(resultSet.getInt("grade"));
+        return resultDto;
     }
 
     /**
@@ -94,9 +97,8 @@ public class ResultRepoImpl implements ResultRepo {
      */
     @Override
     public Integer addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
-        String sql = "insert into result values(default, ?,?,?)";
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(INSERT_RESULT)) {
             pst.setLong(1, userId);
             pst.setLong(2, testId);
             pst.setInt(3, grade);
@@ -115,9 +117,8 @@ public class ResultRepoImpl implements ResultRepo {
      */
     @Override
     public Integer getCountResultByUser(Long userId) throws DataBaseException {
-        String sql = "select count(grade) from result where user_id = ?";
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(COUNT_RESULT_BY_USER)) {
             pst.setLong(1, userId);
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
@@ -139,10 +140,8 @@ public class ResultRepoImpl implements ResultRepo {
      */
     @Override
     public Integer getCountResultByUserAndSubject(Long userId, String subject) throws DataBaseException {
-        String sql = "select count(grade) from result inner join test " +
-                "on result.test_id=test.id where user_id = ? and subject like ?";
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(COUNT_RESULT_BY_USER_AND_SUBJECT)) {
             pst.setLong(1, userId);
             pst.setString(2, subject);
             ResultSet resultSet = pst.executeQuery();
@@ -164,13 +163,11 @@ public class ResultRepoImpl implements ResultRepo {
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public List<String> getDistinctSubject(Long user_id) throws DataBaseException {
-        String sql = "select distinct subject from test" +
-                " inner join result on test.id = result.test_id where user_id = ?";
+    public List<String> getDistinctSubject(Long userId) throws DataBaseException {
         List<String> subjects;
-        try (Connection con = MyDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setLong(1, user_id);
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(DISTINCT_SUBJECTS)) {
+            pst.setLong(1, userId);
             ResultSet resultSet = pst.executeQuery();
             subjects = new ArrayList<>();
             while (resultSet.next()) {

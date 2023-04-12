@@ -1,5 +1,6 @@
 package command.post;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +8,9 @@ import repo.impl.AnswerRepoImpl;
 import repo.impl.QuestionRepoImpl;
 import servises.AnswerService;
 import servises.QuestionService;
-import servises.ValidatorService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.QuestionServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -23,8 +26,8 @@ import java.io.IOException;
  */
 @Slf4j
 public class DeleteAnswer implements RequestHandler {
-    private QuestionService questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
-    private AnswerService answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
+    private QuestionService questionService;
+    private AnswerService answerService;
 
     /**
      * This method is read parameter from request.
@@ -40,6 +43,9 @@ public class DeleteAnswer implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+        questionService = AppContext.getInstance().getQuestionService();
+        answerService = AppContext.getInstance().getAnswerService();
+
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         Long answerId = Long.valueOf(req.getParameter("answer_id"));

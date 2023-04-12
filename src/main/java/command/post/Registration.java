@@ -1,14 +1,15 @@
 package command.post;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
-import models.User;
 import repo.impl.UserRepoImpl;
 import servises.UserService;
-import servises.ValidatorService;
+import servises.impl.UserServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import util.reCaptcha.VerifyRecaptcha;
 import validator.DataValidator;
 
@@ -28,7 +29,7 @@ import java.security.spec.InvalidKeySpecException;
 @Slf4j
 public class Registration implements RequestHandler {
 
-    private UserService userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
+    private UserService userService;
 
     /**
      * This method is read parameter from request.
@@ -47,6 +48,7 @@ public class Registration implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+        userService = AppContext.getInstance().getUserService();
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");

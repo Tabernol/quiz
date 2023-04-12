@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import repo.impl.ImageRepoImpl;
-import servises.ImageService;
+import servises.impl.ImageServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +17,13 @@ public class ImageServiceTest {
     @Mock
     private ImageRepoImpl mockImageRepoImpl;
 
-    private ImageService imageService;
+    private ImageServiceImpl imageService;
 
 
     @BeforeEach
     public void setUp() {
         mockImageRepoImpl = Mockito.mock(ImageRepoImpl.class);
-        imageService = new ImageService(mockImageRepoImpl);
+        imageService = new ImageServiceImpl(mockImageRepoImpl);
     }
 
     @Test

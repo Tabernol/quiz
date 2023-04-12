@@ -4,11 +4,10 @@ import command.get.Profile;
 import dto.ResultDto;
 import dto.UserDto;
 import exeptions.DataBaseException;
-import models.User;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import servises.ResultService;
-import servises.UserService;
+import servises.impl.ResultServiceImpl;
+import servises.impl.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,9 +27,9 @@ public class ProfileTest {
         final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
         final HttpSession session = Mockito.mock(HttpSession.class);
-        final UserService userService = Mockito.mock(UserService.class);
+        final UserServiceImpl userService = Mockito.mock(UserServiceImpl.class);
 
-        final ResultService resultService = Mockito.mock(ResultService.class);
+        final ResultServiceImpl resultService = Mockito.mock(ResultServiceImpl.class);
 
         UserDto userDto = new UserDto();
         List<ResultDto> resultDto = new ArrayList<>();

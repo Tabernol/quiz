@@ -39,7 +39,7 @@ public class LanguageChange implements RequestHandler {
         }
         req.getSession().setAttribute("locale", locale);
 
-        log.info("Language has changed to " + lang);
+        log.info("Language has changed to {}" , lang);
         String referer = req.getHeader("referer");
         resp.sendRedirect(referer);
     }

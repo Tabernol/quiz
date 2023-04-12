@@ -1,5 +1,6 @@
 package command.post;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.AnswerDto;
 import exeptions.DataBaseException;
@@ -7,7 +8,8 @@ import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import repo.impl.AnswerRepoImpl;
 import servises.AnswerService;
-import servises.ValidatorService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -23,7 +25,7 @@ import java.io.IOException;
  */
 @Slf4j
 public class AddAnswer implements RequestHandler {
-    AnswerService answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
+    private AnswerService answerService;
 
     /**
      * This method is read parameter from request.
@@ -40,6 +42,8 @@ public class AddAnswer implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+        answerService = AppContext.getInstance().getAnswerService();
+
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         String page = req.getParameter("page");

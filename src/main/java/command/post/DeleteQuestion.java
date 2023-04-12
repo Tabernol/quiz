@@ -1,12 +1,14 @@
 package command.post;
 
 import command.get.EditTest;
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
-import servises.ValidatorService;
+import servises.impl.QuestionServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -23,7 +25,7 @@ import java.io.IOException;
 @Slf4j
 public class DeleteQuestion implements RequestHandler {
 
-    private QuestionService questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
+    private QuestionService questionService;
 
     /**
      * This method is read parameter from request.
@@ -39,6 +41,7 @@ public class DeleteQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+        questionService = AppContext.getInstance().getQuestionService();
         req.setAttribute("page", req.getParameter("page"));
         req.setAttribute("test_id", req.getParameter("test_id"));
         String id = req.getParameter("question_id");

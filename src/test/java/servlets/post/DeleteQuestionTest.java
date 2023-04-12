@@ -5,7 +5,7 @@ import command.post.DeleteQuestion;
 import exeptions.DataBaseException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import servises.QuestionService;
+import servises.impl.QuestionServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class DeleteQuestionTest {
         HttpServletResponse response = mock(HttpServletResponse.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
         final HttpSession session = Mockito.mock(HttpSession.class);
-        QuestionService questionService = Mockito.mock(QuestionService.class);
+        QuestionServiceImpl questionService = Mockito.mock(QuestionServiceImpl.class);
 
         DeleteQuestion deleteQuestion = new DeleteQuestion();
         EditTest editTest = new EditTest();

@@ -1,11 +1,13 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Image;
 import repo.impl.ImageRepoImpl;
 import servises.ImageService;
+import servises.impl.ImageServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,7 @@ public class FilterImages implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        imageService = new ImageService(new ImageRepoImpl());
+        imageService = AppContext.getInstance().getImageService();
 
         try {
             List<Image> all = imageService.getAll();

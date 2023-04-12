@@ -1,5 +1,6 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.AnswerDto;
 import dto.QuestionDto;
@@ -10,7 +11,9 @@ import repo.impl.AnswerRepoImpl;
 import repo.impl.QuestionRepoImpl;
 import servises.AnswerService;
 import servises.QuestionService;
-import servises.ValidatorService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.QuestionServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -46,8 +49,8 @@ public class EditQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
-        answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
+        questionService = AppContext.getInstance().getQuestionService();
+        answerService = AppContext.getInstance().getAnswerService();
         String questionId = req.getParameter("question_id");
 
         req.setAttribute("test_id", req.getParameter("test_id"));

@@ -4,7 +4,7 @@ import command.post.CreateTest;
 import exeptions.DataBaseException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import servises.TestService;
+import servises.impl.TestServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class CreateTestTest {
         HttpServletResponse response = mock(HttpServletResponse.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
         final HttpSession session = Mockito.mock(HttpSession.class);
-        TestService mockTestService = mock(TestService.class);
+        TestServiceImpl mockTestService = mock(TestServiceImpl.class);
 
 
 

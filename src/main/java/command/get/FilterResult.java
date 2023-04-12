@@ -1,5 +1,6 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
@@ -10,7 +11,10 @@ import repo.impl.UserRepoImpl;
 import servises.ResultService;
 import servises.TestService;
 import servises.UserService;
-import servises.ValidatorService;
+import servises.impl.ResultServiceImpl;
+import servises.impl.TestServiceImpl;
+import servises.impl.UserServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -71,9 +75,9 @@ public class FilterResult implements RequestHandler {
 
         System.out.println("page = " + page);
 
-        resultService = new ResultService(new ResultRepoImpl());
-        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
-        userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
+        resultService = AppContext.getInstance().getResultService();
+        testService = AppContext.getInstance().getTestService();
+        userService = AppContext.getInstance().getUserService();
         List<String> subjects;
         int countPages;
 

@@ -1,16 +1,18 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.AnswerDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.Answer;
 import models.Question;
 import repo.impl.AnswerRepoImpl;
 import repo.impl.ResultRepoImpl;
 import servises.AnswerService;
 import servises.ResultService;
-import servises.ValidatorService;
+import servises.impl.AnswerServiceImpl;
+import servises.impl.ResultServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -18,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -30,6 +31,8 @@ import java.util.Set;
  */
 @Slf4j
 public class GetInfoQuestion implements RequestHandler {
+    private AnswerService answerService;
+    private ResultService resultService;
 
     /**
      * This method supply information: text of question, answers for it, image for question
@@ -40,11 +43,9 @@ public class GetInfoQuestion implements RequestHandler {
      * @throws IOException      if there is an I/O error
      */
     @Override
-    public void execute(HttpServletRequest req,
-                        HttpServletResponse resp)
-            throws ServletException, IOException {
-        AnswerService answerService = new AnswerService(new AnswerRepoImpl(), new ValidatorService(new DataValidator()));
-        ResultService resultService = new ResultService(new ResultRepoImpl());
+    public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        answerService = AppContext.getInstance().getAnswerService();
+        resultService = AppContext.getInstance().getResultService();
         req.setAttribute("duration", req.getParameter("duration"));
 
         String idQuestion = req.getParameter("id_question");
@@ -85,7 +86,7 @@ public class GetInfoQuestion implements RequestHandler {
         Set<AnswerDto> answers = null;
         try {
             answers = answerService.getAnswers(nextIdQuestion);
-           // Collections.shuffle(answers);
+            // Collections.shuffle(answers);
             String text = questions.get(numberQuestion).getText();
             String urlImage = questions.get(numberQuestion).getUrlImage();
 
@@ -95,59 +96,20 @@ public class GetInfoQuestion implements RequestHandler {
 
 
             PrintWriter writer = resp.getWriter();
-            writer.print(
-                    "<div class=\"progress\" role=\"progressbar\" aria-label=\"Basic example\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n" +
-                            "    <div class=\"progress-bar\" style=\"width: " + progress + "%\">" +
-                            progress + "%</div>\n" +
-                            "</div>");
-            writer.print(
-                    "    <input id=\"id_question\" type=\"hidden\" " +
-                            "name=\"id_question\" value=\"" + nextIdQuestion + "\">\n" +
-                            "    <input id=\"number_question\" type=\"hidden\" " +
-                            "name=\"number_question\" value=\"" + numberQuestion + "\">");
+            writer.print("<div class=\"progress\" role=\"progressbar\" aria-label=\"Basic example\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n" + "    <div class=\"progress-bar\" style=\"width: " + progress + "%\">" + progress + "%</div>\n" + "</div>");
+            writer.print("    <input id=\"id_question\" type=\"hidden\" " + "name=\"id_question\" value=\"" + nextIdQuestion + "\">\n" + "    <input id=\"number_question\" type=\"hidden\" " + "name=\"number_question\" value=\"" + numberQuestion + "\">");
 
             if (urlImage != null) {
-                writer.print("<img src=\"" + urlImage + "\"" +
-                        " width=\"256\" height=\"256\" class=\"rounded mx-auto d-block\" alt=\"img\"/>");
+                writer.print("<img src=\"" + urlImage + "\"" + " width=\"256\" height=\"256\" class=\"rounded mx-auto d-block\" alt=\"img\"/>");
             }
 
-            writer.print(
-                    "<div class=\"row d-flex justify-content-center align-items-center h-3\">\n" +
-                            "    <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n" +
-                            "        <div class=\"card\" style=\"border-radius: 15px;\">\n" +
-                            "            <div class=\"card-body p-4\">\n" +
-                            "                <h5 class=\"text-center mb-0\">" + text + "</h5>\n" +
-                            "            </div>\n" +
-                            "        </div>\n" +
-                            "    </div>\n" +
-                            "</div>\n" +
-                            "<br>");
+            writer.print("<div class=\"row d-flex justify-content-center align-items-center h-3\">\n" + "    <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n" + "        <div class=\"card\" style=\"border-radius: 15px;\">\n" + "            <div class=\"card-body p-4\">\n" + "                <h5 class=\"text-center mb-0\">" + text + "</h5>\n" + "            </div>\n" + "        </div>\n" + "    </div>\n" + "</div>\n" + "<br>");
             writer.print("<br>");
-            writer.print("<div class=\"d-flex justify-content-center\">\n" +
-                    "    <div class=\"col-5 col-md-5 col-lg-5 col-xl-5\">\n" +
-                    "        <div class=\"card\" style=\"border-radius: 15px;\">\n" +
-                    "            <div class=\"card-body p-4\">\n" +
-                    "                <div class=\"d-grid gap-2\">");
+            writer.print("<div class=\"d-flex justify-content-center\">\n" + "    <div class=\"col-5 col-md-5 col-lg-5 col-xl-5\">\n" + "        <div class=\"card\" style=\"border-radius: 15px;\">\n" + "            <div class=\"card-body p-4\">\n" + "                <div class=\"d-grid gap-2\">");
             for (AnswerDto answerDto : answers) {
-                writer.print(" <input type=\"checkbox\" class=\"btn-check\" " +
-                        "id=\"btncheck" + answerDto.getId() + "\" name=\"res\" value=\"" + answerDto.getId() +
-                        "\" autocomplete=\"off\">\n" +
-                        "<label class=\"btn btn-outline-success\" for=\"btncheck" +
-                        answerDto.getId() + "\">" + answerDto.getText() + "</label>");
+                writer.print(" <input type=\"checkbox\" class=\"btn-check\" " + "id=\"btncheck" + answerDto.getId() + "\" name=\"res\" value=\"" + answerDto.getId() + "\" autocomplete=\"off\">\n" + "<label class=\"btn btn-outline-success\" for=\"btncheck" + answerDto.getId() + "\">" + answerDto.getText() + "</label>");
             }
-            writer.print("  </div>\n" +
-                    "                <br>\n" +
-                    "                <div class=\"d-flex justify-content-end\">\n" +
-                    "                    <button type=\"btn btn-primary\" onclick=\"loadQuestionAndAnswer(\n" +
-                    "                    document.getElementById('id_question').value,\n" +
-                    "                    document.getElementById('number_question').value,\n" +
-                    "                    document.getElementsByName('res'))\">Submit\n" +
-                    "                    </button>\n" +
-                    "                </div>\n" +
-                    "            </div>\n" +
-                    "        </div>\n" +
-                    "    </div>\n" +
-                    "</div>");
+            writer.print("  </div>\n" + "                <br>\n" + "                <div class=\"d-flex justify-content-end\">\n" + "                    <button type=\"btn btn-primary\" onclick=\"loadQuestionAndAnswer(\n" + "                    document.getElementById('id_question').value,\n" + "                    document.getElementById('number_question').value,\n" + "                    document.getElementsByName('res'))\">Submit\n" + "                    </button>\n" + "                </div>\n" + "            </div>\n" + "        </div>\n" + "    </div>\n" + "</div>");
         } catch (DataBaseException e) {
             log.warn("Problem with supply question-answer");
             req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);

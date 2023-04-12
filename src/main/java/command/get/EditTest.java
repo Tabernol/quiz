@@ -1,17 +1,18 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.QuestionDto;
 import dto.TestDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.Question;
-import models.Test;
 import repo.impl.QuestionRepoImpl;
 import repo.impl.TestRepoImpl;
 import servises.QuestionService;
 import servises.TestService;
-import servises.ValidatorService;
+import servises.impl.QuestionServiceImpl;
+import servises.impl.TestServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -45,8 +46,8 @@ public class EditTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
-        questionService = new QuestionService(new QuestionRepoImpl(), new ValidatorService(new DataValidator()));
+        testService = AppContext.getInstance().getTestService();
+        questionService = AppContext.getInstance().getQuestionService();
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 
@@ -55,14 +56,7 @@ public class EditTest implements RequestHandler {
         try {
             TestDto testDto = testService.get(id);
             all = questionService.getAllById(id);
-
-
             req.setAttribute("test", testDto);
-//            req.setAttribute("test_id", test.getId());
-//            req.setAttribute("name", test.getName());
-//            req.setAttribute("subject", test.getSubject());
-//            req.setAttribute("difficult", test.getDifficult());
-//            req.setAttribute("duration", test.getDuration());
             req.setAttribute("questions", all);
             log.info("Test with ID " + id + " has updated");
             req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);

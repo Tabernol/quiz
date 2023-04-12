@@ -1,16 +1,14 @@
 
-import connection.MyDataSource;
 import controllers.filters.AuthorizationFilter;
 import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import models.User;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import servises.PasswordHashingService;
-import servises.UserService;
+import servises.impl.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import util.reCaptcha.VerifyRecaptcha;
@@ -33,7 +30,7 @@ import static org.mockito.Mockito.*;
 public class AuthorizationFilterTest {
 
     @Mock
-    private UserService userService;
+    private UserServiceImpl userService;
     @Mock
     private HttpServletRequest request;
     @Mock
@@ -55,7 +52,7 @@ public class AuthorizationFilterTest {
     public void setUp() {
         request = Mockito.mock(HttpServletRequest.class);
         response = Mockito.mock(HttpServletResponse.class);
-        userService = Mockito.mock(UserService.class);
+        userService = Mockito.mock(UserServiceImpl.class);
         session = Mockito.mock(HttpSession.class);
         filter = new AuthorizationFilter();
         dispatcher = Mockito.mock(RequestDispatcher.class);

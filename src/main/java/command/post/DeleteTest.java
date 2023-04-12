@@ -1,13 +1,15 @@
 package command.post;
 
 import command.get.FilterTests;
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 
 import lombok.extern.slf4j.Slf4j;
 import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.ValidatorService;
+import servises.impl.TestServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -21,7 +23,7 @@ import java.io.IOException;
  */
 @Slf4j
 public class DeleteTest implements RequestHandler {
-    private TestService testService = new TestService(new TestRepoImpl(), new ValidatorService(new DataValidator()));
+    private TestService testService;
 
     /**
      * This method is read parameter from request.
@@ -36,6 +38,7 @@ public class DeleteTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+        testService = AppContext.getInstance().getTestService();
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
         try {

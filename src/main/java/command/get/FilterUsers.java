@@ -1,12 +1,14 @@
 package command.get;
 
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
+import dto.UserDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.User;
 import repo.impl.UserRepoImpl;
 import servises.UserService;
-import servises.ValidatorService;
+import servises.impl.UserServiceImpl;
+import servises.impl.ValidatorServiceImpl;
 import validator.DataValidator;
 
 import javax.servlet.ServletException;
@@ -38,7 +40,7 @@ public class FilterUsers implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        userService = new UserService(new UserRepoImpl(), new ValidatorService(new DataValidator()));
+        userService = AppContext.getInstance().getUserService();
 
         String status = req.getParameter("status");
         String rows = req.getParameter("rows");
@@ -66,7 +68,7 @@ public class FilterUsers implements RequestHandler {
         }
 
 
-        List<User> userList;
+        List<UserDto> userList;
         try {
             userList = userService.nextPage(status, order, Integer.valueOf(rows), Integer.valueOf(page));
             req.setAttribute("users", userList);

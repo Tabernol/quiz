@@ -1,25 +1,5 @@
 package servlets.post;
 
-import command.get.EditTest;
-import command.get.FilterTests;
-import command.post.DeleteQuestion;
-import command.post.DeleteTest;
-import exeptions.DataBaseException;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import servises.QuestionService;
-import servises.TestService;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import java.io.IOException;
-
-import static org.mockito.Mockito.*;
-
 public class DeleteTestTest {
 //    @Test
 //    public void deleteTest() throws DataBaseException, ServletException, IOException {

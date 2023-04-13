@@ -23,7 +23,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class EditTestPost implements RequestHandler {
-    private TestService testService;
     /**
      * This method is read parameter from request.
      * It calls the service layer to update this Test(quiz)
@@ -37,7 +36,7 @@ public class EditTestPost implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws ServletException, IOException {
-        testService = AppContext.getInstance().getTestService();
+        TestService testService = AppContext.getInstance().getTestService();
         Long testId = Long.valueOf(req.getParameter("test_id"));
         String name = req.getParameter("name");
         String subject = req.getParameter("subject");

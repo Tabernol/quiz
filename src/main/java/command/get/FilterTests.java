@@ -26,7 +26,6 @@ import java.util.List;
  */
 @Slf4j
 public class FilterTests implements RequestHandler {
-    private TestService testService;
 
     /**
      * This method contacts with service layer to retrieve the sheet of tests(quiz) with selected filter and page
@@ -66,7 +65,7 @@ public class FilterTests implements RequestHandler {
         }
 //        =======================================
 
-        testService = AppContext.getInstance().getTestService();
+        TestService testService = AppContext.getInstance().getTestService();
         List<String> subjects;
         List<Test> filterTests;
         int countPages;

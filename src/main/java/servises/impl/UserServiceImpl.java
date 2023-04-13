@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService,
      * userRepo field for work with UserRepo.class
      * validatorService field for validate input date from other
      */
-    private UserRepo userRepo;
-    private ValidatorService validatorService;
+    private final UserRepo userRepo;
+    private final ValidatorService validatorService;
 
     public UserServiceImpl(UserRepo userRepo, ValidatorService validatorService) {
         this.userRepo = userRepo;

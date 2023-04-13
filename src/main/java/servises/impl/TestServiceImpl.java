@@ -26,8 +26,8 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * testRepo field for work with TestRepo.class
      * validatorService field for validate input date from other
      */
-    private TestRepo testRepo;
-    private ValidatorService validatorService;
+    private final TestRepo testRepo;
+    private final ValidatorService validatorService;
 
     public TestServiceImpl(TestRepo testRepo, ValidatorService validatorService) {
         this.testRepo = testRepo;

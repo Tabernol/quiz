@@ -25,7 +25,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class EditUserPost implements RequestHandler {
-    private UserService userService;
 
     /**
      * This method is read parameter from request.
@@ -42,7 +41,7 @@ public class EditUserPost implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        userService = AppContext.getInstance().getUserService();
+        UserService userService = AppContext.getInstance().getUserService();
         Long userId = Long.valueOf(req.getParameter("user_id"));
         String name = req.getParameter("name");
         String role = req.getParameter("role");

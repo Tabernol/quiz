@@ -25,7 +25,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class EditQuestionPost implements RequestHandler {
-    private QuestionService questionService;
 
     /**
      * This method is read parameter from request.
@@ -42,7 +41,7 @@ public class EditQuestionPost implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws
             ServletException, IOException {
-        questionService = AppContext.getInstance().getQuestionService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         String text = req.getParameter("text");

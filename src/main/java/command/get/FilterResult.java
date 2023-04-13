@@ -33,10 +33,6 @@ import java.util.List;
 @Slf4j
 public class FilterResult implements RequestHandler {
 
-    private ResultService resultService;
-    private TestService testService;
-    private UserService userService;
-
     /**
      * This method contacts with service layer to retrieve the sheet of results with selected filter and page
      *
@@ -75,9 +71,8 @@ public class FilterResult implements RequestHandler {
 
         System.out.println("page = " + page);
 
-        resultService = AppContext.getInstance().getResultService();
-        testService = AppContext.getInstance().getTestService();
-        userService = AppContext.getInstance().getUserService();
+        ResultService resultService = AppContext.getInstance().getResultService();
+        UserService userService = AppContext.getInstance().getUserService();
         List<String> subjects;
         int countPages;
 

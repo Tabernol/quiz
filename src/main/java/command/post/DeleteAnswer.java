@@ -26,8 +26,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class DeleteAnswer implements RequestHandler {
-    private QuestionService questionService;
-    private AnswerService answerService;
 
     /**
      * This method is read parameter from request.
@@ -43,8 +41,8 @@ public class DeleteAnswer implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        questionService = AppContext.getInstance().getQuestionService();
-        answerService = AppContext.getInstance().getAnswerService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
+        AnswerService answerService = AppContext.getInstance().getAnswerService();
 
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));

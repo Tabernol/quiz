@@ -24,7 +24,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class UpdateImageForQuestion implements RequestHandler {
-    private QuestionService questionService;
 
     /**
      * Updates the image for a question identified by its ID and redirects the user to the page to edit the question.
@@ -36,7 +35,7 @@ public class UpdateImageForQuestion implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        questionService = AppContext.getInstance().getQuestionService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
         Long testId = Long.valueOf(req.getParameter("test_id"));
         Long questionId = Long.valueOf(req.getParameter("question_id"));
         String url = req.getParameter("url");

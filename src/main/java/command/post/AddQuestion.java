@@ -25,7 +25,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class AddQuestion implements RequestHandler {
-    private QuestionService questionService;
 
     /**
      * This method is read parameter from request.
@@ -41,7 +40,7 @@ public class AddQuestion implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        questionService = AppContext.getInstance().getQuestionService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
         Long testId = Long.valueOf(req.getParameter("test_id"));
         String page = req.getParameter("page");
         String text = req.getParameter("text");

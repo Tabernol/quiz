@@ -22,7 +22,6 @@ import java.util.List;
  */
 @Slf4j
 public class FinishTest implements RequestHandler {
-    private ResultService resultService;
 
     /**
      * This method is read parameter from request.
@@ -38,7 +37,7 @@ public class FinishTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        resultService = AppContext.getInstance().getResultService();
+        ResultService resultService = AppContext.getInstance().getResultService();
         List<Boolean> result = (List<Boolean>) req.getSession().getAttribute("result_test");
         Integer size = (Integer) req.getSession().getAttribute("size");
         Long testId = (Long) req.getSession().getAttribute("test_id");

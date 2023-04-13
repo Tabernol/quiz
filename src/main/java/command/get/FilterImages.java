@@ -23,7 +23,6 @@ import java.util.List;
  */
 @Slf4j
 public class FilterImages implements RequestHandler {
-    private ImageService imageService;
 
     /**
      * This method contacts with service layer to retrieve all information about images
@@ -35,7 +34,7 @@ public class FilterImages implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        imageService = AppContext.getInstance().getImageService();
+        ImageService imageService = AppContext.getInstance().getImageService();
 
         try {
             List<Image> all = imageService.getAll();

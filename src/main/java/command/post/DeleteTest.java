@@ -23,7 +23,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class DeleteTest implements RequestHandler {
-    private TestService testService;
 
     /**
      * This method is read parameter from request.
@@ -38,7 +37,7 @@ public class DeleteTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = AppContext.getInstance().getTestService();
+        TestService testService = AppContext.getInstance().getTestService();
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
         try {

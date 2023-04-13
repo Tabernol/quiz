@@ -26,7 +26,6 @@ import java.util.Map;
  */
 @Slf4j
 public class DeleteFromCloud implements RequestHandler {
-    private ImageService imageService;
 
     /**
      * This method contacts with service layer to delete image from cloudinary and database
@@ -41,7 +40,7 @@ public class DeleteFromCloud implements RequestHandler {
         String publicId = req.getParameter("public_id");
 
 
-        imageService = AppContext.getInstance().getImageService();
+        ImageService imageService = AppContext.getInstance().getImageService();
 
         if (imageService.canDeleteImage(publicId).isEmpty()) {
             //delete image from cloudinary

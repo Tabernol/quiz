@@ -27,8 +27,6 @@ public class LoadToCloud implements RequestHandler {
 
     private int count = 0;
 
-    private ImageService imageService;
-
     /**
      * Executes the image upload process, saving the uploaded image to a file, uploading the file to a
      * cloud storage service, and adding the image to the database via the ImageService.
@@ -41,7 +39,7 @@ public class LoadToCloud implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        imageService = AppContext.getInstance().getImageService();
+        ImageService imageService = AppContext.getInstance().getImageService();
 
         String webInfPath = req.getServletContext().getRealPath("WEB-INF");
         String fullPath = webInfPath + "\\image" + (++count) + ".jpeg";

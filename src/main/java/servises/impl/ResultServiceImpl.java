@@ -24,8 +24,8 @@ import java.util.Set;
  */
 @Slf4j
 public class ResultServiceImpl implements ResultService {
-    private ResultRepo resultRepo;
-    private AnswerService answerService;
+    private final ResultRepo resultRepo;
+    private final AnswerService answerService;
 
 
     public ResultServiceImpl(ResultRepo resultRepo, AnswerService answerService) {

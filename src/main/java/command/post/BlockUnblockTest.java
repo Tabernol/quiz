@@ -23,7 +23,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class BlockUnblockTest implements RequestHandler {
-    private TestService testService;
 
     /**
      * This method is read parameter from request.
@@ -39,7 +38,7 @@ public class BlockUnblockTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = AppContext.getInstance().getTestService();
+        TestService testService = AppContext.getInstance().getTestService();
 
         Long testId = Long.valueOf(req.getParameter("test_id"));
         String page = req.getParameter("page");

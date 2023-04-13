@@ -26,8 +26,6 @@ import java.util.List;
 @Slf4j
 public class FilterUsers implements RequestHandler {
 
-    private UserService userService;
-
     /**
      * This method contacts with service layer to retrieve the sheet of users with selected filter and page
      *
@@ -40,7 +38,7 @@ public class FilterUsers implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        userService = AppContext.getInstance().getUserService();
+        UserService userService = AppContext.getInstance().getUserService();
 
         String status = req.getParameter("status");
         String rows = req.getParameter("rows");

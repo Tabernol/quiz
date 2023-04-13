@@ -31,8 +31,6 @@ import java.util.Set;
  */
 @Slf4j
 public class GetInfoQuestion implements RequestHandler {
-    private AnswerService answerService;
-    private ResultService resultService;
 
     /**
      * This method supply information: text of question, answers for it, image for question
@@ -44,8 +42,8 @@ public class GetInfoQuestion implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        answerService = AppContext.getInstance().getAnswerService();
-        resultService = AppContext.getInstance().getResultService();
+        AnswerService answerService = AppContext.getInstance().getAnswerService();
+        ResultService resultService = AppContext.getInstance().getResultService();
         req.setAttribute("duration", req.getParameter("duration"));
 
         String idQuestion = req.getParameter("id_question");

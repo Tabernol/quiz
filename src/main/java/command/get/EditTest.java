@@ -29,8 +29,6 @@ import java.util.List;
  */
 @Slf4j
 public class EditTest implements RequestHandler {
-    private TestService testService;
-    private QuestionService questionService;
 
     /**
      * This method reads parameters.
@@ -46,8 +44,8 @@ public class EditTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        testService = AppContext.getInstance().getTestService();
-        questionService = AppContext.getInstance().getQuestionService();
+        TestService testService = AppContext.getInstance().getTestService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
         Long id = Long.valueOf(req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
 

@@ -30,10 +30,6 @@ import java.util.Set;
  */
 @Slf4j
 public class EditQuestion implements RequestHandler {
-    private QuestionService questionService;
-    private AnswerService answerService;
-    private QuestionDto questionDto;
-    private Set<AnswerDto> answers;
 
     /**
      * This method reads parameters.
@@ -49,8 +45,8 @@ public class EditQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        questionService = AppContext.getInstance().getQuestionService();
-        answerService = AppContext.getInstance().getAnswerService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
+        AnswerService answerService = AppContext.getInstance().getAnswerService();
         String questionId = req.getParameter("question_id");
 
         req.setAttribute("test_id", req.getParameter("test_id"));
@@ -59,8 +55,8 @@ public class EditQuestion implements RequestHandler {
 
 
         try {
-            questionDto = questionService.get(Long.valueOf(questionId));
-            answers = answerService.getAnswers(Long.valueOf(questionId));
+            QuestionDto questionDto = questionService.get(Long.valueOf(questionId));
+            Set<AnswerDto> answers = answerService.getAnswers(Long.valueOf(questionId));
             req.setAttribute("answers", answers);
             req.setAttribute("question", questionDto);
 

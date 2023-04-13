@@ -11,7 +11,7 @@ import validator.DataValidator;
  */
 @Slf4j
 public class ValidatorServiceImpl implements ValidatorService {
-    private DataValidator dataValidator;
+    private final DataValidator dataValidator;
 
     public ValidatorServiceImpl(DataValidator dataValidator) {
         this.dataValidator = dataValidator;

@@ -29,8 +29,6 @@ import java.security.spec.InvalidKeySpecException;
 @Slf4j
 public class Registration implements RequestHandler {
 
-    private UserService userService;
-
     /**
      * This method is read parameter from request.
      * It checks the parameter "g-recaptcha-response" and allows registration or not
@@ -48,7 +46,7 @@ public class Registration implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        userService = AppContext.getInstance().getUserService();
+        UserService userService = AppContext.getInstance().getUserService();
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");

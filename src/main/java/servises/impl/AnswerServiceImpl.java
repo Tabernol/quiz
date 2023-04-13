@@ -27,13 +27,13 @@ public class AnswerServiceImpl implements AnswerService,
      * answerRepo field for work with AnswerRepo.class
      * validatorService field for validate input date from other
      */
-    private AnswerRepo answerRepo;
-    private ValidatorService validatorService;
+    private final AnswerRepo answerRepo;
+    private final ValidatorService validatorService;
 
 
     public AnswerServiceImpl(AnswerRepo answerRepo, ValidatorService validatorService) {
         this.validatorService = validatorService;
-        this.answerRepo = this.answerRepo;
+        this.answerRepo = answerRepo;
     }
 
     /**

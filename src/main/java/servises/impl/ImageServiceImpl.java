@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 public class ImageServiceImpl implements ImageService {
 
-    private ImageRepo imageRepo;
+    private final ImageRepo imageRepo;
 
     public ImageServiceImpl(ImageRepo imageRepo) {
         this.imageRepo = imageRepo;

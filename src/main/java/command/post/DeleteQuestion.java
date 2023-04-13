@@ -25,8 +25,6 @@ import java.io.IOException;
 @Slf4j
 public class DeleteQuestion implements RequestHandler {
 
-    private QuestionService questionService;
-
     /**
      * This method is read parameter from request.
      * It calls the service layer to delete a Question
@@ -41,7 +39,7 @@ public class DeleteQuestion implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        questionService = AppContext.getInstance().getQuestionService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
         req.setAttribute("page", req.getParameter("page"));
         req.setAttribute("test_id", req.getParameter("test_id"));
         String id = req.getParameter("question_id");

@@ -29,8 +29,8 @@ public class QuestionServiceImpl implements QuestionService,
      * questionRepo field for work with QuestionRepo.class
      * validatorService field for validate input date from other
      */
-    private QuestionRepo questionRepo;
-    private ValidatorService validatorService;
+    private final QuestionRepo questionRepo;
+    private final ValidatorService validatorService;
 
     public QuestionServiceImpl(QuestionRepo questionRepo, ValidatorService validatorService) {
         this.questionRepo = questionRepo;

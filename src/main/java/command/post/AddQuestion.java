@@ -6,11 +6,7 @@ import dto.QuestionDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
-import servises.impl.QuestionServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +42,7 @@ public class AddQuestion implements RequestHandler {
         String text = req.getParameter("text");
 
         try {
-            questionService.addQuestion(new QuestionDto(testId,text));
+            questionService.create(new QuestionDto(testId,text));
             log.info("Question for test id " + testId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
@@ -56,7 +52,7 @@ public class AddQuestion implements RequestHandler {
 
         } catch (DataBaseException e) {
             log.warn("Question for test id " + testId + "has not added", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
             log.info("Question for test id " + testId + "is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +

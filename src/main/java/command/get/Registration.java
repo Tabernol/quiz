@@ -26,6 +26,6 @@ public class Registration implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
+        req.getRequestDispatcher(REGISTRATION).forward(req, resp);
     }
 }

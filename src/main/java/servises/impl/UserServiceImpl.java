@@ -6,8 +6,9 @@ import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import models.User;
 import repo.UserRepo;
-import repo.impl.UserRepoImpl;
 import servises.*;
+import util.converter.ConvertToDtoAble;
+import util.converter.ConvertToEntityAble;
 import util.query.MyQuery;
 import util.query.QueryBuilderForUser;
 import util.query.QueryCreator;
@@ -45,10 +46,12 @@ public class UserServiceImpl implements UserService,
      * @return models.User
      * @throws DataBaseException is wrapper of SQLException
      */
-    public UserDto get(long id) throws DataBaseException {
+    @Override
+    public UserDto get(Long id) throws DataBaseException {
         log.info("SERVICE USER get user with id {}", id);
         return mapToDto(userRepo.get(id));
     }
+
 
     /**
      * This method validates the input parameters.
@@ -67,6 +70,7 @@ public class UserServiceImpl implements UserService,
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeySpecException
      */
+    @Override
     public Long createUser(UserDto userDto, String password, String repeatPassword)
             throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
         validatorService.validateFieldsUser(userDto.getName(), userDto.getLogin(), password);
@@ -84,6 +88,7 @@ public class UserServiceImpl implements UserService,
      * @return List of all users from database
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<UserDto> getAll() throws DataBaseException {
         log.info("SERVICE USER get all users");
         return mapToDtoList(userRepo.getAll());
@@ -97,7 +102,8 @@ public class UserServiceImpl implements UserService,
      * @throws DataBaseException is wrapper of SQLException
      * @throws ValidateException
      */
-    public int updateUser(UserDto userdto) throws DataBaseException, ValidateException {
+    @Override
+    public int update(UserDto userdto) throws DataBaseException, ValidateException {
         validatorService.validateUpdateUser(userdto.getName(), userdto.getRole());
         log.info("SERVICE USER update user {}", userdto);
         return userRepo.update(mapToEntity(userdto));
@@ -110,6 +116,7 @@ public class UserServiceImpl implements UserService,
      * @return id of user
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public long getId(String login) throws DataBaseException {
         log.info("SERVICE USER get id user with login {}", login);
         return userRepo.getId(login);
@@ -122,6 +129,7 @@ public class UserServiceImpl implements UserService,
      * @return 1 if user has updated
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public boolean blockUnBlockUser(Long userId) throws DataBaseException {
         boolean status = get(userId).isBlocked();
         userRepo.changeStatus(userId, !status);
@@ -137,6 +145,7 @@ public class UserServiceImpl implements UserService,
      * @return number of user
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public Integer getCountUsers(String status) throws DataBaseException {
         if (status.equals("all")) {
             log.info("SERVICE USER get all users");
@@ -158,6 +167,7 @@ public class UserServiceImpl implements UserService,
      * @return list of models.User
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<UserDto> nextPage(String filter, String order, Integer rows, Integer page) throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForUser();
         String query = queryCreator.getSQL(new MyQuery(filter, order, rows, page));
@@ -173,6 +183,7 @@ public class UserServiceImpl implements UserService,
      * @return count of page for this filter
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public int countPages(String status, String rows) throws DataBaseException {
         Integer count = getCountUsers(status);
         Integer rowsOnPage = Integer.valueOf(rows);
@@ -188,6 +199,7 @@ public class UserServiceImpl implements UserService,
      * @throws DataBaseException is wrapper of SQLException
      * @throws ValidateException
      */
+    @Override
     public boolean isCorrectPassword(Long userId, String password) throws DataBaseException, ValidateException {
         try {
             String passwordInDataBase = userRepo.get(userId).getPassword();
@@ -229,6 +241,7 @@ public class UserServiceImpl implements UserService,
         for (User user : userList) {
             userDtoList.add(mapToDto(user));
         }
+        log.info(userDtoList.toString());
         return userDtoList;
     }
 }

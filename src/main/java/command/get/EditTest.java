@@ -57,10 +57,10 @@ public class EditTest implements RequestHandler {
             req.setAttribute("test", testDto);
             req.setAttribute("questions", all);
             log.info("Test with ID " + id + " has updated");
-            req.getRequestDispatcher("/WEB-INF/view/admin/edit_test.jsp").forward(req, resp);
+            req.getRequestDispatcher(EDIT_TEST).forward(req, resp);
         } catch (DataBaseException e) {
             log.warn("Test with ID " + id + " has NOT updated ", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
 
         }
     }

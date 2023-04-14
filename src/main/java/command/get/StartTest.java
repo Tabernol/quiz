@@ -27,8 +27,6 @@ import java.util.List;
  */
 @Slf4j
 public class StartTest implements RequestHandler {
-    private QuestionService questionService;
-    private TestService testService;
 
     /**
      * This method starts test(quiz) for user
@@ -44,8 +42,8 @@ public class StartTest implements RequestHandler {
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter("test_id"));
 
-        questionService = AppContext.getInstance().getQuestionService();
-        testService = AppContext.getInstance().getTestService();
+        QuestionService questionService = AppContext.getInstance().getQuestionService();
+        TestService testService = AppContext.getInstance().getTestService();
         List<QuestionDto> questions = null;
         Integer duration = 0;
         Integer size = 0;
@@ -58,7 +56,7 @@ public class StartTest implements RequestHandler {
             log.info("give parameter test with id " + testId);
         } catch (DataBaseException e) {
             log.warn("problem with received parameter test with id " + testId, e);
-            req.getRequestDispatcher("/WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
 
@@ -74,12 +72,12 @@ public class StartTest implements RequestHandler {
             GetInfoQuestion getInfoQuestion = new GetInfoQuestion();
             getInfoQuestion.execute(req, resp);
             log.info("Start test with id " + testId);
-            req.getRequestDispatcher("/WEB-INF/view/student/page_base_question.jsp").forward(req, resp);
+            req.getRequestDispatcher(PAGE_BASE_QUESTION).forward(req, resp);
         } else {
             req.setAttribute("page", req.getParameter("page"));
             req.setAttribute("message", "Sorry, this test now is empty");
             log.info("Test with id " + testId + " is empty. And not started");
-            req.getRequestDispatcher("/WEB-INF/view/student/page_test.jsp").forward(req, resp);
+            req.getRequestDispatcher(PAGE_TEST).forward(req, resp);
         }
 
 

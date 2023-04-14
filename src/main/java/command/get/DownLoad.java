@@ -3,6 +3,7 @@ package command.get;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
+import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
 import util.pdfWriter.MyPdfWriter;
@@ -35,7 +36,7 @@ public class DownLoad implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/pdf");
-        MyPdfWriter myPdfWriter = new MyPdfWriter();
+        MyPdfWriter myPdfWriter = AppContext.getInstance().getMyPdfWriter();
 
         Long id;
         String userId = req.getParameter("user_id");
@@ -61,7 +62,7 @@ public class DownLoad implements RequestHandler {
             document.close();
         } catch (DocumentException de) {
             log.warn("Trouble with downloading result with ID " + id, de);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 }

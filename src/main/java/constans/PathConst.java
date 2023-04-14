@@ -24,7 +24,6 @@ public interface PathConst {
     //only student
     String INFO_TEST = "/info_test";
     String START_TEST = "/start_test";
-    //    String NEXT_QUESTION = "/next_question";
     String RESULT_ANSWER = "/result_answer";
     String GET_INFO_QUESTION = "/get_text_question";
     String FINISH = "/finish";
@@ -49,8 +48,6 @@ public interface PathConst {
     String DELETE_TEST = "/delete_test";
     String DELETE_QUESTION = "/delete_question";
     String DELETE_ANSWER = "/delete_answer";
-
-   // String UPLOAD_IMAGE = "/upload_image";
     String FILTER_IMAGES = "/filter_images";
     String LOAD = "/load";
     String DELETE_IMAGE = "/delete_image";

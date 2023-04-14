@@ -5,11 +5,7 @@ import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.QuestionRepoImpl;
 import servises.QuestionService;
-import servises.impl.QuestionServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,13 +41,13 @@ public class DeleteQuestion implements RequestHandler {
         String id = req.getParameter("question_id");
 
         try {
-            questionService.deleteQuestion(Long.valueOf(id));
+            questionService.delete(Long.valueOf(id));
             log.info("Question with id " + id + "has deleted");
             EditTest editTest = new EditTest();
             editTest.execute(req, resp);
         } catch (DataBaseException e) {
             log.warn("Question with id " + id + "has not delete", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
 

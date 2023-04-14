@@ -6,9 +6,8 @@ import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import models.Test;
 import repo.TestRepo;
-import repo.impl.TestRepoImpl;
-import servises.ConvertToDtoAble;
-import servises.ConvertToEntityAble;
+import util.converter.ConvertToDtoAble;
+import util.converter.ConvertToEntityAble;
 import servises.TestService;
 import servises.ValidatorService;
 import util.query.*;
@@ -20,7 +19,9 @@ import java.util.List;
  * It checks the input and decides whether to call TestRepo.class or throw an exception
  */
 @Slf4j
-public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, TestDto>, ConvertToDtoAble<TestDto, Test> {
+public class TestServiceImpl implements TestService,
+        ConvertToEntityAble<Test, TestDto>,
+        ConvertToDtoAble<TestDto, Test> {
     /**
      * Class contains:
      * testRepo field for work with TestRepo.class
@@ -44,7 +45,8 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @throws ValidateException
      * @throws DataBaseException is wrapper of SQLException
      */
-    public long createTest(TestDto testDto)
+    @Override
+    public long create(TestDto testDto)
             throws ValidateException, DataBaseException {
         validatorService.checkFieldsTest(testDto);
         validatorService.isNameExist(testRepo.isNameExist(testDto.getName()));
@@ -58,6 +60,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @return list of unique name subject in the 'test' table in the database
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<String> getDistinctSubjects() throws DataBaseException {
         log.info("SERVICE TEST get distinct subject");
         return testRepo.getDistinctSubject();
@@ -74,6 +77,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @return List of test on current page
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page, String role)
             throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForTest();
@@ -89,6 +93,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @return 1 if test(quiz) has deleted
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public int delete(Long id) throws DataBaseException {
         log.info("SERVICE TEST delete test with id " + id);
         return testRepo.delete(id);
@@ -101,6 +106,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @return models.Test
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public TestDto get(Long id) throws DataBaseException {
         log.info("SERVICE TEST get test with id " + id);
         return mapToDto(testRepo.get(id));
@@ -114,6 +120,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @throws DataBaseException is wrapper of SQLException
      * @throws ValidateException
      */
+    @Override
     public int update(TestDto testDto) throws DataBaseException, ValidateException {
         validatorService.checkFieldsTest(testDto);
         log.info("SERVICE TEST update test {}", testDto);
@@ -128,6 +135,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @return count of page for this filter
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public int countPages(String subject, Integer rowsOnPage) throws DataBaseException {
         Integer count = amountTests(subject);
         return count % rowsOnPage == 0 ? count / rowsOnPage : count / rowsOnPage + 1;
@@ -153,6 +161,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @return 1 if test has updated
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public int addPointPopularity(Long idTest) throws DataBaseException {
         log.info("SERVICE TEST  add point of popularity");
         return testRepo.addPopularity(idTest);
@@ -165,6 +174,7 @@ public class TestServiceImpl implements TestService, ConvertToEntityAble<Test, T
      * @return 1 if test has updated
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public int changeStatus(Long testId) throws DataBaseException {
         Test test = testRepo.get(testId);
         if (test.getStatus().equals(Test.Status.BLOCKED)) {

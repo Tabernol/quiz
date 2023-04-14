@@ -47,7 +47,7 @@ public class DeleteTest implements RequestHandler {
             filterTests.execute(req, resp);
         } catch (DataBaseException e) {
             log.warn("Test with id " + id + "has not deleted", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
 
         }
     }

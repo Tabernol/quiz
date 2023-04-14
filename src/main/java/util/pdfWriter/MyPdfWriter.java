@@ -14,7 +14,11 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class MyPdfWriter {
-    ResultService resultService;
+    private ResultService resultService;
+
+    public MyPdfWriter(ResultService resultService) {
+        this.resultService = resultService;
+    }
 
     public PdfPTable getPdfTable(Long userId) {
         PdfPTable table = new PdfPTable(5);

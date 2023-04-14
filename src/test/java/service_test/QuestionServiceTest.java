@@ -45,7 +45,7 @@ public class QuestionServiceTest {
     @Test
     public void addQuestionAddTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepoImpl.create(new Question())).thenReturn(1L);
-        long i = questionService.addQuestion(new QuestionDto());
+        long i = questionService.create(new QuestionDto());
         assertEquals(1, i);
 
     }
@@ -53,7 +53,7 @@ public class QuestionServiceTest {
     @Test
     public void deleteQuestionDeleteTest() throws DataBaseException {
         Mockito.when(mockQuestionRepoImpl.delete(Mockito.anyLong())).thenReturn(12);
-        int i = questionService.deleteQuestion(Mockito.anyLong());
+        int i = questionService.delete(Mockito.anyLong());
         assertEquals(12, i);
     }
 

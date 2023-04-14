@@ -9,26 +9,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="continue to work with UserDto">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AppContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/impl/AnswerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/impl/ImageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/impl/QuestionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/impl/ResultServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/impl/TestServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servises/impl/ValidatorServiceImpl.java" afterDir="false" />
+    <list default="true" id="7c341143-b0dc-425f-bded-2f746e340aeb" name="Changes" comment="refactored some commands">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dto/ImageDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servises/BaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_listener/LoadMediaContextListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app_listener/QuizAppListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_listener/QuizAppListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/DownLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/DownLoad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/EditTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/EditUser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterImages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/FilterUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Finish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/GetInfoQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LanguageChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Prg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/Registration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/get/StartTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddAnswer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/AddQuestion.java" afterDir="false" />
@@ -47,44 +47,37 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/Registration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/command/post/UpdateImageForQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/connection/MyDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connection/MyDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/AuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constans/PathConst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AppContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AppContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/filters/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/servlet/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/servlet/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Image.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ImageRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/ResultRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/AnswerRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/AnswerRepoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/ImageRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/ImageRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/QuestionRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/QuestionRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/ResultRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/ResultRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/TestRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/TestRepoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/impl/UserRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repo/impl/UserRepoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ConvertToDtoAble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/converter/ConvertToDtoAble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ConvertToEntityAble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/converter/ConvertToEntityAble.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ImageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ResultService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/TestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servises/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/ValidatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/impl/AnswerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/impl/AnswerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/impl/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/impl/ImageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/impl/QuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/impl/QuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/impl/ResultServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/impl/ResultServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/impl/TestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/impl/TestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servises/impl/ValidatorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servises/impl/ValidatorServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/pdfWriter/MyPdfWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/pdfWriter/MyPdfWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AuthorizationFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AuthorizationFilterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/AnswerRepoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/admin_users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/profile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/repo/ImageRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/ImageRepoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/QuestionRepoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/ResultRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/ResultRepoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/TestRepoTestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/TestRepoTestImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repo/UserRepoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repo/UserRepoImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/AnswerServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ImageServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ImageServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/QuestionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ResultServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/TestServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service_test/ValidatorServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/EditQuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/get/EditQuestionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/get/ProfileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/get/ProfileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/AddAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/AddAnswerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/CreateTestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/CreateTestTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteAnswerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteQuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteQuestionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servlets/post/DeleteTestTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,31 +141,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "js.last.introduce.type": "LET",
-    "last_opened_file_path": "C:/Users/Max/IdeaProjects/PrepereProject/startCommand",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.40229884",
-    "settings.editor.selected.configurable": "editor.preferences.gutterIcons"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Max/IdeaProjects/PrepereProject/startCommand&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40229884&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Max\IdeaProjects\PrepereProject\startCommand\src\main\webapp\image" />
@@ -190,7 +183,7 @@
       <recent name="repo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in quiz">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.69">
     <configuration name="All in quiz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="quiz" />
       <option name="PACKAGE_NAME" value="" />
@@ -373,10 +366,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageRepoImplTest" />
         <item itemvalue="JUnit.All in quiz" />
         <item itemvalue="JUnit.ResultRepoImplTest" />
         <item itemvalue="JUnit.QuestionRepoImplTest" />
-        <item itemvalue="JUnit.ImageRepoImplTest" />
         <item itemvalue="JUnit.AnswerRepoImplTest" />
       </list>
     </recent_temporary>
@@ -493,21 +486,8 @@
       <workItem from="1681163159721" duration="14109000" />
       <workItem from="1681248275023" duration="4608000" />
       <workItem from="1681327821663" duration="4403000" />
-      <workItem from="1681333138741" duration="10226000" />
-    </task>
-    <task id="LOCAL-00033" summary="107 work on query builder and factory and servlet for filtration">
-      <created>1674954636942</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1674954636942</updated>
-    </task>
-    <task id="LOCAL-00034" summary="108 Add filter and pagination for table-result">
-      <created>1675115879642</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1675115879642</updated>
+      <workItem from="1681333138741" duration="10954000" />
+      <workItem from="1681416787725" duration="10591000" />
     </task>
     <task id="LOCAL-00035" summary="108 Add table to profile. Delete command next_page and edit_user_profile">
       <created>1675122062917</created>
@@ -838,7 +818,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681258152302</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Added AppContext&#10;Added interfaces for services&#10;Changed constructor for repositories&#10;Changed MyDataSource&#10;Changed many commands&#10;changed tests for repositories">
+      <created>1681343584463</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1681343584464</updated>
+    </task>
+    <task id="LOCAL-00083" summary="refactored some commands">
+      <created>1681344102895</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1681344102895</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -856,8 +850,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add a part of loadImage service" />
-    <MESSAGE value="made the loadImage service better" />
     <MESSAGE value="add Enum ROLE for User. and Status for Test" />
     <MESSAGE value="add Test block/unblock" />
     <MESSAGE value="better filter for result view" />
@@ -881,7 +873,9 @@
     <MESSAGE value="Added more method in BaseRepo&#10;did refactor&#10;Added constants" />
     <MESSAGE value="need to solve problem with updateUser" />
     <MESSAGE value="continue to work with UserDto" />
-    <option name="LAST_COMMIT_MESSAGE" value="continue to work with UserDto" />
+    <MESSAGE value="Added AppContext&#10;Added interfaces for services&#10;Changed constructor for repositories&#10;Changed MyDataSource&#10;Changed many commands&#10;changed tests for repositories" />
+    <MESSAGE value="refactored some commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored some commands" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

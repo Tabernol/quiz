@@ -59,7 +59,7 @@ public class EditQuestionPost implements RequestHandler {
 
         } catch (DataBaseException e) {
             log.warn("Question with id " + questionId + "has not updated", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
             log.info("Question with id " + questionId + "is invalid");
             resp.sendRedirect(req.getContextPath() + "/prg" +

@@ -61,10 +61,10 @@ public class EditQuestion implements RequestHandler {
             req.setAttribute("question", questionDto);
 
             log.info("Question with ID " + questionId + "has updated");
-            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+            req.getRequestDispatcher(EDIT_QUESTION).forward(req, resp);
         } catch (DataBaseException e) {
             log.warn("Question with ID " + questionId + " has NOT updated", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 }

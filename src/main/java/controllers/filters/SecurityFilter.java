@@ -24,7 +24,6 @@ public class SecurityFilter extends AbstractFilter {
 
 
         if (role == null) {
-            System.out.println("role == null");
             if (AccessUtil.guestAccess.contains(servletPath)) {
                 req.getRequestDispatcher(servletPath).forward(req, resp);
             } else {

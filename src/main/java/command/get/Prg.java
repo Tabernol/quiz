@@ -2,6 +2,7 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +34,7 @@ public class Prg implements RequestHandler {
             req.setAttribute(param.getKey(), param.getValue()[0]);
         }
         String servletPath = req.getParameter("servlet_path");
-        log.info("Command PRG works with servlet path " + servletPath);
+        log.info("Command PRG works with servlet path {}", servletPath);
         req.getRequestDispatcher(servletPath).forward(req, resp);
     }
 }

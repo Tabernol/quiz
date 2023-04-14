@@ -82,14 +82,14 @@ public class FilterTests implements RequestHandler {
             req.setAttribute("page", page);
             if (role.equals("admin")) {
                 log.info("admin uses filter test");
-                req.getRequestDispatcher("/WEB-INF/view/admin/admin_tests.jsp").forward(req, resp);
+                req.getRequestDispatcher(ADMIN_TESTS).forward(req, resp);
             } else {
                 log.info("student uses filter test");
-                req.getRequestDispatcher("/WEB-INF/view/student/student_tests.jsp").forward(req, resp);
+                req.getRequestDispatcher(STUDENT_TESTS).forward(req, resp);
             }
         } catch (DataBaseException e) {
             log.warn("Trouble with using filter tests ", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 

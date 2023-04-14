@@ -1,12 +1,15 @@
 package servises.impl;
 
+import dto.ImageDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Image;
 import repo.ImageRepo;
-import repo.impl.ImageRepoImpl;
+import util.converter.ConvertToDtoAble;
+import util.converter.ConvertToEntityAble;
 import servises.ImageService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +17,9 @@ import java.util.List;
  * it calls to ImageRepo.class for to do something actions
  */
 @Slf4j
-public class ImageServiceImpl implements ImageService {
+public class ImageServiceImpl implements ImageService,
+        ConvertToEntityAble<Image, ImageDto>,
+        ConvertToDtoAble<ImageDto, Image> {
 
     private final ImageRepo imageRepo;
 
@@ -25,16 +30,18 @@ public class ImageServiceImpl implements ImageService {
     /**
      * this method calls to repo layer to insert new data in table 'image'
      *
-     * @param publicId is a unique expression that returns "cloudinary" after inserting the image into the cloud
-     * @param url      is a unique ГКД that returns "cloudinary" after inserting the image into the cloud
-     * @param width    is width image
-     * @param height   is height image
+     * @param imageDto contains information about loaded image:
+     *                 publicId is a unique expression that returns "cloudinary" after inserting the image into the cloud
+     *                 url      is a unique ГКД that returns "cloudinary" after inserting the image into the cloud
+     *                 width    is width image
+     *                 height   is height image
      * @return 1 if Image has inserted
      * @throws DataBaseException is wrapper of SQLException
      */
-    public int addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException {
-        log.info("SERVICE IMAGE add new image to database with publicId " + publicId);
-        return imageRepo.addImage(publicId, url, width, height);
+    @Override
+    public int addImage(ImageDto imageDto) throws DataBaseException {
+        log.info("SERVICE IMAGE add new image to database with publicId {}", imageDto);
+        return imageRepo.addImage(mapToEntity(imageDto));
     }
 
     /**
@@ -43,9 +50,14 @@ public class ImageServiceImpl implements ImageService {
      * @return List of Image
      * @throws DataBaseException is wrapper of SQLException
      */
-    public List<Image> getAll() throws DataBaseException {
+    @Override
+    public List<ImageDto> getAll() throws DataBaseException {
         log.info("SERVICE IMAGE get all images");
-        return imageRepo.getAll();
+        List<ImageDto> imageDtoList = new ArrayList<>();
+        for(Image image : imageRepo.getAll()){
+            imageDtoList.add(mapToDto(image));
+        }
+        return imageDtoList;
     }
 
     /**
@@ -55,12 +67,32 @@ public class ImageServiceImpl implements ImageService {
      * @return 1 if Image has deleted
      * @throws DataBaseException is wrapper of SQLException
      */
-    public int deleteImage(String publicId) throws DataBaseException {
+    @Override
+    public int delete(String publicId) throws DataBaseException {
         log.info("SERVICE IMAGE delete from database with publicId " + publicId);
         return imageRepo.deleteImage(publicId);
     }
-
-    public List<String> canDeleteImage(String publicId){
+    @Override
+    public List<String> canDeleteImage(String publicId) {
         return imageRepo.canDeleteImage(publicId);
+    }
+
+    @Override
+    public Image mapToEntity(ImageDto imageDto) {
+        Image image = new Image();
+        image.setPublicId(imageDto.getPublicId());
+        image.setUrl(imageDto.getUrl());
+        image.setWidth(imageDto.getWidth());
+        image.setHeight(imageDto.getHeight());
+        return image;
+    }
+
+    @Override
+    public ImageDto mapToDto(Image entity) {
+        return new ImageDto(
+                entity.getPublicId(),
+                entity.getUrl(),
+                entity.getWidth(),
+                entity.getHeight());
     }
 }

@@ -26,6 +26,6 @@ public class LoginForm implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
+        req.getRequestDispatcher(LOGIN_FORM).forward(req, resp);
     }
 }

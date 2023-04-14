@@ -67,28 +67,28 @@ public class Registration implements RequestHandler {
                 session.setAttribute("name", userDto.getName());
                 session.setAttribute("role", userDto.getRole());
                 log.info("User has created with login {}", login);
-                req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
+                req.getRequestDispatcher(MENU).forward(req, resp);
             } catch (DataBaseException e) {
                 log.warn("User have not created", e.getMessage());
-                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+                req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             } catch (ValidateException e) {
                 log.info("User field is invalid ", e.getMessage());
                 req.setAttribute("message_bad_request", e.getMessage());
                 req.setAttribute("repeat_name", name);
                 req.setAttribute("repeat_login", login);
-                req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
+                req.getRequestDispatcher(REGISTRATION).forward(req, resp);
             } catch (NoSuchAlgorithmException e) {
                 log.warn("Problem with hash password ", e.getMessage());
-                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+                req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             } catch (InvalidKeySpecException e) {
                 log.warn("Problem with hash password ", e.getMessage());
-                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+                req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             }
         } else {
             req.setAttribute("message_bad_request", "reCAPTCHA is false");
             req.setAttribute("repeat_name", name);
             req.setAttribute("repeat_login", login);
-            req.getRequestDispatcher("/WEB-INF/view/registration.jsp").forward(req, resp);
+            req.getRequestDispatcher(REGISTRATION).forward(req, resp);
         }
     }
 }

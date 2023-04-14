@@ -6,11 +6,7 @@ import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.UserRepoImpl;
 import servises.UserService;
-import servises.impl.UserServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -48,7 +44,7 @@ public class EditUserPost implements RequestHandler {
 
 
         try {
-            userService.updateUser(new UserDto(userId, name, role));
+            userService.update(new UserDto(userId, name, role));
             log.info("User with id " + userId + "changes made successfully");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/profile" +
@@ -57,7 +53,7 @@ public class EditUserPost implements RequestHandler {
                     "&message_success=changes made successfully");
         } catch (DataBaseException e) {
             log.warn("User with id " + userId + "did not update");
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
             log.info("User with id " + userId + "input data is wrong");
             resp.sendRedirect(req.getContextPath() + "/prg" +

@@ -51,7 +51,7 @@ public class BlockUnblockTest implements RequestHandler {
                     "&page=" + page);
         } catch (DataBaseException e) {
             log.warn("Test with id " + testId + " has not updated", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 }

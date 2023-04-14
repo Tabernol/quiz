@@ -63,14 +63,14 @@ public class AnswerServiceTest {
         Mockito.when(mockValidatorService.validateText(Mockito.anyString())).thenReturn(true);
         Mockito.when(mockAnswerRepoImpl.create(Mockito.any(Answer.class))).thenReturn(12L);
 
-        assertEquals(12, answerService.createAnswer(
+        assertEquals(12, answerService.create(
                 new AnswerDto(1L, 123L, "text", true)));
     }
 
     @Test
     public void deleteAnswerTest() throws DataBaseException {
         Mockito.when(mockAnswerRepoImpl.delete(Mockito.anyLong())).thenReturn(1);
-        assertEquals(1, answerService.deleteAnswer(23L));
+        assertEquals(1, answerService.delete(23L));
     }
 
 //    @Test

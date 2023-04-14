@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ImageRepo {
-    int addImage(String publicId, String url, Integer width, Integer height) throws DataBaseException;
+    int addImage(Image image) throws DataBaseException;
 
     List<Image> getAll() throws DataBaseException;
 

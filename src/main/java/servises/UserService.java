@@ -3,10 +3,6 @@ package servises;
 import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
-import models.User;
-import util.query.MyQuery;
-import util.query.QueryBuilderForUser;
-import util.query.QueryCreator;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -14,14 +10,14 @@ import java.util.List;
 
 public interface UserService {
 
-    UserDto get(long id) throws DataBaseException;
+    UserDto get(Long id) throws DataBaseException;
 
     Long createUser(UserDto userDto, String password, String repeatPassword)
             throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException;
 
     List<UserDto> getAll() throws DataBaseException;
 
-    int updateUser(UserDto userdto) throws DataBaseException, ValidateException;
+    int update(UserDto userdto) throws DataBaseException, ValidateException;
 
     long getId(String login) throws DataBaseException;
 

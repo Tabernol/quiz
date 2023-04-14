@@ -39,7 +39,7 @@ public class DeleteAnswerTest {
         when(request.getParameter("answer_id")).thenReturn("3");
         when(request.getParameter("page")).thenReturn("4");
         Mockito.when(request.getRequestDispatcher(path)).thenReturn(dispatcher);
-        Mockito.when(answerService.deleteAnswer(Mockito.anyLong())).thenReturn(1);
+        Mockito.when(answerService.delete(Mockito.anyLong())).thenReturn(1);
         Mockito.when(questionService.get(Mockito.anyLong())).thenReturn(questionDto);
 
 

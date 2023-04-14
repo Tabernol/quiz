@@ -1,5 +1,6 @@
 package service_test;
 
+import dto.ImageDto;
 import exeptions.DataBaseException;
 import models.Image;
 import org.junit.jupiter.api.Assertions;
@@ -28,15 +29,15 @@ public class ImageServiceTest {
 
     @Test
     public void addImageTest() throws DataBaseException {
-        Mockito.when(mockImageRepoImpl.addImage(Mockito.anyString(),
-                Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt())).thenReturn(12);
-        Assertions.assertEquals(12, imageService.addImage("publicID", "URL", 600, 600));
+        Mockito.when(mockImageRepoImpl.addImage(Mockito.mock(Image.class))).thenReturn(12);
+        Assertions.assertEquals(12,
+                imageService.addImage(new ImageDto("publicID", "URL", 600, 600)));
     }
 
     @Test
     public void deleteImageTest() throws DataBaseException {
         Mockito.when(mockImageRepoImpl.deleteImage(Mockito.anyString())).thenReturn(13);
-        Assertions.assertEquals(13, imageService.deleteImage("publicId"));
+        Assertions.assertEquals(13, imageService.delete("publicId"));
     }
 
     @Test

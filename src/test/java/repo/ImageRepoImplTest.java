@@ -2,6 +2,7 @@ package repo;
 
 import connection.MyDataSource;
 import exeptions.DataBaseException;
+import models.Image;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,7 +45,7 @@ public class ImageRepoImplTest {
         Mockito.when(mockDataSource.getConnection()).thenReturn(mockConnection);
         Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
         Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-        int image = imageRepo.addImage("publicID", "URL", 600, 600);
+        int image = imageRepo.addImage(new Image(12L, 123L, "publicID", "url", 300,300));
         Assertions.assertEquals(13, image);
     }
 
@@ -54,7 +55,7 @@ public class ImageRepoImplTest {
         Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenThrow(new SQLException());
         Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
         Assertions.assertThrows(DataBaseException.class,
-                () -> imageRepo.addImage("publicID", "URL", 600, 600));
+                () -> imageRepo.addImage(new Image()));
     }
 
     @Test

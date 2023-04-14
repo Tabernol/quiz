@@ -7,9 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import models.Question;
 
 import repo.QuestionRepo;
-import repo.impl.QuestionRepoImpl;
-import servises.ConvertToDtoAble;
-import servises.ConvertToEntityAble;
+import util.converter.ConvertToDtoAble;
+import util.converter.ConvertToEntityAble;
 import servises.QuestionService;
 import servises.ValidatorService;
 
@@ -44,6 +43,7 @@ public class QuestionServiceImpl implements QuestionService,
      * @return List of Question by TestId
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<QuestionDto> getAllById(Long id) throws DataBaseException {
         log.info("SERVICE QUESTION get all");
         List<QuestionDto> questionDtoList = new ArrayList<>();
@@ -61,7 +61,8 @@ public class QuestionServiceImpl implements QuestionService,
      * @throws DataBaseException is wrapper of SQLException
      * @throws ValidateException
      */
-    public long addQuestion(QuestionDto questionDto) throws DataBaseException, ValidateException {
+    @Override
+    public long create(QuestionDto questionDto) throws DataBaseException, ValidateException {
         validatorService.validateText(questionDto.getText());
         Question question = mapToEntity(questionDto);
         log.info("SERVICE QUESTION add question for test {}", question);
@@ -75,7 +76,8 @@ public class QuestionServiceImpl implements QuestionService,
      * @return 1 if question has deleted
      * @throws DataBaseException is wrapper of SQLException
      */
-    public int deleteQuestion(Long id) throws DataBaseException {
+    @Override
+    public int delete(Long id) throws DataBaseException {
         log.info("SERVICE QUESTION deleting question with id " + id);
         return questionRepo.delete(id);
     }
@@ -87,6 +89,7 @@ public class QuestionServiceImpl implements QuestionService,
      * @return Question by id
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public QuestionDto get(Long id) throws DataBaseException {
         log.info("SERVICE QUESTION get question with id " + id);
         return mapToDto(questionRepo.get(id));
@@ -100,6 +103,7 @@ public class QuestionServiceImpl implements QuestionService,
      * @throws DataBaseException is wrapper of SQLException
      * @throws ValidateException
      */
+    @Override
     public int update(QuestionDto questionDto) throws DataBaseException, ValidateException {
         validatorService.validateText(questionDto.getText());
         log.info("SERVICE QUESTION update question {}", questionDto);
@@ -115,6 +119,7 @@ public class QuestionServiceImpl implements QuestionService,
      * @throws DataBaseException is wrapper of SQLException
      * @throws ValidateException
      */
+    @Override
     public int updateImage(String url, Long id) throws DataBaseException, ValidateException {
         if (url.equals("")) {
             url = null;

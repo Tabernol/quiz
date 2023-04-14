@@ -64,12 +64,10 @@ public class FilterResult implements RequestHandler {
             setParametersToSession(sub, order, rows, req, resp);
         }
 
-
         if (page == null) {
             page = "1";
         }
 
-        System.out.println("page = " + page);
 
         ResultService resultService = AppContext.getInstance().getResultService();
         UserService userService = AppContext.getInstance().getUserService();
@@ -82,8 +80,6 @@ public class FilterResult implements RequestHandler {
         } else {
             userId = (Long) req.getSession().getAttribute("user_id");
         }
-
-        System.out.println("user id filter_result   " + userId);
 
 
         try {
@@ -103,15 +99,12 @@ public class FilterResult implements RequestHandler {
                 req.setAttribute("user_result", pageResultList);
                 req.setAttribute("count_pages", countPages);
             }
-//            req.setAttribute("user_id", userId);
-
-            //    req.setAttribute("page", page);
 
             log.info("Filter result was used");
-            req.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(req, resp);
+            req.getRequestDispatcher(PROFILE).forward(req, resp);
         } catch (DataBaseException e) {
             log.warn("Trouble with using filter result ", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 

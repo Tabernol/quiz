@@ -30,7 +30,7 @@ public class Home implements RequestHandler {
         if (role == null) {
             req.getRequestDispatcher("/").forward(req, resp);
         } else if (role.equals("admin") || role.equals("student")) {
-            req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
+            req.getRequestDispatcher(MENU).forward(req, resp);
         }
     }
 }

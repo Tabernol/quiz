@@ -4,10 +4,10 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
+import dto.ImageDto;
 import exeptions.DataBaseException;
-import repo.impl.ImageRepoImpl;
+
 import servises.ImageService;
-import servises.impl.ImageServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -51,16 +51,17 @@ public class LoadToCloud implements RequestHandler {
         Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
 
         File file = new File(fullPath);
-        Map uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
+        Map<String, Object> uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
 
+        ImageDto imageDto = new ImageDto(
+                (String) uploadResult.get("public_id"),
+                (String) uploadResult.get("url"),
+                (Integer) uploadResult.get("width"),
+                (Integer) uploadResult.get("height"));
         try {
-            imageService.addImage(
-                    (String) uploadResult.get("public_id"),
-                    (String) uploadResult.get("url"),
-                    (Integer) uploadResult.get("width"),
-                    (Integer) uploadResult.get("height"));
+            imageService.addImage(imageDto);
         } catch (DataBaseException e) {
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
         resp.sendRedirect(req.getContextPath() + "/prg?servlet_path=/filter_images");

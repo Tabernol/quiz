@@ -55,7 +55,7 @@ public class EditTestPost implements RequestHandler {
                     "&message_success=The test updated");
         } catch (DataBaseException e) {
             log.warn("Test with id " + testId + "has not updated", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
             log.info("Test with id " + testId + "is invalid, because ", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +

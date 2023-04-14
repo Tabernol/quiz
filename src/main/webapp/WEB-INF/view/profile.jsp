@@ -51,7 +51,7 @@
             <input type="text" name="name" value="${requestScope.user.name}">
             <c:if test="${sessionScope.role == 'admin'}">
                 <h6 class="fw-light"><fmt:message key="label.role"/></h6>
-                <input type="text" name="role" value="${requestScope.user.role.role}">
+                <input type="text" name="role" value="${requestScope.user.role}">
             </c:if>
             <div class="d-flex justify-content-center">
                 <button type="submit"

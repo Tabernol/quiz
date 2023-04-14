@@ -5,6 +5,7 @@
   Time: 22:48
   To change this template use File | Settings | File Templates.
 --%>
+<!DOCTYPE>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -95,7 +96,7 @@
                 <input type="hidden" name="user_id" value="${user.id}">
                 <input type="hidden" name="page" value="${requestScope.page}">
                 <c:choose>
-                    <c:when test="${user.role.role == 'admin'}">
+                    <c:when test="${user.role == 'admin'}">
                         <button disabled type="submit" class="btn btn-secondary"><fmt:message key="button.block"/></button>
                     </c:when>
                     <c:otherwise>

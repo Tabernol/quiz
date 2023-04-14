@@ -7,8 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import models.Answer;
 import repo.AnswerRepo;
 import servises.AnswerService;
-import servises.ConvertToDtoAble;
-import servises.ConvertToEntityAble;
+import util.converter.ConvertToDtoAble;
+import util.converter.ConvertToEntityAble;
 import servises.ValidatorService;
 
 import java.util.HashSet;
@@ -43,6 +43,7 @@ public class AnswerServiceImpl implements AnswerService,
      * @return list of Answer by questionId
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public Set<AnswerDto> getAnswers(Long questionId) throws DataBaseException {
         log.info("SERVICE ANSWER get answers by  question {}", questionId);
         Set<AnswerDto> answerDtoSet = new HashSet<>();
@@ -52,6 +53,8 @@ public class AnswerServiceImpl implements AnswerService,
         return answerDtoSet;
     }
 
+
+
     /**
      * Mhe method takes input, validates it, and calls to repository layer to create Answer
      * @param answerDto contains information about answer
@@ -59,7 +62,8 @@ public class AnswerServiceImpl implements AnswerService,
      * @throws DataBaseException is wrapper of SQLException
      * @throws ValidateException
      */
-    public long createAnswer(AnswerDto answerDto) throws DataBaseException, ValidateException {
+    @Override
+    public long create(AnswerDto answerDto) throws DataBaseException, ValidateException {
         validatorService.validateText(answerDto.getText());
         log.info("SERVICE ANSWER creating new answer");
         return answerRepo.create(mapToEntity(answerDto));
@@ -72,9 +76,20 @@ public class AnswerServiceImpl implements AnswerService,
      * @return 1 if Answer has deleted
      * @throws DataBaseException is wrapper of SQLException
      */
-    public int deleteAnswer(Long id) throws DataBaseException {
+    @Override
+    public int delete(Long id) throws DataBaseException {
         log.info("SERVICE ANSWER delete answer " + id);
         return answerRepo.delete(id);
+    }
+
+    @Override
+    public int update(AnswerDto answerDto) throws DataBaseException, ValidateException {
+        return 0;
+    }
+
+    @Override
+    public AnswerDto get(Long id) throws DataBaseException {
+        return null;
     }
 
 

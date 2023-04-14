@@ -47,7 +47,6 @@ public class GetInfoQuestion implements RequestHandler {
         req.setAttribute("duration", req.getParameter("duration"));
 
         String idQuestion = req.getParameter("id_question");
-        String numQ = req.getParameter("number_question");
         String[] res = req.getParameterValues("res");
 
         List<Question> questions = (List<Question>) req.getSession().getAttribute("questions");
@@ -59,22 +58,16 @@ public class GetInfoQuestion implements RequestHandler {
             numberQuestion = Integer.valueOf(req.getParameter("number_question"));
         }
 
-//
-//        System.out.println("id question " + idQuestion);
-//        System.out.println("number " + numQ);
-//        System.out.println(Arrays.toString(res));
-
         try {
             if (res != null) {
                 boolean result = resultService.getResultByQuestion(Long.valueOf(idQuestion), res);
-                List resultTest = (List<Boolean>) req.getSession().getAttribute("result_test");
+                List<Boolean> resultTest = (List<Boolean>) req.getSession().getAttribute("result_test");
                 resultTest.add(result);
                 req.getSession().setAttribute("result_test", resultTest);
-                System.out.println("result " + result);
-                log.info("Question = " + idQuestion + "\n" + "user result " + result);
+                log.info("Question = {}  user result {} ", idQuestion, result);
             }
         } catch (DataBaseException e) {
-            //log
+            log.info("problem with receiving result by question ", e);
         }
 
         System.out.println("number " + numberQuestion + "   size " + size);
@@ -89,7 +82,6 @@ public class GetInfoQuestion implements RequestHandler {
             String urlImage = questions.get(numberQuestion).getUrlImage();
 
             int progress = numberQuestion * 100 / size;
-            System.out.println("PROGRESS = " + progress);
             ++numberQuestion;
 
 
@@ -110,7 +102,7 @@ public class GetInfoQuestion implements RequestHandler {
             writer.print("  </div>\n" + "                <br>\n" + "                <div class=\"d-flex justify-content-end\">\n" + "                    <button type=\"btn btn-primary\" onclick=\"loadQuestionAndAnswer(\n" + "                    document.getElementById('id_question').value,\n" + "                    document.getElementById('number_question').value,\n" + "                    document.getElementsByName('res'))\">Submit\n" + "                    </button>\n" + "                </div>\n" + "            </div>\n" + "        </div>\n" + "    </div>\n" + "</div>");
         } catch (DataBaseException e) {
             log.warn("Problem with supply question-answer");
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 }

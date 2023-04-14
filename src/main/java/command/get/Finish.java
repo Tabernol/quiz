@@ -26,6 +26,6 @@ public class Finish implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/view/student/page_finish.jsp").forward(req, resp);
+        req.getRequestDispatcher(PAGE_FINISH).forward(req, resp);
     }
 }

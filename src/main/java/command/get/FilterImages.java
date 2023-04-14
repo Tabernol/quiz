@@ -2,6 +2,7 @@ package command.get;
 
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
+import dto.ImageDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Image;
@@ -37,17 +38,17 @@ public class FilterImages implements RequestHandler {
         ImageService imageService = AppContext.getInstance().getImageService();
 
         try {
-            List<Image> all = imageService.getAll();
+            List<ImageDto> all = imageService.getAll();
             req.setAttribute("all_images", all);
             log.info("Set all images to request");
         } catch (DataBaseException e) {
             log.warn("Failed to retrieve image from database ", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
         req.setAttribute("question_id", req.getParameter("question_id"));
         req.setAttribute("test_id", req.getParameter("test_id"));
         req.setAttribute("page", req.getParameter("page"));
-        req.getRequestDispatcher("/WEB-INF/view/admin/admin_images.jsp").forward(req, resp);
+        req.getRequestDispatcher(ADMIN_IMAGES).forward(req, resp);
     }
 }

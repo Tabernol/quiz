@@ -7,6 +7,7 @@ import repo.*;
 import repo.impl.*;
 import servises.*;
 import servises.impl.*;
+import util.pdfWriter.MyPdfWriter;
 import validator.DataValidator;
 
 import javax.sql.DataSource;
@@ -34,6 +35,8 @@ public class AppContext {
     private final ResultService resultService;
     private final ImageService imageService;
     private final UserService userService;
+    //=================================
+    private final MyPdfWriter myPdfWriter;
 
 
     private AppContext() {
@@ -55,6 +58,8 @@ public class AppContext {
         this.resultService = new ResultServiceImpl(resultRepo, answerService);
         this.imageService = new ImageServiceImpl(imageRepo);
         this.userService = new UserServiceImpl(userRepo, validatorService);
+
+        this.myPdfWriter = new MyPdfWriter(resultService);
 
     }
 

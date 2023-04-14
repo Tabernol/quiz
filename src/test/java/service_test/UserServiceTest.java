@@ -76,7 +76,7 @@ public class UserServiceTest {
     @Test
     public void updateLarge() throws DataBaseException, ValidateException {
         Mockito.when(mockUserRepoImpl.update(testUser)).thenReturn(1);
-        assertEquals(1, userService.updateUser(new UserDto(23L,
+        assertEquals(1, userService.update(new UserDto(23L,
                 "newNAme", "ADMIN")));
     }
 

@@ -1,4 +1,4 @@
-package servises;
+package util.converter;
 
 public interface ConvertToEntityAble<E, Dto> {
 

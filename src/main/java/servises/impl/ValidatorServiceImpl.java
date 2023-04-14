@@ -27,6 +27,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      *                duration is duration of test must be from 1 to 30 minutes
      * @throws ValidateException
      */
+    @Override
     public void checkFieldsTest(TestDto testDto)
             throws ValidateException {
         dataValidator.isValid(dataValidator.validateForNamePlusNumber(testDto.getName()),
@@ -49,6 +50,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      * @param isExist exist this name in database or no
      * @throws ValidateException
      */
+    @Override
     public void isNameExist(boolean isExist) throws ValidateException {
         dataValidator.isValid(!isExist, "Test with this name already exist");
         log.info("SERVICE VALIDATOR name is valid");
@@ -61,6 +63,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      * @return
      * @throws ValidateException
      */
+    @Override
     public boolean isLoginExist(boolean isExist) throws ValidateException {
         return dataValidator.isValid(!isExist, "This login already exist");
     }
@@ -72,6 +75,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      * @return true or throw Validate exception
      * @throws ValidateException
      */
+    @Override
     public boolean validateText(String text) throws ValidateException {
         boolean textAnswerIsTooLong = dataValidator.isValid(dataValidator.validateForNotLongString(text),
                 "Text answer is too long");
@@ -88,6 +92,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      * @param password is user`s password
      * @throws ValidateException
      */
+    @Override
     public void validateFieldsUser(String name, String login, String password) throws ValidateException {
         dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
@@ -106,6 +111,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      * @param name is new user`s name
      * @throws ValidateException
      */
+    @Override
     public void validateUpdateUser(String name) throws ValidateException {
         dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
@@ -119,6 +125,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      * @param role is new user`s role
      * @throws ValidateException
      */
+    @Override
     public void validateUpdateUser(String name, String role) throws ValidateException {
         dataValidator.isValid(dataValidator.validateForName(name),
                 "name must contains only liters and numbers and space from 2-20 symbols");
@@ -135,6 +142,7 @@ public class ValidatorServiceImpl implements ValidatorService {
      * @param repeatPassword is user`s password repeat
      * @throws ValidateException
      */
+    @Override
     public void validateRepeatPassword(String password, String repeatPassword) throws ValidateException {
         dataValidator.isValid(password.equals(repeatPassword), "password is not the same");
         log.info("SERVICE VALIDATOR passwords is valid");

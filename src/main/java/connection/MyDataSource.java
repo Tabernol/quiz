@@ -48,8 +48,4 @@ public class MyDataSource {
         return dataSource;
     }
 
-//    public static void closePool() {
-//        log.info("The connection pool is closed");
-//    }
-
 }

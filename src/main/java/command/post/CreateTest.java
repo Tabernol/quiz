@@ -6,11 +6,7 @@ import dto.TestDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.impl.TestServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +42,7 @@ public class CreateTest implements RequestHandler {
         int duration = Integer.parseInt(req.getParameter("duration"));
 
         try {
-            testService.createTest(new TestDto(name, subject, difficult, duration));
+            testService.create(new TestDto(name, subject, difficult, duration));
             log.info("Test " + name + "has created");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
@@ -64,7 +60,7 @@ public class CreateTest implements RequestHandler {
                     "&message_bad_request=" + e.getMessage());
         } catch (DataBaseException e) {
             log.warn("Test " + name + "have not updated", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 }

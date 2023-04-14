@@ -43,7 +43,7 @@ public class QuizAppListener implements ServletContextListener {
      */
 //    @Override
 //    public void contextDestroyed(ServletContextEvent sce) {
-//        MyDataSource.closePool();
+//        AppContext.getInstance().getDataSource().
 //        log.info("Webapp 'Quiz service' was closed");
 //    }
 }

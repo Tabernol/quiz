@@ -53,7 +53,7 @@ public class FinishTest implements RequestHandler {
                     "&percent_result=" + percentResult);
         } catch (DataBaseException e) {
             log.warn("User with id " + userId + " finish test with id " + testId + " has trouble finish");
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
 

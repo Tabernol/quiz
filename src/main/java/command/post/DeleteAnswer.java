@@ -50,7 +50,7 @@ public class DeleteAnswer implements RequestHandler {
         String page = req.getParameter("page");
 
         try {
-            answerService.deleteAnswer(answerId);
+            answerService.delete(answerId);
             req.setAttribute("answers", answerService.getAnswers(questionId));
             req.setAttribute("test_id", testId);
             req.setAttribute("question_id", questionId);
@@ -59,10 +59,10 @@ public class DeleteAnswer implements RequestHandler {
             req.setAttribute("message_success", "The answer was deleted");
 
             log.info("Answer with id " + answerId + " has deleted");
-            req.getRequestDispatcher("/WEB-INF/view/admin/edit_question.jsp").forward(req, resp);
+            req.getRequestDispatcher(EDIT_QUESTION).forward(req, resp);
         } catch (DataBaseException e) {
             log.warn("Answer with id " + answerId + " has not delete", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
 

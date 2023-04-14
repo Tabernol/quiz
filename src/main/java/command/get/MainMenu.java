@@ -26,6 +26,6 @@ public class MainMenu implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/view/menu.jsp").forward(req, resp);
+        req.getRequestDispatcher(MENU).forward(req, resp);
     }
 }

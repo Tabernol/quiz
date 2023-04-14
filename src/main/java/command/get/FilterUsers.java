@@ -73,10 +73,10 @@ public class FilterUsers implements RequestHandler {
             req.setAttribute("page", page);
             req.setAttribute("count_pages", userService.countPages(status, rows));
             log.info("filter users was used");
-            req.getRequestDispatcher("/WEB-INF/view/admin/admin_users.jsp").forward(req, resp);
+            req.getRequestDispatcher(ADMIN_USERS).forward(req, resp);
         } catch (DataBaseException e) {
             log.warn("Trouble with using filter users ", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }
 }

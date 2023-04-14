@@ -7,9 +7,7 @@ import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.ImageRepoImpl;
 import servises.ImageService;
-import servises.impl.ImageServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -39,12 +37,10 @@ public class DeleteFromCloud implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String publicId = req.getParameter("public_id");
 
-
         ImageService imageService = AppContext.getInstance().getImageService();
 
         if (imageService.canDeleteImage(publicId).isEmpty()) {
             //delete image from cloudinary
-            // need to check where use this image
             Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
             Map deleteParams = ObjectUtils.asMap("invalidate", true);
             cloudinary.uploader().destroy(publicId, deleteParams);
@@ -52,15 +48,14 @@ public class DeleteFromCloud implements RequestHandler {
 
 
             //delete data from database
-
             try {
-                imageService.deleteImage(publicId);
+                imageService.delete(publicId);
                 log.info("The Image with publicID " + publicId + " was deleted from database");
                 FilterImages filterImages = new FilterImages();
                 filterImages.execute(req, resp);
             } catch (DataBaseException e) {
                 log.info("There was a problem with deleting the image. publicID = " + publicId);
-                req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+                req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             }
         } else {
             List<String> nameTestWithDeletedURL = imageService.canDeleteImage(publicId);

@@ -6,11 +6,7 @@ import dto.AnswerDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.AnswerRepoImpl;
 import servises.AnswerService;
-import servises.impl.AnswerServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +48,7 @@ public class AddAnswer implements RequestHandler {
         AnswerDto answerDto = new AnswerDto(0L, questionId, text, result);
 
         try {
-            answerService.createAnswer(answerDto);
+            answerService.create(answerDto);
             log.info("Answer for question id " + questionId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
@@ -63,7 +59,7 @@ public class AddAnswer implements RequestHandler {
 
         } catch (DataBaseException e) {
             log.warn("Answer for question id " + questionId + "has not added", e);
-            req.getRequestDispatcher("WEB-INF/view/error_page.jsp").forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
             log.info("Answer for question id " + questionId + "is invalid", e);
             resp.sendRedirect(req.getContextPath() + "/prg" +

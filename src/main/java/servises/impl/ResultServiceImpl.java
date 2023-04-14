@@ -42,6 +42,7 @@ public class ResultServiceImpl implements ResultService {
      * @return
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public int addResult(Long userId, Long testId, Integer grade) throws DataBaseException {
         log.info("SERVICE RESULT add result to database");
         return resultRepo.addResult(userId, testId, grade);
@@ -71,6 +72,7 @@ public class ResultServiceImpl implements ResultService {
 //        }
 //        return userResult;
 //    }
+
     private Set<AnswerDto> convertUserResult(String[] userAnswer) {
         Set<AnswerDto> userResult = new HashSet<>();
         AnswerDto answerDto = null;
@@ -98,6 +100,7 @@ public class ResultServiceImpl implements ResultService {
      * @return true if all of user's answers match the saved answers, false otherwise
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public boolean getResultByQuestion(Long questionId, String[] userAnswer) throws DataBaseException {
         boolean result = true;
         if (userAnswer == null) {
@@ -114,15 +117,6 @@ public class ResultServiceImpl implements ResultService {
                     break;
                 }
             }
-
-
-//            for (int i = 0; i < checkingAnswer.size(); i++) {
-//                boolean contain = trueAnswers.contains(checkingAnswer);
-//                if (contain == false) {
-//                    result = false;
-//                    break;
-//                }
-//            }
         }
         log.info("SERVICE RESULT get result by question " + questionId);
         return result;
@@ -137,6 +131,7 @@ public class ResultServiceImpl implements ResultService {
      * @return The number of completed test by user with choose filter(sub)
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public Integer getCountResultByUser(Long user_id, String sub) throws DataBaseException {
         log.info("SERVICE RESULT getting count of result with selected filter");
         if (sub.equals("all")) {
@@ -153,6 +148,7 @@ public class ResultServiceImpl implements ResultService {
      * @return the count pages with results user
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public Integer getCountPagesResult(Long userId, Integer row, String sub) throws DataBaseException {
         log.info("SERVICE RESULT get count of pages for selected filter");
         Integer passedTest = getCountResultByUser(userId, sub);
@@ -171,6 +167,7 @@ public class ResultServiceImpl implements ResultService {
      * @return List of passed test(quiz) by user
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<ResultDto> getPageResultList(Long userId, String sub, String order, Integer rows, Integer page)
             throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForResult();
@@ -193,6 +190,7 @@ public class ResultServiceImpl implements ResultService {
      * @return List of passed test(quiz) by user
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<ResultDto> getAllResultByUserId(Long userId) throws DataBaseException {
         log.info("SERVICE RESULT get result by user" + userId);
         return resultRepo.getAllResult(userId);
@@ -205,6 +203,7 @@ public class ResultServiceImpl implements ResultService {
      * @param countQuestion is count of question in test(quiz)
      * @return grade from 0 to 100
      */
+    @Override
     public Integer getGrade(List<Boolean> userAnswer, Integer countQuestion) {
         long count = userAnswer.stream().filter(bool -> bool.equals(true)).count();
         log.info("SERVICE RESULT get grade of completed quiz");
@@ -218,6 +217,7 @@ public class ResultServiceImpl implements ResultService {
      * @return list of unique name subject in the 'test' table in the database
      * @throws DataBaseException is wrapper of SQLException
      */
+    @Override
     public List<String> getDistinctSubject(Long userId) throws DataBaseException {
         log.info("SERVICE RESULT get distinct subject of completed quiz");
         return resultRepo.getDistinctSubject(userId);

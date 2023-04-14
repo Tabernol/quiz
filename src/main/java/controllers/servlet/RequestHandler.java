@@ -9,4 +9,19 @@ public interface RequestHandler {
     void execute(HttpServletRequest req,
                  HttpServletResponse resp)
             throws ServletException, IOException;
+
+    String ERROR_PAGE = "WEB-INF/view/error_page.jsp";
+    String EDIT_QUESTION = "/WEB-INF/view/admin/edit_question.jsp";
+    String EDIT_TEST = "/WEB-INF/view/admin/edit_test.jsp";
+    String ADMIN_IMAGES = "/WEB-INF/view/admin/admin_images.jsp";
+    String PROFILE = "/WEB-INF/view/profile.jsp";
+    String STUDENT_TESTS = "/WEB-INF/view/student/student_tests.jsp";
+    String ADMIN_TESTS = "/WEB-INF/view/admin/admin_tests.jsp";
+    String ADMIN_USERS = "/WEB-INF/view/admin/admin_users.jsp";
+    String PAGE_FINISH = "/WEB-INF/view/student/page_finish.jsp";
+    String MENU = "/WEB-INF/view/menu.jsp";
+    String LOGIN_FORM = "/WEB-INF/view/login_form.jsp";
+    String REGISTRATION = "/WEB-INF/view/registration.jsp";
+    String PAGE_TEST = "/WEB-INF/view/student/page_test.jsp";
+    String PAGE_BASE_QUESTION = "/WEB-INF/view/student/page_base_question.jsp";
 }

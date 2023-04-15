@@ -39,7 +39,7 @@ public class DownLoad implements RequestHandler {
         MyPdfWriter myPdfWriter = AppContext.getInstance().getMyPdfWriter();
 
         Long id;
-        String userId = req.getParameter("user_id");
+        String userId = req.getParameter(USER_ID);
         if (userId != null) {
             id = Long.valueOf(userId);
             log.info("Admin downloads result user with id " + id);

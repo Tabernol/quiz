@@ -39,11 +39,11 @@ public class AddAnswer implements RequestHandler {
             throws ServletException, IOException {
         AnswerService answerService = AppContext.getInstance().getAnswerService();
 
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        Long questionId = Long.valueOf(req.getParameter("question_id"));
-        String page = req.getParameter("page");
-        String text = req.getParameter("text");
-        Boolean result = Boolean.valueOf(req.getParameter("result"));
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        Long questionId = Long.valueOf(req.getParameter(QUESTION_ID));
+        String page = req.getParameter(PAGE);
+        String text = req.getParameter(TEXT);
+        Boolean result = Boolean.valueOf(req.getParameter(RESULT));
 
         AnswerDto answerDto = AnswerDto.builder()
                 .id(0L)
@@ -54,7 +54,7 @@ public class AddAnswer implements RequestHandler {
 
         try {
             answerService.create(answerDto);
-            log.info("Answer for question id " + questionId + "has added");
+            log.info("Answer for question id {} has added", questionId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +
@@ -63,10 +63,10 @@ public class AddAnswer implements RequestHandler {
                     "&message_success=The answer added");
 
         } catch (DataBaseException e) {
-            log.warn("Answer for question id " + questionId + "has not added", e);
+            log.warn("Answer for question id {} has not added", questionId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
-            log.info("Answer for question id " + questionId + "is invalid", e);
+            log.info("Answer for question id {} is invalid", questionId, e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +

@@ -38,21 +38,21 @@ public class FinishTest implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         ResultService resultService = AppContext.getInstance().getResultService();
-        List<Boolean> result = (List<Boolean>) req.getSession().getAttribute("result_test");
-        Integer size = (Integer) req.getSession().getAttribute("size");
-        Long testId = (Long) req.getSession().getAttribute("test_id");
-        Long userId = (Long) req.getSession().getAttribute("user_id");
+        List<Boolean> result = (List<Boolean>) req.getSession().getAttribute(RESULT_TEST);
+        Integer size = (Integer) req.getSession().getAttribute(SIZE);
+        Long testId = (Long) req.getSession().getAttribute(TEST_ID);
+        Long userId = (Long) req.getSession().getAttribute(USER_ID);
 
 
         try {
             Integer percentResult = resultService.getGrade(result, size);
             resultService.addResult(userId, testId, percentResult);
-            log.info("User with id " + userId + " finished test with id " + testId + " with grade " + percentResult);
+            log.info("User with id {} finished test with id {} with grade {}", userId, testId, percentResult);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/finish" +
                     "&percent_result=" + percentResult);
         } catch (DataBaseException e) {
-            log.warn("User with id " + userId + " finish test with id " + testId + " has trouble finish");
+            log.warn("User with id {} finish test with id {} has trouble finish", userId, testId);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 

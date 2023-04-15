@@ -29,7 +29,7 @@ public class ImageServiceTest {
 
     @Test
     public void addImageTest() throws DataBaseException {
-        Mockito.when(mockImageRepoImpl.addImage(Mockito.mock(Image.class))).thenReturn(12);
+        Mockito.when(mockImageRepoImpl.addImage(Image.builder().build())).thenReturn(12);
         Assertions.assertEquals(12,
                 imageService.addImage(new ImageDto("publicID", "URL", 600, 600)));
     }

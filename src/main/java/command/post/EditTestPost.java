@@ -16,9 +16,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * EditTestPost.class is allowed only for admin.
  * The meaning of the class is to update a Test(quiz) in database.
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
@@ -28,6 +30,7 @@ public class EditTestPost implements RequestHandler {
      * It calls the service layer to update this Test(quiz)
      * if DataBaseException is caught, redirects to error page.
      * if ValidateException is caught, redirects to the page from which the request was made
+     *
      * @param req  the HttpServletRequest object containing information about the request
      * @param resp the HttpServletResponse object for sending the response to the client
      * @throws ServletException if there is an error with the servlet
@@ -37,12 +40,12 @@ public class EditTestPost implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp) throws ServletException, IOException {
         TestService testService = AppContext.getInstance().getTestService();
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        String name = req.getParameter("name");
-        String subject = req.getParameter("subject");
-        int difficult = Integer.parseInt(req.getParameter("difficult"));
-        int duration = Integer.parseInt(req.getParameter("duration"));
-        String page = req.getParameter("page");
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        String name = req.getParameter(NAME);
+        String subject = req.getParameter(SUBJECT);
+        int difficult = Integer.parseInt(req.getParameter(DIFFICULT));
+        int duration = Integer.parseInt(req.getParameter(DURATION));
+        String page = req.getParameter(PAGE);
 
 
         try {
@@ -52,17 +55,17 @@ public class EditTestPost implements RequestHandler {
                     .difficult(difficult)
                     .duration(duration)
                     .build());
-            log.info("Test with id " + testId + "has updated");
+            log.info("Test with id {} has updated", testId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
                     "&page=" + page +
                     "&message_success=The test updated");
         } catch (DataBaseException e) {
-            log.warn("Test with id " + testId + "has not updated", e);
+            log.warn("Test with id {} has not updated", testId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
-            log.info("Test with id " + testId + "is invalid, because ", e);
+            log.info("Test with id {} is invalid, because ", testId, e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
                     "&page=" + page +

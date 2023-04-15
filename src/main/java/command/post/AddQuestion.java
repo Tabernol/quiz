@@ -37,16 +37,16 @@ public class AddQuestion implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        String page = req.getParameter("page");
-        String text = req.getParameter("text");
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        String page = req.getParameter(PAGE);
+        String text = req.getParameter(TEXT);
 
         try {
             questionService.create(QuestionDto.builder()
                     .testId(testId)
                     .text(text)
                     .build());
-            log.info("Question for test id " + testId + "has added");
+            log.info("Question for test id {} has added ", testId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
@@ -54,7 +54,7 @@ public class AddQuestion implements RequestHandler {
                     "&message_success=Question added");
 
         } catch (DataBaseException e) {
-            log.warn("Question for test id " + testId + "has not added", e);
+            log.warn("Question for test id {} has not added", testId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
             log.info("Question for test id " + testId + "is invalid", e);

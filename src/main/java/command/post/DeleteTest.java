@@ -16,9 +16,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * DeleteTest.class is allowed only for admin.
  * The meaning of the class is to delete Test(quiz) in database.
+ *
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
@@ -28,6 +30,7 @@ public class DeleteTest implements RequestHandler {
      * This method is read parameter from request.
      * It calls the service layer to delete a Test(quiz)
      * if DataBaseException is caught, redirects to error page.
+     *
      * @param req  the HttpServletRequest object containing information about the request
      * @param resp the HttpServletResponse object for sending the response to the client
      * @throws ServletException if there is an error with the servlet
@@ -38,15 +41,15 @@ public class DeleteTest implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         TestService testService = AppContext.getInstance().getTestService();
-        Long id = Long.valueOf(req.getParameter("test_id"));
-        req.setAttribute("page", req.getParameter("page"));
+        Long id = Long.valueOf(req.getParameter(TEST_ID));
+        req.setAttribute(PAGE, req.getParameter(PAGE));
         try {
             testService.delete(id);
-            log.info("Test with id " + id + "has deleted");
+            log.info("Test with id {} has deleted", id);
             FilterTests filterTests = new FilterTests();
             filterTests.execute(req, resp);
         } catch (DataBaseException e) {
-            log.warn("Test with id " + id + "has not deleted", e);
+            log.warn("Test with id {} has not deleted", id, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
 
         }

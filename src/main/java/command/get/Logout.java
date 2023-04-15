@@ -2,6 +2,7 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +27,8 @@ public class Logout implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long userId = (Long) req.getSession().getAttribute("user_id");
-        log.info("User with Id " + userId + " logout");
+        Long userId = (Long) req.getSession().getAttribute(USER_ID);
+        log.info("User logout with Id {}", userId);
         req.getSession().invalidate();
         req.getRequestDispatcher("/").forward(req, resp);
     }

@@ -36,10 +36,10 @@ public class CreateTest implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TestService testService = AppContext.getInstance().getTestService();
-        String name = req.getParameter("name");
-        String subject = req.getParameter("subject");
-        int difficult = Integer.parseInt(req.getParameter("difficult"));
-        int duration = Integer.parseInt(req.getParameter("duration"));
+        String name = req.getParameter(NAME);
+        String subject = req.getParameter(SUBJECT);
+        int difficult = Integer.parseInt(req.getParameter(DIFFICULT));
+        int duration = Integer.parseInt(req.getParameter(DURATION));
 
         try {
             testService.create(TestDto.builder()
@@ -48,13 +48,13 @@ public class CreateTest implements RequestHandler {
                     .difficult(difficult)
                     .duration(duration).build());
 
-            log.info("Test " + name + "has created");
+            log.info("Test {} has created", name);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
                     "&sub=all&order=name+asc&rows=5" +
                     "&message_success=The test created");
         } catch (ValidateException e) {
-            log.warn("Test " + name + " is invalid", e);
+            log.warn("Test {} is invalid", name, e);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
                     "&sub=all&order=name+asc&rows=5" +
@@ -64,7 +64,7 @@ public class CreateTest implements RequestHandler {
                     "&duration=" + duration +
                     "&message_bad_request=" + e.getMessage());
         } catch (DataBaseException e) {
-            log.warn("Test " + name + "have not updated", e);
+            log.warn("Test {} have not updated", name, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }

@@ -36,7 +36,7 @@ public class FilterUsers implements RequestHandler {
             throws ServletException, IOException {
         UserService userService = AppContext.getInstance().getUserService();
 
-        String status = readAndSetParameterForFilter(req,STATUS, DEFAULT_FILTER_ALL);
+        String status = readAndSetParameterForFilter(req, STATUS, DEFAULT_FILTER_ALL);
         String order = readAndSetParameterForFilter(req, ORDER, DEFAULT_ORDER_NAME_ASC);
         String rows = readAndSetParameterForFilter(req, ROWS, DEFAULT_ROWS_5);
         String page = req.getParameter(PAGE) == null ? "1" : req.getParameter(PAGE);
@@ -44,9 +44,9 @@ public class FilterUsers implements RequestHandler {
         List<UserDto> userList;
         try {
             userList = userService.nextPage(status, order, Integer.valueOf(rows), Integer.valueOf(page));
-            req.setAttribute("users", userList);
-            req.setAttribute("page", page);
-            req.setAttribute("count_pages", userService.countPages(status, rows));
+            req.setAttribute(USERS, userList);
+            req.setAttribute(PAGE, page);
+            req.setAttribute(COUNT_PAGES, userService.countPages(status, rows));
             log.info("filter users was used");
             req.getRequestDispatcher(ADMIN_USERS).forward(req, resp);
         } catch (DataBaseException e) {

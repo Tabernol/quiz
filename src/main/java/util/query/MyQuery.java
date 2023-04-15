@@ -1,7 +1,14 @@
 package util.query;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import models.User;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MyQuery {
     private String filter;
     private String orderBy;
@@ -23,56 +30,5 @@ public class MyQuery {
         this.orderBy = orderBy;
         this.limit = rows;
         this.page = page;
-    }
-
-    public MyQuery() {
-    }
-
-    public String getFilter() {
-        return filter;
-    }
-
-    public void setFilter(String filter) {
-        this.filter = filter;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public void setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
-    }
-
-    public Integer getLimit() {
-        return limit;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
-    }
-
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
-        this.page = page;
-    }
-
-    public String getAnd() {
-        return and;
-    }
-
-    public void setAnd(String and) {
-        this.and = and;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }

@@ -8,9 +8,9 @@ import java.io.*;
 import java.net.URL;
 
 public class VerifyRecaptcha {
-    public static final String url = "https://www.google.com/recaptcha/api/siteverify";
-    public static final String secret = "6LcpCHEkAAAAAAqn0fLrYZKEQCnq0Qz0flUNsPPF";
-    private final static String USER_AGENT = "Mozilla/5.0";
+    public static final String URL = "https://www.google.com/recaptcha/api/siteverify";
+    public static final String SECRET = "6LcpCHEkAAAAAAqn0fLrYZKEQCnq0Qz0flUNsPPF";
+    private static final String USER_AGENT = "Mozilla/5.0";
 
     public static boolean verify(String gRecaptchaResponse) throws IOException {
         if (gRecaptchaResponse == null || "".equals(gRecaptchaResponse)) {
@@ -18,15 +18,15 @@ public class VerifyRecaptcha {
         }
 
         try{
-            URL obj = new URL(url);
+            URL obj = new URL(URL);
             HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
-            // add reuqest header
+            // add requqest header
             con.setRequestMethod("POST");
             con.setRequestProperty("User-Agent", USER_AGENT);
             con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-            String postParams = "secret=" + secret + "&response="
+            String postParams = "secret=" + SECRET + "&response="
                     + gRecaptchaResponse;
 
             // Send post request
@@ -35,11 +35,6 @@ public class VerifyRecaptcha {
             wr.writeBytes(postParams);
             wr.flush();
             wr.close();
-
-            int responseCode = con.getResponseCode();
-            System.out.println("\nSending 'POST' request to URL : " + url);
-            System.out.println("Post parameters : " + postParams);
-            System.out.println("Response Code : " + responseCode);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     con.getInputStream()));
@@ -51,8 +46,6 @@ public class VerifyRecaptcha {
             }
             in.close();
 
-            // print result
-            System.out.println(response.toString());
 
             //parse JSON response and return 'success' value
             JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));

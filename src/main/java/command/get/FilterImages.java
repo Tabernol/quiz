@@ -5,10 +5,7 @@ import controllers.servlet.RequestHandler;
 import dto.ImageDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.Image;
-import repo.impl.ImageRepoImpl;
 import servises.ImageService;
-import servises.impl.ImageServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -39,16 +36,16 @@ public class FilterImages implements RequestHandler {
 
         try {
             List<ImageDto> all = imageService.getAll();
-            req.setAttribute("all_images", all);
+            req.setAttribute(IMAGES, all);
             log.info("Set all images to request");
         } catch (DataBaseException e) {
             log.warn("Failed to retrieve image from database ", e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
-        req.setAttribute("question_id", req.getParameter("question_id"));
-        req.setAttribute("test_id", req.getParameter("test_id"));
-        req.setAttribute("page", req.getParameter("page"));
+        req.setAttribute(QUESTION_ID, req.getParameter(QUESTION_ID));
+        req.setAttribute(TEST_ID, req.getParameter(TEST_ID));
+        req.setAttribute(PAGE, req.getParameter(PAGE));
         req.getRequestDispatcher(ADMIN_IMAGES).forward(req, resp);
     }
 }

@@ -40,7 +40,6 @@ public class AccessUtil {
         adminAccess.add(PathConst.DOWNLOAD);
 
         adminAccess.add(PathConst.PRG);
-       // adminAccess.add(PathConst.UPLOAD_IMAGE);
         adminAccess.add(PathConst.FILTER_IMAGES);
         adminAccess.add(PathConst.LOAD);
         adminAccess.add(PathConst.DELETE_IMAGE);

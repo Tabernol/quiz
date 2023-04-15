@@ -33,7 +33,7 @@ public class Prg implements RequestHandler {
         for (Map.Entry<String, String[]> param : parameterMap.entrySet()) {
             req.setAttribute(param.getKey(), param.getValue()[0]);
         }
-        String servletPath = req.getParameter("servlet_path");
+        String servletPath = req.getParameter(SERVLET_PATH);
         log.info("Command PRG works with servlet path {}", servletPath);
         req.getRequestDispatcher(servletPath).forward(req, resp);
     }

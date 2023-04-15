@@ -1,12 +1,12 @@
-package util;
-
-public enum MyTable {
-    TEST,
-    USER,
-    RESULT;
-
-    MyTable() {
-    }
-}
-
-
+//package util;
+//
+//public enum MyTable {
+//    TEST,
+//    USER,
+//    RESULT;
+//
+//    MyTable() {
+//    }
+//}
+//
+//

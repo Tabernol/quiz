@@ -47,28 +47,28 @@ public class Registration implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         UserService userService = AppContext.getInstance().getUserService();
-        String name = req.getParameter("name");
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        String repeatPassword = req.getParameter("repeat_password");
+        String name = req.getParameter(NAME);
+        String login = req.getParameter(LOGIN);
+        String password = req.getParameter(PASSWORD);
+        String repeatPassword = req.getParameter(REPEAT_PASSWORD);
 
         // get reCAPTCHA request param
         String gRecaptchaResponse = req
                 .getParameter("g-recaptcha-response");
-        System.out.println("reCaptcha = " + gRecaptchaResponse);
+
         boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 
         if (verify) {
             try {
                 Long userId = userService.createUser(UserDto.builder()
-                        .login(login)
-                        .name(name).build()
+                                .login(login)
+                                .name(name).build()
                         , password, repeatPassword);
                 UserDto userDto = userService.get(userId);
                 HttpSession session = req.getSession();
-                session.setAttribute("user_id", userId);// get id
-                session.setAttribute("name", userDto.getName());
-                session.setAttribute("role", userDto.getRole());
+                session.setAttribute(USER_ID, userId);// get id
+                session.setAttribute(NAME, userDto.getName());
+                session.setAttribute(ROLE, userDto.getRole());
                 log.info("User has created with login {}", login);
                 req.getRequestDispatcher(MENU).forward(req, resp);
             } catch (DataBaseException e) {
@@ -76,18 +76,18 @@ public class Registration implements RequestHandler {
                 req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             } catch (ValidateException e) {
                 log.info("User field is invalid ", e.getMessage());
-                req.setAttribute("message_bad_request", e.getMessage());
-                req.setAttribute("repeat_name", name);
-                req.setAttribute("repeat_login", login);
+                req.setAttribute(MESSAGE_BAD_REQUEST, e.getMessage());
+                req.setAttribute(REPEAT_NAME, name);
+                req.setAttribute(REPEAT_LOGIN, login);
                 req.getRequestDispatcher(REGISTRATION).forward(req, resp);
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 log.warn("Problem with hash password ", e.getMessage());
                 req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             }
         } else {
-            req.setAttribute("message_bad_request", "reCAPTCHA is false");
-            req.setAttribute("repeat_name", name);
-            req.setAttribute("repeat_login", login);
+            req.setAttribute(MESSAGE_BAD_REQUEST, "reCAPTCHA is false");
+            req.setAttribute(REPEAT_NAME, name);
+            req.setAttribute(REPEAT_LOGIN, login);
             req.getRequestDispatcher(REGISTRATION).forward(req, resp);
         }
     }

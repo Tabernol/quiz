@@ -26,10 +26,10 @@ public class Home implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String role = (String) req.getSession().getAttribute("role");
+        String role = (String) req.getSession().getAttribute(ROLE);
         if (role == null) {
             req.getRequestDispatcher("/").forward(req, resp);
-        } else if (role.equals("admin") || role.equals("student")) {
+        } else if (role.equals(ADMIN) || role.equals(STUDENT)) {
             req.getRequestDispatcher(MENU).forward(req, resp);
         }
     }

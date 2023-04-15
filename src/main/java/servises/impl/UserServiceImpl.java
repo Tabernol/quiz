@@ -216,13 +216,12 @@ public class UserServiceImpl implements UserService,
 
     @Override
     public UserDto mapToDto(User entity) {
-        UserDto userDto = new UserDto();
-        userDto.setId(entity.getId());
-        userDto.setName(entity.getName());
-        userDto.setLogin(entity.getLogin());
-        userDto.setRole(entity.getRole().getRole());
-        userDto.setBlocked(entity.isBlocked());
-        return userDto;
+       return UserDto.builder()
+               .id(entity.getId())
+               .name(entity.getName())
+               .login(entity.getLogin())
+               .role(entity.getRole().getRole())
+               .isBlocked(entity.isBlocked()).build();
     }
 
     @Override

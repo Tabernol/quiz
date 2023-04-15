@@ -44,24 +44,24 @@ public class DeleteAnswer implements RequestHandler {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
         AnswerService answerService = AppContext.getInstance().getAnswerService();
 
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        Long questionId = Long.valueOf(req.getParameter("question_id"));
-        Long answerId = Long.valueOf(req.getParameter("answer_id"));
-        String page = req.getParameter("page");
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        Long questionId = Long.valueOf(req.getParameter(QUESTION_ID));
+        Long answerId = Long.valueOf(req.getParameter(ANSWER_ID));
+        String page = req.getParameter(PAGE);
 
         try {
             answerService.delete(answerId);
-            req.setAttribute("answers", answerService.getAnswers(questionId));
-            req.setAttribute("test_id", testId);
-            req.setAttribute("question_id", questionId);
-            req.setAttribute("question", questionService.get(questionId));
-            req.setAttribute("page", page);
-            req.setAttribute("message_success", "The answer was deleted");
+            req.setAttribute(ANSWERS, answerService.getAnswers(questionId));
+            req.setAttribute(TEST_ID, testId);
+            req.setAttribute(QUESTION_ID, questionId);
+            req.setAttribute(QUESTION, questionService.get(questionId));
+            req.setAttribute(PAGE, page);
+            req.setAttribute(MESSAGE_SUCCESS, ANSWER_WAS_DELETED);
 
-            log.info("Answer with id " + answerId + " has deleted");
+            log.info("Answer with id {} has deleted", answerId);
             req.getRequestDispatcher(EDIT_QUESTION).forward(req, resp);
         } catch (DataBaseException e) {
-            log.warn("Answer with id " + answerId + " has not delete", e);
+            log.warn("Answer with id {} has not delete", answerId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 

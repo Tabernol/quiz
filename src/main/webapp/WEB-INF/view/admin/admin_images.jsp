@@ -70,7 +70,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="image" items="${requestScope.all_images}">
+            <c:forEach var="image" items="${requestScope.images}">
             <tr>
                 <td>
                     <a href="${image.url}">
@@ -104,7 +104,7 @@
             </thead>
             <tbody>
 
-            <c:forEach var="image" items="${requestScope.all_images}">
+            <c:forEach var="image" items="${requestScope.images}">
             <tr>
                 <td>
                     <a href="${image.url}">

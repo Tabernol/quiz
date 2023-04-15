@@ -2,6 +2,7 @@ package command.get;
 
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,16 +31,16 @@ public class LanguageChange implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String lang = req.getParameter("locale");
+        String lang = req.getParameter(LOCALE);
         Locale locale;
-        if (lang.equals("ua")) {
-            locale = new Locale("ua", "UA");
+        if (lang.equals(UA_LANG)) {
+            locale = new Locale(UA_LANG, UA_COUNTRY);
         } else {
-            locale = new Locale("en", "UK");
+            locale = new Locale(EN_LANG, EN_COUNTRY);
         }
-        req.getSession().setAttribute("locale", locale);
+        req.getSession().setAttribute(LOCALE, locale);
 
-        log.info("Language has changed to {}" , lang);
+        log.info("Language has changed to {}", lang);
         String referer = req.getHeader("referer");
         resp.sendRedirect(referer);
     }

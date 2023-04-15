@@ -20,16 +20,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestServiceTest {
     @Mock
-    TestRepoImpl mockTestRepoImpl;
+    private TestRepoImpl mockTestRepoImpl;
     @Mock
-    ValidatorServiceImpl mockValidateService;
-    TestServiceImpl testService;
+    private ValidatorServiceImpl mockValidateService;
+    private TestServiceImpl testService;
+    private models.Test quizForTest;
 
     @BeforeEach
     public void setUp() {
         mockValidateService = Mockito.mock(ValidatorServiceImpl.class);
         mockTestRepoImpl = Mockito.mock(TestRepoImpl.class);
         testService = new TestServiceImpl(mockTestRepoImpl, mockValidateService);
+        quizForTest = models.Test.builder()
+                .id(12L).name("name")
+                .subject("Math")
+                .difficult(87)
+                .duration(10)
+                .popularity(13)
+                .status(models.Test.Status.FREE).build();
     }
 
 //    @Test
@@ -63,9 +71,8 @@ public class TestServiceTest {
 
     @Test
     public void getTest() throws DataBaseException {
-        models.Test myTest = new models.Test();
-        Mockito.when(mockTestRepoImpl.get(Mockito.anyLong())).thenReturn(myTest);
-        assertEquals(myTest, testService.get(Mockito.anyLong()));
+        Mockito.when(mockTestRepoImpl.get(Mockito.anyLong())).thenReturn(quizForTest);
+        assertEquals(testService.mapToDto(quizForTest), testService.get(Mockito.anyLong()));
     }
 
     @Test

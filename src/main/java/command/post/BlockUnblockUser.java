@@ -40,17 +40,17 @@ public class BlockUnblockUser implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         UserService userService = AppContext.getInstance().getUserService();
-        Long userId = Long.valueOf(req.getParameter("user_id"));
-        String page = req.getParameter("page");
+        Long userId = Long.valueOf(req.getParameter(USER_ID));
+        String page = req.getParameter(PAGE);
 
         try {
             boolean block = userService.blockUnBlockUser(userId);
-            log.info("User with id " + userId + "is block " + block);
+            log.info("User with id {} is block {}", userId, block);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_users" +
                     "&page=" + page);
         } catch (DataBaseException e) {
-            log.warn("User with id " + userId + "has not updated", e);
+            log.warn("User with id {} has not updated", userId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }

@@ -55,23 +55,6 @@ public class ResultServiceImpl implements ResultService {
      *                   for example {"12", "on", "13" "off", "23" "off"}
      * @return List of user`s Answers
      */
-//    private List<Answer> convertUserResult(String[] userAnswer) {
-//        List<Answer> userResult = new ArrayList<>();
-//        Answer answer = null;
-//        for (int i = 0; i < userAnswer.length; i++) {
-//            if (userAnswer[i].equals("on")) {
-//                answer.setResult(true);
-//                userResult.add(answer);
-//            } else if (userAnswer[i].equals("off")) {
-//                answer.setResult(false);
-//                userResult.add(answer);
-//            } else {
-//                answer = new Answer();
-//                answer.setId(Long.parseLong(userAnswer[i]));
-//            }
-//        }
-//        return userResult;
-//    }
 
     private Set<AnswerDto> convertUserResult(String[] userAnswer) {
         Set<AnswerDto> userResult = new HashSet<>();
@@ -106,7 +89,6 @@ public class ResultServiceImpl implements ResultService {
         if (userAnswer == null) {
             return result;
         } else {
-            //  List<Answer> checkingAnswer = convertUserResult(userAnswer);
             Set<AnswerDto> checkingAnswer = convertUserResult(userAnswer);
             Set<AnswerDto> trueAnswers = answerService.getAnswers(questionId);
 
@@ -171,13 +153,13 @@ public class ResultServiceImpl implements ResultService {
     public List<ResultDto> getPageResultList(Long userId, String sub, String order, Integer rows, Integer page)
             throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForResult();
-        MyQuery myQuery = new MyQuery();
-        myQuery.setFilter(String.valueOf(userId));
-        myQuery.setAnd(sub);
-        myQuery.setOrderBy(order);
-        myQuery.setLimit(rows);
-        myQuery.setPage(page);
-        String query = queryCreator.getSQL(myQuery);
+        String query = queryCreator.getSQL(MyQuery.builder()
+                .filter(String.valueOf(userId))
+                .and(sub)
+                .orderBy(order)
+                .limit(rows)
+                .page(page)
+                .build());
 
         log.info("SERVICE RESULT get list of result with selected filter");
         return resultRepo.getPageResultList(query);
@@ -192,7 +174,7 @@ public class ResultServiceImpl implements ResultService {
      */
     @Override
     public List<ResultDto> getAllResultByUserId(Long userId) throws DataBaseException {
-        log.info("SERVICE RESULT get result by user" + userId);
+        log.info("SERVICE RESULT get result by user {}", userId);
         return resultRepo.getAllResult(userId);
     }
 

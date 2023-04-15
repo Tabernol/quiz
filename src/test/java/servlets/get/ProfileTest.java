@@ -43,7 +43,6 @@ public class ProfileTest {
         profile.execute(request,response);
 
         Mockito.verify(request, Mockito.times(1)).getRequestDispatcher("/WEB-INF/view/profile.jsp");
-//        Mockito.verify(request, Mockito.times(1)).getSession();
         Mockito.verify(dispatcher).forward(request, response);
 
     }

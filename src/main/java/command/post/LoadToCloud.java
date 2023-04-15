@@ -41,23 +41,23 @@ public class LoadToCloud implements RequestHandler {
 
         ImageService imageService = AppContext.getInstance().getImageService();
 
-        String webInfPath = req.getServletContext().getRealPath("WEB-INF");
+        String webInfPath = req.getServletContext().getRealPath(WEB_INF);
         String fullPath = webInfPath + "\\image" + (++count) + ".jpeg";
 
         for (Part part : req.getParts()) {
             part.write(fullPath);
         }
 
-        Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
+        Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute(CLOUDINARY);
 
         File file = new File(fullPath);
         Map<String, Object> uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
 
         ImageDto imageDto = ImageDto.builder()
-                .publicId((String) uploadResult.get("public_id"))
-                .url((String) uploadResult.get("url"))
-                .width( (Integer) uploadResult.get("width"))
-                .height((Integer) uploadResult.get("height"))
+                .publicId((String) uploadResult.get(PUBLIC_ID))
+                .url((String) uploadResult.get(URL))
+                .width((Integer) uploadResult.get(WIDTH))
+                .height((Integer) uploadResult.get(HEIGHT))
                 .build();
         try {
             imageService.addImage(imageDto);

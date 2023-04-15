@@ -61,27 +61,27 @@ public class AuthorizationFilter extends AbstractFilter {
         }
 
         if (!verify) {
-            log.info("User with id " + userDto.getId() + " reCAPTCHA is false");
+            log.info("User with id {} reCAPTCHA is false", userDto.getId());
             req.setAttribute("message_bad_request", "reCAPTCHA is false");
             req.setAttribute("repeat_login", login);
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
         } else if (id == -1) {
-            log.warn("This login = " + login + " does not exist in database");
+            log.warn("This login = {} does not exist in database", login);
             req.setAttribute("message_bad_request", "You do not registered");
             req.setAttribute("repeat_login", login);
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
         } else if (userDto.isBlocked()) {
-            log.warn("User with id " + userDto.getId() + "is block, and try login");
+            log.warn("User with id {} is block, and try login", userDto.getId());
             req.setAttribute("message_bad_request", "You have been blocked");
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);
         } else if (isCorrectPassword) {
-            log.info("User with id " + userDto.getId() + " has come");
+            log.info("User with id {} has come", userDto.getId());
             session.setAttribute("user_id", id);// get id
             session.setAttribute("name", userDto.getName());
             session.setAttribute("role", userDto.getRole());
             filterChain.doFilter(req, resp);
         } else {
-            log.warn("User with id " + userDto.getId() + "has input wrong password");
+            log.warn("User with id {} has input wrong password", userDto.getId());
             req.setAttribute("repeat_login", login);
             req.setAttribute("message_bad_request", "Something wrong(");
             req.getRequestDispatcher("/WEB-INF/view/login_form.jsp").forward(req, resp);

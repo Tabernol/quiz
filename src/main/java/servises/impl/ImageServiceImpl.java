@@ -54,7 +54,7 @@ public class ImageServiceImpl implements ImageService,
     public List<ImageDto> getAll() throws DataBaseException {
         log.info("SERVICE IMAGE get all images");
         List<ImageDto> imageDtoList = new ArrayList<>();
-        for(Image image : imageRepo.getAll()){
+        for (Image image : imageRepo.getAll()) {
             imageDtoList.add(mapToDto(image));
         }
         return imageDtoList;
@@ -72,6 +72,7 @@ public class ImageServiceImpl implements ImageService,
         log.info("SERVICE IMAGE delete from database with publicId " + publicId);
         return imageRepo.deleteImage(publicId);
     }
+
     @Override
     public List<String> canDeleteImage(String publicId) {
         return imageRepo.canDeleteImage(publicId);
@@ -79,12 +80,11 @@ public class ImageServiceImpl implements ImageService,
 
     @Override
     public Image mapToEntity(ImageDto imageDto) {
-        Image image = new Image();
-        image.setPublicId(imageDto.getPublicId());
-        image.setUrl(imageDto.getUrl());
-        image.setWidth(imageDto.getWidth());
-        image.setHeight(imageDto.getHeight());
-        return image;
+        return Image.builder()
+                .publicId(imageDto.getPublicId())
+                .url(imageDto.getUrl())
+                .width(imageDto.getWidth())
+                .height(imageDto.getHeight()).build();
     }
 
     @Override

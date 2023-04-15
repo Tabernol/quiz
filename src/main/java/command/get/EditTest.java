@@ -46,16 +46,16 @@ public class EditTest implements RequestHandler {
             throws ServletException, IOException {
         TestService testService = AppContext.getInstance().getTestService();
         QuestionService questionService = AppContext.getInstance().getQuestionService();
-        Long id = Long.valueOf(req.getParameter("test_id"));
-        req.setAttribute("page", req.getParameter("page"));
+        Long id = Long.valueOf(req.getParameter(TEST_ID));
+        req.setAttribute(PAGE, req.getParameter(PAGE));
 
         List<QuestionDto> all;
 
         try {
             TestDto testDto = testService.get(id);
             all = questionService.getAllById(id);
-            req.setAttribute("test", testDto);
-            req.setAttribute("questions", all);
+            req.setAttribute(TEST, testDto);
+            req.setAttribute(QUESTIONS, all);
             log.info("Test with ID " + id + " has updated");
             req.getRequestDispatcher(EDIT_TEST).forward(req, resp);
         } catch (DataBaseException e) {

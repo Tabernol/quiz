@@ -9,6 +9,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Answer {
     private Long id;
     private Long questionId;

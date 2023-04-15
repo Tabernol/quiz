@@ -44,18 +44,18 @@ public class GetInfoQuestion implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         AnswerService answerService = AppContext.getInstance().getAnswerService();
         ResultService resultService = AppContext.getInstance().getResultService();
-        req.setAttribute("duration", req.getParameter("duration"));
+        req.setAttribute(DURATION, req.getParameter(DURATION));
 
         String idQuestion = req.getParameter("id_question");
         String[] res = req.getParameterValues("res");
 
         List<Question> questions = (List<Question>) req.getSession().getAttribute("questions");
-        Integer size = (Integer) req.getSession().getAttribute("size");
+        Integer size = (Integer) req.getSession().getAttribute(SIZE);
 
 
         Integer numberQuestion = 0;
-        if (req.getParameter("number_question") != null) {
-            numberQuestion = Integer.valueOf(req.getParameter("number_question"));
+        if (req.getParameter(NUMBER_QUESTION) != null) {
+            numberQuestion = Integer.valueOf(req.getParameter(NUMBER_QUESTION));
         }
 
         try {

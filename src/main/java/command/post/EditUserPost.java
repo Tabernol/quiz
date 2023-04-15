@@ -8,6 +8,7 @@ import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import servises.UserService;
 
+import javax.print.attribute.standard.MediaSize;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,9 +39,9 @@ public class EditUserPost implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         UserService userService = AppContext.getInstance().getUserService();
-        Long userId = Long.valueOf(req.getParameter("user_id"));
-        String name = req.getParameter("name");
-        String role = req.getParameter("role");
+        Long userId = Long.valueOf(req.getParameter(USER_ID));
+        String name = req.getParameter(NAME);
+        String role = req.getParameter(ROLE);
 
 
         try {
@@ -49,17 +50,17 @@ public class EditUserPost implements RequestHandler {
                     .name(name)
                     .role(role)
                     .build());
-            log.info("User with id " + userId + "changes made successfully");
+            log.info("User with id {} changes made successfully", userId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/profile" +
                     "&user_id=" + userId +
                     "&name=" + name +
                     "&message_success=changes made successfully");
         } catch (DataBaseException e) {
-            log.warn("User with id " + userId + "did not update");
+            log.warn("User with id {} did not update", userId);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
-            log.info("User with id " + userId + "input data is wrong");
+            log.info("User with id {} input data is wrong", userId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/profile" +
                     "&user_id=" + userId +

@@ -42,17 +42,17 @@ public class EditQuestionPost implements RequestHandler {
                         HttpServletResponse resp) throws
             ServletException, IOException {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        Long questionId = Long.valueOf(req.getParameter("question_id"));
-        String text = req.getParameter("text");
-        String page = req.getParameter("page");
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        Long questionId = Long.valueOf(req.getParameter(QUESTION_ID));
+        String text = req.getParameter(TEXT);
+        String page = req.getParameter(PAGE);
 
         try {
             questionService.update(QuestionDto.builder()
                     .id(questionId)
                     .text(text)
                     .build());
-            log.info("Question with id " + questionId + "has updated");
+            log.info("Question with id {} has updated", questionId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +
@@ -61,10 +61,10 @@ public class EditQuestionPost implements RequestHandler {
                     "&message_success=The question updated");
 
         } catch (DataBaseException e) {
-            log.warn("Question with id " + questionId + "has not updated", e);
+            log.warn("Question with id {} has not updated", questionId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
-            log.info("Question with id " + questionId + "is invalid");
+            log.info("Question with id {} is invalid", questionId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +

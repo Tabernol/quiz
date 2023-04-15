@@ -188,27 +188,25 @@ public class TestServiceImpl implements TestService,
 
     @Override
     public Test mapToEntity(TestDto testDto) {
-        Test test = new Test();
-        test.setId(testDto.getId());
-        test.setName(testDto.getName());
-        test.setSubject(testDto.getSubject());
-        test.setDifficult(testDto.getDifficult());
-        test.setDuration(testDto.getDuration());
-        test.setPopularity(testDto.getPopularity());
-    //    test.setStatus(Test.Status.valueOf(testDto.getStatus()));
-        return test;
+        return Test.builder().id(testDto.getId())
+                .name(testDto.getName())
+                .subject(testDto.getSubject())
+                .difficult(testDto.getDifficult())
+                .duration(testDto.getDuration())
+                .popularity(testDto.getPopularity())
+                .build();
     }
 
     @Override
     public TestDto mapToDto(Test entity) {
-        TestDto testDto = new TestDto();
-        testDto.setId(entity.getId());
-        testDto.setName(entity.getName());
-        testDto.setDifficult(entity.getDifficult());
-        testDto.setDuration(entity.getDuration());
-        testDto.setSubject(entity.getSubject());
-        testDto.setPopularity(entity.getPopularity());
-        testDto.setStatus(entity.getStatus().getStatus());
-        return testDto;
+        return TestDto.builder()
+                .id(entity.getId())
+                .name(entity.getName())
+                .difficult(entity.getDifficult())
+                .duration(entity.getDuration())
+                .subject(entity.getSubject())
+                .popularity(entity.getPopularity())
+                .status(entity.getStatus().getStatus())
+                .build();
     }
 }

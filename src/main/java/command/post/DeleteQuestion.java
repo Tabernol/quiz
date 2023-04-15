@@ -36,17 +36,17 @@ public class DeleteQuestion implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
-        req.setAttribute("page", req.getParameter("page"));
-        req.setAttribute("test_id", req.getParameter("test_id"));
-        String id = req.getParameter("question_id");
+        req.setAttribute(PAGE, req.getParameter(PAGE));
+        req.setAttribute(TEST_ID, req.getParameter(TEST_ID));
+        String id = req.getParameter(QUESTION_ID);
 
         try {
             questionService.delete(Long.valueOf(id));
-            log.info("Question with id " + id + "has deleted");
+            log.info("Question with id {} has deleted", id);
             EditTest editTest = new EditTest();
             editTest.execute(req, resp);
         } catch (DataBaseException e) {
-            log.warn("Question with id " + id + "has not delete", e);
+            log.warn("Question with id {} has not delete", id, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 

@@ -35,26 +35,26 @@ public class DeleteFromCloud implements RequestHandler {
      */
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String publicId = req.getParameter("public_id");
+        String publicId = req.getParameter(PUBLIC_ID);
 
         ImageService imageService = AppContext.getInstance().getImageService();
 
         if (imageService.canDeleteImage(publicId).isEmpty()) {
             //delete image from cloudinary
-            Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute("cloudinary");
+            Cloudinary cloudinary = (Cloudinary) req.getServletContext().getAttribute(CLOUDINARY);
             Map deleteParams = ObjectUtils.asMap("invalidate", true);
             cloudinary.uploader().destroy(publicId, deleteParams);
-            log.info("The Image with publicID " + publicId + " was deleted from cloudinary");
+            log.info("The Image with publicID {} was deleted from cloudinary", publicId);
 
 
             //delete data from database
             try {
                 imageService.delete(publicId);
-                log.info("The Image with publicID " + publicId + " was deleted from database");
+                log.info("The Image with publicID {}  was deleted from database", publicId);
                 FilterImages filterImages = new FilterImages();
                 filterImages.execute(req, resp);
             } catch (DataBaseException e) {
-                log.info("There was a problem with deleting the image. publicID = " + publicId);
+                log.info("There was a problem with deleting the image. publicID = {}", publicId);
                 req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             }
         } else {

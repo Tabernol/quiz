@@ -130,21 +130,21 @@ public class QuestionServiceImpl implements QuestionService,
 
     @Override
     public QuestionDto mapToDto(Question entity) {
-        QuestionDto questionDto = new QuestionDto();
-        questionDto.setId(entity.getId());
-        questionDto.setText(entity.getText());
-        questionDto.setTestId(entity.getTestId());
-        questionDto.setUrlImage(entity.getUrlImage());
-        return questionDto;
+        return QuestionDto.builder()
+                .id(entity.getId())
+                .text(entity.getText())
+                .testId(entity.getTestId())
+                .urlImage(entity.getUrlImage())
+                .build();
     }
 
     @Override
     public Question mapToEntity(QuestionDto questionDto) {
-        Question question = new Question();
-        question.setId(questionDto.getId());
-        question.setTestId(questionDto.getTestId());
-        question.setText(questionDto.getText());
-        question.setUrlImage(questionDto.getUrlImage());
-        return question;
+        return Question.builder()
+                .id(questionDto.getId())
+                .testId(questionDto.getTestId())
+                .text(questionDto.getText())
+                .urlImage(questionDto.getUrlImage())
+                .build();
     }
 }

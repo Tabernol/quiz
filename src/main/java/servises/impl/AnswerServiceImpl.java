@@ -54,9 +54,9 @@ public class AnswerServiceImpl implements AnswerService,
     }
 
 
-
     /**
      * Mhe method takes input, validates it, and calls to repository layer to create Answer
+     *
      * @param answerDto contains information about answer
      * @return 1 if Answer has created
      * @throws DataBaseException is wrapper of SQLException
@@ -95,21 +95,22 @@ public class AnswerServiceImpl implements AnswerService,
 
     @Override
     public AnswerDto mapToDto(Answer entity) {
-        AnswerDto answerDto = new AnswerDto();
-        answerDto.setId(entity.getId());
-        answerDto.setQuestionId(entity.getQuestionId());
-        answerDto.setResult(entity.isResult());
-        answerDto.setText(entity.getText());
-        return answerDto;
+        return AnswerDto.builder()
+                .id(entity.getId())
+                .questionId(entity.getQuestionId())
+                .result(entity.isResult())
+                .text(entity.getText())
+                .build();
+
     }
 
     @Override
     public Answer mapToEntity(AnswerDto answerDto) {
-        Answer answer = new Answer();
-        answer.setId(answerDto.getId());
-        answer.setText(answerDto.getText());
-        answer.setQuestionId(answerDto.getQuestionId());
-        answer.setResult(answerDto.isResult());
-        return answer;
+        return Answer.builder()
+                .id(answerDto.getId())
+                .text(answerDto.getText())
+                .questionId(answerDto.getQuestionId())
+                .result(answerDto.isResult())
+                .build();
     }
 }

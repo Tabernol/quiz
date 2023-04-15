@@ -40,7 +40,7 @@ public class StartTest implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        Long testId = Long.valueOf(req.getParameter("test_id"));
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
 
         QuestionService questionService = AppContext.getInstance().getQuestionService();
         TestService testService = AppContext.getInstance().getTestService();
@@ -53,30 +53,30 @@ public class StartTest implements RequestHandler {
             duration = testService.get(testId).getDuration();
             questions = questionService.getAllById(Long.valueOf(testId));
             size = questions.size();
-            log.info("give parameter test with id " + testId);
+            log.info("give parameter test with id {}", testId);
         } catch (DataBaseException e) {
-            log.warn("problem with received parameter test with id " + testId, e);
+            log.warn("problem with received parameter test with id {}", testId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
 
         if (size > 0) {
             List<Boolean> resultTest = new ArrayList<>();
-            req.getSession().setAttribute("size", size);
-            req.getSession().setAttribute("test_id", testId);
-            req.getSession().setAttribute("questions", questions);
-            req.getSession().setAttribute("result_test", resultTest);
-            req.setAttribute("duration", duration);
-            req.setAttribute("number_question", 0);
+            req.getSession().setAttribute(SIZE, size);
+            req.getSession().setAttribute(TEST_ID, testId);
+            req.getSession().setAttribute(QUESTIONS, questions);
+            req.getSession().setAttribute(RESULT_TEST, resultTest);
+            req.setAttribute(DURATION, duration);
+            req.setAttribute(NUMBER_QUESTION, 0);
 
             GetInfoQuestion getInfoQuestion = new GetInfoQuestion();
             getInfoQuestion.execute(req, resp);
-            log.info("Start test with id " + testId);
+            log.info("Start test with id {}", testId);
             req.getRequestDispatcher(PAGE_BASE_QUESTION).forward(req, resp);
         } else {
-            req.setAttribute("page", req.getParameter("page"));
-            req.setAttribute("message", "Sorry, this test now is empty");
-            log.info("Test with id " + testId + " is empty. And not started");
+            req.setAttribute(PAGE, req.getParameter(PAGE));
+            req.setAttribute(MESSAGE, "Sorry, this test now is empty");
+            log.info("Test with id {} is empty. And not started", testId);
             req.getRequestDispatcher(PAGE_TEST).forward(req, resp);
         }
 

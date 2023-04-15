@@ -36,15 +36,15 @@ public class UpdateImageForQuestion implements RequestHandler {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        Long questionId = Long.valueOf(req.getParameter("question_id"));
-        String url = req.getParameter("url");
-        String page = req.getParameter("page");
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        Long questionId = Long.valueOf(req.getParameter(QUESTION_ID));
+        String url = req.getParameter(URL);
+        String page = req.getParameter(PAGE);
 
 
         try {
             questionService.updateImage(url, questionId);
-            log.info("Question with id " + questionId + " has updated image ");
+            log.info("Question with id {} has updated image ", questionId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +
@@ -53,10 +53,10 @@ public class UpdateImageForQuestion implements RequestHandler {
                     "&message_success=The question has updated");
 
         } catch (DataBaseException e) {
-            log.warn("Question with id " + questionId + " has not updated image", e);
+            log.warn("Question with id {} has not updated image", questionId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         } catch (ValidateException e) {
-            log.info("Question with id " + questionId + " is invalid ");
+            log.info("Question with id {} is invalid ", questionId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +
                     "&test_id=" + testId +

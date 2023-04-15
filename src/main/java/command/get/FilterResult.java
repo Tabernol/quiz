@@ -47,17 +47,17 @@ public class FilterResult implements RequestHandler {
         int countPages;
 
         Long userId;
-        if (req.getParameter("user_id") != null) {
-            userId = Long.valueOf(req.getParameter("user_id"));
+        if (req.getParameter(USER_ID) != null) {
+            userId = Long.valueOf(req.getParameter(USER_ID));
         } else {
-            userId = (Long) req.getSession().getAttribute("user_id");
+            userId = (Long) req.getSession().getAttribute(USER_ID);
         }
 
 
         try {
             subjects = resultService.getDistinctSubject(userId);
-            req.getSession().setAttribute("subjects", subjects);
-            req.setAttribute("user", userService.get(userId));
+            req.getSession().setAttribute(SUBJECTS, subjects);
+            req.setAttribute(USER, userService.get(userId));
 
 
             countPages = resultService.getCountPagesResult(userId, Integer.valueOf(rows), sub);
@@ -66,8 +66,8 @@ public class FilterResult implements RequestHandler {
                     .getPageResultList(userId, sub, order, Integer.valueOf(rows), Integer.valueOf(page));
 
             if (countPages != 0 || !pageResultList.isEmpty()) {
-                req.setAttribute("user_result", pageResultList);
-                req.setAttribute("count_pages", countPages);
+                req.setAttribute(USER_RESULT, pageResultList);
+                req.setAttribute(COUNT_PAGES, countPages);
             }
 
             log.info("Filter result was used");

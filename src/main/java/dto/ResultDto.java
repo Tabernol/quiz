@@ -13,5 +13,4 @@ public class ResultDto {
     private Integer difficult;
     private Integer duration;
     private Integer grade;
-
 }

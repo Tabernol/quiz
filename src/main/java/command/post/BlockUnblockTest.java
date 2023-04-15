@@ -4,11 +4,8 @@ import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.impl.TestServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,17 +37,17 @@ public class BlockUnblockTest implements RequestHandler {
             throws ServletException, IOException {
         TestService testService = AppContext.getInstance().getTestService();
 
-        Long testId = Long.valueOf(req.getParameter("test_id"));
-        String page = req.getParameter("page");
+        Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        String page = req.getParameter(PAGE);
 
         try {
             testService.changeStatus(testId);
-            log.info("Test with id " + testId + " changed status.");
+            log.info("Test with id {} changed status.", testId);
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +
                     "&page=" + page);
         } catch (DataBaseException e) {
-            log.warn("Test with id " + testId + " has not updated", e);
+            log.warn("Test with id {} has not updated", testId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }

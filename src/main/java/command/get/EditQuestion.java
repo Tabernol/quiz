@@ -47,18 +47,18 @@ public class EditQuestion implements RequestHandler {
             throws ServletException, IOException {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
         AnswerService answerService = AppContext.getInstance().getAnswerService();
-        String questionId = req.getParameter("question_id");
+        String questionId = req.getParameter(QUESTION_ID);
 
-        req.setAttribute("test_id", req.getParameter("test_id"));
-        req.setAttribute("question_id", req.getParameter("question_id"));
-        req.setAttribute("page", req.getParameter("page"));
+        req.setAttribute(TEST_ID, req.getParameter(TEST_ID));
+        req.setAttribute(QUESTION_ID, req.getParameter(QUESTION_ID));
+        req.setAttribute(PAGE, req.getParameter(PAGE));
 
 
         try {
             QuestionDto questionDto = questionService.get(Long.valueOf(questionId));
             Set<AnswerDto> answers = answerService.getAnswers(Long.valueOf(questionId));
-            req.setAttribute("answers", answers);
-            req.setAttribute("question", questionDto);
+            req.setAttribute(ANSWERS, answers);
+            req.setAttribute(QUESTION, questionDto);
 
             log.info("Question with ID " + questionId + "has updated");
             req.getRequestDispatcher(EDIT_QUESTION).forward(req, resp);

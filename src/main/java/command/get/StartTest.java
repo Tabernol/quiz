@@ -75,9 +75,9 @@ public class StartTest implements RequestHandler {
             req.getRequestDispatcher(PAGE_BASE_QUESTION).forward(req, resp);
         } else {
             req.setAttribute(PAGE, req.getParameter(PAGE));
-            req.setAttribute(MESSAGE, "Sorry, this test now is empty");
+            req.setAttribute(MESSAGE_BAD_REQUEST, "Sorry, this test is empty now");
             log.info("Test with id {} is empty. And not started", testId);
-            req.getRequestDispatcher(PAGE_TEST).forward(req, resp);
+            req.getRequestDispatcher(STUDENT_TESTS).forward(req, resp);
         }
 
 

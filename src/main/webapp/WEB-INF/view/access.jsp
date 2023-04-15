@@ -108,10 +108,5 @@
             </div>
         </div>
     </nav>
-
-<%--<a href="<c:url value='/home'/>"><img--%>
-<%--        src="https://res.cloudinary.com/dluwxouux/image/upload/v1677517094/Access-Denied_nyxpro.jpg"--%>
-<%--        class="rounded mx-auto d-block" alt="No Access"></a>--%>
-
 </body>
 </html>

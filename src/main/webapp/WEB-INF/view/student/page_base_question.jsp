@@ -24,7 +24,6 @@
     </script>
 </head>
 <body class="gen">
-<%--<jsp:include page="/WEB-INF/view/header.jsp"/>--%>
 <jsp:include page="/WEB-INF/view/student/page_question.jsp"/>
 </body>
 </html>

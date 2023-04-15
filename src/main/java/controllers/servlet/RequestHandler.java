@@ -39,7 +39,6 @@ public interface RequestHandler {
     String MENU = "/WEB-INF/view/menu.jsp";
     String LOGIN_FORM = "/WEB-INF/view/login_form.jsp";
     String REGISTRATION = "/WEB-INF/view/registration.jsp";
-    String PAGE_TEST = "/WEB-INF/view/student/page_test.jsp";
     String PAGE_BASE_QUESTION = "/WEB-INF/view/student/page_base_question.jsp";
     //=====================
     //==========Parameter of request==============

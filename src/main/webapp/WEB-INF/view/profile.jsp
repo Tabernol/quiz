@@ -61,7 +61,7 @@
         </form>
     </div>
 </div>
-<!-- Button to open the offcanvas sidebar -->
+<!-- Button to open the editProfile sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forTest">
     <fmt:message key="button.edit.profile"/>
 </button>
@@ -152,9 +152,6 @@
                         <c:param name="user_id" value="${requestScope.user.id}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
                 </c:forEach>
-                    <%--            <li class="page-item active" aria-current="page">--%>
-                    <%--                <span class="page-link">1</span>--%>
-                    <%--            </li>--%>
             </ul>
         </nav>
     </div>

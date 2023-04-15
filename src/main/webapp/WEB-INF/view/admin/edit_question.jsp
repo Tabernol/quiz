@@ -59,7 +59,7 @@
         </form>
     </div>
 </div>
-<!-- Button to open the offcanvas sidebar -->
+<!-- Button to open the editQuestion sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddQuestion">
     <fmt:message key="button.edit.question"/>
 </button>
@@ -87,7 +87,7 @@
         </form>
     </div>
 </div>
-<!-- Button to open the offcanvas sidebar -->
+<!-- Button to open the AddAnswer sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddAnswer">
     <fmt:message key="button.add.answer"/>
 </button>
@@ -115,8 +115,8 @@
 </form>
 
 
-<c:out value="${requestScope.message_answer}"/>
-<c:out value="${requestScope.message}"/>
+<%--<c:out value="${requestScope.message_answer}"/>--%>
+<%--<c:out value="${requestScope.message}"/>--%>
 
 
 <c:if test="${requestScope.question.urlImage != null}">

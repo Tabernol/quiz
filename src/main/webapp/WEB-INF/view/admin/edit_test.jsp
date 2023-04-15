@@ -63,11 +63,10 @@
                         class="btn btn-secondary"><fmt:message key="button.edit"/>
                 </button>
             </div>
-            <%--            <c:out value="${requestScope.message}"/>--%>
         </form>
     </div>
 </div>
-<!-- Button to open the offcanvas sidebar -->
+<!-- Button to open the editTest sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forTest">
     <fmt:message key="button.edit.test"/>
 </button>
@@ -93,7 +92,7 @@
         </form>
     </div>
 </div>
-<!-- Button to open the offcanvas sidebar -->
+<!-- Button to open the addQuestion sidebar -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forAddQuestion">
     <fmt:message key="button.add.question"/>
 </button>
@@ -136,16 +135,5 @@
         </c:forEach>
     </tbody>
 </table>
-
-
-<%--<form method="post" action="add_question">--%>
-<%--    <input type="hidden" name="page" value="${requestScope.page}">--%>
-<%--    <input type="hidden" name="test_id" value="${requestScope.test_id}">--%>
-<%--    <input type="text" required placeholder="<fmt:message key="table.head.text.of.question"/>" name="text"--%>
-<%--           value="${requestScope.too_Long_Text}"><br>--%>
-<%--    <input class="button" type="submit" value="<fmt:message key="button.add.question"/>">--%>
-<%--    <c:out value="${requestScope.message_question}"/>--%>
-<%--</form>--%>
-
 </body>
 </html>

@@ -59,7 +59,6 @@
                         class="btn btn-secondary"><fmt:message key="button.create"/>
                 </button>
             </div>
-            <%--            <c:out value="${requestScope.message}"/>--%>
         </form>
     </div>
 </div>
@@ -169,22 +168,8 @@
                         <c:param name="page" value="${i}"/>
                     </c:url>"><c:out value="${i}"/></a></li>
             </c:forEach>
-            <%--            <li class="page-item active" aria-current="page">--%>
-            <%--                <span class="page-link">1</span>--%>
-            <%--            </li>--%>
         </ul>
     </nav>
 </div>
-
-<%--<c:forEach var="i" begin="1" end="${requestScope.count_pages}">--%>
-<%--    <a href="<c:url value='/next_page'>--%>
-<%--                        <c:param name="order" value="${requestScope.order}"/>--%>
-<%--                        <c:param name="sub" value="${requestScope.sub}"/>--%>
-<%--                        <c:param name="rows" value="${requestScope.rows}"/>--%>
-<%--                        <c:param name="page" value="${i}"/>--%>
-<%--                    </c:url>"> <c:out value="${i}"/> </a>--%>
-<%--</c:forEach>--%>
-
-
 </body>
 </html>

@@ -46,24 +46,6 @@
     <input id="number_question" type="hidden" name="number_question" value="${requestScope.number_question}">
 </div>
 
-<%--<form method="post" action="result_answer">--%>
-<%--    <c:forEach var="ans" items="${requestScope.answers}">--%>
-<%--        <input class="res" type="checkbox" name="res" value="${ans.id}">--%>
-<%--        <c:out value="${ans.text}"/>--%>
-<%--        <br>--%>
-<%--    </c:forEach>--%>
-<%--        <input class="button" type="submit" value="<fmt:message key="select.option.yes"/>">--%>
-<%--</form>--%>
-
-
-<%--<div class="mb-3">--%>
-<%--    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>--%>
-<%--    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>--%>
-<%--</div>--%>
-
-
-
-
 <script>
     window.onload = function () {
         loadQuestionAndAnswer(
@@ -74,8 +56,6 @@
         console.log("=============start=================")
     }
 </script>
-
-
 
 </body>
 </html>

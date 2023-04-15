@@ -1,22 +1,14 @@
 package dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class AnswerDto {
     private Long id;
     private Long questionId;
     private String text;
     private boolean result;
-
-    public AnswerDto(Long questionId, String text, Boolean result) {
-        this.questionId = questionId;
-        this.text = text;
-        this.result = result;
-    }
 }

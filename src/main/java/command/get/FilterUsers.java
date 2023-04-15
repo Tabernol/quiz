@@ -5,11 +5,7 @@ import controllers.servlet.RequestHandler;
 import dto.UserDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.UserRepoImpl;
 import servises.UserService;
-import servises.impl.UserServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,31 +36,10 @@ public class FilterUsers implements RequestHandler {
             throws ServletException, IOException {
         UserService userService = AppContext.getInstance().getUserService();
 
-        String status = req.getParameter("status");
-        String rows = req.getParameter("rows");
-        String order = req.getParameter("order");
-        String page = req.getParameter("page");
-        //  String role = (String) req.getSession().getAttribute("role");
-
-        if (status == null || rows == null || order == null) {
-            status = (String) req.getSession().getAttribute("status");
-            rows = (String) req.getSession().getAttribute("rows");
-            order = (String) req.getSession().getAttribute("order");
-            if (status == null || rows == null || order == null) {
-                status = "all";
-                rows = "5";
-                order = "name asc";
-            }
-        } else {
-            req.getSession().setAttribute("status", status);
-            req.getSession().setAttribute("rows", rows);
-            req.getSession().setAttribute("order", order);
-        }
-
-        if (page == null) {
-            page = "1";
-        }
-
+        String status = readAndSetParameterForFilter(req,STATUS, DEFAULT_FILTER_ALL);
+        String order = readAndSetParameterForFilter(req, ORDER, DEFAULT_ORDER_NAME_ASC);
+        String rows = readAndSetParameterForFilter(req, ROWS, DEFAULT_ROWS_5);
+        String page = req.getParameter(PAGE) == null ? "1" : req.getParameter(PAGE);
 
         List<UserDto> userList;
         try {

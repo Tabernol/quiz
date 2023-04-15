@@ -5,22 +5,12 @@ import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.ResultRepoImpl;
-import repo.impl.TestRepoImpl;
-import repo.impl.UserRepoImpl;
 import servises.ResultService;
-import servises.TestService;
 import servises.UserService;
-import servises.impl.ResultServiceImpl;
-import servises.impl.TestServiceImpl;
-import servises.impl.UserServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -45,28 +35,10 @@ public class FilterResult implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String sub = req.getParameter("sub");
-        String order = req.getParameter("order");
-        String rows = req.getParameter("rows");
-        String page = req.getParameter("page");
-
-        if (sub == null || order == null || rows == null) {
-            sub = (String) req.getSession().getAttribute("sub");
-            order = (String) req.getSession().getAttribute("order");
-            rows = (String) req.getSession().getAttribute("rows");
-            if (sub == null || order == null || rows == null) {
-                sub = "all";
-                order = "name asc";
-                rows = "5";
-                setParametersToSession(sub, order, rows, req, resp);
-            }
-        } else {
-            setParametersToSession(sub, order, rows, req, resp);
-        }
-
-        if (page == null) {
-            page = "1";
-        }
+        String sub = readAndSetParameterForFilter(req, SUB, DEFAULT_FILTER_ALL);
+        String order = readAndSetParameterForFilter(req, ORDER, DEFAULT_ORDER_NAME_ASC);
+        String rows = readAndSetParameterForFilter(req, ROWS, DEFAULT_ROWS_5);
+        String page = req.getParameter(PAGE) == null ? "1" : req.getParameter(PAGE);
 
 
         ResultService resultService = AppContext.getInstance().getResultService();
@@ -89,12 +61,10 @@ public class FilterResult implements RequestHandler {
 
 
             countPages = resultService.getCountPagesResult(userId, Integer.valueOf(rows), sub);
-            System.out.println("count page = " + countPages);
 
             List<ResultDto> pageResultList = resultService
                     .getPageResultList(userId, sub, order, Integer.valueOf(rows), Integer.valueOf(page));
 
-            System.out.println(pageResultList);
             if (countPages != 0 || !pageResultList.isEmpty()) {
                 req.setAttribute("user_result", pageResultList);
                 req.setAttribute("count_pages", countPages);
@@ -106,14 +76,5 @@ public class FilterResult implements RequestHandler {
             log.warn("Trouble with using filter result ", e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
-    }
-
-
-    private void setParametersToSession(String sub, String order, String rows,
-                                        HttpServletRequest req, HttpServletResponse resp) {
-        HttpSession session = req.getSession();
-        session.setAttribute("sub", sub);
-        session.setAttribute("order", order);
-        session.setAttribute("rows", rows);
     }
 }

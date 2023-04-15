@@ -45,7 +45,12 @@ public class AddAnswer implements RequestHandler {
         String text = req.getParameter("text");
         Boolean result = Boolean.valueOf(req.getParameter("result"));
 
-        AnswerDto answerDto = new AnswerDto(0L, questionId, text, result);
+        AnswerDto answerDto = AnswerDto.builder()
+                .id(0L)
+                .questionId(questionId)
+                .text(text)
+                .result(result)
+                .build();
 
         try {
             answerService.create(answerDto);

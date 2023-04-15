@@ -70,14 +70,12 @@ public class GetInfoQuestion implements RequestHandler {
             log.info("problem with receiving result by question ", e);
         }
 
-        System.out.println("number " + numberQuestion + "   size " + size);
-
         long nextIdQuestion = questions.get(numberQuestion).getId();
 
-        Set<AnswerDto> answers = null;
+        Set<AnswerDto> answers;
         try {
             answers = answerService.getAnswers(nextIdQuestion);
-            // Collections.shuffle(answers);
+
             String text = questions.get(numberQuestion).getText();
             String urlImage = questions.get(numberQuestion).getUrlImage();
 

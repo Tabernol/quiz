@@ -5,16 +5,11 @@ import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Test;
-import repo.impl.TestRepoImpl;
 import servises.TestService;
-import servises.impl.TestServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,30 +34,11 @@ public class FilterTests implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
-        String sub = req.getParameter("sub");
-        String order = req.getParameter("order");
-        String rows = req.getParameter("rows");
-        String page = req.getParameter("page");
+        String sub = readAndSetParameterForFilter(req, SUB, DEFAULT_FILTER_ALL);
+        String order = readAndSetParameterForFilter(req, ORDER, DEFAULT_ORDER_NAME_ASC);
+        String rows = readAndSetParameterForFilter(req, ROWS, DEFAULT_ROWS_5);
+        String page = req.getParameter(PAGE) == null ? "1" : req.getParameter(PAGE);
         String role = (String) req.getSession().getAttribute("role");
-
-        if (sub == null || order == null || rows == null) {
-            sub = (String) req.getSession().getAttribute("sub");
-            order = (String) req.getSession().getAttribute("order");
-            rows = (String) req.getSession().getAttribute("rows");
-            if (sub == null || order == null || rows == null) {
-                sub = "all";
-                order = "name asc";
-                rows = "5";
-                setParametersToSession(sub, order, rows, req, resp);
-            }
-        } else {
-            setParametersToSession(sub, order, rows, req, resp);
-        }
-
-
-        if (page == null) {
-            page = "1";
-        }
 //        =======================================
 
         TestService testService = AppContext.getInstance().getTestService();
@@ -91,13 +67,5 @@ public class FilterTests implements RequestHandler {
             log.warn("Trouble with using filter tests ", e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
-    }
-
-    private void setParametersToSession(String sub, String order, String rows,
-                                        HttpServletRequest req, HttpServletResponse resp) {
-        HttpSession session = req.getSession();
-        session.setAttribute("sub", sub);
-        session.setAttribute("order", order);
-        session.setAttribute("rows", rows);
     }
 }

@@ -60,7 +60,10 @@ public class Registration implements RequestHandler {
 
         if (verify) {
             try {
-                Long userId = userService.createUser(new UserDto(login,name), password, repeatPassword);
+                Long userId = userService.createUser(UserDto.builder()
+                        .login(login)
+                        .name(name).build()
+                        , password, repeatPassword);
                 UserDto userDto = userService.get(userId);
                 HttpSession session = req.getSession();
                 session.setAttribute("user_id", userId);// get id
@@ -77,10 +80,7 @@ public class Registration implements RequestHandler {
                 req.setAttribute("repeat_name", name);
                 req.setAttribute("repeat_login", login);
                 req.getRequestDispatcher(REGISTRATION).forward(req, resp);
-            } catch (NoSuchAlgorithmException e) {
-                log.warn("Problem with hash password ", e.getMessage());
-                req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
-            } catch (InvalidKeySpecException e) {
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 log.warn("Problem with hash password ", e.getMessage());
                 req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
             }

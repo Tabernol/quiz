@@ -44,7 +44,11 @@ public class EditUserPost implements RequestHandler {
 
 
         try {
-            userService.update(new UserDto(userId, name, role));
+            userService.update(UserDto.builder()
+                    .id(userId)
+                    .name(name)
+                    .role(role)
+                    .build());
             log.info("User with id " + userId + "changes made successfully");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/profile" +

@@ -41,6 +41,7 @@ public class UpdateImageForQuestion implements RequestHandler {
         String url = req.getParameter("url");
         String page = req.getParameter("page");
 
+
         try {
             questionService.updateImage(url, questionId);
             log.info("Question with id " + questionId + " has updated image ");

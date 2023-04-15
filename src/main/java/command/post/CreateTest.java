@@ -42,7 +42,12 @@ public class CreateTest implements RequestHandler {
         int duration = Integer.parseInt(req.getParameter("duration"));
 
         try {
-            testService.create(new TestDto(name, subject, difficult, duration));
+            testService.create(TestDto.builder()
+                    .name(name)
+                    .subject(subject)
+                    .difficult(difficult)
+                    .duration(duration).build());
+
             log.info("Test " + name + "has created");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/filter_tests" +

@@ -42,7 +42,10 @@ public class AddQuestion implements RequestHandler {
         String text = req.getParameter("text");
 
         try {
-            questionService.create(new QuestionDto(testId,text));
+            questionService.create(QuestionDto.builder()
+                    .testId(testId)
+                    .text(text)
+                    .build());
             log.info("Question for test id " + testId + "has added");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +

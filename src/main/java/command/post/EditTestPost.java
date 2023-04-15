@@ -46,7 +46,12 @@ public class EditTestPost implements RequestHandler {
 
 
         try {
-            testService.update(new TestDto(testId, name, subject, difficult, duration));
+            testService.update(TestDto.builder()
+                    .name(name)
+                    .subject(subject)
+                    .difficult(difficult)
+                    .duration(duration)
+                    .build());
             log.info("Test with id " + testId + "has updated");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_test" +

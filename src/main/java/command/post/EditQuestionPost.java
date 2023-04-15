@@ -48,7 +48,10 @@ public class EditQuestionPost implements RequestHandler {
         String page = req.getParameter("page");
 
         try {
-            questionService.update(new QuestionDto(questionId, text));
+            questionService.update(QuestionDto.builder()
+                    .id(questionId)
+                    .text(text)
+                    .build());
             log.info("Question with id " + questionId + "has updated");
             resp.sendRedirect(req.getContextPath() + "/prg" +
                     "?servlet_path=/edit_question" +

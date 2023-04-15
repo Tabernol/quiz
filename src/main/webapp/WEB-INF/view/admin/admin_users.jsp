@@ -46,8 +46,6 @@
                 <select class="form-select" name="order">
                     <option value="name asc"><fmt:message key="sort.name.asc"/></option>
                     <option value="name desc"><fmt:message key="sort.name.desc"/></option>
-                    <option value="login asc"><fmt:message key="sort.difficult.asc"/></option>
-                    <option value="login desc"><fmt:message key="sort.difficult.desc"/></option>
                 </select>
             </div>
             <div class="p-2 bd-highlight">

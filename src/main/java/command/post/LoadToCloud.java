@@ -53,11 +53,12 @@ public class LoadToCloud implements RequestHandler {
         File file = new File(fullPath);
         Map<String, Object> uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
 
-        ImageDto imageDto = new ImageDto(
-                (String) uploadResult.get("public_id"),
-                (String) uploadResult.get("url"),
-                (Integer) uploadResult.get("width"),
-                (Integer) uploadResult.get("height"));
+        ImageDto imageDto = ImageDto.builder()
+                .publicId((String) uploadResult.get("public_id"))
+                .url((String) uploadResult.get("url"))
+                .width( (Integer) uploadResult.get("width"))
+                .height((Integer) uploadResult.get("height"))
+                .build();
         try {
             imageService.addImage(imageDto);
         } catch (DataBaseException e) {

@@ -36,8 +36,7 @@ public class DeleteQuestion implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
-        req.setAttribute(PAGE, req.getParameter(PAGE));
-        req.setAttribute(TEST_ID, req.getParameter(TEST_ID));
+        setAttributesForRequest(req, TEST_ID, PAGE);
         String id = req.getParameter(QUESTION_ID);
 
         try {

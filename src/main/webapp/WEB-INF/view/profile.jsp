@@ -80,12 +80,14 @@
                     <select class="form-select" name="sub">
                         <option value="all"><c:out value="all"/></option>
                         <c:forEach var="sub" items="${sessionScope.subjects}">
+                            <option value="" disabled selected hidden><c:out value="${sessionScope.sub}"/></option>
                             <option value="${sub}"><c:out value="${sub}"/></option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="p-2 bd-highlight">
                     <select class="form-select" name="rows">
+                        <option value="" disabled selected hidden><c:out value="${sessionScope.rows}"/></option>
                         <option value="2"><c:out value="2"/></option>
                         <option value="5"><c:out value="5"/></option>
                         <option value="10"><c:out value="10"/></option>
@@ -94,12 +96,13 @@
                 </div>
                 <div class="p-2 bd-highlight">
                     <select class="form-select" name="order">
+                        <option value="" disabled selected hidden><c:out value="${sessionScope.order}"/></option>
                         <option value="name asc"><fmt:message key="sort.name.asc"/></option>
                         <option value="name desc"><fmt:message key="sort.name.desc"/></option>
                         <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
                         <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
-                        <option value="popularity asc"><fmt:message key="sort.popularity.asc"/></option>
-                        <option value="popularity desc"><fmt:message key="sort.popularity.desc"/></option>
+                        <option value="time asc"><fmt:message key="sort.time.asc"/></option>
+                        <option value="time desc"><fmt:message key="sort.time.desc"/></option>
                     </select>
                 </div>
                 <div class="p-2 bd-highlight">
@@ -126,6 +129,7 @@
             <th><fmt:message key="table.head.difficult"/></th>
             <th><fmt:message key="table.head.duration"/></th>
             <th><fmt:message key="table.head.grade"/></th>
+            <th><fmt:message key="table.head.date"/></th>
         </tr>
         </thead>
         <tbody>
@@ -137,6 +141,7 @@
             <td><c:out value="${result.difficult}"/></td>
             <td><c:out value="${result.duration}"/></td>
             <td><c:out value="${result.grade}"/></td>
+            <td><c:out value="${result.date}"/></td>
             </c:forEach>
         </tbody>
     </table>

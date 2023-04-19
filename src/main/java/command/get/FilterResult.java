@@ -1,5 +1,6 @@
 package command.get;
 
+import command.FilterSupport;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.ResultDto;
@@ -21,7 +22,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FilterResult implements RequestHandler {
+public class FilterResult implements RequestHandler, FilterSupport {
 
     /**
      * This method contacts with service layer to retrieve the sheet of results with selected filter and page
@@ -39,6 +40,8 @@ public class FilterResult implements RequestHandler {
         String order = readAndSetParameterForFilter(req, ORDER, DEFAULT_ORDER_NAME_ASC);
         String rows = readAndSetParameterForFilter(req, ROWS, DEFAULT_ROWS_5);
         String page = req.getParameter(PAGE) == null ? "1" : req.getParameter(PAGE);
+        //=========================================================
+        req.getSession().setAttribute(CURRENT_FILTER, req.getServletPath());
 
 
         ResultService resultService = AppContext.getInstance().getResultService();

@@ -80,12 +80,14 @@
                 <select class="form-select" name="sub">
                     <option value="all"><c:out value="all"/></option>
                     <c:forEach var="sub" items="${sessionScope.subjects}">
+                        <option value="" disabled selected hidden><c:out value="${sessionScope.sub}"/></option>
                         <option value="${sub}"><c:out value="${sub}"/></option>
                     </c:forEach>
                 </select>
             </div>
             <div class="p-2 bd-highlight">
                 <select class="form-select" name="rows">
+                    <option value="" disabled selected hidden><c:out value="${sessionScope.rows}"/></option>
                     <option value="2"><c:out value="2"/></option>
                     <option value="5"><c:out value="5"/></option>
                     <option value="10"><c:out value="10"/></option>
@@ -94,6 +96,7 @@
             </div>
             <div class="p-2 bd-highlight">
                 <select class="form-select" name="order">
+                    <option value="" disabled selected hidden><c:out value="${sessionScope.order}"/></option>
                     <option value="name asc"><fmt:message key="sort.name.asc"/></option>
                     <option value="name desc"><fmt:message key="sort.name.desc"/></option>
                     <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>

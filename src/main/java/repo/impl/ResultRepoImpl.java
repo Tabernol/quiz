@@ -4,10 +4,8 @@ import connection.MyDataSource;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +82,7 @@ public class ResultRepoImpl implements ResultRepo {
         resultDto.setDifficult(resultSet.getInt("difficult"));
         resultDto.setDuration(resultSet.getInt("duration"));
         resultDto.setGrade(resultSet.getInt("grade"));
+        resultDto.setDate(resultSet.getTimestamp("time").toLocalDateTime().toLocalDate());
         return resultDto;
     }
 
@@ -102,6 +101,7 @@ public class ResultRepoImpl implements ResultRepo {
             pst.setLong(1, userId);
             pst.setLong(2, testId);
             pst.setInt(3, grade);
+            pst.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
             return pst.executeUpdate();
         } catch (SQLException e) {
             log.warn("Can not insert into result");

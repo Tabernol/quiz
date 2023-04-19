@@ -3,7 +3,7 @@ package controllers.servlet.impl;
 import command.get.*;
 import command.get.Registration;
 import command.post.*;
-import constans.PathConst;
+import controllers.PathConst;
 import controllers.servlet.RequestHandler;
 
 import java.util.HashMap;

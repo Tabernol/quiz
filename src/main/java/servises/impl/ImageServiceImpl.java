@@ -89,10 +89,11 @@ public class ImageServiceImpl implements ImageService,
 
     @Override
     public ImageDto mapToDto(Image entity) {
-        return new ImageDto(
-                entity.getPublicId(),
-                entity.getUrl(),
-                entity.getWidth(),
-                entity.getHeight());
+        return ImageDto.builder()
+                .publicId(entity.getPublicId())
+                .url(entity.getUrl())
+                .width(entity.getWidth())
+                .height(entity.getHeight()).build();
+
     }
 }

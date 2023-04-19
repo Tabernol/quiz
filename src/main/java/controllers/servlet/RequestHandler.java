@@ -1,5 +1,7 @@
 package controllers.servlet;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.print.DocFlavor;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,21 +12,12 @@ import java.io.IOException;
 public interface RequestHandler {
     void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
 
-    default String readAndSetParameterForFilter(HttpServletRequest req, String param, String defaultValue) {
-        HttpSession session = req.getSession();
-        String result = req.getParameter(param);
-        if (result == null) {
-            if (session.getAttribute(param) == null) {
-                session.setAttribute(param, defaultValue);
-                return defaultValue;
-            } else {
-                result = (String) session.getAttribute(param);
-            }
-        } else {
-            session.setAttribute(param, result);
+    default void setAttributesForRequest(HttpServletRequest req, String ... parameters){
+        for (String param: parameters){
+            req.setAttribute(param, req.getParameter(param));
         }
-        return result;
     }
+
 
     //==============PATH to file====================
     String ERROR_PAGE = "WEB-INF/view/error_page.jsp";
@@ -40,6 +33,7 @@ public interface RequestHandler {
     String LOGIN_FORM = "/WEB-INF/view/login_form.jsp";
     String REGISTRATION = "/WEB-INF/view/registration.jsp";
     String PAGE_BASE_QUESTION = "/WEB-INF/view/student/page_base_question.jsp";
+    String ACCESS_DENIED = "/WEB-INF/view/access.jsp";
     //=====================
     //==========Parameter of request==============
     String USER_ID = "user_id";

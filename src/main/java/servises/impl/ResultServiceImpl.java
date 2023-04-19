@@ -91,7 +91,9 @@ public class ResultServiceImpl implements ResultService {
         } else {
             Set<AnswerDto> checkingAnswer = convertUserResult(userAnswer);
             Set<AnswerDto> trueAnswers = answerService.getAnswers(questionId);
-
+            log.info("+++++++++++++++++++++++++++++++++++++++++++");
+            log.info(checkingAnswer.toString());
+            log.info(trueAnswers.toString());
             for (AnswerDto answerUser : checkingAnswer) {
                 boolean contain = trueAnswers.contains(answerUser);
                 if (contain == false) {

@@ -29,6 +29,7 @@
         <div class="input-group">
             <div class="p-2 bd-highlight">
                 <select class="form-select" name="status">
+                    <option value="" disabled selected hidden><c:out value="${sessionScope.status}"/></option>
                     <option value="all"><c:out value="all"/></option>
                     <option value="true"><c:out value="blocked"/></option>
                     <option value="false"><c:out value="unblocked"/></option>
@@ -36,6 +37,7 @@
             </div>
             <div class="p-2 bd-highlight">
                 <select class="form-select" name="rows">
+                    <option value="" disabled selected hidden><c:out value="${sessionScope.rows}"/></option>
                     <option value="2"><c:out value="2"/></option>
                     <option value="5"><c:out value="5"/></option>
                     <option value="10"><c:out value="10"/></option>
@@ -44,6 +46,7 @@
             </div>
             <div class="p-2 bd-highlight">
                 <select class="form-select" name="order">
+                    <option value="" disabled selected hidden><c:out value="${sessionScope.order}"/></option>
                     <option value="name asc"><fmt:message key="sort.name.asc"/></option>
                     <option value="name desc"><fmt:message key="sort.name.desc"/></option>
                 </select>

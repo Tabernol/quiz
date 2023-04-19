@@ -49,9 +49,7 @@ public class EditQuestion implements RequestHandler {
         AnswerService answerService = AppContext.getInstance().getAnswerService();
         String questionId = req.getParameter(QUESTION_ID);
 
-        req.setAttribute(TEST_ID, req.getParameter(TEST_ID));
-        req.setAttribute(QUESTION_ID, req.getParameter(QUESTION_ID));
-        req.setAttribute(PAGE, req.getParameter(PAGE));
+        setAttributesForRequest(req, TEST_ID, QUESTION_ID, PAGE);
 
 
         try {

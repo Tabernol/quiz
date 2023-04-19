@@ -47,6 +47,7 @@ public class EditTest implements RequestHandler {
         TestService testService = AppContext.getInstance().getTestService();
         QuestionService questionService = AppContext.getInstance().getQuestionService();
         Long id = Long.valueOf(req.getParameter(TEST_ID));
+
         req.setAttribute(PAGE, req.getParameter(PAGE));
 
         List<QuestionDto> all;

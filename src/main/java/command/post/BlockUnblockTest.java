@@ -1,6 +1,7 @@
 package command.post;
 
 import controllers.AppContext;
+import controllers.PathConst;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -43,9 +44,8 @@ public class BlockUnblockTest implements RequestHandler {
         try {
             testService.changeStatus(testId);
             log.info("Test with id {} changed status.", testId);
-            resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/filter_tests" +
-                    "&page=" + page);
+            resp.sendRedirect(req.getContextPath() + PathConst.FILTER_TESTS +
+                    "?page=" + page);
         } catch (DataBaseException e) {
             log.warn("Test with id {} has not updated", testId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);

@@ -1,7 +1,7 @@
 package controllers.servlet;
 
 
-import constans.PathConst;
+import controllers.PathConst;
 import controllers.servlet.impl.Commands;
 
 
@@ -40,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
         PathConst.PRG
 })
 @MultipartConfig(
-        fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+        fileSizeThreshold = 1024 * 1024, // 1 MB
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )

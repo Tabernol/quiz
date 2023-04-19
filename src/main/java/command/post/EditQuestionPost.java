@@ -50,6 +50,7 @@ public class EditQuestionPost implements RequestHandler {
         try {
             questionService.update(QuestionDto.builder()
                     .id(questionId)
+                    .testId(testId)
                     .text(text)
                     .build());
             log.info("Question with id {} has updated", questionId);

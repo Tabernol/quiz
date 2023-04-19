@@ -44,18 +44,14 @@ public class DeleteAnswer implements RequestHandler {
         QuestionService questionService = AppContext.getInstance().getQuestionService();
         AnswerService answerService = AppContext.getInstance().getAnswerService();
 
-        Long testId = Long.valueOf(req.getParameter(TEST_ID));
         Long questionId = Long.valueOf(req.getParameter(QUESTION_ID));
         Long answerId = Long.valueOf(req.getParameter(ANSWER_ID));
-        String page = req.getParameter(PAGE);
 
         try {
             answerService.delete(answerId);
+            setAttributesForRequest(req, TEST_ID, QUESTION_ID, PAGE);
             req.setAttribute(ANSWERS, answerService.getAnswers(questionId));
-            req.setAttribute(TEST_ID, testId);
-            req.setAttribute(QUESTION_ID, questionId);
             req.setAttribute(QUESTION, questionService.get(questionId));
-            req.setAttribute(PAGE, page);
             req.setAttribute(MESSAGE_SUCCESS, ANSWER_WAS_DELETED);
 
             log.info("Answer with id {} has deleted", answerId);

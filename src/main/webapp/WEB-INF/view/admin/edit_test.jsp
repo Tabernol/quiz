@@ -80,7 +80,7 @@
     <div class="offcanvas-body">
         <form method="post" action="add_question">
             <input type="hidden" name="page" value="${requestScope.page}">
-            <input type="hidden" name="test_id" value="${requestScope.test_id}">
+            <input type="hidden" name="test_id" value="${requestScope.test.id}">
             <input type="text" required placeholder="<fmt:message key="table.head.text.of.question"/>" name="text"
                    value="${requestScope.too_Long_Text}">
             <br>
@@ -119,7 +119,7 @@
         <td>
             <form action="edit_question">
                 <input type="hidden" name="page" value="${requestScope.page}">
-                <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                <input type="hidden" name="test_id" value="${requestScope.test.id}">
                 <input type="hidden" name="question_id" value="${question.id}">
                 <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.edit"/>">
             </form>
@@ -127,7 +127,7 @@
         <td>
             <form method="post" action="delete_question">
                 <input type="hidden" name="page" value="${requestScope.page}">
-                <input type="hidden" name="test_id" value="${requestScope.test_id}">
+                <input type="hidden" name="test_id" value="${requestScope.test.id}">
                 <input type="hidden" name="question_id" value="${question.id}">
                 <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.delete"/>">
             </form>

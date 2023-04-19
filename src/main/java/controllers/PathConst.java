@@ -1,4 +1,4 @@
-package constans;
+package controllers;
 
 public interface PathConst {
     //for all

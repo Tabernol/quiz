@@ -3,6 +3,7 @@ package command.get;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.AnswerDto;
+import dto.QuestionDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Question;
@@ -44,12 +45,13 @@ public class GetInfoQuestion implements RequestHandler {
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         AnswerService answerService = AppContext.getInstance().getAnswerService();
         ResultService resultService = AppContext.getInstance().getResultService();
+
         req.setAttribute(DURATION, req.getParameter(DURATION));
 
         String idQuestion = req.getParameter("id_question");
         String[] res = req.getParameterValues("res");
 
-        List<Question> questions = (List<Question>) req.getSession().getAttribute("questions");
+        List<QuestionDto> questions = (List<QuestionDto>) req.getSession().getAttribute(QUESTIONS);
         Integer size = (Integer) req.getSession().getAttribute(SIZE);
 
 

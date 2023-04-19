@@ -17,6 +17,7 @@ import validator.DataValidator;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,9 +42,11 @@ public class StartTest implements RequestHandler {
                         HttpServletResponse resp)
             throws ServletException, IOException {
         Long testId = Long.valueOf(req.getParameter(TEST_ID));
+        HttpSession session = req.getSession();
 
         QuestionService questionService = AppContext.getInstance().getQuestionService();
         TestService testService = AppContext.getInstance().getTestService();
+
         List<QuestionDto> questions = null;
         Integer duration = 0;
         Integer size = 0;
@@ -51,7 +54,7 @@ public class StartTest implements RequestHandler {
         try {
             testService.addPointPopularity(testId);
             duration = testService.get(testId).getDuration();
-            questions = questionService.getAllById(Long.valueOf(testId));
+            questions = questionService.getAllById(testId);
             size = questions.size();
             log.info("give parameter test with id {}", testId);
         } catch (DataBaseException e) {
@@ -62,10 +65,10 @@ public class StartTest implements RequestHandler {
 
         if (size > 0) {
             List<Boolean> resultTest = new ArrayList<>();
-            req.getSession().setAttribute(SIZE, size);
-            req.getSession().setAttribute(TEST_ID, testId);
-            req.getSession().setAttribute(QUESTIONS, questions);
-            req.getSession().setAttribute(RESULT_TEST, resultTest);
+            session.setAttribute(SIZE, size);
+            session.setAttribute(TEST_ID, testId);
+            session.setAttribute(QUESTIONS, questions);
+            session.setAttribute(RESULT_TEST, resultTest);
             req.setAttribute(DURATION, duration);
             req.setAttribute(NUMBER_QUESTION, 0);
 

@@ -27,7 +27,7 @@ public interface ResultRepo {
     String GET_ALL_RESULTS_BY_USER = "select * from test inner join result " +
             "on test.id=result.test_id where user_id = ?";
 
-    String INSERT_RESULT = "insert into result values(default, ?,?,?)";
+    String INSERT_RESULT = "insert into result (id, user_id, test_id, grade, time) values(default, ?,?,?,?)";
 
     String COUNT_RESULT_BY_USER = "select count(grade) from result where user_id = ?";
 

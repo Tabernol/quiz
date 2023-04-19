@@ -6,13 +6,14 @@ import com.itextpdf.text.pdf.*;
 import controllers.AppContext;
 import dto.ResultDto;
 import exeptions.DataBaseException;
+import lombok.extern.slf4j.Slf4j;
 import repo.impl.ResultRepoImpl;
 import servises.ResultService;
 import servises.impl.ResultServiceImpl;
 
 import java.util.List;
 import java.util.stream.Stream;
-
+@Slf4j
 public class MyPdfWriter {
     private ResultService resultService;
 
@@ -20,15 +21,15 @@ public class MyPdfWriter {
         this.resultService = resultService;
     }
 
-    public PdfPTable getPdfTable(Long userId) {
-        PdfPTable table = new PdfPTable(5);
+    public PdfPTable getPdfTable(Long userId) throws DataBaseException {
+        PdfPTable table = new PdfPTable(6);
         table = addTableHeader(table);
         table = addRows(table, userId);
         return table;
     }
 
     private PdfPTable addTableHeader(PdfPTable table) {
-        Stream.of("Test name", "Subject", "Difficult", "Duration", "Grade")
+        Stream.of("Date","Test name", "Subject", "Difficult", "Duration", "Grade")
                 .forEach(columnTitle -> {
                     PdfPCell header = new PdfPCell();
                     header.setBackgroundColor(BaseColor.YELLOW);
@@ -39,15 +40,12 @@ public class MyPdfWriter {
         return table;
     }
 
-    private PdfPTable addRows(PdfPTable table, Long userId) {
+    private PdfPTable addRows(PdfPTable table, Long userId) throws DataBaseException {
         resultService = AppContext.getInstance().getResultService();
         List<ResultDto> allResultByUserId = null;
-        try {
             allResultByUserId = resultService.getAllResultByUserId(userId);
-        } catch (DataBaseException e) {
-            throw new RuntimeException(e);
-        }
         for (ResultDto resultDto : allResultByUserId) {
+            table.addCell(resultDto.getDate().toString());
             table.addCell(resultDto.getTestName());
             table.addCell(resultDto.getSubject());
             table.addCell(resultDto.getDifficult().toString());

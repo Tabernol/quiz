@@ -2,6 +2,7 @@ package command.post;
 
 import command.get.FilterTests;
 import controllers.AppContext;
+import controllers.PathConst;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 
@@ -42,12 +43,12 @@ public class DeleteTest implements RequestHandler {
             throws ServletException, IOException {
         TestService testService = AppContext.getInstance().getTestService();
         Long id = Long.valueOf(req.getParameter(TEST_ID));
-        req.setAttribute(PAGE, req.getParameter(PAGE));
+        String page = req.getParameter(PAGE);
+
         try {
             testService.delete(id);
             log.info("Test with id {} has deleted", id);
-            FilterTests filterTests = new FilterTests();
-            filterTests.execute(req, resp);
+            resp.sendRedirect(req.getContextPath() + PathConst.FILTER_TESTS + "?page=" + page);
         } catch (DataBaseException e) {
             log.warn("Test with id {} has not deleted", id, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);

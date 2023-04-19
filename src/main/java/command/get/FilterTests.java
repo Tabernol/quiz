@@ -1,5 +1,6 @@
 package command.get;
 
+import command.FilterSupport;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
@@ -20,7 +21,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FilterTests implements RequestHandler {
+public class FilterTests implements RequestHandler , FilterSupport {
 
     /**
      * This method contacts with service layer to retrieve the sheet of tests(quiz) with selected filter and page
@@ -34,12 +35,15 @@ public class FilterTests implements RequestHandler {
     public void execute(HttpServletRequest req,
                         HttpServletResponse resp)
             throws ServletException, IOException {
+
         String sub = readAndSetParameterForFilter(req, SUB, DEFAULT_FILTER_ALL);
         String order = readAndSetParameterForFilter(req, ORDER, DEFAULT_ORDER_NAME_ASC);
         String rows = readAndSetParameterForFilter(req, ROWS, DEFAULT_ROWS_5);
         String page = req.getParameter(PAGE) == null ? "1" : req.getParameter(PAGE);
         String role = (String) req.getSession().getAttribute(ROLE);
 //        =======================================
+
+        req.getSession().setAttribute(CURRENT_FILTER, req.getServletPath());
 
         TestService testService = AppContext.getInstance().getTestService();
         List<String> subjects;

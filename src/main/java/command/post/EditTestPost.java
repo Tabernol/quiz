@@ -50,6 +50,7 @@ public class EditTestPost implements RequestHandler {
 
         try {
             testService.update(TestDto.builder()
+                    .id(testId)
                     .name(name)
                     .subject(subject)
                     .difficult(difficult)

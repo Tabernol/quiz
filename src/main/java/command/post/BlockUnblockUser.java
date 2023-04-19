@@ -2,6 +2,7 @@ package command.post;
 
 
 import controllers.AppContext;
+import controllers.PathConst;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -46,9 +47,8 @@ public class BlockUnblockUser implements RequestHandler {
         try {
             boolean block = userService.blockUnBlockUser(userId);
             log.info("User with id {} is block {}", userId, block);
-            resp.sendRedirect(req.getContextPath() + "/prg" +
-                    "?servlet_path=/filter_users" +
-                    "&page=" + page);
+            resp.sendRedirect(req.getContextPath() + PathConst.FILTER_USERS +
+                    "?page=" + page);
         } catch (DataBaseException e) {
             log.warn("User with id {} has not updated", userId, e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);

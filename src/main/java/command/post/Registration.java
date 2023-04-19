@@ -77,8 +77,7 @@ public class Registration implements RequestHandler {
             } catch (ValidateException e) {
                 log.info("User field is invalid ", e.getMessage());
                 req.setAttribute(MESSAGE_BAD_REQUEST, e.getMessage());
-                req.setAttribute(REPEAT_NAME, name);
-                req.setAttribute(REPEAT_LOGIN, login);
+                setAttributesForRequest(req, REPEAT_NAME, REPEAT_LOGIN);
                 req.getRequestDispatcher(REGISTRATION).forward(req, resp);
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 log.warn("Problem with hash password ", e.getMessage());
@@ -86,8 +85,7 @@ public class Registration implements RequestHandler {
             }
         } else {
             req.setAttribute(MESSAGE_BAD_REQUEST, "reCAPTCHA is false");
-            req.setAttribute(REPEAT_NAME, name);
-            req.setAttribute(REPEAT_LOGIN, login);
+            setAttributesForRequest(req, REPEAT_NAME, REPEAT_LOGIN);
             req.getRequestDispatcher(REGISTRATION).forward(req, resp);
         }
     }

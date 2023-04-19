@@ -5,6 +5,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
+import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import util.pdfWriter.MyPdfWriter;
 
@@ -62,6 +63,9 @@ public class DownLoad implements RequestHandler {
             document.close();
         } catch (DocumentException de) {
             log.warn("Trouble with downloading result with ID " + id, de);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
+        } catch (DataBaseException e) {
+            log.warn("problem with database", e);
             req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
     }

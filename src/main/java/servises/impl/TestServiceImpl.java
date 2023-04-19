@@ -82,7 +82,7 @@ public class TestServiceImpl implements TestService,
             throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForTest();
         String query = queryCreator.getSQL(new MyQuery(subject, order, rows, page, role));
-        log.info("SERVICE TEST get list of test with selected filter");
+        log.info("Ready query = "+query);
         return testRepo.nextPage(query);
     }
 

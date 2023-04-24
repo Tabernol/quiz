@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class Profile implements RequestHandler {
+public class Profile extends AbstractCommand {
 
     /**
      * This method calls to FilterResul command

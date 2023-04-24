@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
@@ -23,7 +24,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class UpdateImageForQuestion implements RequestHandler {
+public class UpdateImageForQuestion extends AbstractCommand {
 
     /**
      * Updates the image for a question identified by its ID and redirects the user to the page to edit the question.

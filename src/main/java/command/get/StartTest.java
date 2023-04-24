@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.QuestionDto;
@@ -27,7 +28,7 @@ import java.util.List;
  * This class is responsible for starting the selected test (quiz)
  */
 @Slf4j
-public class StartTest implements RequestHandler {
+public class StartTest extends AbstractCommand {
 
     /**
      * This method starts test(quiz) for user

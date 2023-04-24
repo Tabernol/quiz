@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.UserDto;
@@ -27,7 +28,7 @@ import java.security.spec.InvalidKeySpecException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class Registration implements RequestHandler {
+public class Registration extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import command.get.EditTest;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
@@ -19,7 +20,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class DeleteQuestion implements RequestHandler {
+public class DeleteQuestion extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

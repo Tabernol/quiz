@@ -2,6 +2,7 @@ package command.post;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import command.AbstractCommand;
 import command.get.FilterImages;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
@@ -23,7 +24,7 @@ import java.util.Map;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class DeleteFromCloud implements RequestHandler {
+public class DeleteFromCloud extends AbstractCommand {
 
     /**
      * This method contacts with service layer to delete image from cloudinary and database

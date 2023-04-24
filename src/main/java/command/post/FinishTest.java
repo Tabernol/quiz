@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
@@ -21,7 +22,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FinishTest implements RequestHandler {
+public class FinishTest extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

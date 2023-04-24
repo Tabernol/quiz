@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,7 +17,7 @@ import java.util.Locale;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class LanguageChange implements RequestHandler {
+public class LanguageChange extends AbstractCommand {
 
     /**
      * This method reads the "locale" parameter,

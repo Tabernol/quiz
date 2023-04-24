@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,7 +17,7 @@ import java.util.Map;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class Prg implements RequestHandler {
+public class Prg extends AbstractCommand {
 
     /**
      * This method reads all parameters from the request, sets them in the next request.

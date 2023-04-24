@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class Logout implements RequestHandler {
+public class Logout extends AbstractCommand {
 
     /**
      * This removes all parameters from the session and redirects to the index.jsp page

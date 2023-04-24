@@ -30,24 +30,18 @@ public class LoadMediaContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext servletContext = sce.getServletContext();
 
-        Map config = new HashMap();
-
         String cloudName = servletContext.getInitParameter("CLOUD_NAME");
         String apiKey = servletContext.getInitParameter("API_KEY");
         String apiSecret = servletContext.getInitParameter("API_SECRET");
 
+        Map config = new HashMap();
         config.put("cloud_name", cloudName);
-
         config.put("api_key", apiKey);
-
         config.put("api_secret", apiSecret);
 
         Cloudinary cloudinary = new Cloudinary(config);
 
         servletContext.setAttribute("cloudinary", cloudinary);
         log.info("Cloud load service initialized for Application.");
-
     }
-
-
 }

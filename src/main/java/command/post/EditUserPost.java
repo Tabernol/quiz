@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.UserDto;
@@ -21,7 +22,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class EditUserPost implements RequestHandler {
+public class EditUserPost extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.servlet.RequestHandler;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
-public class Home implements RequestHandler {
+public class Home extends AbstractCommand {
     /**
      * This method reads the 'role' parameter from the session and redirects.
      * If role is unknown (guest) redirects to index.jsp page,

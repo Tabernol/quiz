@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.PathConst;
 import controllers.servlet.RequestHandler;
@@ -20,7 +21,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class BlockUnblockTest implements RequestHandler {
+public class BlockUnblockTest extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

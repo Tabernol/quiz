@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.TestDto;
@@ -24,7 +25,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class EditTestPost implements RequestHandler {
+public class EditTestPost extends AbstractCommand {
     /**
      * This method is read parameter from request.
      * It calls the service layer to update this Test(quiz)

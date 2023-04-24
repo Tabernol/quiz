@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.AnswerDto;
@@ -31,7 +32,7 @@ import java.util.Set;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class GetInfoQuestion implements RequestHandler {
+public class GetInfoQuestion extends AbstractCommand {
 
     /**
      * This method supply information: text of question, answers for it, image for question

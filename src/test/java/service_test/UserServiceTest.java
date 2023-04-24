@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import repo.UserRepo;
 import repo.impl.UserRepoImpl;
 import servises.impl.UserServiceImpl;
 import servises.impl.ValidatorServiceImpl;
@@ -22,17 +23,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserServiceTest {
     @Mock
-    UserRepoImpl mockUserRepoImpl;
+    private UserRepo mockUserRepo;
     @Mock
-    ValidatorServiceImpl mockValidateService;
-    UserServiceImpl userService;
-    User testUser;
+    private ValidatorServiceImpl mockValidateService;
+    private UserServiceImpl userService;
+    private User testUser;
 
     @BeforeEach
     public void setUp() {
-        mockUserRepoImpl = Mockito.mock(UserRepoImpl.class);
+        mockUserRepo = Mockito.mock(UserRepo.class);
         mockValidateService = Mockito.mock(ValidatorServiceImpl.class);
-        userService = new UserServiceImpl(mockUserRepoImpl, mockValidateService);
+        userService = new UserServiceImpl(mockUserRepo, mockValidateService);
         testUser = new User();
         testUser.setId(12L);
         testUser.setName("newName");
@@ -47,14 +48,13 @@ public class UserServiceTest {
 
     @Test
     public void getUser() throws DataBaseException {
-        User user = new User();
-        Mockito.when(mockUserRepoImpl.get(Mockito.anyLong())).thenReturn(user);
-        assertEquals(user, userService.get(Mockito.anyLong()));
+        Mockito.when(mockUserRepo.get(Mockito.anyLong())).thenReturn(testUser);
+        assertEquals(testUser, userService.mapToEntity(userService.get(Mockito.anyLong())));
     }
 
     @Test
     public void createUser() throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
-        Mockito.when(mockUserRepoImpl.create(testUser)).thenReturn(123L);
+        Mockito.when(mockUserRepo.create(testUser)).thenReturn(123L);
         assertEquals(123L,
                 userService.createUser(new UserDto("name", "login")
                         , "password", "repeatPassword"));
@@ -63,7 +63,7 @@ public class UserServiceTest {
     @Test
     public void getAll() throws DataBaseException {
         List<User> users = new ArrayList<>();
-        Mockito.when(mockUserRepoImpl.getAll()).thenReturn(users);
+        Mockito.when(mockUserRepo.getAll()).thenReturn(users);
         assertEquals(users, userService.getAll());
     }
 
@@ -75,7 +75,7 @@ public class UserServiceTest {
 
     @Test
     public void updateLarge() throws DataBaseException, ValidateException {
-        Mockito.when(mockUserRepoImpl.update(testUser)).thenReturn(1);
+        Mockito.when(mockUserRepo.update(testUser)).thenReturn(1);
         assertEquals(1, userService.update(new UserDto(23L,
                 "newNAme", "ADMIN")));
     }
@@ -103,7 +103,7 @@ public class UserServiceTest {
 
     @Test
     public void isCorrectPasswordThrowEx() throws DataBaseException, ValidateException {
-        Mockito.when(mockUserRepoImpl.get(Mockito.anyLong())).thenThrow(new DataBaseException("no user"));
+        Mockito.when(mockUserRepo.get(Mockito.anyLong())).thenThrow(new DataBaseException("no user"));
         Assertions.assertThrows(DataBaseException.class,
                 () -> userService.isCorrectPassword(235412L, "password"));
     }
@@ -112,15 +112,15 @@ public class UserServiceTest {
     public void getCountUsers() throws DataBaseException {
         List<User> userList = new ArrayList<>();
         userList.add(new User());
-        Mockito.when(mockUserRepoImpl.getAll()).thenReturn(userList);
-        Mockito.when(mockUserRepoImpl.getCountUsers("blocked")).thenReturn(20);
+        Mockito.when(mockUserRepo.getAll()).thenReturn(userList);
+        Mockito.when(mockUserRepo.getCountUsers("blocked")).thenReturn(20);
         Assertions.assertEquals(1, userService.getCountUsers("all"));
         Assertions.assertEquals(20, userService.getCountUsers("blocked"));
     }
 
     @Test
     public void getId() throws DataBaseException {
-        Mockito.when(mockUserRepoImpl.getId(Mockito.anyString())).thenReturn(123L);
+        Mockito.when(mockUserRepo.getId(Mockito.anyString())).thenReturn(123L);
         Assertions.assertEquals(123L, userService.getId(Mockito.anyString()));
     }
 
@@ -133,7 +133,7 @@ public class UserServiceTest {
         user.setPassword("testPassword");
         user.setLogin("test@ua.ua");
         user.setBlocked(false);
-        Mockito.when(mockUserRepoImpl.get(Mockito.anyLong())).thenReturn(user);
+        Mockito.when(mockUserRepo.get(Mockito.anyLong())).thenReturn(user);
         Assertions.assertEquals(false, userService.blockUnBlockUser(Mockito.anyLong()));
     }
 
@@ -141,13 +141,13 @@ public class UserServiceTest {
     public void getCountPages() throws DataBaseException {
         List<User> userList = new ArrayList<>();
         userList.add(new User());
-        Mockito.when(mockUserRepoImpl.getAll()).thenReturn(userList);
+        Mockito.when(mockUserRepo.getAll()).thenReturn(userList);
         Assertions.assertEquals(1, userService.countPages("all", "2"));
     }
 
     @Test
     public void getCountPages2() throws DataBaseException {
-        Mockito.when(mockUserRepoImpl.getCountUsers("blocked")).thenReturn(20);
+        Mockito.when(mockUserRepo.getCountUsers("blocked")).thenReturn(20);
         Assertions.assertEquals(10, userService.countPages("blocked", "2"));
     }
 
@@ -161,7 +161,7 @@ public class UserServiceTest {
     @Test
     public void nextPageUserList() throws DataBaseException {
         List<User> userList = new ArrayList<>();
-        Mockito.when(mockUserRepoImpl.nextPage(Mockito.anyString())).thenReturn(userList);
+        Mockito.when(mockUserRepo.nextPage(Mockito.anyString())).thenReturn(userList);
         Assertions.assertEquals(userList, userService.nextPage("filter", "order", 2, 2));
     }
 }

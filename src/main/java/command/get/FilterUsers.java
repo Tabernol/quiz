@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import command.FilterSupport;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
@@ -21,7 +22,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FilterUsers implements RequestHandler, FilterSupport {
+public class FilterUsers extends AbstractCommand implements FilterSupport {
 
     /**
      * This method contacts with service layer to retrieve the sheet of users with selected filter and page

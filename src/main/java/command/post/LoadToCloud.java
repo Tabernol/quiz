@@ -2,6 +2,7 @@ package command.post;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.ImageDto;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 /**
@@ -23,9 +26,7 @@ import java.util.Map;
  *
  * @author makskrasnopolskyi@gmail.com
  */
-public class LoadToCloud implements RequestHandler {
-
-    private int count = 0;
+public class LoadToCloud extends AbstractCommand {
 
     /**
      * Executes the image upload process, saving the uploaded image to a file, uploading the file to a
@@ -42,7 +43,7 @@ public class LoadToCloud implements RequestHandler {
         ImageService imageService = AppContext.getInstance().getImageService();
 
         String webInfPath = req.getServletContext().getRealPath(WEB_INF);
-        String fullPath = webInfPath + "\\image" + (++count) + ".jpeg";
+        String fullPath = webInfPath + "\\image" + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + ".jpeg";
 
         for (Part part : req.getParts()) {
             part.write(fullPath);

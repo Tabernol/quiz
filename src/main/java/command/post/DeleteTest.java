@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import command.get.FilterTests;
 import controllers.AppContext;
 import controllers.PathConst;
@@ -25,7 +26,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class DeleteTest implements RequestHandler {
+public class DeleteTest extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

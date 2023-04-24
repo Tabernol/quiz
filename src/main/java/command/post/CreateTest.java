@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.TestDto;
@@ -20,7 +21,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class CreateTest implements RequestHandler {
+public class CreateTest extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

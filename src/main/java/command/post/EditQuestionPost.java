@@ -1,5 +1,6 @@
 package command.post;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.QuestionDto;
@@ -24,7 +25,7 @@ import java.io.IOException;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class EditQuestionPost implements RequestHandler {
+public class EditQuestionPost extends AbstractCommand {
 
     /**
      * This method is read parameter from request.

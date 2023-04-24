@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.QuestionDto;
@@ -28,7 +29,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class EditTest implements RequestHandler {
+public class EditTest extends AbstractCommand {
 
     /**
      * This method reads parameters.

@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import dto.ImageDto;
@@ -20,7 +21,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FilterImages implements RequestHandler {
+public class FilterImages extends AbstractCommand {
 
     /**
      * This method contacts with service layer to retrieve all information about images

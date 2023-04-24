@@ -1,5 +1,6 @@
 package command.get;
 
+import command.AbstractCommand;
 import controllers.servlet.RequestHandler;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import java.io.IOException;
  *
  * @author makskrasnopolskyi@gmail.com
  */
-public class Finish implements RequestHandler {
+public class Finish extends AbstractCommand {
     /**
      * This method redirects to page_finish.jsp page
      *

@@ -3,6 +3,7 @@ package command.get;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
+import command.AbstractCommand;
 import controllers.AppContext;
 import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
@@ -21,9 +22,7 @@ import java.io.*;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class DownLoad implements RequestHandler {
-
-    private final int ARBITARY_SIZE = 1048;
+public class DownLoad extends AbstractCommand {
 
     /**
      * This method takes user`s id from request or from session.

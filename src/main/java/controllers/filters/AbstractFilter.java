@@ -14,6 +14,20 @@ import java.nio.charset.StandardCharsets;
  * which will be called by the {doFilter} method implemented in this class.
  */
 public abstract class AbstractFilter implements Filter {
+
+    protected static final String PASSWORD = "password";
+    protected static final String LOGIN = "login";
+    protected static final String NAME = "name";
+    protected static final String ROLE = "role";
+    protected static final String USER_ID = "user_id";
+    protected static final  String ADMIN = "admin";
+    protected static final String STUDENT = "student";
+    protected static final String REPEAT_LOGIN = "repeat_login";
+
+    protected static final String ERROR_PAGE = "WEB-INF/view/error_page.jsp";
+    protected static final String LOGIN_FORM = "/WEB-INF/view/login_form.jsp";
+    protected static final String MESSAGE_BAD_REQUEST = "message_bad_request";
+
     /**
      * The custom filter logic to be implemented by subclasses.
      *

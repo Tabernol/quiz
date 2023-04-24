@@ -24,6 +24,7 @@ import validator.DataValidator;
 //@WebFilter(filterName = "AuthorizationFilter", value = "/login")
 @Slf4j
 public class AuthorizationFilter extends AbstractFilter {
+
     private UserService userService;
 
     @Override
@@ -31,8 +32,8 @@ public class AuthorizationFilter extends AbstractFilter {
                                HttpServletResponse resp,
                                FilterChain filterChain) throws IOException, ServletException {
         final HttpSession session = req.getSession();
-        final String login = req.getParameter(RequestHandler.LOGIN);
-        final String password = req.getParameter(RequestHandler.PASSWORD);
+        final String login = req.getParameter(LOGIN);
+        final String password = req.getParameter(PASSWORD);
         userService = AppContext.getInstance().getUserService();
         long id = -1;
         UserDto userDto = null;
@@ -47,8 +48,8 @@ public class AuthorizationFilter extends AbstractFilter {
 
         if (login.isEmpty() || password.isEmpty()) {
             log.info("login or password is null");
-            req.setAttribute(RequestHandler.MESSAGE_BAD_REQUEST, "You may have forgotten to enter your input data");
-            req.getRequestDispatcher(RequestHandler.LOGIN_FORM).forward(req, resp);
+            req.setAttribute(MESSAGE_BAD_REQUEST, "You may have forgotten to enter your input data");
+            req.getRequestDispatcher(LOGIN_FORM).forward(req, resp);
         }
 
 
@@ -58,34 +59,34 @@ public class AuthorizationFilter extends AbstractFilter {
             isCorrectPassword = userService.isCorrectPassword(id, password);
         } catch (DataBaseException | ValidateException e) {
             log.warn("Problem in authorization filter");
-            req.getRequestDispatcher(RequestHandler.ERROR_PAGE).forward(req, resp);
+            req.getRequestDispatcher(ERROR_PAGE).forward(req, resp);
         }
 
         if (!verify) {
             log.info("User with id {} reCAPTCHA is false", userDto.getId());
-            req.setAttribute(RequestHandler.MESSAGE_BAD_REQUEST, "reCAPTCHA is false");
-            req.setAttribute(RequestHandler.REPEAT_LOGIN, login);
-            req.getRequestDispatcher(RequestHandler.LOGIN_FORM).forward(req, resp);
+            req.setAttribute(MESSAGE_BAD_REQUEST, "reCAPTCHA is false");
+            req.setAttribute(REPEAT_LOGIN, login);
+            req.getRequestDispatcher(LOGIN_FORM).forward(req, resp);
         } else if (id == -1) {
             log.warn("This login = {} does not exist in database", login);
-            req.setAttribute(RequestHandler.MESSAGE_BAD_REQUEST, "You do not registered");
-            req.setAttribute(RequestHandler.REPEAT_LOGIN, login);
-            req.getRequestDispatcher(RequestHandler.LOGIN_FORM).forward(req, resp);
+            req.setAttribute(MESSAGE_BAD_REQUEST, "You do not registered");
+            req.setAttribute(REPEAT_LOGIN, login);
+            req.getRequestDispatcher(LOGIN_FORM).forward(req, resp);
         } else if (userDto.isBlocked()) {
             log.warn("User with id {} is block, and try login", userDto.getId());
-            req.setAttribute(RequestHandler.MESSAGE_BAD_REQUEST, "You have been blocked");
-            req.getRequestDispatcher(RequestHandler.LOGIN_FORM).forward(req, resp);
+            req.setAttribute(MESSAGE_BAD_REQUEST, "You have been blocked");
+            req.getRequestDispatcher(LOGIN_FORM).forward(req, resp);
         } else if (isCorrectPassword) {
             log.info("User with id {} has come", userDto.getId());
-            session.setAttribute(RequestHandler.USER_ID, id);// get id
-            session.setAttribute(RequestHandler.NAME, userDto.getName());
-            session.setAttribute(RequestHandler.ROLE, userDto.getRole());
+            session.setAttribute(USER_ID, id);// get id
+            session.setAttribute(NAME, userDto.getName());
+            session.setAttribute(ROLE, userDto.getRole());
             filterChain.doFilter(req, resp);
         } else {
             log.warn("User with id {} has input wrong password", userDto.getId());
-            req.setAttribute(RequestHandler.REPEAT_LOGIN, login);
-            req.setAttribute(RequestHandler.MESSAGE_BAD_REQUEST, "Something wrong(");
-            req.getRequestDispatcher(RequestHandler.LOGIN_FORM).forward(req, resp);
+            req.setAttribute(REPEAT_LOGIN, login);
+            req.setAttribute(MESSAGE_BAD_REQUEST, "Something wrong(");
+            req.getRequestDispatcher(LOGIN_FORM).forward(req, resp);
         }
     }
 }

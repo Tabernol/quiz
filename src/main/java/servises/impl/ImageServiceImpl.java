@@ -40,7 +40,7 @@ public class ImageServiceImpl implements ImageService,
      */
     @Override
     public int addImage(ImageDto imageDto) throws DataBaseException {
-        log.info("SERVICE IMAGE add new image to database with publicId {}", imageDto);
+        log.info("SERVICE IMAGE add new image to database {}", imageDto);
         return imageRepo.addImage(mapToEntity(imageDto));
     }
 

@@ -25,7 +25,7 @@ public class ResultRepoImpl implements ResultRepo {
     private static final String GET_ALL_RESULTS_BY_USER = "select * from test inner join result " +
             "on test.id=result.test_id where user_id = ?";
 
-    private static final String INSERT_RESULT = "insert into result (id, user_id, test_id, grade, time) values(default, ?,?,?,?)";
+    private static final String INSERT_RESULT = "insert into result (id, user_id, test_id, grade, date) values(default, ?,?,?,?)";
 
     private static final String COUNT_RESULT_BY_USER = "select count(grade) from result where user_id = ?";
 
@@ -97,7 +97,7 @@ public class ResultRepoImpl implements ResultRepo {
                 .difficult(resultSet.getInt("difficult"))
                 .duration(resultSet.getInt("duration"))
                 .grade(resultSet.getInt("grade"))
-                .date(resultSet.getTimestamp("time").toLocalDateTime().toLocalDate()).build();
+                .date(resultSet.getTimestamp("date").toLocalDateTime().toLocalDate()).build();
     }
 
     /**

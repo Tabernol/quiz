@@ -8,6 +8,7 @@ import controllers.servlet.RequestHandler;
 import dto.ImageDto;
 import exeptions.DataBaseException;
 
+import lombok.extern.slf4j.Slf4j;
 import servises.ImageService;
 
 import javax.servlet.ServletException;
@@ -26,6 +27,7 @@ import java.util.Map;
  *
  * @author makskrasnopolskyi@gmail.com
  */
+@Slf4j
 public class LoadToCloud extends AbstractCommand {
 
     /**
@@ -43,7 +45,9 @@ public class LoadToCloud extends AbstractCommand {
         ImageService imageService = AppContext.getInstance().getImageService();
 
         String webInfPath = req.getServletContext().getRealPath(WEB_INF);
-        String fullPath = webInfPath + "\\image" + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + ".jpeg";
+        DateTimeFormatter custom = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+        String fullPath = webInfPath + "\\image" + LocalDateTime.now().format(custom) + ".jpeg";
+        log.info("create path for load image {}", fullPath);
 
         for (Part part : req.getParts()) {
             part.write(fullPath);

@@ -61,7 +61,6 @@ public class FilterResult extends AbstractCommand {
             req.getSession().setAttribute(SUBJECTS, subjects);
             req.setAttribute(USER, userService.get(userId));
 
-
             countPages = resultService.getCountPagesResult(userId, Integer.valueOf(rows), sub);
 
             List<ResultDto> pageResultList = resultService

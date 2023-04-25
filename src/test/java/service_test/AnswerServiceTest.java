@@ -28,15 +28,12 @@ public class AnswerServiceTest {
 
     private AnswerServiceImpl answerService;
 
-    private Answer answer;
-
 
     @BeforeEach
     public void setUp() {
         mockAnswerRepoImpl = Mockito.mock(AnswerRepoImpl.class);
         mockValidatorService = Mockito.mock(ValidatorServiceImpl.class);
         answerService = new AnswerServiceImpl(mockAnswerRepoImpl, mockValidatorService);
-      //  answer = new Answer(12L, 123L, "text", true);
     }
 
 
@@ -72,17 +69,5 @@ public class AnswerServiceTest {
         Mockito.when(mockAnswerRepoImpl.delete(Mockito.anyLong())).thenReturn(1);
         assertEquals(1, answerService.delete(23L));
     }
-
-//    @Test
-//    public void testThrows() throws DataBaseException {
-//        Mockito.when(mockAnswerRepo
-//                        .createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean()))
-//                .thenThrow(DataBaseException.class);
-//        ;
-//        assertThrows(QuizException.class, () -> {
-//            answerService.createAnswer(Mockito.anyLong(), Mockito.anyString(), Mockito.anyBoolean());
-//        });
-//    }
-
 
 }

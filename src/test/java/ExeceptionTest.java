@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 class ExceptionTest {
     @Mock
-    AnswerRepoImpl mockAnswerRepoImpl;
+    private AnswerRepoImpl mockAnswerRepoImpl;
 
     @BeforeEach
     public void setUp() {

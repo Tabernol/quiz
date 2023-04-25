@@ -63,7 +63,7 @@ public class AddQuestion extends AbstractCommand {
                     "?servlet_path=/edit_test" +
                     "&test_id=" + testId +
                     "&page=" + page +
-                    "&message_bad_request=" + "text of question is too long");
+                    "&message_bad_request=" + e.getMessage());
         }
     }
 }

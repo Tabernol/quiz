@@ -78,12 +78,15 @@ public class StartTest extends AbstractCommand {
             log.info("Start test with id {}", testId);
             req.getRequestDispatcher(PAGE_BASE_QUESTION).forward(req, resp);
         } else {
-            req.setAttribute(PAGE, req.getParameter(PAGE));
-            req.setAttribute(MESSAGE_BAD_REQUEST, "Sorry, this test is empty now");
+//            req.setAttribute(PAGE, req.getParameter(PAGE));
+//            req.setAttribute(MESSAGE_BAD_REQUEST, "Sorry, this test is empty now");
+
             log.info("Test with id {} is empty. And not started", testId);
-            req.getRequestDispatcher(STUDENT_TESTS).forward(req, resp);
+//            req.getRequestDispatcher(STUDENT_TESTS).forward(req,resp);
+            resp.sendRedirect(req.getContextPath() + "/prg" +
+                    "?servlet_path=/filter_tests" +
+                    "&page=" + req.getParameter(PAGE) +
+                    "&" + MESSAGE_BAD_REQUEST + "=Sorry, this test is empty now");
         }
-
-
     }
 }

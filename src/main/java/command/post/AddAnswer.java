@@ -74,7 +74,7 @@ public class AddAnswer extends AbstractCommand {
                     "&question_id=" + questionId +
                     "&page=" + page +
                     "&too_long_answer=" + text +
-                    "&message_bad_request=" + "answer is too long");
+                    "&message_bad_request=" + e.getMessage());
         }
     }
 }

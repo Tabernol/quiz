@@ -7,9 +7,10 @@ import validator.DataValidator;
 
 public class ValidatorTest {
 
-    DataValidator dataValidator;
+    private DataValidator dataValidator;
+
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         dataValidator = new DataValidator();
     }
 
@@ -117,7 +118,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void validateAvailabilityRoleTest(){
+    public void validateAvailabilityRoleTest() {
 
         Assertions.assertEquals(true, dataValidator.validateAvailabilityRole("admin"));
         Assertions.assertEquals(true, dataValidator.validateAvailabilityRole("student"));

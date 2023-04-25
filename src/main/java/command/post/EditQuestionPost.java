@@ -72,7 +72,7 @@ public class EditQuestionPost extends AbstractCommand {
                     "&test_id=" + testId +
                     "&question_id=" + questionId +
                     "&page=" + page +
-                    "&message_bad_request=" + "text of question is too long" +
+                    "&message_bad_request=" + e.getMessage() +
                     "&tooLongAnswer=" + text);
         }
     }

@@ -45,14 +45,6 @@ public class ResultServiceTest {
         assertEquals(1, resultService.addResult(Mockito.anyLong(), Mockito.anyLong(), Mockito.anyInt()));
     }
 
-//    @Test
-//    public void getResultByUser() throws DataBaseException {
-//        List<ResultDto> resultDtoList = new ArrayList<>();
-//        Mockito.when(mockResultRepo.resultDtoList(Mockito.anyLong())).thenReturn(resultDtoList);
-//        assertEquals(resultDtoList, resultService.getResultByUser(Mockito.anyLong()));
-//
-//    }
-
     @Test
     public void getGrade() {
         List<Boolean> result = List.of(true, false);

@@ -26,7 +26,7 @@ public class DeleteAnswerTest {
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
         final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
-        //final HttpSession session = Mockito.mock(HttpSession.class);
+
         AnswerServiceImpl answerService = Mockito.mock(AnswerServiceImpl.class);
         QuestionServiceImpl questionService = Mockito.mock(QuestionServiceImpl.class);
 
@@ -55,30 +55,5 @@ public class DeleteAnswerTest {
         Mockito.verify(request, Mockito.never()).getSession();
         Mockito.verify(dispatcher).forward(request, response);
     }
-
-//    @Test
-//    public void deleteAnswerThrowEx() throws DataBaseException, ServletException, IOException {
-//        HttpServletRequest request = mock(HttpServletRequest.class);
-//        HttpServletResponse response = mock(HttpServletResponse.class);
-//        final RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
-//        AnswerService answerService = Mockito.mock(AnswerService.class);
-//
-//        String path = "WEB-INF/view/error_page.jsp";
-//        DeleteAnswer deleteAnswer = new DeleteAnswer();
-//
-//        when(request.getParameter("test_id")).thenReturn("1");
-//        when(request.getParameter("question_id")).thenReturn("2");
-//        when(request.getParameter("answer_id")).thenReturn("3");
-//        when(request.getParameter("page")).thenReturn("4");
-//
-//        Mockito.when(request.getRequestDispatcher(path)).thenReturn(dispatcher);
-//        Mockito.when(answerService.deleteAnswer(Mockito.anyLong())).thenThrow(new DataBaseException("delete trouble"));
-//
-//
-//        Assertions.assertThrows(DataBaseException.class, () -> deleteAnswer.execute(request, response));
-//
-//    }
-
-
 }
 

@@ -68,7 +68,6 @@ public class AppContext {
             appContext = new AppContext();
             log.info("Context initialized");
         }
-        log.info("Get Context");
         return appContext;
     }
 }

@@ -62,39 +62,12 @@ public class UserServiceTest {
         assertEquals(users, userService.getAll());
     }
 
-//    @Test
-//    public void deleteUser() throws DataBaseException {
-//        Mockito.when(mockUserRepo.delete(Mockito.anyLong())).thenReturn(1);
-//        assertEquals(1, userService.deleteUser(Mockito.anyLong()));
-//    }
-
     @Test
     public void updateLarge() throws DataBaseException, ValidateException {
         Mockito.when(mockUserRepo.update(Mockito.any(User.class))).thenReturn(12);
         assertEquals(12, userService.update(new UserDto(23L,
                 "newNAme", "ADMIN")));
     }
-
-
-//    @Test
-//    public void isCorrectPassword() throws DataBaseException, ValidateException {
-//        User user = new User();
-//        user.setId(123L);
-//        user.setRole("student");
-//        user.setName("Test");
-//        user.setPassword("testPassword");
-//        user.setLogin("test@ua.ua");
-//        user.setBlocked(false);
-//        Mockito.when(mockUserRepo.get(Mockito.anyLong())).thenReturn(user);
-//        ;
-//        try (MockedStatic<PasswordHashingService> passwordHashingServiceMockedStatic
-//                     = Mockito.mockStatic(PasswordHashingService.class)) {
-//            passwordHashingServiceMockedStatic.when(() ->
-//                    PasswordHashingService.validatePassword("pass", "pass")).thenReturn(true);
-//        }
-//        Assertions.assertEquals(true,
-//                userService.isCorrectPassword(1231235L, "pass"));
-//    }
 
     @Test
     public void isCorrectPasswordThrowEx() throws DataBaseException, ValidateException {
@@ -146,12 +119,6 @@ public class UserServiceTest {
         Assertions.assertEquals(10, userService.countPages("blocked", "2"));
     }
 
-//    @Test
-//    public void getPageUserList() throws DataBaseException {
-//        List<User> userList = new ArrayList<>();
-//        Mockito.when(mockUserRepo.nextPage(Mockito.anyString())).thenReturn(userList);
-//        Assertions.assertEquals(userList, userService.getPageUserList("filter", "order", 2, 2));
-//    }
 
     @Test
     public void nextPageUserList() throws DataBaseException {

@@ -20,8 +20,6 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
-<fmt:message key="label.message"/> <c:out value="${sessionScope.name}"/><br>
-
 
 </body>
 </html>

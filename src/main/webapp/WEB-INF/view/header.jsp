@@ -93,6 +93,9 @@
             <ctg:myDate></ctg:myDate>
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavRight">
+            <ul>
+                <c:out value="${sessionScope.name}"/>
+            </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <div class="dropdown">

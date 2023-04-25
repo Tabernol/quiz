@@ -101,8 +101,8 @@
                         <option value="name desc"><fmt:message key="sort.name.desc"/></option>
                         <option value="difficult asc"><fmt:message key="sort.difficult.asc"/></option>
                         <option value="difficult desc"><fmt:message key="sort.difficult.desc"/></option>
-                        <option value="time asc"><fmt:message key="sort.time.asc"/></option>
-                        <option value="time desc"><fmt:message key="sort.time.desc"/></option>
+                        <option value="date asc"><fmt:message key="sort.time.asc"/></option>
+                        <option value="date desc"><fmt:message key="sort.time.desc"/></option>
                     </select>
                 </div>
                 <div class="p-2 bd-highlight">

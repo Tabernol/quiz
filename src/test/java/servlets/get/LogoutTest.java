@@ -29,7 +29,6 @@ public class LogoutTest {
         logout.execute(request, response);
 
         Mockito.verify(request, Mockito.times(1)).getRequestDispatcher("/");
-//        Mockito.verify(request, Mockito.times(1)).getSession();
         Mockito.verify(dispatcher).forward(request, response);
 
     }

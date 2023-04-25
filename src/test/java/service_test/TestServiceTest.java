@@ -40,22 +40,6 @@ public class TestServiceTest {
                 .status(models.Test.Status.FREE).build();
     }
 
-//    @Test
-//    public void getAllTest() throws DataBaseException {
-//        List<models.Test> allTests = new ArrayList<>();
-//        Mockito.when(mockTestRepo.getAll()).thenReturn(allTests);
-//        assertEquals(allTests, testService.getAll());
-//    }
-
-//    @Test
-//    public void createTest() throws DataBaseException {
-//        Mockito.when(mockTestRepo
-//                .createTest(Mockito.anyString(), Mockito.anyString(),
-//                        Mockito.anyInt(), Mockito.anyInt())).thenReturn(1);
-//        assertEquals(1, testService.createTest(Mockito.anyString(), Mockito.anyString(),
-//                Mockito.anyInt(), Mockito.anyInt()));
-//    }
-
     @Test
     public void getDistinctSubject() throws DataBaseException {
         List<String> subjects = new ArrayList<>();

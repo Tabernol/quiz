@@ -22,7 +22,7 @@ public class QuestionServiceTest {
     @Mock
     private ValidatorServiceImpl mockValidatorService = Mockito.mock(ValidatorServiceImpl.class);
 
-    QuestionServiceImpl questionService = new QuestionServiceImpl(mockQuestionRepoImpl, mockValidatorService);
+    private QuestionServiceImpl questionService = new QuestionServiceImpl(mockQuestionRepoImpl, mockValidatorService);
 
     @Test
     public void getQuestionTest() throws DataBaseException {
@@ -57,7 +57,6 @@ public class QuestionServiceTest {
         assertEquals(12, i);
     }
 
-    //
     @Test
     public void updateQuestionTest() throws DataBaseException, ValidateException {
         Mockito.when(mockQuestionRepoImpl.update(Mockito.any(Question.class))).thenReturn(12);

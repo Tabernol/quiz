@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EditQuestionTest {
-    EditQuestion editQuestion = new EditQuestion();
+    private final EditQuestion editQuestion = new EditQuestion();
 
     @Test
     public void editQuestionTest() throws DataBaseException, ServletException, IOException {

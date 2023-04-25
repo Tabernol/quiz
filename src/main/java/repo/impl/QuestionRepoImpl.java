@@ -23,6 +23,17 @@ import javax.sql.DataSource;
  */
 @Slf4j
 public class QuestionRepoImpl implements QuestionRepo {
+    private static final String DELETE_QUESTION = "delete from epam_project_testing.question where id = ?";
+
+    private static final String CREATE_QUESTION = "insert into epam_project_testing.question (id, test_id, q_text) values(default, ?, ?)";
+
+    private static final String UPDATE_QUESTION = "update epam_project_testing.question set q_text = ? where id = ? ";
+
+    private static final String GET_QUESTION = "select * from epam_project_testing.question where id = ?";
+
+    private static final String GET_ALL_BY_ID = "select * from epam_project_testing.question where test_id = ?";
+
+    private static final String UPDATE_URL = "update epam_project_testing.question set url = ? where id = ? ";
     private final DataSource dataSource;
     public QuestionRepoImpl(DataSource dataSource) {
         this.dataSource = dataSource;

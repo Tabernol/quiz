@@ -23,6 +23,27 @@ import javax.sql.DataSource;
  */
 @Slf4j
 public class TestRepoImpl implements TestRepo {
+    private static final String CREATE_TEST = "insert into epam_project_testing.test " +
+            "(id, name, subject, difficult, duration, status) values(default, ?, ?, ?, ?, default)";
+
+    private static final String UPDATE_TEST = "update epam_project_testing.test set name = ?, subject = ?," +
+            " difficult = ?, duration = ? where id = ? ";
+    private static final String DELETE_TEST = "delete from epam_project_testing.test where id = ?";
+    private static final String GET_TEST = "select * from epam_project_testing.test where id = ?";
+
+    private static final String GET_DISTINCT_SUBJECT = "select distinct subject from epam_project_testing.test";
+
+    private static final String COUNT_BY_SUBJECT = "select count(subject) from epam_project_testing.test where subject like ?";
+
+    private static final String COUNT_OF_SUBJECTS = "select count(subject) from epam_project_testing.test";
+
+    private static final String ADD_POINT_POPULARITY = "update epam_project_testing.test set popularity = popularity + 1 where id = ?";
+
+    private static final String IS_TEST_EXIST = "select * from epam_project_testing.test where name like ?";
+
+    private static final String CHANGE_STATUS_TEST = "update epam_project_testing.test set status = ? where id = ? ";
+
+    private static final String SUBJECT = "subject";
     private final DataSource dataSource;
 
     public TestRepoImpl(DataSource dataSource) {

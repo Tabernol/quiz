@@ -1,9 +1,7 @@
 package command.get;
 
 import command.AbstractCommand;
-import command.FilterSupport;
 import controllers.AppContext;
-import controllers.servlet.RequestHandler;
 import dto.UserDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +20,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FilterUsers extends AbstractCommand implements FilterSupport {
+public class FilterUsers extends AbstractCommand {
 
     /**
      * This method contacts with service layer to retrieve the sheet of users with selected filter and page

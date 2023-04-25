@@ -107,5 +107,15 @@ public class ResultRepoImplTest {
                 () -> resultRepo.getAllResult(12L));
     }
 
+    @Test
+    public void getDistinctSubjectTrowEx() throws SQLException {
+        Mockito.when(mockDataSource.getConnection()).thenReturn(mockConnection);
+        Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+        Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+        Mockito.when(mockResultSet.next()).thenThrow(new SQLException());
+        Assertions.assertThrows(DataBaseException.class,
+                () -> resultRepo.getDistinctSubject(12L));
+    }
+
 
 }

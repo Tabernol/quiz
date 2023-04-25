@@ -12,10 +12,10 @@ import validator.MyValidator;
 
 public class ValidatorServiceTest {
     @Mock
-    DataValidator mockDataValidator;
+    private DataValidator mockDataValidator;
     @Mock
-    MyValidator mockMyValidator;
-    ValidatorServiceImpl validatorService;
+    private MyValidator mockMyValidator;
+    private ValidatorServiceImpl validatorService;
 
     @BeforeEach
     public void setUp() {
@@ -24,13 +24,6 @@ public class ValidatorServiceTest {
         validatorService = new ValidatorServiceImpl(mockDataValidator);
     }
 
-//    @Test
-//    public void isLoginExist() throws ValidateException {
-//        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-//        //  Mockito.when(mockDataValidator.isValid(Mockito.anyBoolean(), Mockito.anyString())).thenReturn(true);
-//        Assertions.assertEquals(true, validatorService.isLoginExist(true));
-//        // Assertions.assertDoesNotThrow(() -> validatorService.isLoginExist(Mockito.anyBoolean()));
-//    }
 
     @Test
     public void isLoginThrowExTest() throws ValidateException {
@@ -65,14 +58,13 @@ public class ValidatorServiceTest {
         Assertions.assertDoesNotThrow(() -> validatorService.validateUpdateUser(Mockito.anyString()));
     }
 
-//    @Test
-//    public void validateUpdateUser2() throws ValidateException {
-//        Mockito.when(mockMyValidator.isValid(Mockito.anyBoolean(),
-//                Mockito.anyString())).thenReturn(true);
-//        Mockito.when(mockDataValidator.validateForName(Mockito.anyString())).thenReturn(true);
-//        Assertions.assertDoesNotThrow(() ->
-//                validatorService.validateUpdateUser(Mockito.anyString(), Mockito.anyString()));
-//    }
+    @Test
+    public void validateUpdateUser2() {
+        Mockito.when(mockDataValidator.validateForName(Mockito.anyString())).thenReturn(true);
+        Mockito.when(mockDataValidator.validateAvailabilityRole(Mockito.anyString())).thenReturn(true);
+        Assertions.assertDoesNotThrow(() ->
+                validatorService.validateUpdateUser("name", "student"));
+    }
 
 }
 

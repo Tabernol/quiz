@@ -20,14 +20,5 @@ public interface ImageRepo {
 
     List<String> canDeleteImage(String publicId);
 
-    String INSERT_IMAGE = "INSERT INTO image values(default, ?, ?, ?, ?)";
 
-    String GET_ALL = "select * from image";
-
-    String DELETE_IMAGE = "delete from image where public_id like ?";
-
-    String CAN_DELETE_THIS_IMAGE = "select name from question" +
-            " inner join test on test.id = question.test_id \n" +
-            " inner join image on question.url = image.url\n" +
-            " where public_id like ?";
 }

@@ -17,10 +17,23 @@ import javax.sql.DataSource;
 /**
  * Class repository has relationship with table Result in MySQL
  *
- *@author MaxKrasnopolskyi
+ * @author MaxKrasnopolskyi
  */
 @Slf4j
 public class ResultRepoImpl implements ResultRepo {
+
+    private static final String GET_ALL_RESULTS_BY_USER = "select * from test inner join result " +
+            "on test.id=result.test_id where user_id = ?";
+
+    private static final String INSERT_RESULT = "insert into result (id, user_id, test_id, grade, time) values(default, ?,?,?,?)";
+
+    private static final String COUNT_RESULT_BY_USER = "select count(grade) from result where user_id = ?";
+
+    private static final String COUNT_RESULT_BY_USER_AND_SUBJECT = "select count(grade) from result inner join test " +
+            "on result.test_id=test.id where user_id = ? and subject like ?";
+
+    private static final String DISTINCT_SUBJECTS = "select distinct subject from test" +
+            " inner join result on test.id = result.test_id where user_id = ?";
     private final DataSource dataSource;
 
     public ResultRepoImpl(DataSource dataSource) {
@@ -29,6 +42,7 @@ public class ResultRepoImpl implements ResultRepo {
 
     /**
      * method get list of result with some limit, offset, order by, where
+     *
      * @param query is ready SQL query. query has an order, limit and offset
      * @return list of ResultDto
      * @throws DataBaseException is wrapper of SQLException
@@ -52,6 +66,7 @@ public class ResultRepoImpl implements ResultRepo {
 
     /**
      * method get List of all result by user id on table 'result'
+     *
      * @param userId is identification User in database
      * @return list of result by User id
      * @throws DataBaseException is wrapper of SQLException
@@ -76,21 +91,21 @@ public class ResultRepoImpl implements ResultRepo {
     }
 
     private ResultDto buildResultDto(ResultSet resultSet) throws SQLException {
-        ResultDto resultDto = new ResultDto();
-        resultDto.setTestName(resultSet.getString("name"));
-        resultDto.setSubject(resultSet.getString("subject"));
-        resultDto.setDifficult(resultSet.getInt("difficult"));
-        resultDto.setDuration(resultSet.getInt("duration"));
-        resultDto.setGrade(resultSet.getInt("grade"));
-        resultDto.setDate(resultSet.getTimestamp("time").toLocalDateTime().toLocalDate());
-        return resultDto;
+        return ResultDto.builder()
+                .testName(resultSet.getString("name"))
+                .subject(resultSet.getString("subject"))
+                .difficult(resultSet.getInt("difficult"))
+                .duration(resultSet.getInt("duration"))
+                .grade(resultSet.getInt("grade"))
+                .date(resultSet.getTimestamp("time").toLocalDateTime().toLocalDate()).build();
     }
 
     /**
      * method insert result on table 'result' in database
+     *
      * @param userId is identification User in database
      * @param testId is identification Test(quiz) in database
-     * @param grade is grade of test(quiz)
+     * @param grade  is grade of test(quiz)
      * @return 1 if data has inserted
      * @throws DataBaseException is wrapper of SQLException
      */
@@ -111,6 +126,7 @@ public class ResultRepoImpl implements ResultRepo {
 
     /**
      * method count how many grade has User by id
+     *
      * @param userId is identification User in database
      * @return count of result
      * @throws DataBaseException is wrapper of SQLException
@@ -133,7 +149,8 @@ public class ResultRepoImpl implements ResultRepo {
 
     /**
      * method count how many grade has User by id and subjectId
-     * @param userId is identification User in database
+     *
+     * @param userId  is identification User in database
      * @param subject is name on table 'subject'
      * @return count of result
      * @throws DataBaseException is wrapper of SQLException

@@ -1,9 +1,7 @@
 package command.get;
 
 import command.AbstractCommand;
-import command.FilterSupport;
 import controllers.AppContext;
-import controllers.servlet.RequestHandler;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +21,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FilterResult extends AbstractCommand implements FilterSupport {
+public class FilterResult extends AbstractCommand {
 
     /**
      * This method contacts with service layer to retrieve the sheet of results with selected filter and page

@@ -23,6 +23,25 @@ import javax.sql.DataSource;
  */
 @Slf4j
 public class UserRepoImpl implements UserRepo {
+
+    private static final String GET_USER_BY_ID = "select * from user where id = ?";
+
+    private static final String GET_ALL = "select * from user";
+
+    private static final String INSERT_NEW_USER = "insert into user (id, login, password, role, name) " +
+            "values (default, ?, ?, ?, ?)";
+
+    private static final String IS_LOGIN_UNIQUE = "select * from user where login like ?";
+
+    private static final String UPDATE_USER = "update user set name = ?, role = ? where id = ? ";
+
+    private static final String GET_ID_BY_LOGIN = "select * from user where login like ?";
+
+    private static final String CHANGE_STATUS = "update user set is_blocked = ? where id = ? ";
+
+    private static final String GET_COUNT_USERS_BY_STATUS = "select count(id) from user where is_blocked like ?";
+
+    private static final String LAST_INSERT = "select last_insert_id()";
     private final DataSource dataSource;
 
     public UserRepoImpl(DataSource dataSource) {

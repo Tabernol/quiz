@@ -64,8 +64,8 @@ public class UserRepoImplTest {
         Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(12);
         Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
         Mockito.when(mockResultSet.next()).thenReturn(true);
-        Mockito.when(mockResultSet.getInt("last_insert_id()")).thenReturn(123);
-        Assertions.assertEquals(123, userRepo.create(new User("login", "password", "name")));
+        Mockito.when(mockResultSet.getLong("last_insert_id()")).thenReturn(123L);
+        Assertions.assertEquals(123L, userRepo.create(new User("login", "password", "name")));
     }
 
     @Test
@@ -193,5 +193,30 @@ public class UserRepoImplTest {
         Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
         Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
         Assertions.assertThrows(DataBaseException.class, () -> userRepo.nextPage("query"));
+    }
+
+    @Test
+    public void getUserTest() throws DataBaseException, SQLException {
+        Mockito.when(mockDataSource.getConnection()).thenReturn(mockConnection);
+        Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+        Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+        Mockito.when(mockResultSet.next()).thenReturn(true);
+        Mockito.when(mockResultSet.getLong("id")).thenReturn(12L);
+        Mockito.when(mockResultSet.getString("login")).thenReturn("login@gmail.com");
+        Mockito.when(mockResultSet.getString("password")).thenReturn("pass");
+        Mockito.when(mockResultSet.getString("name")).thenReturn("John");
+        Mockito.when(mockResultSet.getString("role")).thenReturn("student");
+        Mockito.when(mockResultSet.getBoolean("is_blocked")).thenReturn(false);
+
+        User user = new User();
+        user.setId(12L);
+        user.setPassword("pass");
+        user.setLogin("login@gmail.com");
+        user.setName("John");
+        user.setRole(User.Role.STUDENT);
+        user.setBlocked(false);
+
+
+        Assertions.assertEquals(user, userRepo.get(23L));
     }
 }

@@ -1,9 +1,7 @@
 package command.get;
 
 import command.AbstractCommand;
-import command.FilterSupport;
 import controllers.AppContext;
-import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Test;
@@ -22,7 +20,7 @@ import java.util.List;
  * @author makskrasnopolskyi@gmail.com
  */
 @Slf4j
-public class FilterTests extends AbstractCommand  implements FilterSupport {
+public class FilterTests extends AbstractCommand {
 
     /**
      * This method contacts with service layer to retrieve the sheet of tests(quiz) with selected filter and page

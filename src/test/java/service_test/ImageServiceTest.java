@@ -30,13 +30,7 @@ public class ImageServiceTest {
 
     @Test
     public void addImageTest() throws DataBaseException {
-        Mockito.when(mockImageRepo.addImage(Image.builder()
-                .publicId("publicId")
-                .url("url")
-                .width(100)
-                .height(100)
-                .build()))
-                .thenReturn(12);
+        Mockito.when(mockImageRepo.addImage(Mockito.any(Image.class))).thenReturn(12);
         Assertions.assertEquals(12,
                 imageService.addImage(new ImageDto("publicID", "URL", 600, 600)));
     }
@@ -52,5 +46,11 @@ public class ImageServiceTest {
         List<Image> imageList = new ArrayList<>();
         Mockito.when(mockImageRepo.getAll()).thenReturn(imageList);
         Assertions.assertEquals(imageList, imageService.getAll());
+    }
+
+    @Test
+    public void canDeleteTest(){
+        Mockito.when(mockImageRepo.canDeleteImage(Mockito.anyString())).thenReturn(new ArrayList<>());
+        Assertions.assertEquals(0, imageService.canDeleteImage("publicId").size());
     }
 }

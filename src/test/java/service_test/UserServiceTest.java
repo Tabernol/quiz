@@ -40,11 +40,6 @@ public class UserServiceTest {
         testUser.setRole(User.Role.ADMIN);
     }
 
-//    @Test
-//    public void getId() throws DataBaseException {
-//        Mockito.when(mockUserRepo.isLoginExist(Mockito.anyString())).thenReturn(42L);
-//        assertEquals(42L, userService.getId(Mockito.anyString()));
-//    }
 
     @Test
     public void getUser() throws DataBaseException {
@@ -54,7 +49,7 @@ public class UserServiceTest {
 
     @Test
     public void createUser() throws DataBaseException, ValidateException, NoSuchAlgorithmException, InvalidKeySpecException {
-        Mockito.when(mockUserRepo.create(testUser)).thenReturn(123L);
+        Mockito.when(mockUserRepo.create(Mockito.any(User.class))).thenReturn(123L);
         assertEquals(123L,
                 userService.createUser(new UserDto("name", "login")
                         , "password", "repeatPassword"));
@@ -75,8 +70,8 @@ public class UserServiceTest {
 
     @Test
     public void updateLarge() throws DataBaseException, ValidateException {
-        Mockito.when(mockUserRepo.update(testUser)).thenReturn(1);
-        assertEquals(1, userService.update(new UserDto(23L,
+        Mockito.when(mockUserRepo.update(Mockito.any(User.class))).thenReturn(12);
+        assertEquals(12, userService.update(new UserDto(23L,
                 "newNAme", "ADMIN")));
     }
 

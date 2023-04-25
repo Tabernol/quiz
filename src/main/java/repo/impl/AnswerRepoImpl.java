@@ -24,6 +24,11 @@ import javax.sql.DataSource;
  */
 @Slf4j
 public class AnswerRepoImpl implements AnswerRepo {
+    private static final String DELETE_ANSWER = "delete from epam_project_testing.answer where id = ?";
+
+    private static final String CREATE_ANSWER = "insert into epam_project_testing.answer " +
+            "(id, question_id, a_text, result) values(default, ?,?,?)";
+    private static final String GET_ANSWERS_BY_QUESTION_ID = "select * from epam_project_testing.answer where question_id = ?";
 
     private final DataSource dataSource;
 

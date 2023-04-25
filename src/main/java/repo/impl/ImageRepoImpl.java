@@ -22,6 +22,17 @@ import java.util.List;
 @Slf4j
 public class ImageRepoImpl implements ImageRepo {
 
+    private static final String INSERT_IMAGE = "INSERT INTO image values(default, ?, ?, ?, ?)";
+
+    private static final String GET_ALL = "select * from image";
+
+    private static final String DELETE_IMAGE = "delete from image where public_id like ?";
+
+    private static final String CAN_DELETE_THIS_IMAGE = "select name from question" +
+            " inner join test on test.id = question.test_id \n" +
+            " inner join image on question.url = image.url\n" +
+            " where public_id like ?";
+
     private final DataSource dataSource;
 
     public ImageRepoImpl(DataSource dataSource) {

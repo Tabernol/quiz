@@ -16,8 +16,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ImageRepoImplTest {
     @Mock
@@ -45,7 +46,7 @@ public class ImageRepoImplTest {
         Mockito.when(mockDataSource.getConnection()).thenReturn(mockConnection);
         Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
         Mockito.when(mockPreparedStatement.executeUpdate()).thenReturn(13);
-        int image = imageRepo.addImage(new Image(12L, 123L, "publicID", "url", 300,300));
+        int image = imageRepo.addImage(new Image(12L, 123L, "publicID", "url", 300, 300));
         Assertions.assertEquals(13, image);
     }
 
@@ -83,5 +84,15 @@ public class ImageRepoImplTest {
         Mockito.when(mockPreparedStatement.executeQuery()).thenThrow(new SQLException());
         Mockito.when(mockResultSet.next()).thenReturn(false);
         assertThrows(DataBaseException.class, () -> imageRepo.getAll());
+    }
+
+    @Test
+    public void canDeleteImageTest() throws Exception {
+        Mockito.when(mockDataSource.getConnection()).thenReturn(mockConnection);
+        Mockito.when(mockConnection.prepareStatement(Mockito.anyString())).thenReturn(mockPreparedStatement);
+        Mockito.when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
+        Mockito.when(mockResultSet.next()).thenReturn(false);
+        assertEquals(0, imageRepo.canDeleteImage("publicId").size());
+
     }
 }

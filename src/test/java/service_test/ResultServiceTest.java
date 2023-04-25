@@ -88,4 +88,30 @@ public class ResultServiceTest {
         Assertions.assertEquals(true,
                 resultService.getResultByQuestion(123L, userAnswers));
     }
+
+    @Test
+    public void getDistinctSubjectTest() throws DataBaseException {
+        Mockito.when(mockResultRepo.getDistinctSubject(Mockito.anyLong()))
+                .thenReturn(List.of("math", "english"));
+        Assertions.assertEquals(List.of("math", "english"), resultService.getDistinctSubject(12L));
+    }
+
+    @Test
+    public void getCountResultByUserTest() throws DataBaseException {
+        Mockito.when(mockResultRepo.getCountResultByUser(Mockito.anyLong()))
+                .thenReturn(5);
+        Assertions.assertEquals(5, resultService.getCountResultByUser(123L, "all"));
+    }
+
+    @Test
+    public void getCountPagesResultTest() throws DataBaseException {
+        Mockito.when(mockResultRepo.getCountResultByUser(Mockito.anyLong())).thenReturn(6);
+        assertEquals(2, resultService.getCountPagesResult(1223L, 5, "all"));
+    }
+
+    @Test
+    public void getPageResultListTest() throws DataBaseException {
+        Mockito.when(mockResultRepo.getPageResultList(Mockito.anyString())).thenReturn(new ArrayList<>());
+        Assertions.assertEquals(0, resultService.getPageResultList(12L, "sub", "order", 5, 1).size());
+    }
 }

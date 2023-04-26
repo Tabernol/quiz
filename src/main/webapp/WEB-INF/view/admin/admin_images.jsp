@@ -38,9 +38,6 @@
 </c:choose>
 
 
-
-
-
 <div class="offcanvas offcanvas-start" id="forAddImage">
     <div class="offcanvas-header">
         <h1 class="offcanvas-title"></h1>
@@ -63,7 +60,7 @@
         <table class="table align-middle mb-0 w-auto bg-white">
             <thead class="bg-secondary">
             <tr>
-                <th><fmt:message key="table.head.image"/> </th>
+                <th><fmt:message key="table.head.image"/></th>
                 <th><fmt:message key="table.head.width"/></th>
                 <th><fmt:message key="table.head.height"/></th>
                 <th><fmt:message key="table.head.action"/></th>
@@ -93,35 +90,35 @@
         </table>
     </c:when>
     <c:otherwise>
-        <table class="table align-middle mb-0 w-auto bg-white">
-            <thead class="bg-secondary">
-            <tr>
-                <th><fmt:message key="table.head.image"/> </th>
-                <th><fmt:message key="table.head.width"/></th>
-                <th><fmt:message key="table.head.height"/></th>
-                <th><fmt:message key="table.head.action"/></th>
-            </tr>
-            </thead>
-            <tbody>
+            <table class="table align-middle mb-0 w-auto bg-white">
+                <thead class="bg-secondary">
+                <tr>
+                    <th><fmt:message key="table.head.image"/></th>
+                    <th><fmt:message key="table.head.width"/></th>
+                    <th><fmt:message key="table.head.height"/></th>
+                    <th><fmt:message key="table.head.action"/></th>
+                </tr>
+                </thead>
+                <tbody>
 
-            <c:forEach var="image" items="${requestScope.images}">
-            <tr>
-                <td>
-                    <a href="${image.url}">
-                        <img src="${image.url}" alt="icon" width="150" height="150">
-                    </a>
-                </td>
-                <td><c:out value="${image.width}"/></td>
-                <td><c:out value="${image.height}"/></td>
-                <td>
-                    <form method="post" action="delete_image">
-                        <input type="hidden" name="public_id" value="${image.publicId}">
-                        <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.remove.image"/>">
-                    </form>
-                </td>
-                </c:forEach>
-            </tbody>
-        </table>
+                <c:forEach var="image" items="${requestScope.images}">
+                <tr>
+                    <td>
+                        <a href="${image.url}">
+                            <img src="${image.url}" alt="icon" width="150" height="150">
+                        </a>
+                    </td>
+                    <td><c:out value="${image.width}"/></td>
+                    <td><c:out value="${image.height}"/></td>
+                    <td>
+                        <form method="post" action="delete_image">
+                            <input type="hidden" name="public_id" value="${image.publicId}">
+                            <input class="btn btn-secondary" type="submit" value="<fmt:message key="button.remove.image"/>">
+                        </form>
+                    </td>
+                    </c:forEach>
+                </tbody>
+            </table>
     </c:otherwise>
 </c:choose>
 

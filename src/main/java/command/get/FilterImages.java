@@ -1,8 +1,7 @@
 package command.get;
 
 import command.AbstractCommand;
-import controllers.AppContext;
-import controllers.servlet.RequestHandler;
+import context.AppContext;
 import dto.ImageDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;

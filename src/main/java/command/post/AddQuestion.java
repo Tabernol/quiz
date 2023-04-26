@@ -1,8 +1,7 @@
 package command.post;
 
 import command.AbstractCommand;
-import controllers.AppContext;
-import controllers.servlet.RequestHandler;
+import context.AppContext;
 import dto.QuestionDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;

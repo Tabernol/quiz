@@ -75,8 +75,6 @@ public abstract class AbstractCommand implements RequestHandler {
     protected static final String WIDTH = "width";
     protected static final String HEIGHT = "height";
     protected static final String WEB_INF = "WEB-INF";
-    protected static final String REPEAT_NAME = "repeat_name";
-    protected static final String REPEAT_LOGIN = "repeat_login";
     protected static final String REPEAT_PASSWORD = "repeat_password";
     protected static final String PASSWORD = "password";
     protected static final String LOGIN = "login";

@@ -1,15 +1,13 @@
 package command.post;
 
 import command.AbstractCommand;
-import controllers.AppContext;
-import controllers.servlet.RequestHandler;
+import context.AppContext;
 import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
 import servises.UserService;
 
-import javax.print.attribute.standard.MediaSize;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

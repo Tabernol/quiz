@@ -1,21 +1,13 @@
 package command.get;
 
 import command.AbstractCommand;
-import controllers.AppContext;
-import controllers.servlet.RequestHandler;
+import context.AppContext;
 import dto.AnswerDto;
 import dto.QuestionDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.Question;
-import repo.impl.AnswerRepoImpl;
-import repo.impl.ResultRepoImpl;
 import servises.AnswerService;
 import servises.ResultService;
-import servises.impl.AnswerServiceImpl;
-import servises.impl.ResultServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

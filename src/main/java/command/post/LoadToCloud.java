@@ -3,8 +3,7 @@ package command.post;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import command.AbstractCommand;
-import controllers.AppContext;
-import controllers.servlet.RequestHandler;
+import context.AppContext;
 import dto.ImageDto;
 import exeptions.DataBaseException;
 

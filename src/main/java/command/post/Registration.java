@@ -1,18 +1,13 @@
 package command.post;
 
 import command.AbstractCommand;
-import controllers.AppContext;
-import controllers.servlet.RequestHandler;
+import context.AppContext;
 import dto.UserDto;
 import exeptions.DataBaseException;
 import exeptions.ValidateException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.UserRepoImpl;
 import servises.UserService;
-import servises.impl.UserServiceImpl;
-import servises.impl.ValidatorServiceImpl;
 import util.reCaptcha.VerifyRecaptcha;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -78,7 +73,7 @@ public class Registration extends AbstractCommand {
             } catch (ValidateException e) {
                 log.info("User field is invalid ", e.getMessage());
                 req.setAttribute(MESSAGE_BAD_REQUEST, e.getMessage());
-                setAttributesForRequest(req, REPEAT_NAME, REPEAT_LOGIN);
+                setAttributesForRequest(req, NAME, LOGIN);
                 req.getRequestDispatcher(REGISTRATION).forward(req, resp);
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 log.warn("Problem with hash password ", e.getMessage());
@@ -86,7 +81,7 @@ public class Registration extends AbstractCommand {
             }
         } else {
             req.setAttribute(MESSAGE_BAD_REQUEST, "reCAPTCHA is false");
-            setAttributesForRequest(req, REPEAT_NAME, REPEAT_LOGIN);
+            setAttributesForRequest(req, NAME, LOGIN);
             req.getRequestDispatcher(REGISTRATION).forward(req, resp);
         }
     }

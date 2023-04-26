@@ -3,13 +3,11 @@ package util.pdfWriter;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import controllers.AppContext;
+import context.AppContext;
 import dto.ResultDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.ResultRepoImpl;
 import servises.ResultService;
-import servises.impl.ResultServiceImpl;
 
 import java.util.List;
 import java.util.stream.Stream;

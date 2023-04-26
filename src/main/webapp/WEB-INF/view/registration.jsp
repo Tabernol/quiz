@@ -43,13 +43,13 @@
                             <form method="post" action="registration">
                                 <div class="form-outline mb-0">
                                     <input type="text" id="form1" class="form-control form-control-lg" name="name"
-                                           value="${requestScope.repeat_name}"/>
+                                           value="${requestScope.name}"/>
                                     <label class="form-label" for="form1"><fmt:message key="your.name"/></label>
                                 </div>
 
                                 <div class="form-outline mb-0">
                                     <input type="email" id="form3" class="form-control form-control-lg" name="login"
-                                           value="${requestScope.repeat_login}"/>
+                                           value="${requestScope.login}"/>
                                     <label class="form-label" for="form3"><fmt:message key="your.email"/></label>
                                 </div>
 

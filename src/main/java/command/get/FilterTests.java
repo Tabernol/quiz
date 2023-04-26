@@ -1,10 +1,10 @@
 package command.get;
 
 import command.AbstractCommand;
-import controllers.AppContext;
+import context.AppContext;
+import dto.TestDto;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import models.Test;
 import servises.TestService;
 
 import javax.servlet.ServletException;
@@ -46,7 +46,7 @@ public class FilterTests extends AbstractCommand {
 
         TestService testService = AppContext.getInstance().getTestService();
         List<String> subjects;
-        List<Test> filterTests;
+        List<TestDto> filterTests;
         int countPages;
 
         try {

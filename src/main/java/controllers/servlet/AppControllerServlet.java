@@ -2,8 +2,6 @@ package controllers.servlet;
 
 
 import controllers.PathConst;
-import controllers.servlet.impl.Commands;
-
 
 
 import javax.servlet.ServletException;
@@ -38,7 +36,8 @@ import lombok.extern.slf4j.Slf4j;
         PathConst.GET_INFO_QUESTION, PathConst.FINISH_TEST, PathConst.FINISH,
 
         PathConst.PRG
-})
+}
+)
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024, // 1 MB
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
@@ -46,10 +45,6 @@ import lombok.extern.slf4j.Slf4j;
 )
 @Slf4j
 public class AppControllerServlet extends HttpServlet {
-
-    static {
-        log.info("start APP");
-    }
 
     @Override
     protected void doGet(HttpServletRequest req,
@@ -67,5 +62,43 @@ public class AppControllerServlet extends HttpServlet {
         Commands.POST_COMMANDS.get(servletPath).execute(req, resp);
     }
 
+    private static final String REGISTRATION = "/registration";
+    private static final String LOGIN_FORM = "/login_form";
+    private static final String LANGUAGE = "/language";
+    // for both
+    private static final String LOGIN = "/login";
+    private static final String LOGOUT = "/logout";
+    private static final String PROFILE = "/profile";
+    private static final String FILTER_TESTS = "/filter_tests";
+    private static final String FILTER_RESULT = "/filter_result";
+    private static final String DOWNLOAD = "/download";
+    private static final String HOME = "/home";
+    private static final String PRG = "/prg";
 
+    //only student
+    private static final String INFO_TEST = "/info_test";
+    private static final String START_TEST = "/start_test";
+    private static final String RESULT_ANSWER = "/result_answer";
+    private static final String GET_INFO_QUESTION = "/get_text_question";
+    private static final String FINISH = "/finish";
+    private static final String FINISH_TEST = "/finish_test";
+    //only admin
+    private static final String FILTER_USERS = "/filter_users";
+    private static final String BLOCK = "/block";
+    private static final String CREATE_TEST = "/create_test";
+    private static final String ADD_QUESTION = "/add_question";
+    private static final String ADD_ANSWER = "/add_answer";
+    private static final String EDIT_USER = "/edit_user";
+    private static final String EDIT_TEST = "/edit_test";
+    private static final String EDIT_QUESTION = "/edit_question";
+    private static final String DELETE_USER = "/delete_user";
+    private static final String DELETE_TEST = "/delete_test";
+    private static final String DELETE_QUESTION = "/delete_question";
+    private static final String DELETE_ANSWER = "/delete_answer";
+    private static final String FILTER_IMAGES = "/filter_images";
+    private static final String LOAD = "/load";
+    private static final String DELETE_IMAGE = "/delete_image";
+    private static final String UPDATE_IMAGE = "/update_image";
+    private static final String REMOVE_IMAGE = "/remove_image";
+    private static final String BLOCK_TEST = "/block_test";
 }

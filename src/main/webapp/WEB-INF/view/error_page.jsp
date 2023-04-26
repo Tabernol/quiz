@@ -15,8 +15,12 @@
 <html lang="${sessionScope.locale}">
 <head>
     <title>Title</title>
+    <style>
+        <%@include file="/static/css/style.css"%>
+    </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
 <h1><fmt:message key="label.error.message"/></h1>
 <form action="home">
     <input class="button" type="submit" value="<fmt:message key="button.back"/>">

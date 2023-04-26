@@ -2,8 +2,7 @@ package command.post;
 
 import command.AbstractCommand;
 import command.get.EditTest;
-import controllers.AppContext;
-import controllers.servlet.RequestHandler;
+import context.AppContext;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import servises.QuestionService;

@@ -1,7 +1,5 @@
 package repo.impl;
 
-import connection.MyDataSource;
-import controllers.AppContext;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
 import models.Answer;

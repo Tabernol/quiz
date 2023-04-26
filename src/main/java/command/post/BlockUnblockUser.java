@@ -2,16 +2,11 @@ package command.post;
 
 
 import command.AbstractCommand;
-import controllers.AppContext;
+import context.AppContext;
 import controllers.PathConst;
-import controllers.servlet.RequestHandler;
 import exeptions.DataBaseException;
 import lombok.extern.slf4j.Slf4j;
-import repo.impl.UserRepoImpl;
 import servises.UserService;
-import servises.impl.UserServiceImpl;
-import servises.impl.ValidatorServiceImpl;
-import validator.DataValidator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

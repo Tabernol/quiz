@@ -1,8 +1,6 @@
 package controllers.filters;
 
-import controllers.servlet.RequestHandler;
 import lombok.extern.slf4j.Slf4j;
-import controllers.AccessUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -10,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@WebFilter(filterName = "SecurityFilter", value = "/*")
 @Slf4j
 public class SecurityFilter extends AbstractFilter {
     private static final  String ACCESS_DENIED = "/WEB-INF/view/access.jsp";

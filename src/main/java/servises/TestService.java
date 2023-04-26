@@ -10,7 +10,7 @@ import java.util.List;
 public interface TestService extends BaseService<TestDto> {
     List<String> getDistinctSubjects() throws DataBaseException;
 
-    List<Test> getPageTestList(String subject, String order, Integer rows, Integer page, String role)
+    List<TestDto> getPageTestList(String subject, String order, Integer rows, Integer page, String role)
             throws DataBaseException;
 
     int countPages(String subject, Integer rowsOnPage) throws DataBaseException;

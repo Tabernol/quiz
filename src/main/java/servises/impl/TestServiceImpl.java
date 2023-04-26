@@ -13,6 +13,8 @@ import servises.ValidatorService;
 import util.query.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This class receives data from top-level classes.
@@ -78,12 +80,12 @@ public class TestServiceImpl implements TestService,
      * @throws DataBaseException is wrapper of SQLException
      */
     @Override
-    public List<Test> getPageTestList(String subject, String order, Integer rows, Integer page, String role)
+    public List<TestDto> getPageTestList(String subject, String order, Integer rows, Integer page, String role)
             throws DataBaseException {
         QueryCreator queryCreator = new QueryBuilderForTest();
         String query = queryCreator.getSQL(new MyQuery(subject, order, rows, page, role));
-        log.info("Ready query = "+query);
-        return testRepo.nextPage(query);
+        log.info("Ready query = " + query);
+        return testRepo.nextPage(query).stream().map(this::mapToDto).collect(Collectors.toList());
     }
 
     /**
